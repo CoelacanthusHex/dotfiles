@@ -1,0 +1,10 @@
+[Unit]
+Description=Coolq Bot
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python /home/lhw/data/bot/bot/bot.py
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,9 @@
+# ZshCache
+/zcache
+
+# ZshHistory
+/zhistory
+
+# Zsh Pre Compile
+*.zwc
+\.zcompdump

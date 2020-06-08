@@ -1,0 +1,3 @@
+[submodule "fcitx5/.local/share/fcitx5/themes/fcitx5-dark-transparent"]
+	path = fcitx5/.local/share/fcitx5/themes/fcitx5-dark-transparent
+	url = https://github.com/hosxy/fcitx5-dark-transparent.git

@@ -1,0 +1,20 @@
+/*隐藏所有右键菜单分割线*/
+menuseparator {
+  display: none;
+}
+
+/*去除 链接存为书签*/
+#context-bookmarklink{
+	display: none !important;
+}
+
+/*去除 新版变化*/
+#appMenu-whatsnew-button {
+	display: none !important;
+}
+
+
+/*地址栏去除圆角*/
+#urlbar {
+	border-radius: 0 !important;
+}

@@ -1,0 +1,9 @@
+#
+# Arch Linux repository mirrorlist
+# Generated on 2020-02-07
+#
+# China
+Server = https://mirrors.neusoft.edu.cn/archlinux/$repo/os/$arch
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch
+Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch
+#Server = https://mirrors.bfsu.edu.cn/archlinux/$repo/os/$arch

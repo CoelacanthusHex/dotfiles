@@ -1,0 +1,8 @@
+\.git
+\.gitignore
+
+pkglist
+/.+/pkglist
+/pkglist
+
+/README.md

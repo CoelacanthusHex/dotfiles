@@ -1,0 +1,5 @@
+fcitx5-git
+fcitx5-{chinese-addons,lua,qt5,gtk}-git
+kcm-fcitx5-git
+fcitx5-pinyin-zhwiki
+fcitx5-material-color

@@ -1,0 +1,18 @@
+#/bin/env bash
+
+alias cp='cp -v --reflink=auto'
+
+pacman_bak=('mirrorlist'
+			'mirrorlist.sync'
+			'archlinuxcn-mirrorlist'
+			'archlinuxcn-mirrorlist.sync'
+			'blackarch-mirrorlist'
+            )
+            
+for i in "${pacman_bak[@]}"; do
+    cp /etc/pacman.d/"$i" "$HOME"/dotfiles/pacman-backup/etc/pacman.d/
+done
+
+cp /etc/pacman.conf "$HOME"/dotfiles/pacman-backup/etc/pacman.conf
+
+unalias cp

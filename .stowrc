@@ -1,0 +1,4 @@
+--target=~
+--ignore=pkglist
+--ignore=package.list
+--ignore=dot-setup.sh

@@ -1,0 +1,10 @@
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
+Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
+
+## Our main server (ipv4, ipv6, http, https)
+#Server = https://repo.archlinuxcn.org/$arch
+
+
+
+
+

@@ -1,0 +1,8 @@
+! Colorscheme
+#include "Xresources.d/colorscheme"
+
+! Font settings
+#include "Xresources.d/fonts"
+
+! GNU Emacs settings
+#include "Xresources.d/emacs"

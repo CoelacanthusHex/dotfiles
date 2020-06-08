@@ -1,0 +1,8 @@
+# Aria2
+aria2c.session
+
+# Zsh Pre Compile
+*.zwc
+
+README.html
+

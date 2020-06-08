@@ -1,0 +1,111 @@
+#!/usr/bin/python3
+
+import os
+import asyncio
+import time
+import random
+
+import aiohttp
+
+class MyConnector(aiohttp.TCPConnector):
+  def __init__(self, future):
+    self.__future = future
+    super().__init__()
+
+  async def _create_connection(self, *args, **kwargs):
+    proto = await super()._create_connection(*args, **kwargs)
+    if not self.__future.done():
+      self.__future.set_result(proto.transport)
+    return proto
+
+async def test_domain(domain):
+  url = f'https://{domain}/cdn-cgi/trace'
+  fu = asyncio.Future()
+  st = time.time()
+  async with aiohttp.ClientSession(connector=MyConnector(fu)) as s:
+    r = await s.get(url)
+    text = await r.text()
+    transport = await fu
+    ip = transport.get_extra_info('peername')[0]
+
+  ret = {}
+  for l in text.splitlines():
+    k, v = l.split('=', 1)
+    if k in ['ip', 'colo']:
+      ret[k] = v
+  return ip, ret['ip'], ret['colo'], time.time() - st
+
+async def producer(q):
+  domains = get_domains()
+  for domain in domains:
+    await q.put(domain)
+
+  await q.put(None)
+
+async def printer(q):
+  while True:
+    try:
+      item = await q.get()
+    except asyncio.CancelledError:
+      break
+
+    if isinstance(item[1], Exception):
+      domain, e = item
+      print(f'{domain:40} {e!r}')
+    else:
+      domain, dip, sip, colo, t = item
+      print(f'{domain:35} {sip:>15} -> {dip:15} {colo} {t:6.2f}')
+
+async def worker(q, ret_q):
+  while True:
+    domain = await q.get()
+    if domain is None:
+      await q.put(None)
+      break
+
+    try:
+      tt = 0
+      for i in range(3):
+        dip, sip, colo, t = await test_domain(domain)
+        tt += t
+        if t > 5: break
+      tt /= i + 1
+      t = tt
+    except Exception as e:
+      await ret_q.put((domain, e))
+    else:
+      await ret_q.put((domain, dip, sip, colo, t))
+
+async def main():
+  q = asyncio.Queue()
+  ret_q = asyncio.Queue()
+
+  workers = [worker(q, ret_q) for _ in range(40)]
+  producer_fu = asyncio.ensure_future(producer(q))
+  printer_fu = asyncio.ensure_future(printer(ret_q))
+
+  futures = workers + [producer_fu]
+  done, _ = await asyncio.wait(
+    futures, return_when=asyncio.FIRST_EXCEPTION)
+  for fu in done:
+    fu.result()
+
+  printer_fu.cancel()
+  await printer_fu
+
+def get_domains():
+  p = os.path.expanduser('~/data/cf-domains.txt')
+  with open(p) as f:
+    ret = [x.strip() for x in f]
+  random.shuffle(ret)
+  return ret[:100]
+
+if __name__ == '__main__':
+  import logging
+  logging.getLogger().addHandler(logging.NullHandler())
+
+  loop = asyncio.get_event_loop()
+  try:
+    loop.run_until_complete(main())
+  except KeyboardInterrupt:
+    pass
