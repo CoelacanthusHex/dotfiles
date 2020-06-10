@@ -1,8 +1,9 @@
 # ZshCache
-/zcache
+#/zcache/*
 
 # ZshHistory
-/zhistory
+/zhistory/zsh_history
+/zhistory/zlua
 
 # Zsh Pre Compile
 *.zwc

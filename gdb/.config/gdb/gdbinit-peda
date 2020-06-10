@@ -1,0 +1,1 @@
+source /usr/share/peda/peda.py

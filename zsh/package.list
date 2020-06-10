@@ -22,3 +22,7 @@ ydcv-rs
 pigz
 lzip
 lrzip
+skim
+clang
+shellcheck
+shellharden

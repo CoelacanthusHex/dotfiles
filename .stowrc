@@ -2,3 +2,5 @@
 --ignore=pkglist
 --ignore=package.list
 --ignore=dot-setup.sh
+--ignore=README.md
+--ignore=README.adoc

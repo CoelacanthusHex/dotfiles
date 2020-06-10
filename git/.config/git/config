@@ -1,0 +1,36 @@
+[user]
+	email = liuhongwu2003@outlook.com
+	name = Coelacanthus
+	signingkey = 5406F0E8844366FDD637A327D2AC54B70C894FEC
+	
+[core]
+	# Use custom `.gitignore` and `.gitattributes`
+	excludesfile = ~/.config/git/gitignore
+	#attributesfile = ~/.config/git/gitattributes
+
+	quotePath = false
+	pager = diff-so-fancy | less --tabs=4 -RFX
+	#pager = delta --plus-color="#012800" --minus-color="#340001" --theme='Monokai Extended'
+
+#[interactive]
+#    diffFilter = delta --color-only
+    
+[color]
+	ui = true
+	
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[http]
+	proxy = http://127.0.0.1:1081
+[https]
+	proxy = https://127.0.0.1:1082

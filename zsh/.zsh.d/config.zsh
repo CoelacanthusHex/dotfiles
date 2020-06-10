@@ -35,6 +35,9 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^x^e' edit-command-line
 
+# set end of file mark
+export PROMPT_EOL_MARK="%B%F{red}🔚"
+
 # Help
 unalias run-help 2> /dev/null
 autoload -Uz run-help
@@ -95,8 +98,11 @@ autoload -Uz colors zsh/terminfo
 colors
 
 () {
-    local white_b=$fg_bold[white] blue=$fg[blue] rst=$reset_color
-    TIMEFMT=("$white_b%J$rst"$'\n'
-        "User: $blue%U$rst"$'\t'"System: $blue%S$rst  Total: $blue%*Es$rst"$'\n'
-        "CPU:  $blue%P$rst"$'\t'"Mem:    $blue%M MB$rst")
+  autoload -Uz colors
+  colors
+  local white_b=$fg_bold[white] blue=$fg_bold[blue] rst=$reset_color
+  local white_b=$'\e[97m' blue=$'\e[94m' rst=$'\e[0m'
+  TIMEFMT=("== TIME REPORT FOR $white_b%J$rst =="$'\n'
+    "  User: $blue%U$rst"$'\t'"System: $blue%S$rst  Total: $blue%*Es${rst}"$'\n'
+    "  CPU:  $blue%P$rst"$'\t'"Mem:    $blue%M MiB$rst")
 }

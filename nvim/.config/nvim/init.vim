@@ -29,7 +29,8 @@ if dein#load_state('$PlugPath')
 
     call dein#add('~/.vim/dein/repos/github.com/Shougo/dein.vim')
     call dein#add('wsdjeg/dein-ui.vim')
-
+    call dein#add('Shougo/denite.nvim')
+    
     call dein#add('tpope/vim-fugitive')
 
     """"""""""""""""""""""""""" 主题配色
@@ -48,6 +49,8 @@ if dein#load_state('$PlugPath')
     call dein#add('Yggdroot/indentLine')
     " 自动括号
     call dein#add('jiangmiao/auto-pairs')
+    " Tagbar
+    call dein#add('majutsushi/tagbar')
     " 注释插入
     call dein#add('preservim/nerdcommenter')
     " 彩虹括号
@@ -80,25 +83,21 @@ if dein#load_state('$PlugPath')
     call dein#add('ryanoasis/vim-devicons')
     call dein#add('liuchengxu/nerdtree-dash')
 
+    call dein#add('dense-analysis/ale',{'on_ft': ['sh', 'c', 'cpp', 'rust', 'python', 'go', 'tex']})
+
     """"""""""""""""""""""""""" 自动补全
     call dein#add('Shougo/deoplete.nvim')
     if !has('nvim')
         call dein#add('roxma/nvim-yarp')
         call dein#add('roxma/vim-hug-neovim-rpc')
     endif
-    " 自动启动
-    let g:deoplete#enable_at_startup = 1
-    let g:deoplete#profile = 1
-    "call deoplete#custom#option('profile', v:true)
-	"call deoplete#enable_logging('DEBUG', 'deoplete.log')
-	"call deoplete#custom#source('jedi', 'is_debug_enabled', 1)
-    call deoplete#enable()
+
     " Integration with TabNine - a machine learning-based all-language autocompleter
-    if has('win32') || has('win64')
-        call dein#add('tbodt/deoplete-tabnine', { 'build': 'powershell.exe .\install.ps1' })
-    else
-        call dein#add('tbodt/deoplete-tabnine', { 'build': './install.sh' })
-    endif
+    "if has('win32') || has('win64')
+    "    call dein#add('tbodt/deoplete-tabnine', { 'build': 'powershell.exe .\install.ps1' })
+    "else
+    "    call dein#add('tbodt/deoplete-tabnine', { 'build': './install.sh' })
+    "endif
     " Syntax source for neocomplete/deoplete/ncm
     call dein#add('shougo/neco-syntax')
     " Include completion framework for neocomplete/deoplete
@@ -109,23 +108,6 @@ if dein#load_state('$PlugPath')
     \ 'rev': 'next',
     \ 'build': 'bash install.sh',
     \ })
-
-    let g:LanguageClient_autoStart = 1
-    let g:LanguageClient_autoStop = 1
-    " the suddennly popup of diagnostics sign is kind of annoying
-    let g:LanguageClient_diagnosticsSignsMax = 0
-    let g:LanguageClient_loadSettings = 1 " Use an absolute configuration path if you want system-wide settings
-    let g:LanguageClient_settingsPath = '~/.config/nvim/settings.json'
-    let g:LanguageClient_serverCommands = {
-        \ 'c': ['/usr/bin/ccls', '--log-file=/tmp/cc.log'],
-        \ 'cpp': ['/usr/bin/ccls', '--log-file=/tmp/cc.log'],
-        \ 'cuda': ['/usr/bin/ccls', '--log-file=/tmp/cc.log'],
-        \ 'objc': ['/usr/bin/ccls', '--log-file=/tmp/cc.log'],
-        \ 'rust': ['rls'],
-        \ 'typescript': ['/usr/bin/javascript-typescript-stdio'],
-        \ 'javascript': ['/usr/bin/javascript-typescript-stdio'],
-        \ 'haskell': ['hie-wrapper', '--lsp']
-        \ }
 
     " ccls Config
     let s:ccls_settings = {
@@ -139,7 +121,8 @@ if dein#load_state('$PlugPath')
     call dein#add('sheerun/vim-polyglot')
 
 
-    """"""" C
+    """"""" C & C++
+    call dein#add('vim-scripts/gtags.vim',{'on_ft': ['c', 'cpp']})
     " C++ 的clang补全
     " 见下
 
@@ -152,12 +135,18 @@ if dein#load_state('$PlugPath')
 
     """"""" Rust
     " Rust 支持
-    call dein#add('rust-lang/rust.vim',{'on_ft':'rust'})
+    call dein#add('rust-lang/rust.vim',{'on_ft': 'rust'})
+    call dein#add('racer-rust/vim-racer',{'on_ft': 'rust'})
     " 保存时自动格式化
     let g:autofmt_autosave = 1
     " Cargo 增强
     call dein#add('timonv/vim-cargo')
-    
+
+
+    """"""" Go
+    call dein#add('fatih/vim-go',{'on_ft': 'go'})
+
+
     """"""" Haskell
     "call dein#add('eagletmt/neco-ghc')
     call dein#add('nbouscal/vim-stylish-haskell')
@@ -168,36 +157,19 @@ if dein#load_state('$PlugPath')
     call dein#add('plasticboy/vim-markdown',{'on_ft':'markdown'})
     " Markdown 语法支持
     call dein#add('SidOfc/mkdx')
-    let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
-                        \ 'enter': { 'shift': 1 },
-                        \ 'links': { 'external': { 'enable': 1 } },
-                        \ 'toc': { 'text': 'Table of Contents', 'update_on_write': 1 },
-                        \ 'fold': { 'enable': 0 } }
-    " for vim-polyglot users, it loads Plasticboy's markdown
-    " plugin which unfortunately interferes with mkdx list indentation.
-    let g:polyglot_disabled = ['markdown']
+
+
     " 笔记
     call dein#add('vimwiki/vimwiki')
-    let g:vimwiki_list = [{
-            \ 'path': '~/Documents/Notes/', 'index': 'index', 'ext': '.mw',
-            \ 'auto_tags': 1,
-            \ 'nested_syntaxes': {'py': 'python', 'cpp': 'cpp', 'c':'c', 'rust':'rust'}
-            \ }]
 
 
     """"""" Vim Script
     call dein#add('Shougo/neco-vim',{'on_ft':'vim'})
-    
-    
+
+
     """"""" Haskell
     call dein#add('neovimhaskell/haskell-vim',{'on_ft':'haskell'})
-    let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
-    let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
-    let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
-    let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
-    let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
-    let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
-    let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
+
 
     """"""" Pandoc
     " Pandoc Support
@@ -229,6 +201,14 @@ if dein#load_state('$PlugPath')
     call dein#add('hail2u/vim-css3-syntax',{'on_ft':'html'})
 
 
+    """"""" PKGBUILD
+    call dein#add('Firef0x/PKGBUILD.vim')
+    
+    
+    """"""" Typescript
+    call dein#add('HerringtonDarkholme/yats.vim')
+    call dein#add('mhartington/nvim-typescript', {'build': './install.sh'})
+
 
     call dein#end()
     call dein#save_state()
@@ -237,8 +217,8 @@ if dein#load_state('$PlugPath')
     " Change clang binary path
     call deoplete#custom#var('clangx', 'clang_binary', '/usr/bin/clang')
     " Change clang options
-    call deoplete#custom#var('clangx', 'default_c_options', '-Wall')
-    call deoplete#custom#var('clangx', 'default_cpp_options', '-Wall')
+    call deoplete#custom#var('clangx', 'default_c_options', '-Wall -Wextra')
+    call deoplete#custom#var('clangx', 'default_cpp_options', '-Wall -Wextra')
 
 endif
 
@@ -341,42 +321,53 @@ inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
+""""""""""""""""""""""""""""""""""""" Extensions Setting
 
-""""""""""""""""""""""""""""""""""""" gruvbox
-let g:gruvbox_bold=1
-let g:gruvbox_italic=1
-let g:gruvbox_contrast_dark='hard'
-let g:gruvbox_improved_strings=1
+" 带有如下符号的单词不要被换行分割
+set iskeyword+=_,$,@,%,#,-
+set tags=tags;/
 
-
-""""""""""""""""""""""""""""""""""""" NERDTree
-"autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-" 最后是个 window 是 NERDTree 时自动退出
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-
-""""""""""""""""""""""""""""""""""""" 配色方案
+""""""" 配色方案
 set background=dark
 "colorscheme gruvbox
 colorscheme onedark
 
+""""""" taglist Configuration
+let Tlist_Sort_Type = "name"                                   " 按照名称排序
+let Tlist_Use_Right_Window = 1                                 " 在右侧显示窗口
+let Tlist_Compart_Format = 1                                   " 压缩方式
+let Tlist_Exist_OnlyWindow = 1                                 " 如果只有一个buffer，kill窗口也kill掉buffer
+let Tlist_File_Fold_Auto_Close = 0                             " 不要关闭其他文件的tags
+let Tlist_Enable_Fold_Column = 0                               " 不要显示折叠树
 
-""""""""""""""""""""""""""""""""""""" Airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-"let g:airline_theme='light'
-"显示 buffer 编号
-let g:airline#extensions#tabline#buffer_nr_show = 1
+" Load user config files only if the file exist, supress warning
+function! LoadCustomConfig(config)
+    if filereadable(expand(a:config))
+        exec 'source' a:config
+    endif
+endfunction
+command! -nargs=1 LoadConfig call LoadCustomConfig(<f-args>)
 
-let g:airline_theme='onedark'
-
+" LoadConfig ~/.config/nvim/conf.d/
+LoadConfig ~/.config/nvim/conf.d/airline.vim
+LoadConfig ~/.config/nvim/conf.d/ale.vim
+LoadConfig ~/.config/nvim/conf.d/autopair.vim
+LoadConfig ~/.config/nvim/conf.d/deoplete.vim
+LoadConfig ~/.config/nvim/conf.d/gruvbox.vim
+LoadConfig ~/.config/nvim/conf.d/gtags.vim
+LoadConfig ~/.config/nvim/conf.d/haskell-vim.vim
+LoadConfig ~/.config/nvim/conf.d/language-server.vim
+LoadConfig ~/.config/nvim/conf.d/mkdx.vim
+LoadConfig ~/.config/nvim/conf.d/nerdtree.vim
+LoadConfig ~/.config/nvim/conf.d/racer.vim
+LoadConfig ~/.config/nvim/conf.d/vim-go.vim
+LoadConfig ~/.config/nvim/conf.d/vim-wiki.vim
 
 """""""""""""""""""""""""""""""""""""" Function
 
 let mapleader="\\"
 
-"  删除所有未显示且无修改的缓冲区以减少内存占用
+" 删除所有未显示且无修改的缓冲区以减少内存占用
 function Lilydjwg_cleanbufs()
   for bufNr in filter(range(1, bufnr('$')),
         \ 'buflisted(v:val) && !bufloaded(v:val)')
@@ -418,14 +409,13 @@ func! Clss()
     exec '!clear'
     endfunc
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""新文件标题
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"新建.c,.h,.sh,.java文件，自动插入文件头
+""""""""""""""""""""""""""""""""""""" 新文件标题
+
+" 新建.c,.h,.sh,.java文件，自动插入文件头
 autocmd BufNewFile *.cpp,*.[ch],*.sh,*.rb,*.java,*.py exec ":call SetTitle()"
-""定义函数SetTitle，自动插入文件头
+"" 定义函数SetTitle，自动插入文件头
 func SetTitle()
-    "如果文件类型为.sh文件
+    " 如果文件类型为.sh文件
     if &filetype == 'sh'
         call setline(1,"\#!/bin/bash")
         call append(line("."), "")
@@ -473,6 +463,6 @@ func SetTitle()
         call append(line(".")+6,"public class ".expand("%:r"))
         call append(line(".")+7,"")
     endif
-    "新建文件后，自动定位到文件末尾
+    " 新建文件后，自动定位到文件末尾
 endfunc
 autocmd BufNewFile * normal G

@@ -281,4 +281,9 @@ clip_png2bmp () { # 将剪贴板中的图片从 png 转到 bmp。QQ 会使用 bm
 #  unset match
 #fi
 
+# check fcitx5 dbus
+function check-fcitx5-dbus() {
+    qdbus org.fcitx.Fcitx5 /controller org.fcitx.Fcitx.Controller1.DebugInfo
+}
+
 # vim: ft=zsh

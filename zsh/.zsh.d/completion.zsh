@@ -80,6 +80,7 @@ zstyle :compinstall filename "${HOME}/.zshrc"
 
 compdef downgrade=pactree 2>/dev/null
 compdef proxychains=command
+compdef prime-run=command
 compdef _gnu_generic exa pamixer
 
 zstyle ':completion:*:*:x:*' file-patterns \

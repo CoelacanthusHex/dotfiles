@@ -17,7 +17,11 @@ export GENTOO_MIRRORS=http://mirrors.tuna.tsinghua.edu.cn/gentoo
 export GOPROXY=https://goproxy.cn
 export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
 
-#[[ -x /usr/bin/sccache ]] && export RUSTC_WRAPPER='/usr/bin/sccache'
+export WINEARCH=win32 
+export WINEPREFIX=/home/lhw/data/Games/ff14
+
+#export SCCACHE_DIR="/var/cache/sccache"
+[[ -x /usr/bin/sccache ]] && export RUSTC_WRAPPER="/usr/bin/sccache"
 
 # ignore duplicated path
 typeset -U path
@@ -29,6 +33,7 @@ typeset -U path
 path=(
     $HOME/.go/bin(N-/)
     $HOME/.cargo/bin(N-/)
+    $HOME/.zsh.d/functions(N-/)
     $HOME/.local/bin(N-/)
     $(ruby -e 'print Gem.user_dir')/bin(N-/)
     /usr/local/bin(N-/)

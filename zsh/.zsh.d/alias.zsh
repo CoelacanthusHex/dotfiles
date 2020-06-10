@@ -15,6 +15,7 @@ if (( $+commands[exa] )); then
 else
     alias ls='ls --color=auto --human-readable --time-style=long-iso'
 fi
+(( $+commands[runiq] )) && alias uniq="runiq -f sorted"
 alias l='ls -al'         # Lists in one column, hidden files.
 alias ll='ls -lh'        # Lists human readable sizes.
 alias lr='ll -R'         # Lists human readable sizes, recursively.
@@ -26,13 +27,13 @@ alias lt='ll -tr'        # Lists sorted by date, most recent last.
 alias lc='lt -c'         # Lists sorted by date, most recent last, shows change time.
 alias lu='lt -u'         # Lists sorted by date, most recent last, shows access time.
 (( $+commands[bat] )) && alias cat="bat --tabs=0"
-#if (( $+commands[fd] )); then
-#    alias clang-format-all="fd --type f '.*\.\(c\|cpp\|h\|hpp\)' . | xargs clang-format"
-#else
-#    alias clang-format-all="find . -type f -regex '.*\.\(c\|cpp\|h\|hpp\)' | xargs clang-format -i"
-#fi
-alias clang-format-all="find . -type f -regex '.*\.\(c\|cpp\|h\|hpp\)' | xargs clang-format -i"
-alias gdb='gdb -q'
+if (( $+commands[fd] )); then
+    alias clang-format-all='fd --type f '.*\.(c|cpp|h|hpp|hxx|cxx)' . -x clang-format -i {};'
+    alias clang-tidy-all='fd --type f '.*\.(c|cpp|h|hpp|hxx|cxx)' . -x clang-tidy {};'
+else
+    alias clang-format-all="find . -type f -regex '.*\.(c|cpp|h|hpp)' | xargs clang-format -i"
+fi
+#alias clang-format-all="find . -type f -regex '.*\.\(c\|cpp\|h\|hpp\)' | xargs clang-format -i"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -45,7 +46,7 @@ alias unsetproxy="unset ALL_PROXY"
 alias blog-update='cd ~/blog && git add -A && git commit -m "Update Site @$(date +%Y-%m-%d-%H:%M:%S)" && git push -u origin master && cd ~'
 alias rg='rg -p --smart-case'
 alias diff='diff --color=auto'
-#alias ppikaur='ALL_PROXY=socks5://127.0.0.1:1080 pikaur'
+alias ppikaur='ALL_PROXY=socks5://127.0.0.1:1080 pikaur'
 alias pyay='ALL_PROXY=socks5://127.0.0.1:1080 yay'
 alias .="source"
 alias mv='mv -v'
@@ -73,6 +74,10 @@ alias now="date --rfc-3339=seconds"
 alias dd='dd status=progress'
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 #alias myip="dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | sed 's/\"//g'"
+alias gdb-gef="command gdb -x $XDG_CONFIG_HOME/gdb/gdbinit-gef"
+alias gdb-pwndbg="command gdb -x $XDG_CONFIG_HOME/gdb/gdbinit-pwndbg"
+alias gdb-peda="command gdb -x $XDG_CONFIG_HOME/gdb/gdbinit-peda"
+alias gdb='gdb-gef -q'
 
 # BSD ls colors.
 export LSCOLORS='exfxcxdxbxGxDxabagacad'

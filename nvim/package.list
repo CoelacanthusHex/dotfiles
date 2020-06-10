@@ -4,3 +4,9 @@ ruby-neovim
 nodejs-neovim
 python-jedi
 clang
+rust-analyzer
+gopls
+ccls
+rust-racer
+haskell-ide-engine
+texlab

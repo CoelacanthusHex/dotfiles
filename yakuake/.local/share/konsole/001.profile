@@ -1,6 +1,6 @@
 [Appearance]
 ColorScheme=Coelacanthus
-Font=Monospace,10,-1,5,50,0,0,0,0,0
+Font=等距更纱黑体 SC,11,-1,5,63,0,0,0,0,0,Semibold
 UseFontLineChararacters=false
 
 [Cursor Options]

@@ -146,10 +146,11 @@ async def resolve(domain):
 
 async def get_items(proto):
   domains = [
-    "ams-region.github.com",
     "sea-region.github.com",
     "iad-region.github.com",
     "sin-region.github.com",
+    "ams-region.github.com",
+    "fra-region.github.com",
   ]
   print('Resolving domains...', flush=True, end='')
   futures = [resolve(domain) for domain in domains]
@@ -171,7 +172,7 @@ async def get_items(proto):
     ('Sao Paulo', '18.228.67.229'),
     ('Seoul', '15.164.81.167'),
     ('Seoul', '52.78.231.108'),
-    ('Seattle', '52.192.72.89'),
+    ('Tokyo', '52.192.72.89'),
     ('Tokyo', '13.114.40.48'),
     ('Tokyo', '52.69.186.44'),
     ('Bombay', '13.234.210.38'),

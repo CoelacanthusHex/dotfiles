@@ -1,0 +1,1926 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language [
+<!--
+After testing " and | do seem to work, but the documentation
+states they should not be used, so this will not match them.
+-->
+<!ENTITY patternDelimiter "([^|&quot;a-zA-Z_0-9\\])">
+<!ENTITY posint "[1-9][0-9]*">
+<!ENTITY identifier "[a-zA-Z_][a-zA-Z_0-9]*">
+<!ENTITY variable "([bwtglsav]:)?&identifier;">
+<!ENTITY userfunc "&variable;(\.&identifier;)+|[A-Z][a-zA-Z_0-9]*|s:&identifier;">
+]>
+<language name="VIM" version="5" kateversion="5.0" section="Scripts"
+          extensions="*.vim" license="MIT">
+  <highlighting>
+    <list name="tasks">
+      <item>TODO</item>
+      <item>FIXME</item>
+      <item>XXX</item>
+    </list>
+    <list name="mapOptions">
+      <item>&lt;buffer&gt;</item>
+      <item>&lt;silent&gt;</item>
+      <item>&lt;expr&gt;</item>
+      <item>&lt;special&gt;</item>
+      <item>&lt;script&gt;</item>
+      <item>&lt;unique&gt;</item>
+    </list>
+    <list name="exSpecials">
+      <item>&lt;cword&gt;</item>
+      <item>&lt;cWORD&gt;</item>
+      <item>&lt;cfile&gt;</item>
+      <item>&lt;afile&gt;</item>
+      <item>&lt;abuf&gt;</item>
+      <item>&lt;amatch&gt;</item>
+      <item>&lt;sfile&gt;</item>
+      <item>&lt;slnum&gt;</item>
+    </list>
+    <list name="beginBlockFlow">
+      <item>try</item>
+    </list>
+    <list name="endBlockFlow">
+      <item>endif</item>
+      <item>endfor</item>
+      <item>endwhile</item>
+      <item>endtry</item>
+    </list>
+    <list name="flow">
+      <item>else</item>
+      <item>continue</item>
+      <item>break</item>
+      <item>finally</item>
+      <item>finish</item>
+      <item>throw</item>
+    </list>
+    <list name="fileBufferOptions">
+      <item>fileformat</item>
+      <item>encoding</item>
+      <item>binary</item>
+      <item>nobinary</item>
+      <item>bad</item>
+      <item>edit</item>
+    </list>
+    <list name="fileBufferCommands">
+      <item>Next</item>
+      <item>args</item>
+      <item>argedit</item>
+      <item>argglobal</item>
+      <item>arglocal</item>
+      <item>argument</item>
+      <item>drop</item>
+      <item>edit</item>
+      <item>ex</item>
+      <item>find</item>
+      <item>first</item>
+    </list>
+    <list name="simpleCommands">
+      <item>Print</item>
+      <item>X</item>
+      <item>abclear</item>
+      <item>all</item>
+      <item>argadd</item>
+      <item>argdelete</item>
+      <item>ascii</item>
+      <item>augroup</item>
+      <item>aunmenu</item>
+      <item>buffer</item>
+      <item>bNext</item>
+      <item>ball</item>
+      <item>badd</item>
+      <item>bdelete</item>
+      <item>behave</item>
+      <item>bfirst</item>
+      <item>blast</item>
+      <item>bmodified</item>
+      <item>bnext</item>
+      <item>bprevious</item>
+      <item>brewind</item>
+      <item>break</item>
+      <item>breakadd</item>
+      <item>breakdel</item>
+      <item>breaklist</item>
+      <item>browse</item>
+      <item>buffers</item>
+      <item>bunload</item>
+      <item>bwipeout</item>
+      <item>cNext</item>
+      <item>cNfile</item>
+      <item>cabclear</item>
+      <item>caddbuffer</item>
+      <item>caddfile</item>
+      <item>cbuffer</item>
+      <item>cc</item>
+      <item>cclose</item>
+      <item>cd</item>
+      <item>center</item>
+      <item>cfile</item>
+      <item>cfirst</item>
+      <item>cgetbuffer</item>
+      <item>cgetfile</item>
+      <item>changes</item>
+      <item>chdir</item>
+      <item>checkpath</item>
+      <item>checktime</item>
+      <item>clist</item>
+      <item>clast</item>
+      <item>close</item>
+      <item>cmapclear</item>
+      <item>cnext</item>
+      <item>cnewer</item>
+      <item>cnfile</item>
+      <item>copy</item>
+      <item>colder</item>
+      <item>colorscheme</item>
+      <item>comclear</item>
+      <item>compiler</item>
+      <item>continue</item>
+      <item>copen</item>
+      <item>cprevious</item>
+      <item>cpfile</item>
+      <item>cquit</item>
+      <item>crewind</item>
+      <item>cstag</item>
+      <item>cunmap</item>
+      <item>cunabbrev</item>
+      <item>cunmenu</item>
+      <item>cwindow</item>
+      <item>delete</item>
+      <item>delmarks</item>
+      <item>debuggreedy</item>
+      <item>diffupdate</item>
+      <item>diffget</item>
+      <item>diffoff</item>
+      <item>diffpatch</item>
+      <item>diffput</item>
+      <item>diffsplit</item>
+      <item>diffthis</item>
+      <item>digraphs</item>
+      <item>djump</item>
+      <item>dlist</item>
+      <item>dsearch</item>
+      <item>dsplit</item>
+      <item>earlier</item>
+      <item>echohl</item>
+      <item>enew</item>
+      <item>exit</item>
+      <item>exusage</item>
+      <item>file</item>
+      <item>files</item>
+      <item>filetype</item>
+      <item>fixdel</item>
+      <item>fold</item>
+      <item>foldclose</item>
+      <item>foldopen</item>
+      <item>goto</item>
+    </list>
+    <list name="registerCommands">
+      <item>display</item>
+    </list>
+    <list name="commandCommands">
+      <item>aboveleft</item>
+      <item>argdo</item>
+      <item>belowright</item>
+      <item>botright</item>
+      <item>bufdo</item>
+      <item>confirm</item>
+      <item>debug</item>
+      <item>folddoopen</item>
+      <item>folddoclosed</item>
+    </list>
+    <list name="exprCommands">
+      <item>caddexpr</item>
+      <item>cexpr</item>
+      <item>cgetexpr</item>
+      <item>echo</item>
+      <item>echoerr</item>
+      <item>echomsg</item>
+      <item>echon</item>
+      <item>execute</item>
+    </list>
+    <list name="lineCommands">
+      <item>append</item>
+      <item>change</item>
+      <item>insert</item>
+    </list>
+    <!-- Commands that behave like map.  -->
+    <list name="mapCommands">
+      <item>abbreviate</item>
+      <item>cabbrev</item>
+      <item>cmap</item>
+      <item>cnoremap</item>
+      <item>cnoreabbrev</item>
+    </list>
+    <list name="menuCommands">
+      <item>amenu</item>
+      <item>anoremenu</item>
+      <item>cmenu</item>
+      <item>cnoremenu</item>
+      <item>emenu</item>
+    </list>
+    <list name="patternCommands">
+    </list>
+    <list name="builtInCommand">
+      <!-- TODO: Implement CScope highlighting -->
+      <item>cscope</item>
+      <!-- TODO: Generic command does to much for these -->
+      <item>doautocmd</item>
+      <item>doautoall</item>
+      <!-- TODO: Executes grep. No Comments -->
+      <item>grep</item>
+      <!-- TODO: Like grep -->
+      <item>grepadd</item>
+      <item>gui</item>
+      <item>gvim</item>
+      <item>hardcopy</item>
+      <item>help</item>
+      <item>helpfind</item>
+      <!-- TODO: Like grep -->
+      <item>helpgrep</item>
+      <item>helptags</item>
+      <item>highlight</item>
+      <item>hide</item>
+      <item>history</item>
+      <!-- TODO: Like abbreviate -->
+      <item>iabbrev</item>
+      <item>iabclear</item>
+      <item>if</item>
+      <item>ijump</item>
+      <item>ilist</item>
+      <!-- TODO: Like map -->
+      <item>imap</item>
+      <item>imapclear</item>
+      <!-- TODO: Like amenu -->
+      <item>imenu</item>
+      <!-- TODO: Like amenu -->
+      <item>inoremap</item>
+      <!-- TODO: Like abbreviate -->
+      <item>inoreabbrev</item>
+      <!-- TODO: Like amenu -->
+      <item>inoremenu</item>
+      <item>intro</item>
+      <item>isearch</item>
+      <item>isplit</item>
+      <item>iunmap</item>
+      <item>iunabbrev</item>
+      <item>iunmenu</item>
+      <item>join</item>
+      <item>jumps</item>
+      <item>k</item>
+      <!-- TODO: Takes command -->
+      <item>keepalt</item>
+      <item>keepmarks</item>
+      <!-- TODO: Takes command -->
+      <item>keepjjumps</item>
+      <item>lNext</item>
+      <item>lNfile</item>
+      <item>list</item>
+      <!-- TODO: Takes expression -->
+      <item>laddexpr</item>
+      <item>laddbuffer</item>
+      <item>laddfile</item>
+      <item>last</item>
+      <item>language</item>
+      <item>later</item>
+      <item>lbuffer</item>
+      <item>lcd</item>
+      <item>lchdir</item>
+      <item>lclose</item>
+      <item>lcscope</item>
+      <item>left</item>
+      <item>leftabove</item>
+      <!-- TODO: No comments
+                Definition syntax: let variable(= value) variable (= value).
+                Value must escape spaces.
+                Use expression after =.
+            -->
+      <item>let</item>
+      <!-- TODO: No comments, takes expression -->
+      <item>lexpr</item>
+      <item>lfile</item>
+      <item>lfirst</item>
+      <item>lgetbuffer</item>
+      <!-- TODO: No comments, takes expression -->
+      <item>lgetexpr</item>
+      <item>lgetfile</item>
+      <!-- TODO: Like grep -->
+      <item>lgrep</item>
+      <!-- TODO: Like grep -->
+      <item>lgrepadd</item>
+      <!-- TODO: Like grep -->
+      <item>lhelpgrep</item>
+      <item>ll</item>
+      <item>llast</item>
+      <item>llist</item>
+      <!-- TODO: Like make -->
+      <item>lmake</item>
+      <!-- TODO: Like map -->
+      <item>lmap</item>
+      <item>lmapclear</item>
+      <item>lnext</item>
+      <item>lnewer</item>
+      <item>lnfile</item>
+      <!-- TODO: Like map -->
+      <item>lnoremap</item>
+      <!-- TODO: Makes remainder of file keybindings -->
+      <item>loadkeymap</item>
+      <item>loadview</item>
+      <!-- TODO: Takes command -->
+      <item>lockmarks</item>
+      <item>lockvar</item>
+      <item>lolder</item>
+      <item>lopen</item>
+      <item>lprevious</item>
+      <item>lpfile</item>
+      <item>lrewind</item>
+      <item>ls</item>
+      <item>ltag</item>
+      <item>lunmap</item>
+      <!-- TODO: Involve lua syntax -->
+      <item>lua</item>
+      <!-- TODO: Involve lua syntax -->
+      <item>luado</item>
+      <item>luafile</item>
+      <!-- TODO: No comments -->
+      <item>lvimgrep</item>
+      <item>lvimgrepadd</item>
+      <item>lwindow</item>
+      <item>move</item>
+      <item>mark</item>
+      <!-- TODO: Executes make, No comments No bar -->
+      <item>make</item>
+      <!-- TODO: No comments. RHS may be an expression or a command. Check for <expr> -->
+      <item>map</item>
+      <item>mapclear</item>
+      <item>marks</item>
+      <item>match</item>
+      <!-- TODO: Like amenu -->
+      <item>menu</item>
+      <item>menutranslate</item>
+      <item>messages</item>
+      <item>mkexrc</item>
+      <item>mksession</item>
+      <item>mkspell</item>
+      <item>mkvimrc</item>
+      <item>mkview</item>
+      <item>mode</item>
+      <item>mzscheme</item>
+      <item>mzfile</item>
+      <item>nbclose</item>
+      <item>nbkey</item>
+      <item>nbstart</item>
+      <item>next</item>
+      <item>new</item>
+      <!-- TODO: Like map -->
+      <item>nmap</item>
+      <item>nmapclear</item>
+      <!-- TODO: Like amenu -->
+      <item>nmenu</item>
+      <!-- TODO: Like map -->
+      <item>nnoremap</item>
+      <!-- TODO: Like amenu -->
+      <item>nnoremenu</item>
+      <!-- TODO: Takes command -->
+      <item>noautocmd</item>
+      <!-- TODO: Like map -->
+      <item>noremap</item>
+      <item>nohlsearch</item>
+      <!-- TODO: Like abbreviate -->
+      <item>noreabbrev</item>
+      <!-- TODO: Like amenu -->
+      <item>noremenu</item>
+      <item>normal</item>
+      <item>number</item>
+      <item>nunmap</item>
+      <item>nunmenu</item>
+      <item>oldfiles</item>
+      <item>open</item>
+      <!-- TODO: Like map -->
+      <item>omap</item>
+      <item>omapclear</item>
+      <!-- TODO: Like amenu -->
+      <item>omenu</item>
+      <item>only</item>
+      <!-- TODO: Like map -->
+      <item>onoremap</item>
+      <!-- TODO: Like amenu -->
+      <item>onoremenu</item>
+      <item>options</item>
+      <item>ounmap</item>
+      <item>ounmenu</item>
+      <item>ownsyntax</item>
+      <item>pclose</item>
+      <item>pedit</item>
+      <!-- TODO: Involve perl syntax -->
+      <item>perl</item>
+      <item>print</item>
+      <item>profdel</item>
+      <item>profile</item>
+      <item>promptfind</item>
+      <item>promptrepl</item>
+      <!-- TODO: Involve perl syntax -->
+      <item>perldo</item>
+      <item>pop</item>
+      <item>popup</item>
+      <item>ppop</item>
+      <item>preserve</item>
+      <item>previous</item>
+      <item>psearch</item>
+      <item>ptag</item>
+      <item>ptNext</item>
+      <item>ptfirst</item>
+      <item>ptjump</item>
+      <item>ptlast</item>
+      <item>ptnext</item>
+      <item>ptprevious</item>
+      <item>ptrewind</item>
+      <item>ptselect</item>
+      <item>put</item>
+      <item>pwd</item>
+      <!-- TODO: Involve python highlighting -->
+      <item>python3</item>
+      <item>py3file</item>
+      <!-- TODO: Involve python highlighting -->
+      <item>python</item>
+      <item>pyfile</item>
+      <item>quit</item>
+      <item>quitall</item>
+      <item>qall</item>
+      <item>read</item>
+      <item>recover</item>
+      <item>redo</item>
+      <item>redir</item>
+      <item>redraw</item>
+      <item>redrawstatus</item>
+      <item>registers</item>
+      <item>resize</item>
+      <item>retab</item>
+      <item>return</item>
+      <item>rewind</item>
+      <item>right</item>
+      <item>rightbelow</item>
+      <!-- TODO: Involve ruby highlighting -->
+      <item>ruby</item>
+      <item>rubydo</item>
+      <item>rubyfile</item>
+      <item>rundo</item>
+      <item>runtime</item>
+      <item>rviminfo</item>
+      <!-- TODO: Patterns!!! -->
+      <item>substitute</item>
+      <item>sNext</item>
+      <item>list</item>
+      <item>sandbox</item>
+      <item>sargument</item>
+      <item>sall</item>
+      <item>saveas</item>
+      <item>sbuffer</item>
+      <item>sbNext</item>
+      <item>list</item>
+      <item>sball</item>
+      <item>sbfirst</item>
+      <item>sblast</item>
+      <item>sbmodified</item>
+      <item>sbnext</item>
+      <item>sbprevious</item>
+      <item>sbrewind</item>
+      <item>scriptnames</item>
+      <item>scriptencoding</item>
+      <item>scscope</item>
+      <!-- TODO: Similar to let, but more limited. Does not except expressions -->
+      <item>set</item>
+      <item>setfiletype</item>
+      <!-- TODO: Like set -->
+      <item>setglobal</item>
+      <item>setlocal</item>
+      <item>sfind</item>
+      <item>sfirst</item>
+      <item>shell</item>
+      <item>simalt</item>
+      <item>sign</item>
+      <!-- TODO: Takes a command -->
+      <item>silent</item>
+      <item>sleep</item>
+      <item>slast</item>
+      <item>smagic</item>
+      <!-- TODO: Like map -->
+      <item>smap</item>
+      <item>smapclear</item>
+      <!-- TODO: Line amenu -->
+      <item>smenu</item>
+      <item>snext</item>
+      <item>sniff</item>
+      <item>snomagic</item>
+      <!-- TODO: Like map -->
+      <item>snoremap</item>
+      <!-- TODO: Like amenu -->
+      <item>snoremenu</item>
+      <item>sort</item>
+      <item>source</item>
+      <item>spelldump</item>
+      <item>spellgood</item>
+      <item>spellinfo</item>
+      <item>spellrepall</item>
+      <item>spellundo</item>
+      <item>spellwrong</item>
+      <item>split</item>
+      <item>sprevious</item>
+      <item>srewind</item>
+      <item>stop</item>
+      <item>stag</item>
+      <item>startinsert</item>
+      <item>startgreplace</item>
+      <item>startreplace</item>
+      <item>stopinsert</item>
+      <item>stjump</item>
+      <item>stselect</item>
+      <item>sunhide</item>
+      <item>sunmap</item>
+      <item>sunmenu</item>
+      <item>suspend</item>
+      <item>sview</item>
+      <item>swapname</item>
+      <!-- TODO: Accepts patterns and various arguments -->
+      <item>syntax</item>
+      <item>syncbind</item>
+      <item>t</item>
+      <item>tNext</item>
+      <item>tabNext</item>
+      <item>tabclose</item>
+      <!-- TODO: Takes commands -->
+      <item>tabdo</item>
+      <item>tabedit</item>
+      <item>tabfind</item>
+      <item>tabfirst</item>
+      <item>tablast</item>
+      <item>tabmove</item>
+      <item>tabnew</item>
+      <item>tabnext</item>
+      <item>tabonly</item>
+      <item>tabprevious</item>
+      <item>tabrewind</item>
+      <item>tabs</item>
+      <item>tab</item>
+      <item>tag</item>
+      <item>tags</item>
+      <!-- TODO: Involve tcl highlighting -->
+      <item>tcl</item>
+      <item>tcldo</item>
+      <item>tclfile</item>
+      <item>tearoff</item>
+      <item>tfirst</item>
+      <item>throw</item>
+      <item>tjump</item>
+      <item>tlast</item>
+      <item>tmenu</item>
+      <item>tnext</item>
+      <item>topleft</item>
+      <item>tprevious</item>
+      <item>trewind</item>
+      <item>try</item>
+      <item>tselect</item>
+      <item>tunmenu</item>
+      <item>undo</item>
+      <item>undojoin</item>
+      <item>undolist</item>
+      <item>unabbreviate</item>
+      <item>unhide</item>
+      <item>unlet</item>
+      <item>unlockvar</item>
+      <item>unmap</item>
+      <item>unmenu</item>
+      <item>unsilent</item>
+      <item>update</item>
+      <item>v</item>
+      <!-- TODO: Like global -->
+      <item>vglobal</item>
+      <item>version</item>
+      <item>verbose</item>
+      <item>vertical</item>
+      <!-- TODO: No comments, Takes pattern -->
+      <item>vimgrep</item>
+      <!-- TODO: No comments, Takes pattern -->
+      <item>vimgrepadd</item>
+      <item>visual</item>
+      <item>viusage</item>
+      <item>view</item>
+      <!-- TODO: Like map -->
+      <item>vmap</item>
+      <item>vmapclear</item>
+      <!-- TODO: Like amenu -->
+      <item>vmenu</item>
+      <item>vnew</item>
+      <!-- TODO: Like map -->
+      <item>vnoremap</item>
+      <!-- TODO: Like amenu -->
+      <item>vnoremenu</item>
+      <item>vsplit</item>
+      <item>vunmap</item>
+      <item>vunmenu</item>
+      <!-- TODO: Takes command -->
+      <item>windo</item>
+      <item>write</item>
+      <item>wNext</item>
+      <item>wall</item>
+      <item>while</item>
+      <item>winsize</item>
+      <!-- TODO: Window command? -->
+      <item>wincmd</item>
+      <item>winpos</item>
+      <item>wnext</item>
+      <item>wprevious</item>
+      <item>wq</item>
+      <item>wqall</item>
+      <item>wsverb</item>
+      <item>wundo</item>
+      <item>wviminfo</item>
+      <item>xit</item>
+      <item>xall</item>
+      <item>xmapclear</item>
+      <!-- TODO: Like map -->
+      <item>xmap</item>
+      <!-- TODO: Like amenu -->
+      <item>xmenu</item>
+      <!-- TODO: Like map -->
+      <item>xnoremap</item>
+      <!-- TODO: Like amenu -->
+      <item>xnoremenu</item>
+      <item>xunmap</item>
+      <item>xunmenu</item>
+      <item>yank</item>
+      <item>z</item>
+    </list>
+    <list name="events">
+      <item>BufNewFile</item>
+      <item>BufReadPre</item>
+      <item>BufRead</item>
+      <item>BufReadPost</item>
+      <item>BufReadCmd</item>
+      <item>FileReadPre</item>
+      <item>FileReadPost</item>
+      <item>FileReadCmd</item>
+      <item>FilterReadPre</item>
+      <item>FilterReadPost</item>
+      <item>StdinReadPre</item>
+      <item>StdinReadPost</item>
+      <item>BufWrite</item>
+      <item>BufWritePre</item>
+      <item>BufWritePost</item>
+      <item>BufWriteCmd</item>
+      <item>FileWritePre</item>
+      <item>FileWritePost</item>
+      <item>FileWriteCmd</item>
+      <item>FileAppendPre</item>
+      <item>FileAppendPost</item>
+      <item>FileAppendCmd</item>
+      <item>FilterWritePre</item>
+      <item>FilterWritePost</item>
+      <item>BufAdd</item>
+      <item>BufCreate</item>
+      <item>BufDelete</item>
+      <item>BufWipeout</item>
+      <item>BufFilePre</item>
+      <item>BufFilePost</item>
+      <item>BufEnter</item>
+      <item>BufLeave</item>
+      <item>BufWinEnter</item>
+      <item>BufWinLeave</item>
+      <item>BufUnload</item>
+      <item>BufHidden</item>
+      <item>BufNew</item>
+      <item>SwapExists</item>
+      <item>FileType</item>
+      <item>Syntax</item>
+      <item>EncodingChanged</item>
+      <item>TermChanged</item>
+      <item>VimEnter</item>
+      <item>GUIEnter</item>
+      <item>TermResponse</item>
+      <item>VimLeavePre</item>
+      <item>VimLeave</item>
+      <item>FileChangedShell</item>
+      <item>FileChangedShellPost</item>
+      <item>FileChangedRO</item>
+      <item>ShellCmdPost</item>
+      <item>ShellFilterPost</item>
+      <item>FuncUndefined</item>
+      <item>SpellFileMissing</item>
+      <item>SourcePre</item>
+      <item>SourceCmd</item>
+      <item>VimResized</item>
+      <item>FocusGained</item>
+      <item>FocusLost</item>
+      <item>CursorHold</item>
+      <item>CursorHoldI</item>
+      <item>CursorMoved</item>
+      <item>CursorMovedI</item>
+      <item>WinEnter</item>
+      <item>WinLeave</item>
+      <item>TabEnter</item>
+      <item>TabLeave</item>
+      <item>CmdwinEnter</item>
+      <item>CmdwinLeave</item>
+      <item>InsertEnter</item>
+      <item>InsertChange</item>
+      <item>InsertLeave</item>
+      <item>ColorScheme</item>
+      <item>RemoteReply</item>
+      <item>QuickFixCmdPre</item>
+      <item>QuickFixCmdPost</item>
+      <item>SessionLoadPost</item>
+      <item>MenuPopup</item>
+      <item>User</item>
+    </list>
+    <list name="options">
+      <item>aleph</item>
+      <item>allowrevins</item>
+      <item>altkeymap</item>
+      <item>ambiwidth</item>
+      <item>antialias</item>
+      <item>autochdir</item>
+      <item>arabic</item>
+      <item>arabicshape</item>
+      <item>autoindent</item>
+      <item>autoread</item>
+      <item>autowrite</item>
+      <item>autowriteall</item>
+      <item>background</item>
+      <item>backspace</item>
+      <item>backup</item>
+      <item>backupcopy</item>
+      <item>backupdir</item>
+      <item>backupext</item>
+      <item>backupskip</item>
+      <item>balloondelay</item>
+      <item>ballooneval</item>
+      <item>balloonexpr</item>
+      <item>binary</item>
+      <item>bioskey</item>
+      <item>bomb</item>
+      <item>breakat</item>
+      <item>browsedir</item>
+      <item>bufhidden</item>
+      <item>buflisted</item>
+      <item>buftype</item>
+      <item>casemap</item>
+      <item>cdpath</item>
+      <item>cedit</item>
+      <item>charconvert</item>
+      <item>cindent</item>
+      <item>cinkeys</item>
+      <item>cinoptions</item>
+      <item>cinwords</item>
+      <item>clipboard</item>
+      <item>cmdheight</item>
+      <item>cmdwinheight</item>
+      <item>colorcolumn</item>
+      <item>columns</item>
+      <item>comments</item>
+      <item>commentstring</item>
+      <item>compatible</item>
+      <item>complete</item>
+      <item>completefunc</item>
+      <item>completeopt</item>
+      <item>concealcursor</item>
+      <item>conceallevel</item>
+      <item>confirm</item>
+      <item>conskey</item>
+      <item>copyindent</item>
+      <item>cpoptions</item>
+      <item>cryptmethod</item>
+      <item>cscopepathcomp</item>
+      <item>cscopeprg</item>
+      <item>cscopequickfix</item>
+      <item>cscopetag</item>
+      <item>cscopetagorder</item>
+      <item>cscopeverbose</item>
+      <item>cursorbind</item>
+      <item>cursorcolumn</item>
+      <item>cursorline</item>
+      <item>debug</item>
+      <item>define</item>
+      <item>delcombine</item>
+      <item>dictionary</item>
+      <item>diff</item>
+      <item>diffexpr</item>
+      <item>diffopt</item>
+      <item>digraph</item>
+      <item>directory</item>
+      <item>display</item>
+      <item>eadirection</item>
+      <item>edcompatible</item>
+      <item>encoding</item>
+      <item>endofline</item>
+      <item>equalalways</item>
+      <item>equalprg</item>
+      <item>errorbells</item>
+      <item>errorfile</item>
+      <item>errorformat</item>
+      <item>esckeys</item>
+      <item>eventignore</item>
+      <item>expandtab</item>
+      <item>exrc</item>
+      <item>fileencoding</item>
+      <item>fileencodings</item>
+      <item>fileformat</item>
+      <item>fileformats</item>
+      <item>filetype</item>
+      <item>fillchars</item>
+      <item>fkmap</item>
+      <item>foldclose</item>
+      <item>foldcolumn</item>
+      <item>foldenable</item>
+      <item>foldexpr</item>
+      <item>foldignore</item>
+      <item>foldlevel</item>
+      <item>foldlevelstart</item>
+      <item>foldmarker</item>
+      <item>foldmethod</item>
+      <item>foldminlines</item>
+      <item>foldnestmax</item>
+      <item>foldopen</item>
+      <item>foldtext</item>
+      <item>formatlistpat</item>
+      <item>formatoptions</item>
+      <item>formatprg</item>
+      <item>formatexpr</item>
+      <item>fsync</item>
+      <item>gdefault</item>
+      <item>grepformat</item>
+      <item>grepprg</item>
+      <item>guicursor</item>
+      <item>guifont</item>
+      <item>guifontset</item>
+      <item>guifontwide</item>
+      <item>guiheadroom</item>
+      <item>guioptions</item>
+      <item>guipty</item>
+      <item>guitablabel</item>
+      <item>guitabtooltip</item>
+      <item>helpfile</item>
+      <item>helpheight</item>
+      <item>helplang</item>
+      <item>hidden</item>
+      <item>highlight</item>
+      <item>hlsearch</item>
+      <item>history</item>
+      <item>hkmap</item>
+      <item>hkmapp</item>
+      <item>icon</item>
+      <item>iconstring</item>
+      <item>ignorecase</item>
+      <item>imactivatekey</item>
+      <item>imcmdline</item>
+      <item>imdisable</item>
+      <item>iminsert</item>
+      <item>imsearch</item>
+      <item>include</item>
+      <item>includeexpr</item>
+      <item>incsearch</item>
+      <item>indentexpr</item>
+      <item>indentkeys</item>
+      <item>infercase</item>
+      <item>insertmode</item>
+      <item>isfname</item>
+      <item>isident</item>
+      <item>iskeyword</item>
+      <item>isprint</item>
+      <item>joinspaces</item>
+      <item>key</item>
+      <item>keymap</item>
+      <item>keymodel</item>
+      <item>keywordprg</item>
+      <item>langmap</item>
+      <item>langmenu</item>
+      <item>laststatus</item>
+      <item>lazyredraw</item>
+      <item>linebreak</item>
+      <item>lines</item>
+      <item>linespace</item>
+      <item>lisp</item>
+      <item>lispwords</item>
+      <item>list</item>
+      <item>listchars</item>
+      <item>loadplugins</item>
+      <item>macatsui</item>
+      <item>magic</item>
+      <item>makeef</item>
+      <item>makeprg</item>
+      <item>matchpairs</item>
+      <item>matchtime</item>
+      <item>maxcombine</item>
+      <item>maxfuncdepth</item>
+      <item>maxmapdepth</item>
+      <item>maxmem</item>
+      <item>maxmempattern</item>
+      <item>maxmemtot</item>
+      <item>menuitems</item>
+      <item>mkspellmem</item>
+      <item>modeline</item>
+      <item>modelines</item>
+      <item>modifiable</item>
+      <item>modified</item>
+      <item>more</item>
+      <item>mouse</item>
+      <item>mousefocus</item>
+      <item>mousehide</item>
+      <item>mousemodel</item>
+      <item>mouseshape</item>
+      <item>mousetime</item>
+      <item>mzquantum</item>
+      <item>nrformats</item>
+      <item>number</item>
+      <item>numberwidth</item>
+      <item>omnifunc</item>
+      <item>opendevice</item>
+      <item>operatorfunc</item>
+      <item>osfiletype</item>
+      <item>paragraphs</item>
+      <item>paste</item>
+      <item>pastetoggle</item>
+      <item>patchexpr</item>
+      <item>patchmode</item>
+      <item>path</item>
+      <item>preserveindent</item>
+      <item>previewheight</item>
+      <item>previewwindow</item>
+      <item>printdevice</item>
+      <item>printencoding</item>
+      <item>printexpr</item>
+      <item>printfont</item>
+      <item>printheader</item>
+      <item>printmbcharset</item>
+      <item>printmbfont</item>
+      <item>printoptions</item>
+      <item>pumheight</item>
+      <item>quoteescape</item>
+      <item>readonly</item>
+      <item>redrawtime</item>
+      <item>relativenumber</item>
+      <item>remap</item>
+      <item>report</item>
+      <item>restorescreen</item>
+      <item>revins</item>
+      <item>rightleft</item>
+      <item>rightleftcmd</item>
+      <item>ruler</item>
+      <item>rulerformat</item>
+      <item>runtimepath</item>
+      <item>scroll</item>
+      <item>scrollbind</item>
+      <item>scrolljump</item>
+      <item>scrolloff</item>
+      <item>scrollopt</item>
+      <item>sections</item>
+      <item>secure</item>
+      <item>selection</item>
+      <item>selectmode</item>
+      <item>sessionoptions</item>
+      <item>shell</item>
+      <item>shellcmdflag</item>
+      <item>shellpipe</item>
+      <item>shellquote</item>
+      <item>shellredir</item>
+      <item>shellslash</item>
+      <item>shelltemp</item>
+      <item>shelltype</item>
+      <item>shellxquote</item>
+      <item>shiftround</item>
+      <item>shiftwidth</item>
+      <item>shortmess</item>
+      <item>shortname</item>
+      <item>showbreak</item>
+      <item>showcmd</item>
+      <item>showfulltag</item>
+      <item>showmatch</item>
+      <item>showmode</item>
+      <item>showtabline</item>
+      <item>sidescroll</item>
+      <item>sidescrolloff</item>
+      <item>smartcase</item>
+      <item>smartindent</item>
+      <item>smarttab</item>
+      <item>softtabstop</item>
+      <item>spell</item>
+      <item>spellcapcheck</item>
+      <item>spellfile</item>
+      <item>spelllang</item>
+      <item>spellsuggest</item>
+      <item>splitbelow</item>
+      <item>splitright</item>
+      <item>startofline</item>
+      <item>statusline</item>
+      <item>suffixes</item>
+      <item>suffixesadd</item>
+      <item>swapfile</item>
+      <item>swapsync</item>
+      <item>switchbuf</item>
+      <item>synmaxcol</item>
+      <item>syntax</item>
+      <item>tabstop</item>
+      <item>tabline</item>
+      <item>tabpagemax</item>
+      <item>tagbsearch</item>
+      <item>taglength</item>
+      <item>tagrelative</item>
+      <item>tags</item>
+      <item>tagstack</item>
+      <item>term</item>
+      <item>termbidi</item>
+      <item>termencoding</item>
+      <item>terse</item>
+      <item>textauto</item>
+      <item>textmode</item>
+      <item>textwidth</item>
+      <item>thesaurus</item>
+      <item>tildeop</item>
+      <item>timeout</item>
+      <item>timeoutlen</item>
+      <item>title</item>
+      <item>titlelen</item>
+      <item>titleold</item>
+      <item>titlestring</item>
+      <item>toolbar</item>
+      <item>toolbariconsize</item>
+      <item>ttimeout</item>
+      <item>ttimeoutlen</item>
+      <item>ttybuiltin</item>
+      <item>ttyfast</item>
+      <item>ttymouse</item>
+      <item>ttyscroll</item>
+      <item>ttytype</item>
+      <item>undodir</item>
+      <item>undofile</item>
+      <item>undolevels</item>
+      <item>undoreload</item>
+      <item>updatecount</item>
+      <item>updatetime</item>
+      <item>verbose</item>
+      <item>verbosefile</item>
+      <item>viewdir</item>
+      <item>viewoptions</item>
+      <item>viminfo</item>
+      <item>virtualedit</item>
+      <item>visualbell</item>
+      <item>warn</item>
+      <item>weirdinvert</item>
+      <item>whichwrap</item>
+      <item>wildchar</item>
+      <item>wildcharm</item>
+      <item>wildignore</item>
+      <item>wildignorecase</item>
+      <item>wildmenu</item>
+      <item>wildmode</item>
+      <item>wildoptions</item>
+      <item>winaltkeys</item>
+      <item>window</item>
+      <item>winheight</item>
+      <item>winfixheight</item>
+      <item>winfixwidth</item>
+      <item>winminheight</item>
+      <item>winminwidth</item>
+      <item>winwidth</item>
+      <item>wrap</item>
+      <item>wrapmargin</item>
+      <item>wrapscan</item>
+      <item>write</item>
+      <item>writeany</item>
+      <item>writebackup</item>
+      <item>writedelay</item>
+    </list>
+    <list name="functions">
+      <item>abs</item>
+      <item>acos</item>
+      <item>add</item>
+      <item>append</item>
+      <item>argc</item>
+      <item>argidx</item>
+      <item>argv</item>
+      <item>argv</item>
+      <item>asin</item>
+      <item>atan</item>
+      <item>atan2</item>
+      <item>browse</item>
+      <item>browsedir</item>
+      <item>bufexists</item>
+      <item>buflisted</item>
+      <item>bufloaded</item>
+      <item>bufname</item>
+      <item>bufnr</item>
+      <item>bufwinnr</item>
+      <item>byte2line</item>
+      <item>byteidx</item>
+      <item>call</item>
+      <item>ceil</item>
+      <item>changenr</item>
+      <item>char2nr</item>
+      <item>cindent</item>
+      <item>clearmatches</item>
+      <item>col</item>
+      <item>complete</item>
+      <item>complete_add</item>
+      <item>complete_check</item>
+      <item>confirm</item>
+      <item>copy</item>
+      <item>cos</item>
+      <item>cosh</item>
+      <item>count</item>
+      <item>cscope_connection</item>
+      <item>cursor</item>
+      <item>deepcopy</item>
+      <item>delete</item>
+      <item>did_filetype</item>
+      <item>diff_filler</item>
+      <item>diff_hlID</item>
+      <item>empty</item>
+      <item>escape</item>
+      <item>eval</item>
+      <item>eventhandler</item>
+      <item>executable</item>
+      <item>exists</item>
+      <item>extend</item>
+      <item>exp</item>
+      <item>expand</item>
+      <item>feedkeys</item>
+      <item>filereadable</item>
+      <item>filewritable</item>
+      <item>filter</item>
+      <item>finddir</item>
+      <item>findfile</item>
+      <item>float2nr</item>
+      <item>floor</item>
+      <item>fmod</item>
+      <item>fnameescape</item>
+      <item>fnamemodify</item>
+      <item>foldclosed</item>
+      <item>foldclosedend</item>
+      <item>foldlevel</item>
+      <item>foldtext</item>
+      <item>foldtextresult</item>
+      <item>foreground</item>
+      <item>function</item>
+      <item>garbagecollect</item>
+      <item>get</item>
+      <item>getbufline</item>
+      <item>getbufvar</item>
+      <item>getchar</item>
+      <item>getcharmod</item>
+      <item>getcmdline</item>
+      <item>getcmdpos</item>
+      <item>getcmdtype</item>
+      <item>getcwd</item>
+      <item>getfperm</item>
+      <item>getfsize</item>
+      <item>getfontname</item>
+      <item>getftime</item>
+      <item>getftype</item>
+      <item>getline</item>
+      <item>getline</item>
+      <item>getloclist</item>
+      <item>getmatches</item>
+      <item>getpid</item>
+      <item>getpos</item>
+      <item>getqflist</item>
+      <item>getreg</item>
+      <item>getregtype</item>
+      <item>gettabvar</item>
+      <item>gettabwinvar</item>
+      <item>getwinposx</item>
+      <item>getwinposy</item>
+      <item>getwinvar</item>
+      <item>glob</item>
+      <item>globpath</item>
+      <item>has</item>
+      <item>has_key</item>
+      <item>haslocaldir</item>
+      <item>hasmapto</item>
+      <item>histadd</item>
+      <item>histdel</item>
+      <item>histget</item>
+      <item>histnr</item>
+      <item>hlexists</item>
+      <item>hlID</item>
+      <item>hostname</item>
+      <item>iconv</item>
+      <item>indent</item>
+      <item>index</item>
+      <item>input</item>
+      <item>inputdialog</item>
+      <item>inputlist</item>
+      <item>inputrestore</item>
+      <item>inputsave</item>
+      <item>inputsecret</item>
+      <item>insert</item>
+      <item>isdirectory</item>
+      <item>islocked</item>
+      <item>items</item>
+      <item>join</item>
+      <item>keys</item>
+      <item>len</item>
+      <item>libcall</item>
+      <item>libcallnr</item>
+      <item>line</item>
+      <item>line2byte</item>
+      <item>lispindent</item>
+      <item>localtime</item>
+      <item>log</item>
+      <item>log10</item>
+      <item>map</item>
+      <item>maparg</item>
+      <item>mapcheck</item>
+      <item>match</item>
+      <item>matchadd</item>
+      <item>matcharg</item>
+      <item>matchdelete</item>
+      <item>matchend</item>
+      <item>matchlist</item>
+      <item>matchstr</item>
+      <item>max</item>
+      <item>min</item>
+      <item>mkdir</item>
+      <item>mode</item>
+      <item>mzeval</item>
+      <item>nextnonblank</item>
+      <item>nr2char</item>
+      <item>pathshorten</item>
+      <item>pow</item>
+      <item>prevnonblank</item>
+      <item>printf</item>
+      <item>pumvisible</item>
+      <item>range</item>
+      <item>readfile</item>
+      <item>reltime</item>
+      <item>reltimestr</item>
+      <item>remote_expr</item>
+      <item>remote_foreground</item>
+      <item>remote_peek</item>
+      <item>remote_read</item>
+      <item>remote_send</item>
+      <item>remove</item>
+      <item>rename</item>
+      <item>repeat</item>
+      <item>resolve</item>
+      <item>reverse</item>
+      <item>round</item>
+      <item>search</item>
+      <item>searchdecl</item>
+      <item>searchpair</item>
+      <item>searchpairpos</item>
+      <item>searchpos</item>
+      <item>server2client</item>
+      <item>serverlist</item>
+      <item>setbufvar</item>
+      <item>setcmdpos</item>
+      <item>setline</item>
+      <item>setloclist</item>
+      <item>setmatches</item>
+      <item>setpos</item>
+      <item>setqflist</item>
+      <item>setreg</item>
+      <item>settabvar</item>
+      <item>settabwinvar</item>
+      <item>setwinvar</item>
+      <item>shellescape</item>
+      <item>simplify</item>
+      <item>sin</item>
+      <item>sinh</item>
+      <item>sort</item>
+      <item>soundfold</item>
+      <item>spellbadword</item>
+      <item>spellsuggest</item>
+      <item>split</item>
+      <item>sqrt</item>
+      <item>str2float</item>
+      <item>str2nr</item>
+      <item>strchars</item>
+      <item>strdisplaywidth</item>
+      <item>strftime</item>
+      <item>stridx</item>
+      <item>string</item>
+      <item>strlen</item>
+      <item>strpart</item>
+      <item>strridx</item>
+      <item>strtrans</item>
+      <item>strwidth</item>
+      <item>submatch</item>
+      <item>substitute</item>
+      <item>synID</item>
+      <item>synIDattr</item>
+      <item>synIDtrans</item>
+      <item>synconcealed</item>
+      <item>synstack</item>
+      <item>system</item>
+      <item>tabpagebuflist</item>
+      <item>tabpagenr</item>
+      <item>tabpagewinnr</item>
+      <item>taglist</item>
+      <item>tagfiles</item>
+      <item>tempname</item>
+      <item>tan</item>
+      <item>tanh</item>
+      <item>tolower</item>
+      <item>toupper</item>
+      <item>tr</item>
+      <item>trunc</item>
+      <item>type</item>
+      <item>undofile</item>
+      <item>undotree</item>
+      <item>values</item>
+      <item>virtcol</item>
+      <item>visualmode</item>
+      <item>winbufnr</item>
+      <item>wincol</item>
+      <item>winheight</item>
+      <item>winline</item>
+      <item>winnr</item>
+      <item>winrestcmd</item>
+      <item>winrestview</item>
+      <item>winsaveview</item>
+      <item>winwidth</item>
+      <item>writefile</item>
+    </list>
+    <list name="completions">
+      <item>augroup</item>
+      <item>buffer</item>
+      <item>command</item>
+      <item>cscope</item>
+      <item>dir</item>
+      <item>environment</item>
+      <item>event</item>
+      <item>expression</item>
+      <item>file</item>
+      <item>filetype</item>
+      <item>function</item>
+      <item>help</item>
+      <item>highlight</item>
+      <item>mapping</item>
+      <item>menu</item>
+      <item>option</item>
+      <item>shellcmd</item>
+      <item>sign</item>
+      <item>syntax</item>
+      <item>tag</item>
+      <item>tag</item>
+      <item>var</item>
+    </list>
+    <contexts>
+      <!-- Start of a new command -->
+      <context name="exCommand" lineEndContext="continuationCheck" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="#pop!genericCommand">
+        <DetectSpaces/>
+        <!-- When at the exCommand level, skip over continuation characters -->
+        <DetectChar char="\" attribute="Operator" firstNonSpace="true"/>
+        <!-- Start of line comment. -->
+        <DetectChar char="&quot;" context="comment" attribute="Comment" firstNonSpace="true"/>
+        <!-- Shebang -->
+        <Detect2Chars char="#" char1="!" context="comment" attribute="Comment" firstNonSpace="true"/>
+        <DetectChar char=":" context="#pop!exCommandRange" attribute="Operator"/>
+        <IncludeRules context="exCommandHead"/>
+      </context>
+      <context name="exCommandRange" lineEndContext="#pop#pop" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="#pop!exCommandHead">
+        <RegExpr String="%|(\d+|\.|\$)([+-]\d*)?([,;](\d+|\.|\$)([+-]\d*)?)?:?" context="#pop!exCommandHead" attribute="Normal Text"/>
+      </context>
+      <context name="exCommandHead" lineEndContext="#pop#pop" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="#pop!genericCommand">
+        <WordDetect String="function" context="#pop!functionCommand" attribute="Keyword" beginRegion="block"/>
+        <WordDetect String="endfunction" context="#pop!bareCommand" attribute="Keyword" endRegion="block"/>
+        <keyword String="beginBlockFlow" context="#pop!genericCommand" attribute="Flow" beginRegion="block"/>
+        <WordDetect String="for" context="#pop!forCommand" attribute="Flow" beginRegion="block"/>
+        <keyword String="endBlockFlow" context="#pop!simpleCommand" attribute="Flow" endRegion="block"/>
+        <keyword String="flow" context="#pop!simpleCommand" attribute="Flow"/>
+        <WordDetect String="while" context="#pop!exprCommand" attribute="Flow" beginRegion="block"/>
+        <WordDetect String="if" context="#pop!exprCommand" attribute="Flow" beginRegion="block"/>
+        <WordDetect String="elseif" context="#pop!exprCommand" attribute="Flow" />
+        <WordDetect String="return" context="#pop!exprCommand" attribute="Flow" />
+        <Detect2Chars char="!" char1="!" context="#pop!simpleCommand" attribute="BuiltInCommand"/>
+        <DetectChar char="!" context="#pop!externalCommand" attribute="BuiltInCommand"/>
+        <DetectChar char="#" context="#pop!simpleCommand" attribute="BuiltInCommand"/>
+        <DetectChar char="&amp;" context="#pop!simpleCommand" attribute="BuiltInCommand"/>
+        <DetectChar char="*" context="#pop!simpleCommand" attribute="BuiltInCommand"/>
+        <DetectChar char="&lt;" context="#pop!simpleCommand" attribute="BuiltInCommand"/>
+        <DetectChar char="=" context="#pop!simpleCommand" attribute="BuiltInCommand"/>
+        <DetectChar char="&gt;" context="#pop!simpleCommand" attribute="BuiltInCommand"/>
+        <Detect2Chars char="@" char1="@" context="#pop!simpleCommand" attribute="BuiltInCommand"/>
+        <DetectChar char="@" context="#pop!simpleCommand" attribute="BuiltInCommand"/>
+        <DetectChar char="~" context="#pop!simpleCommand" attribute="BuiltInCommand"/>
+        <keyword String="simpleCommands" context="#pop!simpleCommand" attribute="BuiltInCommand"/>
+        <keyword String="fileBufferCommands" context="#pop!fileBufferCommand" attribute="BuiltInCommand"/>
+        <keyword String="lineCommands" context="#pop!lineCommand" attribute="BuiltInCommand"/>
+        <keyword String="mapCommands" context="#pop!mapCommand" attribute="BuiltInCommand"/>
+        <keyword String="menuCommands" context="#pop!menuCommand" attribute="BuiltInCommand"/>
+        <keyword String="registerCommands" context="#pop!registerCommand" attribute="BuiltInCommand"/>
+        <WordDetect String="autocmd" context="#pop!autoCommand" attribute="BuiltInCommand"/>
+        <WordDetect String="command" context="#pop!customCommand" attribute="BuiltInCommand"/>
+        <!-- Two simple commands to get consistent highlighting -->
+        <WordDetect String="delcommand" context="#pop!delCommand" attribute="BuiltInCommand"/>
+        <WordDetect String="delfunction" context="#pop!delFunction" attribute="BuiltInCommand"/>
+        <!--
+        These commands take a command as their single argument and execute it.
+        Because of this we can simply pop back to the top level immediately.
+        -->
+        <keyword String="commandCommands" context="#pop!exCommand" attribute="BuiltInCommand"/>
+        <!-- The global command -->
+        <WordDetect String="global" context="#pop!globalCommand" attribute="BuiltInCommand"/>
+        <keyword String="exprCommands" context="#pop!exprCommand" attribute="BuiltInCommand"/>
+        <WordDetect String="call" context="#pop!callCommand" attribute="BuiltInCommand"/>
+        <!-- Catch is control flow and a pattern command. -->
+        <WordDetect String="catch" context="#pop!patternCommand" attribute="Flow"/>
+        <keyword String="patternCommands" context="#pop!patternCommand" attribute="BuiltInCommand"/>
+        <keyword String="externalCommand" context="#pop!externalCommand" attribute="BuiltInCommand"/>
+        <keyword String="builtInCommand" context="#pop!genericCommand" attribute="BuiltInCommand"/>
+        <RegExpr String="[A-Z][a-zA-Z_0-9]*" context="#pop!genericCommand" attribute="UserCommand"/>
+      </context>
+      <!-- BEGIN Commands -->
+      <!--
+      A bare command. A bare command is a simple command that does not allow other
+      commands on its line (Bars don't work). This context does allow comments.
+      -->
+      <context name="bareCommand" lineEndContext="continuationCheck" attribute="Normal Text">
+        <IncludeRules context="hasExSpecials"/>
+        <IncludeRules context="hasComment"/>
+      </context>
+      <!--
+      A simple command. Commands that take their arguments varbatim, have no expressions
+      nor patterns. Comments work. Often these commands have no or few arguments
+      -->
+      <context name="simpleCommand" lineEndContext="continuationCheck" attribute="Normal Text">
+        <IncludeRules context="hasExSpecials"/>
+        <IncludeRules context="hasComment"/>
+        <IncludeRules context="hasBar"/>
+      </context>
+      <!--
+      A register command. A step above (or below) the simple command these commands
+      cannot except comments because " is for registers
+      -->
+      <context name="registerCommand" lineEndContext="continuationCheck" attribute="Normal Text">
+        <IncludeRules context="hasBar"/>
+      </context>
+      <!--
+      A for command. The for command has a binding section and a list expression
+      part
+      -->
+      <context name="forCommand" lineEndContext="continuationCheck" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="#pop!syntaxError">
+        <DetectSpaces/>
+        <DetectChar char="[" context="#pop!forVarList" attribute="Normal Text" />
+        <RegExpr String="&variable;" context="#pop!forIn" attribute="Variable" />
+      </context>
+      <context name="forVarList" lineEndContext="continuationCheck" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="#pop!syntaxError">
+        <DetectSpaces/>
+        <DetectChar char="," attribute="Normal Text" />
+        <DetectChar char="]" context="#pop!forIn" attribute="Normal Text" />
+        <RegExpr String="&variable;" attribute="Variable" />
+      </context>
+      <context name="forIn" lineEndContext="continuationCheck" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="#pop!syntaxError">
+        <DetectSpaces/>
+        <WordDetect String="in" context="#pop!exprCommand" attribute="Flow" />
+      </context>
+      <!--
+      File buffer command. This will provide option highlighting for options and + commands
+      over simpleCommand. No additional highlighting will be done over the embedded command
+      strings. Instead a special string will be constructed out of the connected components
+      -->
+      <context name="fileBufferCommand" lineEndContext="#pop" attribute="Normal Text">
+        <IncludeRules context="simpleCommand"/>
+        <keyword String="fileBufferOptions" attribute="Option"/>
+        <Detect2Chars char="+" char1="+" attribute="Operator"/>
+        <DetectChar char="+" context="value" attribute="Operator"/>
+        <DetectChar char="=" context="shortValue" attribute="Operator"/>
+      </context>
+      <!--
+      A line command  causes the next lines to be interpreted as verbatim strings.
+      Does not support bars, though they do work in vim. The reason for this is
+      that to support them for most rules a new similar rule which does not
+      do the continuationCheck at line end would have to be created
+      -->
+      <context name="lineCommand" lineEndContext="lineMode" attribute="Normal Text">
+        <IncludeRules context="hasComment"/>
+      </context>
+      <!-- Line mode in which the user enters lines which are translated as verbatim strings until a line with only a dot is encountered -->
+      <context name="lineMode" lineEndContext="#stay" attribute="VerbatimString">
+        <RegExpr String="^\.$" context="#pop#pop" attribute="Keyword"/>
+      </context>
+      <!--
+      An expression command. This type of command takes a lone expression as its
+      parameter. Comments do not work.
+      -->
+      <context name="exprCommand" lineEndContext="continuationCheck" attribute="Normal Text">
+        <IncludeRules context="hasExSpecials"/>
+        <IncludeRules context="hasBar"/>
+        <IncludeRules context="expression"/>
+      </context>
+      <!--
+      A pattern command. This type of command takes a lone pattern as its
+      parameter.
+      -->
+      <context name="patternCommand" lineEndContext="continuationCheck" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="#pop!syntaxError">
+        <DetectSpaces attribute="Normal Text" />
+        <RegExpr String="&patternDelimiter;" context="#pop!pattern" attribute="Pattern"/>
+      </context>
+      <!--
+      A menu command. A special kind of map command that takes a menu item identifier
+      first.
+      -->
+      <context name="menuCommand" lineEndContext="continuationCheck" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="#pop!menuItem">
+        <DetectSpaces/>
+        <keyword String="mapOptions" attribute="EscapeSequence"/>
+      </context>
+      <context name="menuItem" lineEndContext="continuationCheck" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="#pop!valueMapLHS">
+        <IncludeRules context="value"/>
+      </context>
+      <!--
+      A map command. These commands all take a list of flags (map being
+      the most extensive one), followed by a lhs value and a rhs tail.
+      Depending on the <expr> flags the tail will be an expression or
+      a value
+      -->
+      <context name="mapCommand" lineEndContext="continuationCheck" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="#pop!valueMapLHS">
+        <DetectSpaces/>
+        <WordDetect String="&lt;expr&gt;" context="#pop!exprMapCommand" attribute="EscapeSequence"/>
+        <keyword String="mapOptions" attribute="EscapeSequence"/>
+      </context>
+      <context name="valueMapLHS" lineEndContext="continuationCheck" attribute="Normal Text">
+        <DetectSpaces context="#pop!mapValue"/>
+        <IncludeRules context="keySequence"/>
+      </context>
+      <!-- For the remainder of the map value command no special highlighting will occur -->
+      <context name="mapValue" lineEndContext="continuationCheck" attribute="Value">
+        <IncludeRules context="keySequence"/>
+        <IncludeRules context="hasBar"/>
+      </context>
+      <context name="exprMapCommand" lineEndContext="continuationCheck" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="#pop!expressionMapLHS">
+        <DetectSpaces/>
+        <keyword String="mapOptions" attribute="EscapeSequence"/>
+      </context>
+      <context name="expressionMapLHS" lineEndContext="continuationCheck" attribute="Normal Text">
+        <!-- Now that all arguments are processed the command behaves as an exprCommand -->
+        <DetectSpaces context="#pop!exprCommand"/>
+        <IncludeRules context="keySequence"/>
+      </context>
+      <!--
+      A special case for call. Similar to the exprCommand, but this checks that the
+      top level element is a function call. It does no further validation beyond that
+      -->
+      <context name="callCommand" lineEndContext="continuationCheck" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="#pop!syntaxError">
+        <DetectSpaces/>
+        <RegExpr String="[a-zA-Z]:?[a-zA-Z_0-9]+\(" context="#pop!exprCommand" lookAhead="true"/>
+      </context>
+      <!-- A specific rule for autocmd. It takes a command, but not immediately. -->
+      <context name="autoCommand" lineEndContext="continuationCheck" attribute="Normal Text">
+        <keyword String="events" context="#pop!autoCommandEvents" attribute="Event"/>
+        <DetectIdentifier/>
+      </context>
+      <context name="autoCommandEvents" lineEndContext="continuationCheck" attribute="Normal Text">
+        <DetectSpaces context="#pop!autoCommandBufferLocal"/>
+        <keyword String="events" context="#pop!autoCommandEvents" attribute="Event"/>
+        <DetectChar char=","/>
+      </context>
+      <context name="autoCommandBufferLocal" lineEndContext="continuationCheck" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="#pop!autoCommandFilePattern">
+        <DetectSpaces attribute="Normal Text"/>
+        <RegExpr String="\&lt;buffer(=(\d+|abuf))?\&gt;" context="#pop!exCommand" attribute="EscapeSequence"/>
+      </context>
+      <context name="autoCommandFilePattern" lineEndContext="continuationCheck" attribute="FilePattern">
+        <DetectSpaces context="#pop!nestedAutoCommand" attribute="Normal Text"/>
+        <Detect2Chars char="\" char1="\" attribute="SpecialChar"/>
+        <Detect2Chars char="\" char1=" " attribute="SpecialChar"/>
+      </context>
+      <context name="nestedAutoCommand" lineEndContext="continuationCheck" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="#pop!exCommand">
+        <WordDetect String="nested" context="#pop!exCommand" attribute="Flag"/>
+      </context>
+      <!-- The command command. This defines a new user command. Has a nice list of attributes to go with it -->
+      <context name="customCommand" lineEndContext="continuationCheck" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="#pop!customCommandName">
+        <!-- First deal with the exclamation point. This because we want to scan for arguments -->
+        <DetectChar char="!"/>
+        <DetectSpaces/>
+        <DetectChar char="-" context="commandAttribute" attribute="Normal Text"/>
+      </context>
+      <context name="customCommandName" lineEndContext="continuationCheck" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="#pop!syntaxError">
+        <DetectSpaces/>
+        <RegExpr String="[A-Z][a-zA-Z_0-9]*" context="#pop!exCommand" attribute="UserCommand" />
+      </context>
+      <context name="commandAttribute" lineEndContext="continuationCheck" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="#pop#pop!syntaxError">
+        <WordDetect String="nargs" context="#pop!nargsAttribute" attribute="Option"/>
+        <WordDetect String="complete" context="#pop!completeAttribute" attribute="Option"/>
+        <WordDetect String="range" context="#pop!rangeAttribute" attribute="Option"/>
+        <WordDetect String="count" context="#pop!countAttribute" attribute="Option"/>
+        <WordDetect String="bang" context="#pop" attribute="Option"/>
+        <WordDetect String="bar" context="#pop" attribute="Option"/>
+        <WordDetect String="register" context="#pop" attribute="Option"/>
+        <WordDetect String="buffer" context="#pop" attribute="Option"/>
+      </context>
+      <context name="nargsAttribute" lineEndContext="continuationCheck" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="#pop#pop!syntaxError">
+        <DetectChar char="=" context="#pop!nargsAttributeValue" attribute="Operator"/>
+      </context>
+      <context name="nargsAttributeValue" lineEndContext="continuationCheck" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="#pop#pop!syntaxError">
+        <DetectChar char="0" context="#pop" attribute="Number"/>
+        <DetectChar char="1" context="#pop" attribute="Number"/>
+        <DetectChar char="*" context="#pop" attribute="Value"/>
+        <DetectChar char="?" context="#pop" attribute="Value"/>
+        <DetectChar char="+" context="#pop" attribute="Value"/>
+      </context>
+      <context name="completeAttribute" lineEndContext="continuationCheck" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="#pop#pop!syntaxError">
+        <DetectChar char="=" context="#pop!completeAttributeValue" attribute="Operator"/>
+      </context>
+      <context name="completeAttributeValue" lineEndContext="continuationCheck" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="#pop#pop!syntaxError">
+        <keyword String="completions" context="#pop" attribute="BuiltInValue"/>
+        <WordDetect String="custom" context="#pop!customCompletion" attribute="BuiltInValue"/>
+        <WordDetect String="customlist" context="#pop!customCompletion" attribute="BuiltInValue"/>
+      </context>
+      <context name="customCompletion" lineEndContext="continuationCheck" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="#pop#pop!syntaxError">
+        <DetectChar char="," context="#pop!customCompletionFunction" attribute="Operator"/>
+      </context>
+      <context name="customCompletionFunction" lineEndContext="continuationCheck" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="#pop#pop!syntaxError">
+        <keyword String="functions" context="#pop" attribute="BuiltInFunction"/>
+        <RegExpr String="([A-Z]|s:)[a-zA-Z_0-9]+" context="#pop" attribute="UserFunction"/>
+      </context>
+      <context name="rangeAttribute" lineEndContext="continuationCheck" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="syntaxError">
+        <DetectSpaces context="#pop"/>
+        <DetectChar char="=" context="#pop!rangeAttributeValue" attribute="Operator"/>
+      </context>
+      <context name="rangeAttributeValue" lineEndContext="continuationCheck" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="syntaxError">
+        <DetectChar char="%" context="#pop" attribute="Value" />
+        <RegExpr String="&posint;" context="#pop" attribute="Number" />
+      </context>
+      <context name="countAttribute" lineEndContext="continuationCheck" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="syntaxError">
+        <DetectSpaces context="#pop"/>
+        <DetectChar char="=" context="#pop!countAttributeValue" attribute="Operator"/>
+      </context>
+      <context name="countAttributeValue" lineEndContext="continuationCheck" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="syntaxError">
+        <RegExpr String="&posint;" context="#pop" attribute="Number" />
+      </context>
+      <!-- Simple commands that need highlighting of user functions and commands -->
+      <context name="delFunction" lineEndContext="continuationCheck" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="#pop!syntaxError">
+        <DetectSpaces/>
+        <RegExpr String="&userfunc;" context="#pop!simpleCommand" attribute="UserFunction"/>
+      </context>
+      <context name="delCommand" lineEndContext="continuationCheck" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="#pop!syntaxError">
+        <DetectSpaces/>
+        <RegExpr String="[A-Z][a-zA-Z_0-9]*" context="#pop!simpleCommand" attribute="UserCommand" />
+      </context>
+      <!-- The function command. Begins a function definition or lists functions -->
+      <context name="functionCommand" lineEndContext="continuationCheck" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="#pop!syntaxError">
+        <DetectSpaces/>
+        <DetectChar char="!"/>
+        <RegExpr String="(/)" context="#pop!pattern" attribute="Pattern"/>
+        <RegExpr String="&userfunc;" context="#pop!functionArgumentList"
+                 attribute="UserFunction"/>
+      </context>
+      <context name="functionArgumentList" lineEndContext="continuationCheck" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="#pop!syntaxError">
+        <RegExpr String="\(\s*\)" context="#pop!functionModifierRange" />
+        <DetectChar char="(" context="#pop!functionArgument" />
+      </context>
+      <context name="functionArgument" lineEndContext="continuationCheck" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="#pop!syntaxError">
+        <DetectSpaces />
+        <RegExpr String="...\s*\)" context="#pop!functionModifierRange" />
+        <RegExpr String="&identifier;" context="functionNextArgument" attribute="Variable" />
+      </context>
+      <context name="functionNextArgument" lineEndContext="continuationCheck" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="#pop!syntaxError">
+        <DetectSpaces />
+        <DetectChar char=")" context="#pop#pop!functionModifierRange" />
+        <DetectChar char="," context="#pop" />
+      </context>
+      <context name="functionModifierRange" lineEndContext="continuationCheck" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="#pop!functionModifierAbort">
+        <DetectSpaces />
+        <WordDetect String="range" context="#pop!functionModifierAbort" attribute="Option" />
+      </context>
+      <context name="functionModifierAbort" lineEndContext="continuationCheck" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="#pop!functionModifierDict">
+        <DetectSpaces />
+        <WordDetect String="abort" context="#pop!functionModifierDict" attribute="Option" />
+      </context>
+      <context name="functionModifierDict" lineEndContext="continuationCheck" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="#pop!simpleCommand">
+        <DetectSpaces />
+        <WordDetect String="dict" context="#pop!simpleCommand" attribute="Option" />
+      </context>
+      <!-- The global command is like a command command except that it first takes a pattern -->
+      <context name="globalCommand" lineEndContext="continuationCheck" attribute="Normal Text">
+        <DetectChar char="!"/>
+        <DetectSpaces />
+        <RegExpr String="&patternDelimiter;" context="#pop!exCommandPattern" attribute="Pattern" />
+      </context>
+      <!--
+      A generic command. Strings and numbers will be detected and comments are allowed.
+      This does not nearly behave as an expression command. The reason for this is that
+      it would mark things that are nothing of the sort as a variable. This command
+      type will require the user to understand the command in question.
+      Depending on the command in question this might or might not be the correct
+      interpretation. Bars work.
+      -->
+      <context name="genericCommand" lineEndContext="continuationCheck" attribute="Normal Text">
+        <keyword String="events" attribute="Event"/>
+        <keyword String="options" attribute="Option"/>
+        <HlCOct attribute="OctalNumber"/>
+        <HlCHex attribute="HexNumber"/>
+        <Float attribute="Number"/>
+        <Int attribute="Number"/>
+        <RegExpr String="'(''|[^'])*'" attribute="VerbatimString"/>
+        <RegExpr String="&quot;(\\.|[^&quot;\\])*&quot;" attribute="String"/>
+        <IncludeRules context="hasExSpecials"/>
+        <IncludeRules context="hasBar"/>
+        <IncludeRules context="hasComment"/>
+      </context>
+      <!--
+      An external command. Everything is taken verbatim except !. Line continuation also behaves
+      differently
+      -->
+      <context name="externalCommand" lineEndContext="#pop" attribute="Normal Text">
+        <RegExpr String="\\[\!]" attribute="SpecialChar"/>
+        <DetectChar char="!" attribute="EscapeSequence"/>
+        <LineContinue char="\" attribute="CommandDelimiter"/>
+      </context>
+      <!-- END -->
+      <!-- Rule that allows commands to continue over the next line -->
+      <context name="continuationCheck" lineEndContext="#stay" attribute="Normal Text" fallthrough="true" fallthroughContext="#pop#pop">
+        <DetectSpaces/>
+        <DetectChar char="\" context="#pop" attribute="CommandDelimiter" firstNonSpace="true"/>
+      </context>
+      <!-- BEGIN Special syntactic constructs -->
+      <!-- Comment -->
+      <context name="comment" lineEndContext="#pop" attribute="Comment">
+        <keyword String="tasks" attribute="Alert"/>
+      </context>
+      <!--
+      A Short value. A short value is a sequence of characters without spaces
+      -->
+      <context name="shortValue" lineEndContext="#pop" attribute="Value">
+        <!-- Escape the value when a space is reached -->
+        <DetectChar char=" " context="#pop" attribute="Normal Text"/>
+      </context>
+      <!--
+      A value. A value is like a short value, but allows spaces by escaping using \
+      -->
+      <context name="value" lineEndContext="#pop" attribute="Value">
+        <IncludeRules context="shortValue"/>
+        <!-- Allow backslashes to escape themselves and spaces -->
+        <Detect2Chars char="\" char1="\" attribute="SpecialChar"/>
+        <Detect2Chars char="\" char1=" " attribute="SpecialChar"/>
+      </context>
+      <!--
+      A key sequence. This is a special type of value that is used where
+      a representation of a sequence of keys for the user to press is
+      expected or where a sequence of keys for vim to generate is
+      expected.
+      -->
+      <context name="keySequence" lineEndContext="continuationCheck" attribute="KeySequence">
+        <Detect2Chars char="\" char1="\" attribute="SpecialChar"/>
+        <Detect2Chars char="\" char1="&lt;" attribute="SpecialChar"/>
+        <WordDetect String="&lt;lt&gt;" attribute="EscapeSequence"/>
+        <DetectChar char="&lt;" context="keyCode" attribute="KeyCode"/>
+      </context>
+      <!--
+      Key codes. This matches various invalid sequences, but you can't have
+      it all
+      -->
+      <context name="keyCode" lineEndContext="#pop" attribute="KeyCode">
+        <DetectChar char="&gt;" context="#pop"/>
+        <RegExpr String="\S*[^&gt;](\s|$)" context="#pop" attribute="SyntaxError"/>
+        <RegExpr String="[^&gt;]+"/>
+      </context>
+      <!--
+      A dynamic context for patterns. The first capture group must contain
+      the starting character of the pattern.
+      -->
+      <context name="pattern" lineEndContext="continuationCheck" attribute="Pattern">
+        <!-- TODO: Magic and special characters -->
+        <Detect2Chars char="\" char1="\"/>
+        <RegExpr String="\\%1" attribute="SpecialChar" dynamic="true"/>
+        <DetectChar char="1" context="#pop" dynamic="true" attribute="Pattern"/>
+      </context>
+      <!-- A variation of pattern that escapes to exCommand -->
+      <context name="exCommandPattern" lineEndContext="continuationCheck" attribute="Pattern">
+        <DetectChar char="1" context="#pop!exCommand" attribute="Pattern" dynamic="true"/>
+        <IncludeRules context="pattern"/>
+      </context>
+      <!-- END -->
+      <!-- BEGIN Rules that enable syntactic element detection in commands. To be included only. -->
+      <!--
+      Ex-commandline expansions NOTE: This does not do anything for modifiers.
+      -->
+      <context name="hasExSpecials" lineEndContext="continuationCheck" attribute="Normal Text">
+        <Detect2Chars char="\" char1="%"/>
+        <Detect2Chars char="\" char1="#"/>
+        <DetectChar char="%" attribute="SpecialChar"/>
+        <DetectChar char="#" attribute="SpecialChar"/>
+        <keyword String="exSpecials" attribute="SpecialChar" />
+      </context>
+      <!-- Comments -->
+      <context name="hasComment" lineEndContext="continuationCheck" attribute="Normal Text">
+        <DetectChar char="&quot;" context="comment" attribute="Comment"/>
+      </context>
+      <!-- Whether or not to consider a bar the start of a new command -->
+      <context name="hasBar" lineEndContext="continuationCheck" attribute="Normal Text">
+        <Detect2Chars char="\" char1="|" attribute="SpecialChar"/>
+        <DetectChar char="|" context="#pop#pop" attribute="CommandDelimiter"/>
+      </context>
+      <!-- Includes expression operators. -->
+      <context name="hasOperators" lineEndContext="continuationCheck" attribute="Normal Text">
+        <DetectChar char="?" attribute="Operator"/>
+        <DetectChar char=":" attribute="Operator"/>
+        <Detect2Chars char="&amp;" char1="&amp;" attribute="Operator"/>
+        <Detect2Chars char="|" char1="|" attribute="Operator"/>
+        <RegExpr String="(=[=~]|![=~]?|[&lt;&gt;]=?)[?#]?" attribute="Operator"/>
+        <RegExpr String="\bis(not)?\b" attribute="Keyword"/>
+        <RegExpr String="[+.-]" attribute="Operator"/>
+        <DetectChar char="{" context="curlys" attribute="Operator"/>
+      </context>
+      <context name="curlys" lineEndContext="continuationCheck" attribute="Normal Text" fallthrough="true" fallthroughContext="#pop">
+        <DetectChar char="}" context="curlys" attribute="Operator"/>
+        <IncludeRules context="expression"/>
+      </context>
+      <!-- Expression highlighting. This makes most words variables and other things -->
+      <context name="expression" lineEndContext="continuationCheck" attribute="Normal Text"
+               fallthrough="true" fallthroughContext="#pop">
+        <HlCOct attribute="OctalNumber"/>
+        <HlCHex attribute="HexNumber"/>
+        <Float attribute="Number"/>
+        <Int attribute="Number"/>
+        <RegExpr String="'(''|[^'])*'" attribute="VerbatimString"/>
+        <RegExpr String="&quot;(\\.|[^&quot;\\])*&quot;" attribute="String"/>
+        <!-- Get highlighting of builtIns out of the way -->
+        <keyword String="options" attribute="Option"/>
+        <keyword String="functions" attribute="BuiltInFunction"/>
+        <IncludeRules context="hasOperators"/>
+        <RegExpr String="(&userfunc;)\(" context="functionCall" lookAhead="true"/>
+        <RegExpr String="&variable;" attribute="Variable"/>
+      </context>
+      <context name="functionCall" lineEndContext="continuationCheck" attribute="Normal Text">
+        <RegExpr String="&userfunc;" attribute="UserFunction"/>
+        <DetectChar char="(" context="#pop"/>
+      </context>
+      <!-- END -->
+      <!-- BEGIN meta -->
+      <context name="syntaxError" lineEndContext="#pop" attribute="SyntaxError"/>
+      <!-- END meta -->
+      <!-- <RegExpr String="\\([0-7]{1,3}|(x|X)[0-9a-fA-F]{1,2}|u[0-9a-fA-F]{1,4}|U[0-9a-fA-F]{1,8}|[befnrt\\&quot;]|&lt;([a-zA-Z0-9_-])*&gt;)" attribute="SpecialChar" /> -->
+    </contexts>
+    <itemDatas>
+      <itemData name="Normal Text" defStyleNum="dsNormal"/>
+      <itemData name="Keyword" defStyleNum="dsKeyword"/>
+      <itemData name="CommandDelimiter" defStyleNum="dsControlFlow"/>
+      <itemData name="Operator" defStyleNum="dsOperator"/>
+      <itemData name="Comment" defStyleNum="dsComment"/>
+      <itemData name="BuiltInCommand" defStyleNum="dsBuiltIn"/>
+      <itemData name="BuiltInFunction" defStyleNum="dsBuiltIn"/>
+      <itemData name="UserFunction" defStyleNum="dsFunction"/>
+      <itemData name="UserCommand" defStyleNum="dsFunction"/>
+      <itemData name="Alert" defStyleNum="dsAlert"/>
+      <itemData name="String" defStyleNum="dsString"/>
+      <itemData name="KeyCode" defStyleNum="dsSpecialChar"/>
+      <itemData name="SpecialChar" defStyleNum="dsSpecialChar"/>
+      <itemData name="Value" defStyleNum="dsNormal"/>
+      <itemData name="FilePattern" defStyleNum="dsNormal"/>
+      <itemData name="KeySequence" defStyleNum="dsNormal"/>
+      <itemData name="VerbatimString" defStyleNum="dsVerbatimString"/>
+      <itemData name="Pattern" defStyleNum="dsSpecialString"/>
+      <itemData name="Flow" defStyleNum="dsControlFlow"/>
+      <itemData name="Event" defStyleNum="dsOthers"/>
+      <itemData name="Flag" defStyleNum="dsOthers"/>
+      <itemData name="BuiltInValue" defStyleNum="dsOthers"/>
+      <itemData name="EscapeSequence" defStyleNum="dsSpecialChar"/>
+      <itemData name="Option" defStyleNum="dsVariable"/>
+      <itemData name="Variable" defStyleNum="dsVariable"/>
+      <itemData name="Number" defStyleNum="dsDecVal"/>
+      <itemData name="OctalNumber" defStyleNum="dsBaseN"/>
+      <itemData name="HexNumber" defStyleNum="dsBaseN"/>
+      <itemData name="SyntaxError" defStyleNum="dsError"/>
+    </itemDatas>
+  </highlighting>
+  <general>
+    <comments>
+      <comment name="singleLine" start="&quot;"/>
+    </comments>
+    <keywords casesensitive="1" weakDeliminator="&lt;&gt;" additionalDeliminator="#"/>
+  </general>
+</language>
