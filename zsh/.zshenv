@@ -1,5 +1,6 @@
 
 export LANG=en_GB.UTF-8
+export LANGUAGE=en_GB
 
 # Define user direcotires
 export XDG_CONFIG_HOME=$HOME/.config

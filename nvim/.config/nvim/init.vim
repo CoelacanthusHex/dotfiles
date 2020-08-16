@@ -24,40 +24,13 @@ endif
 
 endif
 
+let g:dein#auto_recache = 1
+
 if dein#load_state('$PlugPath')
     call dein#begin('$PlugPath')
 
     call dein#add('~/.vim/dein/repos/github.com/Shougo/dein.vim')
-    call dein#add('wsdjeg/dein-ui.vim')
-    call dein#add('Shougo/denite.nvim')
-    
-    call dein#add('tpope/vim-fugitive')
 
-    """"""""""""""""""""""""""" 主题配色
-    "call dein#add('morhetz/gruvbox')
-    call dein#add('joshdick/onedark.vim')
-    " 状态栏
-    call dein#add('vim-airline/vim-airline')
-    " 状态栏主题
-    call dein#add('vim-airline/vim-airline-themes')
-
-    call dein#add('lilydjwg/fcitx.vim')
-    call dein#add('kassio/neoterm')
-    " 支持库，给其他插件用的函数库
-	call dein#add('xolox/vim-misc')
-    " 缩进指示线
-    call dein#add('Yggdroot/indentLine')
-    " 自动括号
-    call dein#add('jiangmiao/auto-pairs')
-    " Tagbar
-    call dein#add('majutsushi/tagbar')
-    " 注释插入
-    call dein#add('preservim/nerdcommenter')
-    " 彩虹括号
-    call dein#add('luochen1990/rainbow')
-    " HELP文档中文
-    call dein#add('yianwillis/vimcdoc')
-    call dein#add('Shougo/context_filetype.vim')
 
     " 代码格式化
     call dein#add('sbdchd/neoformat')
@@ -87,10 +60,6 @@ if dein#load_state('$PlugPath')
 
     """"""""""""""""""""""""""" 自动补全
     call dein#add('Shougo/deoplete.nvim')
-    if !has('nvim')
-        call dein#add('roxma/nvim-yarp')
-        call dein#add('roxma/vim-hug-neovim-rpc')
-    endif
 
     " Integration with TabNine - a machine learning-based all-language autocompleter
     "if has('win32') || has('win64')
@@ -113,6 +82,7 @@ if dein#load_state('$PlugPath')
     let s:ccls_settings = {
          \ 'highlight': { 'lsRanges' : v:true },
          \ }
+    
 
     """"""""""""""""""""""""""" Language
 
@@ -208,6 +178,19 @@ if dein#load_state('$PlugPath')
     """"""" Typescript
     call dein#add('HerringtonDarkholme/yats.vim')
     call dein#add('mhartington/nvim-typescript', {'build': './install.sh'})
+    
+    
+    let s:dein_toml = '~/.config/nvim/conf.d/dein.toml'
+    let s:dein_lazy_toml = '~/.config/nvim/conf.d/deinlazy.toml'
+    let s:dein_ft_toml = '~/.config/nvim/conf.d/deinft.toml'
+
+    "call dein#begin(s:path, [
+    "    \ expand('<sfile>'), s:dein_toml, s:dein_lazy_toml, s:dein_ft_toml
+    "    \ ])
+
+    call dein#load_toml(s:dein_toml, {'lazy': 0})
+    call dein#load_toml(s:dein_lazy_toml, {'lazy' : 1})
+    "call dein#load_toml(s:dein_ft_toml)
 
 
     call dein#end()
@@ -223,6 +206,8 @@ if dein#load_state('$PlugPath')
 endif
 
 call deoplete#toggle()
+
+let g:tex_flavor = 'latex'
 
 " Workaround: dein#begin() will execute filetype off
 if has('autocmd')

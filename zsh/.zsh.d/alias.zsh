@@ -61,7 +61,7 @@ alias :q="exit"
 alias :w="sync"
 alias :x="sync && exit"
 alias :wq="sync && exit"
-[ -x "$(command -v rankmirrors)" ] && alias rankpacman='sed "s/^#//" /etc/pacman.d/mirrorlist.pacnew | rankmirrors -n 10 - | sudo tee /etc/pacman.d/mirrorlist'
+(( $+commands[rankmirrors] )) && alias rankpacman='sed "s/^#//" /etc/pacman.d/mirrorlist.pacnew | rankmirrors -n 10 - | sudo tee /etc/pacman.d/mirrorlist'
 alias pb='curl -F "c=@-" "http://fars.ee/"'
 alias clipboard="xclip -selection clipboard"
 alias Ci="clipboard -i"

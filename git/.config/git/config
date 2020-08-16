@@ -31,6 +31,6 @@
 	new = green bold
 	whitespace = red reverse
 [http]
-	proxy = http://127.0.0.1:1081
+	proxy = socks5://127.0.0.1:1089
 [https]
-	proxy = https://127.0.0.1:1082
+	proxy = socks5://127.0.0.1:1089

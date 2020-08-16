@@ -1,7 +1,7 @@
 # git 代理设置
 function git-proxy(){
-    git config --global http.proxy http://127.0.0.1:1081
-    git config --global https.proxy https://127.0.0.1:1082
+    git config --global http.proxy socks5://127.0.0.1:1089
+    git config --global https.proxy socks5://127.0.0.1:1089
 }
 function git-noproxy(){
     git config --global --unset http.proxy

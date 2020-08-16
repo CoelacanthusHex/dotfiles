@@ -20,16 +20,16 @@ export LIBVA_DRIVERS_PATH=/usr/lib/dri/
 export VDPAU_DRIVER=nvidia
 
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
-export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME"/bash-completion/bash_completion
-export GOPATH="$XDG_DATA_HOME"/go
-export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
-export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
-export LESSKEY="$XDG_CONFIG_HOME"/less/lesskey
-export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
-export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
-export PYTHON_EGG_CACHE="$XDG_CACHE_HOME"/python-eggs
-export PYLINTHOME="$XDG_CACHE_HOME"/pylint
-export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
-export STACK_ROOT="$XDG_DATA_HOME"/stack
-export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
+#export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME"/bash-completion/bash_completion
+#export GOPATH="$XDG_DATA_HOME"/go
+#export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+#export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+#export LESSKEY="$XDG_CONFIG_HOME"/less/lesskey
+#export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
+#export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
+#export PYTHON_EGG_CACHE="$XDG_CACHE_HOME"/python-eggs
+#export PYLINTHOME="$XDG_CACHE_HOME"/pylint
+#export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+#export STACK_ROOT="$XDG_DATA_HOME"/stack
+#export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 

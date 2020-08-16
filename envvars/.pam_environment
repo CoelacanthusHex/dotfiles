@@ -83,7 +83,7 @@ RUST_SRC_PATH DEFAULT=/usr/lib/rustlib/src/rust/src
 TDESKTOP_DISABLE_TRAY_COUNTER DEFAULT=1
 
 ## Nvidia - vulkan is not working and can not initialize
-## Check if you have vulkan-intel installed, it may prevent Nvidia's vulkan driver from being detected. 
+## Check if you have vulkan-intel installed, it may prevent Nvidia's vulkan driver from being detected.
 VK_ICD_FILENAMES DEFAULT=/usr/share/vulkan/icd.d/nvidia_icd.json
 
 #LIBVA_DRIVER_NAME=vdpau
@@ -91,4 +91,4 @@ LIBVA_DRIVER_NAME  DEFAULT=iHD
 LIBVA_DRIVERS_PATH DEFAULT=/usr/lib/dri/
 VDPAU_DRIVER       DEFAULT=nvidia
 
-CUDA_CACHE_PATH    DEFAULT="$XDG_CACHE_HOME"/nv
+CUDA_CACHE_PATH    DEFAULT=${XDG_CACHE_HOME}/nv

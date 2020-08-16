@@ -49,6 +49,9 @@ source $HOME/.zsh.d/Arch.zsh
 source $HOME/.zsh.d/alias.zsh
 
 
+#export PYTHONPATH=$PYTHONPATH:$HOME/Data/workspace/package/lilac:$HOME/Data/workspace/package/lilac/lilac2/vendor
+#export PATH=$PATH:$HOME/Data/workspace/package/lilac
+
 # Load user config.
 if [[ -f ~/.zshrc.local ]]; then
     source ~/.zshrc.local

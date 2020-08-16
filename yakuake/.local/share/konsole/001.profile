@@ -10,6 +10,7 @@ UseCustomCursorColor=true
 
 [General]
 Command=/bin/zsh
+Environment=TERM=xterm-256color,COLORTERM=truecolor,LANG=en_GB.UTF-8
 Name=001
 Parent=FALLBACK/
 

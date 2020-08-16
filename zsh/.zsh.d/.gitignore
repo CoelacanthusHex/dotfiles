@@ -1,5 +1,6 @@
 # ZshCache
-#/zcache/*
+/zcache/*
+!/zcache/.gitkeep
 
 # ZshHistory
 /zhistory/zsh_history
