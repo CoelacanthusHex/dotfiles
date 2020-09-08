@@ -427,16 +427,16 @@ func SetTitle()
     endif
     if expand("%:e") == 'cpp'
         call append(line(".")+6, "#include <iostream>")
-        call append(line(".")+7, "int main(){")
-                call append(line(".")+8, "     ")
-                call append(line(".")+9, "     return 0;")
+        call append(line(".")+7, "int main() {")
+                call append(line(".")+8, "    ")
+                call append(line(".")+9, "    return 0;")
                 call append(line(".")+10, "}")
     endif
     if &filetype == 'c'
         call append(line(".")+6, "#include <stdio.h>")
-                call append(line(".")+7, "int main(){")
-                call append(line(".")+8, "     ")
-                call append(line(".")+9, "     return 0;")
+                call append(line(".")+7, "int main() {")
+                call append(line(".")+8, "    ")
+                call append(line(".")+9, "    return 0;")
                 call append(line(".")+10, "}")
     endif
     if expand("%:e") == 'h'
