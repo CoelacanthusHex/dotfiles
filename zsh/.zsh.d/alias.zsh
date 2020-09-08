@@ -51,7 +51,7 @@ alias pyay='ALL_PROXY=socks5://127.0.0.1:1080 yay'
 alias .="source"
 alias mv='mv -v'
 alias rm='rm -v'
-alias cp="cp -v --reflink=auto"
+alias cp="cp -v --reflink=auto --sparse=auto"
 alias pactree="pactree -c"
 alias uptime='uptime -p'
 alias tree='tree -F'
