@@ -29,6 +29,7 @@ readability-*,\
 -readability-named-parameter,\
 -readability-redundant-declaration,\
 -readability-redundant-member-init,\
+-readability-magic-numbers,\
 -readability-simplify-boolean-expr,\
 "
 HeaderFilterRegex: 'Source/cm[^/]*\.(h|hxx|cxx|c|cpp|hpp)$'

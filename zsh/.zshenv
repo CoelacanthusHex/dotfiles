@@ -14,7 +14,7 @@ export PAGER='less'
 export GEM_HOME=$(ruby -e 'print Gem.user_dir')
 export MYVIMRC="$HOME/.config/nvim/init.vim"
 
-export GENTOO_MIRRORS=http://mirrors.tuna.tsinghua.edu.cn/gentoo
+export GENTOO_MIRRORS="https://mirrors.bfsu.edu.cn/gentoo"
 export GOPROXY=https://goproxy.cn
 export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
 
