@@ -31,7 +31,7 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 zsh-defer zinit light-mode for \
     hlissner/zsh-autopair \
-    skywind3000/z.lua \
+    ajeetdsouza/zoxide \
     wfxr/forgit \
     zthxxx/zsh-history-enquirer
 
@@ -83,11 +83,11 @@ zsh-defer zinit light k4rthik/git-cal
 
 # fast jump
 #zinit light skywind3000/z.lua
-zsh-defer zinit light changyuheng/fz
-export BETTER_EXCEPTIONS=1
-export _ZL_MATCH_MODE=1 # z.lua 增强匹配算法
-export _ZL_ADD_ONCE=1
-export FZ_HISTORY_CD_CMD="_zlua"
+# TODO: disable for no zoxide support Ref: https://github.com/changyuheng/fz/issues/24
+#zsh-defer zinit light changyuheng/fz
+#export _ZL_MATCH_MODE=1 # z.lua 增强匹配算法
+#export _ZL_ADD_ONCE=1
+#export FZ_HISTORY_CD_CMD="_zlua"
 
 
 # ==== 初始化补全 ====
