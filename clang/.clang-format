@@ -42,6 +42,7 @@ AllowAllParametersOfDeclarationOnNextLine: true
 SpaceAfterCStyleCast: true
 #tab键盘的宽度
 TabWidth: 4
-UseTab: Never
+UseTab: ForIndentation
+BreakBeforeBraces: Attach
 
 # vim: ft=yaml

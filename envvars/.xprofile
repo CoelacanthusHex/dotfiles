@@ -13,9 +13,9 @@ export GTK_IM_MODULE=fcitx
 export SDL_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
-export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/nvidia_icd.json
+#export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/nvidia_icd.json
 #export LIBVA_DRIVER_NAME=vdpau
-export LIBVA_DRIVER_NAME=iHD
+export LIBVA_DRIVER_NAME=i965
 export LIBVA_DRIVERS_PATH=/usr/lib/dri/
 export VDPAU_DRIVER=nvidia
 

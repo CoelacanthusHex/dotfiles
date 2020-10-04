@@ -68,9 +68,9 @@ if dein#load_state('$PlugPath')
     "    call dein#add('tbodt/deoplete-tabnine', { 'build': './install.sh' })
     "endif
     " Syntax source for neocomplete/deoplete/ncm
-    call dein#add('shougo/neco-syntax')
+    "call dein#add('shougo/neco-syntax')
     " Include completion framework for neocomplete/deoplete
-    call dein#add('Shougo/neoinclude.vim')
+    "call dein#add('Shougo/neoinclude.vim')
 
     " Language Server
     call dein#add('autozimu/LanguageClient-neovim', {
@@ -114,7 +114,7 @@ if dein#load_state('$PlugPath')
 
 
     """"""" Go
-    call dein#add('fatih/vim-go',{'on_ft': 'go'})
+    "call dein#add('fatih/vim-go',{'on_ft': 'go'})
 
 
     """"""" Haskell

@@ -51,7 +51,6 @@ zsh-defer zinit light-mode for \
 
 #zsh-defer zinit light mafredri/zsh-async
 
-zinit snippet OMZL::history.zsh
 zinit snippet OMZL::key-bindings.zsh
 
 
@@ -71,15 +70,8 @@ zinit as="completion" for \
 zinit ice wait"2" lucid as"program" pick"bin/git-dsf"
 zsh-defer zinit light zdharma/zsh-diff-so-fancy
 
-zinit ice wait"2" lucid as"program" pick"git-now"
-zsh-defer zinit light iwata/git-now
-
 zinit ice wait"2" lucid as"program" pick"$ZPFX/bin/git-alias" make"PREFIX=$ZPFX" nocompile
 zsh-defer zinit light tj/git-extras
-
-zinit ice wait"2" lucid as"program" atclone'perl Makefile.PL PREFIX=$ZPFX' atpull'%atclone' \
-            make'install' pick"$ZPFX/bin/git-cal"
-zsh-defer zinit light k4rthik/git-cal
 
 # fast jump
 #zinit light skywind3000/z.lua
@@ -100,4 +92,9 @@ zsh-defer zinit light-mode for \
     atload"_zsh_autosuggest_start" zsh-users/zsh-autosuggestions
 export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd history completion)
 export ZSH_AUTOSUGGEST_USE_ASYNC=true
+
+_ZSH_PLUGINS="/usr/share/zsh/plugins"
+for _zsh_plugin in zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search; do
+   [[ ! -r "$_ZSH_PLUGINS/$_zsh_plugin/$_zsh_plugin.zsh" ]] || source $_ZSH_PLUGINS/$_zsh_plugin/$_zsh_plugin.zsh
+done
 

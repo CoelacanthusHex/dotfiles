@@ -27,3 +27,4 @@ clang
 shellcheck
 shellharden
 zoxide
+pax-utils

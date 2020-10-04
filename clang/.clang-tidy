@@ -22,6 +22,8 @@ modernize-*,\
 performance-*,\
 -performance-inefficient-string-concatenation,\
 readability-*,\
+-readability-isolate-declaration,\
+-readability-braces-around-statements,\
 -readability-function-size,\
 -readability-identifier-naming,\
 -readability-implicit-bool-cast,\
@@ -33,5 +35,5 @@ readability-*,\
 -readability-simplify-boolean-expr,\
 "
 HeaderFilterRegex: 'Source/cm[^/]*\.(h|hxx|cxx|c|cpp|hpp)$'
-WarningsAsErrors: '*'
+WarningsAsErrors: ''
 ...

@@ -41,7 +41,7 @@ compdef pkill=kill
 compdef pkill=killall
 zstyle ':completion:*:*:kill:*' menu yes select
 zstyle ':completion:*:*:*:*:processes' force-list always
-zstyle ':completion:*:processes' command 'ps -au$USER'
+zstyle ':completion:*:processes' command 'ps -afu$USER'
 
 zstyle ':completion:*:matches' group 'yes'
 zstyle ':completion:*:options' description 'yes'
@@ -88,3 +88,12 @@ zstyle ':completion:*:*:x:*' file-patterns \
 zstyle ':completion:*:*:feh:*' file-patterns '*.{png,gif,jpg,svg}:images:images *(-/):directories:directories'
 zstyle ':completion:*:*:sxiv:*' file-patterns '*.{png,gif,jpg}:images:images *(-/):directories:directories'
 zstyle ':completion:*:*:mpv:*' file-patterns '*.(#i)(flv|mp4|webm|mkv|wmv|mov|avi|mp3|ogg|wma|flac|wav|aiff|m4a|m4b|m4v|gif|ifo)(-.) *(-/):directories' '*:all-files'
+
+# https://github.com/lilydjwg/dotzsh/blob/master/zshrc#L306-L312
+# 插入当前的所有补全 https://www.zsh.org/mla/workers/2020/index.html {{{2
+zstyle ':completion:all-matches::::' completer _all_matches _complete
+zstyle ':completion:all-matches:*' old-matches true
+zstyle ':completion:all-matches:*' insert true
+zstyle ':completion:all-matches:*' file-patterns '%p:globbed-files' '*(-/):directories' '*:all-files'
+zle -C all-matches complete-word _generic
+bindkey '^Xi' all-matches

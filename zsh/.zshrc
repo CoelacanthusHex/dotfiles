@@ -12,6 +12,9 @@ _zhist=$HOME/.zsh.d/zhistory
 export HISTFILE=${_zhist}/zsh_history
 export _ZL_DATA=${_zhist}/zlua
 
+HISTSIZE=100000
+SAVEHIST=100000
+
 ZDOTDIR=$HOME/.zsh.d
 ZSH_COMPDUMP="${HOME}/.zsh.d/zcache/zcompdump"
 
@@ -57,8 +60,25 @@ if [[ -f ~/.zshrc.local ]]; then
     source ~/.zshrc.local
 fi
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f $HOME/.zsh.d/p10k.zsh ]] || source $HOME/.zsh.d/p10k.zsh
+## https://github.com/farseerfc/dotfiles/blob/master/zsh/.zshrc.pre#L1-L16
+POWERLINE_BINDINGS=/usr/share/powerline/bindings/
+## load powerlevel10k or powerline or pure whichever installed
+#if [[ -r "$HOME/powerlevel10k/powerlevel10k.zsh-theme" ]]; then
+#    # config for powerlevel10k
+#    source ~/powerlevel10k/powerlevel10k.zsh-theme
+#    # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+#    [[ ! -f $HOME/.zsh.d/p10k.zsh ]] || source $HOME/.zsh.d/p10k.zsh
+if [[ -f $HOME/.zsh.d/p10k.zsh ]]; then
+    source $HOME/.zsh.d/p10k.zsh
+elif [[ -r "/usr/share/zsh/functions/Prompts/prompt_pure_setup" ]]; then
+    ## config for pure
+    autoload -U promptinit; promptinit
+    prompt pure
+elif [[ -r "$POWERLINE_BINDINGS/zsh/powerline.zsh" ]]; then
+    ## config for powerline
+    powerline-daemon -q  # run powerline daemon
+    source $POWERLINE_BINDINGS/zsh/powerline.zsh
+fi
 
 unset OS
 

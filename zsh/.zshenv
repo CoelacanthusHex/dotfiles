@@ -15,11 +15,16 @@ export GEM_HOME=$(ruby -e 'print Gem.user_dir')
 export MYVIMRC="$HOME/.config/nvim/init.vim"
 
 export GENTOO_MIRRORS="https://mirrors.bfsu.edu.cn/gentoo"
+export EPREFIX=/home/coelacanthus/Data/gentoo/prefix
 export GOPROXY=https://goproxy.cn
 export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
 
-export WINEARCH=win32 
-export WINEPREFIX=/home/lhw/data/Games/ff14
+# FIXME: workaround for cargo crates
+# [1]: https://github.com/ustclug/discussions/issues/294
+# [2]: https://mirrors.ustc.edu.cn/help/crates.io-index.html
+export CARGO_HTTP_MULTIPLEXING=false
+
+#export WINEARCH=win32 
 
 #export SCCACHE_DIR="/var/cache/sccache"
 [[ -x /usr/bin/sccache ]] && export RUSTC_WRAPPER="/usr/bin/sccache"

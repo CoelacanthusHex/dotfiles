@@ -48,6 +48,7 @@ alias rg='rg -p --smart-case'
 alias diff='diff --color=auto'
 alias ppikaur='ALL_PROXY=socks5://127.0.0.1:1080 pikaur'
 alias pyay='ALL_PROXY=socks5://127.0.0.1:1080 yay'
+alias pparu='ALL_PROXY=socks5://127.0.0.1:1080 paru'
 alias .="source"
 alias mv='mv -v'
 alias rm='rm -v'
@@ -102,7 +103,13 @@ else
     alias -s swf="flashplayer"
 fi
 
-
 alias -g NULL="/dev/null"
+
+
+alias limit-run='systemd-run --user --pty --same-dir --wait --collect --slice=limit-run.slice '
+alias limit-cpu='systemd-run --user --pty --same-dir --wait --collect --slice=limit-cpu.slice '
+alias limit-mem='systemd-run --user --pty --same-dir --wait --collect --slice=limit-mem.slice '
+
+alias git-log='git log --all --decorate --oneline --graph'
 
 # vim: ft=zsh

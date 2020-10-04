@@ -23,11 +23,10 @@ function duppkg4repo () {
 # pacman aliases and functions
 if (( $+commands[powerpill] )); then
     function Syu(){
-        #sudo pacsync && sudo powerpill -Suw $@ && sudo pacman -Su $@ && sync
-        sudo pacman -Sy && sudo powerpill -Suw $@ && sudo pacman -Su $@ && sync
-        sudo pacman -Fy && sync
-        pacman -Qtdq | ifne sudo pacman -Rcs -
-        sync
+        sudo pacsync pacman -Sy && sudo powerpill -Suw $@ && sudo pacman -Su $@ && sync
+        #sudo pacman -Sy && sudo powerpill -Suw $@ && sudo pacman -Su $@ && sync
+        pacman -Qtdq | ifne sudo pacman -Rcs - && sync
+        sudo pacsync pacman -Fy && sync
     }
 fi
 
@@ -54,10 +53,10 @@ alias Fs="pacman -F"
 alias Fl="pacman -Fl"
 alias Fy="sudo pacman -Fy"
 alias Sy="sudo pacman -Sy"
-alias Ssa="pikaur -Ssa"
-alias Sas="pikaur -Ssa"
-alias Sia="pikaur -Sai"
-alias Sai="pikaur -Sai"
+alias Ssa="paru -Ssa"
+alias Sas="paru -Ssa"
+alias Sia="paru -Sai"
+alias Sai="paru -Sai"
 
 function Ga() {
     [ -z "$1" ] && echo "usage: Ga <aur package name>: get AUR package PKGBUILD" && return 1
@@ -76,8 +75,8 @@ function G() {
 }
 
 function Gw() {
-    [ -z "$1" ] && echo "usage: Gw <package name> [directory (default to pwd)]: get package file *.pkg.tar.xz from pacman cache" && return 1
-    sudo pacman -Sw "$1" && cp /var/cache/pacman/pkg/$1*.pkg.tar.xz ${2:-.}
+    [ -z "$1" ] && echo "usage: Gw <package name> [directory (default to pwd)]: get package file *.pkg.tar.zst from pacman cache" && return 1
+    sudo pacman -Sw "$1" && cp /var/cache/pacman/pkg/$1*.pkg.tar.zst ${2:-.}
 }
 
 function Ge() {
@@ -92,4 +91,8 @@ function Gc() {
     for i in $@; do
     	G community community $i
     done
+}
+
+function get-felix-yan-rate() {
+    echo "$(echo "scale=1; 100 * $(pacman -Qi $(pacman -Qq) | grep Felix | wc -l) / $(pacman -Qq | wc -l)" | bc) %"
 }
