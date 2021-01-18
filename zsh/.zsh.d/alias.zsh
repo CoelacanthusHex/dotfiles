@@ -44,7 +44,7 @@ alias ........="cd ../../../../../../.."
 alias setproxy="export ALL_PROXY=socks5://127.0.0.1:1080"
 alias unsetproxy="unset ALL_PROXY"
 alias blog-update='cd ~/blog && git add -A && git commit -m "Update Site @$(date +%Y-%m-%d-%H:%M:%S)" && git push -u origin master && cd ~'
-alias rg='rg -p --smart-case'
+alias rg='rg -p --smart-case --context=3'
 alias diff='diff --color=auto'
 alias ppikaur='ALL_PROXY=socks5://127.0.0.1:1080 pikaur'
 alias pyay='ALL_PROXY=socks5://127.0.0.1:1080 yay'
@@ -111,5 +111,11 @@ alias limit-cpu='systemd-run --user --pty --same-dir --wait --collect --slice=li
 alias limit-mem='systemd-run --user --pty --same-dir --wait --collect --slice=limit-mem.slice '
 
 alias git-log='git log --all --decorate --oneline --graph'
+
+alias urldecode='python3 -c "import sys, urllib.parse as up; print(up.unquote(sys.argv[1]))"'
+alias urlencode='python3 -c "import sys, urllib.parse as up; print(up.quote(sys.argv[1]))"'
+
+export LESSOPEN="| pygmentize -f console -O bg=dark %s"
+export LESS='R'
 
 # vim: ft=zsh

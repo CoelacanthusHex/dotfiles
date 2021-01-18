@@ -88,13 +88,18 @@ zsh-defer zinit light tj/git-extras
 #    zsh-users/zsh-syntax-highlighting \
 #    zsh-users/zsh-autosuggestions
 zsh-defer zinit light-mode for \
-   atload"zicompinit; zicdreplay" zdharma/fast-syntax-highlighting \
+    atload"zicompinit; zicdreplay" zdharma/fast-syntax-highlighting \
     atload"_zsh_autosuggest_start" zsh-users/zsh-autosuggestions
 export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd history completion)
 export ZSH_AUTOSUGGEST_USE_ASYNC=true
 
 _ZSH_PLUGINS="/usr/share/zsh/plugins"
-for _zsh_plugin in zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search; do
+_enabled_plugins=(
+    zsh-autosuggestions
+    zsh-history-substring-search
+    zsh-syntax-highlighting
+)
+for _zsh_plugin in $_enabled_plugins[@]; do
    [[ ! -r "$_ZSH_PLUGINS/$_zsh_plugin/$_zsh_plugin.zsh" ]] || source $_ZSH_PLUGINS/$_zsh_plugin/$_zsh_plugin.zsh
 done
 

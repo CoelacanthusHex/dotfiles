@@ -75,8 +75,8 @@ function G() {
 }
 
 function Gw() {
-    [ -z "$1" ] && echo "usage: Gw <package name> [directory (default to pwd)]: get package file *.pkg.tar.zst from pacman cache" && return 1
-    sudo pacman -Sw "$1" && cp /var/cache/pacman/pkg/$1*.pkg.tar.zst ${2:-.}
+    [ -z "$1" ] && echo "usage: Gw <package name> [directory (default to pwd)]: get package file *.pkg.tar.zst/xz from pacman cache" && return 1
+    sudo pacman -Sw "$1" && cp /var/cache/pacman/pkg/$1*.pkg.tar.* ${2:-.}
 }
 
 function Ge() {
