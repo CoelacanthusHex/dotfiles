@@ -14,6 +14,5 @@ for i in "${pacman_bak[@]}"; do
 done
 
 cp /etc/pacman.conf "$HOME"/dotfiles/pacman-backup/etc/pacman.conf
-cp /etc/makepkg.conf "$HOME"/dotfiles/pacman-backup/etc/makepkg.conf
 
 unalias cp
