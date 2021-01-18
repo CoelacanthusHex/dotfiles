@@ -2,34 +2,73 @@
 #export LANGUAGE=zh_CN:en_GB
 #export LC_CTYPE=en_GB.UTF-8
 
+# XDG Dirs
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 
+# Workarounds for XDG base directory specification
+# (https://wiki.archlinux.org/index.php/XDG_Base_Directory#Support)
+# CUDA cache
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
+# Bash Completion
+export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME"/bash-completion/bash_completion
+# Go
+export GOPATH="$XDG_DATA_HOME"/go
+# GTK2
+export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+# Java
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+#export LESSKEY="$XDG_CONFIG_HOME"/less/lesskey
+#export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
+# GNU Parallel
+export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
+# Python egg
+export PYTHON_EGG_CACHE="$XDG_CACHE_HOME"/python-eggs
+# Pylint
+export PYLINTHOME="$XDG_CACHE_HOME"/pylint
+# Rustup
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+# Stack (Haskell)
+export STACK_ROOT="$XDG_DATA_HOME"/stack
+# Xauthority
+#export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
+
+# Use nano as default text editor
+# (https://wiki.archlinux.org/index.php/Nano#Replacing_vi_with_nano)
+export EDITOR=nvim
+export VISUAL=nvim
+
+# Rust src (used in CLion without rustup)
 export RUST_SRC_PATH=/usr/lib/rustlib/src/rust/src
 
+# Golang
+export GOPROYX=https://goproxy.io,direct
+
+# Firefox
+export MOZ_WEBRENDER=1
+export MOZ_X11_EGL=1
+
+# Environment variable for IME,
+# use fcitx instead of fcitx5 for compatibility
 export QT_IM_MODULE=fcitx
 export GTK_IM_MODULE=fcitx
 export SDL_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
+## Nvidia - vulkan is not working and can not initialize
+## Check if you have vulkan-intel installed, it may prevent Nvidia's vulkan driver from being detected.
 #export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/nvidia_icd.json
 #export LIBVA_DRIVER_NAME=vdpau
+
 export LIBVA_DRIVER_NAME=i965
 export LIBVA_DRIVERS_PATH=/usr/lib/dri/
 export VDPAU_DRIVER=nvidia
 
-export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
-#export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME"/bash-completion/bash_completion
-#export GOPATH="$XDG_DATA_HOME"/go
-#export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
-#export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
-#export LESSKEY="$XDG_CONFIG_HOME"/less/lesskey
-#export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
-#export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
-#export PYTHON_EGG_CACHE="$XDG_CACHE_HOME"/python-eggs
-#export PYLINTHOME="$XDG_CACHE_HOME"/pylint
-#export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
-#export STACK_ROOT="$XDG_DATA_HOME"/stack
-#export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
-
+# no CSD
+#export GTK_CSD=0
+# use plasma dialog as default
+export GTK_USE_PORTAL=1
+# https://wiki.archlinux.org/index.php/LibreOffice#Theme
+# https://github.com/LibreOffice/core/blob/master/vcl/README#L35
+#export SAL_USE_VCLPLUGIN=kde5

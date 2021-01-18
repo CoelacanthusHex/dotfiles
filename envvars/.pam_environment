@@ -39,16 +39,40 @@ XDG_DATA_HOME   DEFAULT=@{HOME}/.local/share
 # Workarounds for XDG base directory specification
 # (https://wiki.archlinux.org/index.php/XDG_Base_Directory#Support)
 # adb
-#ADB_VENDOR_KEY   DEFAULT=${XDG_DATA_HOME}/adb
-#ANDROID_SDK_HOME DEFAULT=${XDG_DATA_HOME}/android-sdk
+ADB_VENDOR_KEY      DEFAULT=${XDG_DATA_HOME}/adb
+ANDROID_SDK_HOME    DEFAULT=${XDG_DATA_HOME}/android-sdk
 # bash history
-#HISTFILE DEFAULT=${XDG_DATA_HOME}/bash/history
+HISTFILE            DEFAULT=${XDG_DATA_HOME}/bash/history
 # ipython
-#IPYTHONDIR DEFAULT=${XDG_DATA_HOME}/ipython
+IPYTHONDIR          DEFAULT=${XDG_DATA_HOME}/ipython
 # python
-#PYTHONSTARTUP DEFAULT=${XDG_CONFIG_HOME}/python/rc.py
+PYTHONSTARTUP       DEFAULT=${XDG_CONFIG_HOME}/python/rc.py
 # python-pylint
-#PYLINTHOME DEFAULT=${XDG_CACHE_HOME}/python-pylint
+PYLINTHOME          DEFAULT=${XDG_CACHE_HOME}/python-pylint
+# CUDA cache
+CUDA_CACHE_PATH     DEFAULT=${XDG_CACHE_HOME}/nv
+# Bash Completion
+BASH_COMPLETION_USER_FILE   DEFAULT={XDG_CONFIG_HOME}/bash-completion/bash_completion
+# Go
+GOPATH              DEFAULT={XDG_DATA_HOME}/go
+# GTK2
+GTK2_RC_FILES       DEFAULT={XDG_CONFIG_HOME}/gtk-2.0/gtkrc
+# Java
+_JAVA_OPTIONS       DEFAULT=-Djava.util.prefs.userRoot="${XDG_CONFIG_HOME}"/java
+#LESSKEY             DEFAULT={XDG_CONFIG_HOME}/less/lesskey
+#LESSHISTFILE        DEFAULT={XDG_CACHE_HOME}/less/history
+# GNU Parallel
+PARALLEL_HOME       DEFAULT={XDG_CONFIG_HOME}/parallel
+# Python egg
+PYTHON_EGG_CACHE    DEFAULT={XDG_CACHE_HOME}/python-eggs
+# Pylint
+PYLINTHOME          DEFAULT={XDG_CACHE_HOME}/pylint
+# Rustup
+RUSTUP_HOME         DEFAULT={XDG_DATA_HOME}/rustup
+# Stack (Haskell)
+STACK_ROOT          DEFAULT={XDG_DATA_HOME}/stack
+# Xauthority
+#XAUTHORITY          DEFAULT={XDG_RUNTIME_DIR}/Xauthority
 
 # Qt theme platform under non-KDE
 # Plan A: Simply follow GTK2 through `qt5-styleplugins`
@@ -65,25 +89,39 @@ XDG_DATA_HOME   DEFAULT=@{HOME}/.local/share
 #QT_STYLE_OVERRIDE DEFAULT=kvantum
 
 # Input method
+# use fcitx instead of fcitx5 for compatibility
 GTK_IM_MODULE DEFAULT=fcitx
 QT_IM_MODULE  DEFAULT=fcitx
 SDL_IM_MODULE DEFAULT=fcitx
 XMODIFIERS    DEFAULT=\@im=fcitx
 
+# Rust src (used in CLion without rustup)
 RUST_SRC_PATH DEFAULT=/usr/lib/rustlib/src/rust/src
+
+# Golang
+GOPROYX DEFAULT=https://goproxy.io,direct
+
+# Firefox
+MOZ_WEBRENDER   DEFAULT=1
+MOZ_X11_EGL     DEFAULT=1
 
 #LANG=zh_CN.UTF-8
 #LANGUAGE=zh_CN:en_GB
 #LC_CTYPE=en_GB.UTF-8
 
-## use plasma dialog as default
-#GTK_USE_PORTAL=1
+# no CSD
+#GTK_CSD DEFAULT=0
+# use plasma dialog as default
+GTK_USE_PORTAL DEFAULT=1
+# https://wiki.archlinux.org/index.php/LibreOffice#Theme
+# https://github.com/LibreOffice/core/blob/master/vcl/README#L35
+#SAL_USE_VCLPLUGIN DEFAULT=kde5
 
-## Telegram Tray Icon
+# Telegram Tray Icon
 TDESKTOP_DISABLE_TRAY_COUNTER DEFAULT=1
 
-## Nvidia - vulkan is not working and can not initialize
-## Check if you have vulkan-intel installed, it may prevent Nvidia's vulkan driver from being detected.
+# Nvidia - vulkan is not working and can not initialize
+# Check if you have vulkan-intel installed, it may prevent Nvidia's vulkan driver from being detected.
 #VK_ICD_FILENAMES DEFAULT=/usr/share/vulkan/icd.d/nvidia_icd.json
 
 #LIBVA_DRIVER_NAME=vdpau
@@ -91,4 +129,5 @@ LIBVA_DRIVER_NAME  DEFAULT=i965
 LIBVA_DRIVERS_PATH DEFAULT=/usr/lib/dri/
 VDPAU_DRIVER       DEFAULT=nvidia
 
-CUDA_CACHE_PATH    DEFAULT=${XDG_CACHE_HOME}/nv
+# https://wiki.archlinux.org/index.php/SSH_keys#Start_ssh-agent_with_systemd_user
+SSH_AUTH_SOCK DEFAULT="${XDG_RUNTIME_DIR}/ssh-agent.socket"
