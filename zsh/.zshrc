@@ -1,3 +1,15 @@
+## .zshrc
+# https://blog.skk.moe/post/make-oh-my-zsh-fly/
+#zmodload zsh/datetime
+#setopt PROMPT_SUBST
+#PS4='+$EPOCHREALTIME %N:%i> '
+#
+#logfile=$(mktemp zsh_profile.XXXXXXXXXXXXX)
+#echo "Logging to $logfile"
+#exec 3>&2 2>$logfile
+#
+#setopt XTRACE
+
 # 确定环境 {{{1
 OS=${$(uname)%_*}
 LSB_DISTRIBUTOR=`lsb_release -i -s`
@@ -81,5 +93,9 @@ elif [[ -r "$POWERLINE_BINDINGS/zsh/powerline.zsh" ]]; then
 fi
 
 unset OS
+
+## .zshrc
+#unsetopt XTRACE
+#exec 2>&3 3>&-
 
 # vim: ft=zsh
