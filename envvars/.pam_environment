@@ -130,4 +130,10 @@ LIBVA_DRIVERS_PATH DEFAULT=/usr/lib/dri/
 VDPAU_DRIVER       DEFAULT=nvidia
 
 # https://wiki.archlinux.org/index.php/SSH_keys#Start_ssh-agent_with_systemd_user
-SSH_AUTH_SOCK DEFAULT="${XDG_RUNTIME_DIR}/ssh-agent.socket"
+#SSH_AUTH_SOCK  DEFAULT="${XDG_RUNTIME_DIR}/ssh-agent.socket"
+
+# replacing ssh-agent with gpg-agent 
+# https://wiki.archlinux.org/index.php/GnuPG#SSH_agent
+SSH_AGENT_PID   DEFAULT=
+SSH_AUTH_SOCK   DEFAULT="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
+
