@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "language.dtd">
+<language name="Pam Environment Files" section="Configuration" extensions=".pam_environment" mimetype="" version="1" kateversion="5.0" author="Coelacanthus (coelacanthus@outlook.com)" license="LGPL">
+
+<highlighting>
+	<list name="keywords">
+		<item>DEFAULT</item>
+		<item>OVERRIDE</item>
+	</list>
+
+	<contexts>
+		<context name="main" attribute="Normal Text" lineEndContext="#stay">
+			<DetectChar char="#" attribute="Comment" context="Comment" firstNonSpace="true" />
+			<RegExpr context="KayValue" attribute="Normal Text" String="^\S+" lookAhead="true" insensitive="true" />
+		</context>
+
+		<context name="KayValue" attribute="Key" lineEndContext="#pop">
+			<DetectSpaces />
+			<keyword attribute="Keyword" String="keywords" />
+			<DetectChar attribute="Symbol" context="Value" char="=" />
+		</context>
+
+		<context name="Value" attribute="Normal Text" lineEndContext="#pop" >
+			<RegExpr context="Variable" attribute="Variable" String="(?&lt;!\\)(@|\$)" lookAhead="true" insensitive="true" />
+			<DetectChar attribute="Quote" char="&quot;" />
+		</context>
+		
+		<context name="Variable" attribute="Variable" lineEndContext="#pop" >
+			<RegExpr attribute="Variable" context="Value" String="\{\w+?\}" insensitive="true" />
+		</context>
+		
+		<context name="Comment" attribute="Comment" lineEndContext="#pop">
+			<DetectSpaces />
+			<IncludeRules context="##Alerts" />
+			<DetectIdentifier />
+		</context>
+	</contexts>
+
+
+	<itemDatas>
+		<itemData name="Normal Text" defStyleNum="dsNormal" />
+		<itemData name="Variable" defStyleNum="dsVariable" />
+		<itemData name="Comment" defStyleNum="dsComment" />
+		<itemData name="Symbol" defStyleNum="dsOthers" />
+		<itemData name="Keyword" defStyleNum="dsKeyword" />
+		<itemData name="Key" defStyleNum="dsFunction" />
+		<itemData name="Quote" defStyleNum="dsString"/>
+	</itemDatas>
+</highlighting>
+
+
+<general>
+	<comments>
+		<comment name="singleLine" start="#" />
+	</comments>
+</general>
+
+</language>
