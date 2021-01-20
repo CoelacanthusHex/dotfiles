@@ -22,8 +22,13 @@
 
 # Executable file search path list
 # (https://wiki.archlinux.org/index.php/Environment_variables#Examples)
-# Prepend user binary dir to `ENV_PATH` in `/etc/login.defs`
-#PATH DEFAULT=@{HOME}/.bin:/usr/local/sbin:/usr/local/bin:/usr/bin
+# (https://www.freedesktop.org/software/systemd/man/file-hierarchy.html#Home%20Directory)
+# Prepend user binary directory
+# This prepending method causes problem somehow
+# PATH DEFAULT=@{HOME}/.local/bin:${PATH}
+# Copied from `ENV_PATH` in `/etc/login.defs` of `core/shadow` package of Arch Linux
+#PATH DEFAULT=@{HOME}/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin
+
 
 # Use nano as default text editor
 # (https://wiki.archlinux.org/index.php/Nano#Replacing_vi_with_nano)
@@ -49,6 +54,8 @@ IPYTHONDIR          DEFAULT=${XDG_DATA_HOME}/ipython
 PYTHONSTARTUP       DEFAULT=${XDG_CONFIG_HOME}/python/rc.py
 # python-pylint
 PYLINTHOME          DEFAULT=${XDG_CACHE_HOME}/python-pylint
+# NPM
+NPM_CONFIG_USERCONFIG   DEFAULT=${XDG_CONFIG_HOME}/npm/npmrc
 # CUDA cache
 CUDA_CACHE_PATH     DEFAULT=${XDG_CACHE_HOME}/nv
 # Bash Completion
