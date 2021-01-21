@@ -27,10 +27,21 @@ export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
 export PYTHON_EGG_CACHE="$XDG_CACHE_HOME"/python-eggs
 # Pylint
 export PYLINTHOME="$XDG_CACHE_HOME"/pylint
-# Rustup
+# NPM
+NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
+# Rustup (Rust)
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+# Cargo (Rust)
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
 # Stack (Haskell)
 export STACK_ROOT="$XDG_DATA_HOME"/stack
+# Bundle (Ruby)
+export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME"/bundle
+export BUNDLE_USER_CACHE="$XDG_CACHE_HOME"/bundle
+export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME"/bundle
+# Ccache
+export CCACHE_CONFIGPATH="$XDG_CONFIG_HOME"/ccache.conf
+export CCACHE_DIR="$XDG_CACHE_HOME"/ccache
 # Xauthority
 #export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 
