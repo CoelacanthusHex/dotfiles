@@ -1,0 +1,17 @@
+prefix=${XDG_DATA_HOME}/npm
+cache=${XDG_CACHE_HOME}/npm
+tmp=${XDG_RUNTIME_DIR}/npm
+init-module=${XDG_CONFIG_HOME}/npm/config/npm-init.js
+registry=https://registry.npm.taobao.org/
+disturl=https://npm.taobao.org/dist
+sass_binary_site=https://npm.taobao.org/mirrors/node-sass
+electron_mirror=https://npm.taobao.org/mirrors/electron/
+puppeteer_download_host=https://storage.googleapis.com.cnpmjs.org
+chromedriver_cdnurl=https://npm.taobao.org/mirrors/chromedriver
+operadriver_cdnurl=https://npm.taobao.org/mirrors/operadriver
+phantomjs_cdnurl=https://npm.taobao.org/mirrors/phantomjs
+selenium_cdnurl=https://npm.taobao.org/mirrors/selenium
+node_inspector_cdnurl=https://npm.taobao.org/mirrors/node-inspector
+fse_binary_host_mirror=https://npm.taobao.org/mirrors/fsevents
+SQLITE3_BINARY_SITE=https://npm.taobao.org/mirrors/sqlite3
+PYTHON_MIRROR=https://npm.taobao.org/mirrors/python
