@@ -6,8 +6,7 @@ Managed by `stow <https://www.gnu.org/software/stow/>`_ .
 Usage
 -------
 
-.. code-block:: shell
-    ./stow.sh zsh <group>
+``./stow.sh zsh <group>``
 
 List
 -------
