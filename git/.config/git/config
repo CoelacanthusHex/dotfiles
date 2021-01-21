@@ -1,7 +1,7 @@
 [user]
 	email = coelacanthus@outlook.com
 	name = Coelacanthus
-	signingkey = 5406F0E8844366FDD637A327D2AC54B70C894FEC
+	signingkey = AB4B67801FB84C44
 	
 [core]
 	# Use custom `.gitignore` and `.gitattributes`
@@ -43,3 +43,5 @@
 	proxy = socks5://127.0.0.1:1089
 [https]
 	proxy = socks5://127.0.0.1:1089
+[commit]
+	gpgsign = true
