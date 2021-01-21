@@ -165,7 +165,7 @@ extract() {
 			(*.zip|*.war|*.jar|*.sublime-package|*.ipsw|*.xpi|*.apk|*.aar|*.whl) unzip "$1" -d $extract_dir ;;
 			(*.rar) unrar x -ad "$1" ;;
 			(*.rpm) mkdir "$extract_dir" && cd "$extract_dir" && rpm2cpio "../$1" | cpio --quiet -id && cd .. ;;
-			(*.7z) bsdtar xvf "$1" ;;
+			(*.7z) 7za x "$1" ;;
 			(*.deb)
 				mkdir -p "$extract_dir/control"
 				mkdir -p "$extract_dir/data"
