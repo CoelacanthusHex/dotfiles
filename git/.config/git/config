@@ -47,3 +47,11 @@
 	gpgsign = true
 [init]
 	defaultBranch = master
+
+# https://wiki.archlinux.org/index.php/Git#Protocol_defaults
+# AUR only allow pushing via SSH
+# and with SSH connection multiplex is better
+[url "ssh://aur@aur.archlinux.org/"]
+	insteadOf = https://aur.archlinux.org/
+	insteadOf = http://aur.archlinux.org/
+	insteadOf = git://aur.archlinux.org/
