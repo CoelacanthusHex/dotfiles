@@ -45,3 +45,5 @@
 	proxy = socks5://127.0.0.1:1089
 [commit]
 	gpgsign = true
+[init]
+	defaultBranch = master
