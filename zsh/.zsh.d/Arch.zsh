@@ -3,8 +3,6 @@ zsh-defer zinit snippet OMZP::archlinux/archlinux.plugin.zsh
 
 # completion for Syu
 compdef -e "words[1]=(pacman -Su);service=pacman;((CURRENT+=1));_pacman" Syu Ge Gc Gw
-compdef -e "words[1]=(pikaur -G);service=auracle;((CURRENT+=1));_pikaur" Ga
-compdef -e "words[1]=(pikaur -Ssa);service=auracle;((CURRENT+=1));_pikaur" Ssa
 
 
 #软件仓库中重复的软件包

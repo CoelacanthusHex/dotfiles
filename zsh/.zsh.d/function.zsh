@@ -41,6 +41,9 @@ if (( $+commands[nali] )); then
     function nali-mtr() {
         mtr $@ | nali
     }
+    function nali-kdig() {
+        kdig $@ | nali
+    }
 fi
 
 # 图像压缩
@@ -189,24 +192,6 @@ extract() {
 }
 
 alias x=extract
-
-function jit() {
-  emulate -L zsh
-  [[ $1.zwc -nt $1 || ! -w ${1:h} ]] && return
-  zmodload -F zsh/files b:zf_mv b:zf_rm
-  local tmp=$1.tmp.$$.zwc
-  {
-    zcompile -R -- $tmp $1 && zf_mv -f -- $tmp $1.zwc || return
-  } always {
-    (( $? )) && zf_rm -f -- $tmp
-  }
-}
-
-function jit-source() {
-  emulate -L zsh
-  [[ -e $1 ]] && jit $1 && source -- $1
-}
-
 
 function foreground-last-job () {
     if (( ${#jobstates} )); then

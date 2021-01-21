@@ -41,12 +41,6 @@ if [[ -n ${TMUX} && -n ${commands[tmux]} ]];then
         esac
 fi
 
-# 也许未来会启用
-#POWERLINE_BINDINGS=/usr/share/powerline/bindings/
-#powerline-daemon -q  # run powerline daemon
-#source $POWERLINE_BINDINGS/zsh/powerline.zsh
-
-
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block, everything else may go below.
@@ -62,10 +56,6 @@ source $HOME/.zsh.d/config.zsh
 source $HOME/.zsh.d/function.zsh
 source $HOME/.zsh.d/Arch.zsh
 source $HOME/.zsh.d/alias.zsh
-
-
-#export PYTHONPATH=$PYTHONPATH:$HOME/Data/workspace/package/lilac:$HOME/Data/workspace/package/lilac/lilac2/vendor
-#export PATH=$PATH:$HOME/Data/workspace/package/lilac
 
 # Load user config.
 if [[ -f ~/.zshrc.local ]]; then
