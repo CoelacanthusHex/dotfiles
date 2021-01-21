@@ -6,7 +6,7 @@
 [core]
 	# Use custom `.gitignore` and `.gitattributes`
 	excludesfile = ~/.config/git/gitignore
-	#attributesfile = ~/.config/git/gitattributes
+	attributesfile = ~/.config/git/gitattributes
 
 	quotePath = false
 	pager = diff-so-fancy | less --tabs=4 -RFX
