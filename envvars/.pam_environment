@@ -46,10 +46,10 @@ XDG_DATA_HOME   DEFAULT=@{HOME}/.local/share
 # adb
 ADB_VENDOR_KEY      DEFAULT=${XDG_DATA_HOME}/adb
 ANDROID_SDK_HOME    DEFAULT=${XDG_DATA_HOME}/android-sdk
-# bash history
-HISTFILE            DEFAULT=${XDG_DATA_HOME}/bash/history
 # ipython
-IPYTHONDIR          DEFAULT=${XDG_DATA_HOME}/ipython
+IPYTHONDIR          DEFAULT=${XDG_CONFIG_HOME}/ipython
+JUPYTER_CONFIG_DIR  DEFAULT=${XDG_CONFIG_HOME}/jupyter
+JUPYTERLAB_DIR      DEFAULT=${XDG_DATA_HOME}/jupyter/lab
 # python
 PYTHONSTARTUP       DEFAULT=${XDG_CONFIG_HOME}/python/rc.py
 # python-pylint

@@ -23,12 +23,19 @@ export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java"
 #export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
 # GNU Parallel
 export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
+
+# ipython
+export IPYTHONDIR=$XDG_CONFIG_HOME/ipython
+export JUPYTER_CONFIG_DIR=$XDG_CONFIG_HOME/jupyter
+export JUPYTERLAB_DIR=$XDG_DATA_HOME/jupyter/lab
+# python
+export PYTHONSTARTUP=$XDG_CONFIG_HOME/python/rc.py
 # Python egg
 export PYTHON_EGG_CACHE="$XDG_CACHE_HOME"/python-eggs
 # Pylint
 export PYLINTHOME="$XDG_CACHE_HOME"/pylint
 # NPM
-NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 # Rustup (Rust)
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 # Cargo (Rust)
