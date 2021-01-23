@@ -83,7 +83,7 @@ export VDPAU_DRIVER=nvidia
 # no CSD
 #export GTK_CSD=0
 # use plasma dialog as default
-export GTK_USE_PORTAL=1
+#export GTK_USE_PORTAL=1
 # https://wiki.archlinux.org/index.php/LibreOffice#Theme
 # https://github.com/LibreOffice/core/blob/master/vcl/README#L35
 #export SAL_USE_VCLPLUGIN=kde5

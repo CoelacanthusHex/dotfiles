@@ -133,7 +133,7 @@ MOZ_X11_EGL     DEFAULT=1
 # no CSD
 #GTK_CSD DEFAULT=0
 # use plasma dialog as default
-GTK_USE_PORTAL DEFAULT=1
+#GTK_USE_PORTAL DEFAULT=1
 # https://wiki.archlinux.org/index.php/LibreOffice#Theme
 # https://github.com/LibreOffice/core/blob/master/vcl/README#L35
 #SAL_USE_VCLPLUGIN DEFAULT=kde5
