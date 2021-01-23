@@ -1,8 +1,8 @@
 [user]
 	email = coelacanthus@outlook.com
 	name = Coelacanthus
-	signingkey = AB4B67801FB84C44
-	
+	signingkey = 1F62B42D0D2AE4B6
+
 [core]
 	# Use custom `.gitignore` and `.gitattributes`
 	excludesfile = ~/.config/git/gitignore
@@ -14,7 +14,7 @@
 #
 #[interactive]
 #    diffFilter = delta --color-only
-#    
+#
 #[delta]
 #	features = side-by-side line-numbers decorations
 #	syntax-theme = Monokai Extended
@@ -23,10 +23,10 @@
 #	commit-decoration-style = bold yellow box ul
 #	file-style = bold yellow ul
 #	fire-decoration-style = none
-    
+
 [color]
 	ui = true
-	
+
 [color "diff-highlight"]
 	oldNormal = red bold
 	oldHighlight = red bold 52
