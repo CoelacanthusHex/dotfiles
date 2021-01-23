@@ -1,5 +1,9 @@
 #!/usr/bin/python3
 
+#
+# SPDX-FileCopyrightText: 2020 lilydjwg
+#
+
 from functools import partial
 
 def colors16():

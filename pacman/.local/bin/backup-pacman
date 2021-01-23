@@ -1,5 +1,10 @@
 #/bin/env bash
 
+#
+# SPDX-FileCopyrightText: 2020 Coelacanthus
+# SPDX-License-Identifier: MIT
+#
+
 alias cp='cp -v --reflink=auto'
 
 pacman_bak=('mirrorlist'

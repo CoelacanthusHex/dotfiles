@@ -1,4 +1,10 @@
 #!/bin/bash -e
+
+#
+# SPDX-FileCopyrightText: 2020 lilydjwg
+#
+
+
 cmd="$@"
 unshare -m bash <<EOF
 mount --make-rprivate /

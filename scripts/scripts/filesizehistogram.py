@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+
+#
+# SPDX-FileCopyrightText: 2020 farseerfc
+#
+
 import argparse
 import matplotlib.pyplot as plt
 import numpy as np

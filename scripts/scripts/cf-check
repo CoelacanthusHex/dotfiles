@@ -1,5 +1,9 @@
 #!/usr/bin/python3
 
+#
+# SPDX-FileCopyrightText: 2020 lilydjwg
+#
+
 import os
 import asyncio
 import time
