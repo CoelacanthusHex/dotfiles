@@ -48,6 +48,8 @@ ADB_VENDOR_KEY      DEFAULT=${XDG_DATA_HOME}/adb
 ANDROID_SDK_HOME    DEFAULT=${XDG_DATA_HOME}/android-sdk
 # ipython
 IPYTHONDIR          DEFAULT=${XDG_CONFIG_HOME}/ipython
+# Jupyter
+# https://wiki.archlinux.org/index.php/Jupyter
 JUPYTER_CONFIG_DIR  DEFAULT=${XDG_CONFIG_HOME}/jupyter
 JUPYTERLAB_DIR      DEFAULT=${XDG_DATA_HOME}/jupyter/lab
 # python
