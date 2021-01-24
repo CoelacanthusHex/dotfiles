@@ -134,8 +134,15 @@ MOZ_X11_EGL     DEFAULT=1
 
 # no CSD
 #GTK_CSD DEFAULT=0
-# use plasma dialog as default
+
+# use plasma dialog as default, it need openSUSE patch in the past
+# now Firefox has native support
+# change widget.use-xdg-desktop-portal to true in about:config
+# and install xdg-desktop-portal and xdg-desktop-portal-kde
+# https://t.me/ArchlinuxCN_Appearance/6955
+# https://www.reddit.com/r/kde/comments/kzjo9d/add_gtk_use_portal1_to_your_firefox_shortcut_to/gjoqtvj/
 #GTK_USE_PORTAL DEFAULT=1
+
 # https://wiki.archlinux.org/index.php/LibreOffice#Theme
 # https://github.com/LibreOffice/core/blob/master/vcl/README#L35
 #SAL_USE_VCLPLUGIN DEFAULT=kde5
