@@ -4,6 +4,15 @@
 # SPDX-FileCopyrightText: 2020 lilydjwg
 #
 
+# 配置方式是，为 /etc/pacman.d 下的镜像列表文件创建一个.sync后缀的同名文件，
+# 里边指定用于同步的镜像，而不带 .sync 后缀的文件里按优先级列出多个镜像。
+# pacman 在下载文件时，会按顺序依次尝试列出的镜像，如果遇到更新不及时 404 的时候，就会尝试另一个。
+# 这样，可以仅在下载快的镜像里还没有需要的包文件时，才转而从比较慢的镜像下载。
+# 而需要同步 pacman 数据库的时候，使用 pacsync 脚本取代 pacman -Sy。
+# 脚本会使用 bind mount 用 .sync 文件取代不 .sync 的版本，就能同步到最新的数据库了。
+# 原来的 pacman -Syu 命令要拆开来用，先 pacsync 再 pacman -Su 了。
+# https://blog.lilydjwg.me/2020/10/29/pacsync.215578.html
+
 
 cmd="$@"
 unshare -m bash <<EOF
