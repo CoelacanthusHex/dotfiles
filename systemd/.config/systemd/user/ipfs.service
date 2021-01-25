@@ -3,7 +3,7 @@ Description=IPFS daemon
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/ipfs daemon
+ExecStart=/usr/bin/ipfs daemon --migrate
 Restart=on-failure
 
 [Install]
