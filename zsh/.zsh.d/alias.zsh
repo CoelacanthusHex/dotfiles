@@ -111,6 +111,7 @@ alias ssh="TERM=xterm-256color ssh"
 alias grep="${aliases[grep]:-grep} --color=auto"
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
+alias ncdu='ncdu --color dark'
 
 # 后缀别名
 #alias -s {html,htm}="firefox"
