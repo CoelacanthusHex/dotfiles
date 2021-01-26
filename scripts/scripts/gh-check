@@ -109,7 +109,7 @@ async def main(proto):
   producer_fu = asyncio.ensure_future(producer(q, proto))
   printer_fu = asyncio.ensure_future(printer(ret_q))
 
-  await asyncio.wait(futures)
+  await asyncio.gather(*futures)
   printer_fu.cancel()
   await producer_fu
   await printer_fu
@@ -129,13 +129,13 @@ async def update_hosts():
   finder_fu = asyncio.ensure_future(
     fastest_finder(ret_q))
 
-  await asyncio.wait(futures)
+  await asyncio.gather(*futures)
   finder_fu.cancel()
   await producer_fu
   ip = await finder_fu
 
   if ip is not None:
-    cmd = ['sed', '-i', rf'/^[0-9.]\+[[:space:]]\+github\.com\>/s/[^[:space:]]\+/{ip}/', '/etc/hosts']
+    cmd = ['sed', '-Ei', rf'/^[0-9.]+[[:space:]]+(gist\.)?github\.com\>/s/[^[:space:]]+/{ip}/', '/etc/hosts']
     subprocess.check_call(cmd)
 
 async def resolve(domain):
@@ -149,41 +149,40 @@ async def resolve(domain):
   return domain, ips
 
 async def get_items(proto):
-  domains = [
-    "sea-region.github.com",
-    "iad-region.github.com",
-    "sin-region.github.com",
-    "ams-region.github.com",
-    "fra-region.github.com",
+  items = [
+    ('13.234.210.38',  'Bombay'),
+    ('13.234.176.102', 'Bombay'),
+    ('52.192.72.89',   'Tokyo'),
+    ('13.114.40.48',   'Tokyo'),
+    ('52.69.186.44',   'Tokyo'),
+    ('15.164.81.167',  'Seoul'),
+    ('52.78.231.108',  'Seoul'),
+    ('13.229.188.59',  'Singapore'),
+    ('13.250.177.223', 'Singapore'),
+    ('52.74.223.119',  'Singapore'),
+    ('192.30.255.112', 'Seattle'),
+    ('192.30.255.113', 'Seattle'),
+    ('140.82.112.3',   'Seattle'),
+    ('140.82.112.4',   'Seattle'),
+    ('192.30.253.112', 'Ashburn'),
+    ('192.30.253.113', 'Ashburn'),
+    ('140.82.113.3',   'Ashburn'),
+    ('140.82.113.4',   'Ashburn'),
+    ('140.82.114.3',   'Ashburn'),
+    ('140.82.114.4',   'Ashburn'),
+    ('140.82.118.3',   'Armsterdam'),
+    ('140.82.118.4',   'Armsterdam'),
+    ('140.82.121.3',   'Frankfurt'),
+    ('140.82.121.4',   'Frankfurt'),
+    ('13.237.44.5',    'Sydney'),
+    ('52.64.108.95',   'Sydney'),
+    ('13.236.229.21',  'Sydney'),
+    ('18.231.5.6',     'Sao Paulo'),
+    ('18.228.52.138',  'Sao Paulo'),
+    ('18.228.67.229',  'Sao Paulo'),
   ]
-  print('Resolving domains...', flush=True, end='')
-  futures = [resolve(domain) for domain in domains]
-  futures, _ = await asyncio.wait(futures)
-  results = [fu.result() for fu in futures]
 
-  items = []
-  for domain, ips in results:
-    for ip in ips:
-      items.append((domain, ip))
-  print('done.')
-
-  items += [
-    ('Sydney', '13.237.44.5'),
-    ('Sydney', '52.64.108.95'),
-    ('Sydney', '13.236.229.21'),
-    ('Sao Paulo', '18.231.5.6'),
-    ('Sao Paulo', '18.228.52.138'),
-    ('Sao Paulo', '18.228.67.229'),
-    ('Seoul', '15.164.81.167'),
-    ('Seoul', '52.78.231.108'),
-    ('Tokyo', '52.192.72.89'),
-    ('Tokyo', '13.114.40.48'),
-    ('Tokyo', '52.69.186.44'),
-    ('Bombay', '13.234.210.38'),
-    ('Bombay', '13.234.176.102'),
-  ]
-
-  return [(x[0], x[1], y) for x in items for y in proto]
+  return [(x[1], x[0], y) for x in items for y in proto]
 
 if __name__ == '__main__':
   import logging
