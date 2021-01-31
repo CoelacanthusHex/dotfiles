@@ -4,3 +4,4 @@
 --ignore=dot-setup.sh
 --ignore=README.md
 --ignore=README.adoc
+--ignore=README.rst
