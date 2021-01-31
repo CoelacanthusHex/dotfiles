@@ -5,3 +5,4 @@
 --ignore=README.md
 --ignore=README.adoc
 --ignore=README.rst
+--ignore=TODO
