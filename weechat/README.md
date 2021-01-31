@@ -12,7 +12,7 @@ I use the following plugins:
 
 * [autosort.py](https://weechat.org/scripts/source/autosort.py.html/) - Python -
   Automatically keeps buffers grouped by server and sorted by name.
-* [iset.pl](https://weechat.org/scripts/source/iset.pl.html/) - Python - Interactive
+* [iset.pl](https://weechat.org/scripts/source/iset.pl.html/) - Perl - Interactive
   setting of WeeChat options.
 * [weechat-bot2human](https://github.com/tuna/scripts/blob/master/weechat_bot2human.py) - Python -
   Replaces messages from bots to humans
