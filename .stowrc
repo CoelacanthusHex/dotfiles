@@ -6,3 +6,5 @@
 --ignore=README.adoc
 --ignore=README.rst
 --ignore=TODO
+--ignore=POSTINSTALL
+--ignore=POSTINSTALL.md
