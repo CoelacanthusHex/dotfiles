@@ -1,0 +1,17 @@
+Plugin:
+	* emoji.lua
+		- Translate :shortcode: to proper emoji.
+		- https://weechat.org/scripts/source/emoji.lua.html/
+		- https://www.webfx.com/tools/emoji-cheat-sheet/
+		- https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md
+	* colorize_nicks.py
+		- Use the weechat nick colors in the chat area and command line.
+		- https://weechat.org/scripts/source/colorize_nicks.py.html/
+	* latex_unicode.py
+		- Replace LaTeX with unicode representations.
+		- https://weechat.org/scripts/source/latex_unicode.py.html/
+		- https://github.com/sim642/latex_unicode
+	* tmux_env.py
+		- Update WeeChat environment from tmux.
+		- https://weechat.org/scripts/source/tmux_env.py.html/
+		- https://github.com/agriffis/weechat-tmux-env
