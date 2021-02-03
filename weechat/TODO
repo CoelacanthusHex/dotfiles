@@ -15,3 +15,7 @@ Plugin:
 		- Update WeeChat environment from tmux.
 		- https://weechat.org/scripts/source/tmux_env.py.html/
 		- https://github.com/agriffis/weechat-tmux-env
+	* pastebin.py
+		- `/paste /tmp/a.{jpg,txt}` to send its pastebin/imagebin URL to the current buffer
+		- maybe reimplement it by myself
+		- https://github.com/MaskRay/Config/blob/master/home/.weechat/python/autoload/pastebin.py
