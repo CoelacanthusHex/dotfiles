@@ -89,6 +89,11 @@ zstyle ':completion:*:*:feh:*' file-patterns '*.{png,gif,jpg,svg}:images:images 
 zstyle ':completion:*:*:sxiv:*' file-patterns '*.{png,gif,jpg}:images:images *(-/):directories:directories'
 zstyle ':completion:*:*:mpv:*' file-patterns '*.(#i)(flv|mp4|webm|mkv|wmv|mov|avi|mp3|ogg|wma|flac|wav|aiff|m4a|m4b|m4v|gif|ifo)(-.) *(-/):directories' '*:all-files'
 
+# ignore for vim
+# https://github.com/MaskRay/Config/blob/master/home/.zshrc#L170
+zstyle ':completion:*:*:vim:*:*files' ignored-patterns '*.(avi|mkv|rmvb|pyc|wmv)'
+zstyle ':completion:*:*:nvim:*:*files' ignored-patterns '*.(avi|mkv|rmvb|pyc|wmv)'
+
 # https://github.com/lilydjwg/dotzsh/blob/master/zshrc#L306-L312
 # 插入当前的所有补全 https://www.zsh.org/mla/workers/2020/index.html {{{2
 zstyle ':completion:all-matches::::' completer _all_matches _complete
