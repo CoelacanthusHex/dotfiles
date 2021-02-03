@@ -34,6 +34,18 @@ show-read-articles yes
 # Default: yes
 show-read-feeds yes
 
+## podcast
+
 # Player
 # https://newsboat.org/releases/2.22.1/docs/newsboat.html#podboat-player
 player mpv
+
+# Podcast download path
+# https://newsboat.org/releases/2.22.1/docs/newsboat.html#podboat-download-path
+# Default: ~
+download-path "~/Downloads/podcast/%h/%n"
+
+# Podcast max download at same time
+# https://newsboat.org/releases/2.22.1/docs/newsboat.html#podboat-max-downloads
+# Default: 1
+max-downloads 3
