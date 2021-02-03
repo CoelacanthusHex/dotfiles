@@ -1,0 +1,39 @@
+# https://newsboat.org/releases/2.22.1/docs/newsboat.html#_newsboat_configuration_commands
+
+# Auto reload by itself
+# disable and use crontab/systemd.timer instead
+# command is `/usr/bin/newsboat -x reload`
+# https://wiki.archlinux.org/index.php/Newsboat#Automatic_feed_reloads
+# https://newsboat.org/releases/2.22.1/docs/newsboat.html#auto-reload
+# Default: no
+#auto-reload yes
+# https://newsboat.org/releases/2.22.1/docs/newsboat.html#reload-time
+# Default: 60
+#reload-time <desired number of minutes>
+
+# Multi-thread
+# load feeds in parallel for faster
+# https://wiki.archlinux.org/index.php/Newsboat#Loading_of_feeds_in_parallel_for_faster_updates
+# https://newsboat.org/releases/2.22.1/docs/newsboat.html#reload-threads
+# Default: 1
+reload-threads 10
+
+# Text Width
+# If set to a number greater than 0, all HTML will be rendered to this maximum line length or the terminal width (whichever is smaller).
+# If set to 0, the terminal width will always be used. Does not apply when using external renderer or viewing the source.
+# Also note that "Link" header and "Links" section won’t be affected by it—they contain URLs which are better not wrapped.
+# https://newsboat.org/releases/2.22.1/docs/newsboat.html#text-width
+# Default: 0
+text-width 100
+
+# Display read article and feed
+# https://newsboat.org/releases/2.22.1/docs/newsboat.html#show-read-articles
+# Default: yes
+show-read-articles yes
+# https://newsboat.org/releases/2.22.1/docs/newsboat.html#show-read-feeds
+# Default: yes
+show-read-feeds yes
+
+# Player
+# https://newsboat.org/releases/2.22.1/docs/newsboat.html#podboat-player
+player mpv
