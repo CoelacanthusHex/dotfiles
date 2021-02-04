@@ -34,6 +34,16 @@ show-read-articles yes
 # Default: yes
 show-read-feeds yes
 
+# Browser
+# Set the browser command to use when opening an article in the browser.
+# If the BROWSER environment variable is set, it will be used as the default browser,
+# otherwise lynx will be used.
+# Any occurrences of %u in <command> will be replaced by the URL being opened,
+# enclosed in single quotes. Any occurrences of %F in <command> will be replaced by the feed’s URL in single quotes.
+# https://newsboat.org/releases/2.22.1/docs/newsboat.html#browser
+# Default: %BROWSER, otherwise lynx
+browser "xdg-open %u"
+
 ## podcast
 
 # Player
