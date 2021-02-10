@@ -10,3 +10,6 @@ ccls
 rust-racer
 haskell-ide-engine
 texlab
+shellcheck
+typescript
+eslint
