@@ -117,3 +117,8 @@ export ELECTRON_TRASH=kioclient5
 # https://wiki.archlinux.org/index.php/wine#Prevent_Wine_from_creating_filetype_associations
 # https://wiki.archlinux.org/index.php/wine#Unregister_existing_Wine_file_associations
 export WINEDLLOVERRIDES=winemenubuilder.exe=d
+
+# for sympy
+# python-symengine: optimized backend, set USE_SYMENGINE=1 to use
+# https://github.com/archlinux/svntogit-community/blob/570b7f1fe521f30a6f65b55efea7be29b287802f/trunk/PKGBUILD#L16
+export USE_SYMENGINE=1
