@@ -1,0 +1,20 @@
+# Maintainer: Coelacanthus <coelacanthus@outlook.com>
+
+pkgname=vscode-offical-market-hook
+pkgver=1
+pkgrel=1
+pkgdesc="Pacman hook to make VS Code use offical market."
+arch=("any")
+license=("GPL")
+depends=('systemd' 'code')
+source=(update-open-vsx.hook
+        update-open-vsx
+        )
+b2sums=('c45c8c63c7428d6844a953be88cbb0caaacceea83ad1b1420c8d466445b1573694143f9d3a2b5dbd429e4b8c3ab62bef2da0d90d0ec1e64a3bf99e57d3f2a680'
+        'f695e356dbba2ed09016c9d0314416db9530e0c312843caec768ed654899c2a8780288088263784a5120dce722b6999648393493dcba9b60eb428d969c6f66b5')
+
+package() {
+    mkdir -p "${pkgdir}/usr/share/libalpm/scripts/" "${pkgdir}/usr/share/libalpm/hooks/"
+    install -m755 -t "${pkgdir}/usr/share/libalpm/scripts/" "${srcdir}/update-open-vsx"
+    install -m644 -t "${pkgdir}/usr/share/libalpm/hooks/" "${srcdir}/update-open-vsx.hook"
+}

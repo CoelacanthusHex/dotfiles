@@ -1,0 +1,10 @@
+
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = code
+
+[Action]
+Exec = /usr/share/libalpm/scripts/update-open-vsx
+When = PostTransaction
