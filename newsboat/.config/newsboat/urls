@@ -5,5 +5,8 @@ https://farseerfc.me/feeds/atom.xml "~Farseerfc" "Programming" "Filesystem" "Arc
 https://blog.yoitsu.moe/feeds/all.atom.xml "~Horo" "Programming" "Linux"
 https://www.csslayer.info/wordpress/feed/ "~CS Slayer" "Programming" "Linux" "KDE" "Fcitx"
 
+# KDE
+https://blog.davidedmundson.co.uk/feed/ "~David Edmundson's Web Log" "KDE" "Linux"
+
 ## Podcast
 https://podcast.tuna.moe/podcast.xml "~Tunight" "enclosure" "Programming"
