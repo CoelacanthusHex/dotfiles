@@ -82,13 +82,14 @@ if dein#load_state('$PlugPath')
     let s:ccls_settings = {
          \ 'highlight': { 'lsRanges' : v:true },
          \ }
-    
+
 
     """"""""""""""""""""""""""" Language
 
 
     " languages highlight packs
-    call dein#add('sheerun/vim-polyglot')
+	let g:polyglot_disabled = ['markdown']
+	call dein#add('sheerun/vim-polyglot')
 
 
     """"""" C & C++
@@ -173,13 +174,13 @@ if dein#load_state('$PlugPath')
 
     """"""" PKGBUILD
     call dein#add('Firef0x/PKGBUILD.vim')
-    
-    
+
+
     """"""" Typescript
     call dein#add('HerringtonDarkholme/yats.vim')
     call dein#add('mhartington/nvim-typescript', {'build': './install.sh'})
-    
-    
+
+
     let s:dein_toml = '~/.config/nvim/conf.d/dein.toml'
     let s:dein_lazy_toml = '~/.config/nvim/conf.d/deinlazy.toml'
     let s:dein_ft_toml = '~/.config/nvim/conf.d/deinft.toml'
