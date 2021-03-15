@@ -193,6 +193,28 @@ extract() {
 
 alias x=extract
 
+get-git-code-line() {
+	local fileext_set
+	local success
+	local generic_fileext_set
+	generic_fileext_set='(\.yaml)|(\.md)|(\.json)|(\.toml)'
+	success=1
+	case "$1" in
+		(js|ts) fileext_set='(\.js)|(\.jsx)|(\.ts)|(\.tsx)|(\.css)|(\.html)' ;;
+		(c) fileext_set='(\.c)|(\.h)' ;;
+		(cpp|cxx) fileext_set='(\.cpp)|(\.cxx)|(\.h)|(\.hpp)' ;;
+		(rust|rs) fileext_set='(\.rs)' ;;
+		(*)
+			echo "get-git-code-line: language '$1' is not supported" >&2
+			success=0
+		;;
+	esac
+
+	if (( $success == 1 )); then
+		for file in $(git ls-files | grep -P "$generic_fileext_set|$fileext_set"); do git blame --line-porcelain $file | sed -n 's/^author //p'; done | sort | uniq -c | sort -rn;
+	fi
+}
+
 function foreground-last-job () {
     if (( ${#jobstates} )); then
         zle .push-input
