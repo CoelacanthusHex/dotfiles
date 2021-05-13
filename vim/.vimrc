@@ -5,10 +5,10 @@ runtime! archlinux.vim
 """""""""""""""""""""""""""""""""""" 插件
 
 if has("win32")
-    let $PlugPath=$XDG_DATA_HOME."\\nvim-data\\dein"
+    let $PlugPath=$XDG_DATA_HOME."\\vim-data\\dein"
 
     " 改变 swapfile 文件位置
-    set directory=$XDG_DATA_HOME\\nvim-data\\swap
+    set directory=$XDG_DATA_HOME\\vim-data\\swap
 else
     let $PlugPath=$HOME."/.vim/dein"
     " 自动安装
@@ -30,18 +30,43 @@ if dein#load_state('$PlugPath')
     call dein#begin('$PlugPath')
 
     call dein#add('~/.vim/dein/repos/github.com/Shougo/dein.vim')
+    call dein#add('wsdjeg/dein-ui.vim')
 
 
+    """"""""""""""""""""""""" 主题配色
+    call dein#add('joshdick/onedark.vim')
+    " 状态栏
+    call dein#add('vim-airline/vim-airline')
+    " 状态栏主题
+    call dein#add('vim-airline/vim-airline-themes')
+    
     " 代码格式化
     call dein#add('sbdchd/neoformat')
     map <F5> :Neoformat <CR>
+    
+    " Fcitx
+    call dein#add('lilydjwg/fcitx.vim')
 
+    " 缩进指示线
+    call dein#add('Yggdroot/indentLine')
+    " 自动括号
+    call dein#add('jiangmiao/auto-pairs')
+    " Tagbar
+    call dein#add('majutsushi/tagbar')
+    " 彩虹括号
+    call dein#add('luochen1990/rainbow')
+    " HELP文档中文
+    call dein#add('yianwillis/vimcdoc')
+    
     " 异步运行命令
     call dein#add('skywind3000/asyncrun.vim')
     " 自动打开高度为6的Quickfix
     let g:asyncrun_open=6
     " 项目编译配置 Wait To Use
     "call dein#add('skywind3000/asynctasks.vim')
+    
+    "" 
+    call dein#add('Shougo/context_filetype.vim')
 
     " 目录树
     call dein#add('preservim/nerdtree')
@@ -60,28 +85,16 @@ if dein#load_state('$PlugPath')
 
     """"""""""""""""""""""""""" 自动补全
     call dein#add('Shougo/deoplete.nvim')
+    if !has('nvim')
+        call dein#add('roxma/nvim-yarp')
+        call dein#add('roxma/vim-hug-neovim-rpc')
+    endif
+    let g:deoplete#enable_at_startup = 1
 
-    " Integration with TabNine - a machine learning-based all-language autocompleter
-    "if has('win32') || has('win64')
-    "    call dein#add('tbodt/deoplete-tabnine', { 'build': 'powershell.exe .\install.ps1' })
-    "else
-    "    call dein#add('tbodt/deoplete-tabnine', { 'build': './install.sh' })
-    "endif
     " Syntax source for neocomplete/deoplete/ncm
-    "call dein#add('shougo/neco-syntax')
+    call dein#add('shougo/neco-syntax')
     " Include completion framework for neocomplete/deoplete
-    "call dein#add('Shougo/neoinclude.vim')
-
-    " Language Server
-    call dein#add('autozimu/LanguageClient-neovim', {
-    \ 'rev': 'next',
-    \ 'build': 'bash install.sh',
-    \ })
-
-    " ccls Config
-    let s:ccls_settings = {
-         \ 'highlight': { 'lsRanges' : v:true },
-         \ }
+    call dein#add('Shougo/neoinclude.vim')
 
 
     """"""""""""""""""""""""""" Language
@@ -115,12 +128,7 @@ if dein#load_state('$PlugPath')
 
 
     """"""" Go
-    "call dein#add('fatih/vim-go',{'on_ft': 'go'})
-
-
-    """"""" Haskell
-    "call dein#add('eagletmt/neco-ghc')
-    call dein#add('nbouscal/vim-stylish-haskell')
+    call dein#add('fatih/vim-go',{'on_ft': 'go'})
 
 
     """"""" Markdown
@@ -128,10 +136,6 @@ if dein#load_state('$PlugPath')
     call dein#add('plasticboy/vim-markdown',{'on_ft':'markdown'})
     " Markdown 语法支持
     call dein#add('SidOfc/mkdx')
-
-
-    " 笔记
-    call dein#add('vimwiki/vimwiki')
 
 
     """"""" Vim Script
@@ -165,33 +169,11 @@ if dein#load_state('$PlugPath')
     call dein#add('Matt-Deacalion/vim-systemd-syntax')
 
 
-    """"""" HTML bundles
-    " Tag matches for HTML
-    call dein#add('gregsexton/MatchTag',{'on_ft':'html'})
-    call dein#add('heracek/HTML-AutoCloseTag',{'on_ft':'html'})
-    call dein#add('hail2u/vim-css3-syntax',{'on_ft':'html'})
-
-
     """"""" PKGBUILD
     call dein#add('Firef0x/PKGBUILD.vim')
-
-
-    """"""" Typescript
-    call dein#add('HerringtonDarkholme/yats.vim')
-    call dein#add('mhartington/nvim-typescript', {'build': './install.sh'})
-
-
-    let s:dein_toml = '~/.config/nvim/conf.d/dein.toml'
-    let s:dein_lazy_toml = '~/.config/nvim/conf.d/deinlazy.toml'
-    let s:dein_ft_toml = '~/.config/nvim/conf.d/deinft.toml'
-
-    "call dein#begin(s:path, [
-    "    \ expand('<sfile>'), s:dein_toml, s:dein_lazy_toml, s:dein_ft_toml
-    "    \ ])
-
-    call dein#load_toml(s:dein_toml, {'lazy': 0})
-    call dein#load_toml(s:dein_lazy_toml, {'lazy' : 1})
-    "call dein#load_toml(s:dein_ft_toml)
+    
+    """"""" Zsh
+    call dein#add('zchee/deoplete-zsh',{'on_ft': ['zsh', 'sh']})
 
 
     call dein#end()
@@ -207,8 +189,6 @@ if dein#load_state('$PlugPath')
 endif
 
 call deoplete#toggle()
-
-let g:tex_flavor = 'latex'
 
 " Workaround: dein#begin() will execute filetype off
 if has('autocmd')
@@ -334,20 +314,20 @@ function! LoadCustomConfig(config)
 endfunction
 command! -nargs=1 LoadConfig call LoadCustomConfig(<f-args>)
 
-" LoadConfig ~/.config/nvim/conf.d/
-LoadConfig ~/.config/nvim/conf.d/airline.vim
-LoadConfig ~/.config/nvim/conf.d/ale.vim
-LoadConfig ~/.config/nvim/conf.d/autopair.vim
-LoadConfig ~/.config/nvim/conf.d/deoplete.vim
-LoadConfig ~/.config/nvim/conf.d/gruvbox.vim
-LoadConfig ~/.config/nvim/conf.d/gtags.vim
-LoadConfig ~/.config/nvim/conf.d/haskell-vim.vim
-LoadConfig ~/.config/nvim/conf.d/language-server.vim
-LoadConfig ~/.config/nvim/conf.d/mkdx.vim
-LoadConfig ~/.config/nvim/conf.d/nerdtree.vim
-LoadConfig ~/.config/nvim/conf.d/racer.vim
-LoadConfig ~/.config/nvim/conf.d/vim-go.vim
-LoadConfig ~/.config/nvim/conf.d/vim-wiki.vim
+" LoadConfig ~/.config/vim/conf.d/
+LoadConfig ~/.config/vim/conf.d/airline.vim
+LoadConfig ~/.config/vim/conf.d/ale.vim
+LoadConfig ~/.config/vim/conf.d/autopair.vim
+LoadConfig ~/.config/vim/conf.d/deoplete.vim
+LoadConfig ~/.config/vim/conf.d/gruvbox.vim
+LoadConfig ~/.config/vim/conf.d/gtags.vim
+LoadConfig ~/.config/vim/conf.d/haskell-vim.vim
+LoadConfig ~/.config/vim/conf.d/language-server.vim
+LoadConfig ~/.config/vim/conf.d/mkdx.vim
+LoadConfig ~/.config/vim/conf.d/nerdtree.vim
+LoadConfig ~/.config/vim/conf.d/racer.vim
+LoadConfig ~/.config/vim/conf.d/vim-go.vim
+LoadConfig ~/.config/vim/conf.d/vimtex.vim
 
 """""""""""""""""""""""""""""""""""""" Function
 
@@ -380,14 +360,6 @@ function Biaodian()
 endfunction
 
 nnoremap <leader>ff :Neoformat<CR>
-
-" F9编译
-nnoremap <F9> :call CompileRunGcc()<CR>
-func! CompileRunGcc()
-    exec "w"
-    exec '!g++ % -o %< -Wall -Wextra -march=native -pipe -fsanitize=address -fsanitize=undefined'
-    exec '!time ./%<'
-    endfunc
 
 " F12清屏
 nnoremap <F12> :call Clss()<CR>

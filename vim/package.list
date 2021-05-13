@@ -1,7 +1,4 @@
-neovim
-python-pynvim
-ruby-neovim
-nodejs-neovim
+vim-lily
 python-jedi
 clang
 rust-analyzer

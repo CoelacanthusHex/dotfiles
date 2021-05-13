@@ -32,8 +32,8 @@
 
 # Use nano as default text editor
 # (https://wiki.archlinux.org/index.php/Nano#Replacing_vi_with_nano)
-EDITOR DEFAULT=nvim
-VISUAL DEFAULT=nvim
+EDITOR DEFAULT=vim
+VISUAL DEFAULT=vim
 
 # XDG base directory specification, modified with a simple data directory.
 # (https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html)

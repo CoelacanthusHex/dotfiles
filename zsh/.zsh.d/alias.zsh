@@ -13,12 +13,6 @@ alias reload="sync && source $HOME/.zshrc && rehash"
 # No real vi
 alias vi="vim"
 
-# using nvim instead of vim
-if (( $+commands[nvim] )); then
-    alias vim="nvim"
-    alias vimdiff='nvim -d'
-fi
-
 (( $+commands[hub] )) && alias git="hub"
 
 # using exa instead of ls, and ls' alias
