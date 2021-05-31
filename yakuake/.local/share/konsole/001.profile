@@ -18,4 +18,4 @@ Parent=FALLBACK/
 AutoCopySelectedText=true
 
 [Scrolling]
-HistorySize=3000
+HistorySize=100000
