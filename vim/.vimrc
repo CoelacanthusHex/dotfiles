@@ -84,17 +84,7 @@ if dein#load_state('$PlugPath')
     call dein#add('dense-analysis/ale',{'on_ft': ['sh', 'c', 'cpp', 'rust', 'python', 'go', 'tex']})
 
     """"""""""""""""""""""""""" 自动补全
-    call dein#add('Shougo/deoplete.nvim')
-    if !has('nvim')
-        call dein#add('roxma/nvim-yarp')
-        call dein#add('roxma/vim-hug-neovim-rpc')
-    endif
-    let g:deoplete#enable_at_startup = 1
-
-    " Syntax source for neocomplete/deoplete/ncm
-    call dein#add('shougo/neco-syntax')
-    " Include completion framework for neocomplete/deoplete
-    call dein#add('Shougo/neoinclude.vim')
+    " 现在使用 YouCompleteMe
 
 
     """"""""""""""""""""""""""" Language
@@ -113,7 +103,7 @@ if dein#load_state('$PlugPath')
 
     """"""" Python
     " Python 补全源
-    call dein#add('deoplete-plugins/deoplete-jedi',{'on_ft':'python'})
+    "call dein#add('deoplete-plugins/deoplete-jedi',{'on_ft':'python'})
     "call dein#add('deoplete-plugins/deoplete-jedi')
 
 
@@ -179,16 +169,7 @@ if dein#load_state('$PlugPath')
     call dein#end()
     call dein#save_state()
 
-    " Asynchronous C/C++/Objective-C/Objective-C++ completion for Neovim.
-    " Change clang binary path
-    call deoplete#custom#var('clangx', 'clang_binary', '/usr/bin/clang')
-    " Change clang options
-    call deoplete#custom#var('clangx', 'default_c_options', '-Wall -Wextra')
-    call deoplete#custom#var('clangx', 'default_cpp_options', '-Wall -Wextra')
-
 endif
-
-call deoplete#toggle()
 
 " Workaround: dein#begin() will execute filetype off
 if has('autocmd')
@@ -318,7 +299,6 @@ command! -nargs=1 LoadConfig call LoadCustomConfig(<f-args>)
 LoadConfig ~/.config/vim/conf.d/airline.vim
 LoadConfig ~/.config/vim/conf.d/ale.vim
 LoadConfig ~/.config/vim/conf.d/autopair.vim
-LoadConfig ~/.config/vim/conf.d/deoplete.vim
 LoadConfig ~/.config/vim/conf.d/gruvbox.vim
 LoadConfig ~/.config/vim/conf.d/gtags.vim
 LoadConfig ~/.config/vim/conf.d/haskell-vim.vim
