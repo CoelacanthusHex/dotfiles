@@ -1,0 +1,196 @@
+format = """
+$username\
+$hostname\
+$shlvl\
+$kubernetes\
+$directory\
+$vcsh\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$hg_branch\
+$docker_context\
+$package\
+$cmake\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$golang\
+$helm\
+$java\
+$julia\
+$kotlin\
+$nim\
+$nodejs\
+$ocaml\
+$perl\
+$php\
+$purescript\
+$python\
+$red\
+$ruby\
+$rust\
+$scala\
+$swift\
+$terraform\
+$vlang\
+$vagrant\
+$zig\
+$nix_shell\
+$conda\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$env_var\
+$crystal\
+$custom\
+$cmd_duration\
+$lua\
+$jobs\
+$battery\
+$time\
+$status\
+$shell\
+$line_break\
+$character"""
+
+
+
+
+[time]
+disabled = false
+
+[status]
+disabled = false
+
+[username]
+show_always = true
+
+[hostname]
+ssh_only = false
+
+
+[character]
+success_symbol = "[>](bold green)"
+error_symbol = "[x](bold red)"
+vicmd_symbol = "[<](bold green)"
+
+[git_commit]
+tag_symbol = " tag "
+
+[git_status]
+ahead = ">"
+behind = "<"
+diverged = "<>"
+renamed = "r"
+deleted = "x"
+
+[aws]
+symbol = "AWS "
+
+[conda]
+symbol = "Conda "
+
+[crystal]
+symbol = "Crystal "
+
+[cmake]
+symbol = "CMake "
+
+[dart]
+symbol = "Dart "
+
+[deno]
+symbol = "Deno "
+
+[dotnet]
+symbol = ".NET "
+
+[directory]
+read_only = " ro"
+truncation_length = 5
+truncate_to_repo = false
+
+[docker_context]
+symbol = "docker "
+
+[elixir]
+symbol = "elixir "
+
+[elm]
+symbol = "elm "
+
+[erlang]
+symbol = "Erlang "
+
+[git_branch]
+symbol = "git "
+
+[golang]
+symbol = "Go "
+
+[hg_branch]
+symbol = "hg "
+
+[java]
+symbol = "Java "
+
+[julia]
+symbol = "julia "
+
+[kotlin]
+symbol = "Kotlin "
+
+[lua]
+symbol = "Lua "
+
+[nodejs]
+symbol = "NodeJS "
+
+[memory_usage]
+symbol = "memory "
+
+[nim]
+symbol = "Nim "
+
+[nix_shell]
+symbol = "Nix "
+
+[ocaml]
+symbol = "OCaml "
+
+[package]
+symbol = "pkg "
+
+[perl]
+symbol = "Perl "
+
+[php]
+symbol = "PHP "
+
+[purescript]
+symbol = "PureScript"
+
+[python]
+symbol = "Python "
+
+[rlang]
+symbol = "R "
+
+[ruby]
+symbol = "Ruby "
+
+[rust]
+symbol = "Rust "
+
+[scala]
+symbol = "Scala "
+
+[swift]
+symbol = "Swift "
+

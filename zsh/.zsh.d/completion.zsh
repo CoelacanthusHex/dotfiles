@@ -2,7 +2,7 @@ autoload -Uz compinit
 compinit -d "${HOME}/.zsh.d/zcache/zcompdump"
 
 autoload -U +X bashcompinit && bashcompinit
-#[ -f /usr/share/bash-completion/bash_completion ] && zsh-defer source /usr/share/bash-completion/bash_completion
+#[ -f /usr/share/bash-completion/bash_completion ] && source /usr/share/bash-completion/bash_completion
 #(( $+commands[stack] )) && eval "$(stack --bash-completion-script stack)"
 
 #彩色补全菜单

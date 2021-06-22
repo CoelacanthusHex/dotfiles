@@ -1,4 +1,4 @@
-zsh-defer zinit snippet OMZP::archlinux/archlinux.plugin.zsh
+zinit snippet OMZP::archlinux/archlinux.plugin.zsh
 
 
 # completion for Syu

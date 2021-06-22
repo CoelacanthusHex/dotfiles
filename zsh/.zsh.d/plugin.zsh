@@ -3,7 +3,6 @@ if [[ -f "$HOME/.zinit/bin/zinit.zsh" ]]; then
     source "$HOME/.zinit/bin/zinit.zsh"
 else
     function zinit () { return 1 }
-    function zsh-defer () { return 1 }
     function Zinit-Install () {
         which git >/dev/null 2>&1 || { print -P "%B%F{red}!! Git was NOT FOUND :(%f%b" >&2 && return 1 }
         [[ -d "$HOME/.zinit" ]] || command mkdir -p "$HOME/.zinit"
@@ -25,13 +24,11 @@ zmodload zdharma/zplugin
 # Extended LS_COLORS
 zinit atclone"dircolors -b LS_COLORS > c.zsh" atpull'%atclone' pick"c.zsh" nocompile'!' if'[[ -n $DISPLAY || -n $ANDROID_ROOT ]]' light-mode for trapd00r/LS_COLORS
 
-zinit light romkatv/zsh-defer
+#if [[ -n "$__use_p10k" ]]; then
+#    zinit ice depth=1; zinit light romkatv/powerlevel10k
+#fi
 
-if [[ -n "$__use_p10k" ]]; then
-    zinit ice depth=1; zinit light romkatv/powerlevel10k
-fi
-
-zsh-defer zinit light-mode for \
+zinit light-mode for \
     hlissner/zsh-autopair \
     ajeetdsouza/zoxide \
     wfxr/forgit \
@@ -40,7 +37,7 @@ zsh-defer zinit light-mode for \
 
 # 加载 OMZ 框架及部分插件
 # Snippets / Plugins.
-zsh-defer zinit light-mode for \
+zinit light-mode for \
     OMZP::git/git.plugin.zsh \
     OMZP::command-not-found/command-not-found.plugin.zsh \
     OMZP::colored-man-pages/colored-man-pages.plugin.zsh \
@@ -51,7 +48,7 @@ zsh-defer zinit light-mode for \
     MichaelAquilina/zsh-you-should-use \
     voronkovich/gitignore.plugin.zsh
 
-#zsh-defer zinit light mafredri/zsh-async
+#zinit light mafredri/zsh-async
 
 zinit snippet OMZL::key-bindings.zsh
 
@@ -70,15 +67,15 @@ zinit as="completion" for \
 
 # Git 相关
 zinit ice wait"2" lucid as"program" pick"bin/git-dsf"
-zsh-defer zinit light zdharma/zsh-diff-so-fancy
+zinit light zdharma/zsh-diff-so-fancy
 
 zinit ice wait"2" lucid as"program" pick"$ZPFX/bin/git-alias" make"PREFIX=$ZPFX" nocompile
-zsh-defer zinit light tj/git-extras
+zinit light tj/git-extras
 
 # fast jump
 #zinit light skywind3000/z.lua
 # TODO: disable for no zoxide support Ref: https://github.com/changyuheng/fz/issues/24
-#zsh-defer zinit light changyuheng/fz
+#zinit light changyuheng/fz
 #export _ZL_MATCH_MODE=1 # z.lua 增强匹配算法
 #export _ZL_ADD_ONCE=1
 #export FZ_HISTORY_CD_CMD="_zlua"
@@ -89,7 +86,7 @@ zsh-defer zinit light tj/git-extras
 #zinit light-mode for \
 #    zsh-users/zsh-syntax-highlighting \
 #    zsh-users/zsh-autosuggestions
-zsh-defer zinit light-mode for \
+zinit light-mode for \
     atload"zicompinit; zicdreplay" zdharma/fast-syntax-highlighting \
     atload"_zsh_autosuggest_start" zsh-users/zsh-autosuggestions
 export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd history completion)
