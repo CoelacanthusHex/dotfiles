@@ -27,7 +27,9 @@ zinit atclone"dircolors -b LS_COLORS > c.zsh" atpull'%atclone' pick"c.zsh" nocom
 
 zinit light romkatv/zsh-defer
 
-zinit ice depth=1; zinit light romkatv/powerlevel10k
+if [[ -n "$__use_p10k" ]]; then
+    zinit ice depth=1; zinit light romkatv/powerlevel10k
+fi
 
 zsh-defer zinit light-mode for \
     hlissner/zsh-autopair \

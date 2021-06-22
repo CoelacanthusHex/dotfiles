@@ -70,8 +70,11 @@ POWERLINE_BINDINGS=/usr/share/powerline/bindings/
 #    source ~/powerlevel10k/powerlevel10k.zsh-theme
 #    # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 #    [[ ! -f $HOME/.zsh.d/p10k.zsh ]] || source $HOME/.zsh.d/p10k.zsh
-if [[ -f $HOME/.zsh.d/p10k.zsh ]]; then
+if [[ -x /usr/bin/starship ]]; then
+    eval "$(starship init zsh)"
+elif [[ -f $HOME/.zsh.d/p10k.zsh ]]; then
     source $HOME/.zsh.d/p10k.zsh
+    export __use_p10k=yes
 elif [[ -r "/usr/share/zsh/functions/Prompts/prompt_pure_setup" ]]; then
     ## config for pure
     autoload -U promptinit; promptinit
