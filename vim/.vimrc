@@ -145,10 +145,7 @@ if dein#load_state('$PlugPath')
 
     """"""" LaTeX
     call dein#add('lervag/vimtex')
-    call deoplete#custom#var('omni', 'input_patterns', {
-        \ 'tex': g:vimtex#re#deoplete
-        \})
-
+    
 
     """"""" Nginx
     call dein#add('chr4/nginx.vim')
@@ -161,9 +158,6 @@ if dein#load_state('$PlugPath')
 
     """"""" PKGBUILD
     call dein#add('Firef0x/PKGBUILD.vim')
-    
-    """"""" Zsh
-    call dein#add('zchee/deoplete-zsh',{'on_ft': ['zsh', 'sh']})
 
 
     call dein#end()

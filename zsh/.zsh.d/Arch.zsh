@@ -21,10 +21,10 @@ function duppkg4repo () {
 # pacman aliases and functions
 if (( $+commands[powerpill] )); then
     function Syu(){
-        sudo pacsync pacman -Sy && sudo powerpill -Suw $@ && sudo pacman -Su $@ && sync
+        sudo pacman-syncdb  pacman -Sy && sudo powerpill -Suw $@ && sudo pacman -Su $@ && sync
         #sudo pacman -Sy && sudo powerpill -Suw $@ && sudo pacman -Su $@ && sync
         pacman -Qtdq | ifne sudo pacman -Rcs - && sync
-        sudo pacsync pacman -Fy && sync
+        sudo pacman-syncdb  pacman -Fy && sync
     }
 fi
 
