@@ -39,11 +39,11 @@ if dein#load_state('$PlugPath')
     call dein#add('vim-airline/vim-airline')
     " 状态栏主题
     call dein#add('vim-airline/vim-airline-themes')
-    
+
     " 代码格式化
     call dein#add('sbdchd/neoformat')
     map <F5> :Neoformat <CR>
-    
+
     " Fcitx
     call dein#add('lilydjwg/fcitx.vim')
 
@@ -57,15 +57,15 @@ if dein#load_state('$PlugPath')
     call dein#add('luochen1990/rainbow')
     " HELP文档中文
     call dein#add('yianwillis/vimcdoc')
-    
+
     " 异步运行命令
     call dein#add('skywind3000/asyncrun.vim')
     " 自动打开高度为6的Quickfix
     let g:asyncrun_open=6
     " 项目编译配置 Wait To Use
     "call dein#add('skywind3000/asynctasks.vim')
-    
-    "" 
+
+    ""
     call dein#add('Shougo/context_filetype.vim')
 
     " 目录树
@@ -145,7 +145,7 @@ if dein#load_state('$PlugPath')
 
     """"""" LaTeX
     call dein#add('lervag/vimtex')
-    
+
 
     """"""" Nginx
     call dein#add('chr4/nginx.vim')
@@ -159,6 +159,7 @@ if dein#load_state('$PlugPath')
     """"""" PKGBUILD
     call dein#add('Firef0x/PKGBUILD.vim')
 
+    call dein#add('nathangrigg/vim-beancount')
 
     call dein#end()
     call dein#save_state()
@@ -302,6 +303,7 @@ LoadConfig ~/.config/vim/conf.d/nerdtree.vim
 LoadConfig ~/.config/vim/conf.d/racer.vim
 LoadConfig ~/.config/vim/conf.d/vim-go.vim
 LoadConfig ~/.config/vim/conf.d/vimtex.vim
+LoadConfig ~/.config/vim/conf.d/beancount.vim
 
 """""""""""""""""""""""""""""""""""""" Function
 
