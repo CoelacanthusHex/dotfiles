@@ -26,6 +26,8 @@ endif
 
 let g:dein#auto_recache = 1
 
+let g:polyglot_disabled = ['markdown']
+
 if dein#load_state('$PlugPath')
     call dein#begin('$PlugPath')
 
