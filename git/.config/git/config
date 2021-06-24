@@ -10,19 +10,6 @@
 
 	quotePath = false
 	pager = diff-so-fancy | less --tabs=4 -RFX
-#	pager = delta
-#
-#[interactive]
-#    diffFilter = delta --color-only
-#
-#[delta]
-#	features = side-by-side line-numbers decorations
-#	syntax-theme = Monokai Extended
-#	whitespace-error-stype = 22 reverse
-#[delta "decorations"]
-#	commit-decoration-style = bold yellow box ul
-#	file-style = bold yellow ul
-#	fire-decoration-style = none
 
 [color]
 	ui = true
