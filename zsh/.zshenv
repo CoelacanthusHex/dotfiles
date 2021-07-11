@@ -11,6 +11,8 @@ export EDITOR=vim
 export VISUAL="$EDITOR "
 export PAGER='less'
 
+export MAIL=$HOME/.mail/
+
 export GEM_HOME=$(ruby -e 'print Gem.user_dir')
 export MYVIMRC="$HOME/.config/nvim/init.vim"
 
@@ -24,7 +26,7 @@ export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
 # [2]: https://mirrors.ustc.edu.cn/help/crates.io-index.html
 export CARGO_HTTP_MULTIPLEXING=false
 
-#export WINEARCH=win32 
+#export WINEARCH=win32
 
 #export SCCACHE_DIR="/var/cache/sccache"
 [[ -x /usr/bin/sccache ]] && export RUSTC_WRAPPER="/usr/bin/sccache"

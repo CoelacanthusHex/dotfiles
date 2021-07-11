@@ -1,0 +1,10 @@
+[Unit]
+Description=Run getmail6 for %i
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/getmail --rcfile %i
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,10 @@
+[Unit]
+Description=Run getmail6 every 10 mins
+
+[Timer]
+OnStartupSec=300
+#Run every 10 minute thereafter
+OnUnitActiveSec=600
+
+[Install]
+WantedBy=timers.target

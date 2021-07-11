@@ -123,7 +123,7 @@ RUST_SRC_PATH DEFAULT=/usr/lib/rustlib/src/rust/src
 # Golang
 GOPROYX DEFAULT=https://goproxy.io,direct
 
-# Firefox 
+# Firefox
 # for hardware video acceleration
 MOZ_WEBRENDER   DEFAULT=1
 MOZ_X11_EGL     DEFAULT=1
@@ -162,7 +162,7 @@ VDPAU_DRIVER       DEFAULT=nvidia
 # https://wiki.archlinux.org/index.php/SSH_keys#Start_ssh-agent_with_systemd_user
 #SSH_AUTH_SOCK  DEFAULT="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 
-# replacing ssh-agent with gpg-agent 
+# replacing ssh-agent with gpg-agent
 # https://wiki.archlinux.org/index.php/GnuPG#SSH_agent
 SSH_AGENT_PID   DEFAULT=
 SSH_AUTH_SOCK   DEFAULT=${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh
@@ -183,3 +183,6 @@ WINEDLLOVERRIDES  DEFAULT=winemenubuilder.exe=d
 # python-symengine: optimized backend, set USE_SYMENGINE=1 to use
 # https://github.com/archlinux/svntogit-community/blob/570b7f1fe521f30a6f65b55efea7be29b287802f/trunk/PKGBUILD#L16
 USE_SYMENGINE     DEFAULT=1
+
+# For Mutt
+MAIL     DEFAULT=${HOME}/mail/

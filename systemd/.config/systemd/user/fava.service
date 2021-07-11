@@ -1,0 +1,10 @@
+[Unit]
+Description=Fava daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/fava -H 0.0.0.0 %h/accounting/ToC.bean
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
