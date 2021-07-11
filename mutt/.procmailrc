@@ -1,0 +1,6 @@
+:0 c:
+$HOME/.mail/$D/
+
+:0 Whi
+| $HOME/.procmail/notify.sh $D
+# vim: filetype=bash

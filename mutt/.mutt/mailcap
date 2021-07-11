@@ -1,0 +1,17 @@
+text/html; xdg-open %s; test=test -n "$DISPLAY"; 
+text/html; w3m -I %{charset} -T text/html; copiousoutput;
+application/pdf; zathura %s; test=test -n "$DISPLAY"; 
+application/pdf; pdftotext %s -; copiousoutput;
+application/postscript;  zathura %s; test=test -n "$DISPLAY";
+application/msword;  libreoffice %s; test=test -n "$DISPLAY";
+application/msword;  catdoc %s; copiousoutput;
+application/vnd.openxmlformats-officedocument.wordprocessingml.document; docx2txt %s -; copiousoutput;
+application/msexcel;  libreoffice %s; test=test -n "$DISPLAY"; 
+application/powerpoint;  libreoffice %s; test=test -n "$DISPLAY"; 
+application/mspowerpoint;  libreoffice %s; test=test -n "$DISPLAY"; 
+image/*;  feh %s; test=test -n "$DISPLAY"; 
+audio/*; mpv %s; test=test -n "$DISPLAY"; 
+video/*; mpv %s; test=test -n "$DISPLAY"; 
+#application/pgp-keys; pgp -f < %s ; copiousoutput
+application/zip; unzip -l %s; copiousoutput;
+application/x-rar; unrar l %s; copiousoutput;
