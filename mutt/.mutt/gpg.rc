@@ -37,13 +37,13 @@
 # Unless your key does not have encryption capability, uncomment this
 # line and replace the keyid with your own.
 #
-set pgp_default_key="0xD0B24B9A4557F2B9"
+set pgp_default_key="0x15F4180E73787863"
 
 # If you have a separate signing key, or your key _only_ has signing
 # capability, uncomment this line and replace the keyid with your
 # signing keyid.
 #
-set pgp_sign_as="0x382992CA62C08283"
+set pgp_sign_as="0xE35C89E45867AE35"
 
 
 # Section B: Commands
@@ -112,3 +112,6 @@ set pgp_good_sign="^\\[GNUPG:\\] GOODSIG"
 # set pgp_decryption_okay="^\\[GNUPG:\\] DECRYPTION_OKAY"
 set pgp_check_gpg_decrypt_status_fd
 
+
+set pgp_use_gpg_agent=yes
+set crypt_autosign=yes
