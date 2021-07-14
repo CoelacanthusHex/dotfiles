@@ -3,4 +3,5 @@ let g:ycm_semantic_triggers =  {
 			\ 'cs,lua,javascript': ['re!\w{3}'],
 			\ }
 
-
+set completeopt=menu,menuone
+let g:ycm_add_preview_to_completeopt = 0
