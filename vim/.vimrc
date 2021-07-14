@@ -306,6 +306,7 @@ LoadConfig ~/.config/vim/conf.d/racer.vim
 LoadConfig ~/.config/vim/conf.d/vim-go.vim
 LoadConfig ~/.config/vim/conf.d/vimtex.vim
 LoadConfig ~/.config/vim/conf.d/beancount.vim
+LoadConfig ~/.config/vim/conf.d/ycm.vim
 
 """""""""""""""""""""""""""""""""""""" Function
 
