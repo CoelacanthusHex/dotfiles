@@ -66,6 +66,8 @@ if dein#load_state('$PlugPath')
     let g:asyncrun_open=6
     " 项目编译配置 Wait To Use
     "call dein#add('skywind3000/asynctasks.vim')
+    
+    call dein#add('Shougo/echodoc.vim')
 
     ""
     call dein#add('Shougo/context_filetype.vim')
@@ -153,7 +155,6 @@ if dein#load_state('$PlugPath')
 
     """"""" Nginx
     call dein#add('chr4/nginx.vim')
-    call dein#add('Shougo/echodoc.vim')
 
 
     """"""" systemd 文件的语法高亮
@@ -310,6 +311,7 @@ LoadConfig ~/.config/vim/conf.d/vimtex.vim
 LoadConfig ~/.config/vim/conf.d/beancount.vim
 LoadConfig ~/.config/vim/conf.d/ycm.vim
 LoadConfig ~/.config/vim/conf.d/gtags.vim
+LoadConfig ~/.config/vim/conf.d/echodoc.vim
 
 """""""""""""""""""""""""""""""""""""" Function
 
