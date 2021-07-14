@@ -1,7 +1,7 @@
 [user]
 	email = CoelacanthusHex@gmail.com
 	name = Coelacanthus
-	signingkey = 382992CA62C08283
+	signingkey = E35C89E45867AE35
 
 [core]
 	# Use custom `.gitignore` and `.gitattributes`
