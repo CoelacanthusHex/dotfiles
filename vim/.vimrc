@@ -82,7 +82,7 @@ if dein#load_state('$PlugPath')
     " highlights the folder name
     "let g:NERDTreeHighlightFoldersFullName = 1
     " 图标
-    call dein#add('ryanoasis/vim-devicons')
+    "call dein#add('ryanoasis/vim-devicons')
     call dein#add('liuchengxu/nerdtree-dash')
 
     call dein#add('dense-analysis/ale',{'on_ft': ['sh', 'c', 'cpp', 'rust', 'python', 'go', 'tex']})
@@ -195,10 +195,10 @@ set signcolumn=yes
 set showcmd
 
 " 终端使用真彩色(guicolor)
-set termguicolors
+if $TERM != 'linux'
+    set termguicolors
+endif
 
-" 左下角显示当前vim模式
-" set showmode
 
 " 自动缩进
 set autoindent
