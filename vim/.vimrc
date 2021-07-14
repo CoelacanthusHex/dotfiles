@@ -85,6 +85,9 @@ if dein#load_state('$PlugPath')
 
     call dein#add('dense-analysis/ale',{'on_ft': ['sh', 'c', 'cpp', 'rust', 'python', 'go', 'tex']})
 
+    call dein#add('vim-scripts/gtags.vim')
+    call dein#add('ludovicchabant/vim-gutentags')
+
     """"""""""""""""""""""""""" 自动补全
     " 现在使用 YouCompleteMe
 
@@ -98,9 +101,8 @@ if dein#load_state('$PlugPath')
 
 
     """"""" C & C++
-    call dein#add('vim-scripts/gtags.vim',{'on_ft': ['c', 'cpp']})
-    " C++ 的clang补全
-    " 见下
+
+
 
 
     """"""" Python
@@ -307,6 +309,7 @@ LoadConfig ~/.config/vim/conf.d/vim-go.vim
 LoadConfig ~/.config/vim/conf.d/vimtex.vim
 LoadConfig ~/.config/vim/conf.d/beancount.vim
 LoadConfig ~/.config/vim/conf.d/ycm.vim
+LoadConfig ~/.config/vim/conf.d/gtags.vim
 
 """""""""""""""""""""""""""""""""""""" Function
 
