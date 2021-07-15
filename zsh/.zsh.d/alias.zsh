@@ -13,6 +13,10 @@ alias reload="sync && source $HOME/.zshrc && rehash"
 # No real vi
 alias vi="vim"
 
+# Enable aliases to be sudo’ed
+# http://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo
+alias sudo='sudo '
+
 (( $+commands[hub] )) && alias git="hub"
 
 # using exa instead of ls, and ls' alias
