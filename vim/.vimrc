@@ -66,7 +66,7 @@ if dein#load_state('$PlugPath')
     let g:asyncrun_open=6
     " 项目编译配置 Wait To Use
     "call dein#add('skywind3000/asynctasks.vim')
-    
+
     call dein#add('Shougo/echodoc.vim')
 
     ""
@@ -175,6 +175,9 @@ endif
 if has('autocmd')
 	filetype plugin indent on
 endif
+
+" Make Vim more useful
+set nocompatible
 
 if has('syntax')
 	syntax enable
