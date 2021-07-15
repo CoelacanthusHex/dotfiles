@@ -1,10 +1,10 @@
 """"""" Airline Configurations
 
+let g:airline_powerline_fonts = 0
 if $TERM != 'linux'
-	let g:airline_powerline_fonts = 1
+	let g:airline_symbols_ascii = 0
 	let g:airline_theme='onedark'
 else
-	let g:airline_powerline_fonts = 0
 	let g:airline_symbols_ascii = 1
 	let g:airline_theme='base16_gruvbox_dark_hard'
 endif
