@@ -84,6 +84,7 @@ alias today="date '+%Y-%m-%d'"
 alias now="date --rfc-3339=seconds"
 
 # Vim style alias
+alias ':e'=vim
 alias :q="exit"
 alias :w="sync"
 alias :x="sync && exit"
