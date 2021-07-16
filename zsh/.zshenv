@@ -11,6 +11,11 @@ export EDITOR=vim
 export VISUAL="$EDITOR "
 export PAGER='less'
 
+# Workaround: GUI app like KMail need pinentry-qt but we need pinentry-curse in the terminal
+# https://wiki.gentoo.org/wiki/GnuPG#Changing_pinentry_for_SSH_logins
+# It's useless but
+#export PINENTRY_USER_DATA="USE_CURSES=1"
+
 export MAIL=$HOME/.mail/
 
 export GEM_HOME=$(ruby -e 'print Gem.user_dir')
