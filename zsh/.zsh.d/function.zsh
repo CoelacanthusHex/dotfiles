@@ -315,4 +315,36 @@ function check-fcitx5-dbus() {
     qdbus org.fcitx.Fcitx5 /controller org.fcitx.Fcitx.Controller1.DebugInfo
 }
 
+# GitHub
+# https://matklad.github.io/2018/05/03/effective-pull-requests.html
+# calling `get-fork rust-lang/cargo` would clone github.com/matklad/cargo,
+# and setup upstream properly
+function get-fork() {
+    local userrepo=$1
+    local repo=`basename $userrepo`
+    git clone git@github.com:matklad/$repo.git
+    pushd $repo
+    git remote add upstream git@github.com:$userrepo.git
+    git fetch upstream
+    git checkout master
+    #git branch --set-upstream-to=upstream/master
+    #git pull --rebase --force
+    popd
+}
+# calling `set-upstream rust-lang/cargo` would setup upstream properly
+function set-upstream() {
+    local userrepo=$1
+    git remote add upstream git@github.com:$userrepo.git
+    git fetch upstream
+    git checkout master
+    git branch --set-upstream-to=upstream/master
+}
+# called like `get-pr 9262`, this function would checkout
+# GitHub pull request #9262 to `pr-9262` branch
+function get-pr() {
+    local pr=$1
+    git fetch upstream pull/$pr/head:pr-$pr
+    git checkout pr-$pr
+}
+
 # vim: ft=zsh
