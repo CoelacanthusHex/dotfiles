@@ -74,12 +74,12 @@ elif [[ -r "$POWERLINE_BINDINGS/zsh/powerline.zsh" ]]; then
 fi
 
 
-source $HOME/.zsh.d/plugin.zsh
 source $HOME/.zsh.d/completion.zsh
 source $HOME/.zsh.d/config.zsh
 source $HOME/.zsh.d/function.zsh
-source $HOME/.zsh.d/Arch.zsh
 source $HOME/.zsh.d/alias.zsh
+source $HOME/.zsh.d/plugin.zsh
+source $HOME/.zsh.d/Arch.zsh
 
 # Load user config.
 if [[ -f ~/.zshrc.local ]]; then
