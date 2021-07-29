@@ -15,7 +15,10 @@ Name=001
 Parent=FALLBACK/
 
 [Interaction Options]
+AllowEscapedLinks=true
 AutoCopySelectedText=true
+EscapedLinksSchema=http://;https://;file://;fugitive://
+OpenLinksByDirectClickEnabled=true
 
 [Scrolling]
 HistorySize=100000

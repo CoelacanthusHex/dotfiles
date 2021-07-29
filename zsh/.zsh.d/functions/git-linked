@@ -1,0 +1,99 @@
+#!/usr/bin/python3
+
+import sys
+import subprocess
+import re
+
+import pygit2
+
+PAGER_CMD = ['less', '-rFXM']
+
+def linked(text: str, url: str) -> str:
+  return f'\x1b]8;;{url}\x1b\\{text}\x1b]8;;\x1b\\'
+
+class Transformer:
+  def __init__(self) -> None:
+    self.git_repo = repo = pygit2.Repository('.')
+    # there may be a color code at the front so no \b
+    self.git_hash = re.compile(r'[a-f0-9]{6,}\b')
+    self.gh_repo = None
+
+    gh_url = None
+    try:
+      url = repo.remotes['upstream'].url
+      if 'github.com' in url:
+        gh_url = url
+    except KeyError:
+      if urls := [r.url for r in repo.remotes if 'github.com' in r.url]:
+        gh_url = urls[0]
+
+    if gh_url:
+      if gh_url.endswith('.git'):
+        gh_url = gh_url[:-4]
+      if m := re.search(r'(?<=[:/]).*', gh_url):
+        self.gh_repo = m.group(0)
+        self.transform = self.transform_github
+
+  def transform_github(self, line: str) -> str:
+    line = self.git_hash.sub(self._link_commit, line)
+    line = re.sub(r'([-/\w]*)#(\d+)', self._link_gh_issue, line)
+    return line
+
+  def transform(self, line: str) -> str:
+    return self.git_hash.sub(self._link_commit, line)
+
+  def _link_gh_issue(self, match: re.Match) -> str:
+    text = match.group(0)
+    repo = match.group(1) or self.gh_repo
+    nr = match.group(2)
+    url = f'https://github.com/{repo}/issues/{nr}'
+    return linked(text, url)
+
+  def _link_commit(self, match: re.Match) -> str:
+    hash = match.group(0)
+    repo = self.git_repo
+    try:
+      obj = repo[hash]
+      fullhash = obj.hex
+      type = obj.type_str
+    except (KeyError, ValueError): # no such commit, ambiguous
+      return hash
+    line = linked(hash, f'fugitive://{repo.path}/{fullhash}')
+    if self.gh_repo and type == 'commit':
+      line += ' ' + linked('(web)', f'https://github.com/{self.gh_repo}/commit/{fullhash}')
+    return line
+
+def main():
+  args = sys.argv[1:]
+  if args:
+    git = subprocess.Popen(
+      ['git', '--no-pager', *args, '--color=always'],
+      stdout = subprocess.PIPE,
+      text = True,
+    )
+    input = git.stdout
+  else:
+    git = None
+    input = sys.stdin
+
+  pager = subprocess.Popen(PAGER_CMD, stdin=subprocess.PIPE, text=True)
+  transformer = Transformer()
+  try:
+    for line in input:
+      line = transformer.transform(line)
+      pager.stdin.write(line)
+  except BrokenPipeError:
+    pass
+  finally:
+    if git:
+      git.stdout.close()
+      git.wait()
+
+    try:
+      pager.stdin.close()
+    except BrokenPipeError:
+      pass
+    pager.wait()
+
+if __name__ == '__main__':
+  main()
