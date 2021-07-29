@@ -46,7 +46,10 @@ if dein#load_state('$PlugPath')
     call dein#add('sbdchd/neoformat')
     map <F5> :Neoformat <CR>
 
-    " Fcitx
+	" Git
+	call dein#add('tpope/vim-fugitive')
+
+	" Fcitx
     call dein#add('lilydjwg/fcitx.vim')
 
     " 缩进指示线
