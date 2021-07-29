@@ -8,3 +8,4 @@
 --ignore=TODO
 --ignore=POSTINSTALL
 --ignore=POSTINSTALL.md
+--ignore=POSTINSTALL.bash
