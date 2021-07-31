@@ -68,6 +68,21 @@ call plug#begin('~/.vim/plugged')
 
     """"""""""""""""""""""""""" 自动补全
     " 现在使用 YouCompleteMe
+    
+    if has("win32") || has("win64")
+        function! BuildYCM(info)
+            " info is a dictionary with 3 fields
+            " - name:   name of the plugin
+            " - status: 'installed', 'updated', or 'unchanged'
+            " - force:  set on PlugInstall! or PlugUpdate!
+            if a:info.status == 'installed' || a:info.force
+                !./install.py --clangd-completer --system-libclang --ninja
+            endif
+        endfunction
+
+        Plug 'ycm-core/YouCompleteMe', { 'do': function('BuildYCM') }
+        let g:ycm_clangd_binary_path = "/path/to/clangd"
+    endif
 
 
     """"""""""""""""""""""""""" Language
