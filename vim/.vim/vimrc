@@ -1,0 +1,368 @@
+" system default
+runtime! archlinux.vim
+
+
+"""""""""""""""""""""""""""""""""""" 插件
+
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+    silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+let g:polyglot_disabled = ['markdown']
+
+call plug#begin('~/.vim/plugged')
+
+	Plug 'junegunn/vim-plug'
+
+    """"""""""""""""""""""""" 主题配色
+    Plug 'joshdick/onedark.vim'
+    " 状态栏
+    Plug 'vim-airline/vim-airline'
+    " 状态栏主题
+    Plug 'vim-airline/vim-airline-themes'
+
+    " 代码格式化
+    Plug 'sbdchd/neoformat'
+    map <F5> :Neoformat <CR>
+	" Git
+	Plug 'tpope/vim-fugitive'
+	" Fcitx
+    Plug 'lilydjwg/fcitx.vim'
+    " 缩进指示线
+    Plug 'Yggdroot/indentLine'
+    " 自动括号
+    Plug 'jiangmiao/auto-pairs'
+    " Tagbar
+    Plug 'majutsushi/tagbar'
+    " 彩虹括号
+    Plug 'luochen1990/rainbow'
+    " HELP文档中文
+    Plug 'yianwillis/vimcdoc'
+	" EditorConfig
+	Plug 'editorconfig/editorconfig-vim'
+
+    Plug 'Shougo/echodoc.vim'
+
+    ""
+    Plug 'Shougo/context_filetype.vim'
+
+    " 目录树
+    Plug 'preservim/nerdtree'
+    map <C-n> :NERDTreeToggle<CR>
+    let NERDTreeShowHidden=1
+    "Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+    " enables folder icon highlighting using exact match
+    "let g:NERDTreeHighlightFolders = 1
+    " highlights the folder name
+    "let g:NERDTreeHighlightFoldersFullName = 1
+    " 图标
+    "Plug 'ryanoasis/vim-devicons'
+    Plug 'liuchengxu/nerdtree-dash'
+
+    Plug 'dense-analysis/ale', {'for': ['sh', 'c', 'cpp', 'rust', 'python', 'go', 'tex']}
+
+    Plug 'vim-scripts/gtags.vim'
+    Plug 'ludovicchabant/vim-gutentags'
+
+    """"""""""""""""""""""""""" 自动补全
+    " 现在使用 YouCompleteMe
+
+
+    """"""""""""""""""""""""""" Language
+
+    " languages highlight packs
+	let g:polyglot_disabled = ['markdown']
+	Plug 'sheerun/vim-polyglot'
+
+
+    """"""" Rust
+    " Rust 支持
+    Plug 'rust-lang/rust.vim', {'for': 'rust'}
+    Plug 'racer-rust/vim-racer', {'for': 'rust'}
+    " 保存时自动格式化
+    "let g:autofmt_autosave = 1
+    " Cargo 增强
+    Plug 'timonv/vim-cargo'
+
+
+    """"""" Go
+    Plug 'fatih/vim-go', {'for': 'go'}
+
+
+    """"""" Markdown
+    " markdown syntax highlight, theme
+    Plug 'plasticboy/vim-markdown', {'for':'markdown'}
+    " Markdown 语法支持
+    Plug 'SidOfc/mkdx'
+
+
+    """"""" Vim Script
+    Plug 'Shougo/neco-vim', {'for':'vim'}
+
+
+    """"""" Haskell
+    Plug 'neovimhaskell/haskell-vim', {'for':'haskell'}
+
+
+    """"""" Pandoc
+    " Pandoc Support
+    Plug 'vim-pandoc/vim-pandoc'
+    " Pandoc Syntax Highlight Support
+    Plug 'vim-pandoc/vim-pandoc-syntax'
+
+
+    """"""" LaTeX
+    Plug 'lervag/vimtex'
+
+
+    """"""" Nginx
+    Plug 'chr4/nginx.vim'
+
+
+    """"""" systemd 文件的语法高亮
+    Plug 'Matt-Deacalion/vim-systemd-syntax'
+
+
+    """"""" PKGBUILD
+    Plug 'Firef0x/PKGBUILD.vim'
+
+    Plug 'nathangrigg/vim-beancount'
+
+call plug#end()
+
+
+filetype plugin indent on
+
+" Make Vim more useful
+set nocompatible
+
+if has('syntax')
+	syntax enable
+	syntax on
+endif
+
+set mouse=a
+set number
+set modeline
+
+" 高亮显示当前行/列
+set cursorline
+set cursorcolumn
+" 总是显示侧边栏（用于显示 mark/gitdiff/诊断信息）
+set signcolumn=yes
+
+" 在状态栏显示正在输入的命令
+set showcmd
+
+" https://github.com/lilydjwg/dotvim/blob/19f6f8ea67150cb5498706912b770d3c736716f2/vimrc#L559
+if has("gui_running")
+    set mousemodel=popup
+    " 有些终端不能改变大小
+    set columns=88
+    set lines=38
+    set cursorline
+    elseif has("unix")
+    set ambiwidth=single
+    " 防止退出时终端乱码
+    " 这里两者都需要。只前者标题会重复，只后者会乱码
+    exec "set t_fs=\033(B\007"
+    exec "set t_IE=\033(B\007"
+    if $COLORTERM == 'truecolor'
+        set cursorline
+        set termguicolors
+        let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+        let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    elseif &term =~ '256color\|nvim'
+        set cursorline
+    else
+        " 在 Linux 文本终端下非插入模式显示块状光标
+        if &term == "linux" || &term == "fbterm"
+        exec "set t_ve+=\033[?6c"
+        autocmd InsertEnter * exec "set t_ve-=\033[?6c"
+        autocmd InsertLeave * exec "set t_ve+=\033[?6c"
+        " autocmd VimLeave * exec "set t_ve-=\033[?6c"
+        endif
+        if &term == "fbterm"
+        set cursorline
+        elseif $TERMCAP =~ 'Co#256'
+        set t_Co=256
+        set cursorline
+        endif
+    endif
+elseif has('win32') && exists('$CONEMUBUILD')
+    " enable 256 colors in ConEmu on Win
+    set term=xterm
+    set t_Co=256
+    let &t_AB="\e[48;5;%dm"
+    let &t_AF="\e[38;5;%dm"
+    set cursorline
+endif
+
+" https://github.com/lilydjwg/dotvim/blob/19f6f8ea67150cb5498706912b770d3c736716f2/vimrc#L621
+" bracketed paste mode support for tmux
+if &term =~ '^screen\|^tmux' && exists('&t_BE')
+    let &t_BE = "\033[?2004h"
+    let &t_BD = "\033[?2004l"
+    " t_PS and t_PE are key code options and they are special
+    exec "set t_PS=\033[200~"
+    exec "set t_PE=\033[201~"
+endif
+if &term =~ '^screen\|^tmux'
+    " This may leave mouse in use by terminal application
+    " exec "set t_RV=\033Ptmux;\033\033[>c\033\\"
+    set ttymouse=sgr
+    if &t_GP == ''
+        " for getwinpos
+        exec "set t_GP=\033Ptmux;\033\033[13t\033\\"
+    endif
+endif
+
+
+
+" 自动缩进
+set autoindent
+set smartindent
+
+" ctrl+hjkl 移动窗口
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" https://github.com/lilydjwg/dotvim/blob/19f6f8ea67150cb5498706912b770d3c736716f2/vimrc#L546
+set statusline=%n\ %<%f\ %LL\ %{&modified?'[+]':&modifiable\|\|&ft=~'^\\vhelp\|qf$'?'':'[-]'}%h%r%{&fenc=='utf-8'\|\|&fenc==''?'':'['.&fenc.']'}%{&ff=='unix'?'':'['.&ff.']'}%{&bomb?'[BOM]':''}%{&eol?'':'[noeol]'}%{&diff?'[diff]':''}%=\ 0x%-4.8B\ \ \ \ %-14.(%l,%c%V%)\ %P
+
+set backspace=indent,eol,start
+set tabstop=4
+set shiftwidth=4
+
+set langmenu=zh_CN.UTF-8
+set helplang=cn
+set termencoding=utf-8
+set encoding=utf-8
+set fileencodings=utf-8,ucs-bom,gbk,cp936,gb2312,gb18030
+set fileformats=unix,dos,mac
+
+" 如遇Unicode值大于255的文本，不必等到空格再折行
+set formatoptions+=m
+
+" 合并两行中文时，不在中间加空格
+set formatoptions+=B
+
+" Enable a visual menu when using TAB autocomplete in command mode
+set wildmenu
+
+" 延迟绘制（提升性能）
+set lazyredraw
+
+" 显示tab和空格
+set list
+" 设置tab和空格样式
+set lcs=tab:\|\ ,nbsp:%,trail:-
+
+set ttyfast
+
+"----------------------------------------------------------------------
+" 搜索设置
+"----------------------------------------------------------------------
+
+" 搜索时忽略大小写
+set ignorecase
+
+" 智能搜索大小写判断，默认忽略大小写，除非搜索内容包含大写字母
+set smartcase
+
+" 高亮搜索内容
+set hlsearch
+
+" 查找输入时动态增量显示查找结果
+set incsearch
+
+" delete trailing whitespace on save
+autocmd BufWritePre * %s/\s\+$//e
+
+" When the <Enter> key is pressed while the popup menu is visible, it only
+" hides the menu. Use this mapping to close the menu and also start a new
+" line.
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+
+" Use <TAB> to select the popup menu:
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+""""""""""""""""""""""""""""""""""""" Extensions Setting
+
+" 带有如下符号的单词不要被换行分割
+set iskeyword+=_,$,@,%,#,-
+set tags=tags;/
+
+""""""" 配色方案
+set background=dark
+"colorscheme gruvbox
+colorscheme onedark
+
+""""""" taglist Configuration
+let Tlist_Sort_Type = "name"                                   " 按照名称排序
+let Tlist_Use_Right_Window = 1                                 " 在右侧显示窗口
+let Tlist_Compart_Format = 1                                   " 压缩方式
+let Tlist_Exist_OnlyWindow = 1                                 " 如果只有一个buffer，kill窗口也kill掉buffer
+let Tlist_File_Fold_Auto_Close = 0                             " 不要关闭其他文件的tags
+let Tlist_Enable_Fold_Column = 0                               " 不要显示折叠树
+
+if has("win32") || has("win64")
+  let g:vimfiles = split(&runtimepath, ',')[1]
+  if has('directx')
+    set renderoptions=type:directx
+  endif
+else
+  " Linux 路径 [[[3
+  let g:vimfiles = split(&runtimepath, ',')[0]
+  " cron 的目录不要备份
+  set backupskip+=/etc/cron.*/*
+  set backupdir=.,/var/tmp,/tmp
+endif
+
+
+"""""""""""""""""""""""""""""""""""""" Function
+
+let mapleader="\\"
+
+" https://github.com/lilydjwg/dotvim/blob/19f6f8ea67150cb5498706912b770d3c736716f2/vimrc#L36
+" 删除所有未显示且无修改的缓冲区以减少内存占用
+function Lilydjwg_cleanbufs()
+  for bufNr in filter(range(1, bufnr('$')),
+        \ 'buflisted(v:val) && !bufloaded(v:val)')
+    execute bufNr . 'bdelete'
+  endfor
+endfunction
+
+map <F2> :call Biaodian() <CR>
+function Biaodian()
+    %s/”/"/g
+    %s/“/"/g
+    %s/，/,/g
+    %s/。/./g
+    %s/？/?/g
+    %s/〈/</g
+    %s/〉/>/g
+    %s/（/(/g
+    %s/）/)/g
+    %s/：/:/g
+    %s/；/;/g
+    %s/‘/'/g
+    %s/’/'/g
+    %s/！/!/g
+endfunction
+
+nnoremap <leader>ff :Neoformat<CR>
+
+if exists(':packadd')
+  " insert after the first one so spell changes won't go
+  " into our config directory.
+  let rtp = split(&runtimepath, ',')
+  call insert(rtp, g:vimfiles . '/conf.d', 1)
+  let &runtimepath = join(rtp, ',')
+  unlet rtp
+endif
