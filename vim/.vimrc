@@ -45,13 +45,10 @@ if dein#load_state('$PlugPath')
     " 代码格式化
     call dein#add('sbdchd/neoformat')
     map <F5> :Neoformat <CR>
-
 	" Git
 	call dein#add('tpope/vim-fugitive')
-
 	" Fcitx
     call dein#add('lilydjwg/fcitx.vim')
-
     " 缩进指示线
     call dein#add('Yggdroot/indentLine')
     " 自动括号
@@ -62,8 +59,9 @@ if dein#load_state('$PlugPath')
     call dein#add('luochen1990/rainbow')
     " HELP文档中文
     call dein#add('yianwillis/vimcdoc')
-
-    " 异步运行命令
+	" EditorConfig
+	call dein#add('editorconfig/editorconfig-vim')
+	" 异步运行命令
     call dein#add('skywind3000/asyncrun.vim')
     " 自动打开高度为6的Quickfix
     let g:asyncrun_open=6
@@ -318,6 +316,7 @@ LoadConfig ~/.config/vim/conf.d/beancount.vim
 LoadConfig ~/.config/vim/conf.d/ycm.vim
 LoadConfig ~/.config/vim/conf.d/gtags.vim
 LoadConfig ~/.config/vim/conf.d/echodoc.vim
+LoadConfig ~/.config/vim/conf.d/editorconfig.vim
 
 """""""""""""""""""""""""""""""""""""" Function
 
