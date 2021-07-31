@@ -1,3 +1,15 @@
+:AnsiEsc	AnsiEsc.txt	/*:AnsiEsc*
+AnsiEsc	AnsiEsc.txt	/*AnsiEsc*
+AnsiEsc-Method	AnsiEsc.txt	/*AnsiEsc-Method*
+AnsiEsc-contents	AnsiEsc.txt	/*AnsiEsc-contents*
+AnsiEsc-copyright	AnsiEsc.txt	/*AnsiEsc-copyright*
+AnsiEsc-history	AnsiEsc.txt	/*AnsiEsc-history*
+AnsiEsc-manual	AnsiEsc.txt	/*AnsiEsc-manual*
+AnsiEsc.txt	AnsiEsc.txt	/*AnsiEsc.txt*
+g:ansiBold	AnsiEsc.txt	/*g:ansiBold*
+g:ansiItalic	AnsiEsc.txt	/*g:ansiItalic*
+g:ansiNone	AnsiEsc.txt	/*g:ansiNone*
+g:ansiUnderline	AnsiEsc.txt	/*g:ansiUnderline*
 mathmenu	mathmenu.txt	/*mathmenu*
 mathmenu-arrows	mathmenu.txt	/*mathmenu-arrows*
 mathmenu-box	mathmenu.txt	/*mathmenu-box*
