@@ -19,4 +19,5 @@ augroup filetypedetect
   au BufNewFile,BufRead *openvpn*/*.conf,*.ovpn		setf openvpn
   au BufRead		$HOME/.cabal/config		setf cabal
   au BufRead		*procmaillog			setf mail
+  au BufNewFile,BufRead wg*.conf,peers.conf	setf dosini
 augroup END
