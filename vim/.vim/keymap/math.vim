@@ -1,9 +1,9 @@
 " math.vim
-"   Author: Charles E. Campbell, Jr.
-"   Date:   Mar 04, 2010
-"   Version: 3
+"   Author: Charles E. Campbell
+"   Date:   Apr 20, 2019 - Jun 18, 2020
+"   Version: 6
 " ---------------------------------------------------------------------
-let g:loaded_math_keymap = "v3"
+let g:loaded_math_keymap = "v6"
 let b:keymap_name        = "math"
 
 " Keymap Initialization: {{{1
@@ -134,6 +134,12 @@ w	<char-0x03C9>   " ω greek small letter omega
 ^T	<char-0x1D40>	" ᵀ
 ^U	<char-0x1D41>	" ᵁ
 ^W	<char-0x1D42>	" ᵂ
+^qb	<char-0x1D5D>	" ᵝ
+^qg	<char-0x1D5E>	" ᵞ
+^qd	<char-0x1D5F>	" ᵟ
+^qf	<char-0x1D60>	" ᵠ
+^qx	<char-0x1D61>	" ᵡ
+^qu	<char-0x1DBF>	" ᶿ
 
 " subscripts {{{1
 _0	<char-0x2080>	" ₀
@@ -148,18 +154,33 @@ _8	<char-0x2088>	" ₈
 _9	<char-0x2089>	" ₉
 _+	<char-0x208A>	" ₊
 _-	<char-0x208B>	" ₋
+_*	<char-0x204E>	" ⁎
 _/	<char-0x02CF>	" ˏ
 _(	<char-0x208D>	" ₍
 _)	<char-0x208E>	" ₎
 _^	<char-0x2038>	" ‸
 _a	<char-0x2090>	" ₐ
 _e	<char-0x2091>	" ₑ
+_h	<char-0x2095>	" ₕ
 _i	<char-0x1D62>	" ᵢ
+_j	<char-0x2C7C>	" ⱼ
+_k	<char-0x2096>	" ₖ
+_l	<char-0x2097>	" ₗ
+_m	<char-0x2098>	" ₘ
+_n	<char-0x2099>	" ₙ
 _o	<char-0x2092>	" ₒ
+_p	<char-0x209a>	" ₚ
 _r	<char-0x1D63>	" ᵣ
+_s	<char-0x209b>	" ₛ
+_t	<char-0x209c>	" ₜ
 _u	<char-0x1D64>	" ᵤ
 _v	<char-0x1D65>	" ᵥ
 _x	<char-0x2093>	" ₓ
+_qb	<char-0x1D66>	" ᵦ
+_qd	<char-0x1D68>	" ᵨ
+_qf	<char-0x1D69>	" ᵩ
+_qg	<char-0x1D67>	" ᵧ
+_qx	<char-0x1D6A>	" ᵪ
 
 " fractions {{{1
 F12	<char-0x00BD>	" ½
@@ -179,16 +200,34 @@ F58	<char-0x215D>	" ⅝
 F78	<char-0x215E>	" ⅞
 
 " arrows {{{1
--<	<char-0x27F5>	" ⟵
-->	<char-0x27F6>	" ⟶
+-<	<char-0x2190>	" ←
+->	<char-0x2192>	" →
 <->	<char-0x2194>	" ↔
-=<	<char-0x27F8>	" ⟸
-=>	<char-0x27F9>	" ⟹
-IFF	<char-0x27FA>	" ⟺
-|-<	<char-0x21A4>	" ↤
-|->	<char-0x21A6>	" ↦
+=<	<char-0x21D0>	" ⇐
+=>	<char-0x21D2>	" ⇒
+IFF	<char-0x21D4>	" ⇔
+<|	<char-0x21A4>	" ↤
+>|	<char-0x21A6>	" ↦
 |=<	<char-0x27FD>	" ⟽
 |=>	<char-0x27FE>	" ⟾
+>d	<char-0x2193>	" ↓
+>u	<char-0x2191>	" ↑
+>U	<char-0x21D1>	" ⇑
+>D	<char-0x21D3>	" ⇓
+>ud	<char-0x2195>	" ↕
+<o	<char-0x21BA>	" ↺
+>o	<char-0x21BB>	" ↻
+>ne	<char-0x2197>	" ↗
+>se	<char-0x2198>	" ↘
+>sw	<char-0x2199>	" ↙
+>nw	<char-0x2196>	" ↖
+>!	<char-0x219a>	" ↚
+<!	<char-0x219b>	" ↛
+~>	<char-0x219d>	" ↝
+<~>	<char-0x21AD>	" ↭
+H<	<char-0x21A9>	" ↩
+H>	<char-0x21AA>	" ↪
+
 
 " grouping {{{1
 [[	<char-0x27E6>	" ⟦
@@ -248,17 +287,24 @@ __	<char-0x23AF>	" ⎯ (horizontal line extension)
 ==	<char-0x2550>	" ═ (double horizontal)
 HB	<char-0x2015>	" ― (horizontal bar)
 VB	<char-0x2503>	" ┃ (vertical bar)
+SC	<char-0x0087>   " § (section sign)
 BB	<char-0x2016>   " ‖ (double vertical bar)
+SB	<char-0x212C>	" ℬ (script B)
+SE	<char-0x2130>	" ℰ (script E)
+SF	<char-0x2131>	" ℱ (script F)
 SH	<char-0x210B>	" ℋ (script H)
 SI	<char-0x2111>	" ℑ (script I)
 SL	<char-0x2112>	" ℒ (script L)
+SM	<char-0x2133>	" ℳ (script M)
 SR	<char-0x211C>	" ℜ (script R)
 
 
 " operators {{{1
-O.	<char-0x2A00>	" ⨀
-O+	<char-0x2A01>	" ⨁
-Ox	<char-0x2A02>	" ⨂
+O.	<char-0x2299>	" ⊙
+O+	<char-0x2295>	" ⊕
+O-	<char-0x2296>	" ⊖
+Ox	<char-0x2297>	" ⊗
+O/	<char-0x2298>	" ⊘
 U.	<char-0x2A03>	" ⨃
 U+	<char-0x2A04>	" ⨄
 IN	<char-0x2229>	" ∩ (intersection)
@@ -310,6 +356,10 @@ L/	<char-0x2216>	" ∖ (left division slash)
 P1	<char-0x2032>	" ′ (prime)
 P2	<char-0x2033>	" ″ (double prime)
 P3	<char-0x2034>	" ‴ (triple prime)
+FUL	<char-0x23a1>	" ⎡ (floor up left)
+FUR	<char-0x23a4>	" ⎤ (floor up right)
+FDL	<char-0x23a3>	" ⎣ (floor down left)
+FDR	<char-0x23a6>	" ⎦ (floor down right)
 
 " relationals {{{1
 <=	<char-0x2264>	" ≤
@@ -326,6 +376,7 @@ R~	<char-0x223d>	" ∽ (reversed tilde operator)
 =~	<char-0x2245>	" ≅ (approximately equal to)
 !~-	<char-0x2244>	" ≄ (not approximately equal to)
 ~~	<char-0x2248>	" ≈ (almost equal to)
+!~~	<char-0x2249>	" ≉ (not almost equal to)
 =.	<char-0x2250>	" ≐ (approaches the limit)
 EST	<char-0x2259>	" ≙ (estimates)
 !~~	<char-0x2249>	" ≉ (not almost equal to)
@@ -364,6 +415,7 @@ NSUP	<char-0x2285>	" ⊅ (not superset of)
 NESUP	<char-0x2289>	" ⊉ (not equal to or superset of)
 LAND	<char-0x2227>	" ∧ (logical and)
 LOR	<char-0x2228>	" ∨ (logical or)
+LNOT	<char-0x00ac>	" ¬ (logical not)
 EX	<char-0x2203>	" ∃ (there exists)
 NEX	<char-0x2204>	" ∄ (not exists)
 EMP	<char-0x2205>	" ∅ (empty set)
@@ -373,6 +425,7 @@ CC	<char-0x2102>	" ℂ (complex numbers)
 HH	<char-0x210D>	" ℍ
 LL	<char-0x2112>	" ℒ (Lagrangian operator)
 NN	<char-0x2115>	" ℕ (natural numbers, {1,2,3,4,...})
+PP	<char-0x2119>	" ℙ (prime numbers, {1,2,3,5,7,11,...})
 RR	<char-0x211D>	" ℝ (real numbers)
 QQ	<char-0x211A>	" ℚ (rational fractions, p/q, where p,q ∈ ℤ)
 ZZ	<char-0x2124>	" ℤ (integers, {...,-4,-3,-2,-1,0,1,2,3,4,...})
