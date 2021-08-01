@@ -1,5 +1,5 @@
 autoload -Uz compinit
-compinit -d "${HOME}/.zsh.d/zcache/zcompdump"
+compinit -d "$ZSH_COMPDUMP"
 
 autoload -U +X bashcompinit && bashcompinit
 #[ -f /usr/share/bash-completion/bash_completion ] && source /usr/share/bash-completion/bash_completion
@@ -17,7 +17,7 @@ zstyle ':completion:*:cd:*' ignore-parents parent pwd
 # Some functions, like _apt and _dpkg, are very slow. We can use a cache in
 # order to speed things up
 zstyle ':completion:*' use-cache  yes
-zstyle ':completion:*' cache-path "${HOME}/.zsh.d/zcache"
+zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcache"
 
 # ignore duplicate entries
 zstyle ':completion:*:history-words'   remove-all-dups yes

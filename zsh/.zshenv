@@ -47,7 +47,7 @@ typeset -U path
 path=(
     $HOME/.go/bin(N-/)
     $HOME/.cargo/bin(N-/)
-    $HOME/.zsh.d/functions(N-/)
+    $XDG_CONFIG_HOME/zsh.d/functions(N-/)
     $HOME/.local/bin(N-/)
     $(ruby -e 'print Gem.user_dir')/bin(N-/)
     /usr/local/bin(N-/)
@@ -62,7 +62,7 @@ path=(
 typeset -U fpath
 fpath=(
     $ZDOTDIR/completions(N-/)
-    $HOME/.zsh.d/completions(N-/)
+    $XDG_CONFIG_HOME/zsh.d/completions(N-/)
     $fpath
 )
 
