@@ -23,6 +23,7 @@ export MYVIMRC="$HOME/.config/nvim/init.vim"
 
 export GENTOO_MIRRORS="https://mirrors.bfsu.edu.cn/gentoo"
 export EPREFIX=/home/coelacanthus/Data/gentoo/prefix
+export GO111MODULE=on
 export GOPROXY=https://goproxy.cn
 export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
 
