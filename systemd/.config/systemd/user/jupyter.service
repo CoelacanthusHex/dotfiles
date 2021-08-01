@@ -1,0 +1,13 @@
+[Unit]
+Description=Jupyter Notebook
+
+[Service]
+Type=simple
+#PIDFile=/run/jupyter.pid
+ExecStart=/usr/bin/jupyter-lab --notebook-dir=%h --port=8888 --no-browser --NotebookApp.password='sha1:90249fc61d00:737d778c70141becf745f705208a8a472d8a23de'
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+

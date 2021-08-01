@@ -1,0 +1,7 @@
+{
+    "editorConfig": {
+        "autoClosingBrackets": true,
+        "tabSize": 4,
+        "wordWrapColumn": 80
+    }
+}
