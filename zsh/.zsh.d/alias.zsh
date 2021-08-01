@@ -7,6 +7,8 @@ alias limit-run='systemd-run --user --pty --same-dir --wait --collect --slice=li
 alias limit-cpu='systemd-run --user --pty --same-dir --wait --collect --slice=limit-cpu.slice '
 alias limit-mem='systemd-run --user --pty --same-dir --wait --collect --slice=limit-mem.slice '
 
+[[ x$TERM == xxterm-kitty ]] && alias ssh="kitty +kitten ssh"
+
 # reload zsh
 alias reload="sync && source $HOME/.zshrc && rehash"
 
