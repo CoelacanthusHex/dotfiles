@@ -201,6 +201,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'editorconfig/editorconfig-vim'
 
     Plug 'tpope/vim-characterize'
+    Plug 'tpope/vim-eunuch'
     Plug 'Shougo/echodoc.vim'
     Plug 'Shougo/context_filetype.vim'
 
