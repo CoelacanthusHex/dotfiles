@@ -2,14 +2,14 @@
 
 " Core Configuration {{{
 
-filetype plugin indent on
-
 " Make Vim more useful
 set nocompatible
 
-if has('syntax')
-	syntax enable
-	syntax on
+if has('autocmd')
+  filetype plugin indent on
+endif
+if has('syntax') && !exists('g:syntax_on')
+    syntax enable
 endif
 
 set mouse=a
@@ -29,18 +29,11 @@ set showcmd
 set autoindent
 set smartindent
 
-" ctrl+hjkl 移动窗口
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-
-" https://github.com/lilydjwg/dotvim/blob/19f6f8ea67150cb5498706912b770d3c736716f2/vimrc#L546
-set statusline=%n\ %<%f\ %LL\ %{&modified?'[+]':&modifiable\|\|&ft=~'^\\vhelp\|qf$'?'':'[-]'}%h%r%{&fenc=='utf-8'\|\|&fenc==''?'':'['.&fenc.']'}%{&ff=='unix'?'':'['.&ff.']'}%{&bomb?'[BOM]':''}%{&eol?'':'[noeol]'}%{&diff?'[diff]':''}%=\ 0x%-4.8B\ \ \ \ %-14.(%l,%c%V%)\ %P
-
 set backspace=indent,eol,start
 set tabstop=4
 set shiftwidth=4
+set complete-=i
+set smarttab
 
 set langmenu=zh_CN.UTF-8
 set helplang=cn
@@ -71,6 +64,10 @@ set ttyfast
 " 带有如下符号的单词不要被换行分割
 set iskeyword+=_,$,@,%,#,-
 set tags=tags;/
+
+" https://github.com/lilydjwg/dotvim/blob/19f6f8ea67150cb5498706912b770d3c736716f2/vimrc#L546
+set statusline=%n\ %<%f\ %LL\ %{&modified?'[+]':&modifiable\|\|&ft=~'^\\vhelp\|qf$'?'':'[-]'}%h%r%{&fenc=='utf-8'\|\|&fenc==''?'':'['.&fenc.']'}%{&ff=='unix'?'':'['.&ff.']'}%{&bomb?'[BOM]':''}%{&eol?'':'[noeol]'}%{&diff?'[diff]':''}%=\ 0x%-4.8B\ \ \ \ %-14.(%l,%c%V%)\ %P
+
 " }}}
 
 " 搜索设置 {{{
@@ -152,6 +149,12 @@ inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 " Use <TAB> to select the popup menu:
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" ctrl+hjkl 移动窗口
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
 " }}}
 
 " 插件 {{{
@@ -180,7 +183,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'sbdchd/neoformat'
     map <F5> :Neoformat <CR>
 	" Git
-	Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-git'
+    Plug 'tpope/vim-fugitive'
 	" Fcitx
     Plug 'lilydjwg/fcitx.vim'
     " 缩进指示线
