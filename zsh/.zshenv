@@ -19,7 +19,6 @@ export PAGER='less'
 export MAIL=$HOME/.mail/
 
 export GEM_HOME=$(ruby -e 'print Gem.user_dir')
-export MYVIMRC="$HOME/.config/nvim/init.vim"
 
 export GENTOO_MIRRORS="https://mirrors.bfsu.edu.cn/gentoo"
 export EPREFIX=/home/coelacanthus/Data/gentoo/prefix

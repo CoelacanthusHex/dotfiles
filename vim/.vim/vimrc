@@ -196,8 +196,8 @@ call plug#begin('~/.vim/plugged')
 	" EditorConfig
 	Plug 'editorconfig/editorconfig-vim'
 
+    Plug 'tpope/vim-characterize'
     Plug 'Shougo/echodoc.vim'
-
     Plug 'Shougo/context_filetype.vim'
 
     " 目录树
