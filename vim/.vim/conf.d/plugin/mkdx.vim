@@ -13,3 +13,8 @@ call mkdx#configure({
 " for vim-polyglot users, it loads Plasticboy's markdown
 " plugin which unfortunately interferes with mkdx list indentation.
 let g:polyglot_disabled = ['markdown']
+
+" https://github.com/SidOfc/mkdx/issues/138
+" hack for URL is not visible
+let g:indentLine_concealcursor=""
+let g:indentLine_conceallevel=2
