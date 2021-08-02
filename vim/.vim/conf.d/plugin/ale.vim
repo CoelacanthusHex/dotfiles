@@ -1,3 +1,4 @@
+" vim: set sw=4 ts=4 sts=4 et foldmethod=marker spell:
 " ALE Configuration
 
 " Disable the completion for vim-go, we have ale

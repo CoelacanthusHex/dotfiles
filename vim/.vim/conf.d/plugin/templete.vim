@@ -1,7 +1,8 @@
+" vim: set sw=4 ts=4 sts=4 et foldmethod=marker spell:
 """"""""""""""""""""""""""""""""""""" 新文件标题
 
 " 新建.c,.h,.sh,.java文件，自动插入文件头
-autocmd BufNewFile *.cpp,*.[ch],*.sh,*.rb,*.java,*.py exec ":call SetTitle()"
+autocmd BufNewFile *.cpp,*.[ch],*.sh,*.rb,*.pl,*.java,*.py exec ":call SetTitle()"
 "" 定义函数SetTitle，自动插入文件头
 func SetTitle()
     " 如果文件类型为.sh文件

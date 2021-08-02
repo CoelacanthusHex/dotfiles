@@ -1,6 +1,7 @@
+" vim: set sw=4 ts=4 sts=4 et foldmethod=marker spell:
 " Vim-go Configuration
 
-let g:go_bin_path = "/home/" . $USER . "/GOPATH/bin"
+let g:go_bin_path = "/usr/bin"
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>s <Plug>(go-implements)
 au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
