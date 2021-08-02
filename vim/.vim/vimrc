@@ -12,6 +12,11 @@ if has('syntax') && !exists('g:syntax_on')
     syntax enable
 endif
 
+" Load matchit.vim, but only if the user hasn't installed a newer version.
+if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
+  runtime! macros/matchit.vim
+endif
+
 set mouse=a
 set number
 set modeline
@@ -59,6 +64,7 @@ set list
 " 设置tab和空格样式
 set lcs=tab:\|\ ,nbsp:%,trail:-
 
+" Enable fast terminal connection.
 set ttyfast
 
 " 带有如下符号的单词不要被换行分割
@@ -78,11 +84,14 @@ set ignorecase
 " 智能搜索大小写判断，默认忽略大小写，除非搜索内容包含大写字母
 set smartcase
 
-" 高亮搜索内容
-set hlsearch
 
-" 查找输入时动态增量显示查找结果
-set incsearch
+if has('extra_search')
+    " 高亮搜索内容
+    set hlsearch
+
+    " 查找输入时动态增量显示查找结果
+    set incsearch
+endif
 " }}}
 
 " Set Path {{{
@@ -110,7 +119,7 @@ endif
 
 " Function and map {{{
 
-let mapleader="\\"
+let mapleader=","
 
 " https://github.com/lilydjwg/dotvim/blob/19f6f8ea67150cb5498706912b770d3c736716f2/vimrc#L36
 " 删除所有未显示且无修改的缓冲区以减少内存占用
@@ -260,6 +269,17 @@ call plug#begin('~/.vim/plugged')
 
     """"""" Go
     Plug 'fatih/vim-go', {'for': 'go'}
+    
+    
+    """"""" TypeScript
+    Plug 'HerringtonDarkholme/yats.vim'
+    " https://thoughtbot.com/blog/modern-typescript-and-react-development-in-vim
+    Plug 'pangloss/vim-javascript'
+    Plug 'leafgarland/typescript-vim'
+    Plug 'peitalin/vim-jsx-typescript'
+    Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+    Plug 'jparise/vim-graphql'
+
 
 
     """"""" Markdown
