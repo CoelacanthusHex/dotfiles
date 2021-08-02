@@ -10,7 +10,6 @@ augroup filetypedetect
   au BufNewFile,BufRead .htaccess.*			setf apache
   au BufRead		pacman.log			setf pacmanlog
   au BufNewFile,BufRead *.rfc				setf rfc
-  au BufNewFile,BufRead *.md				setf markdown
   au BufRead		grub.cfg			setf sh
   au BufNewFile,BufRead fcitx_skin.conf,*/fcitx*.{conf,desc}*,*/fcitx/profile	setf dosini
   au BufNewFile,BufRead mimeapps.list			setf desktop

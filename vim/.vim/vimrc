@@ -258,8 +258,6 @@ call plug#begin('~/.vim/plugged')
 
 
     """"""" Markdown
-    " markdown syntax highlight, theme
-    Plug 'plasticboy/vim-markdown', {'for':'markdown'}
     " Markdown 语法支持
     Plug 'SidOfc/mkdx'
 
@@ -270,13 +268,6 @@ call plug#begin('~/.vim/plugged')
 
     """"""" Haskell
     Plug 'neovimhaskell/haskell-vim', {'for':'haskell'}
-
-
-    """"""" Pandoc
-    " Pandoc Support
-    Plug 'vim-pandoc/vim-pandoc'
-    " Pandoc Syntax Highlight Support
-    Plug 'vim-pandoc/vim-pandoc-syntax'
 
 
     """"""" LaTeX
