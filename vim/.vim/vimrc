@@ -153,7 +153,7 @@ nnoremap <leader>ff :Neoformat<CR>
 " When the <Enter> key is pressed while the popup menu is visible, it only
 " hides the menu. Use this mapping to close the menu and also start a new
 " line.
-inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+"inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 
 " Use <TAB> to select the popup menu:
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -181,6 +181,7 @@ call plug#begin('~/.vim/plugged')
 
     " 主题配色 {{{
     Plug 'joshdick/onedark.vim'
+    Plug 'arcticicestudio/nord-vim'
     " 状态栏
     Plug 'vim-airline/vim-airline'
     " 状态栏主题
@@ -318,7 +319,7 @@ call plug#end()
 " 配色方案 {{{
 set background=dark
 "colorscheme gruvbox
-colorscheme onedark
+colorscheme nord
 " }}}
 
 " Hack for Terminal {{{
