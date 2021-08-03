@@ -252,10 +252,6 @@ call plug#begin('~/.vim/plugged')
 
     " Language {{{
 
-    " languages highlight packs
-	let g:polyglot_disabled = ['markdown']
-	Plug 'sheerun/vim-polyglot'
-
 
     """"""" Rust
     " Rust 支持
