@@ -1,4 +1,4 @@
-" vim: set sw=4 ts=4 sts=4 et foldmethod=marker spell:
+" vim: set sw=4 ts=4 sts=4 et foldmethod=marker:
 " NERDTree Configuration
 
 "autocmd StdinReadPre * let s:std_in=1

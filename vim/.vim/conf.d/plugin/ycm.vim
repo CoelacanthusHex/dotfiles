@@ -1,4 +1,4 @@
-" vim: set sw=4 ts=4 sts=4 et foldmethod=marker spell:
+" vim: set sw=4 ts=4 sts=4 et foldmethod=marker:
 let g:ycm_semantic_triggers =  {
 			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{3}'],
 			\ 'cs,lua,javascript': ['re!\w{3}'],

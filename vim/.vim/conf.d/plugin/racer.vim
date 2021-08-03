@@ -1,4 +1,4 @@
-" vim: set sw=4 ts=4 sts=4 et foldmethod=marker spell:
+" vim: set sw=4 ts=4 sts=4 et foldmethod=marker:
 " let g:racer_cmd = "~/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
 
