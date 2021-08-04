@@ -7,7 +7,7 @@ if &term == "linux"
     let g:airline_theme='base16_gruvbox_dark_hard'
 else
     let g:airline_symbols_ascii = 0
-    let g:airline_theme='nord'
+    let g:airline_theme='onedark'
 endif
 
 " 显示 buffer 编号
