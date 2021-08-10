@@ -43,3 +43,5 @@
 	insteadOf = https://aur.archlinux.org/
 	insteadOf = http://aur.archlinux.org/
 	insteadOf = git://aur.archlinux.org/
+[diff "word"]
+	textconv = docx2txt-git-diff
