@@ -4,3 +4,6 @@
 [submodule "muttrc"]
 	path = mutt
 	url = git@github.com:CoelacanthusHex/muttrc.git
+[submodule "bytetools/.local/bin/bytetools"]
+	path = bytetools/.local/bin/bytetools
+	url = git@github.com:CoelacanthusHex/bytetools.git
