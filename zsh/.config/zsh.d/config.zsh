@@ -28,6 +28,9 @@ setopt magic_equal_subst
 setopt auto_continue
 setopt extended_glob
 
+# Disable tty flow control, allows vim to use '<Ctrl>S'
+unsetopt flow_control && stty -ixon
+
 # Others
 autoload -Uz zmv
 autoload -Uz zargs
