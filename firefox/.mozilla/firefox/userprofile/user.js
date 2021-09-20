@@ -17,6 +17,9 @@ user_pref("extensions.getAddons.showPane", false);
 user_pref("extensions.htmlaboutaddons.recommendations.enabled", false);
 /* 去除Pocket服务 */
 user_pref("extensions.pocket.enabled", false);
+/* 使用系统 emoji */
+user_pref("font.name-list.emoji", "emoji");
+
 
 /* 禁止投机性预连接 */
 // user_pref("network.http.speculative-parallel-limit", 0);
