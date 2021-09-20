@@ -23,7 +23,7 @@ alias sudo='sudo '
 
 # using exa instead of ls, and ls' alias
 if (( $+commands[exa] )); then
-    alias ls='exa --icons  --time-style=long-iso'
+    alias ls='exa --time-style=long-iso'
 else
     alias ls='ls --color=auto --human-readable --time-style=long-iso'
 fi
