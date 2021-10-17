@@ -148,4 +148,6 @@ alias bc="bc -lq"
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 #alias myip="dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | sed 's/\"//g'"
 
+alias tinc-family="sudo tinc -n family"
+
 # vim: ft=zsh
