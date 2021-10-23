@@ -21,6 +21,32 @@ alias sudo='sudo '
 
 (( $+commands[hub] )) && alias git="hub"
 
+# https://github.com/lilydjwg/dotzsh/blob/e1a678cf4743e53813a457cb33f6f1e82e5bfa39/zshrc#L875
+if (( $+commands[zoxide] )) && [[ $(zstat +uid ~/.local/share/zoxide/db.zo) == $UID ]]; then
+  eval "$(zoxide init zsh)"
+  function z () {
+    if [[ "$#" -eq 0 ]]; then
+      __zoxide_z ''
+    else
+      __zoxide_z "$@"
+    fi
+  }
+  if [[ -z $functions[j] ]]; then
+    function j () {
+      if [[ -t 1 ]]; then
+        z "$@"
+      else
+        zoxide query "$@"
+      fi
+    }
+  fi
+fi
+# if zoxide loads but the directory is readonly, remove the chpwd hook
+if [[ ${chpwd_functions[(i)__zoxide_hook]} -le ${#chpwd_functions} && \
+  -d ~/.local/share/zoxide && ! -w ~/.local/share/zoxide ]]; then
+  chpwd_functions[(i)__zoxide_hook]=()
+fi
+
 # using exa instead of ls, and ls' alias
 if (( $+commands[exa] )); then
     alias ls='exa --time-style=long-iso'
