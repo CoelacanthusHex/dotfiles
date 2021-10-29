@@ -259,6 +259,10 @@ call plug#begin('~/.vim/plugged')
     Plug 'timonv/vim-cargo'
 
 
+    """"""" Scala
+    Plug 'derekwyatt/vim-scala'
+
+
     """"""" Go
     Plug 'fatih/vim-go', {'for': 'go'}
     
@@ -298,9 +302,6 @@ call plug#begin('~/.vim/plugged')
     """"""" systemd 文件的语法高亮
     Plug 'Matt-Deacalion/vim-systemd-syntax'
 
-
-    """"""" PKGBUILD
-    Plug 'Firef0x/PKGBUILD.vim'
 
     """"""" Beancount
     Plug 'nathangrigg/vim-beancount'
