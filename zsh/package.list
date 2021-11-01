@@ -1,8 +1,5 @@
 zsh
-zsh-completions-git
 git
-lua
-luajit
 exa
 bat
 gdb
@@ -17,7 +14,7 @@ optipng
 jpegoptim
 libwebp
 qrencode
-ydcv-rs
+ydcv-rs-git
 pigz
 lzip
 lrzip
@@ -34,3 +31,7 @@ hex
 pacman-lily
 starship
 hyperfine
+zsh-syntax-highlighting
+zsh-history-substring-search
+zsh-completions
+zsh-autosuggestions

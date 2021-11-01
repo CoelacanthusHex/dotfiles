@@ -64,8 +64,8 @@ alias lt='ll -tr'        # Lists sorted by date, most recent last.
 alias lc='lt -c'         # Lists sorted by date, most recent last, shows change time.
 alias lu='lt -u'         # Lists sorted by date, most recent last, shows access time.
 
-# using bat instead of cat, fd instead of find
-(( $+commands[bat] )) && alias cat="bat --tabs=0"
+# using fd instead of find
+(( $+commands[bat] )) && alias bat="bat --tabs=0"
 if (( $+commands[fd] )); then
     alias clang-format-all='fd --type f '.*\.(c|cpp|h|hpp|hxx|cxx)' . -x clang-format -i {};'
     alias clang-tidy-all='fd --type f '.*\.(c|cpp|h|hpp|hxx|cxx)' . -x clang-tidy {};'

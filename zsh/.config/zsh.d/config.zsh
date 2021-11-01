@@ -109,3 +109,12 @@ colors
     "  User: $blue%U$rst"$'\t'"System: $blue%S$rst  Total: $blue%*Es${rst}"$'\n'
     "  CPU:  $blue%P$rst"$'\t'"Mem:    $blue%M MiB$rst")
 }
+
+[[ "$COLORTERM" == (24bit|truecolor) || "${terminfo[colors]}" -eq '16777216' ]] || zmodload zsh/nearcolor
+
+# Basic LS_COLORS
+[[ -n $DISPLAY || -n $ANDROID_ROOT ]] || eval "$(dircolors -b)"
+
+# Extended LS_COLORS
+# dircolors -b $XDG_CONFIG_HOME/zsh.d/plugins/LS_COLORS > $XDG_CONFIG_HOME/zsh.d/plugins/trapd00r-LS_COLORS.zsh
+source $XDG_CONFIG_HOME/zsh.d/plugins/trapd00r-LS_COLORS.zsh

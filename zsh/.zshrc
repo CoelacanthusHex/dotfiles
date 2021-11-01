@@ -1,14 +1,4 @@
 ## .zshrc
-# https://blog.skk.moe/post/make-oh-my-zsh-fly/
-#zmodload zsh/datetime
-#setopt PROMPT_SUBST
-#PS4='+$EPOCHREALTIME %N:%i> '
-#
-#logfile=$(mktemp zsh_profile.XXXXXXXXXXXXX)
-#echo "Logging to $logfile"
-#exec 3>&2 2>$logfile
-#
-#setopt XTRACE
 
 # 确定环境 {{{1
 OS=${$(uname)%_*}
@@ -79,6 +69,7 @@ source $XDG_CONFIG_HOME/zsh.d/config.zsh
 source $XDG_CONFIG_HOME/zsh.d/function.zsh
 source $XDG_CONFIG_HOME/zsh.d/alias.zsh
 source $XDG_CONFIG_HOME/zsh.d/plugin.zsh
+source $XDG_CONFIG_HOME/zsh.d/keybind.zsh
 source $XDG_CONFIG_HOME/zsh.d/Arch.zsh
 
 # Load user config.
@@ -91,9 +82,5 @@ export GPG_TTY=$(tty)
 gpg-connect-agent updatestartuptty /bye >/dev/null
 
 unset OS
-
-## .zshrc
-#unsetopt XTRACE
-#exec 2>&3 3>&-
 
 # vim: ft=zsh

@@ -1,5 +1,3 @@
-zinit snippet OMZP::archlinux/archlinux.plugin.zsh
-
 
 # completion for Syu
 compdef -e "words[1]=(pacman -Su);service=pacman;((CURRENT+=1));_pacman" Syu Ge Gc Gw
