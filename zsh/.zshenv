@@ -18,10 +18,8 @@ export PAGER='less'
 
 export MAIL=$HOME/.mail/
 
-export GEM_HOME=$(ruby -e 'print Gem.user_dir')
-
-export GENTOO_MIRRORS="https://mirrors.bfsu.edu.cn/gentoo"
-export EPREFIX=/home/coelacanthus/Data/gentoo/prefix
+#export GENTOO_MIRRORS="https://mirrors.bfsu.edu.cn/gentoo"
+#export EPREFIX=/home/coelacanthus/Data/gentoo/prefix
 export GO111MODULE=on
 export GOPROXY=https://goproxy.cn
 export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
@@ -48,7 +46,6 @@ path=(
     $HOME/.cargo/bin(N-/)
     $XDG_CONFIG_HOME/zsh.d/functions(N-/)
     $HOME/.local/bin(N-/)
-    $(ruby -e 'print Gem.user_dir')/bin(N-/)
     /usr/local/bin(N-/)
     /usr/bin(N-/)
     /bin(N-/)
