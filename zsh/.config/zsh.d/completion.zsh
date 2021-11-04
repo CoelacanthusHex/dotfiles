@@ -130,3 +130,8 @@ _enabled_plugins=(
 for _zsh_plugin in $_enabled_plugins[@]; do
     [[ ! -r "$_ZSH_PLUGINS/$_zsh_plugin/$_zsh_plugin.zsh" ]] || source $_ZSH_PLUGINS/$_zsh_plugin/$_zsh_plugin.zsh
 done
+
+# https://github.com/zsh-users/zsh-history-substring-search#usage
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
