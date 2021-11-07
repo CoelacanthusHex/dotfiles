@@ -31,6 +31,9 @@ setopt extended_glob
 # Disable tty flow control, allows vim to use '<Ctrl>S'
 unsetopt flow_control && stty -ixon
 
+# set tab size
+tabs -4
+
 # Others
 autoload -Uz zmv
 autoload -Uz zargs
