@@ -16,6 +16,12 @@ set imap_check_subscribed = yes
 set mbox_type = Maildir
 set editor = "vim"
 
+## Riched Text Mail
+#set send_multipart_alternative=yes
+set send_multipart_alternative_filter=~/.config/mutt/markdown2html
+# Optionally, Custom CSS styles will be read from `~/.mutt/markdown2html.css`, if present.
+
+
 ## For index
 set sort = threads
 set sort_aux = last-date-received
@@ -47,7 +53,7 @@ set reply_regexp = "^(re:|回复[：:])[ \t]*"
 set rfc2047_parameters = yes
 set pipe_decode = yes
 set send_charset="us-ascii:utf-8"
-set edit_headers=yes
+#set edit_headers=yes
 
 ## All folders
 source ~/.config/mutt/muttrc.d/outlook
@@ -63,7 +69,11 @@ source ~/.config/mutt/gpg.rc
 ## Other config
 source ~/.config/mutt/muttrc.sidebar
 source ~/.config/mutt/muttrc.keybind
-source ~/.config/mutt/muttrc.aliases
+
+set alias_file = "~/.config/mutt/muttrc.aliases"
+set sort_alias = alias
+set reverse_alias = yes
+source $alias_file
 
 #source ~/.config/mutt/color.d/solarized-light-`tput colors`.muttrc
 source ~/.config/mutt/color.d/solarized-light-16.muttrc
