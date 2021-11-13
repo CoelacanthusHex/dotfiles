@@ -18,6 +18,9 @@ unsubscribe *
 subscribe \
   ^users-zh@lists.opensuse.org$ \
   ^zsh-users@zsh.org$ \
+  ^summer-ospp@googlegroups.com$ \
+  ^summer-ospp-announce@googlegroups.com$ \
+  ^summer-ospp-community@googlegroups.com$ \
   ^tuna-general@googlegroups.com$
   
 # known mailing lists(may be unsubscribed)
@@ -25,6 +28,9 @@ unlists *
 lists \
   ^users-zh@lists.opensuse.org$ \
   ^zsh-users@zsh.org$ \
+  ^summer-ospp@googlegroups.com$ \
+  ^summer-ospp-announce@googlegroups.com$ \
+  ^summer-ospp-community@googlegroups.com$ \
   ^tuna-general@googlegroups.com$
 
 set sendmail = "/usr/bin/sendmail -a outlook" # cooperate with sendmail, the name outlook is configured in sendmail
