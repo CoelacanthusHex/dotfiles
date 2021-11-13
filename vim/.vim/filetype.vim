@@ -19,4 +19,5 @@ augroup filetypedetect
   au BufRead		$HOME/.cabal/config		setf cabal
   au BufRead		*procmaillog			setf mail
   au BufNewFile,BufRead wg*.conf,peers.conf	setf dosini
+  au BufRead,BufNewFile	*mutt-*	setf mail
 augroup END
