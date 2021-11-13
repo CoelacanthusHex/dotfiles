@@ -45,6 +45,7 @@ set pgp_default_key="0x15F4180E73787863"
 #
 set pgp_sign_as="0xE35C89E45867AE35"
 
+my_hdr X-PGP-Key: https://keys.openpgp.org/vks/v1/by-fingerprint/892EBC7DC392DFF9C9C03F1D15F4180E73787863
 
 # Section B: Commands
 
