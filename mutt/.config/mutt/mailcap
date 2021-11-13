@@ -1,17 +1,21 @@
-text/html; xdg-open %s; test=test -n "$DISPLAY"; 
-text/html; w3m -I %{charset} -T text/html; copiousoutput;
-application/pdf; zathura %s; test=test -n "$DISPLAY"; 
+text/html; xdg-open %s; test=test -n "$DISPLAY";
+#text/html; w3m -I %{charset} -T text/html; copiousoutput;
+#text/html; elinks -dump -dump-color-mode 1 -eval "set document.codepage.assume=%{charset}" '%s'; nametemplate=%s.html; copiousoutput;
+text/html; links -html-numbered-links 1 -dump '%s';  nametemplate=%s.html; copiousoutput;
+Etext/html; lynx -assume_charset=%{charset} -display_charset=utf-8 -collapse_br_tags -dump %s; nametemplate=%s.html; copiousoutput
+
+application/pdf; zathura %s; test=test -n "$DISPLAY";
 application/pdf; pdftotext %s -; copiousoutput;
 application/postscript;  zathura %s; test=test -n "$DISPLAY";
 application/msword;  libreoffice %s; test=test -n "$DISPLAY";
 application/msword;  catdoc %s; copiousoutput;
 application/vnd.openxmlformats-officedocument.wordprocessingml.document; docx2txt %s -; copiousoutput;
-application/msexcel;  libreoffice %s; test=test -n "$DISPLAY"; 
-application/powerpoint;  libreoffice %s; test=test -n "$DISPLAY"; 
-application/mspowerpoint;  libreoffice %s; test=test -n "$DISPLAY"; 
-image/*;  feh %s; test=test -n "$DISPLAY"; 
-audio/*; mpv %s; test=test -n "$DISPLAY"; 
-video/*; mpv %s; test=test -n "$DISPLAY"; 
+application/msexcel;  libreoffice %s; test=test -n "$DISPLAY";
+application/powerpoint;  libreoffice %s; test=test -n "$DISPLAY";
+application/mspowerpoint;  libreoffice %s; test=test -n "$DISPLAY";
+image/*;  feh %s; test=test -n "$DISPLAY";
+audio/*; mpv %s; test=test -n "$DISPLAY";
+video/*; mpv %s; test=test -n "$DISPLAY";
 #application/pgp-keys; pgp -f < %s ; copiousoutput
 application/zip; unzip -l %s; copiousoutput;
 application/x-rar; unrar l %s; copiousoutput;
