@@ -65,7 +65,8 @@ source ~/.config/mutt/muttrc.sidebar
 source ~/.config/mutt/muttrc.keybind
 source ~/.config/mutt/muttrc.aliases
 
-source ~/.config/mutt/color.d/solarized-light-`tput colors`.muttrc
+#source ~/.config/mutt/color.d/solarized-light-`tput colors`.muttrc
+source ~/.config/mutt/color.d/solarized-light-16.muttrc
 
 set mailcap_path = ~/.config/mutt/mailcap 
 auto_view text/html
