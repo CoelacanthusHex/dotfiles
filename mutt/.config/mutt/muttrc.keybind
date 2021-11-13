@@ -1,0 +1,15 @@
+bind index k previous-entry
+bind index j next-entry
+bind index,pager g noop
+bind pager k half-up
+bind pager j half-down
+bind pager \Ck previous-entry
+bind pager \Cj next-entry
+bind index,pager \Cu half-up
+bind index,pager \Cd half-down
+bind pager gg top
+bind index gg first-entry
+bind pager G bottom
+bind index G last-entry
+
+bind index,pager R group-reply

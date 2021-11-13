@@ -1,0 +1,76 @@
+## General
+# Store message headers locally to speed things up.
+# If hcache is a folder, Mutt will create sub cache folders for each account which may speeds things up even more.
+set header_cache = ~/.cache/mutt
+# Store messages locally to speed things up, like searching message bodies.
+# Can be the same folder as header_cache.
+# This will cost important disk usage according to your e-mail amount.
+set message_cachedir = "~/.cache/mutt"
+# Keep the IMAP connection alive by polling intermittently (time in seconds).
+set imap_keepalive = 600
+# Allow Mutt to open a new IMAP connection automatically.
+unset imap_passive
+# How often to check for new mail (time in seconds).
+set mail_check = 300
+set imap_check_subscribed = yes
+set mbox_type = Maildir
+set editor = "vim"
+
+## For index
+set sort = threads
+set sort_aux = last-date-received
+
+## For compose
+set autoedit # skip editing headers when compose mail
+set reverse_name # reply with received email
+set include = yes # include the original mail in reply
+set forward_quote = yes # forward message would be quoted
+
+## For pager
+ignore * #ignore all headers first
+# then unignore what we wanted
+unignore Sender From Message-ID Date To Cc Bcc Subject mail-followup-to \
+    x-mailer x-url x-operating-system
+my_hdr X-Operating-System: `uname -a`
+my_hdr X-Mailer: `mutt -v | head -1`
+alternative_order multipart/mixed multipart/related text/plain
+mime_lookup application/octet-stream
+set pager_stop # when pageup/pagedown, stop at begin/end of the mail
+
+## Forward
+# set mime_forward = yes
+set mime_forward_rest = yes
+
+## Misc
+set reply_regexp = "^(re:|回复[：:])[ \t]*"
+#set followup_to = no
+set rfc2047_parameters = yes
+set pipe_decode = yes
+set send_charset="us-ascii:utf-8"
+set edit_headers=yes
+
+## All folders
+source ~/.config/mutt/muttrc.d/outlook
+# a hook, when enter that folder, execute the selected conf
+folder-hook $folder 'source ~/.config/mutt/muttrc.d/outlook'
+
+## list all mailboxes, can be shown in sidebar
+#mailboxes "+outlook/Inbox" "+outlook/GitHub" "+outlook/Firefox" "+outlook/Sent" "+outlook/Drafts" "+outlook/Junk"
+
+## GnuPG bootstrap
+source ~/.config/mutt/gpg.rc
+
+## Other config
+source ~/.config/mutt/muttrc.sidebar
+source ~/.config/mutt/muttrc.keybind
+source ~/.config/mutt/muttrc.aliases
+
+#source ~/.config/mutt/color.d/solarized-light-`tput colors`.muttrc
+source ~/.config/mutt/color.d/solarized-light-16.muttrc
+
+set mailcap_path = ~/.config/mutt/mailcap 
+auto_view text/html
+alternative_order text/plain text/enriched text/html
+auto_view application/pdf
+auto_view application/zip
+auto_view application/x-rar

@@ -1,0 +1,49 @@
+set realname = "Coelacanthus"
+set from = "coelacanthus@outlook.com"
+
+set imap_user = coelacanthus@outlook.com
+set imap_pass = ********
+set folder = imaps://$imap_user@outlook.office365.com/
+
+unmy_hdr Bcc # since we may switch from other conf to here, we must unset it first
+# Add my header Bcc automatically
+# All outgoing mail would be in INBOX, such that the reply can follow the thread
+# Even we have one outgoing email in sent, it is not enough
+#my_hdr Bcc: "coelacanthus@outlook.com"
+# alternative addr for this account
+unalternates *
+alternates ^liuhongwu2003@outlook.com$
+# subscribed mailing lists
+unsubscribe *
+subscribe \
+  ^users-zh@lists.opensuse.org$ \
+  ^zsh-users@zsh.org$ \
+  ^tuna-general@googlegroups.com$
+  
+# known mailing lists(may be unsubscribed)
+unlists *
+lists \
+  ^users-zh@lists.opensuse.org$ \
+  ^zsh-users@zsh.org$ \
+  ^tuna-general@googlegroups.com$
+
+set sendmail = "/usr/bin/sendmail -a outlook" # cooperate with sendmail, the name outlook is configured in sendmail
+
+set spoolfile = "+Inbox" # INBOX
+set mbox = "+outlook/archive" # Processed emails would lie here
+set record = "+Sent" # sent emails
+set postponed = "+Drafts" # composing emails
+set trash = "+Junk" # deleted emails
+set move=no
+
+set signature = "~/.config/mutt/signature/outlook"
+
+# With this two keybind you can easily move **tagged** 
+# emails into archive/INBOX
+# Currently disabled
+macro index A "<tag-prefix-cond><save-message>+outlook/archive<enter>" "Archive tagged mail"
+macro index I "<tag-prefix-cond><save-message>+outlook/<enter>" "Move message to INBOX"
+macro index .c "<tag-pattern>.<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>"
+
+## Hook -- IMPORTANT!
+account-hook $folder "set imap_user=coelacanthus@outlook.com imap_pass=********"
