@@ -22,7 +22,7 @@ subscribe \
   ^summer-ospp-announce@googlegroups.com$ \
   ^summer-ospp-community@googlegroups.com$ \
   ^tuna-general@googlegroups.com$
-  
+
 # known mailing lists(may be unsubscribed)
 unlists *
 lists \
@@ -40,11 +40,12 @@ set mbox = "+outlook/archive" # Processed emails would lie here
 set record = "+Sent" # sent emails
 set postponed = "+Drafts" # composing emails
 set trash = "+Junk" # deleted emails
-set move=no
+set move = no
+set copy = no # since outlook will move it auto
 
 set signature = "~/.config/mutt/signature/outlook"
 
-# With this two keybind you can easily move **tagged** 
+# With this two keybind you can easily move **tagged**
 # emails into archive/INBOX
 # Currently disabled
 macro index A "<tag-prefix-cond><save-message>+outlook/archive<enter>" "Archive tagged mail"
