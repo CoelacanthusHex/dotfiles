@@ -9,6 +9,7 @@ export XDG_DATA_HOME=$HOME/.local/share
 
 export EDITOR=vim
 export VISUAL="$EDITOR "
+export SYSTEMD_EDITOR=$EDITOR
 export PAGER='less'
 
 # Workaround: GUI app like KMail need pinentry-qt but we need pinentry-curse in the terminal
