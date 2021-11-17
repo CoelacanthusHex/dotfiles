@@ -2,21 +2,34 @@
 zmodload zsh/regex 2>/dev/null && _has_re=1 || _has_re=0
 unsetopt nomatch
 zmodload zsh/subreap 2>/dev/null && subreap
-# 选项设置{{{1
+autoload -Uz is-at-least
+# 选项设置
 unsetopt beep
 # 自动记住已访问目录栈
 setopt auto_pushd
 setopt pushd_ignore_dups
 setopt pushd_minus
+# 不需要打 cd，直接进入目录
+setopt autocd
 #以附加的方式写入历史纪录
-setopt INC_APPEND_HISTORY
-#如果连续输入的命令相同，历史纪录中只保留一个
-setopt HIST_IGNORE_DUPS
+setopt inc_append_history
+# 不保存重复的历史记录项
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+# 在命令前添加空格，不将此命令添加到记录文件中
+setopt hist_ignore_space
+# zsh 4.3.6 doesn't have this option
+setopt hist_fcntl_lock 2>/dev/null
+if is-at-least 5.0.5; then
+  # This may cause the command messed up due to a memcpy bug
+else
+  setopt hist_reduce_blanks
+fi
 #为历史纪录中的命令添加时间戳
-setopt EXTENDED_HISTORY
+setopt extended_history
 #允许在交互模式中使用注释  例如：
 #cmd #这是注释
-setopt INTERACTIVE_COMMENTS
+setopt interactive_comments
 #扩展路径
 #/v/c/p/p => /var/cache/pacman/pkg
 setopt complete_in_word
@@ -24,6 +37,8 @@ setopt complete_in_word
 setopt listpacked
 # 补全 identifier=path 形式的参数
 setopt magic_equal_subst
+# setopt 的输出显示选项的开关状态
+setopt ksh_option_print
 # disown 后自动继续进程
 setopt auto_continue
 setopt extended_glob
@@ -37,6 +52,8 @@ tabs -4
 # Others
 autoload -Uz zmv
 autoload -Uz zargs
+
+bindkey -e
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^x^e' edit-command-line
@@ -121,3 +138,25 @@ colors
 # Extended LS_COLORS
 # dircolors -b $XDG_CONFIG_HOME/zsh.d/plugins/LS_COLORS > $XDG_CONFIG_HOME/zsh.d/plugins/trapd00r-LS_COLORS.zsh
 source $XDG_CONFIG_HOME/zsh.d/plugins/trapd00r-LS_COLORS.zsh
+
+# https://github.com/lilydjwg/dotzsh/blob/313050449529c84914293283691da1e824d779f5/zshrc#L292
+# Esc-Esc 在当前/上一条命令前插入 sudo
+sudo-command-line() {
+    [[ -z $BUFFER ]] && zle up-history
+    [[ $BUFFER != sudo\ * && $UID -ne 0 ]] && {
+      typeset -a bufs
+      bufs=(${(z)BUFFER})
+      while (( $+aliases[$bufs[1]] )); do
+        local expanded=(${(z)aliases[$bufs[1]]})
+        bufs[1,1]=($expanded)
+        if [[ $bufs[1] == $expanded[1] ]]; then
+          break
+        fi
+      done
+      bufs=(sudo $bufs)
+      BUFFER=$bufs
+    }
+    zle end-of-line
+}
+zle -N sudo-command-line
+bindkey "\e\e" sudo-command-line

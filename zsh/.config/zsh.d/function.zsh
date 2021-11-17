@@ -298,22 +298,23 @@ clip_png2bmp () { # 将剪贴板中的图片从 png 转到 bmp。QQ 会使用 bm
   xclip -selection clipboard -o -t image/png | convert - bmp:- | xclip -i -selection clipboard -t image/bmp
 }
 
+# https://github.com/lilydjwg/dotzsh/blob/313050449529c84914293283691da1e824d779f5/zshrc#L385
 # for systemd 230+
 # see https://github.com/tmux/tmux/issues/428
-#if [[ $_has_re -eq 1 ]] && \
-#  (( $+commands[tmux] )) && (( $+commands[systemctl] )); then
-#  [[ $(systemctl --version) =~ 'systemd ([0-9]+)' ]] || true
-#  if [[ $match -ge 230 ]]; then
-#    tmux () {
-#      if command tmux has; then
-#        command tmux $@
-#      else
-#        systemd-run --user --scope tmux $@
-#      fi
-#    }
-#  fi
-#  unset match
-#fi
+if [[ $_has_re -eq 1 ]] && \
+  (( $+commands[tmux] )) && (( $+commands[systemctl] )); then
+  [[ $(systemctl --version) =~ 'systemd ([0-9]+)' ]] || true
+  if [[ $match -ge 230 ]]; then
+    tmux () {
+      if command tmux has; then
+        command tmux $@
+      else
+        systemd-run --user --scope tmux $@
+      fi
+    }
+  fi
+  unset match
+fi
 
 # check fcitx5 dbus
 function check-fcitx5-dbus() {
@@ -350,6 +351,27 @@ function get-pr() {
     local pr=$1
     git fetch upstream pull/$pr/head:pr-$pr
     git checkout pr-$pr
+}
+
+# https://github.com/lilydjwg/dotzsh/blob/313050449529c84914293283691da1e824d779f5/zshrc#L445
+compdef mpv=mpv
+mpv() {
+  if [[ -z $WAYLAND_DISPLAY && -n $DISPLAY ]]; then
+    # or too big
+    command mpv --no-hidpi-window-scale "$@"
+  else
+    # or blurry
+    command mpv "$@"
+  fi
+}
+
+# https://github.com/lilydjwg/dotzsh/blob/313050449529c84914293283691da1e824d779f5/zshrc#L519
+# 将以 %HH 表示的文件名改正常
+mvpc() {
+  mv -- $1 "$(echo $1|ascii2uni -a J|tr '/' '-')"
+}
+nocolor() {
+  sed -r 's:\x1b\[[0-9;]*[mK]::g;s:[\r\x0f]::g'
 }
 
 # vim: ft=zsh

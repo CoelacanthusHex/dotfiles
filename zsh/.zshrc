@@ -63,9 +63,8 @@ elif [[ -r "$POWERLINE_BINDINGS/zsh/powerline.zsh" ]]; then
     source $POWERLINE_BINDINGS/zsh/powerline.zsh
 fi
 
-
-source $XDG_CONFIG_HOME/zsh.d/completion.zsh
 source $XDG_CONFIG_HOME/zsh.d/config.zsh
+source $XDG_CONFIG_HOME/zsh.d/completion.zsh
 source $XDG_CONFIG_HOME/zsh.d/function.zsh
 source $XDG_CONFIG_HOME/zsh.d/alias.zsh
 source $XDG_CONFIG_HOME/zsh.d/plugin.zsh

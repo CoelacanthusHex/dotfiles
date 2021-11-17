@@ -12,12 +12,15 @@ zmodload zsh/complist
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 
+# 在 .. 后不要回到当前目录
 zstyle ':completion:*:cd:*' ignore-parents parent pwd
 
 # Some functions, like _apt and _dpkg, are very slow. We can use a cache in
 # order to speed things up
-zstyle ':completion:*' use-cache  yes
-zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcache"
+zstyle ':completion:*' use-cache yes
+_cache_dir=${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcache
+zstyle ':completion:*' cache-path $_cache_dir
+unset _cache_dir
 
 # ignore duplicate entries
 zstyle ':completion:*:history-words'   remove-all-dups yes
@@ -30,32 +33,31 @@ zstyle ':completion:correct:'          prompt 'correct to: %e'
 # Ignore completion functions for commands you don't have:
 zstyle ':completion::(^approximate*):*:functions' ignored-patterns '_*'
 
-# Provide more processes in completion of programs like killall:
-zstyle ':completion:*:processes-names' command 'ps c -u ${USER} -o command | uniq'
-
 #修正大小写
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
-
-#kill 命令补全
-compdef pkill=kill
-compdef pkill=killall
-zstyle ':completion:*:*:kill:*' menu yes select
-zstyle ':completion:*:*:*:*:processes' force-list always
-zstyle ':completion:*:processes' command 'ps -afu$USER'
 
 zstyle ':completion:*:matches' group 'yes'
 zstyle ':completion:*:options' description 'yes'
 zstyle ':completion:*:options' auto-description '%d'
-zstyle ':completion:*:descriptions' format $'\e[01;33m -- %d --\e[0m'
+# 描述显示为淡色
+zstyle ':completion:*:descriptions' format $'\e[2m -- %d --\e[0m'
 zstyle ':completion:*:messages' format $'\e[01;35m -- %d --\e[0m'
-zstyle ':completion:*:warnings' format $'\e[01;31m -- No Matches Found --\e[0m'
+# 警告显示为红色
+zstyle ':completion:*:warnings' format $'\e[91m -- No Matches Found --\e[0m'
+zstyle ':completion:*:corrections' format $'\e[93m -- %d (errors: %e) --\e[0m'
 
 #错误校正
 zstyle ':completion:*:match:*' original only
 zstyle ':completion::prefix-1:*' completer _complete
 zstyle ':completion:predict:*' completer _complete
 zstyle ':completion:incremental:*' completer _complete _correct
-zstyle ':completion:*' completer _complete _prefix _correct _prefix _match _approximate
+# _extensions 为 *. 补全扩展名
+# 在最后尝试使用文件名
+if is-at-least 5.0.5; then
+  zstyle ':completion:*' completer _complete _extensions _match _approximate _expand_alias _ignored _files
+else
+  zstyle ':completion:*' completer _complete _match _approximate _expand_alias _ignored _files
+fi
 
 # allow one error for every three characters typed in approximate completer
 zstyle ':completion:*:approximate:'    max-errors 'reply=( $((($#PREFIX+$#SUFFIX)/3 )) numeric )'
@@ -65,7 +67,24 @@ zstyle ':completion:*' squeeze-shlashes 'yes'
 zstyle ':completion::complete:*' '\\'
 
 zstyle ':completion:*' menu select
-setopt COMPLETE_ALIASES
+# 分组显示
+zstyle ':completion:*' group-name ''
+
+# 补全 alias
+setopt complete_aliases
+
+# kill 命令补全
+compdef pkill=kill
+compdef pkill=killall
+zstyle ':completion:*:*:kill:*' menu yes select
+zstyle ':completion:*:*:*:*:processes' force-list always
+zstyle ':completion:*:processes' command 'ps -afu$USER'
+# Provide more processes in completion of programs like killall:
+zstyle ':completion:*:processes-names' command 'ps c -u ${USER} -o command | uniq'
+
+# complete user-commands for git-*
+# https://pbrisbin.com/posts/deleting_git_tags_with_style/
+zstyle ':completion:*:*:git:*' user-commands ${${(M)${(k)commands}:#git-*}/git-/}
 
 # Search path for sudo completion
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin \

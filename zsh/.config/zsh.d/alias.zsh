@@ -72,7 +72,11 @@ if (( $+commands[fd] )); then
 else
     alias clang-format-all="find . -type f -regex '.*\.(c|cpp|h|hpp)' | xargs clang-format -i"
 fi
-#alias clang-format-all="find . -type f -regex '.*\.\(c\|cpp\|h\|hpp\)' | xargs clang-format -i"
+
+if (( $+commands[vimtrace] )); then
+  (( $+commands[strace] )) && alias strace='vimtrace strace'
+  (( $+commands[ltrace] )) && alias ltrace='vimtrace ltrace'
+fi
 
 # some cd
 alias ..="cd .."
@@ -141,19 +145,6 @@ alias fgrep='fgrep --color=auto'
 alias ncdu='ncdu --color dark'
 alias ip="ip -c=auto "
 
-# 后缀别名
-#alias -s {html,htm}="firefox"
-alias -s {pdf,ps,djvu}="okular"
-alias -s {png,jpg,gif}="feh"
-alias -s jar="java -jar"
-if (( $+commands[ruffle] )); then
-    alias -s swf="ruffle"
-else
-    alias -s swf="flashplayer"
-fi
-
-alias -g NULL="/dev/null"
-
 alias git-log='git log --all --decorate --oneline --graph'
 alias git-linked-log='git-linked log --all --decorate --oneline --graph'
 
@@ -175,5 +166,45 @@ alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 #alias myip="dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | sed 's/\"//g'"
 
 alias tinc-family="sudo tinc -n family"
+
+# https://github.com/lilydjwg/dotzsh/blob/313050449529c84914293283691da1e824d779f5/zshrc#L438
+# --inplace has issues with -H https://lists.opensuse.org/opensuse-bugs/2012-10/msg02084.html
+alias xcp="rsync -aviHAXKhS --one-file-system --partial --info=progress2 --atimes --open-noatime --delete --exclude='*~' --exclude=__pycache__"
+
+# https://github.com/lilydjwg/dotzsh/blob/313050449529c84914293283691da1e824d779f5/zshrc#L375
+# grc aliases
+if (( $+aliases[colourify] )); then
+  # default is better
+  unalias gcc g++ 2>/dev/null || true
+  # bug: https://github.com/garabik/grc/issues/72
+  unalias mtr     2>/dev/null || true
+  # buffering issues: https://github.com/garabik/grc/issues/25
+  unalias ping    2>/dev/null || true
+fi
+
+# 后缀别名
+#alias -s {html,htm}="firefox"
+alias -s {pdf,ps,djvu}="okular"
+alias -s {png,jpg,gif}="feh"
+alias -s jar="java -jar"
+if (( $+commands[ruffle] )); then
+    alias -s swf="ruffle"
+else
+    alias -s swf="flashplayer"
+fi
+
+# 全局别名
+alias -g NULL="/dev/null"
+# 当前目录下最后修改的文件
+# 来自 https://roylez.info/2010-03-06-zsh-recent-file-alias/
+alias -g NN="*(oc[1])"
+alias -g NNF="*(oc[1].)"
+alias -g NND="*(oc[1]/)"
+alias -g NUL="/dev/null"
+alias -g XS='"$(xsel)"'
+alias -g ANYF='**/*[^~](.)'
+
+# 路径别名
+#hash -d tmp="/tmp"
 
 # vim: ft=zsh
