@@ -67,6 +67,11 @@ disabled = false
 
 [status]
 disabled = false
+format = "[$symbol:$common_meaning$signal_name$maybe_int]($style) "
+symbol = "x"
+pipestatus = true
+pipestatus_format = "\\[ $pipestatus\\] => [$symbol:$common_meaning$signal_name$maybe_int]($style)"
+pipestatus_separator = "| "
 
 [username]
 show_always = true
@@ -76,11 +81,10 @@ format = "[$user]($style) "
 ssh_only = false
 format = "@ [$hostname]($style) in "
 
-
 [character]
-success_symbol = "[>](bold green)"
-error_symbol = "[x](bold red)"
-vicmd_symbol = "[<](bold green)"
+success_symbol = "[>>>](bold green)"
+error_symbol = "[>>>](bold red)"
+vicmd_symbol = "[<<<](bold green)"
 
 [git_commit]
 tag_symbol = " tag "
@@ -155,7 +159,7 @@ symbol = "Lua "
 symbol = "NodeJS "
 
 [memory_usage]
-symbol = "memory "
+symbol = "Memory "
 
 [nim]
 symbol = "Nim "
@@ -176,7 +180,7 @@ symbol = "Perl "
 symbol = "PHP "
 
 [purescript]
-symbol = "PureScript"
+symbol = "PureScript "
 
 [python]
 symbol = "Python "
