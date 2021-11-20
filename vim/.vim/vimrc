@@ -1,4 +1,4 @@
-" vim: set sw=4 ts=4 sts=4 et foldmethod=marker:
+" vim: set sw=4 ts=8 sts=4 expandtab et foldmethod=marker:
 
 " Set Path {{{
 if has("win32") || has("win64")
@@ -78,7 +78,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-	Plug 'junegunn/vim-plug'
+    Plug 'junegunn/vim-plug'
 
     " 主题配色 {{{
     Plug 'joshdick/onedark.vim'
@@ -87,16 +87,18 @@ call plug#begin('~/.vim/plugged')
     " 状态栏主题
     Plug 'vim-airline/vim-airline-themes'
     " }}}
-	
-	" Misc {{{
+    
+    " Misc {{{
     " 代码格式化
     Plug 'sbdchd/neoformat'
     map <F5> :Neoformat <CR>
-	" Git
+    " Git
     Plug 'tpope/vim-git'
     Plug 'tpope/vim-fugitive'
-	" Fcitx
-    Plug 'lilydjwg/fcitx.vim'
+    " Fcitx
+    if exists("$DISPLAY") || exists("$WAYLAND_DISPLAY")
+        Plug 'lilydjwg/fcitx.vim'
+    endif
     " 缩进指示线
     Plug 'Yggdroot/indentLine'
     " 自动括号

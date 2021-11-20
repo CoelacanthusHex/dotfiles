@@ -1,4 +1,4 @@
-" vim: set sw=4 ts=4 sts=4 et foldmethod=marker:
+" vim: set sw=4 ts=8 sts=4 noexpandtab et foldmethod=marker:
 
 " Core Configuration {{{
 
@@ -17,9 +17,13 @@ if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
   runtime! macros/matchit.vim
 endif
 
-set mouse=a
+" Disables mouse in insert mode
+set mouse=nvchr
 set number
 set modeline
+set display=truncate,uhex
+set nrformats=bin,hex
+set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc,.png,.jpg
 
 " 高亮显示当前行/列
 set cursorline
@@ -41,6 +45,8 @@ set shiftwidth=4
 set noexpandtab
 set complete-=i
 set smarttab
+" Let backspace more friendly
+set bs=3
 
 set langmenu=zh_CN.UTF-8
 set helplang=cn
@@ -48,6 +54,13 @@ set termencoding=utf-8
 set encoding=utf-8
 set fileencodings=utf-8,ucs-bom,gbk,cp936,gb2312,gb18030
 set fileformats=unix,dos,mac
+
+" Width for line breaking and vertical prompt line
+set textwidth=120
+set colorcolumn=+0
+" Use LF by default
+set fileformat=unix
+set fileformats=unix,dos
 
 " 如遇Unicode值大于255的文本，不必等到空格再折行
 set formatoptions+=m

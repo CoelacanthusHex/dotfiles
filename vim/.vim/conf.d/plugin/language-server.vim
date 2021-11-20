@@ -1,4 +1,4 @@
-" vim: set sw=4 ts=4 sts=4 et foldmethod=marker:
+" vim: set sw=4 ts=8 sts=4 noexpandtab et foldmethod=marker:
 " Language Server Configuration
 
 let g:ycm_language_server =
