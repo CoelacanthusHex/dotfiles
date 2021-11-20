@@ -1,4 +1,4 @@
-" vim: set sw=4 ts=8 sts=4 noexpandtab et foldmethod=marker:
+" vim: set sw=4 ts=8 sts=4 et foldmethod=marker:
 """"""""""""""""""""""""""""""""""""" 新文件标题
 
 " 新建.c,.h,.sh,.java文件，自动插入文件头

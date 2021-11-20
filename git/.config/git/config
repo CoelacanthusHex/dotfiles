@@ -55,3 +55,7 @@
 	insteadOf = git://aur.archlinux.org/
 [diff "word"]
 	textconv = docx2txt-git-diff
+[log]
+	date = iso-local
+[format]
+	pretty = fuller

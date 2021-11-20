@@ -1,4 +1,4 @@
-" vim: set sw=4 ts=8 sts=4 expandtab et foldmethod=marker:
+" vim: set sw=4 ts=8 sts=4 et foldmethod=marker:
 
 " Set Path {{{
 if has("win32") || has("win64")

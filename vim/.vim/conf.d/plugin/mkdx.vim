@@ -1,4 +1,4 @@
-" vim: set sw=4 ts=8 sts=4 noexpandtab et foldmethod=marker:
+" vim: set sw=4 ts=8 sts=4 et foldmethod=marker:
 " mkdx Configuration
 
 " https://github.com/SidOfc/mkdx/issues/151#issuecomment-846188322
