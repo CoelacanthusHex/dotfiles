@@ -6,7 +6,8 @@
 set nocompatible
 
 if has('autocmd')
-  filetype plugin indent on
+    filetype plugin on
+    filetype plugin indent on
 endif
 if has('syntax') && !exists('g:syntax_on')
     syntax enable
@@ -14,7 +15,7 @@ endif
 
 " Load matchit.vim, but only if the user hasn't installed a newer version.
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
-  runtime! macros/matchit.vim
+    runtime! macros/matchit.vim
 endif
 
 " Disables mouse in insert mode
@@ -42,7 +43,7 @@ set backspace=indent,eol,start
 set tabstop=8
 set softtabstop=4
 set shiftwidth=4
-set noexpandtab
+set expandtab
 set complete-=i
 set smarttab
 " Let backspace more friendly
@@ -52,12 +53,13 @@ set langmenu=zh_CN.UTF-8
 set helplang=cn
 set termencoding=utf-8
 set encoding=utf-8
-set fileencodings=utf-8,ucs-bom,gbk,cp936,gb2312,gb18030
+set fileencodings=ucs-bom,utf-8,gb18030,gbk,gb2312,cp936
 set fileformats=unix,dos,mac
 
 " Width for line breaking and vertical prompt line
 set textwidth=120
 set colorcolumn=+0
+
 " Use LF by default
 set fileformat=unix
 set fileformats=unix,dos
@@ -70,6 +72,16 @@ set formatoptions+=B
 
 " Enable a visual menu when using TAB autocomplete in command mode
 set wildmenu
+
+" 首先尝试最长的，接着轮换补全项
+set wildmode=longest:full,full
+
+set completeopt+=longest
+try
+  set completeopt+=popup
+  set completepopup=border:off
+catch /.*/
+endtry
 
 " 延迟绘制（提升性能）
 set lazyredraw
@@ -88,6 +100,14 @@ set tags=tags;/
 
 " https://github.com/lilydjwg/dotvim/blob/19f6f8ea67150cb5498706912b770d3c736716f2/vimrc#L546
 set statusline=%n\ %<%f\ %LL\ %{&modified?'[+]':&modifiable\|\|&ft=~'^\\vhelp\|qf$'?'':'[-]'}%h%r%{&fenc=='utf-8'\|\|&fenc==''?'':'['.&fenc.']'}%{&ff=='unix'?'':'['.&ff.']'}%{&bomb?'[BOM]':''}%{&eol?'':'[noeol]'}%{&diff?'[diff]':''}%=\ 0x%-4.8B\ \ \ \ %-14.(%l,%c%V%)\ %P
+
+" 
+set diffopt+=vertical,context:3,foldcolumn:0
+if &diffopt =~ 'internal'
+  set diffopt+=indent-heuristic,algorithm:patience
+endif
+
+set guioptions=acit
 
 " }}}
 
