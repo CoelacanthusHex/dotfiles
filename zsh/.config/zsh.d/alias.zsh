@@ -49,7 +49,7 @@ fi
 
 # using exa instead of ls, and ls' alias
 if (( $+commands[exa] )); then
-    alias ls='exa --time-style=long-iso'
+    alias ls='exa --time-style=long-iso --group --git'
 else
     alias ls='ls --color=auto --human-readable --time-style=long-iso'
 fi
