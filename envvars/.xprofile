@@ -38,6 +38,8 @@ export PYTHONSTARTUP=$XDG_CONFIG_HOME/python/rc.py
 export PYTHON_EGG_CACHE="$XDG_CACHE_HOME"/python-eggs
 # Pylint
 export PYLINTHOME="$XDG_CACHE_HOME"/pylint
+# Wget
+export WGETRC="$XDG_CONFIG_HOME"/wget/config.ini
 # NPM
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 # Rustup (Rust)
