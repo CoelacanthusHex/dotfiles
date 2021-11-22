@@ -67,8 +67,9 @@ disabled = false
 
 [status]
 disabled = false
-format = "[$symbol:$common_meaning$signal_name$maybe_int]($style) "
-symbol = "x"
+format = "[$symbol $common_meaning$signal_name$maybe_int]($style) "
+symbol = "X"
+success_symbol = "O"
 pipestatus = true
 pipestatus_format = "\\[ $pipestatus\\] => [$symbol:$common_meaning$signal_name$maybe_int]($style)"
 pipestatus_separator = "| "
