@@ -53,9 +53,9 @@ $cmd_duration\
 $lua\
 $jobs\
 $battery\
+$shell\
 $time\
 $status\
-$shell\
 $line_break\
 $character"""
 
@@ -96,11 +96,28 @@ diverged = "<>"
 renamed = "r"
 deleted = "x"
 
+[shell]
+disabled = false
+format = "in [\\[$indicator\\]]($style) "
+style = "blue bold"
+bash_indicator = "Bash"
+fish_indicator = "Fish"
+zsh_indicator = "Zsh"
+powershell_indicator = "PowerShell"
+ion_indicator = "Ion"
+elvish_indicator = "elvish"
+tcsh_indicator = "tcsh"
+xonsh_indicator = "Xonsh"
+unknown_indicator = "Unknown Shell"
+
 [aws]
 symbol = "AWS "
 
-[conda]
+[cobol]
 symbol = "Conda "
+
+[conda]
+symbol = "COBOL "
 
 [crystal]
 symbol = "Crystal "
