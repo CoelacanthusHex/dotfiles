@@ -36,6 +36,7 @@ $ruby\
 $rust\
 $scala\
 $swift\
+$lua\
 $terraform\
 $vlang\
 $vagrant\
@@ -49,11 +50,10 @@ $openstack\
 $env_var\
 $crystal\
 $custom\
+$shell\
 $cmd_duration\
-$lua\
 $jobs\
 $battery\
-$shell\
 $time\
 $status\
 $line_break\
