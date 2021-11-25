@@ -120,13 +120,13 @@ autoload -Uz colors zsh/terminfo
 colors
 
 () {
-  autoload -Uz colors
-  colors
-  local white_b=$fg_bold[white] blue=$fg_bold[blue] rst=$reset_color
-  local white_b=$'\e[97m' blue=$'\e[94m' rst=$'\e[0m'
-  TIMEFMT=("== TIME REPORT FOR $white_b%J$rst =="$'\n'
-    "  User: $blue%U$rst"$'\t'"System: $blue%S$rst  Total: $blue%*Es${rst}"$'\n'
-    "  CPU:  $blue%P$rst"$'\t'"Mem:    $blue%M MiB$rst")
+    autoload -Uz colors
+    colors
+    local white_b=$fg_bold[white] blue=$fg_bold[blue] rst=$reset_color
+    local white_b=$'\e[97m' blue=$'\e[94m' rst=$'\e[0m'
+    TIMEFMT=("== TIME REPORT FOR $white_b%J$rst =="$'\n'
+        "  User: $blue%U$rst"$'\t'"System: $blue%S$rst  Total: $blue%*Es${rst}"$'\n'
+        "  CPU:  $blue%P$rst"$'\t'"Mem:    $blue%M MiB$rst")
 }
 
 [[ "$COLORTERM" == (24bit|truecolor) || "${terminfo[colors]}" -eq '16777216' ]] || zmodload zsh/nearcolor
@@ -143,17 +143,17 @@ source $XDG_CONFIG_HOME/zsh.d/plugins/trapd00r-LS_COLORS.zsh
 sudo-command-line() {
     [[ -z $BUFFER ]] && zle up-history
     [[ $BUFFER != sudo\ * && $UID -ne 0 ]] && {
-      typeset -a bufs
-      bufs=(${(z)BUFFER})
-      while (( $+aliases[$bufs[1]] )); do
-        local expanded=(${(z)aliases[$bufs[1]]})
-        bufs[1,1]=($expanded)
-        if [[ $bufs[1] == $expanded[1] ]]; then
-          break
-        fi
-      done
-      bufs=(sudo $bufs)
-      BUFFER=$bufs
+        typeset -a bufs
+        bufs=(${(z)BUFFER})
+        while (( $+aliases[$bufs[1]] )); do
+            local expanded=(${(z)aliases[$bufs[1]]})
+            bufs[1,1]=($expanded)
+            if [[ $bufs[1] == $expanded[1] ]]; then
+                break
+            fi
+        done
+        bufs=(sudo $bufs)
+        BUFFER=$bufs
     }
     zle end-of-line
 }
