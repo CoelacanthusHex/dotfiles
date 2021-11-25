@@ -66,7 +66,6 @@ unalias run-help 2> /dev/null
 autoload -Uz run-help
 alias help=run-help
 
-autoload -Uz run-help-btrfs
 autoload -Uz run-help-git
 autoload -Uz run-help-ip
 autoload -Uz run-help-openssl
