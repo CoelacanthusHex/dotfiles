@@ -15,13 +15,12 @@
 [https "https://github.com"]
     proxy = socks5://127.0.0.1:1089
 
-[commit]
-    gpgsign = true
-
 # https://lwn.net/Articles/835985/rss
 # https://people.kernel.org/monsieuricon/signed-git-pushes
 [push]
     gpgSign = if-asked
+[commit]
+    gpgsign = true
 
 [init]
     defaultBranch = master
@@ -37,9 +36,6 @@
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
 
-[diff "word"]
-    textconv = docx2txt-git-diff
-
 # Parallel Checkout
 # The default is one.
 # If set to a value less than one, Git will use as many workers as the number of logical cores available.
@@ -49,6 +45,8 @@
 
 [include]
     path = ~/.config/git/format.config
+[include]
+    path = ~/.config/git/diff-specified.config
 
 [includeIf "gitdir:~/Data/workspace/aosc/**"]
     path = ~/.config/git/aosc.config
