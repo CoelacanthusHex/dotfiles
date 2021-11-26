@@ -7,8 +7,6 @@
     # Use custom `.gitignore` and `.gitattributes`
     excludesfile = ~/.config/git/gitignore
     attributesfile = ~/.config/git/gitattributes
-
-    quotePath = false
     editor = vim
 
 # Proxy setting
@@ -42,12 +40,6 @@
 [diff "word"]
     textconv = docx2txt-git-diff
 
-# log format: ISO8601 date format and show both Author and Committer
-[log]
-    date = iso-local
-[format]
-    pretty = fuller
-
 # Parallel Checkout
 # The default is one.
 # If set to a value less than one, Git will use as many workers as the number of logical cores available.
@@ -56,7 +48,7 @@
     workers = 0
 
 [include]
-    path = ~/.config/git/color.config
+    path = ~/.config/git/format.config
 
 [includeIf "gitdir:~/Data/workspace/aosc/**"]
     path = ~/.config/git/aosc.config
