@@ -55,10 +55,12 @@ set pipe_decode = yes
 set send_charset="us-ascii:utf-8"
 #set edit_headers=yes
 
-## All folders
 source ~/.config/mutt/muttrc.d/outlook
 # a hook, when enter that folder, execute the selected conf
 folder-hook $folder 'source ~/.config/mutt/muttrc.d/outlook'
+
+#source ~/.config/mutt/muttrc.d/aosc
+#folder-hook coelacanthus@aosc.io/ 'source ~/.config/mutt/muttrc.d/aosc'
 
 ## list all mailboxes, can be shown in sidebar
 #mailboxes "+outlook/Inbox" "+outlook/GitHub" "+outlook/Firefox" "+outlook/Sent" "+outlook/Drafts" "+outlook/Junk"
