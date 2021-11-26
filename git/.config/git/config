@@ -1,64 +1,67 @@
 [user]
-	email = coelacanthus@outlook.com
-	name = Coelacanthus
-	signingkey = E35C89E45867AE35
+    email = coelacanthus@outlook.com
+    name = Coelacanthus
+    signingkey = E35C89E45867AE35
 
 [core]
-	# Use custom `.gitignore` and `.gitattributes`
-	excludesfile = ~/.config/git/gitignore
-	attributesfile = ~/.config/git/gitattributes
+    # Use custom `.gitignore` and `.gitattributes`
+    excludesfile = ~/.config/git/gitignore
+    attributesfile = ~/.config/git/gitattributes
 
-	quotePath = false
-	pager = diff-so-fancy | less --tabs=4 -RFX
-	editor = vim
+    quotePath = false
+    pager = diff-so-fancy | less --tabs=4 -RFX
+    editor = vim
 
 # Color Setting
 [color]
-	ui = true
+    ui = true
 [color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
+    oldNormal = red bold
+    oldHighlight = red bold 52
+    newNormal = green bold
+    newHighlight = green bold 22
 [color "diff"]
-	meta = 11
-	frag = magenta bold
-	commit = yellow bold
-	old = red bold
-	new = green bold
-	whitespace = red reverse
+    meta = 11
+    frag = magenta bold
+    commit = yellow bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
 
 # Proxy setting
 [http "https://github.com"]
-	proxy = socks5://127.0.0.1:1089
+    proxy = socks5://127.0.0.1:1089
 [https "https://github.com"]
-	proxy = socks5://127.0.0.1:1089
+    proxy = socks5://127.0.0.1:1089
 
 [commit]
-	gpgsign = true
+    gpgsign = true
 
 # https://lwn.net/Articles/835985/rss
 # https://people.kernel.org/monsieuricon/signed-git-pushes
 [push]
-	gpgSign = if-asked
+    gpgSign = if-asked
 
 
 [init]
-	defaultBranch = master
+    defaultBranch = master
 
 # https://wiki.archlinux.org/index.php/Git#Protocol_defaults
 # AUR only allow pushing via SSH
 # and with SSH connection multiplex is better
 [url "ssh://aur@aur.archlinux.org/"]
-	insteadOf = https://aur.archlinux.org/
-	insteadOf = http://aur.archlinux.org/
-	insteadOf = git://aur.archlinux.org/
+    insteadOf = https://aur.archlinux.org/
+    insteadOf = http://aur.archlinux.org/
+    insteadOf = git://aur.archlinux.org/
+
 [diff "word"]
-	textconv = docx2txt-git-diff
+    textconv = docx2txt-git-diff
+
+# log format: ISO8601 date format and show both Author and Committer
 [log]
-	date = iso-local
+    date = iso-local
 [format]
-	pretty = fuller
+    pretty = fuller
 
 [includeIf "gitdir:~/Data/workspace/aosc/**"]
     path = ~/.config/git/aosc.config
