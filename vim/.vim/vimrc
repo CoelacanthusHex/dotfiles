@@ -117,10 +117,10 @@ call plug#begin('~/.vim/plugged')
     let g:rainbow_active = 1
     " HELP文档中文
     Plug 'yianwillis/vimcdoc'
-	" EditorConfig
-	Plug 'editorconfig/editorconfig-vim'
+    " EditorConfig
+    Plug 'editorconfig/editorconfig-vim'
 
-    Plug 'tpope/vim-characterize'
+    Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-eunuch'
     Plug 'tpope/vim-endwise'
     Plug 'Shougo/echodoc.vim'
