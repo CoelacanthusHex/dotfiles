@@ -53,6 +53,9 @@
     insteadOf = https://aur.archlinux.org/
     insteadOf = http://aur.archlinux.org/
     insteadOf = git://aur.archlinux.org/
+# https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
 
 [diff "word"]
     textconv = docx2txt-git-diff
