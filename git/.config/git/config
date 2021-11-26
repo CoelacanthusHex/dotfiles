@@ -63,5 +63,12 @@
 [format]
     pretty = fuller
 
+# Parallel Checkout
+# The default is one.
+# If set to a value less than one, Git will use as many workers as the number of logical cores available.
+# Parallel checkout usually delivers better performance for repositories located on SSDs or over NFS, but not on HDDs.
+[checkout]
+    workers = 0
+
 [includeIf "gitdir:~/Data/workspace/aosc/**"]
     path = ~/.config/git/aosc.config
