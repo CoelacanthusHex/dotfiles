@@ -116,6 +116,13 @@ endif
 
 set guioptions=acit
 
+if has('langmap') && exists('+langremap')
+    " Prevent that the langmap option applies to characters that result from a
+    " mapping.  If set (default), this may break plugins (but it's backward
+    " compatible).
+    set nolangremap
+endif
+
 " }}}
 
 " 搜索设置 {{{
