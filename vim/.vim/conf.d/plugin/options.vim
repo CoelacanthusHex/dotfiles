@@ -23,7 +23,9 @@ if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
 endif
 
 " Disables mouse in insert mode
-set mouse=nvchr
+if has('mouse')
+    set mouse=nvchr
+endif
 set number
 set modeline
 set display=truncate,uhex
@@ -43,6 +45,7 @@ set showcmd
 set autoindent
 set smartindent
 
+" Allow backspacing over everything in insert mode.
 set backspace=indent,eol,start
 set tabstop=8
 set softtabstop=4
@@ -129,6 +132,9 @@ if has('extra_search')
     set hlsearch
 
     " 查找输入时动态增量显示查找结果
-    set incsearch
+    if has('reltime')
+        set incsearch
+    endif
+
 endif
 " }}}
