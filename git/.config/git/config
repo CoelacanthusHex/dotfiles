@@ -9,12 +9,6 @@
     attributesfile = ~/.config/git/gitattributes
     editor = vim
 
-# Proxy setting
-[http "https://github.com"]
-    proxy = socks5://127.0.0.1:1089
-[https "https://github.com"]
-    proxy = socks5://127.0.0.1:1089
-
 # https://lwn.net/Articles/835985/rss
 # https://people.kernel.org/monsieuricon/signed-git-pushes
 [push]
@@ -24,17 +18,6 @@
 
 [init]
     defaultBranch = master
-
-# https://wiki.archlinux.org/index.php/Git#Protocol_defaults
-# AUR only allow pushing via SSH
-# and with SSH connection multiplex is better
-[url "ssh://aur@aur.archlinux.org/"]
-    insteadOf = https://aur.archlinux.org/
-    insteadOf = http://aur.archlinux.org/
-    insteadOf = git://aur.archlinux.org/
-# https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/
-[url "ssh://git@github.com/"]
-	insteadOf = https://github.com/
 
 # Parallel Checkout
 # The default is one.
@@ -47,6 +30,10 @@
     path = ~/.config/git/format.config
 [include]
     path = ~/.config/git/diff-specified.config
+[include]
+    path = ~/.config/git/proxy.config
+[include]
+    path = ~/.config/git/instead.config
 
 [includeIf "gitdir:~/Data/workspace/aosc/**"]
     path = ~/.config/git/aosc.config
