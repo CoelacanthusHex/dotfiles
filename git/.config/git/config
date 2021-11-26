@@ -9,24 +9,7 @@
     attributesfile = ~/.config/git/gitattributes
 
     quotePath = false
-    pager = diff-so-fancy | less --tabs=4 -RFX
     editor = vim
-
-# Color Setting
-[color]
-    ui = true
-[color "diff-highlight"]
-    oldNormal = red bold
-    oldHighlight = red bold 52
-    newNormal = green bold
-    newHighlight = green bold 22
-[color "diff"]
-    meta = 11
-    frag = magenta bold
-    commit = yellow bold
-    old = red bold
-    new = green bold
-    whitespace = red reverse
 
 # Proxy setting
 [http "https://github.com"]
@@ -41,7 +24,6 @@
 # https://people.kernel.org/monsieuricon/signed-git-pushes
 [push]
     gpgSign = if-asked
-
 
 [init]
     defaultBranch = master
@@ -72,6 +54,9 @@
 # Parallel checkout usually delivers better performance for repositories located on SSDs or over NFS, but not on HDDs.
 [checkout]
     workers = 0
+
+[include]
+    path = ~/.config/git/color.config
 
 [includeIf "gitdir:~/Data/workspace/aosc/**"]
     path = ~/.config/git/aosc.config
