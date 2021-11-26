@@ -9,6 +9,19 @@
     attributesfile = ~/.config/git/gitattributes
     editor = vim
 
+[diff]
+    # default(myers), minimal, patience, histogram
+    # histogram algorithm extends the patience algorithm to "support low-occurrence common elements".
+    # https://stackoverflow.com/questions/19949526/examples-of-different-results-produced-by-the-standard-myers-minimal-patienc
+    # https://stackoverflow.com/questions/32365271/whats-the-difference-between-git-diff-patience-and-git-diff-histogram
+    algorithm = histogram
+    # the default value is currently 1000
+    renamelimit = 1024
+    # If set to "false", rename detection is disabled. If set to "true", basic rename detection is enabled. If set to "copies" or "copy", Git will detect copies, as well.
+    # https://stackoverflow.com/questions/1043388/record-file-copy-operation-with-git
+    # We set it to default (true).
+    #renames = true
+
 # https://lwn.net/Articles/835985/rss
 # https://people.kernel.org/monsieuricon/signed-git-pushes
 [push]
