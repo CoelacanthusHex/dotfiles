@@ -19,8 +19,8 @@
     renamelimit = 1024
     # If set to "false", rename detection is disabled. If set to "true", basic rename detection is enabled. If set to "copies" or "copy", Git will detect copies, as well.
     # https://stackoverflow.com/questions/1043388/record-file-copy-operation-with-git
-    # We set it to default (true).
-    #renames = true
+    # But it seems not work, just set to default until it works.
+    #renames = copies
 
 # https://lwn.net/Articles/835985/rss
 # https://people.kernel.org/monsieuricon/signed-git-pushes
