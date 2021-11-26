@@ -1,5 +1,12 @@
 " vim: set sw=4 ts=8 sts=4 et foldmethod=marker:
 
+" Use Vim settings, rather than Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+" Avoid side effects when it was already reset.
+if &compatible
+    set nocompatible
+endif
+
 " Set Path {{{
 if has("win32") || has("win64")
     let g:vimfiles = split(&runtimepath, ',')[1]

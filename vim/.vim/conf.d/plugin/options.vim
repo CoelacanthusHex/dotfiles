@@ -2,8 +2,12 @@
 
 " Core Configuration {{{
 
-" Make Vim more useful
-set nocompatible
+" Use Vim settings, rather than Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+" Avoid side effects when it was already reset.
+if &compatible
+    set nocompatible
+endif
 
 if has('autocmd')
     filetype plugin on
