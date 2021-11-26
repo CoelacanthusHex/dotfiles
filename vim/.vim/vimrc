@@ -2,24 +2,24 @@
 
 " Set Path {{{
 if has("win32") || has("win64")
-  let g:vimfiles = split(&runtimepath, ',')[1]
-  if has('directx')
-    set renderoptions=type:directx
-  endif
+    let g:vimfiles = split(&runtimepath, ',')[1]
+    if has('directx')
+        set renderoptions=type:directx
+    endif
 else
-  " Linux 路径 [[[3
-  let g:vimfiles = split(&runtimepath, ',')[0]
-  " cron 的目录不要备份
-  set backupskip+=/etc/cron.*/*
-  set backupdir=.,/var/tmp,/tmp
+    " Linux 路径 [[[3
+    let g:vimfiles = split(&runtimepath, ',')[0]
+    " cron 的目录不要备份
+    set backupskip+=/etc/cron.*/*
+    set backupdir=.,/var/tmp,/tmp
 endif
 if exists(':packadd')
-  " insert after the first one so spell changes won't go
-  " into our config directory.
-  let rtp = split(&runtimepath, ',')
-  call insert(rtp, g:vimfiles . '/conf.d', 1)
-  let &runtimepath = join(rtp, ',')
-  unlet rtp
+    " insert after the first one so spell changes won't go
+    " into our config directory.
+    let rtp = split(&runtimepath, ',')
+    call insert(rtp, g:vimfiles . '/conf.d', 1)
+    let &runtimepath = join(rtp, ',')
+    unlet rtp
 endif
 " }}}
 
@@ -30,10 +30,10 @@ let mapleader=","
 " https://github.com/lilydjwg/dotvim/blob/19f6f8ea67150cb5498706912b770d3c736716f2/vimrc#L36
 " 删除所有未显示且无修改的缓冲区以减少内存占用
 function Lilydjwg_cleanbufs()
-  for bufNr in filter(range(1, bufnr('$')),
-        \ 'buflisted(v:val) && !bufloaded(v:val)')
-    execute bufNr . 'bdelete'
-  endfor
+    for bufNr in filter(range(1, bufnr('$')),
+            \ 'buflisted(v:val) && !bufloaded(v:val)')
+        execute bufNr . 'bdelete'
+    endfor
 endfunction
 
 map <F2> :call Biaodian() <CR>
