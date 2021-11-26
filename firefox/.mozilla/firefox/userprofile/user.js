@@ -19,6 +19,8 @@ user_pref("extensions.htmlaboutaddons.recommendations.enabled", false);
 user_pref("extensions.pocket.enabled", false);
 /* 使用系统 emoji */
 user_pref("font.name-list.emoji", "emoji");
+/* 显示紧凑模式 */
+user_pref("browser.compactmode.show", "true");
 
 
 /* 禁止投机性预连接 */
