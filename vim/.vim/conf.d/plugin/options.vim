@@ -137,7 +137,7 @@ set ambiwidth=double
 set maxcombine=4
 
 " 显示tab和空格
-set list
+"set list
 " 设置tab和空格样式
 set listchars=eol:$,tab:>-,nbsp:␣,trail:-
 
