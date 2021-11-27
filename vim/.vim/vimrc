@@ -235,8 +235,14 @@ call plug#end()
 
 " 配色方案 {{{
 set background=dark
-"colorscheme gruvbox
 colorscheme onedark
+if &term == "linux"
+    let g:airline_symbols_ascii = 1
+    let g:airline_theme='base16_gruvbox_dark_hard'
+else
+    let g:airline_symbols_ascii = 0
+    let g:airline_theme='onedark'
+endif
 " }}}
 
 " Hack for Terminal {{{
