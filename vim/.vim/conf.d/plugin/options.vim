@@ -66,6 +66,8 @@ set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,gb18030,gbk,gb2312,cp936,latin1
 set fileformats=unix,dos,mac
 
+set whichwrap=b,s,[,]
+
 " Width for line breaking and vertical prompt line
 set textwidth=120
 set colorcolumn=+0
@@ -143,7 +145,6 @@ set delcombine
 " https://github.com/lilydjwg/dotvim/blob/19f6f8ea67150cb5498706912b770d3c736716f2/vimrc#L546
 set statusline=%n\ %<%f\ %LL\ %{&modified?'[+]':&modifiable\|\|&ft=~'^\\vhelp\|qf$'?'':'[-]'}%h%r%{&fenc=='utf-8'\|\|&fenc==''?'':'['.&fenc.']'}%{&ff=='unix'?'':'['.&ff.']'}%{&bomb?'[BOM]':''}%{&eol?'':'[noeol]'}%{&diff?'[diff]':''}%=\ 0x%-4.8B\ \ \ \ %-14.(%l,%c%V%)\ %P
 
-" 
 set diffopt+=vertical,context:3,foldcolumn:0
 if &diffopt =~ 'internal'
     " https://stackoverflow.com/questions/32365271/whats-the-difference-between-git-diff-patience-and-git-diff-histogram
