@@ -111,7 +111,12 @@ set statusline=%n\ %<%f\ %LL\ %{&modified?'[+]':&modifiable\|\|&ft=~'^\\vhelp\|q
 " 
 set diffopt+=vertical,context:3,foldcolumn:0
 if &diffopt =~ 'internal'
-  set diffopt+=indent-heuristic,algorithm:patience
+    " https://stackoverflow.com/questions/32365271/whats-the-difference-between-git-diff-patience-and-git-diff-histogram
+    " https://bramcohen.livejournal.com/73318.html
+    " https://stackoverflow.com/questions/19949526/examples-of-different-results-produced-by-the-standard-myers-minimal-patienc
+    " https://arxiv.org/abs/1902.02467
+    " https://github.com/vim/vim/commit/e828b7621cf9065a3582be0c4dd1e0e846e335bf
+    set diffopt+=indent-heuristic,algorithm:histogram
 endif
 
 set guioptions=acit
