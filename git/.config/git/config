@@ -44,6 +44,10 @@
     lineNumber = true
     patternType = perl
 
+[merge]
+    # Include summaries of merged commits in newly created merge commit messages
+    log = true
+
 [include]
     path = ~/.config/git/format.config
 [include]
