@@ -46,8 +46,6 @@ set showcmd
 set autoindent
 set smartindent
 
-" Allow backspacing over everything in insert mode.
-set backspace=indent,eol,start
 set tabstop=8
 set softtabstop=4
 set shiftwidth=4
@@ -55,7 +53,7 @@ set expandtab
 set complete-=i
 set smarttab
 " Let backspace more friendly
-set bs=3
+set backspace=indent,eol,nostop
 
 set langmenu=zh_CN.UTF-8
 set helplang=cn
