@@ -31,7 +31,8 @@ set number
 set modeline
 set display=truncate,uhex
 set nrformats=bin,hex
-set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc,.png,.jpg
+set suffixes+=.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
+set wildignore+=*~,*.py[co],__pycache__,.*.swp
 
 " 使用连接命令时，仅在 "." "?" "!" 之后插入一个空格
 " 如设置为 `joinspaces`，则插入两个空格
