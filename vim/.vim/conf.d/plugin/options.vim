@@ -41,8 +41,11 @@ set nojoinspaces
 " 高亮显示当前行/列
 set cursorline
 set cursorcolumn
-" 总是显示侧边栏（用于显示 mark/gitdiff/诊断信息）
-set signcolumn=yes
+" 显示侧边栏（用于显示 mark/gitdiff/诊断信息）
+try
+    set signcolumn=number
+catch /.*/
+endtry
 
 " 在状态栏显示正在输入的命令
 set showcmd
