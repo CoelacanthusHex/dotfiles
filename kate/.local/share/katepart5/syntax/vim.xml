@@ -778,9 +778,11 @@ states they should not be used, so this will not match them.
       <item>comments</item>
       <item>commentstring</item>
       <item>compatible</item>
+      <item>nocompatible</item>
       <item>complete</item>
       <item>completefunc</item>
       <item>completeopt</item>
+      <item>completepopup</item>
       <item>concealcursor</item>
       <item>conceallevel</item>
       <item>confirm</item>
@@ -886,11 +888,14 @@ states they should not be used, so this will not match them.
       <item>iskeyword</item>
       <item>isprint</item>
       <item>joinspaces</item>
+      <item>nojoinspaces</item>
       <item>key</item>
       <item>keymap</item>
       <item>keymodel</item>
       <item>keywordprg</item>
       <item>langmap</item>
+      <item>langremap</item>
+      <item>nolangremap</item>
       <item>langmenu</item>
       <item>laststatus</item>
       <item>lazyredraw</item>
@@ -997,6 +1002,7 @@ states they should not be used, so this will not match them.
       <item>showtabline</item>
       <item>sidescroll</item>
       <item>sidescrolloff</item>
+      <item>signcolumn</item>
       <item>smartcase</item>
       <item>smartindent</item>
       <item>smarttab</item>
