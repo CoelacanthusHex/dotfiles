@@ -164,6 +164,11 @@ if has('langmap') && exists('+langremap')
     set nolangremap
 endif
 
+try
+  set matchpairs=(:),{:},[:],《:》,〈:〉,［:］,（:）,「:」,『:』,‘:’,“:”
+catch /^Vim\%((\a\+)\)\=:E474/
+endtry
+
 " }}}
 
 " 搜索设置 {{{
