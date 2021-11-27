@@ -50,10 +50,6 @@ endtry
 " 在状态栏显示正在输入的命令
 set showcmd
 
-" 自动缩进
-set autoindent
-set smartindent
-
 set tabstop=8
 set softtabstop=4
 set shiftwidth=4
