@@ -40,6 +40,10 @@
 [checkout]
     workers = 0
 
+[grep]
+    lineNumber = true
+    patternType = perl
+
 [include]
     path = ~/.config/git/format.config
 [include]
