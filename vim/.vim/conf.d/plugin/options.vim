@@ -120,7 +120,7 @@ set ambiwidth=double
 " 显示tab和空格
 set list
 " 设置tab和空格样式
-set lcs=tab:\|\ ,nbsp:%,trail:-
+set listchars=eol:$,tab:>-,nbsp:␣,trail:-
 
 " Enable fast terminal connection.
 set ttyfast
