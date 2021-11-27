@@ -24,7 +24,8 @@ endif
 
 " Disables mouse in insert mode
 if has('mouse')
-    set mouse=nvchr
+    set mouse=a
+    set mouse-=i
 endif
 set number
 set modeline
@@ -60,7 +61,7 @@ set langmenu=zh_CN.UTF-8
 set helplang=cn
 set termencoding=utf-8
 set encoding=utf-8
-set fileencodings=ucs-bom,utf-8,gb18030,gbk,gb2312,cp936
+set fileencodings=ucs-bom,utf-8,gb18030,gbk,gb2312,cp936,latin1
 set fileformats=unix,dos,mac
 
 " Width for line breaking and vertical prompt line
