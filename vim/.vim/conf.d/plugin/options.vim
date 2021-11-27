@@ -50,6 +50,9 @@ endtry
 " 在状态栏显示正在输入的命令
 set showcmd
 
+" 显示行号和列号
+set ruler
+
 set tabstop=8
 set softtabstop=4
 set shiftwidth=4
