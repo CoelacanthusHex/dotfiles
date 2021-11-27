@@ -141,9 +141,6 @@ alias fgrep='fgrep --color=auto --context=3'
 alias ncdu='ncdu --color dark'
 alias ip="ip -c=auto "
 
-alias git-log='git log --all --decorate --oneline --graph'
-alias git-linked-log='git-linked log --all --decorate --oneline --graph'
-
 # URL
 alias urldecode='python3 -c "import sys, urllib.parse as up; print(up.unquote(sys.argv[1]))"'
 alias urlencode='python3 -c "import sys, urllib.parse as up; print(up.quote(sys.argv[1]))"'
