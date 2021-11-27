@@ -102,6 +102,15 @@ try
 catch /.*/
 endtry
 
+" 启用搜索结果计数
+set shortmess-=S
+if !has("patch-8.1.1270")
+    try
+        packadd! vim-searchindex
+    catch /.*/
+    endtry
+endif
+
 " Enable a visual menu when using TAB autocomplete in command mode
 set wildmenu
 
