@@ -80,7 +80,7 @@ set colorcolumn=+0
 set fileformat=unix
 set fileformats=unix,dos
 
-" 不根据 `textwidth` 自动回绕注释
+" 不根据 `textwidth` 自动回绕文本
 set formatoptions-=t
 " 根据 `textwidth` 自动回绕注释，自动插入注释前导符
 set formatoptions+=c
