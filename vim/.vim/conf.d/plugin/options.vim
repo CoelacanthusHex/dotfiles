@@ -117,6 +117,11 @@ set lazyredraw
 
 set ambiwidth=double
 
+" 支持显示的最大组合字符数目（不影响编辑），仅用于 encoding 为 utf-8
+" 缺省值为2，对大多数语言足矣，希伯来语需要4，最大值为6
+" 特殊的组合符 emoji 应该需要6？
+set maxcombine=4
+
 " 显示tab和空格
 set list
 " 设置tab和空格样式
