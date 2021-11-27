@@ -72,11 +72,30 @@ set colorcolumn=+0
 set fileformat=unix
 set fileformats=unix,dos
 
+" 不根据 `textwidth` 自动回绕注释
+set formatoptions-=t
+" 根据 `textwidth` 自动回绕注释，自动插入注释前导符
+set formatoptions+=c
+" 插入模式下回车自动插入注释前导符
+set formatoptions+=r
+" 普通模式下按 o/O 自动插入注释前导符
+set formatoptions+=o
+" 允许 `gq` 排版注释
+set formatoptions+=q
+" 关闭 vi 兼容的自动回绕
+set formatoptions-=v
 " 如遇Unicode值大于255的文本，不必等到空格再折行
 set formatoptions+=m
-
 " 合并两行中文时，不在中间加空格
 set formatoptions+=B
+" 不要在单字母单词之后分行
+set formatoptions+=1
+try
+    " Vim 7.4
+    " 在合适的场合，连接行时删除注释前导符
+    set formatoptions+=j
+catch /.*/
+endtry
 
 " Enable a visual menu when using TAB autocomplete in command mode
 set wildmenu
