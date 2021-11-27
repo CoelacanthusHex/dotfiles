@@ -223,6 +223,10 @@ call plug#begin('~/.vim/plugged')
 
     """"""" Beancount
     Plug 'nathangrigg/vim-beancount'
+
+
+    """"""" Nftables
+    Plug 'nfnty/vim-nftables'
     " }}}
 
 call plug#end()
