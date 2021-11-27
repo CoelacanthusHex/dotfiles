@@ -33,6 +33,10 @@ set display=truncate,uhex
 set nrformats=bin,hex
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc,.png,.jpg
 
+" 使用连接命令时，仅在 "." "?" "!" 之后插入一个空格
+" 如设置为 `joinspaces`，则插入两个空格
+set nojoinspaces
+
 " 高亮显示当前行/列
 set cursorline
 set cursorcolumn
@@ -110,6 +114,8 @@ endtry
 
 " 延迟绘制（提升性能）
 set lazyredraw
+
+set ambiwidth=double
 
 " 显示tab和空格
 set list
