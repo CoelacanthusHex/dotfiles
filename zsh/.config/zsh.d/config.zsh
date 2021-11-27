@@ -145,13 +145,14 @@ sudo-command-line() {
     [[ $BUFFER != sudo\ * && $UID -ne 0 ]] && {
         typeset -a bufs
         bufs=(${(z)BUFFER})
-        while (( $+aliases[$bufs[1]] )); do
-            local expanded=(${(z)aliases[$bufs[1]]})
-            bufs[1,1]=($expanded)
-            if [[ $bufs[1] == $expanded[1] ]]; then
-                break
-            fi
-        done
+        # disable expand aliases after sudo because we have enable aliases after sudo
+        #while (( $+aliases[$bufs[1]] )); do
+        #    local expanded=(${(z)aliases[$bufs[1]]})
+        #    bufs[1,1]=($expanded)
+        #    if [[ $bufs[1] == $expanded[1] ]]; then
+        #        break
+        #    fi
+        #done
         bufs=(sudo $bufs)
         BUFFER=$bufs
     }
@@ -159,3 +160,7 @@ sudo-command-line() {
 }
 zle -N sudo-command-line
 bindkey "\e\e" sudo-command-line
+
+# Enable aliases to be sudo’ed
+# http://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo
+alias sudo='sudo '

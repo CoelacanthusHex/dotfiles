@@ -15,10 +15,6 @@ alias reload="sync && source $HOME/.zshrc && rehash"
 # No real vi
 alias vi="vim"
 
-# Enable aliases to be sudo’ed
-# http://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo
-alias sudo='sudo '
-
 (( $+commands[hub] )) && alias git="hub"
 
 # https://github.com/lilydjwg/dotzsh/blob/e1a678cf4743e53813a457cb33f6f1e82e5bfa39/zshrc#L875
