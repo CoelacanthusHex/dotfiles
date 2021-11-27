@@ -14,6 +14,7 @@
     # histogram algorithm extends the patience algorithm to "support low-occurrence common elements".
     # https://stackoverflow.com/questions/19949526/examples-of-different-results-produced-by-the-standard-myers-minimal-patienc
     # https://stackoverflow.com/questions/32365271/whats-the-difference-between-git-diff-patience-and-git-diff-histogram
+    # https://arxiv.org/abs/1902.02467
     algorithm = histogram
     # the default value is currently 1000
     renamelimit = 1024
