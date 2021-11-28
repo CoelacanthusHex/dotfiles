@@ -119,6 +119,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'yianwillis/vimcdoc'
     " EditorConfig
     Plug 'editorconfig/editorconfig-vim'
+    " 颜色代码转颜色
+    Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
     " Sudo support
 	Plug 'lambdalisue/suda.vim'
@@ -255,31 +257,31 @@ if has("gui_running")
     set lines=38
     set cursorline
     elseif has("unix")
-    set ambiwidth=single
-    " 防止退出时终端乱码
-    " 这里两者都需要。只前者标题会重复，只后者会乱码
-    exec "set t_fs=\033(B\007"
-    exec "set t_IE=\033(B\007"
-    if $COLORTERM == 'truecolor'
-        set cursorline
-        set termguicolors
-        let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-        let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-    elseif &term =~ '256color\|nvim'
-        set cursorline
-    else
-        " 在 Linux 文本终端下非插入模式显示块状光标
-        if &term == "linux" || &term == "fbterm"
-        exec "set t_ve+=\033[?6c"
-        autocmd InsertEnter * exec "set t_ve-=\033[?6c"
-        autocmd InsertLeave * exec "set t_ve+=\033[?6c"
-        " autocmd VimLeave * exec "set t_ve-=\033[?6c"
+        set ambiwidth=single
+        " 防止退出时终端乱码
+        " 这里两者都需要。只前者标题会重复，只后者会乱码
+        exec "set t_fs=\033(B\007"
+        exec "set t_IE=\033(B\007"
+        if $COLORTERM == 'truecolor'
+            set cursorline
+            set termguicolors
+            let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+            let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+        elseif &term =~ '256color\|nvim'
+            set cursorline
+        else
+            " 在 Linux 文本终端下非插入模式显示块状光标
+            if &term == "linux" || &term == "fbterm"
+            exec "set t_ve+=\033[?6c"
+            autocmd InsertEnter * exec "set t_ve-=\033[?6c"
+            autocmd InsertLeave * exec "set t_ve+=\033[?6c"
+            " autocmd VimLeave * exec "set t_ve-=\033[?6c"
         endif
         if &term == "fbterm"
-        set cursorline
+            set cursorline
         elseif $TERMCAP =~ 'Co#256'
-        set t_Co=256
-        set cursorline
+            set t_Co=256
+            set cursorline
         endif
     endif
 elseif has('win32') && exists('$CONEMUBUILD')
