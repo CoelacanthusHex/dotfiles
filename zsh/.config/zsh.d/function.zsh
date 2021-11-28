@@ -188,50 +188,6 @@ extract() {
 
 alias x=extract
 
-get-git-code-line() {
-    local fileext_set
-    local success
-    local generic_fileext_set
-    generic_fileext_set='(\.yaml)|(\.md)|(\.json)|(\.toml)|(\.adoc)|(\.rst)'
-    success=1
-    case "$1" in
-        (js|ts) fileext_set='(\.js)|(\.jsx)|(\.ts)|(\.tsx)|(\.css)|(\.html)' ;;
-        (c) fileext_set='(\.c)|(\.h)' ;;
-        (cpp|cxx) fileext_set='(\.cpp)|(\.cxx)|(\.h)|(\.hpp)' ;;
-        (rust|rs) fileext_set='(\.rs)' ;;
-        (*)
-            echo "get-git-code-line: language '$1' is not supported" >&2
-            success=0
-        ;;
-    esac
-
-    if (( $success == 1 )); then
-        for file in $(git ls-files | grep -P "$generic_fileext_set|$fileext_set"); do git blame --line-porcelain $file | sed -n 's/^author //p'; done | sort | uniq -c | sort -rn;
-    fi
-}
-
-get-git-code-line-mail() {
-    local fileext_set
-    local success
-    local generic_fileext_set
-    generic_fileext_set='(\.yaml)|(\.md)|(\.json)|(\.toml)|(\.adoc)|(\.rst)'
-    success=1
-    case "$1" in
-        (js|ts) fileext_set='(\.js)|(\.jsx)|(\.ts)|(\.tsx)|(\.css)|(\.html)' ;;
-        (c) fileext_set='(\.c)|(\.h)' ;;
-        (cpp|cxx) fileext_set='(\.cpp)|(\.cxx)|(\.h)|(\.hpp)' ;;
-        (rust|rs) fileext_set='(\.rs)' ;;
-        (*)
-            echo "get-git-code-line: language '$1' is not supported" >&2
-            success=0
-        ;;
-    esac
-
-    if (( $success == 1 )); then
-        for file in $(git ls-files | grep -P "$generic_fileext_set|$fileext_set"); do git blame --line-porcelain $file | sed -rn 's/^author-mail <(.*)>$/\1/p'; done | sort | uniq -c | sort -rn;
-    fi
-}
-
 # https://maiyang.me/post/2020-08-18-git-commit-history-stat-hour/
 get-someone-commit-time() {
     git log --author="$1" --date=iso | perl -nalE 'if (/^Date:\s+[\d-]{10}\s(\d{2})/) { say $1+0 }' | sort | uniq -c|perl -MList::Util=max -nalE '$h{$F[1]} = $F[0]; }{ $m = max values %h; foreach (0..23) { $h{$_} = 0 if not exists $h{$_} } foreach (sort {$a <=> $b } keys %h) { say sprintf "%02d - %4d %s", $_, $h{$_}, "*"x ($h{$_} / $m * 50); }'
@@ -255,8 +211,8 @@ bindkey -M viins '^Z' foreground-last-job
 
 # add a command line to the shells history without executing it
 commit-to-history () {
-        print -s ${(z)BUFFER}
-        zle send-break
+    print -s ${(z)BUFFER}
+    zle send-break
 }
 zle -N commit-to-history
 # bindkey -M viins "^x^h" commit-to-history
@@ -265,18 +221,18 @@ zle -N commit-to-history
 # https://github.com/lilydjwg/dotzsh/blob/master/zshrc#L368-382
 # take screenshot to stdout (PNG)
 if (( $+commands[maim] )); then
-  _screenshot="maim -s -l -c 255,0,255,0.15 -k -n 2"
+    _screenshot="maim -s -l -c 255,0,255,0.15 -k -n 2"
 elif (( $+commands[import] )); then
-  _screenshot="import png:-"
+    _screenshot="import png:-"
 fi
 if (( $+_screenshot )); then
-  screenshot () {
-    if [[ -t 1 && $# -eq 0 ]]; then
-      echo >&2 "Refused to write image to terminal."
-      return 1
-    fi
-    ${=_screenshot} "$@"
-  }
+    screenshot () {
+        if [[ -t 1 && $# -eq 0 ]]; then
+            echo >&2 "Refused to write image to terminal."
+            return 1
+        fi
+        ${=_screenshot} "$@"
+    }
 fi
 function clip2qr() {
     data="$(xsel)"
@@ -314,38 +270,6 @@ fi
 # check fcitx5 dbus
 function check-fcitx5-dbus() {
     qdbus org.fcitx.Fcitx5 /controller org.fcitx.Fcitx.Controller1.DebugInfo
-}
-
-# GitHub
-# https://matklad.github.io/2018/05/03/effective-pull-requests.html
-# calling `get-fork rust-lang/cargo` would clone github.com/matklad/cargo,
-# and setup upstream properly
-function get-fork() {
-    local userrepo=$1
-    local repo=`basename $userrepo`
-    git clone git@github.com:matklad/$repo.git
-    pushd $repo
-    git remote add upstream git@github.com:$userrepo.git
-    git fetch upstream
-    git checkout master
-    #git branch --set-upstream-to=upstream/master
-    #git pull --rebase --force
-    popd
-}
-# calling `set-upstream rust-lang/cargo` would setup upstream properly
-function set-upstream() {
-    local userrepo=$1
-    git remote add upstream git@github.com:$userrepo.git
-    git fetch upstream
-    git checkout master
-    git branch --set-upstream-to=upstream/master
-}
-# called like `get-pr 9262`, this function would checkout
-# GitHub pull request #9262 to `pr-9262` branch
-function get-pr() {
-    local pr=$1
-    git fetch upstream pull/$pr/head:pr-$pr
-    git checkout pr-$pr
 }
 
 # https://github.com/lilydjwg/dotzsh/blob/313050449529c84914293283691da1e824d779f5/zshrc#L445
