@@ -1,13 +1,3 @@
-# git 代理设置
-function git-proxy(){
-    git config --global http.proxy socks5://127.0.0.1:1089
-    git config --global https.proxy socks5://127.0.0.1:1089
-}
-function git-noproxy(){
-    git config --global --unset http.proxy
-    git config --global --unset https.proxy
-}
-
 # zsh_stats from oh-my-zsh https://github.com/robbyrussell/oh-my-zsh/blob/master/lib/functions.zsh
 function zsh_stats() {
   fc -l 1 | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n20
