@@ -5,16 +5,16 @@ compdef -e "words[1]=(pacman -Su);service=pacman;((CURRENT+=1));_pacman" Syu Ge 
 
 #软件仓库中重复的软件包
 function duppkg4repo () {
-  local repo=$1
-  [[ -z $repo ]] && { echo >&2 'which repository to examine?'; return 1 }
-  local pkgs
-  pkgs=$(comm -12 \
-    <(pacman -Sl $repo|awk '{print $2}'|sort) \
-    <(pacman -Sl|awk -vrepo=$repo '$1 != repo {print $2}'|sort) \
-  )
-  [[ -z $pkgs ]] && return 0
-  LANG=C pacman -Si ${=pkgs} | awk -vself=$repo '/^Repository/{ repo=$3; } /^Name/ && repo != self { printf("%s/%s\n", repo, $3); }'
-}
+    local repo=$1
+    [[ -z $repo ]] && { echo >&2 'which repository to examine?'; return 1 }
+    local pkgs
+    pkgs=$(comm -12 \
+        <(pacman -Sl $repo|awk '{print $2}'|sort) \
+        <(pacman -Sl|awk -vrepo=$repo '$1 != repo {print $2}'|sort) \
+    )
+        [[ -z $pkgs ]] && return 0
+        LANG=C pacman -Si ${=pkgs} | awk -vself=$repo '/^Repository/{ repo=$3; } /^Name/ && repo != self { printf("%s/%s\n", repo, $3); }'
+    }
 
 # pacman aliases and functions
 if (( $+commands[powerpill] )); then
@@ -78,14 +78,14 @@ function Gw() {
 function Ge() {
     [ -z "$@" ] && echo "usage: $0 <core/extra package name>: get core/extra package PKGBUILD" && return 1
     for i in $@; do
-    	G packages core/extra $i
+        G packages core/extra $i
     done
 }
 
 function Gc() {
     [ -z "$@" ] && echo "usage: $0 <community package name>: get community package PKGBUILD" && return 1
     for i in $@; do
-    	G community community $i
+        G community community $i
     done
 }
 
