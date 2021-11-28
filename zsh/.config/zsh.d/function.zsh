@@ -374,4 +374,32 @@ nocolor() {
   sed -r 's:\x1b\[[0-9;]*[mK]::g;s:[\r\x0f]::g'
 }
 
+weather() {
+    # m : metric (SI) (used by default everywhere except US)
+    # M : show wind speed in m/s
+    # 2 : current weather + today's + tomorrow's forecast
+    # A : ignore User-Agent and force ANSI output format (terminal)
+    # F : do not show the "Follow" line
+    # T : disable color
+    local WTTR_PARAMS=('m' 'M' '2' 'F' 'n')
+    if [[ -t 1 ]] && [[ "$(tput cols)" -lt 125 ]]; then
+        WTTR_PARAMS+='n'
+    fi 2> /dev/null
+    if (( $# > 1 )); then
+        lang=$2
+    else
+        lang=zh
+    fi
+    if [[ $TERM == linux ]]; then
+        lang=en
+        WTTR_PARAMS+='A'
+        WTTR_PARAMS+='T'
+    fi
+    if [[ ${1:+x} == x ]]; then
+        local location="${1// /+}"
+    fi
+
+    curl -fGsS --compressed $args "https://wttr.in/${location:-Feicheng}?${(j::)WTTR_PARAMS}&lang=${lang:-${LANG%_*}}"
+}
+
 # vim: ft=zsh
