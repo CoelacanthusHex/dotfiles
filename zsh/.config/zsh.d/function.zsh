@@ -165,8 +165,8 @@ extract() {
 			(*.lz4) lz4 -d "$1" ;;
 			(*.lzma) unlzma "$1" ;;
 			(*.z) uncompress "$1" ;;
-			(*.zip|*.war|*.jar|*.sublime-package|*.ipsw|*.xpi|*.apk|*.aar|*.whl) unzip "$1" -d $extract_dir ;;
-			(*.rar) unrar x -ad "$1" ;;
+			(*.zip|*.war|*.jar|*.sublime-package|*.ipsw|*.xpi|*.apk|*.aar|*.whl|*.cbz|*.epub) unzip "$1" -d $extract_dir ;;
+			(*.rar|*.cbr) unrar x -ad "$1" ;;
 			(*.rpm) mkdir "$extract_dir" && cd "$extract_dir" && rpm2cpio "../$1" | cpio --quiet -id && cd .. ;;
 			(*.7z) 7za x "$1" ;;
 			(*.deb)
@@ -179,6 +179,11 @@ extract() {
 				cd ..
 			;;
 			(*.zst) unzstd "$1" ;;
+            (*.exe) cabextract "$1" ;;
+            (*.cpio) cpio -id < "$1" ;;
+            (*.cba|*.ace) unace x "$1" ;;
+            (*.zpaq) zpaq x "$1" ;;
+            (*.arc) arc e "$1" ;;
 			(*)
 				echo "extract: '$1' cannot be extracted" >&2
 				success=1
