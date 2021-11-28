@@ -82,6 +82,38 @@ zstyle ':completion:all-matches:*' file-patterns '%p:globbed-files' '*(-/):direc
 zle -C all-matches complete-word _generic
 bindkey '^Xi' all-matches
 
+### Autosuggest Setting
+export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd history completion)
+export ZSH_AUTOSUGGEST_USE_ASYNC=true
+# This speeds up pasting w/ autosuggest
+# https://github.com/zsh-users/zsh-autosuggestions/issues/238
+pasteinit() {
+  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
+  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
+}
+pastefinish() {
+  zle -N self-insert $OLD_SELF_INSERT
+}
+zstyle :bracketed-paste-magic paste-init pasteinit
+zstyle :bracketed-paste-magic paste-finish pastefinish
+# https://github.com/zsh-users/zsh-autosuggestions/issues/351
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste accept-line)
+
+_ZSH_PLUGINS="/usr/share/zsh/plugins"
+_enabled_plugins=(
+    zsh-autosuggestions
+    zsh-history-substring-search
+    zsh-syntax-highlighting
+)
+for _zsh_plugin in $_enabled_plugins[@]; do
+    [[ ! -r "$_ZSH_PLUGINS/$_zsh_plugin/$_zsh_plugin.zsh" ]] || source $_ZSH_PLUGINS/$_zsh_plugin/$_zsh_plugin.zsh
+done
+
+# https://github.com/zsh-users/zsh-history-substring-search#usage
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+
 # kill 命令补全
 compdef pkill=kill
 compdef pkill=killall
@@ -141,34 +173,13 @@ zstyle ':completion:*:*:mpv:*' file-patterns '*.(#i)(flv|mp4|webm|mkv|wmv|mov|av
 zstyle ':completion:*:*:vim:*:*files' ignored-patterns '*.(avi|mkv|rmvb|pyc|wmv)'
 zstyle ':completion:*:*:nvim:*:*files' ignored-patterns '*.(avi|mkv|rmvb|pyc|wmv)'
 
-### Autosuggest Setting
-export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd history completion)
-export ZSH_AUTOSUGGEST_USE_ASYNC=true
-# This speeds up pasting w/ autosuggest
-# https://github.com/zsh-users/zsh-autosuggestions/issues/238
-pasteinit() {
-  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
-  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
-}
-pastefinish() {
-  zle -N self-insert $OLD_SELF_INSERT
-}
-zstyle :bracketed-paste-magic paste-init pasteinit
-zstyle :bracketed-paste-magic paste-finish pastefinish
-# https://github.com/zsh-users/zsh-autosuggestions/issues/351
-ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste accept-line)
+# https://github.com/zsh-users/zsh/blob/zsh-5.8/Completion/Unix/Command/_ipsec#L6-L8
+#zstyle ':completion:*:(ipsec|strongswan)/*' gain-privileges yes
+# https://github.com/zsh-users/zsh/blob/zsh-5.8/Completion/Unix/Command/_swanctl#L6-L8
+#zstyle ':completion:*:swanctl/*' gain-privileges yes
 
-_ZSH_PLUGINS="/usr/share/zsh/plugins"
-_enabled_plugins=(
-    zsh-autosuggestions
-    zsh-history-substring-search
-    zsh-syntax-highlighting
-)
-for _zsh_plugin in $_enabled_plugins[@]; do
-    [[ ! -r "$_ZSH_PLUGINS/$_zsh_plugin/$_zsh_plugin.zsh" ]] || source $_ZSH_PLUGINS/$_zsh_plugin/$_zsh_plugin.zsh
-done
+# By default only C and C++ languages are supported for compiler flag variables. To define your own list of languages:
+#cmake_langs=('C' 'C' 'CXX' 'C++')
+#zstyle ':completion:*:cmake:*' languages $cmake_langs
 
-# https://github.com/zsh-users/zsh-history-substring-search#usage
-zmodload zsh/terminfo
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
+
