@@ -57,6 +57,7 @@ set tabstop=8
 set softtabstop=4
 set shiftwidth=4
 set expandtab
+set shiftround
 set complete-=i
 set smarttab
 " Let backspace more friendly
