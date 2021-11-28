@@ -107,6 +107,8 @@ zstyle ':completion:*:processes-names' command 'ps c -u ${USER} -o command | uni
 (( $+commands[git-absorb] )) && zstyle ':completion:*:*:git:*' user-commands absorb:'automatically absorb staged changes into your current branch'
 (( $+commands[git-crypt] )) && zstyle ':completion:*:*:git:*' user-commands crypt:'transparent file encryption in git'
 (( $+commands[git-revise] )) && zstyle ':completion:*:*:git:*' user-commands revise:'rebase staged changes onto the given commit, and rewrite history to incorporate these changes'
+# git-extras will add completion in file below as command above
+[[ ! -r "/usr/share/doc/git-extras/git-extras-completion.zsh" ]] || source /usr/share/doc/git-extras/git-extras-completion.zsh
 
 # disable fallback to filename completion
 zstyle ':completion:*:*:git*:*' use-fallback false
