@@ -1,0 +1,45 @@
+#compdef git-absorb
+
+autoload -U is-at-least
+
+_git-absorb() {
+    typeset -A opt_args
+    typeset -a _arguments_options
+    local ret=1
+
+    if is-at-least 5.2; then
+        _arguments_options=(-s -S -C)
+    else
+        _arguments_options=(-s -C)
+    fi
+
+    local context curcontext="$curcontext" state line
+    _arguments "${_arguments_options[@]}" \
+'-b+[Use this commit as the base of the absorb stack]' \
+'--base=[Use this commit as the base of the absorb stack]' \
+'--gen-completions=[Generate completions]: :(bash fish zsh powershell elvish)' \
+'-n[Don'\''t make any actual changes]' \
+'--dry-run[Don'\''t make any actual changes]' \
+'-f[Skip safety checks]' \
+'--force[Skip safety checks]' \
+'-v[Display more output]' \
+'--verbose[Display more output]' \
+'-r[Run rebase if successful]' \
+'--and-rebase[Run rebase if successful]' \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+&& ret=0
+    
+}
+
+(( $+functions[_git-absorb_commands] )) ||
+_git-absorb_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'git-absorb commands' commands "$@"
+}
+
+_git-absorb "$@"

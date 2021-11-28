@@ -104,6 +104,7 @@ zstyle ':completion:*:processes-names' command 'ps c -u ${USER} -o command | uni
 (( $+commands[git-latexdiff] )) && zstyle ':completion:*:*:git:*' user-commands latexdiff:'call latexdiff on two Git revisions of a file. (latexdiff [old] [new], new defaults to HEAD, -- is workspace)'
 (( $+commands[git-sizer] )) && zstyle ':completion:*:*:git:*' user-commands sizer:'compute various size metrics for a Git repository, flagging those that might cause problems'
 (( $+commands[git-cliff] )) && zstyle ':completion:*:*:git:*' user-commands cliff:'highly customizable changelog generator'
+(( $+commands[git-absorb] )) && zstyle ':completion:*:*:git:*' user-commands absorb:'automatically absorb staged changes into your current branch'
 
 # disable fallback to filename completion
 zstyle ':completion:*:*:git*:*' use-fallback false
