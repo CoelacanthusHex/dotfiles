@@ -153,8 +153,16 @@ alias rg='rg -p --smart-case --context=3'
 alias .="source"
 alias bc="bc -lq"
 (( $+commands[rankmirrors] )) && alias rankpacman='sed "s/^#//" /etc/pacman.d/mirrorlist.pacnew | rankmirrors -n 10 - | sudo tee /etc/pacman.d/mirrorlist'
-alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
-#alias myip="dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | sed 's/\"//g'"
+
+alias myip-http-detail='curl -s -L -H "Accept: application/json" "https://ipinfo.io/${1:-}" | jq "del(.readme, .loc, .postal)"'
+# availible: ifconfig.co icanhazip.com ifconfig.me myip.country/ip
+alias myip-http='curl -L https://ifconfig.me'
+alias myip-http-ipv4='curl -L https://ipv4.icanhazip.com'
+alias myip-http-ipv6='curl -L https://ipv6.icanhazip.com'
+alias myip-dns="dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | sed 's/\"//g'"
+alias myip=myip-http-detail
+alias myipv4=myip-http-ipv4
+alias myipv6=myip-http-ipv6
 
 alias tinc-family="sudo tinc -n family"
 
