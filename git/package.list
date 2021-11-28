@@ -1,3 +1,10 @@
 git
 diff-so-fancy
 git-delta
+clang
+git-filter-repo
+git-lfs
+git-review
+git-latexdiff
+git-sizer
+git-cliff
