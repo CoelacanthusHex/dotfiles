@@ -120,8 +120,10 @@ call plug#begin('~/.vim/plugged')
     " EditorConfig
     Plug 'editorconfig/editorconfig-vim'
 
+    " Sudo support
+	Plug 'lambdalisue/suda.vim'
+
     Plug 'tpope/vim-repeat'
-    Plug 'tpope/vim-eunuch'
     Plug 'tpope/vim-endwise'
     Plug 'Shougo/echodoc.vim'
     Plug 'Shougo/context_filetype.vim'
