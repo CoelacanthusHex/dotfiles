@@ -1,0 +1,13 @@
+# Search hidden files and directories.
+--hidden
+
+# Automatically using pcre2 if needed
+--engine auto
+
+# Exclude Cargo.lock and package-lock.json
+# We don't need exclude node_modules because it should be ignored by .gitignore
+--glob=!*.{lock}
+--glob=!{package-lock.json}
+
+# Exclude .git and .svn directories, because we concel hidden rule
+--glob=!{.git,.svn,}

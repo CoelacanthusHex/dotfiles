@@ -79,6 +79,8 @@ PYTHON_EGG_CACHE    DEFAULT=${XDG_CACHE_HOME}/python-eggs
 PYLINTHOME          DEFAULT=${XDG_CACHE_HOME}/pylint
 # Wget
 WGETRC              DEFAULT=${XDG_CONFIG_HOME}/wget/config.ini
+# Ripgrep
+RIPGREP_CONFIG_PATH DEFAULT=${XDG_CONFIG_HOME}/ripgreprc
 # Rustup (Rust)
 RUSTUP_HOME         DEFAULT=${XDG_DATA_HOME}/rustup
 # Cargo (Rust)
