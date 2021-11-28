@@ -73,6 +73,15 @@ zstyle ':completion:*' group-name ''
 # 补全 alias
 setopt complete_aliases
 
+# https://github.com/lilydjwg/dotzsh/blob/master/zshrc#L306-L312
+# 插入当前的所有补全 https://www.zsh.org/mla/workers/2020/index.html {{{2
+zstyle ':completion:all-matches::::' completer _all_matches _complete
+zstyle ':completion:all-matches:*' old-matches true
+zstyle ':completion:all-matches:*' insert true
+zstyle ':completion:all-matches:*' file-patterns '%p:globbed-files' '*(-/):directories' '*:all-files'
+zle -C all-matches complete-word _generic
+bindkey '^Xi' all-matches
+
 # kill 命令补全
 compdef pkill=kill
 compdef pkill=killall
@@ -84,7 +93,16 @@ zstyle ':completion:*:processes-names' command 'ps c -u ${USER} -o command | uni
 
 # complete user-commands for git-*
 # https://pbrisbin.com/posts/deleting_git_tags_with_style/
-zstyle ':completion:*:*:git:*' user-commands ${${(M)${(k)commands}:#git-*}/git-/}
+# /usr/share/zsh/functions/Completion/Unix/_git
+#zstyle ':completion:*:*:git:*' user-commands ${${(M)${(k)commands}:#git-*}/git-/}
+# we can add all git-* subcommand without description using command above,
+# but we can add each git-* subcommand with description using command below
+(( $+commands[git-clang-format] )) && zstyle ':completion:*:*:git:*' user-commands clang-format:'format files between two commits.(If only 1/0, between workspace and <commit>(default: HEAD) )'
+(( $+commands[git-filter-repo] )) && zstyle ':completion:*:*:git:*' user-commands filter-repo:'rapidly rewrite entire repository history using user-specified filters'
+(( $+commands[git-lfs] )) && zstyle ':completion:*:*:git:*' user-commands lfs:'managing and versioning large files in association with a Git repository'
+(( $+commands[git-review] )) && zstyle ':completion:*:*:git:*' user-commands review:'help submitting git branches to Gerrit for review'
+# disable fallback to filename completion
+zstyle ':completion:*:*:git*:*' use-fallback false
 
 # Search path for sudo completion
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin \
@@ -113,15 +131,6 @@ zstyle ':completion:*:*:mpv:*' file-patterns '*.(#i)(flv|mp4|webm|mkv|wmv|mov|av
 # https://github.com/MaskRay/Config/blob/master/home/.zshrc#L170
 zstyle ':completion:*:*:vim:*:*files' ignored-patterns '*.(avi|mkv|rmvb|pyc|wmv)'
 zstyle ':completion:*:*:nvim:*:*files' ignored-patterns '*.(avi|mkv|rmvb|pyc|wmv)'
-
-# https://github.com/lilydjwg/dotzsh/blob/master/zshrc#L306-L312
-# 插入当前的所有补全 https://www.zsh.org/mla/workers/2020/index.html {{{2
-zstyle ':completion:all-matches::::' completer _all_matches _complete
-zstyle ':completion:all-matches:*' old-matches true
-zstyle ':completion:all-matches:*' insert true
-zstyle ':completion:all-matches:*' file-patterns '%p:globbed-files' '*(-/):directories' '*:all-files'
-zle -C all-matches complete-word _generic
-bindkey '^Xi' all-matches
 
 ### Autosuggest Setting
 export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd history completion)
