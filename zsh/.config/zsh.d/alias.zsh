@@ -203,6 +203,9 @@ alias -g NUL="/dev/null"
 alias -g XS='"$(xsel)"'
 alias -g ANYF='**/*[^~](.)'
 
+alias -g L='| less'
+
+
 # 路径别名
 #hash -d tmp="/tmp"
 
