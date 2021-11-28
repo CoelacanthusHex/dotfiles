@@ -1032,6 +1032,7 @@ states they should not be used, so this will not match them.
       <item>tags</item>
       <item>tagstack</item>
       <item>term</item>
+      <item>termguicolor</item>
       <item>termbidi</item>
       <item>termencoding</item>
       <item>terse</item>
@@ -1055,6 +1056,13 @@ states they should not be used, so this will not match them.
       <item>ttymouse</item>
       <item>ttyscroll</item>
       <item>ttytype</item>
+      <item>t_Co</item>
+      <item>t_8f</item>
+      <item>t_8b</item>
+      <item>t_AB</item>
+      <item>t_AF</item>
+      <item>t_BE</item>
+      <item>t_BD</item>
       <item>undodir</item>
       <item>undofile</item>
       <item>undolevels</item>
