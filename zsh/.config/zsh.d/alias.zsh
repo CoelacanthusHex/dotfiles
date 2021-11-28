@@ -15,8 +15,6 @@ alias reload="sync && source $HOME/.zshrc && rehash"
 # No real vi
 alias vi="vim"
 
-(( $+commands[hub] )) && alias git="hub"
-
 # https://github.com/lilydjwg/dotzsh/blob/e1a678cf4743e53813a457cb33f6f1e82e5bfa39/zshrc#L875
 if (( $+commands[zoxide] )); then
   eval "$(zoxide init zsh)"
