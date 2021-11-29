@@ -11,3 +11,9 @@
 
 # Exclude .git and .svn directories, because we concel hidden rule
 --glob=!{.git,.svn,}
+
+# Enable Smartcase
+--smart-case
+
+# Display three lines around result
+--context=3

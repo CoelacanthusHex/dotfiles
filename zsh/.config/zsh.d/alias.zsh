@@ -150,7 +150,6 @@ export LESSOPEN="| pygmentize -f console -O bg=dark %s"
 export LESS='r'
 
 alias blog-update='cd ~/blog && git add -A && git commit -m "Update Site @$(date +%Y-%m-%d-%H:%M:%S)" && git push -u origin master && cd ~'
-alias rg='rg -p --smart-case --context=3'
 alias .="source"
 alias bc="bc -lq"
 (( $+commands[rankmirrors] )) && alias rankpacman='sed "s/^#//" /etc/pacman.d/mirrorlist.pacnew | rankmirrors -n 10 - | sudo tee /etc/pacman.d/mirrorlist'
