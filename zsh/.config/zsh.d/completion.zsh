@@ -6,7 +6,7 @@ autoload -U +X bashcompinit && bashcompinit
 #(( $+commands[stack] )) && eval "$(stack --bash-completion-script stack)"
 
 #彩色补全菜单
-eval $(dircolors -b)
+#eval $(dircolors -b)
 export ZLSCOLORS="${LS_COLORS}"
 zmodload zsh/complist
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}

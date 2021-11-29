@@ -1,5 +1,3 @@
-# check first, or the script will end wherever it fails
-zmodload zsh/regex 2>/dev/null && _has_re=1 || _has_re=0
 unsetopt nomatch
 zmodload zsh/subreap 2>/dev/null && subreap
 autoload -Uz is-at-least
@@ -131,7 +129,7 @@ colors
 [[ "$COLORTERM" == (24bit|truecolor) || (( ${terminfo[colors]} == 16777216 )) ]] || zmodload zsh/nearcolor
 
 # Basic LS_COLORS
-[[ -n $DISPLAY || -n $WAYLAND_DISPLAY || -n $ANDROID_ROOT ]] || eval "$(dircolors -b)"
+(( $_in_gui == 1 )) || [[ -n $ANDROID_ROOT ]] || eval "$(dircolors -b)"
 
 # Extended LS_COLORS
 # dircolors -b $XDG_CONFIG_HOME/zsh.d/plugins/LS_COLORS > $XDG_CONFIG_HOME/zsh.d/plugins/trapd00r-LS_COLORS.zsh

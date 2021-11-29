@@ -247,7 +247,7 @@ clip_png2bmp () { # 将剪贴板中的图片从 png 转到 bmp。QQ 会使用 bm
 # https://github.com/lilydjwg/dotzsh/blob/313050449529c84914293283691da1e824d779f5/zshrc#L385
 # for systemd 230+
 # see https://github.com/tmux/tmux/issues/428
-if [[ $_has_re -eq 1 ]] && \
+if (( $_has_re == 1 )) && \
     (( $+commands[tmux] )) && (( $+commands[systemctl] )); then
     [[ $(systemctl --version) =~ 'systemd ([0-9]+)' ]] || true
     if (( $match >= 230 )); then
@@ -282,7 +282,7 @@ mpv() {
 # https://github.com/lilydjwg/dotzsh/blob/313050449529c84914293283691da1e824d779f5/zshrc#L519
 # 将以 %HH 表示的文件名改正常
 mvpc() {
-    mv -- $1 "$(echo $1|ascii2uni -a J|tr '/' '-')"
+    mv -- $1 "$(echo $1 | ascii2uni -a J | tr '/' '-')"
 }
 nocolor() {
     sed -r 's:\x1b\[[0-9;]*[mK]::g;s:[\r\x0f]::g'
@@ -304,7 +304,7 @@ weather() {
     else
         lang=zh
     fi
-    if [[ $TERM == linux ]]; then
+    if (( $_in_linux_tty == 1 )); then
         lang=en
         WTTR_PARAMS+='A'
         WTTR_PARAMS+='T'

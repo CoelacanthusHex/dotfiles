@@ -7,7 +7,7 @@ alias limit-run='systemd-run --user --pty --same-dir --wait --collect --slice=li
 alias limit-cpu='systemd-run --user --pty --same-dir --wait --collect --slice=limit-cpu.slice '
 alias limit-mem='systemd-run --user --pty --same-dir --wait --collect --slice=limit-mem.slice '
 
-[[ x$TERM == xxterm-kitty ]] && alias ssh="kitty +kitten ssh"
+(( $_in_kitty == 1 )) && alias ssh="kitty +kitten ssh"
 
 # reload zsh
 alias reload="sync && source $HOME/.zshrc && rehash"
@@ -159,10 +159,18 @@ alias myip-http-detail='curl -s -L -H "Accept: application/json" "https://ipinfo
 alias myip-http='curl -L https://ifconfig.me'
 alias myip-http-ipv4='curl -L https://ipv4.icanhazip.com'
 alias myip-http-ipv6='curl -L https://ipv6.icanhazip.com'
-alias myip-dns="dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | sed 's/\"//g'"
-alias myip=myip-http-detail
+if (( $+commands[dig] )); then
+    alias myip-dns="dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | sed 's/\"//g'"
+elif (( $+commands[kdig] )); then
+    alias myip-dns="kdig TXT +short o-o.myaddr.l.google.com @ns1.google.com | sed 's/\"//g'"
+fi
 alias myipv4=myip-http-ipv4
 alias myipv6=myip-http-ipv6
+if (( $+commands[curl] )); then
+    alias myip=myip-http-detail
+else
+    alias myip=myip-dns
+fi
 
 alias tinc-family="sudo tinc -n family"
 
@@ -182,13 +190,30 @@ if (( $+aliases[colourify] )); then
 fi
 
 # 后缀别名
-#alias -s {html,htm}="firefox"
-alias -s {pdf,ps,djvu}="okular"
-alias -s {png,jpg,gif}="feh"
+if (( $+commands[okular] )) && (( $_in_gui == 1 )); then
+    alias -s {pdf,ps,djvu}="okular"
+fi
+# https://askubuntu.com/questions/97542/how-do-i-make-my-terminal-display-graphical-pictures
+if (( $+commands[gwenview] )) && (( $_in_gui == 1 )); then
+    alias -s {png,jpg,jpeg,gif}="gwenview"
+elif (( $+commands[feh] )) && (( $_in_gui == 1 )); then
+    alias -s {png,jpg,jpeg,gif}="feh"
+elif (( $+commands[display] )) && (( $_in_gui == 1 )); then
+    alias -s {png,jpg,jpeg,gif}="display"
+elif (( $+commands[viu] )); then
+    # https://github.com/atanunq/viu
+    alias -s {png,jpg,jpeg,gif}="viu"
+elif (( $+commands[kitty] )) && (( $_in_kitty == 1 )); then
+    # https://sw.kovidgoyal.net/kitty/kittens/icat/
+    alias -s {png,jpg,jpeg,gif}="kitty +kitten icat"
+elif (( $+commands[catimg] )); then
+    # https://github.com/posva/catimg
+    alias -s {png,jpg,jpeg,gif}="catimg"
+fi
 alias -s jar="java -jar"
 if (( $+commands[ruffle] )); then
     alias -s swf="ruffle"
-else
+elif (( $+commands[flashplayer] )); then
     alias -s swf="flashplayer"
 fi
 
