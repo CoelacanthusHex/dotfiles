@@ -187,11 +187,16 @@ zstyle ':completion:*:*:mpv:*' file-patterns \
 # ignore for editor
 # https://github.com/MaskRay/Config/blob/master/home/.zshrc#L170
 # ignore video files, audio files and compiled files
+_ignore_video_files=(avi mkv rmvb wmv mp4 flv webm mov)
+_ignore_audio_files=(mp3 flac ogg wav)
+_ignore_compiled_files=(a dylib so rlib lib o pyc zwc)
+_ignore_files=()
+_ignore_files+=$_ignore_video_files && _ignore_files+=$_ignore_audio_files && _ignore_files+=$_ignore_compiled_files && \
 zstyle ':completion:*:*:(vi|vim|nvim|emacs|nano):*:*files' ignored-patterns \
-    '*.(avi|mkv|rmvb|wmv|mp4|flv|mp4|webm|mov|mp3|flac|ogg|a|dylib|so|rlib|lib|o|pyc|zwc)'
+    "*.(#i)(${(j:|:)_ignore_files})(-.)"
 
 # Ignore pyc files for python
-zstyle ':completion:*:*:(python*|pytest):*:*files' ignored-patterns '*.(pyc)'
+zstyle ':completion:*:*:(python*|pytest):*:*files' ignored-patterns '*.(pyc)(-.)'
 
 # https://github.com/zsh-users/zsh/blob/zsh-5.8/Completion/Unix/Command/_ipsec#L6-L8
 #zstyle ':completion:*:(ipsec|strongswan)/*' gain-privileges yes
