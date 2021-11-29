@@ -164,7 +164,7 @@ extract() {
                 cd ..
             ;;
             (*.zst) unzstd "$1" ;;
-            (*.exe) cabextract "$1" ;;
+            (*.exe|*.cab) cabextract "$1" ;;
             (*.cpio) cpio -id < "$1" ;;
             (*.cba|*.ace) unace x "$1" ;;
             (*.zpaq) zpaq x "$1" ;;

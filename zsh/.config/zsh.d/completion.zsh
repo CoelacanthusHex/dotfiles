@@ -164,9 +164,10 @@ compdef _gnu_generic exa pamixer
 
 zstyle ':completion:*:*:x:*' file-patterns \
     '*.{7z,bz2,gz,rar,tar,tbz,tgz,zip,chm,xz,zst,exe,xpi,apk,maff,crx,deb,jar,lrz,lzma,rpm,lz,lz4,tbz,tbz2,tlz,txz,tzst,cbz,cbr,exe,epub,cpio,cba,ace,zpaq,arc}:compressed-files:compressed\ files *(-/):directories:directories'
-    zstyle ':completion:*:*:feh:*' file-patterns '*.{png,gif,jpg,svg}:images:images *(-/):directories:directories'
-    zstyle ':completion:*:*:sxiv:*' file-patterns '*.{png,gif,jpg}:images:images *(-/):directories:directories'
-    zstyle ':completion:*:*:mpv:*' file-patterns '*.(#i)(flv|mp4|webm|mkv|wmv|mov|avi|mp3|ogg|wma|flac|wav|aiff|m4a|m4b|m4v|gif|ifo)(-.) *(-/):directories' '*:all-files'
+    
+zstyle ':completion:*:*:feh:*' file-patterns '*.{png,gif,jpg,svg}:images:images *(-/):directories:directories'
+zstyle ':completion:*:*:sxiv:*' file-patterns '*.{png,gif,jpg}:images:images *(-/):directories:directories'
+zstyle ':completion:*:*:mpv:*' file-patterns '*.(#i)(flv|mp4|webm|mkv|wmv|mov|avi|mp3|ogg|wma|flac|wav|aiff|m4a|m4b|m4v|gif|ifo)(-.) *(-/):directories' '*:all-files'
 
 # ignore for vim
 # https://github.com/MaskRay/Config/blob/master/home/.zshrc#L170
