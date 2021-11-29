@@ -1,3 +1,11 @@
+zmodload zsh/complist
+
+# using hjkl to select completion menu
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+
 autoload -Uz compinit
 compinit -d "$ZSH_COMPDUMP"
 
@@ -38,7 +46,6 @@ zstyle ':completion:*:options' auto-description '%d'
 # colorfull completion list
 #eval $(dircolors -b) # Load better one in config.zsh
 export ZLSCOLORS="${LS_COLORS}"
-zmodload zsh/complist
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 # https://thevaluable.dev/zsh-completion-guide-examples/
@@ -69,6 +76,7 @@ fi
 zstyle ':completion:*:approximate:'    max-errors 'reply=( $((($#PREFIX+$#SUFFIX)/3 )) numeric )'
 
 zstyle ':completion:*' expand 'yes'
+# I don't like expand `//` -> `/*/`, I user `//` -> `/` as default behavior in UNIX
 zstyle ':completion:*' squeeze-shlashes 'yes'
 zstyle ':completion::complete:*' '\\'
 
