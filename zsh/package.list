@@ -35,3 +35,6 @@ zsh-syntax-highlighting
 zsh-history-substring-search
 zsh-completions
 zsh-autosuggestions
+zstd
+xz
+cpio
