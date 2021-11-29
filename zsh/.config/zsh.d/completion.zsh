@@ -13,8 +13,8 @@ autoload -U +X bashcompinit && bashcompinit
 #[ -f /usr/share/bash-completion/bash_completion ] && source /usr/share/bash-completion/bash_completion
 #(( $+commands[stack] )) && eval "$(stack --bash-completion-script stack)"
 
-# 在 .. 后不要回到当前目录
-zstyle ':completion:*:cd:*' ignore-parents parent pwd
+# enable hidden files completion
+_comp_options+=(globdots)
 
 # Some functions, like _apt and _dpkg, are very slow. We can use a cache in
 # order to speed things up
@@ -140,6 +140,9 @@ zstyle ':completion:*:processes-names' command 'ps c -u ${USER} -o command | uni
 # complete manual by their section, from grml
 zstyle ':completion:*:manuals'    separate-sections true
 zstyle ':completion:*:manuals.*'  insert-sections   true
+
+# 在 .. 后不要回到当前目录
+zstyle ':completion:*:cd:*' ignore-parents parent pwd
 
 # complete user-commands for git-*
 # https://pbrisbin.com/posts/deleting_git_tags_with_style/
