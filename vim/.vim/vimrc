@@ -121,6 +121,12 @@ call plug#begin('~/.vim/plugged')
     Plug 'editorconfig/editorconfig-vim'
     " 颜色代码转颜色
     Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+    " Git sign column
+    if has('patch-8.0.902')
+        Plug 'mhinz/vim-signify'
+    else
+        Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
+    endif
 
     " Sudo support
 	Plug 'lambdalisue/suda.vim'

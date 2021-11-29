@@ -19,7 +19,11 @@ endif
 
 " Load matchit.vim, but only if the user hasn't installed a newer version.
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
-    runtime! macros/matchit.vim
+    try
+        packadd! matchit
+    catch /.*/
+        runtime! macros/matchit.vim
+    endtry
 endif
 
 " Disables mouse in insert mode
