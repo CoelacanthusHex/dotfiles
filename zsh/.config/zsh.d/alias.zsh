@@ -17,28 +17,28 @@ alias vi="vim"
 
 # https://github.com/lilydjwg/dotzsh/blob/e1a678cf4743e53813a457cb33f6f1e82e5bfa39/zshrc#L875
 if (( $+commands[zoxide] )); then
-  eval "$(zoxide init zsh)"
-  function z () {
-    if [[ "$#" -eq 0 ]]; then
-      __zoxide_z ''
-    else
-      __zoxide_z "$@"
-    fi
-  }
-  if [[ -z $functions[j] ]]; then
-    function j () {
-      if [[ -t 1 ]]; then
-        z "$@"
-      else
-        zoxide query "$@"
-      fi
+    eval "$(zoxide init zsh)"
+    function z () {
+        if [[ "$#" -eq 0 ]]; then
+            __zoxide_z ''
+        else
+            __zoxide_z "$@"
+        fi
     }
-  fi
+    if [[ -z $functions[j] ]]; then
+        function j () {
+            if [[ -t 1 ]]; then
+                z "$@"
+            else
+                zoxide query "$@"
+            fi
+        }
+    fi
 fi
 # if zoxide loads but the directory is readonly, remove the chpwd hook
 if [[ ${chpwd_functions[(i)__zoxide_hook]} -le ${#chpwd_functions} && \
-  -d ~/.local/share/zoxide && ! -w ~/.local/share/zoxide ]]; then
-  chpwd_functions[(i)__zoxide_hook]=()
+    -d ~/.local/share/zoxide && ! -w ~/.local/share/zoxide ]]; then
+        chpwd_functions[(i)__zoxide_hook]=()
 fi
 
 # using exa instead of ls, and ls' alias
@@ -58,8 +58,9 @@ alias lt='ll -tr'        # Lists sorted by date, most recent last.
 alias lc='lt -c'         # Lists sorted by date, most recent last, shows change time.
 alias lu='lt -u'         # Lists sorted by date, most recent last, shows access time.
 
+# bat using noexpandtab
+(( $+commands[bat] )) && export BAT_OPTS="--tabs 0"
 # using fd instead of find
-(( $+commands[bat] )) && alias bat="bat --tabs=0"
 if (( $+commands[fd] )); then
     alias clang-format-all='fd --type f '.*\.(c|cpp|h|hpp|hxx|cxx)' . -x clang-format -i {};'
     alias clang-tidy-all='fd --type f '.*\.(c|cpp|h|hpp|hxx|cxx)' . -x clang-tidy {};'
@@ -68,8 +69,8 @@ else
 fi
 
 if (( $+commands[vimtrace] )); then
-  (( $+commands[strace] )) && alias strace='vimtrace strace'
-  (( $+commands[ltrace] )) && alias ltrace='vimtrace ltrace'
+    (( $+commands[strace] )) && alias strace='vimtrace strace'
+    (( $+commands[ltrace] )) && alias ltrace='vimtrace ltrace'
 fi
 
 # some cd
@@ -173,12 +174,12 @@ alias xcp="rsync -aviHAXKhS --one-file-system --partial --info=progress2 --atime
 # https://github.com/lilydjwg/dotzsh/blob/313050449529c84914293283691da1e824d779f5/zshrc#L375
 # grc aliases
 if (( $+aliases[colourify] )); then
-  # default is better
-  unalias gcc g++ 2>/dev/null || true
-  # bug: https://github.com/garabik/grc/issues/72
-  unalias mtr     2>/dev/null || true
-  # buffering issues: https://github.com/garabik/grc/issues/25
-  unalias ping    2>/dev/null || true
+    # default is better
+    unalias gcc g++ 2>/dev/null || true
+    # bug: https://github.com/garabik/grc/issues/72
+    unalias mtr     2>/dev/null || true
+    # buffering issues: https://github.com/garabik/grc/issues/25
+    unalias ping    2>/dev/null || true
 fi
 
 # 后缀别名
