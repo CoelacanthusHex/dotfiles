@@ -156,7 +156,7 @@ extract() {
             (*.lrz) (( $+commands[lrunzip] )) && lrunzip "$file" ;;
             (*.lz4) lz4 -d "$file" ;;
             (*.lzma) unlzma "$file" ;;
-            (*.z) uncompress "$file" ;;
+            (*.z|*.Z) uncompress "$file" ;;
             (*.zip|*.war|*.jar|*.ear|*.sublime-package|*.ipa|*.ipsw|*.xpi|*.apk|*.aar|*.whl|*.cbz|*.epub|*.maff) unzip "$file" -d $extract_dir ;;
             (*.rar|*.cbr) unrar x -ad "$file" ;;
             (*.rpm) command mkdir "$extract_dir" && builtin cd -q "$extract_dir" \
