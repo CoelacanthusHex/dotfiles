@@ -196,20 +196,41 @@ fi
 # https://askubuntu.com/questions/97542/how-do-i-make-my-terminal-display-graphical-pictures
 if (( $+commands[gwenview] )) && (( $_in_gui == 1 )); then
     alias -s {png,jpg,jpeg,gif}="gwenview"
+    alias pic-viewer="gwenview"
 elif (( $+commands[feh] )) && (( $_in_gui == 1 )); then
     alias -s {png,jpg,jpeg,gif}="feh"
+    alias pic-viewer="feh"
 elif (( $+commands[display] )) && (( $_in_gui == 1 )); then
     alias -s {png,jpg,jpeg,gif}="display"
+    alias pic-viewer="display"
 elif (( $+commands[viu] )); then
     # https://github.com/atanunq/viu
     alias -s {png,jpg,jpeg,gif}="viu"
+    alias pic-viewer="viu"
 elif (( $+commands[kitty] )) && (( $_in_kitty == 1 )); then
     # https://sw.kovidgoyal.net/kitty/kittens/icat/
     alias -s {png,jpg,jpeg,gif}="kitty +kitten icat"
+    alias pic-viewer="kitty +kitten icat"
 elif (( $+commands[catimg] )); then
     # https://github.com/posva/catimg
     alias -s {png,jpg,jpeg,gif}="catimg"
+    alias pic-viewer="catimg"
 fi
+# https://superuser.com/questions/174522/command-line-svg-and-image-file-viewer-in-linux
+if (( $+commands[gwenview] )) && (( $_in_gui == 1 )); then
+    alias -s svg="gwenview"
+    alias svg-viewer="gwenview"
+elif (( $+commands[inkview] )) && (( $_in_gui == 1 )); then
+    alias -s svg="inkview"
+    alias svg-viewer="inkview"
+elif (( $+commands[feh] )) && (( $_in_gui == 1 )); then
+    alias -s svg="feh --conversion-timeout 1"
+    alias svg-viewer="feh --conversion-timeout 1"
+elif (( $+commands[display] )) && (( $_in_gui == 1 )); then
+    alias -s svg="display"
+    alias svg-viewer="display"
+fi
+
 alias -s jar="java -jar"
 if (( $+commands[ruffle] )); then
     alias -s swf="ruffle"
