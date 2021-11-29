@@ -40,7 +40,10 @@ zstyle ':completion:*:matches' group 'yes'
 zstyle ':completion:*:options' description 'yes'
 zstyle ':completion:*:options' auto-description '%d'
 # 描述显示为淡色
-zstyle ':completion:*:descriptions' format $'\e[2m -- %d --\e[0m'
+# it only supported by gnome-terminal
+# https://gist.github.com/inexorabletash/9122583
+#zstyle ':completion:*:descriptions' format $'\e[2m -- %d --\e[0m'
+zstyle ':completion:*:descriptions' format $'\e[01;33m -- %d --\e[0m'
 zstyle ':completion:*:messages' format $'\e[01;35m -- %d --\e[0m'
 # 警告显示为红色
 zstyle ':completion:*:warnings' format $'\e[91m -- No Matches Found --\e[0m'
@@ -178,12 +181,17 @@ _pic_viewer_formats=(png gif jpg jpeg tiff bmp)
 zstyle ':completion:*:*:pic-viewer:*' file-patterns "*.(#i)(${(j:|:)_pic_viewer_formats})(-.):images:images *(-/):directories:directories"
 unset _pic_viewer_formats
 zstyle ':completion:*:*:svg-viewer:*' file-patterns '*.(#i)(svg)(-.):images:"vector images" *(-/):directories:directories'
-zstyle ':completion:*:*:mpv:*' file-patterns '*.(#i)(flv|mp4|webm|mkv|wmv|mov|avi|mp3|ogg|wma|flac|wav|aiff|m4a|m4b|m4v|gif|ifo)(-.) *(-/):directories' '*:all-files'
+zstyle ':completion:*:*:mpv:*' file-patterns \
+    '*.(#i)(flv|mp4|webm|mkv|wmv|mov|avi|mp3|ogg|wma|flac|wav|aiff|m4a|m4b|m4v|gif|ifo)(-.) *(-/):directories' '*:all-files'
 
-# ignore for vim
+# ignore for editor
 # https://github.com/MaskRay/Config/blob/master/home/.zshrc#L170
-zstyle ':completion:*:*:vim:*:*files' ignored-patterns '*.(avi|mkv|rmvb|pyc|wmv)'
-zstyle ':completion:*:*:nvim:*:*files' ignored-patterns '*.(avi|mkv|rmvb|pyc|wmv)'
+# ignore video files, audio files and compiled files
+zstyle ':completion:*:*:(vi|vim|nvim|emacs|nano):*:*files' ignored-patterns \
+    '*.(avi|mkv|rmvb|wmv|mp4|flv|mp4|webm|mov|mp3|flac|ogg|a|dylib|so|rlib|lib|o|pyc|zwc)'
+
+# Ignore pyc files for python
+zstyle ':completion:*:*:(python*|pytest):*:*files' ignored-patterns '*.(pyc)'
 
 # https://github.com/zsh-users/zsh/blob/zsh-5.8/Completion/Unix/Command/_ipsec#L6-L8
 #zstyle ':completion:*:(ipsec|strongswan)/*' gain-privileges yes
