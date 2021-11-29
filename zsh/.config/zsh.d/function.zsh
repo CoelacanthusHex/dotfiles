@@ -1,6 +1,6 @@
 # zsh_stats from oh-my-zsh https://github.com/robbyrussell/oh-my-zsh/blob/master/lib/functions.zsh
 function zsh_stats() {
-  fc -l 1 | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n20
+    fc -l 1 | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n20
 }
 
 function compresspdf(){
@@ -17,7 +17,7 @@ function man() {
         LESS_TERMCAP_so=$(printf "\e[1;47;30m") \
         LESS_TERMCAP_ue=$(printf "\e[0m") \
         LESS_TERMCAP_us=$(printf "\e[0;36m") \
-            man "$@"
+		man "$@"
 }
 
 function wifi(){
@@ -106,12 +106,7 @@ extract() {
     local extract_dir
 
     if (( $# == 0 )); then
-        cat <<-'EOF' >&2
-			Usage: extract [-option] [file ...]
-
-			Options:
-			    -r, --remove    Remove archive after unpacking.
-		EOF
+        printf "Usage: extract [-option] [file ...]\n\nOptions:\n\t-r, --remove    Remove archive after unpacking."
     fi
 
     remove_archive=1
@@ -321,4 +316,4 @@ weather() {
     curl -fGsS --compressed $args "https://wttr.in/${location:-Feicheng}?${(j::)WTTR_PARAMS}&lang=${lang:-${LANG%_*}}"
 }
 
-# vim: ft=zsh
+# vim: ft=zsh sw=4 ts=8 sts=4 et

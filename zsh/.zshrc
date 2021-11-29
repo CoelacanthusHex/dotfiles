@@ -82,4 +82,4 @@ gpg-connect-agent updatestartuptty /bye >/dev/null
 
 unset OS
 
-# vim: ft=zsh
+# vim: ft=zsh sw=4 ts=8 sts=4 et

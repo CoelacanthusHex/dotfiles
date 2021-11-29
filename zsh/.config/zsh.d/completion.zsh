@@ -54,9 +54,9 @@ zstyle ':completion:incremental:*' completer _complete _correct
 # _extensions 为 *. 补全扩展名
 # 在最后尝试使用文件名
 if is-at-least 5.0.5; then
-  zstyle ':completion:*' completer _complete _extensions _match _approximate _expand_alias _ignored _files
+    zstyle ':completion:*' completer _complete _extensions _match _approximate _expand_alias _ignored _files
 else
-  zstyle ':completion:*' completer _complete _match _approximate _expand_alias _ignored _files
+    zstyle ':completion:*' completer _complete _match _approximate _expand_alias _ignored _files
 fi
 
 # allow one error for every three characters typed in approximate completer
@@ -88,11 +88,11 @@ export ZSH_AUTOSUGGEST_USE_ASYNC=true
 # This speeds up pasting w/ autosuggest
 # https://github.com/zsh-users/zsh-autosuggestions/issues/238
 pasteinit() {
-  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
-  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
+    OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
+    zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
 }
 pastefinish() {
-  zle -N self-insert $OLD_SELF_INSERT
+    zle -N self-insert $OLD_SELF_INSERT
 }
 zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
@@ -146,13 +146,13 @@ zstyle ':completion:*:processes-names' command 'ps c -u ${USER} -o command | uni
 zstyle ':completion:*:*:git*:*' use-fallback false
 
 # Search path for sudo completion
-zstyle ':completion:*:sudo:*' command-path /usr/local/sbin \
-                                           /usr/local/bin  \
-                                           /usr/sbin       \
-                                           /usr/bin        \
-                                           /sbin           \
-                                           /bin            \
-                                           /usr/X11R6/bin
+zstyle ':completion:*:sudo:*' command-path  /usr/local/sbin \
+                                            /usr/local/bin  \
+                                            /usr/sbin       \
+                                            /usr/bin        \
+                                            /sbin           \
+                                            /bin            \
+                                            /usr/X11R6/bin
 
 zstyle :compinstall filename "${HOME}/.zshrc"
 
@@ -163,10 +163,10 @@ compdef cgproxy=command
 compdef _gnu_generic exa pamixer
 
 zstyle ':completion:*:*:x:*' file-patterns \
-  '*.{7z,bz2,gz,rar,tar,tbz,tgz,zip,chm,xz,zst,exe,xpi,apk,maff,crx,deb,jar,lrz,lzma,rpm,lz,lz4,tbz,tbz2,tlz,txz,tzst,cbz,cbr,exe,epub,cpio,cba,ace,zpaq,arc}:compressed-files:compressed\ files *(-/):directories:directories'
-zstyle ':completion:*:*:feh:*' file-patterns '*.{png,gif,jpg,svg}:images:images *(-/):directories:directories'
-zstyle ':completion:*:*:sxiv:*' file-patterns '*.{png,gif,jpg}:images:images *(-/):directories:directories'
-zstyle ':completion:*:*:mpv:*' file-patterns '*.(#i)(flv|mp4|webm|mkv|wmv|mov|avi|mp3|ogg|wma|flac|wav|aiff|m4a|m4b|m4v|gif|ifo)(-.) *(-/):directories' '*:all-files'
+    '*.{7z,bz2,gz,rar,tar,tbz,tgz,zip,chm,xz,zst,exe,xpi,apk,maff,crx,deb,jar,lrz,lzma,rpm,lz,lz4,tbz,tbz2,tlz,txz,tzst,cbz,cbr,exe,epub,cpio,cba,ace,zpaq,arc}:compressed-files:compressed\ files *(-/):directories:directories'
+    zstyle ':completion:*:*:feh:*' file-patterns '*.{png,gif,jpg,svg}:images:images *(-/):directories:directories'
+    zstyle ':completion:*:*:sxiv:*' file-patterns '*.{png,gif,jpg}:images:images *(-/):directories:directories'
+    zstyle ':completion:*:*:mpv:*' file-patterns '*.(#i)(flv|mp4|webm|mkv|wmv|mov|avi|mp3|ogg|wma|flac|wav|aiff|m4a|m4b|m4v|gif|ifo)(-.) *(-/):directories' '*:all-files'
 
 # ignore for vim
 # https://github.com/MaskRay/Config/blob/master/home/.zshrc#L170
@@ -183,3 +183,4 @@ zstyle ':completion:*:*:nvim:*:*files' ignored-patterns '*.(avi|mkv|rmvb|pyc|wmv
 #zstyle ':completion:*:cmake:*' languages $cmake_langs
 
 
+# vim: ft=zsh sw=4 ts=8 sts=4 et

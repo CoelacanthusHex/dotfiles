@@ -21,9 +21,9 @@ setopt hist_ignore_space
 # zsh 4.3.6 doesn't have this option
 setopt hist_fcntl_lock 2>/dev/null
 if is-at-least 5.0.5; then
-  # This may cause the command messed up due to a memcpy bug
+    # This may cause the command messed up due to a memcpy bug
 else
-  setopt hist_reduce_blanks
+    setopt hist_reduce_blanks
 fi
 #为历史纪录中的命令添加时间戳
 setopt extended_history
@@ -120,8 +120,7 @@ autoload -Uz colors zsh/terminfo
 colors
 
 () {
-    autoload -Uz colors
-    colors
+    autoload -Uz colors && colors
     local white_b=$fg_bold[white] blue=$fg_bold[blue] rst=$reset_color
     local white_b=$'\e[97m' blue=$'\e[94m' rst=$'\e[0m'
     TIMEFMT=("== TIME REPORT FOR $white_b%J$rst =="$'\n'
@@ -165,3 +164,5 @@ bindkey "\e\e" sudo-command-line
 # http://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo
 alias sudo='sudo '
 alias cgproxy='cgproxy '
+
+# vim: ft=zsh sw=4 ts=8 sts=4

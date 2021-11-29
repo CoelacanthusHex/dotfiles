@@ -71,3 +71,5 @@ manpath=(
     /usr/local/share/man(N-/)
     /usr/share/man(N-/)
 )
+
+# vim: ft=zsh sw=4 ts=8 sts=4 et
