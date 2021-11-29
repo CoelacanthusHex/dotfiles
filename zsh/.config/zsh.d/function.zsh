@@ -146,10 +146,10 @@ extract() {
                 tar --zstd --help &> /dev/null \
                 && tar --zstd -xvf "$file" \
                 || zstdcat "$file" | tar xvf - ;;
-            (*.tar) tar xvf "$file" ;;
             (*.tar.lz) (( $+commands[lzip] )) && tar xvf "$file" ;;
             (*.tar.lz4) lz4 -c -d "$file" | tar xvf - ;;
             (*.tar.lrz) (( $+commands[lrzuntar] )) && lrzuntar "$file" ;;
+            (*.tar|*.cbt) tar xvf "$file" ;;
             (*.gz) (( $+commands[pigz] )) && pigz -dk "$file" || gunzip -k "$file" ;;
             (*.bz2) bunzip2 "$file" ;;
             (*.xz) unxz "$file" ;;
@@ -157,11 +157,11 @@ extract() {
             (*.lz4) lz4 -d "$file" ;;
             (*.lzma) unlzma "$file" ;;
             (*.z) uncompress "$file" ;;
-            (*.zip|*.war|*.jar|*.ear|*.sublime-package|*.ipa|*.ipsw|*.xpi|*.apk|*.aar|*.whl|*.cbz|*.epub) unzip "$file" -d $extract_dir ;;
+            (*.zip|*.war|*.jar|*.ear|*.sublime-package|*.ipa|*.ipsw|*.xpi|*.apk|*.aar|*.whl|*.cbz|*.epub|*.maff) unzip "$file" -d $extract_dir ;;
             (*.rar|*.cbr) unrar x -ad "$file" ;;
             (*.rpm) command mkdir "$extract_dir" && builtin cd -q "$extract_dir" \
                 && rpm2cpio "$full_path" | cpio --quiet -id ;;
-            (*.7z) 7za x "$file" ;;
+            (*.7z|*.chm|*cb7) 7za x "$file" ;;
             (*.deb)
                 command mkdir -p "$extract_dir/control" "$extract_dir/data"
                 builtin cd -q "$extract_dir"; ar vx "$full_path" > /dev/null
@@ -170,7 +170,7 @@ extract() {
                 builtin cd -q ..; command rm *.tar.* debian-binary
             ;;
             (*.zst) unzstd "$file" ;;
-            (*.exe|*.cab) cabextract -d "$extract_dir" "$file" ;;
+            (*.cab|*.exe) cabextract -d "$extract_dir" "$file" ;;
             (*.cpio) cpio -idMvF "$file" ;;
             (*.cba|*.ace) unace x "$file" ;;
             (*.zpaq) zpaq x "$file" ;;

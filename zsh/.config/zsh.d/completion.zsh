@@ -167,7 +167,7 @@ compdef cgproxy=command
 compdef _gnu_generic exa pamixer
 
 zstyle ':completion:*:*:x:*' file-patterns \
-    '*.(#i)(7z|bz2|gz|rar|tar|tbz|tgz|zip|chm|xz|zst|exe|xpi|apk|maff|crx|deb|jar|lrz|lzma|rpm|lz|lz4|tbz|tbz2|tlz|txz|tzst|cbz|cbr|exe|epub|cpio|cba|ace|zpaq|arc)(-.) *(-/):directories:directories'
+    '*.(#i)(tar.gz|tgz|tar.bz2|tbz|tbz2|tar.xz|txz|tar.zma|tlz|tar.zst|tzst|tar.lz|tar.lz4|tar.lrz|tar|cbt|gz|bz2|xz|lrz|lz4|lzma|z|zip|war|jar|ear|sublime-package|ipa|ipsw|xpi|apk|aar|whl|cbz|epub|maff|rar|cbr|rpm|7z|chm|cb7|deb|zst|exe|cab|cpio|cba|ace|zpaq|arc)(-.) *(-/):directories:directories'
     
 zstyle ':completion:*:*:feh:*' file-patterns '*.(#i)(png|gif|jpg|jpeg|svg)(-.):images:images *(-/):directories:directories'
 zstyle ':completion:*:*:viu:*' file-patterns '*.(#i)(png|gif|jpg|jpeg)(-.):images:images *(-/):directories:directories'
