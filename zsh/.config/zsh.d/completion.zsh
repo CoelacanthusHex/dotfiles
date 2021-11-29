@@ -6,7 +6,7 @@ autoload -U +X bashcompinit && bashcompinit
 #(( $+commands[stack] )) && eval "$(stack --bash-completion-script stack)"
 
 #彩色补全菜单
-#eval $(dircolors -b)
+#eval $(dircolors -b) # Load better one in config.zsh
 export ZLSCOLORS="${LS_COLORS}"
 zmodload zsh/complist
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
@@ -123,6 +123,10 @@ zstyle ':completion:*:processes' command 'ps -afu$USER'
 # Provide more processes in completion of programs like killall:
 zstyle ':completion:*:processes-names' command 'ps c -u ${USER} -o command | uniq'
 
+# complete manual by their section, from grml
+zstyle ':completion:*:manuals'    separate-sections true
+zstyle ':completion:*:manuals.*'  insert-sections   true
+
 # complete user-commands for git-*
 # https://pbrisbin.com/posts/deleting_git_tags_with_style/
 # /usr/share/zsh/functions/Completion/Unix/_git
@@ -163,10 +167,10 @@ compdef cgproxy=command
 compdef _gnu_generic exa pamixer
 
 zstyle ':completion:*:*:x:*' file-patterns \
-    '*.{7z,bz2,gz,rar,tar,tbz,tgz,zip,chm,xz,zst,exe,xpi,apk,maff,crx,deb,jar,lrz,lzma,rpm,lz,lz4,tbz,tbz2,tlz,txz,tzst,cbz,cbr,exe,epub,cpio,cba,ace,zpaq,arc}:compressed-files:compressed\ files *(-/):directories:directories'
+    '*.(#i)(7z|bz2|gz|rar|tar|tbz|tgz|zip|chm|xz|zst|exe|xpi|apk|maff|crx|deb|jar|lrz|lzma|rpm|lz|lz4|tbz|tbz2|tlz|txz|tzst|cbz|cbr|exe|epub|cpio|cba|ace|zpaq|arc)(-.) *(-/):directories:directories'
     
-zstyle ':completion:*:*:feh:*' file-patterns '*.{png,gif,jpg,svg}:images:images *(-/):directories:directories'
-zstyle ':completion:*:*:sxiv:*' file-patterns '*.{png,gif,jpg}:images:images *(-/):directories:directories'
+zstyle ':completion:*:*:feh:*' file-patterns '*.(#i)(png|gif|jpg|jpeg|svg)(-.):images:images *(-/):directories:directories'
+zstyle ':completion:*:*:viu:*' file-patterns '*.(#i)(png|gif|jpg|jpeg)(-.):images:images *(-/):directories:directories'
 zstyle ':completion:*:*:mpv:*' file-patterns '*.(#i)(flv|mp4|webm|mkv|wmv|mov|avi|mp3|ogg|wma|flac|wav|aiff|m4a|m4b|m4v|gif|ifo)(-.) *(-/):directories' '*:all-files'
 
 # ignore for vim
