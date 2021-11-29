@@ -250,7 +250,7 @@ clip_png2bmp () { # 将剪贴板中的图片从 png 转到 bmp。QQ 会使用 bm
 if [[ $_has_re -eq 1 ]] && \
     (( $+commands[tmux] )) && (( $+commands[systemctl] )); then
     [[ $(systemctl --version) =~ 'systemd ([0-9]+)' ]] || true
-    if [[ $match -ge 230 ]]; then
+    if (( $match >= 230 )); then
         tmux () {
             if command tmux has; then
                 command tmux $@
@@ -295,10 +295,10 @@ weather() {
     # A : ignore User-Agent and force ANSI output format (terminal)
     # F : do not show the "Follow" line
     # T : disable color
-    local WTTR_PARAMS=('m' 'M' '2' 'F' 'n')
-    if [[ -t 1 ]] && [[ "$(tput cols)" -lt 125 ]]; then
+    local WTTR_PARAMS=('m' 'M' '2' 'F')
+    if (( $(tput cols) < 125 )); then
         WTTR_PARAMS+='n'
-    fi 2> /dev/null
+    fi
     if (( $# > 1 )); then
         lang=$2
     else
