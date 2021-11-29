@@ -5,13 +5,6 @@ autoload -U +X bashcompinit && bashcompinit
 #[ -f /usr/share/bash-completion/bash_completion ] && source /usr/share/bash-completion/bash_completion
 #(( $+commands[stack] )) && eval "$(stack --bash-completion-script stack)"
 
-#彩色补全菜单
-#eval $(dircolors -b) # Load better one in config.zsh
-export ZLSCOLORS="${LS_COLORS}"
-zmodload zsh/complist
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
-
 # 在 .. 后不要回到当前目录
 zstyle ':completion:*:cd:*' ignore-parents parent pwd
 
@@ -30,24 +23,34 @@ zstyle ':completion:*:history-words'   stop yes
 zstyle ':completion:*:*:zcompile:*'    ignored-patterns '(*~|*.zwc)'
 zstyle ':completion:correct:'          prompt 'correct to: %e'
 
-# Ignore completion functions for commands you don't have:
+# ignore completion functions for commands you don't have:
 zstyle ':completion::(^approximate*):*:functions' ignored-patterns '_*'
 
-#修正大小写
+# correct case
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 
 zstyle ':completion:*:matches' group 'yes'
 zstyle ':completion:*:options' description 'yes'
 zstyle ':completion:*:options' auto-description '%d'
+
+###  Color setting
+# I use http://jafrog.com/2013/11/23/colors-in-terminal.html to get color code
+# colorfull completion list
+#eval $(dircolors -b) # Load better one in config.zsh
+export ZLSCOLORS="${LS_COLORS}"
+zmodload zsh/complist
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+# https://thevaluable.dev/zsh-completion-guide-examples/
 # 描述显示为淡色
 # it only supported by gnome-terminal
 # https://gist.github.com/inexorabletash/9122583
 #zstyle ':completion:*:descriptions' format $'\e[2m -- %d --\e[0m'
-zstyle ':completion:*:descriptions' format $'\e[01;33m -- %d --\e[0m'
-zstyle ':completion:*:messages' format $'\e[01;35m -- %d --\e[0m'
+zstyle ':completion:*:descriptions' format '%F{blue} -- %d -- %f'
+zstyle ':completion:*:messages' format '%F{purple} -- %d -- %f'
 # 警告显示为红色
-zstyle ':completion:*:warnings' format $'\e[91m -- No Matches Found --\e[0m'
-zstyle ':completion:*:corrections' format $'\e[93m -- %d (errors: %e) --\e[0m'
+zstyle ':completion:*:warnings' format '%F{red}%B -- No Matches Found --%b%f'
+zstyle ':completion:*:corrections' format '%F{yellow}%B -- %d (errors: %e) --%b%f'
 
 #错误校正
 zstyle ':completion:*:match:*' original only
