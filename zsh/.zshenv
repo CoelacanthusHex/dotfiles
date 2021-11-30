@@ -45,6 +45,7 @@ typeset -U path
 path=(
     $HOME/.go/bin(N-/)
     $HOME/.cargo/bin(N-/)
+    $XDG_DATA_HOME/cargo/bin(N-/)
     $XDG_CONFIG_HOME/zsh.d/functions(N-/)
     $HOME/.local/bin(N-/)
     /usr/local/bin(N-/)
@@ -66,7 +67,7 @@ fpath=(
 typeset -U manpath
 manpath=(
     $HOME/.local/share/man(N-/)
-    XDG_DATA_HOME/man(N-/)
+    $XDG_DATA_HOME/man(N-/)
     $manpath
     /usr/local/share/man(N-/)
     /usr/share/man(N-/)

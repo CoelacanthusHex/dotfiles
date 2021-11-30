@@ -69,6 +69,7 @@ GOPATH              DEFAULT=${XDG_DATA_HOME}/go
 GTK2_RC_FILES       DEFAULT=${XDG_CONFIG_HOME}/gtk-2.0/gtkrc
 # Java
 #_JAVA_OPTIONS       DEFAULT="-Djava.util.prefs.userRoot=${XDG_CONFIG_HOME}/java"
+# Less
 #LESSKEY             DEFAULT=${XDG_CONFIG_HOME}/less/lesskey
 LESSHISTFILE        DEFAULT=${XDG_CACHE_HOME}/less/history
 # GNU Parallel
