@@ -1,2 +1,2 @@
 #!/bin/bash
-docx2txt.pl "$1" -
+docx2txt "$1" -

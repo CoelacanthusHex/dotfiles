@@ -273,7 +273,12 @@ fi
 
 # check fcitx5 dbus
 function check-fcitx5-dbus() {
-    qdbus org.fcitx.Fcitx5 /controller org.fcitx.Fcitx.Controller1.DebugInfo
+    if (( $+commands[qdbus] )); then
+        qdbus org.fcitx.Fcitx5 /controller org.fcitx.Fcitx.Controller1.DebugInfo
+    elif (( $+commands[busctl] )); then
+        # TODO: using busctl
+        # busctl --user call org.fcitx.Fcitx5 /controller org.fcitx.Fcitx.Controller1.DebugInfo
+    fi
 }
 
 # https://github.com/lilydjwg/dotzsh/blob/313050449529c84914293283691da1e824d779f5/zshrc#L445
