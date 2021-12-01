@@ -132,8 +132,7 @@ colors
 (( $_in_gui == 1 )) || [[ -n $ANDROID_ROOT ]] || eval "$(dircolors -b)"
 
 # Extended LS_COLORS
-# dircolors -b $XDG_CONFIG_HOME/zsh.d/plugins/LS_COLORS > $XDG_CONFIG_HOME/zsh.d/plugins/trapd00r-LS_COLORS.zsh
-source $XDG_CONFIG_HOME/zsh.d/plugins/trapd00r-LS_COLORS.zsh
+eval "$(dircolors -b $XDG_CONFIG_HOME/zsh.d/plugins/LS_COLORS)"
 
 # https://github.com/lilydjwg/dotzsh/blob/313050449529c84914293283691da1e824d779f5/zshrc#L292
 # Esc-Esc 在当前/上一条命令前插入 sudo
