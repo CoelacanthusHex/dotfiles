@@ -8,6 +8,7 @@ alias limit-cpu='systemd-run --user --pty --same-dir --wait --collect --slice=li
 alias limit-mem='systemd-run --user --pty --same-dir --wait --collect --slice=limit-mem.slice '
 
 (( $_in_kitty == 1 )) && alias ssh="kitty +kitten ssh"
+(( $+commands[kitty] )) && (( $+commands[weechat] )) && alias kitty-weechat="kitty -o 'map kitty_mod+e kitten hints --customize-processing weechat_hints.py' weechat"
 
 # reload zsh
 alias reload="sync && source $HOME/.zshrc && rehash"
