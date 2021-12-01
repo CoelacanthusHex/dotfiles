@@ -235,6 +235,10 @@ call plug#begin('~/.vim/plugged')
 
     """"""" Nftables
     Plug 'nfnty/vim-nftables'
+
+
+    """"""" Kitty
+    Plug 'fladson/vim-kitty'
     " }}}
 
 call plug#end()
