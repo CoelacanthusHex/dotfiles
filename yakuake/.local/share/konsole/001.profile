@@ -1,6 +1,6 @@
 [Appearance]
 ColorScheme=Coelacanthus
-Font=等距更纱黑体 SC,11,-1,5,63,0,0,0,0,0,Semibold
+Font=Sarasa Term SC,11,-1,5,63,0,0,0,0,0,Semibold
 UseFontLineChararacters=false
 
 [Cursor Options]
