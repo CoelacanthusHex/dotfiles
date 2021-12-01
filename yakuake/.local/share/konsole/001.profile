@@ -16,7 +16,7 @@ Parent=FALLBACK/
 
 [Interaction Options]
 AllowEscapedLinks=true
-AutoCopySelectedText=true
+AutoCopySelectedText=false
 EscapedLinksSchema=http://;https://;file://;fugitive://
 OpenLinksByDirectClickEnabled=true
 
