@@ -10,7 +10,11 @@
 --glob=!{package-lock.json}
 
 # Exclude .git and .svn directories, because we concel hidden rule
---glob=!{.git,.svn,}
+--glob=!{.git,.svn,.hg,.repo,.cache,.ccache,.ccls-cache}
+
+--glob=!{GTAGS,GRTAGS,GPATH,tags}
+
+--glob=!{.pyc,.zwc,.swp}
 
 # Enable Smartcase
 --smart-case
