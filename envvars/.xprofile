@@ -86,6 +86,9 @@ export QT_IM_MODULE=fcitx
 export GTK_IM_MODULE=fcitx
 export SDL_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
+# hack for kitty
+# https://github.com/kovidgoyal/kitty/issues/469#issuecomment-778814173
+export GLFW_IM_MODULE=ibus
 
 ## Nvidia - vulkan is not working and can not initialize
 ## Check if you have vulkan-intel installed, it may prevent Nvidia's vulkan driver from being detected.
