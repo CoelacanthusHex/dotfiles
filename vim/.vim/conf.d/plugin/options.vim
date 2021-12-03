@@ -102,12 +102,11 @@ set formatoptions+=m
 set formatoptions+=B
 " 不要在单字母单词之后分行
 set formatoptions+=1
-try
+if has("patch-7.3.541")
     " Vim 7.4
     " 在合适的场合，连接行时删除注释前导符
     set formatoptions+=j
-catch /.*/
-endtry
+endif
 
 " 启用搜索结果计数
 set shortmess-=S
