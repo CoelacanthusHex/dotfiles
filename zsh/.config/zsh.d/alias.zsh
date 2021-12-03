@@ -86,8 +86,7 @@ alias ........="cd ../../../../../../.."
 # some proxy
 alias setproxy="export ALL_PROXY=socks5://127.0.0.1:1089"
 alias unsetproxy="unset ALL_PROXY"
-alias pyay='ALL_PROXY=socks5://127.0.0.1:1089 yay'
-alias pparu='ALL_PROXY=socks5://127.0.0.1:1089 paru'
+alias pparu='cgproxy paru'
 
 # add progress
 alias dd='dd status=progress'
