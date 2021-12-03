@@ -1,0 +1,14 @@
+[ui]
+username = Coelacanthus <coelacanthus@outlook.com>
+
+[extensions]
+# enable progress
+progress =
+# set delayed time before progress display (unit: second)
+delay = 2
+# enable graphlog
+# `hg glog`
+# https://mercurial.aragost.com/kick-start/en/basic/#inspecting-history
+# https://www.mercurial-scm.org/wiki/GraphlogExtension
+# it is just an alias to `hg log -G` since Mercurial has supported it with `-G` after Mercurial 2.3
+graphlog =
