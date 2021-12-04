@@ -111,11 +111,13 @@ alias today="date '+%Y-%m-%d'"
 alias now="date --rfc-3339=seconds"
 
 # Vim style alias
-alias ':e'=vim
+alias :e="vim"
 alias :q="exit"
 alias :w="sync"
 alias :x="sync && exit"
 alias :wq="sync && exit"
+alias :help="man"
+alias :h=:help
 
 # GDB
 alias gdb-gef="command gdb -x $XDG_CONFIG_HOME/gdb/gdbinit-gef"
