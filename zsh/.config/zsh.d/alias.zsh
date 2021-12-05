@@ -156,7 +156,13 @@ alias .="source"
 alias bc="bc -lq"
 (( $+commands[rankmirrors] )) && alias rankpacman='sed "s/^#//" /etc/pacman.d/mirrorlist.pacnew | rankmirrors -n 10 - | sudo tee /etc/pacman.d/mirrorlist'
 
-alias myip-http-detail='curl -s -L -H "Accept: application/json" "https://ipinfo.io/${1:-}" | jq "del(.readme, .loc, .postal)"'
+if (( $+commands[xh] )); then # HTTPie written in Rust
+    alias myip-http-detail="xh --body https://ipinfo.io/ Accept:application/json"
+elif (( $+commands[http] )); then # HTTPie
+    alias myip-http-detail="http --body https://ipinfo.io/ Accept:application/json"
+elif (( $+commands[curl] )) && (( $+commands[jq] )); then # cURL and jq
+    alias myip-http-detail='curl -s -L -H "Accept: application/json" "https://ipinfo.io/${1:-}" | jq "del(.readme, .loc, .postal)"'
+fi
 # availible: ifconfig.co icanhazip.com ifconfig.me myip.country/ip
 alias myip-http='curl -L https://ifconfig.me'
 alias myip-http-ipv4='curl -L https://ipv4.icanhazip.com'
@@ -168,7 +174,7 @@ elif (( $+commands[kdig] )); then
 fi
 alias myipv4=myip-http-ipv4
 alias myipv6=myip-http-ipv6
-if (( $+commands[curl] )); then
+if (( $+aliases[myip-http-detail] )); then
     alias myip=myip-http-detail
 else
     alias myip=myip-dns
