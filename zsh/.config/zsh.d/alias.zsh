@@ -109,6 +109,8 @@ alias du="du -h"
 alias free="free -h"
 alias today="date '+%Y-%m-%d'"
 alias now="date --rfc-3339=seconds"
+alias list-mount="mount -l | column -t"
+alias lsmount=list-mount
 
 # Vim style alias
 alias :e="vim"
