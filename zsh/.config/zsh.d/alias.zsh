@@ -74,6 +74,9 @@ if (( $+commands[vimtrace] )); then
     (( $+commands[ltrace] )) && alias ltrace='vimtrace ltrace'
 fi
 
+# cargo install swapview
+(( $+commands[swapview] )) && alias swapview-continuous='watch -n 1 "swapview | tail -\$((\$LINES - 2)) | cut -b -\$COLUMNS"'
+
 # some cd
 alias ..="cd .."
 alias ...="cd ../.."
