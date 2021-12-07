@@ -23,6 +23,9 @@ user_pref("font.name-list.emoji", "emoji");
 user_pref("browser.compactmode.show", "true");
 /* 在地址栏显示完整的 URL */
 user_pref("browser.urlbar.trimURLs", "false");
+/* 从fontconfig查询字体时允许的最大字体替换次数 Default: 3 */
+// https://wiki.archlinux.org/title/Firefox#Font_troubleshooting
+user_pref("gfx.font_rendering.fontconfig.max_generic_substitutions", 17);
 
 /* 禁止投机性预连接 */
 // user_pref("network.http.speculative-parallel-limit", 0);
