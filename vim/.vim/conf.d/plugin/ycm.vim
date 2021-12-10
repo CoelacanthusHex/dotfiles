@@ -12,6 +12,9 @@ let g:ycm_semantic_triggers =  {
             \ 'erlang' : [':', 're!\w{3}'],
             \ }
 
+let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf = 0
+
 set completeopt=menu,menuone
 let g:ycm_add_preview_to_completeopt = 0
 
