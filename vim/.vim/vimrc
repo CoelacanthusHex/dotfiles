@@ -43,26 +43,6 @@ function Lilydjwg_cleanbufs()
     endfor
 endfunction
 
-map <F2> :call Biaodian() <CR>
-function Biaodian()
-    %s/”/"/g
-    %s/“/"/g
-    %s/，/,/g
-    %s/。/./g
-    %s/？/?/g
-    %s/〈/</g
-    %s/〉/>/g
-    %s/（/(/g
-    %s/）/)/g
-    %s/：/:/g
-    %s/；/;/g
-    %s/‘/'/g
-    %s/’/'/g
-    %s/！/!/g
-endfunction
-
-nnoremap <leader>ff :Neoformat<CR>
-
 " Use <TAB> to select the popup menu:
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -127,6 +107,8 @@ call plug#begin('~/.vim/plugged')
     else
         Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
     endif
+    " Auto detect indent size
+    "Plug 'tpope/vim-sleuth'
 
     " Sudo support
 	Plug 'lambdalisue/suda.vim'
