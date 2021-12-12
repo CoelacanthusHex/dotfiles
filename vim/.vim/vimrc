@@ -109,6 +109,8 @@ call plug#begin('~/.vim/plugged')
     endif
     " Auto detect indent size
     "Plug 'tpope/vim-sleuth'
+    " Unicode
+    Plug 'chrisbra/unicode.vim'
 
     " Sudo support
 	Plug 'lambdalisue/suda.vim'
@@ -313,3 +315,5 @@ if &term =~ '^screen\|^tmux'
     endif
 endif
 " }}}
+
+nmap ga <Plug>(UnicodeGA)
