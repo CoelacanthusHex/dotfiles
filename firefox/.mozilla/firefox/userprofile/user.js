@@ -26,6 +26,10 @@ user_pref("browser.urlbar.trimURLs", "false");
 /* 从fontconfig查询字体时允许的最大字体替换次数 Default: 3 */
 // https://wiki.archlinux.org/title/Firefox#Font_troubleshooting
 user_pref("gfx.font_rendering.fontconfig.max_generic_substitutions", 17);
+/* 使用系统文件对话框 */
+/* WARNING: 必须安装 xdg-desktop-portal{,-kde} */
+/* SideEffect: 火狐一直认为自己不是默认浏览器 */
+user_pref("widget.use-xdg-desktop-portal", "true");
 
 /* 禁止投机性预连接 */
 // user_pref("network.http.speculative-parallel-limit", 0);
