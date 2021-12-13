@@ -22,7 +22,7 @@ let g:ycm_language_server = [
             \     'name': 'scala',
             \     'filetypes': ['scala'],
             \     'cmdline': ['metals-vim'],
-            \     'project_root_files': ['build.sbt', 'build.sc']
+            \     'project_root_files': ['build.sbt', 'build.sc', 'build.gradle', 'pom.xml']
             \   },
             \   {
             \     'name': 'haskell-language-server',
@@ -38,12 +38,12 @@ let g:ycm_language_server = [
             \   {
             \     'name': 'xml',
             \     'cmdline': ['lemminx'],
-            \     'filetypes': ['xml'],
+            \     'filetypes': ['xml', 'xsd', 'svg'],
             \   },
             \   {
             \     'name': 'systemverilog',
             \     'cmdline': ['svls'],
-            \     'filetypes': ['systemverilog'],
+            \     'filetypes': ['verilog', 'systemverilog'],
             \   },
             \ ]
 " https://github.com/bash-lsp/bash-language-server/issues/252
