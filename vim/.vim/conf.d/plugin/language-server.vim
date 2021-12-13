@@ -45,5 +45,10 @@ let g:ycm_language_server = [
             \     'cmdline': ['svls'],
             \     'filetypes': ['verilog', 'systemverilog'],
             \   },
+            \   {
+            \     'name': 'vim script',
+            \     'cmdline': ['vim-language-server', '--stdio'],
+            \     'filetypes': ['vim'],
+            \   },
             \ ]
 " https://github.com/bash-lsp/bash-language-server/issues/252
