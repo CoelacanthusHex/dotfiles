@@ -8,6 +8,8 @@ SOURCE_EXTENSIONS = ['.cpp', '.cxx', '.cc', '.c', '.m', '.mm']
 # compilation database set (by default, one is not set).
 # CHANGE THIS LIST OF FLAGS. YES, THIS IS THE DROID YOU HAVE BEEN LOOKING FOR.
 flags = [
+    '-x',
+    'cpp',
     '-Wall',
     '-Wextra',
     '-Werror',
