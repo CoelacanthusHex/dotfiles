@@ -19,7 +19,7 @@ Width 1920=700
 Favorites=001.profile
 
 [KFileDialog Settings]
-detailViewIconSize=0
+detailViewIconSize=16
 
 [Window]
 DynamicTabTitles=true
