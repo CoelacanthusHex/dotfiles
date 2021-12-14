@@ -46,7 +46,7 @@ fi
 if (( $+commands[exa] )); then
     alias ls='exa --time-style=long-iso --group --git'
 else
-    alias ls='ls --color=auto --human-readable --time-style=long-iso'
+    alias ls='ls --color=auto --human-readable --time-style=long-iso --hyperlink=auto'
 fi
 alias l='ls -al'         # Lists in one column, hidden files.
 alias ll='ls -lh'        # Lists human readable sizes.
