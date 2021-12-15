@@ -11,13 +11,12 @@ export EDITOR=vim
 export VISUAL="$EDITOR "
 export SYSTEMD_EDITOR=$EDITOR
 export PAGER='less'
+export BROWSER=/usr/bin/xdg-open
 
 # Workaround: GUI app like KMail need pinentry-qt but we need pinentry-curse in the terminal
 # https://wiki.gentoo.org/wiki/GnuPG#Changing_pinentry_for_SSH_logins
 # It's useless but
 #export PINENTRY_USER_DATA="USE_CURSES=1"
-
-export MAIL=$HOME/.mail/
 
 #export GENTOO_MIRRORS="https://mirrors.bfsu.edu.cn/gentoo"
 #export EPREFIX=/home/coelacanthus/Data/gentoo/prefix

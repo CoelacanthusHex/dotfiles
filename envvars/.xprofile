@@ -132,6 +132,9 @@ export WINEDLLOVERRIDES=winemenubuilder.exe=d
 # https://github.com/archlinux/svntogit-community/blob/570b7f1fe521f30a6f65b55efea7be29b287802f/trunk/PKGBUILD#L16
 export USE_SYMENGINE=1
 
+# For Mutt
+export BROWSER=/usr/bin/xdg-open
+
 # Java Font Render
 # https://wiki.archlinux.org/title/Java#Better_font_rendering
 export _JAVA_OPTIONS="$_JAVA_OPTIONS -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"

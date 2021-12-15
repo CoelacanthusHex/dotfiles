@@ -195,7 +195,7 @@ WINEDLLOVERRIDES  DEFAULT=winemenubuilder.exe=d
 USE_SYMENGINE     DEFAULT=1
 
 # For Mutt
-MAIL     DEFAULT=${HOME}/mail/
+BROWSER           DEFAULT=/usr/bin/xdg-open
 
 # Java Font Render
 # https://wiki.archlinux.org/title/Java#Better_font_rendering
