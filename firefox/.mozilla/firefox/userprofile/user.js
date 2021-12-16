@@ -121,14 +121,14 @@ user_pref("browser.xul.error_pages.expert_bad_cert", true);
 /* 7003: disable non-modern cipher suites [1]
  * [WHY] Passive fingerprinting. Minimal/non-existent threat of downgrade attacks
  * [TEST] https://browserleaks.com/ssl ***/
-user_pref("security.ssl3.ecdhe_ecdsa_aes_256_sha", false);
-user_pref("security.ssl3.ecdhe_ecdsa_aes_128_sha", false);
-user_pref("security.ssl3.ecdhe_rsa_aes_128_sha", false);
-user_pref("security.ssl3.ecdhe_rsa_aes_256_sha", false);
+user_pref("security.ssl3.ecdhe_ecdsa_aes_256_sha", false); // no AEAD
+user_pref("security.ssl3.ecdhe_ecdsa_aes_128_sha", false); // no AEAD
+user_pref("security.ssl3.ecdhe_rsa_aes_128_sha", false); // no AEAD
+user_pref("security.ssl3.ecdhe_rsa_aes_256_sha", false); // no AEAD
 user_pref("security.ssl3.rsa_aes_128_gcm_sha256", false); // no PFS
 user_pref("security.ssl3.rsa_aes_256_gcm_sha384", false); // no PFS
-user_pref("security.ssl3.rsa_aes_128_sha", false); // no PFS
-user_pref("security.ssl3.rsa_aes_256_sha", false); // no PFS
+user_pref("security.ssl3.rsa_aes_128_sha", false); // no PFS and AEAD
+user_pref("security.ssl3.rsa_aes_256_sha", false); // no PFS and AEAD
 /* 7004: control TLS versions
  * [WHY] Passive fingerprinting. Downgrades are still possible: behind user interaction ***/
    // user_pref("security.tls.version.min", 3); // [DEFAULT: 3] 3 is TLS1.2
