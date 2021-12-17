@@ -1,3 +1,4 @@
 set print pretty on
 set print array on
-set print array-index on
+set print array-indexes on
+set print union on
