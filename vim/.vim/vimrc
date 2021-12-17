@@ -72,7 +72,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'luochen1990/rainbow'
     let g:rainbow_active = 1
     " HELP文档中文
-    Plug 'yianwillis/vimcdoc'
+    "Plug 'yianwillis/vimcdoc'
     " EditorConfig
     Plug 'editorconfig/editorconfig-vim'
     " 颜色代码转颜色
