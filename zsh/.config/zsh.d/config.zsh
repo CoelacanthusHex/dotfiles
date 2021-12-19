@@ -9,8 +9,8 @@ setopt pushd_ignore_dups
 setopt pushd_minus
 # 不需要打 cd，直接进入目录
 setopt autocd
-#以附加的方式写入历史纪录
-setopt inc_append_history
+# 以附加的方式写入历史纪录
+setopt append_history
 # 不保存重复的历史记录项
 setopt hist_save_no_dups
 setopt hist_ignore_dups
