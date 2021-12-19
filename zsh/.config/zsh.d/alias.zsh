@@ -155,7 +155,7 @@ alias urlencode='python3 -c "import sys, urllib.parse as up; print(up.quote(sys.
 alias ini2json='python3 -c "import fileinput,json,configparser;c=configparser.ConfigParser(allow_no_value=True);c.read_string('"''"'.join(fileinput.input()));print(json.dumps({s: {k: c[s][k] for k in c[s]} for s in c.sections()}))"'
 
 export LESSOPEN="| pygmentize -f console -O bg=dark %s"
-export LESS='r'
+export LESS='-R'
 
 alias blog-update='cd ~/blog && git add -A && git commit -m "Update Site @$(date +%Y-%m-%d-%H:%M:%S)" && git push -u origin master && cd ~'
 alias .="source"
