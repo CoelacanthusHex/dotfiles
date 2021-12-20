@@ -92,6 +92,7 @@ call plug#begin('~/.vim/plugged')
     " Snippets
     Plug 'SirVer/ultisnips'
     let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
+    Plug 'tomtom/tcomment_vim'
 
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-endwise'
