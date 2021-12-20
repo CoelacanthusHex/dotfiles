@@ -23,3 +23,4 @@ nnoremap <leader>df :YcmCompleter GoToDefinition<cr>
 nnoremap <leader>i :YcmCompleter GoToInclude<cr>nnoremap <leader>fi :YcmCompleter FixIt<cr>
 
 let airline#extensions#ycm#enabled = 1
+" kate: space-indent on; indent-width 4;

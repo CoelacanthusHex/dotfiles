@@ -8,3 +8,4 @@ elseif has("macunix") || has("osx") || has("osxdarwin")
 endif
 
 let g:rust_conceal = 0
+" kate: space-indent on; indent-width 4;

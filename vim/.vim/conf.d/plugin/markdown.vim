@@ -27,3 +27,4 @@ let g:vim_markdown_strikethrough = 1
 
 " disable markdown fold
 let g:vim_markdown_folding_disabled = 1
+" kate: space-indent on; indent-width 4;

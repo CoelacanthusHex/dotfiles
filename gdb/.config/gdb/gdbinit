@@ -2,3 +2,5 @@ set print pretty on
 set print array on
 set print array-indexes on
 set print union on
+
+# kate: space-indent on; indent-width 4; syntax gdbinit;

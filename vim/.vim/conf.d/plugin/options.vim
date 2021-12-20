@@ -207,3 +207,4 @@ if has('extra_search')
 
 endif
 " }}}
+" kate: space-indent on; indent-width 4;

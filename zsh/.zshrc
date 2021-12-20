@@ -83,4 +83,5 @@ gpg-connect-agent updatestartuptty /bye >/dev/null
 
 unset OS
 
-# vim: ft=zsh sw=4 ts=8 sts=4 et
+# vim: ft=zsh sw=4 ts=8 sts=4 et:
+# kate: space-indent on; indent-width 4;

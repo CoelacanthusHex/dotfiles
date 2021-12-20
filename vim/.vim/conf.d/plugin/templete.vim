@@ -61,3 +61,4 @@ func SetTitle()
     " 新建文件后，自动定位到文件末尾
 endfunc
 autocmd BufNewFile * normal G
+" kate: space-indent on; indent-width 4;

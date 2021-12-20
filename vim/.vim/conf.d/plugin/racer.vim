@@ -19,3 +19,4 @@ function! SmartTab()
         return "\<C-x>\<C-o>"
     endif
 endfunction
+" kate: space-indent on; indent-width 4;

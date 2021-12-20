@@ -60,3 +60,4 @@ endfunction
 " c/cpp: ccls
 " rust: rust-analyzer
 " go: gopls
+" kate: space-indent on; indent-width 4;

@@ -24,3 +24,6 @@ if (( $+commands[tty] )); then
 elif (( $+TERM == 1 )); then
     [[ x$TERM == xlinux ]] && _in_linux_tty=1 || _in_linux_tty=0
 fi
+
+# vim: ft=zsh sw=4 ts=8 sts=4 et:
+# kate: space-indent on; indent-width 4;

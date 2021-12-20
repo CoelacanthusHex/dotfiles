@@ -543,3 +543,6 @@ visualizer_type = "spectrum"
 #
 #active_window_border = red
 #
+
+# vim: set ft=dosini:
+# kate: space-indent on; indent-width 4; syntax ini;

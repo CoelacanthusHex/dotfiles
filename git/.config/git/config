@@ -64,3 +64,5 @@
 
 [includeIf "gitdir:~/Data/workspace/aosc/**"]
     path = ~/.config/git/aosc.config
+
+# kate: space-indent on; indent-width 4; syntax ini;

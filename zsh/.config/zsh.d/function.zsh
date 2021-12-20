@@ -330,4 +330,5 @@ weather() {
     curl -fGsS --compressed $args "https://wttr.in/${location:-Feicheng}?${(j::)WTTR_PARAMS}&lang=${lang:-${LANG%_*}}"
 }
 
-# vim: ft=zsh sw=4 ts=8 sts=4 et
+# vim: ft=zsh sw=4 ts=8 sts=4 et:
+# kate: space-indent on; indent-width 4;

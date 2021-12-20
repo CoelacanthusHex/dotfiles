@@ -5,3 +5,4 @@ autocmd Filetype json
   \ let g:indentLine_setConceal = 0 |
   \ let g:vim_json_syntax_conceal = 0 |
   \ setlocal conceallevel=0
+" kate: space-indent on; indent-width 4;

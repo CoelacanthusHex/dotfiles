@@ -52,3 +52,4 @@ let g:ycm_language_server = [
             \   },
             \ ]
 " https://github.com/bash-lsp/bash-language-server/issues/252
+" kate: space-indent on; indent-width 4;

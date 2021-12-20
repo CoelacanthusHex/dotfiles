@@ -362,3 +362,5 @@ endif
 " }}}
 
 nmap ga <Plug>(UnicodeGA)
+
+" kate: space-indent on; indent-width 4; syntax vim;

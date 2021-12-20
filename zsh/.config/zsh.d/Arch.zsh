@@ -93,4 +93,5 @@ function get-felix-yan-rate() {
     echo "$(echo "scale=1; 100 * $(pacman -Qi $(pacman -Qq) | grep Felix | wc -l) / $(pacman -Qq | wc -l)" | bc) %"
 }
 
-# vim: ft=zsh sw=4 ts=8 sts=4 et
+# vim: ft=zsh sw=4 ts=8 sts=4 et:
+# kate: space-indent on; indent-width 4;

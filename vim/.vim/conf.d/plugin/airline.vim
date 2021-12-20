@@ -9,3 +9,4 @@ let g:airline#extensions#tabline#enabled = 1
 
 " Enable Vim9 Script implementation
 let g:airline_experimental = 1
+" kate: space-indent on; indent-width 4;

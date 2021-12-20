@@ -5,3 +5,6 @@ $xelatex = "xelatex -shell-escape -file-line-error -halt-on-error -interaction=n
 $xdvipdfmx = "xdvipdfmx -E -o %D %O %S";
 
 $pdf_previewer = "okular"
+
+# vim: set ft=perl:
+# kate: space-indent on; indent-width 4; syntax perl;

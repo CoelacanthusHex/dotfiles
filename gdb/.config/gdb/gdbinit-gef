@@ -1,2 +1,3 @@
 # vim: set ft=gdb et:
+# kate: space-indent on; indent-width 4; syntax gdbinit;
 source /usr/share/gef/gef.py

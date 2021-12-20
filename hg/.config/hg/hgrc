@@ -12,3 +12,5 @@ delay = 2
 # https://www.mercurial-scm.org/wiki/GraphlogExtension
 # it is just an alias to `hg log -G` since Mercurial has supported it with `-G` after Mercurial 2.3
 graphlog =
+
+# kate: space-indent on; indent-width 4; syntax ini;

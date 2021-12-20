@@ -44,3 +44,4 @@ nmap <C-j> :cn<CR>
 nmap <C-k> :cp<CR>
 nmap <C-]>] :GtagsCursor<CR>
 let g:Gtags_OpenQuickfixWindow = 1
+" kate: space-indent on; indent-width 4;

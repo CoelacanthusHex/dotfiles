@@ -162,4 +162,5 @@ bindkey "\e\e" sudo-command-line
 alias sudo='sudo '
 alias cgproxy='cgproxy '
 
-# vim: ft=zsh sw=4 ts=8 sts=4
+# vim: ft=zsh sw=4 ts=8 sts=4 et:
+# kate: space-indent on; indent-width 4;
