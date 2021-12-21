@@ -84,8 +84,8 @@ zstyle ':completion:*' menu select
 # 分组显示
 zstyle ':completion:*' group-name ''
 
-# 补全 alias
-setopt complete_aliases
+# 在 alias 之后补全(即把 alias 展开后补全而不是当中单独的命令)
+unsetopt complete_aliases
 
 # https://github.com/lilydjwg/dotzsh/blob/master/zshrc#L306-L312
 # 插入当前的所有补全 https://www.zsh.org/mla/workers/2020/index.html {{{2
