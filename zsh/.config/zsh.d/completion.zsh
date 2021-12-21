@@ -125,8 +125,12 @@ done
 
 # https://github.com/zsh-users/zsh-history-substring-search#usage
 zmodload zsh/terminfo
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
+#bindkey "$terminfo[kcuu1]" history-substring-search-up
+#bindkey "$terminfo[kcud1]" history-substring-search-down
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+export HISTORY_SUBSTRING_SEARCH_PREFIXED=true
+
 
 # kill 命令补全
 compdef pkill=kill
