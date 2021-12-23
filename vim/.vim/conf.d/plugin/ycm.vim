@@ -1,13 +1,13 @@
 " vim: set sw=4 ts=8 sts=4 et foldmethod=marker:
 let g:ycm_semantic_triggers =  {
             \ 'c' : ['->', '.', 're!\w{3}'],
-            \ 'objc' : ['->', '.', 're!\w{3}'],
+            \ 'objc': ['->', '.', 're!\[[_a-zA-Z]+\w*\s', 're!^\s*[^\W\d]\w*\s', 're!\[.*\]\s'],
             \ 'ocaml' : ['.', '#', 're!\w{3}'],
-            \ 'cpp,objcpp' : ['->', '.', '::', 're!\w{3}'],
+            \ 'cpp,objcpp,cuda' : ['->', '.', '::', 're!\w{3}'],
             \ 'perl' : ['->', 're!\w{3}'],
             \ 'php' : ['->', '::', 're!\w{3}'],
-            \ 'cs,java,javascript,typescript,d,python,perl6,scala,vb,elixir,go' : ['.', 're!\w{3}'],
-            \ 'ruby' : ['.', '::', 're!\w{3}'],
+            \ 'cs,d,elixir,go,groovy,java,javascript,julia,perl6,python,scala,typescript,vb' : ['.', 're!\w{3}'],
+            \ 'ruby,rust' : ['.', '::', 're!\w{3}'],
             \ 'lua' : ['.', ':', 're!\w{3}'],
             \ 'erlang' : [':', 're!\w{3}'],
             \ }
