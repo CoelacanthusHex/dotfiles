@@ -185,7 +185,17 @@ compdef downgrade=pactree 2>/dev/null
 compdef proxychains=command
 compdef prime-run=command
 compdef cgproxy=command
-compdef _gnu_generic exa pamixer
+
+# FIXME: Add LLVM completions, and remove it when upstream inculde
+# clang-doc clang-include-fixer clangd-indexer clang-format clangd has special in completions/
+# TODO: diagtool, hmaptool use subcommand, I need write for it
+compdef _gnu_generic clang-tidy analyze-build clang-apply-replacements clang-change-namespace clang-check clang-extdef-mapping clang-move clang-offload-bundler clang-offload-wrapper clang-query clang-refactor clang-rename clang-reorder-fields clang-repl clang-scan-deps find-all-symbols intercept-build modularize pp-trace run-clang-tidy scan-build scan-build-py scan-view
+# llvm-config llvm-dwarfdump has special in completions/
+compdef _gnu_generic llvm-addr2line llvm-cat llvm-cvtres llvm-dis llvm-extract llvm-jitlink-executor llvm-lto llvm-modextract llvm-opt-report llvm-profgen llvm-reduce llvm-stress llvm-tblgen llvm-ar llvm-cfi-verify llvm-cxxdump llvm-dlltool llvm-gsymutil llvm-lib llvm-lto2 llvm-mt llvm-otool llvm-ranlib llvm-rtdyld  llvm-strings llvm-undname llvm-as llvm-cxxfilt llvm-ifs llvm-libtool-darwin llvm-mc llvm-nm llvm-pdbutil llvm-rc llvm-sim llvm-strip llvm-windres llvm-bcanalyzer llvm-cov llvm-cxxmap llvm-dwp llvm-install-name-tool llvm-link llvm-objcopy llvm-PerfectShuffle llvm-readelf llvm-size llvm-symbolizer llvm-xray llvm-bitcode-strip llvm-c-test llvm-diff llvm-exegesis llvm-jitlink llvm-lipo llvm-ml llvm-profdata llvm-readobj llvm-split llvm-tapi-diff dsymutil llvm-dsymutil llvm-mca llvm-objdump
+compdef _gnu_generic FileCheck bugpoint lit llc lli lli-child-target obj2yaml opt sancov sanstats split-file verify-uselistorder yaml-bench yaml2obj
+
+compdef _gnu_generic ccls
+compdef _gnu_generic mill amm
 
 zstyle ':completion:*:*:x:*' file-patterns \
     '*.(#i)(tar.gz|tgz|tar.bz2|tbz|tbz2|tar.xz|txz|tar.zma|tlz|tar.zst|tzst|tar.lz|tar.lz4|tar.lrz|tar|cbt|gz|bz2|xz|lrz|lz4|lzma|z|Z|zip|war|jar|ear|sublime-package|ipa|ipsw|xpi|apk|aar|whl|cbz|epub|maff|rar|cbr|rpm|7z|chm|cb7|deb|zst|exe|cab|cpio|cba|ace|zpaq|arc)(-.):compressed-files:"compressed files" *(-/):directories:directories'

@@ -65,10 +65,10 @@
 #   --assertion-mode  Print assertion mode of LLVM tree (ON or OFF).
 #   --build-system    Print the build system used to build LLVM (always cmake).
 #   --has-rtti        Print whether or not LLVM was built with rtti (YES or NO).
-#   --has-global-isel Print whether or not LLVM was built with global-isel support (YES or NO).
 #   --shared-mode     Print how the provided components can be collectively linked (`shared` or `static`).
 #   --link-shared     Link the components as shared libraries.
 #   --link-static     Link the component libraries statically.
+#   --ignore-libllvm  Ignore libLLVM and link component libraries instead.
 # Typical components:
 #   all               All LLVM libraries (default).
 #   engine            Either a native JIT or a bitcode interpreter.
@@ -101,10 +101,10 @@ function _llvm-config() {
     '--assertion-mode[Print assertion mode of LLVM tree (ON or OFF)]' \
     '--build-system[Print the build system used to build LLVM (always cmake)]' \
     '--has-rtti[Print whether or not LLVM was built with rtti (YES or NO)]' \
-    '--has-global-isel[Print whether or not LLVM was built with global-isel support (YES or NO)]' \
     '--shared-mode[Print how the provided components can be collectively linked (shared or static)]' \
     '--link-shared[Link the components as shared libraries]' \
     '--link-static[Link the component libraries statically]' \
+    '--ignore-libllvm[Ignore libLLVM and link component libraries instead]' \
     "*::llvm components:($(llvm-config --components))" \
     && ret=0
 
