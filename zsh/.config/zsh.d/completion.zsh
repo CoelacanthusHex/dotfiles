@@ -196,6 +196,7 @@ compdef _gnu_generic FileCheck bugpoint lit llc lli lli-child-target obj2yaml op
 
 compdef _gnu_generic ccls
 compdef _gnu_generic mill amm
+compdef _gnu_generic updatedb plocate
 
 zstyle ':completion:*:*:x:*' file-patterns \
     '*.(#i)(tar.gz|tgz|tar.bz2|tbz|tbz2|tar.xz|txz|tar.zma|tlz|tar.zst|tzst|tar.lz|tar.lz4|tar.lrz|tar|cbt|gz|bz2|xz|lrz|lz4|lzma|z|Z|zip|war|jar|ear|sublime-package|ipa|ipsw|xpi|apk|aar|whl|cbz|epub|maff|rar|cbr|rpm|7z|chm|cb7|deb|zst|exe|cab|cpio|cba|ace|zpaq|arc)(-.):compressed-files:"compressed files" *(-/):directories:directories'
