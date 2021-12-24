@@ -36,7 +36,12 @@ set modeline
 set display=truncate,uhex
 set nrformats=bin,hex
 set suffixes+=.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
-set wildignore+=*~,*.py[co],__pycache__,.*.swp
+" swap files
+set wildignore+=*~,.*.swp
+" Python files
+set wildignore+=*.py[co],__pycache__
+" Compiled product
+set wildignore+=*.o,*.obj,*.so,*.exe
 
 " 使用连接命令时，仅在 "." "?" "!" 之后插入一个空格
 " 如设置为 `joinspaces`，则插入两个空格

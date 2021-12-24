@@ -188,7 +188,7 @@ call plug#begin('~/.vim/plugged')
 
 
     """"""" Haskell
-    Plug 'neovimhaskell/haskell-vim', {'for':'haskell'}
+    Plug 'neovimhaskell/haskell-vim', {'for': 'haskell'}
 
 
     """"""" LaTeX

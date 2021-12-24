@@ -10,3 +10,5 @@ texlab
 shellcheck
 typescript
 eslint
+hindent
+stylish-haskell

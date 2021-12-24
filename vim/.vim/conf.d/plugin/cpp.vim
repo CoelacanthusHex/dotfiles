@@ -5,7 +5,7 @@ endfun
 autocmd FileType c,cpp call CPPFormatSettings()
 
 " workaround: https://github.com/vim-jp/vim-cpp/issues/16
-let c_no_curly_error = 1
+let g:c_no_curly_error = 1
 
 " highlight class scope
 let g:cpp_class_scope_highlight = 1
