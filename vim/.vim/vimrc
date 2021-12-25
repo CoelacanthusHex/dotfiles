@@ -140,7 +140,7 @@ call plug#begin('~/.vim/plugged')
     
 
     """"""" C++
-    Plug 'octol/vim-cpp-enhanced-highlight'
+    Plug 'octol/vim-cpp-enhanced-highlight', {'for': ['c', 'cpp']}
 
 
     """"""" Rust
@@ -157,7 +157,7 @@ call plug#begin('~/.vim/plugged')
 
 
     """"""" Scala
-    Plug 'derekwyatt/vim-scala'
+    Plug 'derekwyatt/vim-scala', {'for': 'scala'}
 
 
     """"""" Python
@@ -169,18 +169,18 @@ call plug#begin('~/.vim/plugged')
     
     
     """"""" TypeScript
-    Plug 'HerringtonDarkholme/yats.vim'
+    Plug 'HerringtonDarkholme/yats.vim', {'for': ['javescript', 'typescript']}
     " https://thoughtbot.com/blog/modern-typescript-and-react-development-in-vim
-    Plug 'pangloss/vim-javascript'
-    Plug 'jelera/vim-javascript-syntax'
-    Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-    Plug 'jparise/vim-graphql'
+    Plug 'pangloss/vim-javascript', {'for': ['javescript', 'typescript']}
+    Plug 'jelera/vim-javascript-syntax', {'for': ['javescript', 'typescript']}
+    Plug 'styled-components/vim-styled-components', { 'branch': 'main', 'for': ['javescript', 'typescript'] }
+    Plug 'jparise/vim-graphql', {'for': ['javescript', 'typescript']}
 
 
     """"""" Markdown
     " Markdown 语法支持
-    Plug 'godlygeek/tabular'
-    Plug 'plasticboy/vim-markdown'
+    Plug 'godlygeek/tabular', {'for': 'markdown'}
+    Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 
 
     """"""" Vim Script
@@ -192,7 +192,7 @@ call plug#begin('~/.vim/plugged')
 
 
     """"""" LaTeX
-    Plug 'lervag/vimtex'
+    Plug 'lervag/vimtex', {'for': ['tex', 'latex']}
 
 
     """"""" Nginx
@@ -213,7 +213,11 @@ call plug#begin('~/.vim/plugged')
 
     """"""" Kitty
     Plug 'fladson/vim-kitty'
-    " }}}
+
+
+    """"""" Others
+    Plug 'rhysd/vim-syntax-codeowners'
+    "}}}
 
 call plug#end()
 
