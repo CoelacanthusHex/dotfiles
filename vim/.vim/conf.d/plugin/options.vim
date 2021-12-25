@@ -17,8 +17,8 @@ if has('syntax') && !exists('g:syntax_on')
     syntax enable
 endif
 
-set timeoutlen=1000
-set ttimeoutlen=0
+set timeoutlen=500
+set ttimeoutlen=100
 
 " Load matchit.vim, but only if the user hasn't installed a newer version.
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
