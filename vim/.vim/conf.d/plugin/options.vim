@@ -81,7 +81,7 @@ set langmenu=zh_CN.UTF-8
 set helplang=cn
 set termencoding=utf-8
 set encoding=utf-8
-set fileencodings=ucs-bom,utf-8,gb18030,gbk,gb2312,cp936,latin1
+set fileencodings=ucs-bom,utf-8,utf-16,gb18030,gbk,gb2312,cp936,big5,latin1
 set fileformats=unix,dos,mac
 
 set whichwrap=b,s,[,]
@@ -194,6 +194,11 @@ try
   set matchpairs=(:),{:},[:],《:》,〈:〉,［:］,（:）,「:」,『:』,‘:’,“:”
 catch /^Vim\%((\a\+)\)\=:E474/
 endtry
+
+" Avoid E363
+" Maximum amount of memory (in Kbyte) to use for pattern matching.
+" The maximum value is about 2000000, default value is 1000. 
+set maxmempattern=2000000
 
 " }}}
 
