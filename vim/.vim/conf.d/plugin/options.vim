@@ -41,12 +41,22 @@ set modeline
 set display=truncate,uhex
 set nrformats=bin,hex
 set suffixes+=.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
-" swap files
-set wildignore+=*~,.*.swp
-" Python files
-set wildignore+=*.py[co],__pycache__
-" Compiled product
-set wildignore+=*.o,*.obj,*.so,*.exe
+
+set wildignore+=*~,.*.swp,*.kate-swp                " swap files
+set wildignore+=*.py[co],__pycache__                " Python files
+set wildignore+=*.o,*.obj,*.so,*.exe,*.dll          " Compiled product
+set wildignore+=.hg,.git,.svn                       " Version control
+set wildignore+=*.aux,*.out,*.toc                   " LaTeX intermediate files
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg      " binary images
+set wildignore+=*.spl                               " compiled spelling word lists
+set wildignore+=*.DS_Store,.AppleDouble,.LSOverride " macOS junk files
+set wildignore+=.directory,.fuse_hidden*,.Trash-*   " Linux junk files
+set wildignore+=*.rdb                               " Redis database file
+set wildignore+=.nfs*                               " NFS temp file
+set wildignore+=[._]*.un~                           " Vim Persistent undo
+set wildignore+=System\ Volume\ Information         " Windiws junk files
+"set wildignore+=_build                              " Sphinx build dir
+"set wildignore+=*CACHE                              " django compressor cache
 
 " 使用连接命令时，仅在 "." "?" "!" 之后插入一个空格
 " 如设置为 `joinspaces`，则插入两个空格
