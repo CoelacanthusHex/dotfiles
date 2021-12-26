@@ -17,6 +17,8 @@ if has('syntax') && !exists('g:syntax_on')
     syntax enable
 endif
 
+" timeout
+set ttimeout
 set timeoutlen=500
 set ttimeoutlen=100
 
