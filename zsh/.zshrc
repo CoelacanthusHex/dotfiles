@@ -2,7 +2,6 @@
 
 # 确定环境 {{{1
 OS=${$(uname)%_*}
-LSB_DISTRIBUTOR=`lsb_release -i -s`
 if [[ $OS == "CYGWIN" || $OS == "MSYS" ]]; then
   OS=Linux
 elif [[ $OS == "Darwin" ]]; then

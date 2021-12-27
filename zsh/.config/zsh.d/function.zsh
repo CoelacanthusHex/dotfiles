@@ -282,7 +282,7 @@ function check-fcitx5-dbus() {
 }
 
 # https://github.com/lilydjwg/dotzsh/blob/313050449529c84914293283691da1e824d779f5/zshrc#L445
-compdef mpv=mpv
+(( $+commands[mpv] )) && compdef mpv=mpv
 mpv() {
     if [[ -z $WAYLAND_DISPLAY && -n $DISPLAY ]]; then
         # or too big
