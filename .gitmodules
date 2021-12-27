@@ -7,3 +7,6 @@
 [submodule "bytetools/.local/bin/bytetools"]
 	path = bytetools/.local/bin/bytetools
 	url = git@github.com:CoelacanthusHex/bytetools.git
+[submodule "zsh/.config/zsh.d/plugins/fast-syntax-highlighting"]
+	path = zsh/.config/zsh.d/plugins/fast-syntax-highlighting
+	url = https://github.com/zdharma-continuum/fast-syntax-highlighting.git

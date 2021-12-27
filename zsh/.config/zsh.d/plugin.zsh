@@ -4,6 +4,7 @@ _enabled_plugins=(
     git
     colored-man-pages
     autopair
+    fast-syntax-highlighting/fast-syntax-highlighting
 )
 for _zsh_plugin in $_enabled_plugins[@]; do
     [[ ! -r "$XDG_CONFIG_HOME/zsh.d/plugins/$_zsh_plugin.plugin.zsh" ]] || source $XDG_CONFIG_HOME/zsh.d/plugins/$_zsh_plugin.plugin.zsh
