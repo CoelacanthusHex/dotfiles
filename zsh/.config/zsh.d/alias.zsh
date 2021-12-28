@@ -1,7 +1,7 @@
 # using grc
 GRC_ALIASES=true
 # use bash file because zsh file don't add -es
-[[ -s "/etc/profile.d/grc.sh" ]] && source /etc/grc.sh
+[[ -s "/etc/profile.d/grc.sh" ]] && source /etc/profile.d/grc.sh
 
 # for systemd
 alias start="sudo systemctl start"
