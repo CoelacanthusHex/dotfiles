@@ -1,3 +1,8 @@
+# using grc
+GRC_ALIASES=true
+# use bash file because zsh file don't add -es
+[[ -s "/etc/profile.d/grc.sh" ]] && source /etc/grc.sh
+
 # for systemd
 alias start="sudo systemctl start"
 alias stop="sudo systemctl stop"
@@ -107,9 +112,21 @@ alias Co="clipboard -o"
 # better format
 alias uptime='uptime -p'
 alias tree='tree -F'
-alias df="df -h"
-alias du="du -h"
-alias free="free -h"
+if (( $+aliases[df] ));then
+    alias df="$aliases[df] -h"
+else
+    alias df="df -h"
+fi
+if (( $+aliases[du] ));then
+    alias du="$aliases[du] -h"
+else
+    alias du="du -h"
+fi
+if (( $+aliases[free] ));then
+    alias free="$aliases[free] -h"
+else
+    alias free="free -h"
+fi
 alias today="date '+%Y-%m-%d'"
 alias now="date --rfc-3339=seconds"
 alias list-mount="mount -l | column -t"
@@ -139,14 +156,26 @@ export GREP_COLOR='37;45'           # BSD.
 export GREP_COLORS="mt=$GREP_COLOR" # GNU.
 
 # add color
-alias diff='diff --color=auto'
+if (( ! $+aliases[colourify] ));then
+    alias diff="diff --color=auto"
+    alias ip="ip -c=auto "
+fi
+# https://github.com/lilydjwg/dotzsh/blob/313050449529c84914293283691da1e824d779f5/zshrc#L375
+# grc aliases
+if (( $+aliases[colourify] )); then
+    # default is better
+    unalias gcc g++ 2>/dev/null || true
+    # bug: https://github.com/garabik/grc/issues/72
+    unalias mtr     2>/dev/null || true
+    # buffering issues: https://github.com/garabik/grc/issues/25
+    unalias ping    2>/dev/null || true
+fi
 alias pactree="pactree -c"
 alias ssh="TERM=xterm-256color ssh"
 alias grep="${aliases[grep]:-grep} --color=auto"
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias ncdu='ncdu --color dark'
-alias ip="ip -c=auto "
 
 # URL
 alias urldecode='python3 -c "import sys, urllib.parse as up; print(up.unquote(sys.argv[1]))"'
@@ -160,7 +189,6 @@ export LESS='-R'
 alias blog-update='cd ~/blog && git add -A && git commit -m "Update Site @$(date +%Y-%m-%d-%H:%M:%S)" && git push -u origin master && cd ~'
 alias .="source"
 alias bc="bc -lq"
-(( $+commands[rankmirrors] )) && alias rankpacman='sed "s/^#//" /etc/pacman.d/mirrorlist.pacnew | rankmirrors -n 10 - | sudo tee /etc/pacman.d/mirrorlist'
 
 if (( $+commands[xh] )); then # HTTPie written in Rust
     alias myip-http-detail="xh --body https://ipinfo.io/ Accept:application/json"
@@ -191,17 +219,6 @@ alias tinc-family="sudo tinc -n family"
 # https://github.com/lilydjwg/dotzsh/blob/313050449529c84914293283691da1e824d779f5/zshrc#L438
 # --inplace has issues with -H https://lists.opensuse.org/opensuse-bugs/2012-10/msg02084.html
 alias xcp="rsync -aviHAXKhS --one-file-system --partial --info=progress2 --atimes --open-noatime --delete --exclude='*~' --exclude=__pycache__"
-
-# https://github.com/lilydjwg/dotzsh/blob/313050449529c84914293283691da1e824d779f5/zshrc#L375
-# grc aliases
-if (( $+aliases[colourify] )); then
-    # default is better
-    unalias gcc g++ 2>/dev/null || true
-    # bug: https://github.com/garabik/grc/issues/72
-    unalias mtr     2>/dev/null || true
-    # buffering issues: https://github.com/garabik/grc/issues/25
-    unalias ping    2>/dev/null || true
-fi
 
 # 后缀别名
 if (( $+commands[okular] )) && (( $_in_gui == 1 )); then
