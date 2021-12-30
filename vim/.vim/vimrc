@@ -76,7 +76,7 @@ call plug#begin('~/.vim/plugged')
     " EditorConfig
     Plug 'editorconfig/editorconfig-vim'
     " 颜色代码转颜色
-    Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+    "Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
     " Git sign column
     if has('patch-8.0.902')
         Plug 'mhinz/vim-signify'
