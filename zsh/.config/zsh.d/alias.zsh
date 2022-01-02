@@ -1,7 +1,4 @@
-# using grc
-GRC_ALIASES=true
-# use bash file because zsh file don't add -es
-[[ -s "/etc/profile.d/grc.sh" ]] && source /etc/profile.d/grc.sh
+[[ -s "${XDG_CONFIG_HOME:-$HOME/.config}/zsh.d/plugins/grc.zsh" ]] && source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh.d/plugins/grc.zsh"
 
 # for systemd
 alias start="sudo systemctl start"
@@ -163,12 +160,21 @@ fi
 # https://github.com/lilydjwg/dotzsh/blob/313050449529c84914293283691da1e824d779f5/zshrc#L375
 # grc aliases
 if (( $+aliases[colourify] )); then
-    # default is better
-    unalias gcc g++ 2>/dev/null || true
-    # bug: https://github.com/garabik/grc/issues/72
-    unalias mtr     2>/dev/null || true
-    # buffering issues: https://github.com/garabik/grc/issues/25
-    unalias ping    2>/dev/null || true
+    if (( $+function[gcc] )); then
+        # default is better
+        unfunction gcc g++ 2>/dev/null || true
+        # bug: https://github.com/garabik/grc/issues/72
+        unfunction mtr     2>/dev/null || true
+        # buffering issues: https://github.com/garabik/grc/issues/25
+        unfunction ping    2>/dev/null || true
+    else
+        # default is better
+        unalias gcc g++ 2>/dev/null || true
+        # bug: https://github.com/garabik/grc/issues/72
+        unalias mtr     2>/dev/null || true
+        # buffering issues: https://github.com/garabik/grc/issues/25
+        unalias ping    2>/dev/null || true
+    fi
 fi
 alias pactree="pactree -c"
 alias ssh="TERM=xterm-256color ssh"
