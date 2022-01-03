@@ -226,6 +226,8 @@ alias tinc-family="sudo tinc -n family"
 # --inplace has issues with -H https://lists.opensuse.org/opensuse-bugs/2012-10/msg02084.html
 alias xcp="rsync -aviHAXKhS --one-file-system --partial --info=progress2 --atimes --open-noatime --delete --exclude='*~' --exclude=__pycache__"
 
+alias nicest="chrt -i 0 ionice -c3 "
+
 # 后缀别名
 if (( $+commands[okular] )) && (( $_in_gui == 1 )); then
     alias -s {pdf,ps,djvu}="okular"
