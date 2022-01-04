@@ -99,3 +99,5 @@ cscope.po.out
 .netrwhist
 # Persistent undo
 [._]*.un~
+
+# vim: set ft=gitignore:
