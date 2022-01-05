@@ -12,7 +12,7 @@ unmy_hdr Bcc # since we may switch from other conf to here, we must unset it fir
 #my_hdr Bcc: "coelacanthus@outlook.com"
 # alternative addr for this account
 unalternates *
-alternates ^liuhongwu2003@outlook.com$
+alternates ^****@outlook.com$
 # subscribed mailing lists
 unsubscribe *
 subscribe \
@@ -21,6 +21,8 @@ subscribe \
   ^summer-ospp@googlegroups.com$ \
   ^summer-ospp-announce@googlegroups.com$ \
   ^summer-ospp-community@googlegroups.com$ \
+  ^arch-dev-public@lists.archlinux.org$ \
+  ^ustc_lug@googlegroups.com$ \
   ^tuna-general@googlegroups.com$
 
 # known mailing lists(may be unsubscribed)
@@ -31,6 +33,17 @@ lists \
   ^summer-ospp@googlegroups.com$ \
   ^summer-ospp-announce@googlegroups.com$ \
   ^summer-ospp-community@googlegroups.com$ \
+  ^arch-announce@lists.archlinux.org$ \
+  ^arch-dev-public@lists.archlinux.org$ \
+  ^arch-devops@lists.archlinux.org$ \
+  ^arch-events@lists.archlinux.org$ \
+  ^arch-ports@lists.archlinux.org$ \
+  ^arch-security@lists.archlinux.org$ \
+  ^aur-dev@lists.archlinux.org$ \
+  ^aur-general@lists.archlinux.org$ \
+  ^aur-requests@lists.archlinux.org$ \
+  ^pacman-dev@lists.archlinux.org$ \
+  ^ustc_lug@googlegroups.com$ \
   ^tuna-general@googlegroups.com$
 
 set sendmail = "/usr/bin/sendmail -a outlook" # cooperate with sendmail, the name outlook is configured in sendmail
