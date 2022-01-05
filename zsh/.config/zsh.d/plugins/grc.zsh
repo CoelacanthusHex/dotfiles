@@ -34,6 +34,7 @@ cmds=(
     getfacl
     getsebool
     gmake
+    gpg
     id
     ifconfig
     iostat
