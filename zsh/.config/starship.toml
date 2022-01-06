@@ -67,11 +67,12 @@ disabled = false
 
 [status]
 disabled = false
-format = "[$symbol $common_meaning$signal_name $hex_status]($style) "
-symbol = "X"
-success_symbol = "!"
+style = "bold blue"
+format = "[$symbol [->](white) [$common_meaning$signal_name](red) $hex_status]($style) "
+symbol = "[X](red)"
+success_symbol = "[!](green)"
 pipestatus = true
-pipestatus_format = "\\[ $pipestatus\\] => [$symbol $common_meaning$signal_name $hex_status]($style)"
+pipestatus_format = "\\[ $pipestatus\\] => [$symbol [->](white) [$common_meaning$signal_name](red) $hex_status]($style)"
 pipestatus_separator = "| "
 
 [username]
