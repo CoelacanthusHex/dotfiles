@@ -32,6 +32,7 @@ fi
 
 #[ -f $HOME/.bashrc ] && source $HOME/.bashrc
 
+autoload -Uz is-at-least
 if [[ -x /usr/bin/starship ]] && is-at-least 1.1.0 $(starship --version | head -n 1 | cut -d' ' -f2); then
     export STARSHIP_CONFIG=~/.config/starship.toml
     eval "$(starship init zsh)"
