@@ -4,8 +4,13 @@
 " URL	https://github.com/vim-scripts/ldif.vim/blob/master/syntax/ldif.vim
 " Last Change	
 
-" remove old syntax
-syn clear
+" For version 5.x: Clear all syntax items
+" For version 6.x: Quit when a syntax file was already loaded
+if version < 600
+  syntax clear
+elseif exists("b:current_syntax")
+  finish
+endif
 
 "ignore case when matching
 syn case ignore
@@ -218,3 +223,5 @@ syn match ldifObjectClass "^qualityLabelledData:"
 hi link ldifKeyword Statement
 hi link ldifAttributeType Type
 hi link ldifObjectClass Type
+
+let b:current_syntax = "ldif"
