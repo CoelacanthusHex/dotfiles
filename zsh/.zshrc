@@ -61,7 +61,8 @@ if [[ -f ~/.zshrc.local ]]; then
 fi
 
 # https://wiki.archlinux.org/index.php/GnuPG#Configure_pinentry_to_use_the_correct_TTY
-export GPG_TTY=$(tty)
+# it's much faster than the commonly used `export GPG_TTY=$(tty)`
+export GPG_TTY=$TTY
 gpg-connect-agent updatestartuptty /bye >/dev/null
 
 unset OS
