@@ -19,17 +19,6 @@ SAVEHIST=100000
 ZDOTDIR=$XDG_CONFIG_HOME/zsh.d
 ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/zcompdump"
 
-## workaround for handling TERM variable in multiple tmux sessions properly from http://sourceforge.net/p/tmux/mailman/message/32751663/[dead link 2020-04-03 ⓘ] by Nicholas Marriott
-if [[ -n ${TMUX} && -n ${commands[tmux]} ]];then
-        case $(tmux showenv TERM 2>/dev/null) in
-                *256color) ;&
-                TERM=fbterm)
-                        TERM=screen-256color ;;
-                *)
-                        TERM=screen
-        esac
-fi
-
 #[ -f $HOME/.bashrc ] && source $HOME/.bashrc
 
 autoload -Uz is-at-least
