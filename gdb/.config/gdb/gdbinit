@@ -3,4 +3,6 @@ set print array on
 set print array-indexes on
 set print union on
 
+source ~/.config/gdb/printers/gdbinit
+
 # kate: space-indent on; indent-width 4; syntax gdbinit;
