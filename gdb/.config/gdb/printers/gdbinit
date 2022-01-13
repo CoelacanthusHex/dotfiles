@@ -2,8 +2,9 @@ python
 
 import os
 import sys
-dir_path = os.path.dirname(os.path.realpath(os.getcwd()))
-sys.path.insert(0, dir_path + '/printers')
+from pathlib import Path
+home = str(Path.home())
+sys.path.insert(0, home + '/.config/gdb/printers')
 
 from qt import register_qt_printers
 register_qt_printers (None)
