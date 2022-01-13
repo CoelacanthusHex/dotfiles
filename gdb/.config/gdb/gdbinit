@@ -5,4 +5,8 @@ set print union on
 
 source ~/.config/gdb/printers/gdbinit
 
+define fetch_firefox_symbol
+    source ~/.config/gdb/firefox-symbols.py
+end
+
 # kate: space-indent on; indent-width 4; syntax gdbinit;
