@@ -168,7 +168,7 @@ call plug#begin('~/.vim/plugged')
 
     """""""" Scala
     Plug 'derekwyatt/vim-scala', {'for': 'scala'}
-
+    Plug 'lfiolhais/vim-chisel'
 
     """""""" Python
     Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
