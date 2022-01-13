@@ -1,0 +1,4 @@
+# always load the .lldbinit file in the current working directory
+settings set target.load-cwd-lldbinit true
+
+command script import ~/.config/lldb/formatters/all.py
