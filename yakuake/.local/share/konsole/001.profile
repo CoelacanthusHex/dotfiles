@@ -19,6 +19,12 @@ AllowEscapedLinks=true
 AutoCopySelectedText=false
 EscapedLinksSchema=http://;https://;file://;fugitive://
 OpenLinksByDirectClickEnabled=true
+UnderlineFilesEnabled=true
+UnderlineLinksEnabled=true
 
 [Scrolling]
 HistorySize=100000
+
+[Terminal Features]
+FlowControlEnabled=false
+ReverseUrlHints=false
