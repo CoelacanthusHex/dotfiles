@@ -1,4 +1,14 @@
 # always load the .lldbinit file in the current working directory
 settings set target.load-cwd-lldbinit true
 
-command script import ~/.config/lldb/formatters/all.py
+# disable for it need urlparse module but there is no such thing
+#command script import ~/.config/lldb/formatters/all.py
+
+script import os, sys
+script from pathlib import Path
+script home = str(Path.home())
+script sys.path.insert(0, home + '/.config/lldb')
+
+script import utils
+command alias pwd script print(os.getcwd())
+command script add -f utils.chdir cd
