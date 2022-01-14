@@ -3,7 +3,7 @@ set print array on
 set print array-indexes on
 set print union on
 
-source ~/.config/gdb/printers/gdbinit
+source ~/.config/gdb/printers/pretty-printers.gdbinit
 
 define fetch_firefox_symbol
     source ~/.config/gdb/firefox-symbols.py
