@@ -13,6 +13,7 @@ $hg_branch\
 $docker_context\
 $package\
 $cmake\
+$crystal\
 $dart\
 $deno\
 $dotnet\
@@ -48,7 +49,6 @@ $aws\
 $gcloud\
 $openstack\
 $env_var\
-$crystal\
 $custom\
 $shell\
 $cmd_duration\
