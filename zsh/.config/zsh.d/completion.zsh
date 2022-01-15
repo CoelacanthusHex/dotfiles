@@ -240,6 +240,11 @@ zstyle ':completion:*:*:(python*|pytest):*:*files' ignored-patterns '*.(pyc)(-.)
 #cmake_langs=('C' 'C' 'CXX' 'C++')
 #zstyle ':completion:*:cmake:*' languages $cmake_langs
 
+zstyle ':completion:*:(ssh|scp):*:hosts-host' ignored-patterns '*.*' loopback localhost
+zstyle ':completion:*:(ssh|scp):*:hosts-domain' ignored-patterns '<->.<->.<->.<->' '^*.*' '*@*'
+zstyle ':completion:*:(ssh|scp):*:hosts-ipaddr' ignored-patterns '^<->.<->.<->.<->' '127.0.0.<->' '::1'
+zstyle ':completion:*:(ssh|scp):*:users' ignored-patterns adm amule avahi bin brltty chrony colord courier daemon dbus deluge dnsmasq fetchmail flatpak geoclue gluster grafana knot lidarr lp mail mongodb mpd mysql named nobody node_exporter nvidia-persistenced papermc pcp polkitd postgres prometheus redis rpc rtkit saned sddm shadowsocks-rust sonarr systemd-coredump systemd-journal-remote systemd-network systemd-oom systemd-resolve systemd-timesync transmission tss usbmux uuidd v2ray 
+
 # Mutt Address Book
 [[ -r ~/.config/mutt/muttrc.aliases ]] && zstyle ':completion:*:mutt:*' users ${${${(f)"$(<~/.config/mutt/muttrc.aliases)"}#alias[[:space:]]}%%[[:space:]]*}
 
