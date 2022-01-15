@@ -1,4 +1,12 @@
 set disassembly-flavor intel
+#set output-radix 0x10
+
+set confirm off
+
+set history save on
+set history size 100000
+set history filename ~/.cache/gdb/history
+set history expansion on
 
 set print pretty on
 set print array on
