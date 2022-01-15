@@ -89,14 +89,31 @@ error_symbol = "[>>>](bold red)"
 vicmd_symbol = "[<<<](bold green)"
 
 [git_commit]
+commit_hash_length = 8
 tag_symbol = " tag "
 
 [git_status]
-ahead = ">"
-behind = "<"
-diverged = "<>"
-renamed = "r"
-deleted = "x"
+format = '([\[ $all_status[|](purple) $ahead_behind \]]($style) )'
+# ASCII
+#ahead = "[>${count}](green)"
+#behind = "[<${count}](red)"
+#diverged = "[<${behind_count}](red)[>${ahead_count}](green)"
+#untracked = "?${count} "
+#stashed = "$${count} "
+#modified = "[!${count}](blue) "
+#staged = '[++\($count\)](green) '
+#renamed = "[R${count}](yellow) "
+#deleted = "[x${count}](red) "
+# Unicode
+ahead = "[↑${count}](green)"
+behind = "[↓${count}](red)"
+diverged = "⇕[↑${ahead_count}](green)[↓${behind_count}](red)"
+untracked = "?${count} "
+stashed = "$${count} "
+modified = "[!${count}](blue) "
+staged = '[++\($count\)](green) '
+renamed = "[R${count}](yellow) "
+deleted = "[✘${count}](red) "
 
 [shell]
 disabled = false
