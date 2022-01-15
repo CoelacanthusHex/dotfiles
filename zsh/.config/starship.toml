@@ -60,7 +60,7 @@ $line_break\
 $character"""
 
 
-
+continuation_prompt = "[>>>](bold yellow) "
 
 [time]
 disabled = false
