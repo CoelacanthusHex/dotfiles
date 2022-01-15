@@ -19,7 +19,7 @@ AllowEscapedLinks=true
 AutoCopySelectedText=false
 EscapedLinksSchema=http://;https://;file://;fugitive://
 OpenLinksByDirectClickEnabled=true
-UnderlineFilesEnabled=true
+UnderlineFilesEnabled=false
 UnderlineLinksEnabled=true
 
 [Scrolling]
