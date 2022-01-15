@@ -8,15 +8,56 @@ set history size 100000
 set history filename ~/.cache/gdb/history
 set history expansion on
 
+set python print-stack full
+
 set print pretty on
 set print array on
 set print array-indexes on
 set print union on
+#set print vtbl on
 
 source ~/.config/gdb/printers/pretty-printers.gdbinit
 
 define fetch_firefox_symbol
     source ~/.config/gdb/firefox-symbols.py
+end
+
+
+define b_a
+  #b __asan_report_load1
+  #b __asan_report_load2
+  #b __asan_report_load4
+  #b __asan_report_load8
+  #b __asan_report_load16
+  #b __asan_report_store1
+  #b __asan_report_store2
+  #b __asan_report_store4
+  #b __asan_report_store8
+  #b __asan_report_store16
+  #b __asan_report_error
+  b __asan::ReportGenericError
+end
+
+define b_u
+  b __ubsan_handle_add_overflow
+  b __ubsan_handle_mul_overflow
+  b __ubsan_handle_negate_overflow
+
+  b __ubsan_handle_builtin_unreachable
+  b __ubsan_handle_divrem_overflow
+  b __ubsan_handle_out_of_bounds
+
+  b __ubsan_handle_float_cast_overflow
+  b __ubsan_handle_shift_out_of_bounds
+
+  b __ubsan_handle_function_type_mismatch
+  b __ubsan_handle_sub_overflow
+
+  b __ubsan_handle_load_invalid_value
+  b __ubsan_handle_type_mismatch
+
+  b __ubsan_handle_missing_return
+  b __ubsan_handle_vla_bound_not_positive
 end
 
 # kate: space-indent on; indent-width 4; syntax gdbinit;
