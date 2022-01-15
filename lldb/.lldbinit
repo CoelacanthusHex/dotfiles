@@ -1,3 +1,5 @@
+settings set target.x86-disassembly-flavor intel
+
 # always load the .lldbinit file in the current working directory
 settings set target.load-cwd-lldbinit true
 

@@ -1,3 +1,5 @@
+set disassembly-flavor intel
+
 set print pretty on
 set print array on
 set print array-indexes on
