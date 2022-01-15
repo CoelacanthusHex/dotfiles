@@ -107,27 +107,19 @@ alias Ci="clipboard -i"
 alias Co="clipboard -o"
 
 # better format
-alias uptime='uptime -p'
-alias tree='tree -F'
-if (( $+aliases[df] ));then
-    alias df="$aliases[df] -h"
-else
-    alias df="df -h"
-fi
-if (( $+aliases[du] ));then
-    alias du="$aliases[du] -h"
-else
-    alias du="du -h"
-fi
-if (( $+aliases[free] ));then
-    alias free="$aliases[free] -h"
-else
-    alias free="free -h"
-fi
+# direct use name for grc.zsh may create function
+alias uptime="uptime -p"
+alias tree="tree -F"
+alias df="df -h"
+alias du="du -h"
+alias free="free -h"
 alias today="date '+%Y-%m-%d'"
 alias now="date --rfc-3339=seconds"
 alias list-mount="mount -l | column -t"
 alias lsmount=list-mount
+if (( $(tput cols) >= 80 )); then
+    alias vmtat="vmstat -w"
+fi
 
 # Vim style alias
 alias :e="vim"
@@ -160,14 +152,14 @@ fi
 # https://github.com/lilydjwg/dotzsh/blob/313050449529c84914293283691da1e824d779f5/zshrc#L375
 # grc aliases
 if (( $+aliases[colourify] )); then
-    if (( $+function[gcc] )); then
+    if (( $+functions[gcc] )); then
         # default is better
         unfunction gcc g++ 2>/dev/null || true
         # bug: https://github.com/garabik/grc/issues/72
         unfunction mtr     2>/dev/null || true
         # buffering issues: https://github.com/garabik/grc/issues/25
         unfunction ping    2>/dev/null || true
-    else
+    else if (( $+aliases[gcc] ))
         # default is better
         unalias gcc g++ 2>/dev/null || true
         # bug: https://github.com/garabik/grc/issues/72
