@@ -62,31 +62,64 @@ $character"""
 
 continuation_prompt = "[>>>](bold yellow) "
 
-[time]
-disabled = false
+[aws]
+symbol = "AWS "
 
-[status]
-disabled = false
-style = "bold blue"
-format = "[$symbol [->](white) [$common_meaning$signal_name](red) $hex_status]($style) "
-symbol = "[X](red)"
-success_symbol = "[!](green)"
-pipestatus = true
-pipestatus_format = "\\[ $pipestatus\\] => [$symbol [->](white) [$common_meaning$signal_name](red) $hex_status]($style)"
-pipestatus_separator = "| "
-
-[username]
-show_always = true
-format = "[$user]($style) "
-
-[hostname]
-ssh_only = false
-format = "@ [$hostname]($style) in "
+[battery]
+format = "[Battery $percentage]($style) "
 
 [character]
 success_symbol = "[>>>](bold green)"
 error_symbol = "[>>>](bold red)"
 vicmd_symbol = "[<<<](bold green)"
+
+[cobol]
+symbol = "Conda "
+
+[conda]
+symbol = "COBOL "
+
+[crystal]
+symbol = "Crystal "
+
+[cmake]
+symbol = "CMake "
+
+[dart]
+symbol = "Dart "
+
+[deno]
+symbol = "Deno "
+
+[dotnet]
+symbol = ".NET "
+
+[directory]
+read_only = " ro"
+truncation_length = 4
+truncate_to_repo = false
+# using fish style path truncation
+fish_style_pwd_dir_length = 1
+# using logical path insetad of resolving symbol link 
+use_logical_path = true
+
+[docker_context]
+symbol = "docker "
+
+[elixir]
+symbol = "elixir "
+
+[elm]
+symbol = "elm "
+
+[erlang]
+symbol = "Erlang "
+
+[gcloud]
+symbol = "GoogleCloud "
+
+[git_branch]
+symbol = "git "
 
 [git_commit]
 commit_hash_length = 8
@@ -115,69 +148,15 @@ staged = '[++\($count\)](green) '
 renamed = "[R${count}](yellow) "
 deleted = "[✘${count}](red) "
 
-[shell]
-disabled = false
-format = "in [\\[$indicator\\]]($style) "
-style = "blue bold"
-bash_indicator = "Bash"
-fish_indicator = "Fish"
-zsh_indicator = "Zsh"
-powershell_indicator = "PowerShell"
-ion_indicator = "Ion"
-elvish_indicator = "elvish"
-tcsh_indicator = "tcsh"
-xonsh_indicator = "Xonsh"
-unknown_indicator = "Unknown Shell"
-
-[aws]
-symbol = "AWS "
-
-[cobol]
-symbol = "Conda "
-
-[conda]
-symbol = "COBOL "
-
-[crystal]
-symbol = "Crystal "
-
-[cmake]
-symbol = "CMake "
-
-[dart]
-symbol = "Dart "
-
-[deno]
-symbol = "Deno "
-
-[dotnet]
-symbol = ".NET "
-
-[directory]
-read_only = " ro"
-truncation_length = 5
-truncate_to_repo = false
-
-[docker_context]
-symbol = "docker "
-
-[elixir]
-symbol = "elixir "
-
-[elm]
-symbol = "elm "
-
-[erlang]
-symbol = "Erlang "
-
-[git_branch]
-symbol = "git "
-
 [golang]
 symbol = "Go "
 
 [hg_branch]
 symbol = "hg "
+
+[hostname]
+ssh_only = false
+format = "@ [$hostname]($style) in "
 
 [java]
 symbol = "Java "
@@ -187,6 +166,9 @@ symbol = "julia "
 
 [kotlin]
 symbol = "Kotlin "
+
+[kubernetes]
+symbol = "k8s "
 
 [lua]
 symbol = "Lua "
@@ -206,6 +188,9 @@ symbol = "Nix "
 [ocaml]
 symbol = "OCaml "
 
+[openstack]
+symbol = "OpenStack "
+
 [package]
 symbol = "pkg "
 
@@ -214,6 +199,9 @@ symbol = "Perl "
 
 [php]
 symbol = "PHP "
+
+[pulumi]
+symbol = "Pulumi "
 
 [purescript]
 symbol = "PureScript "
@@ -233,6 +221,50 @@ symbol = "Rust "
 [scala]
 symbol = "Scala "
 
+[shell]
+disabled = false
+format = "in [\\[$indicator\\]]($style) "
+style = "blue bold"
+bash_indicator = "Bash"
+fish_indicator = "Fish"
+zsh_indicator = "Zsh"
+powershell_indicator = "PowerShell"
+ion_indicator = "Ion"
+elvish_indicator = "elvish"
+tcsh_indicator = "tcsh"
+xonsh_indicator = "Xonsh"
+cmd_indicator = "CMD"
+nu_indicator = "NuShell"
+unknown_indicator = "Unknown Shell"
+
+[status]
+disabled = false
+style = "bold blue"
+format = "[$symbol [->](white) [$common_meaning$signal_name](red) $hex_status]($style) "
+symbol = "[X](red)"
+success_symbol = "[!](green)"
+pipestatus = true
+pipestatus_format = "\\[ $pipestatus\\] => [$symbol [->](white) [$common_meaning$signal_name](red) $hex_status]($style)"
+pipestatus_separator = "| "
+
+[sudo]
+symbol = "sudo "
+
 [swift]
 symbol = "Swift "
 
+[terraform]
+symbol = "Terraform "
+
+[time]
+disabled = false
+
+[username]
+show_always = true
+format = "[$user]($style) "
+
+[vagrant]
+symbol = "Vagrant "
+
+[zig]
+symbol = "Zig "
