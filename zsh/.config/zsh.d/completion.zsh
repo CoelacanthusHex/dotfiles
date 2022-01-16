@@ -34,12 +34,14 @@ zstyle ':completion:correct:'          prompt 'correct to: %e'
 # ignore completion functions for commands you don't have:
 zstyle ':completion::(^approximate*):*:functions' ignored-patterns '_*'
 
-# correct case
-zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
+# Enable case-insensitive completion
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=** r:|=**'
 
-zstyle ':completion:*:matches' group 'yes'
-zstyle ':completion:*:options' description 'yes'
-zstyle ':completion:*:options' auto-description '%d'
+# when correcting, original string should be added as a possible completion
+zstyle ':completion:*' original true
+
+zstyle ':completion:*:matches' group yes
+zstyle ':completion:*:options' description yes
 
 ###  Color setting
 # I use http://jafrog.com/2013/11/23/colors-in-terminal.html to get color code
@@ -47,7 +49,13 @@ zstyle ':completion:*:options' auto-description '%d'
 #eval $(dircolors -b) # Load better one in config.zsh
 export ZLSCOLORS="${LS_COLORS}"
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+
+# Gives the types of suggestions that are being offered
+zstyle ':completion:*' format '%F{blue}Completing %d%f'
+
+# Description for options that are not described by the completion functions, but that have exactly one argument
+zstyle ':completion:*' auto-description '%F{green}Specify: %d%f'
+
 # https://thevaluable.dev/zsh-completion-guide-examples/
 # 描述显示为淡色
 # it only supported by gnome-terminal
@@ -59,7 +67,7 @@ zstyle ':completion:*:messages' format '%F{purple} -- %d -- %f'
 zstyle ':completion:*:warnings' format '%F{red}%B -- No Matches Found --%b%f'
 zstyle ':completion:*:corrections' format '%F{yellow}%B -- %d (errors: %e) --%b%f'
 
-#错误校正
+# 错误校正
 zstyle ':completion:*:match:*' original only
 zstyle ':completion::prefix-1:*' completer _complete
 zstyle ':completion:predict:*' completer _complete
@@ -140,6 +148,7 @@ zstyle ':completion:*:*:*:*:processes' force-list always
 zstyle ':completion:*:processes' command 'ps -afu$USER'
 # Provide more processes in completion of programs like killall:
 zstyle ':completion:*:processes-names' command 'ps c -u ${USER} -o command | uniq'
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 
 # complete manual by their section, from grml
 zstyle ':completion:*:manuals'    separate-sections true
