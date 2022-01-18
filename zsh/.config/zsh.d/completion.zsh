@@ -11,6 +11,7 @@ compinit -d "$ZSH_COMPDUMP"
 
 autoload -U +X bashcompinit && bashcompinit
 #[ -f /usr/share/bash-completion/bash_completion ] && source /usr/share/bash-completion/bash_completion
+#[ -f /usr/share/php/arcanist/support/shell/rules/bash-rules.sh ] && source /usr/share/php/arcanist/support/shell/rules/bash-rules.sh
 #(( $+commands[stack] )) && eval "$(stack --bash-completion-script stack)"
 
 # enable hidden files completion
@@ -40,6 +41,7 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower
 # when correcting, original string should be added as a possible completion
 zstyle ':completion:*' original true
 
+zstyle ':completion:*' verbose yes
 zstyle ':completion:*:matches' group yes
 zstyle ':completion:*:options' description yes
 
@@ -49,9 +51,6 @@ zstyle ':completion:*:options' description yes
 #eval $(dircolors -b) # Load better one in config.zsh
 export ZLSCOLORS="${LS_COLORS}"
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-
-# Gives the types of suggestions that are being offered
-zstyle ':completion:*' format '%F{blue}Completing %d%f'
 
 # Description for options that are not described by the completion functions, but that have exactly one argument
 zstyle ':completion:*' auto-description '%F{green}Specify: %d%f'
@@ -80,8 +79,10 @@ else
     zstyle ':completion:*' completer _complete _match _approximate _expand_alias _ignored _files
 fi
 
+# Increase the number of errors based on the length of the typed word.
 # allow one error for every three characters typed in approximate completer
-zstyle ':completion:*:approximate:'    max-errors 'reply=( $((($#PREFIX+$#SUFFIX)/3 )) numeric )'
+# But make sure to cap (at 7) the max-errors to avoid hanging.
+zstyle -e ':completion:*:approximate:' max-errors 'reply=( $((($#PREFIX+$#SUFFIX)/3>7?7:($#PREFIX+$#SUFFIX)/3))numeric )'
 
 zstyle ':completion:*' expand 'yes'
 # I don't like expand `//` -> `/*/`, I user `//` -> `/` as default behavior in UNIX
