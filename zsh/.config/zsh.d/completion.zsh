@@ -250,10 +250,40 @@ zstyle ':completion:*:*:(python*|pytest):*:*files' ignored-patterns '*.(pyc)(-.)
 #cmake_langs=('C' 'C' 'CXX' 'C++')
 #zstyle ':completion:*:cmake:*' languages $cmake_langs
 
-zstyle ':completion:*:(ssh|scp):*:hosts-host' ignored-patterns '*.*' loopback localhost
-zstyle ':completion:*:(ssh|scp):*:hosts-domain' ignored-patterns '<->.<->.<->.<->' '^*.*' '*@*'
-zstyle ':completion:*:(ssh|scp):*:hosts-ipaddr' ignored-patterns '^<->.<->.<->.<->' '127.0.0.<->' '::1'
-zstyle ':completion:*:(ssh|scp):*:users' ignored-patterns adm amule avahi bin brltty chrony colord courier daemon dbus deluge dnsmasq fetchmail flatpak geoclue gluster grafana knot lidarr lp mail mongodb mpd mysql named nobody node_exporter nvidia-persistenced papermc pcp polkitd postgres prometheus redis rpc rtkit saned sddm shadowsocks-rust sonarr systemd-coredump systemd-journal-remote systemd-network systemd-oom systemd-resolve systemd-timesync transmission tss usbmux uuidd v2ray 
+zstyle -e ':completion:*:hosts' hosts 'reply=(
+    ${=${=${=${${(f)"$(cat {/etc/ssh/ssh_,~/.ssh/}known_hosts(|2)(N) 2> /dev/null)"}%%[#| ]*}//\]:[0-9]*/ }//,/ }//\[/ }
+    ${=${(f)"$(cat /etc/hosts(|)(N) <<(ypcat hosts 2> /dev/null))"}%%(\#${_etc_host_ignores:+|${(j:|:)~_etc_host_ignores}})*}
+    ${=${${${${(@M)${(f)"$(cat ~/.ssh/config 2> /dev/null)"}:#Host *}#Host }:#*\**}:#*\?*}}
+    ${=${${${${(@M)${(f)"$(cat ~/.ssh/config.d/aosc 2> /dev/null)"}:#Host *}#Host }:#*\**}:#*\?*}}
+    ${=${${${${(@M)${(f)"$(cat ~/.ssh/config.d/plct 2> /dev/null)"}:#Host *}#Host }:#*\**}:#*\?*}}
+    ${=${${${${(@M)${(f)"$(cat ~/.ssh/config.d/local 2> /dev/null)"}:#Host *}#Host }:#*\**}:#*\?*}}
+)'
+zstyle ':completion:*:(ssh|scp|rsync):*' tag-order 'hosts:-host:host hosts:-domain:domain hosts:-ipaddr:ip\ address *'
+zstyle ':completion:*:(scp|rsync):*' group-order users files all-files hosts-host hosts-domain hosts-ipaddr
+zstyle ':completion:*:ssh:*' group-order users hosts-host hosts-domain users hosts-ipaddr
+# remove IP address, loopback, localhost and hostname from hosts list
+zstyle ':completion:*:(ssh|scp|rsync):*:hosts-host' ignored-patterns \
+    '*(.|:)*' \
+    loopback ip6-loopback localhost ip6-localhost broadcasthost \
+    $HOST \
+    aur
+# remove IP address, localdomain and useless doamin from domain list
+zstyle ':completion:*:(ssh|scp|rsync):*:hosts-domain' ignored-patterns \
+    '<->.<->.<->.<->' '^[-[:alnum:]]##(.[-[:alnum:]]##)##' '*@*' \
+    '*.localdomain' \
+    '*.github*'
+zstyle ':completion:*:(ssh|scp|rsync):*:hosts-ipaddr' ignored-patterns '^(<->.<->.<->.<->|(|::)([[:xdigit:].]##:(#c,2))##(|%*))' '127.0.<->.<->' '255.255.255.255' '::1' 'fe80::*'
+zstyle ':completion:*:(ssh|scp|rsync):*:users' ignored-patterns \
+    adm amule amanda apache avahi bin brltty chrony colord courier cups clamav \
+    daemon dbus deluge distcache dnsmasq dovecot fax fetchmail flatpak ftp \
+    games gdm geoclue gluster gopher grafana http knot lidarr ldap lp \
+    mail mailman mailnull mongodb mpd mysql named netdump news nfsnobody \
+    nobody nscd ntp node_exporter nvidia-persistenced openvpn \
+    papermc pcap pcp polkitd postfix postgres prometheus privoxy pulse pvm \
+    quagga radvd redis rpc rpcuser rpm rtkit shutdown squid sshd sync saned \
+    sddm shadowsocks-rust sonarr systemd-coredump systemd-journal-remote \
+    systemd-network systemd-oom systemd-resolve systemd-timesync \
+    transmission tss usbmux uuidd uucp vcsa v2ray xfs
 
 # Mutt Address Book
 [[ -r ~/.config/mutt/muttrc.aliases ]] && zstyle ':completion:*:mutt:*' users ${${${(f)"$(<~/.config/mutt/muttrc.aliases)"}#alias[[:space:]]}%%[[:space:]]*}
