@@ -1,20 +1,9 @@
 ## .zshrc
 
-# 确定环境 {{{1
-OS=${$(uname)%_*}
-if [[ $OS == "CYGWIN" || $OS == "MSYS" ]]; then
-  OS=Linux
-elif [[ $OS == "Darwin" ]]; then
-  OS=FreeBSD
-fi
+export HISTFILE=$XDG_CONFIG_HOME/zsh.d/zhistory/zsh_history
 
-_zhist=$XDG_CONFIG_HOME/zsh.d/zhistory
-
-export HISTFILE=${_zhist}/zsh_history
-export _ZL_DATA=${_zhist}/zlua
-
-HISTSIZE=100000
-SAVEHIST=100000
+HISTSIZE=1000000
+SAVEHIST=1000000
 
 ZDOTDIR=$XDG_CONFIG_HOME/zsh.d
 ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/zcompdump"
@@ -53,8 +42,6 @@ fi
 # it's much faster than the commonly used `export GPG_TTY=$(tty)`
 export GPG_TTY=$TTY
 gpg-connect-agent updatestartuptty /bye >/dev/null
-
-unset OS
 
 # vim: ft=zsh sw=4 ts=8 sts=4 et:
 # kate: space-indent on; indent-width 4;

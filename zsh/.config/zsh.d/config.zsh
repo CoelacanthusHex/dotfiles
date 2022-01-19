@@ -23,12 +23,12 @@ if is-at-least 5.0.5; then
 else
     setopt hist_reduce_blanks
 fi
-#为历史纪录中的命令添加时间戳
+# 为历史纪录中的命令添加时间戳
 setopt extended_history
-#允许在交互模式中使用注释  例如：
+# 允许在交互模式中使用注释  例如：
 #cmd #这是注释
 setopt interactive_comments
-#扩展路径
+# 扩展路径
 #/v/c/p/p => /var/cache/pacman/pkg
 setopt complete_in_word
 # 补全列表不同列可以使用不同的列宽
@@ -39,6 +39,7 @@ setopt magic_equal_subst
 setopt ksh_option_print
 # disown 后自动继续进程
 setopt auto_continue
+# 启用增强 glob
 setopt extended_glob
 
 # Disable tty flow control, allows vim to use '<Ctrl>S'

@@ -1,0 +1,287 @@
+#compdef arc
+
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+_commands=(
+    'alias:Create and modify command aliases.'
+    'amend:Amend the working copy, synchronizing the local commit message.'
+    'anoid:Pilot a probe from the vessel "Arcanoid".'
+    'bookmarks:Show an enhanced view of bookmarks in the working copy.'
+    'branches:Show an enhanced view of branches in the working copy.'
+    'browse:Open a file or object in a local web browser.'
+    'call-conduit:Call Conduit API methods.'
+    'close-revision:Close a revision which has been committed (svn) or pushed (git, hg).'
+    'commit:Commit a revision which has been accepted by a reviewer.(SVN only)'
+    'cover:Cover your professional reputation. Show blame for the lines you changed in your working copy (svn) or since some commit'
+    'diff:Generate a Differential diff or revision from local changes.'
+    'download:Download a file to local disk.'
+    'export:Export the local changeset (or a Differential changeset) to a file.'
+    'get-config:Reads an arc configuration option. With no argument, reads all options.'
+    'help:Show this help, or workflow help for command.'
+    'inspect:Show internal object information.'
+    'install-certificate:Installs Conduit credentials into your ~/.arcrc for the given install of Phabricator.'
+    'land:Publish reviewed changes.'
+    'liberate:Create or update an Arcanist library.'
+    'lint:Run static analysis on changes to check for mistakes. If no files are specified, lint will be run on all files which have been modified.'
+    'linters:List the available and configured linters, with information about what they do and which versions are installed.'
+    'list:List your open Differential revisions.'
+    'look:You stand in the middle of a small clearing.'
+    'paste:Share and grab text using the Paste application.'
+    'patch:Apply the changes in a Differential revision, patchfile, or arc bundle to the working copy.'
+    'prompts:Show information about prompts a workflow may execute, and review saved responses.'
+    'set-config:Sets an arc configuration option.'
+    'shell-complete:Install shell completion.'
+    'tasks:View all assigned tasks.'
+    'todo:Quickly create a task for yourself.'
+    'unit:Run unit tests that cover specified paths. If no paths arespecified, unit tests covering all modified files will be run.'
+    'upgrade:Upgrade Arcanist to the latest version.'
+    'upload:Upload files.'
+    'version:Show toolset version information.'
+    'weld:Robustly fuse files together.'
+    'which:Shows which repository the current working copy corresponds to, which commits `arc diff` will select, and which revision is in the working copy (or which revisions, if more than one matches).'
+    'work:Begin or resume work.'
+)
+
+_arc_commands() {
+    _describe 'command' _commands
+}
+
+_arc() {
+    local line state
+    typeset -A opt_args
+
+    _arguments \
+        "--ansi[Use formatting even in environments which probably don't support it.]" \
+        '--conduit-token[Use a specific authentication token.]' \
+        '--conduit-uri[Connect to Phabricator install specified by uri.]:url:_urls' \
+        '--config[Specify a runtime configuration value. (key=value)]' \
+        '--config-file[Load one or more configuration files. If this flag is provided, the system and user configuration files are ignored.]:path:_files' \
+        '--library[Load a library.]:path:_files' \
+        '--no-ansi[Disable ANSI terminal codes, printing plain text with no color or style.]' \
+        '--recon[Start in remote console mode.]' \
+        '--trace[Trace command execution and show service calls.]' \
+        '--xprofile[Profile script execution and write results to a file.]:path:_files' \
+        '(-h --help)'{-h,--help}'[output usage information]' \
+        '1: :_arc_commands' \
+        '*:: :->command_args'
+    case "$state" in
+        command_args)
+            case $words[1] in
+                alias)
+                    # TODO
+                    ;;
+                amend)
+                    _arguments \
+                        '--revision[Use the message from a specific revision. If you do not specify a revision, arc will guess which revision is in the working copy.]:revision id' \
+                        '--show[Show the amended commit message, without modifying the working copy.]'
+                    ;;
+                browse)
+                    _arguments \
+                        '--branch[Default branch name to view on server. Defaults to "master".]:branch' \
+                        '--force[(DEPRECATED) Obsolete, use "--types path" instead.]' \
+                        '--types[Force targets to be interpreted as naming particular types of resources.]' \
+                        '*:target:'
+                    ;;
+                call-conduit)
+                    # TODO
+                    ;;
+                commit)
+                    _arguments \
+                        '--revision[Commit a specific revision. If you do not specify a revision, arc will look for committable revisions.]:revision id' \
+                        '--show[Show the command which would be issued, but do not actually commit anything.]'
+                    ;;
+                cover)
+                    _arguments \
+                        '--rev[Cover changes since a specific revision.]:revision id' \
+                        '*:path:_files'
+                    ;;
+                diff)
+                    _arguments \
+                        '(-a --add-all)'{-a,--add-all}'[Automatically add all unstaged and uncommitted files to the commit.]' \
+                        '--allow-untracked[Skip checks for untracked files in the working copy.]' \
+                        '--amend-all[When linting git repositories, amend HEAD with all patches suggested by lint without prompting.]' \
+                        '--amend-autofixes[When linting git repositories, amend HEAD with autofix patches suggested by lint without prompting.]' \
+                        '--apply-patches[Apply patches suggested by lint to the working copy without prompting.]' \
+                        '--base[Additional rules for determining base revision.]:rules' \
+                        '--browse[After creating a diff or revision, open it in a web browser.]' \
+                        '--cc[When creating a revision, add CCs.]:username' \
+                        '--coverage[Always enable coverage information.]' \
+                        '--create[Always create a new revision.]' \
+                        '--draft[Create a draft revision so you can look over your changes before involving anyone else. Other users will not be notified about the revision until you later use "Request Review" to publish it. You can still share the draft by giving someone the link.]' \
+                        '--edit[When updating a revision under git, edit revision information before updating.]' \
+                        '--head[Specify the end of the commit range. This disables many Arcanist/Phabricator features which depend on having access to the working copy.]:commit' \
+                        '--json[Emit machine-readable JSON. EXPERIMENTAL! Probably does not work!]' \
+                        '(-m --message)'{-m,--message}'[When updating a revision, use the specified message instead of prompting.]' \
+                        '(-F --message-file)'{-F,--message-file}'[When creating a revision, read revision information from this file.]:path:_files' \
+                        '--never-apply-patches[Never apply patches suggested by lint.]' \
+                        '--no-amend[Never amend commits in the working copy with lint patches.]' \
+                        '--no-coverage[Always disable coverage information.]' \
+                        '--nolint[Do not run lint.]' \
+                        '--nounit[Do not run unit tests.]' \
+                        '--only[Instead of creating or updating a revision, only create a diff, which you may later attach to a revision.]' \
+                        '--raw[Read diff from stdin, not from the working copy. This disables many Arcanist/Phabricator features which depend on having access to the working copy.]' \
+                        '--raw-command[Generate diff by executing a specified command, not from the working copy. This disables many Arcanist/Phabricator features which depend on having access to the working copy.]' \
+                        '--reviewers[When creating a revision, add reviewers.]:username' \
+                        '--skip-binaries[Do not upload binaries (like images).]' \
+                        '--skip-staging[Do not copy changes to the staging area.]' \
+                        '--uncommitted[Suppress warning about uncommitted changes.]' \
+                        '--update[Always update a specific revision.]:revision id' \
+                        '--verbatim[When creating a revision, try to use the working copy commit message verbatim, without prompting to edit it. When updating a revision, update some fields from the local commit message.]' \
+                        '*:path or commit:_files'
+                    ;;
+                download)
+                    _arguments \
+                        '--as[Save the file to a specific location.]:path:_files' \
+                        '*:file'
+                    ;;
+                export)
+                    _arguments \
+                        '--arcbundle[Export change as an arc bundle. This format can represent all changes. These bundles can be applied with `arc patch`.]:path:_files' \
+                        '--diff[Instead of exporting changes from the working copy, export them from a Differential diff.]' \
+                        '--encoding[Attempt to convert non UTF-8 patch into specified encoding.]' \
+                        '--git[Export change as a git patch. This format is more complete than unified, but less complete than arc bundles. These patches can be applied with `git apply` or `arc patch`.]' \
+                        '--revision[Instead of exporting changes from the working copy, export them from a Differential revision.]:revision id' \
+                        '--unified[Export change as a unified patch. This format is less complete than git patches or arc bundles. These patches can be applied with `patch` or `arc patch`.]'
+                    ;;
+                get-config)
+                    _arguments \
+                        '--verbose[Show detailed information about options.]'
+                    ;;
+                help)
+					_arguments \
+						'1: :_arc_commands' \
+                    ;;
+                inspect)
+                    _arguments \
+                        '--explore[Load all object hardpoints.]' \
+                        '*:object'
+                    ;;
+                land)
+                    _arguments \
+                        '--hold[Prepare the changes to be pushed, but do not actually push them.]' \
+                        '--incrementa[When landing multiple revisions at once, push and rebase after each merge completes instead of waiting until all merges are completed to push.]' \
+                        '--into[Specify the state to merge into. By default, this is the same as the "onto" ref.]:commit' \
+                        '--into-empty[Merge into the empty state instead of an existing state. This mode is primarily useful when creating a new repository, and selected automatically if the "onto" ref does not exist and the "into" state is not specified.]' \
+                        '--into-local[Use the local "into" ref state instead of fetching it from a remote.]' \
+                        '--into-remote[Specifies the remote to fetch the "into" ref from. By default, this is the same as the "onto" remote.]:remote' \
+                        '--keep-branches[Keep local branches around after changes are pushed. By default, local branches are deleted after the changes they contain are published.]' \
+                        '--onto[After merging, push changes onto a specified branch. Specifying this flag multiple times will push to multiple branches.]:branch' \
+                        '--onto-remote[Push to a remote other than the default.]:remote' \
+                        '--pick[Land only the changes directly named by arguments, instead of all  reachable ancestors.]' \
+                        '--preview[Show the changes that will land. Does not modify the working copy or the remote.]' \
+                        '--revision[Land a specific revision, rather than determining revisions automatically from the commits that are landing.]:revision id' \
+                        '--strategy[Merge using a particular strategy.]:strategy:(squash merge)'
+                    ;;
+                liberate)
+                    _arguments \
+                        '--clean[Perform a clean rebuild, ignoring caches. Thorough, but slow.]'
+                        '*:path:_files'
+                    ;;
+                lint)
+                    _arguments \
+                        '--amend-all[When linting git repositories, amend HEAD with all patches suggested by lint without prompting.]' \
+                        '--amend-autofixes[When linting git repositories, amend HEAD with autofix patches suggested by lint without prompting.]' \
+                        '--apply-patches[Apply patches suggested by lint to the working copy without prompting.]' \
+                        '--engine[Override configured lint engine for this project.]:engine' \
+                        '--everything[Lint all tracked files in the working copy. Ignored files and untracked files will not be linted.]' \
+                        '--lintall[Show all lint warnings, not just those on changed lines. When paths are specified, this is the default behavior.]' \
+                        '--never-apply-patches[Never apply patches suggested by lint.]' \
+                        '--outfile[Output the linter results to a file. Defaults to stdout.]:output path:_files' \
+                        '--output[Select an output format.]:format' \
+                        '--rev[Lint changes since a specific revision.]:revision id' \
+                        '--severity[Set minimum message severity. (Defaults to advice)]:severity:(advice autofix warning error disabled)' \
+                        '(^--rev):path:_files'
+                    ;;
+                linters)
+                    _arguments \
+                        '--search[Search for linters. Search is case-insensitive, and is performed against name and description of each linter.]' \
+                        '--verbose[Show detailed information, including options.]' \
+                        '*:name'
+                    ;;
+                paste)
+                    _arguments \
+                        '--browse[After creating a paste, open it in a web browser.]' \
+                        '--input[Create a paste using the content in a file.]:path:_files' \
+                        '--lang[Language for the paste.]:language' \
+                        '--title[Title for the paste.]'
+                    ;;
+                patch)
+                    _arguments \
+                        '--arcbundle[Apply changes from an arc bundle generated with `arc export`.]' \
+                        '--diff[Apply changes from a Differential diff. Normally you want to use --revision to get the most recent changes, but you can specifically apply an out-of-date diff or a diff which was never attached to a revision by using this flag.]' \
+                        '--encoding[Attempt to convert non UTF-8 patch into specified encoding.]' \
+                        '--force[Do not run any sanity checks.]' \
+                        '--nobranch[Normally, a new branch (git) or bookmark (hg) is created and then the patch is applied and committed in the new branch/bookmark. This flag cherry-picks the resultant commit onto the original branch and deletes the temporary branch.]' \
+                        '--nocommit[Normally under git/hg, if the patch is successful, the changes are committed to the working copy. This flag prevents the commit.]' \
+                        '--patch[Apply changes from a git patchfile or unified patchfile.]:path:_files' \
+                        '--revision[Apply changes from a Differential revision, using the most recent diff that has been attached to it. You can run `arc patch D12345` as a shorthand.]:revision id' \
+                        '--skip-dependencies[Normally, if a patch has dependencies that are not present in the working copy, arc tries to apply them as well. This flag prevents such work.]' \
+                        '--update[Update the local working copy before applying the patch.]'
+                    ;;
+                set-config)
+                    _arguments \
+                        '--local[Set a local config value instead of a user one.]'
+                    ;;
+                shell-complete)
+                    _arguments \
+                        '--current[Internal. Current term in the argument list being completed.]:cursor position' \
+                        '--generate[Regenerate shell completion rules, without installing any configuration.]' \
+                        '--shell[Install completion support for a particular shell.]:shell:(bash)'
+                    ;;
+                tasks)
+                    _arguments \
+                        '--limit[Limit the amount of tasks outputted, default is all.]:number' \
+                        '--order[Arrange tasks based on priority, created, or modified, default is priority.]' \
+                        '--owner[Only show tasks assigned to the given username, also accepts @all to show all, default is you.]:username' \
+                        '--status[Show tasks that are open or closed, default is open.]' \
+                        '--unassigned[Only show tasks that are not assigned (upforgrabs).]'
+                    ;;
+                todo)
+                    _arguments \
+                        '--browse[After creating the task, open it in a web browser.]' \
+                        '(-C --cc)'{-C,--cc}'[Other users to CC on the new task.]' \
+                        '--project[Projects to assign to the task.]'
+                    ;;
+                unit)
+                    _arguments \
+                        '--coverage[Always enable coverage information.]' \
+                        '--detailed-coverage[Show a detailed coverage report on the CLI. Implies --coverage.]' \
+                        '--engine[Override configured unit engine for this project.]:engine' \
+                        '--everything[Run every test associated with a tracked file in the working copy.]' \
+                        '--json[Report results in JSON format.]' \
+                        '--no-coverage[Always disable coverage information.]' \
+                        '--output[With full, show full pretty report (Default). With json, report results in JSON format. With ugly, use uglier (but more efficient) JSON formatting. With none, dont print results.]:format:(full json ugly none)' \
+                        '--rev[Run unit tests covering changes since a specific revision.]:revision id' \
+                        '--target[(PROTOTYPE) Record a copy of the test results on the specified Harbormaster build target.]:phid' \
+                        '--ugly[With --json, use uglier (but more efficient) formatting.]'
+                    ;;
+                upload)
+                    _arguments \
+                        '--browse[After the upload completes, open the files in a web browser.]' \
+                        '--json[Output upload information in JSON format.]' \
+                        '--temporary[Mark the file as temporary. Temporary files will be deleted after 24 hours.]' \
+                        '*:file:_files'
+                    ;;
+                weld)
+                    _arguments \
+                        '*:file:_files'
+                    ;;
+                which)
+                    _arguments \
+                        '--any-status[Show committed and abandoned revisions.]' \
+                        '--base[Additional rules for determining base revision.]:rules' \
+                        '--head[Specify the end of the commit range to select.]:commit' \
+                        '--show-base[Print base commit only and exit.]' \
+                        '(^--*):commit'
+                    ;;
+                work)
+                    _arguments \
+                        '--start[When creating a new branch or bookmark, use this as the branch point]' \
+                        '*:symbol'
+                    ;;
+            esac
+            ;;
+    esac
+}
+
+_arc "$@"

@@ -10,8 +10,8 @@ autoload -Uz compinit
 compinit -d "$ZSH_COMPDUMP"
 
 autoload -U +X bashcompinit && bashcompinit
-#[ -f /usr/share/bash-completion/bash_completion ] && source /usr/share/bash-completion/bash_completion
-#[ -f /usr/share/php/arcanist/support/shell/rules/bash-rules.sh ] && source /usr/share/php/arcanist/support/shell/rules/bash-rules.sh
+#[[ -f /usr/share/bash-completion/bash_completion ]] && source /usr/share/bash-completion/bash_completion
+#[[ -f /usr/share/php/arcanist/support/shell/rules/bash-rules.sh ]] && source /usr/share/php/arcanist/support/shell/rules/bash-rules.sh
 #(( $+commands[stack] )) && eval "$(stack --bash-completion-script stack)"
 
 # enable hidden files completion
