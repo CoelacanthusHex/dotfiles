@@ -1,15 +1,11 @@
 [submodule "fcitx5/.local/share/fcitx5/themes/fcitx5-dark-transparent"]
 	path = fcitx5/.local/share/fcitx5/themes/fcitx5-dark-transparent
 	url = https://github.com/hosxy/fcitx5-dark-transparent.git
-[submodule "muttrc"]
-	path = mutt
-	url = git@github.com:CoelacanthusHex/muttrc.git
-[submodule "bytetools/.local/bin/bytetools"]
-	path = bytetools/.local/bin/bytetools
-	url = git@github.com:CoelacanthusHex/bytetools.git
 [submodule "zsh/.config/zsh.d/plugins/fast-syntax-highlighting"]
 	path = zsh/.config/zsh.d/plugins/fast-syntax-highlighting
 	url = https://github.com/zdharma-continuum/fast-syntax-highlighting.git
+	ignore = untracked
 [submodule "zsh/.config/zsh.d/plugins/history-search-multi-word"]
 	path = zsh/.config/zsh.d/plugins/history-search-multi-word
 	url = https://github.com/zdharma-continuum/history-search-multi-word.git
+	ignore = untracked

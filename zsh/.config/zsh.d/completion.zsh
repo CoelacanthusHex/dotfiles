@@ -6,8 +6,36 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
+# Load and initialize the completion system ignoring insecure directories with a
+# cache time of 20 hours, so it should almost always regenerate the first time a
+# shell is opened each day.
 autoload -Uz compinit
-compinit -d "$ZSH_COMPDUMP"
+_comp_files=($ZSH_COMPDUMP(Nmh-20))
+if (( $#_comp_files )); then
+    compinit -C -d "$ZSH_COMPDUMP"
+else
+    compinit -d "$ZSH_COMPDUMP"
+fi
+unset _comp_files
+
+# Execute code in the background to not affect the current session
+(
+    setopt local_options extended_glob
+    autoload -U zrecompile
+    # Compile zcompdump, if modified, to increase startup speed.
+    if [[ -s "$ZSH_COMPDUMP" && (! -s "$ZSH_COMPDUMP.zwc" || "$ZSH_COMPDUMP" -nt "$ZSH_COMPDUMP.zwc") ]]; then
+        zrecompile -pq "$ZSH_COMPDUMP"
+    fi
+
+    zrecompile -pq $HOME/.zshenv
+    zrecompile -pq $HOME/.zshrc
+
+    local ZSHCONFIG=$XDG_CONFIG_HOME/zsh.d
+    for f in $ZSHCONFIG/**/*.zsh;
+    do
+        zrecompile -pq $f;
+    done
+) &!
 
 autoload -U +X bashcompinit && bashcompinit
 #[[ -f /usr/share/bash-completion/bash_completion ]] && source /usr/share/bash-completion/bash_completion

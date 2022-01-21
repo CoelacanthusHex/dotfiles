@@ -5,7 +5,6 @@ export HISTFILE=$XDG_CONFIG_HOME/zsh.d/zhistory/zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
 
-ZDOTDIR=$XDG_CONFIG_HOME/zsh.d
 ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/zcompdump"
 
 #[ -f $HOME/.bashrc ] && source $HOME/.bashrc
