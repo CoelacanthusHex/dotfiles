@@ -8,4 +8,5 @@
 
 # Zsh Pre Compile
 *.zwc
+*.zwc.old
 \.zcompdump
