@@ -41,6 +41,10 @@ setopt ksh_option_print
 setopt auto_continue
 # 启用增强 glob
 setopt extended_glob
+# using c format hexadecimal number
+setopt c_bases
+# disable for problems with parsing of, for example, date and time strings with leading zeroes
+unsetopt octal_zeroes
 
 # Disable tty flow control, allows vim to use '<Ctrl>S'
 unsetopt flow_control && stty -ixon
