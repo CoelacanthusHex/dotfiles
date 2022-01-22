@@ -65,6 +65,8 @@ set nojoinspaces
 " 高亮显示当前行/列
 set cursorline
 set cursorcolumn
+" 设置宽度提示
+set colorcolumn=80,100
 " 显示侧边栏（用于显示 mark/gitdiff/诊断信息）
 try
     set signcolumn=number
