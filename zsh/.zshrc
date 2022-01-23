@@ -17,7 +17,7 @@ elif [[ -r "/usr/share/zsh/functions/Prompts/prompt_pure_setup" ]]; then
     ## config for pure
     autoload -U promptinit; promptinit
     prompt pure
-elif [[ -r "$POWERLINE_BINDINGS/zsh/powerline.zsh" ]]; then
+else
     ## config for fallback
     PROMPT='%F{green}%n%f @ %F{magenta}%m%f in %B%F{yellow}%~%f%b -> %(?.%F{green}!.%F{red}?->%?)%f
 %F{blue}>>>%f '
