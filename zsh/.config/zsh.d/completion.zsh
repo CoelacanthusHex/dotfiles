@@ -213,7 +213,14 @@ compdef _gnu_generic zramctl swapon swapoff
 #cmake_langs=('C' 'C' 'CXX' 'C++')
 #zstyle ':completion:*:cmake:*' languages $cmake_langs
 
-source $XDG_CONFIG_HOME/zsh.d/completion.d/*.zsh
+source $XDG_CONFIG_HOME/zsh.d/completion.d/compression.zsh
+source $XDG_CONFIG_HOME/zsh.d/completion.d/editor.zsh
+source $XDG_CONFIG_HOME/zsh.d/completion.d/git.zsh
+source $XDG_CONFIG_HOME/zsh.d/completion.d/llvm.zsh
+source $XDG_CONFIG_HOME/zsh.d/completion.d/mutt.zsh
+source $XDG_CONFIG_HOME/zsh.d/completion.d/pic-view.zsh
+source $XDG_CONFIG_HOME/zsh.d/completion.d/python.zsh
+source $XDG_CONFIG_HOME/zsh.d/completion.d/ssh.zsh
 
 # vim: ft=zsh sw=4 ts=8 sts=4 et:
 # kate: space-indent on; indent-width 4;
