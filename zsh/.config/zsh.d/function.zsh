@@ -253,24 +253,6 @@ clip_png2bmp () { # 将剪贴板中的图片从 png 转到 bmp。QQ 会使用 bm
     xclip -selection clipboard -o -t image/png | convert - bmp:- | xclip -i -selection clipboard -t image/bmp
 }
 
-# https://github.com/lilydjwg/dotzsh/blob/313050449529c84914293283691da1e824d779f5/zshrc#L385
-# for systemd 230+
-# see https://github.com/tmux/tmux/issues/428
-if (( $_has_re == 1 )) && \
-    (( $+commands[tmux] )) && (( $+commands[systemctl] )); then
-    [[ $(systemctl --version) =~ 'systemd ([0-9]+)' ]] || true
-    if (( $match >= 230 )); then
-        tmux () {
-            if command tmux has; then
-                command tmux $@
-            else
-                systemd-run --user --scope tmux $@
-            fi
-        }
-    fi
-    unset match
-fi
-
 # check fcitx5 dbus
 function check-fcitx5-dbus() {
     if (( $+commands[qdbus] )); then

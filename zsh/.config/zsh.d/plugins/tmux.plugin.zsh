@@ -1,0 +1,35 @@
+autoload -Uz zsh/terminfo
+
+#[[ $terminfo[Tc] == yes && -z $COLORTERM ]] && export COLORTERM=truecolor
+
+local -a cmds=()
+if (( terminfo[colors] >= 256 )); then
+    cmds+=(set -g default-terminal tmux-256color ';')
+    if [[ $COLORTERM == (24bit|truecolor) ]]; then
+        # https://github.com/romkatv/zsh4humans/commit/6b30738bd30da18273c2af53a37f699383d79b53
+        cmds+=(set -ga terminal-features ',*:RGB:usstyle:overline' ';')
+    fi
+else
+    #cmds+=(set -g default-terminal screen ';')
+fi
+
+# https://github.com/lilydjwg/dotzsh/blob/313050449529c84914293283691da1e824d779f5/zshrc#L385
+# for systemd 230+
+# see https://github.com/tmux/tmux/issues/428
+if (( $_has_re == 1 )) && \
+    (( $+commands[tmux] )) && (( $+commands[systemctl] )); then
+    [[ $(systemctl --version) =~ 'systemd ([0-9]+)' ]] || true
+    if (( $match >= 230 )); then
+        function tmux () {
+            if command tmux has; then
+                command tmux $@ "${cmds[@]}" attach
+            else
+                systemd-run --user --scope tmux $@ "${cmds[@]}" new
+            fi 
+        }
+    fi
+    unset match
+fi
+
+# vim: ft=zsh sw=4 ts=8 sts=4 et:
+# kate: space-indent on; indent-width 4;

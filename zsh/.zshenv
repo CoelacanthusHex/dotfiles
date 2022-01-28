@@ -16,13 +16,9 @@ export BROWSER=/usr/bin/xdg-open
 # Ripgrep
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME"/ripgreprc
 
-# Workaround: GUI app like KMail need pinentry-qt but we need pinentry-curse in the terminal
-# https://wiki.gentoo.org/wiki/GnuPG#Changing_pinentry_for_SSH_logins
-# It's useless but
-#export PINENTRY_USER_DATA="USE_CURSES=1"
+# Disable kitty shell integration
+unset KITTY_SHELL_INTEGRATION
 
-#export GENTOO_MIRRORS="https://mirrors.bfsu.edu.cn/gentoo"
-#export EPREFIX=/home/coelacanthus/Data/gentoo/prefix
 export GO111MODULE=on
 export GOPROXY=https://goproxy.cn
 export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static

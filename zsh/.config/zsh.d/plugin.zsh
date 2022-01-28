@@ -6,6 +6,7 @@ _enabled_plugins=(
     autopair
     fast-syntax-highlighting/fast-syntax-highlighting
     history-search-multi-word/history-search-multi-word
+    tmux
 )
 for _zsh_plugin in $_enabled_plugins[@]; do
     [[ ! -r "$XDG_CONFIG_HOME/zsh.d/plugins/$_zsh_plugin.plugin.zsh" ]] || source $XDG_CONFIG_HOME/zsh.d/plugins/$_zsh_plugin.plugin.zsh
