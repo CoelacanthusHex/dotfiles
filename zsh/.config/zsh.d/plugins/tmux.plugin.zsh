@@ -24,14 +24,18 @@ if (( $_has_re == 1 )) && \
     if (( $match >= 230 )); then
         function tmux () {
             if command tmux has; then
-                if (( ${#@[(r)(attach|attach-session)]} || ($#@ == 0) )); then
+                if (( $#@ == 0 )); then
                     command tmux "${cmds[@]}" attach $@
+                elif (( ${#@[(r)(attach|attach-session)]} )); then
+                    command tmux "${cmds[@]}" $@
                 else
                     command tmux "${cmds[@]}" $@
                 fi
             else
-                if (( ${#@[(r)(new|new-session)]} || ($#@ == 0) )); then
+                if (( $#@ == 0 )); then
                     systemd-run --user --scope tmux "${cmds[@]}" new $@
+                elif (( ${#@[(r)(new|new-session)]} )); then
+                    systemd-run --user --scope tmux "${cmds[@]}" $@
                 else
                     command tmux $@
                 fi
