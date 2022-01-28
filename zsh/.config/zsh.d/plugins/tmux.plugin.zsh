@@ -12,7 +12,7 @@ if (( terminfo[colors] >= 256 )); then
 else
     # The default has changed in the newer version tmux.
     # https://github.com/romkatv/zsh4humans/commit/0341b78cdec2833a6b0e7bbb06a2ee625311c704
-    cmds+=(set -g default-terminal screen ';')
+    cmds+=(set -g default-terminal tmux ';')
 fi
 
 # https://github.com/lilydjwg/dotzsh/blob/313050449529c84914293283691da1e824d779f5/zshrc#L385
