@@ -62,6 +62,7 @@ path=(
 typeset -U fpath
 fpath=(
     $XDG_CONFIG_HOME/zsh.d/completions(N-/)
+    /usr{/local,}/share/zsh/{site-functions,vendor-completions}(-/N)
     $fpath
 )
 
