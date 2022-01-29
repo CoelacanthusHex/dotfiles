@@ -69,7 +69,7 @@ call plug#begin('~/.vim/plugged')
     " Tagbar
     Plug 'majutsushi/tagbar'
     " 彩虹括号
-    Plug 'luochen1990/rainbow'
+    Plug '91khr/rainbow'
     let g:rainbow_active = 1
     " HELP文档中文
     "Plug 'yianwillis/vimcdoc'
