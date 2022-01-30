@@ -162,6 +162,23 @@ else
     alias ip="ip -c=auto "
 fi
 
+cmds=()
+if (( terminfo[colors] >= 256 )); then
+    cmds+=(set -g default-terminal tmux-256color ';')
+    if [[ $COLORTERM =~ (24bit|truecolor) ]]; then
+        # https://github.com/romkatv/zsh4humans/commit/6b30738bd30da18273c2af53a37f699383d79b53
+        cmds+=(set -ga terminal-features ',*:RGB:usstyle:overline' ';')
+    fi
+else
+    # The default has changed in the newer version tmux.
+    # https://github.com/romkatv/zsh4humans/commit/0341b78cdec2833a6b0e7bbb06a2ee625311c704
+    cmds+=(set -g default-terminal tmux ';')
+fi
+function tmux() {
+    command tmux "${cmds[@]}" $@
+}
+unset cmds
+
 unset shopt
 
 # vim: ft=bash sw=4 ts=8 sts=4 et:
