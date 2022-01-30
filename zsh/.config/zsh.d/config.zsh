@@ -1,4 +1,6 @@
 unsetopt nomatch
+# https://blog.lilydjwg.me/2015/7/26/a-simple-zsh-module.116403.html
+# https://gist.github.com/lilydjwg/0bfa6807b88e6d39a995
 zmodload zsh/subreap 2>/dev/null && subreap
 autoload -Uz is-at-least
 # 选项设置
