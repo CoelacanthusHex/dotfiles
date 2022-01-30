@@ -2,7 +2,7 @@
 _enabled_plugins=(
     command-not-found
     git
-    colored-man-pages
+    better-man-pages
     autopair
     fast-syntax-highlighting/fast-syntax-highlighting
     history-search-multi-word/history-search-multi-word

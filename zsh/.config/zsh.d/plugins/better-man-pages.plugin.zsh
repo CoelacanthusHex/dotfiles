@@ -1,25 +1,35 @@
 # Requires colors autoload.
 # See termcap(5).
 
+autoload -Uz colors && colors
+zmodload zsh/terminfo
+
 # Set up once, and then reuse. This way it supports user overrides after the
 # plugin is loaded.
 typeset -AHg less_termcap
 
 # bold & blinking mode
-less_termcap[mb]="${fg_bold[red]}"
-less_termcap[md]="${fg_bold[red]}"
+less_termcap[mb]="${fg_bold[magenta]}"
+less_termcap[md]="${fg_bold[yellow]}"
 less_termcap[me]="${reset_color}"
 # standout mode
 less_termcap[so]="${fg_bold[yellow]}${bg[blue]}"
-less_termcap[se]="${reset_color}"
+less_termcap[se]="${terminfo[rmso]}${reset_color}"
 # underlining
-less_termcap[us]="${fg_bold[green]}"
-less_termcap[ue]="${reset_color}"
+less_termcap[us]="${terminfo[smul]}${fg_bold[green]}"
+less_termcap[ue]="${terminfo[rmul]}${reset_color}"
+
+less_termcap[mr]="${terminfo[rev]}"
+less_termcap[mh]="${terminfo[dim]}"
+less_termcap[ZN]="${terminfo[ssubm]}"
+less_termcap[ZV]="${terminfo[rsubm]}"
+less_termcap[ZO]="${terminfo[ssupm]}"
+less_termcap[ZW]="${terminfo[rsupm]}"
 
 # Absolute path to this file's directory.
-typeset __colored_man_pages_dir="${0:A:h}"
+typeset __better_man_pages_dir="${0:A:h}"
 
-function colored() {
+function __make_better() {
   local -a environment
 
   # Convert associative array to plain array of NAME=VALUE items.
@@ -44,5 +54,5 @@ function colored() {
 function man \
   dman \
   debman {
-  colored $0 "$@"
+  __make_better $0 "$@"
 }

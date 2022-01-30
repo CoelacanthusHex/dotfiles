@@ -119,9 +119,6 @@ fi
 # better than copy-prev-word
 bindkey "^[^_" copy-prev-shell-word
 
-autoload -Uz colors zsh/terminfo
-colors
-
 () {
     autoload -Uz colors && colors
     local white_b=$fg_bold[white] blue=$fg_bold[blue] rst=$reset_color

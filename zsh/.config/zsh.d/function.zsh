@@ -7,24 +7,6 @@ function compresspdf(){
     gs -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -sOutputFile=$2 $1
 }
 
-
-function man() {
-    env \
-        LESS_TERMCAP_mb=$(tput bold; tput setaf 5) \
-        LESS_TERMCAP_md=$(tput bold; tput setaf 3) \
-        LESS_TERMCAP_me=$(tput sgr0) \
-        LESS_TERMCAP_se=$(tput rmso; tput sgr0) \
-        LESS_TERMCAP_us=$(tput smul; tput setaf 6) \
-        LESS_TERMCAP_ue=$(tput rmul; tput sgr0) \
-        LESS_TERMCAP_mr=$(tput rev) \
-        LESS_TERMCAP_mh=$(tput dim) \
-        LESS_TERMCAP_ZN=$(tput ssubm) \
-        LESS_TERMCAP_ZV=$(tput rsubm) \
-        LESS_TERMCAP_ZO=$(tput ssupm) \
-        LESS_TERMCAP_ZW=$(tput rsupm) \
-		man "$@"
-}
-
 function wifi(){
     [ -z "$1" -o -z "$2" -o -z "$3" ] && echo -e "usage: wifi <interface> <ssid> <password>: connect to <ssid> at <interface> using <password>" && return 1
     sudo bash -c "wpa_passphrase $2 $3 | wpa_supplicant -Dwext -i$1 -c/dev/stdin &"
