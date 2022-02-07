@@ -18,6 +18,7 @@ unsubscribe *
 subscribe \
   ^users-zh@lists.opensuse.org$ \
   ^zsh-users@zsh.org$ \
+  ^zsh-workers@zsh.org$ \
   ^summer-ospp@googlegroups.com$ \
   ^summer-ospp-announce@googlegroups.com$ \
   ^summer-ospp-community@googlegroups.com$ \
@@ -29,7 +30,10 @@ subscribe \
 unlists *
 lists \
   ^users-zh@lists.opensuse.org$ \
+  ^zsh-announce@zsh.org$ \
   ^zsh-users@zsh.org$ \
+  ^zsh-workers@zsh.org$ \
+  ^zsh-security@zsh.org$ \
   ^summer-ospp@googlegroups.com$ \
   ^summer-ospp-announce@googlegroups.com$ \
   ^summer-ospp-community@googlegroups.com$ \

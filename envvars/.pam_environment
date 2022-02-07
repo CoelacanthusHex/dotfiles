@@ -136,6 +136,7 @@ GOPROYX DEFAULT=https://goproxy.io,direct
 # for hardware video acceleration
 MOZ_WEBRENDER   DEFAULT=1
 MOZ_X11_EGL     DEFAULT=1
+MOZ_USE_XINPUT2 DEFAULT=1
 
 #LANG=zh_CN.UTF-8
 #LANGUAGE=zh_CN:en_GB
