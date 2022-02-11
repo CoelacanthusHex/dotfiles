@@ -65,7 +65,8 @@ call plug#begin('~/.vim/plugged')
     " 缩进指示线
     Plug 'Yggdroot/indentLine'
     " 自动括号
-    Plug 'jiangmiao/auto-pairs'
+    "Plug 'jiangmiao/auto-pairs'
+    Plug 'Raimondi/delimitMate'
     " Tagbar
     Plug 'majutsushi/tagbar'
     " 彩虹括号
