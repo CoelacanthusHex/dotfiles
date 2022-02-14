@@ -1,26 +1,25 @@
 #compdef pactree
-# ------------------------------------------------------------------------------
-# Description
-# -----------
-#
-# Completion script for pactree 4.0
-#
-# ------------------------------------------------------------------------------
-# Authors
-# -------
-#
-# * Limao Luo <luolimao@gmail.com>
-#
-# ------------------------------------------------------------------------------
 
-typeset -A opt_args
+local arguments
 
-_pactree() {
-    local -a cmd packages packages_long
-    packages_long=(/var/lib/pacman/local/*(/))
-    packages=( ${${packages_long#/var/lib/pacman/local/}%-*-*} )
-    compadd "$@" -a packages
+(( $+functions[_pacman_completions_installed_packages] )) || {
+  _pacman 2>/dev/null
 }
 
-# run the main dispatcher
-_pactree "$@"
+arguments=(
+  {-a,--ascii}'[use ASCII characters for tree formatting]'
+  {-b,--dbpath}'[set an alternate database location]'
+  {-c,--color}'[colorize output]'
+  {-d,--depth}'[limit the depth of recursion]'
+  {-g,--graph}'[generate output for graphvizs dot]'
+  {-h,--help}'[display this help message]'
+  {-l,--linear}'[enable linear output]'
+  {-r,--reverse}'[list packages that depend on the named package]'
+  {-s,--sync}'[search sync databases instead of local]'
+  {-u,--unique}'[show dependencies with no duplicates (implies -l)]'
+  {-v,--version}'[display the version]'
+  '--config[set an alternate configuration file]'
+  '*:package:_pacman_completions_installed_packages'
+)
+
+_arguments -s $arguments

@@ -9,7 +9,7 @@ _enabled_plugins=(
     tmux
 )
 for _zsh_plugin in $_enabled_plugins[@]; do
-    [[ ! -r "$XDG_CONFIG_HOME/zsh.d/plugins/$_zsh_plugin.plugin.zsh" ]] || source $XDG_CONFIG_HOME/zsh.d/plugins/$_zsh_plugin.plugin.zsh
+    [[ ! -r "$ZDOTDIR/plugins/$_zsh_plugin.plugin.zsh" ]] || source $ZDOTDIR/plugins/$_zsh_plugin.plugin.zsh
 done
 
 # Number of entries to show (default is $LINES/3)

@@ -7,6 +7,13 @@ export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 
+ZDOTDIR="$XDG_CONFIG_HOME/zsh.d"
+ZSH_CACHE_HOME="$XDG_CACHE_HOME/zsh"
+ZSH_COMPDUMP="$ZSH_CACHE_HOME/zcompdump"
+HISTFILE=$ZDOTDIR/zhistory/zsh_history
+HISTSIZE=1000000
+SAVEHIST=1000000
+
 export EDITOR=vim
 export VISUAL="$EDITOR "
 export SYSTEMD_EDITOR=$EDITOR
@@ -15,6 +22,9 @@ export BROWSER=/usr/bin/xdg-open
 
 # Ripgrep
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME"/ripgreprc
+
+export IPYTHONDIR=$XDG_CONFIG_HOME/ipython
+export JUPYTER_CONFIG_DIR=$XDG_CONFIG_HOME/jupyter
 
 # Disable kitty shell integration
 unset KITTY_SHELL_INTEGRATION
@@ -44,7 +54,7 @@ path=(
     $HOME/.go/bin(N-/)
     $HOME/.cargo/bin(N-/)
     $XDG_DATA_HOME/cargo/bin(N-/)
-    $XDG_CONFIG_HOME/zsh.d/functions(N-/)
+    $ZDOTDIR/commands(N-/)
     $HOME/.local/bin(N-/)
     /usr/local/bin(N-/)
     /usr/bin(N-/)
@@ -57,7 +67,8 @@ path=(
 
 typeset -U fpath
 fpath=(
-    $XDG_CONFIG_HOME/zsh.d/completions(N-/)
+    $ZDOTDIR/completions(N-/)
+    $ZDOTDIR/functions(N-/)
     /usr{/local,}/share/zsh/{site-functions,vendor-completions}(-/N)
     $fpath
 )

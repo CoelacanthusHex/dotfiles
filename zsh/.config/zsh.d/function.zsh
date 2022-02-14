@@ -73,13 +73,14 @@ function regex_ipv6() {
 }
 
 # https://github.com/lilydjwg/dotzsh/blob/master/zshrc#L508-520
-rmempty () { #删除空文件 {{{2
+function rmempty () { #删除空文件 {{{2
     for i; do
         [[ -f $i && ! -s $i ]] && rm $i
     done
     return 0
 }
-breakln () { #断掉软链接 {{{2
+
+function breakln () { #断掉软链接 {{{2
     for f in $*; do
         tgt=$(readlink "$f")
         unlink "$f"
@@ -87,7 +88,7 @@ breakln () { #断掉软链接 {{{2
     done
 }
 
-extract() {
+function extract() {
     setopt localoptions noautopushd
 
     local remove_archive
@@ -180,7 +181,7 @@ extract() {
 alias x=extract
 
 # https://maiyang.me/post/2020-08-18-git-commit-history-stat-hour/
-get-someone-commit-time() {
+function get-someone-commit-time() {
     git log --author="$1" --date=iso | perl -nalE 'if (/^Date:\s+[\d-]{10}\s(\d{2})/) { say $1+0 }' | sort | uniq -c|perl -MList::Util=max -nalE '$h{$F[1]} = $F[0]; }{ $m = max values %h; foreach (0..23) { $h{$_} = 0 if not exists $h{$_} } foreach (sort {$a <=> $b } keys %h) { say sprintf "%02d - %4d %s", $_, $h{$_}, "*"x ($h{$_} / $m * 50); }'
 }
 
@@ -201,7 +202,7 @@ bindkey -M emacs '^Z' foreground-last-job
 bindkey -M viins '^Z' foreground-last-job
 
 # add a command line to the shells history without executing it
-commit-to-history () {
+function commit-to-history () {
     print -s ${(z)BUFFER}
     zle send-break
 }
@@ -217,7 +218,7 @@ elif (( $+commands[import] )); then
     _screenshot="import png:-"
 fi
 if (( $+_screenshot )); then
-    screenshot () {
+    function screenshot () {
         if [[ -t 1 && $# -eq 0 ]]; then
             echo >&2 "Refused to write image to terminal."
             return 1
@@ -230,13 +231,13 @@ function clip2qr() {
     echo $data
     echo $data | qrencode -t UTF8
 }
-screen2clip () { # 截图到剪贴板 {{{2
+function screen2clip () { # 截图到剪贴板 {{{2
     screenshot | xclip -i -selection clipboard -t image/png
 }
-clip_bmp2png () { # 将剪贴板中的图片从 bmp 转到 png。QQ 会使用 bmp
+function clip_bmp2png () { # 将剪贴板中的图片从 bmp 转到 png。QQ 会使用 bmp
     xclip -selection clipboard -o -t image/bmp | convert - png:- | xclip -i -selection clipboard -t image/png
 }
-clip_png2bmp () { # 将剪贴板中的图片从 png 转到 bmp。QQ 会使用 bmp
+function clip_png2bmp () { # 将剪贴板中的图片从 png 转到 bmp。QQ 会使用 bmp
     xclip -selection clipboard -o -t image/png | convert - bmp:- | xclip -i -selection clipboard -t image/bmp
 }
 
@@ -252,7 +253,7 @@ function check-fcitx5-dbus() {
 
 # https://github.com/lilydjwg/dotzsh/blob/313050449529c84914293283691da1e824d779f5/zshrc#L445
 (( $+commands[mpv] )) && compdef mpv=mpv
-mpv() {
+function mpv() {
     if [[ -z $WAYLAND_DISPLAY && -n $DISPLAY ]]; then
         # or too big
         command mpv --no-hidpi-window-scale "$@"
@@ -264,14 +265,14 @@ mpv() {
 
 # https://github.com/lilydjwg/dotzsh/blob/313050449529c84914293283691da1e824d779f5/zshrc#L519
 # 将以 %HH 表示的文件名改正常
-mvpc() {
+function mvpc() {
     mv -- $1 "$(echo $1 | ascii2uni -a J | tr '/' '-')"
 }
-nocolor() {
+function nocolor() {
     sed -r 's:\x1b\[[0-9;]*[mK]::g;s:[\r\x0f]::g'
 }
 
-weather() {
+function weather() {
     # m : metric (SI) (used by default everywhere except US)
     # M : show wind speed in m/s
     # 2 : current weather + today's + tomorrow's forecast

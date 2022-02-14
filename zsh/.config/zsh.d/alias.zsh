@@ -1,4 +1,4 @@
-[[ -s "${XDG_CONFIG_HOME:-$HOME/.config}/zsh.d/plugins/grc.zsh" ]] && source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh.d/plugins/grc.zsh"
+[[ -s "$ZDOTDIR/plugins/grc.zsh" ]] && source "$ZDOTDIR/plugins/grc.zsh"
 
 # for systemd
 alias start="sudo systemctl start"
@@ -13,7 +13,7 @@ alias limit-mem='systemd-run --user --pty --same-dir --wait --collect --slice=li
 (( $+commands[kitty] )) && (( $+commands[weechat] )) && alias kitty-weechat="kitty -o 'map kitty_mod+e kitten hints --customize-processing weechat_hints.py' -o term=xterm-256color weechat"
 
 # reload zsh
-alias reload="sync && source $HOME/.zshrc && rehash"
+alias reload="sync && exec zsh"
 
 # No real vi
 alias vi="vim"

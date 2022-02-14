@@ -7,6 +7,7 @@ autoload -Uz is-at-least
 unsetopt beep
 # 自动记住已访问目录栈
 setopt auto_pushd
+DIRSTACKSIZE=128
 setopt pushd_ignore_dups
 setopt pushd_minus
 # 不需要打 cd，直接进入目录
@@ -18,7 +19,7 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 # 在命令前添加空格，不将此命令添加到记录文件中
 setopt hist_ignore_space
-# zsh 4.3.6 doesn't have this option
+# zsh 4.3.6 doesn't have this option, better perf
 setopt hist_fcntl_lock 2>/dev/null
 if is-at-least 5.0.5; then
     # This may cause the command messed up due to a memcpy bug
@@ -27,16 +28,14 @@ else
 fi
 # 为历史纪录中的命令添加时间戳
 setopt extended_history
+# 展开历史时不执行
+setopt hist_verify
+# 实例之间即时共享历史
+# setopt share_history
+# 使用 fc -IR 读取历史  fc -IA 保存历史
 # 允许在交互模式中使用注释  例如：
 #cmd #这是注释
 setopt interactive_comments
-# 扩展路径
-#/v/c/p/p => /var/cache/pacman/pkg
-setopt complete_in_word
-# 补全列表不同列可以使用不同的列宽
-setopt listpacked
-# 补全 identifier=path 形式的参数
-setopt magic_equal_subst
 # setopt 的输出显示选项的开关状态
 setopt ksh_option_print
 # disown 后自动继续进程
@@ -47,6 +46,8 @@ setopt extended_glob
 setopt c_bases
 # disable for problems with parsing of, for example, date and time strings with leading zeroes
 unsetopt octal_zeroes
+# RPROMPT 执行完命令后就消除, 便于复制
+setopt transient_rprompt
 
 # Disable tty flow control, allows vim to use '<Ctrl>S'
 unsetopt flow_control && stty -ixon
@@ -121,8 +122,9 @@ fi
 # better than copy-prev-word
 bindkey "^[^_" copy-prev-shell-word
 
+autoload -Uz colors && colors
+
 () {
-    autoload -Uz colors && colors
     local white_b=$fg_bold[white] blue=$fg_bold[blue] rst=$reset_color
     local white_b=$'\e[97m' blue=$'\e[94m' rst=$'\e[0m'
     TIMEFMT=("== TIME REPORT FOR $white_b%J$rst =="$'\n'
@@ -130,17 +132,19 @@ bindkey "^[^_" copy-prev-shell-word
         "  CPU:  $blue%P$rst"$'\t'"Mem:    $blue%M MiB$rst")
 }
 
+SPROMPT="%B%F{yellow}zsh: correct '%R' be '%r' [nyae]?%f%b "
+
 [[ "$COLORTERM" == (24bit|truecolor) || (( ${terminfo[colors]} == 16777216 )) ]] || zmodload zsh/nearcolor
 
 # Basic LS_COLORS
 (( $_in_gui == 1 )) || [[ -n $ANDROID_ROOT ]] || eval "$(dircolors -b)"
 
 # Extended LS_COLORS
-eval "$(dircolors -b $XDG_CONFIG_HOME/zsh.d/plugins/LS_COLORS)"
+eval "$(dircolors -b $ZDOTDIR/plugins/LS_COLORS)"
 
 # https://github.com/lilydjwg/dotzsh/blob/313050449529c84914293283691da1e824d779f5/zshrc#L292
 # Esc-Esc 在当前/上一条命令前插入 sudo
-sudo-command-line() {
+function sudo-command-line() {
     [[ -z $BUFFER ]] && zle up-history
     [[ $BUFFER != sudo\ * && $UID -ne 0 ]] && {
         typeset -a bufs
