@@ -163,7 +163,7 @@ else
 fi
 
 cmds=()
-if (( terminfo[colors] >= 256 )); then
+if (( $(tput colors) >= 256 )); then
     cmds+=(set -g default-terminal tmux-256color ';')
     if [[ $COLORTERM =~ (24bit|truecolor) ]]; then
         # https://github.com/romkatv/zsh4humans/commit/6b30738bd30da18273c2af53a37f699383d79b53
