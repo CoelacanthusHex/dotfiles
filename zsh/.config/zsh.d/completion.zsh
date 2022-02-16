@@ -66,8 +66,8 @@ _cache_dir=$ZSH_CACHE_HOME/zcache
 zstyle ':completion:*' cache-path $_cache_dir
 zstyle ':completion:*:complete:*' cache-policy _c10s_caching_policy
 function _c10s_caching_policy() {
-    # 缓存策略：若不存在或 21 天以前则认定为失效
-    [[ ! -f $1 && -n "$1"(Nm+21) ]]
+    # 缓存策略：若不存在或 14 天以前则认定为失效
+    [[ ! -f $1 && -n "$1"(Nm+14) ]]
 }
 unset _cache_dir
 
@@ -76,7 +76,7 @@ zstyle ':completion:*:history-words'   remove-all-dups yes
 zstyle ':completion:*:history-words'   stop yes
 
 # define files to ignore for zcompile
-zstyle ':completion:*:*:zcompile:*'    ignored-patterns '(*~|*.zwc)'
+zstyle ':completion:*:*:zcompile:*'    ignored-patterns '(*~|*.zwc|*.zwc.old)'
 zstyle ':completion:correct:'          prompt 'correct to: %e'
 
 # ignore completion functions for commands you don't have:
@@ -135,21 +135,23 @@ zstyle ':completion:incremental:*' completer _complete _correct
 # _expand_alias - 展开别名 _ignored - 被 ignored-patterns 忽略掉的
 # 由于某些 completer 调用的代价比较昂贵，第一次调用时不考虑它们
 if is-at-least 5.0.5; then
-    zstyle -e ':completion:*' completer '
-        if [[ $_last_try != "$HISTNO$BUFFER$CURSOR" ]]; then
-            _last_try="$HISTNO$BUFFER$CURSOR"
-            reply=(_expand_alias _complete _extensions _match _files)
-        else
-            reply=(_complete _ignored _correct _approximate)
-        fi'
+    zstyle ':completion:*' completer _complete _extensions _match _approximate _expand_alias _ignored _files
+    #zstyle -e ':completion:*' completer '
+    #    if [[ $_last_try != "$HISTNO$BUFFER$CURSOR" ]]; then
+    #        _last_try="$HISTNO$BUFFER$CURSOR"
+    #        reply=(_expand_alias _complete _extensions _match _files)
+    #    else
+    #        reply=(_complete _ignored _correct _approximate)
+    #    fi'
 else
-    zstyle -e ':completion:*' completer '
-        if [[ $_last_try != "$HISTNO$BUFFER$CURSOR" ]]; then
-            _last_try="$HISTNO$BUFFER$CURSOR"
-            reply=(_expand_alias _complete _match _files)
-        else
-            reply=(_complete _ignored _correct _approximate)
-        fi'
+    zstyle ':completion:*' completer _complete _match _approximate _expand_alias _ignored _files
+    #zstyle -e ':completion:*' completer '
+    #    if [[ $_last_try != "$HISTNO$BUFFER$CURSOR" ]]; then
+    #        _last_try="$HISTNO$BUFFER$CURSOR"
+    #        reply=(_expand_alias _complete _match _files)
+    #    else
+    #        reply=(_complete _ignored _correct _approximate)
+    #    fi'
 fi
 
 # Increase the number of errors based on the length of the typed word.

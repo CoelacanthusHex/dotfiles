@@ -48,6 +48,10 @@ setopt c_bases
 unsetopt octal_zeroes
 # RPROMPT 执行完命令后就消除, 便于复制
 setopt transient_rprompt
+# prompt more dynamic, allow function in prompt
+setopt prompt_subst
+# 单引号中的 '' 表示一个 ' （如同 Vimscript 中者）
+setopt rc_quotes
 
 # Disable tty flow control, allows vim to use '<Ctrl>S'
 unsetopt flow_control && stty -ixon
