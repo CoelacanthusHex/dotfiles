@@ -14,5 +14,5 @@
 
     // NPM Registry
     // The URI of the NPM registry to use for searching for jupyterlab extensions
-    "npmRegistry": "https://registry.npm.taobao.org/"
+    "npmRegistry": "https://registry.npmmirror.com/"
 }
