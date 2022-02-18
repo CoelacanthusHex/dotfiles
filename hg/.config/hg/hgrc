@@ -1,5 +1,6 @@
 [ui]
 username = Coelacanthus <coelacanthus@outlook.com>
+editor = vim
 
 [extensions]
 # enable progress
