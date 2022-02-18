@@ -44,42 +44,26 @@ else
     eval "$(dircolors -b)"
 fi
 
-# So they can be unset.
-# I need someone to help me assign those names properly.
-# Those are actually bold colors.
-_aosc_bashrc_colors='NORMAL BOLD RED GREEN CYAN IRED YELLOW'
-NORMAL='\e[0m'
-BOLD='\e[1;37m'
-RED='\e[1;31m'
-GREEN='\e[1;32m'
-CYAN='\e[1;36m'
-YELLOW='\e[1;93m'
-IRED='\e[0;91m'
+liBlack="\[\033[0;30m\]"
+boBlack="\[\033[1;30m\]"
+liRed="\[\033[0;31m\]"
+boRed="\[\033[1;31m\]"
+liGreen="\[\033[0;32m\]"
+boGreen="\[\033[1;32m\]"
+liYellow="\[\033[0;33m\]"
+boYellow="\[\033[1;33m\]"
+liBlue="\[\033[0;34m\]"
+boBlue="\[\033[1;34m\]"
+liMagenta="\[\033[0;35m\]"
+boMagenta="\[\033[1;35m\]"
+liCyan="\[\033[0;36m\]"
+boCyan="\[\033[1;36m\]"
+liWhite="\[\033[0;37m\]"
+boWhite="\[\033[1;37m\]"
 
-if _rc_term_colors="$(tput colors)"; then
-    [ "$_rc_term_colors" -le 16 ]
-else
-    case "$TERM" in (linux|msys|cygwin) true;; (*) false;; esac
-fi && YELLOW='\e[1;33m' IRED='\e[0;31m'
-unset _rc_term_colors
-
-# if our TERM has no color support, then unset $_aosc_bashrc_colors
-
-# A simple error level reporting function.
-# Loaded back to PS1
-_ret_prompt() {
-    case $? in
-        0|130)	# Input C-c, we have to override the \$
-            ((EUID)) && echo -n '$' || echo -n '#';;
-        127)	# Command not found
-            echo -ne '\01\e[1;36m\02?'
-            ;;
-        *)		# Other errors
-            echo -ne '\01'$YELLOW'\02!'
-            ;;
-    esac
-}
-
+PS2='> '
+PS3='> '
+PS4='+ '
 
 [ -f /usr/share/doc/pkgfile/command-not-found.bash ] && source /usr/share/doc/pkgfile/command-not-found.bash
 
@@ -91,17 +75,29 @@ function is-at-least() {
     fi
 }
 
-if [[ -x /usr/bin/starship ]] && is-at-least 1.2.0 $(starship --version | head -n 1 | cut -d' ' -f2); then
+disable_starship=0
+
+if [[ -x /usr/bin/starship ]] && is-at-least 1.2.0 $(starship --version | head -n 1 | cut -d' ' -f2) && (( ! $disable_starship )); then
     export STARSHIP_CONFIG=~/.config/starship.toml
     eval "$(starship init bash)"
 else
     ## config for fallback
-    if [[ "$EUID" == 0 ]] ; then
-        PS1="\[$RED\]\u\[$BOLD\]@\[$NORMAL\]\h [ \W ]\[$RED\] \$(_ret_prompt) \[$NORMAL\]"
-    else
-        PS1="\[$GREEN\]\u\[$BOLD\]@\[$NORMAL\]\h [ \W ]\[$GREEN\] \$(_ret_prompt) \[$NORMAL\]"
-    fi
+    PS1="$boGreen\u$liWhite@$boBlue\h$liWhite $boYellow\w$boMagenta\`git branch 2>/dev/null | grep '*' | sed 's/* \(.*\)/ (\1)/'\` $liWhite-> {\`let exitstatus=\$_EXIT_CODE ; if [[ \${exitstatus} != 0 ]] ; then echo \"$boRed\${exitstatus}$liWhite\" ; else echo \"$boGreen ! $liWhite\" ; fi\`} $boYellow\$ $liWhite"
 fi
+
+case ${TERM} in
+    xterm*|rxvt*|Eterm|aterm|kterm|gnome*|konsole*)
+        PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }'printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"'
+        ;;
+    screen*|tmux*)
+        PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }'printf "\033_%s@%s:%s\033\\" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"'
+        ;;
+    *)
+        PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }'printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"'
+        ;;
+esac
+
+PROMPT_COMMAND="_EXIT_CODE=\$?; ${PROMPT_COMMAND:-:} ; history -a"
 
 # https://wiki.archlinux.org/index.php/GnuPG#Configure_pinentry_to_use_the_correct_TTY
 export GPG_TTY=$(tty)

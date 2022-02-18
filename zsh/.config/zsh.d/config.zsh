@@ -91,18 +91,38 @@ function set-xterm-terminal-title () {
     printf '\e]2;%s\a' "$@"
 }
 
-function precmd-set-terminal-title () {
-    set-xterm-terminal-title "${(%):-"%n@%m: %~"}"
-}
+case ${TERM} in
+    xterm*|rxvt*|Eterm|aterm|kterm|gnome*|konsole*)
+        function precmd-set-terminal-title () {
+            #set-xterm-terminal-title "${(%):-"%n@%m: %~"}"
+            printf "\e]2;%s@%s: %s\a" "${USER}" "${HOST%%.*}" "${(D)PWD}"
+        }
+        function preexec-set-terminal-title () {
+            #set-xterm-terminal-title "${(%):-"%n@%m: "}$2"
+            printf "\e]2;%s@%s: %s\a" "${USER}" "${HOST%%.*}" "$2"
+        }
+        ;;
+    screen*|tmux*)
+        function precmd-set-terminal-title () {
+            printf "\033_%s@%s: %s\033\\" "${USER}" "${HOST%%.*}" "${(D)PWD}"
+        }
+        function preexec-set-terminal-title () {
+            printf "\033_%s@%s: %s\033\\" "${USER}" "${HOST%%.*}" "$2"
+        }
+        ;;
+    *)
+        function precmd-set-terminal-title () {
+            set-xterm-terminal-title "${(%):-"%n@%m: %~"}"
+        }
+        
+        function preexec-set-terminal-title () {
+            set-xterm-terminal-title "${(%):-"%n@%m: "}$2"
+        }
+        ;;
+esac
 
-function preexec-set-terminal-title () {
-    set-xterm-terminal-title "${(%):-"%n@%m: "}$2"
-}
-
-if [[ "$TERM" == (screen*|xterm*|rxvt*|tmux*|putty*|konsole*|gnome*) ]]; then
-    add-zsh-hook -Uz precmd precmd-set-terminal-title
-    add-zsh-hook -Uz preexec preexec-set-terminal-title
-fi
+add-zsh-hook -Uz precmd precmd-set-terminal-title
+add-zsh-hook -Uz preexec preexec-set-terminal-title
 
 if is-at-least 5.1; then
     # https://archive.zhimingwang.org/blog/2015-09-21-zsh-51-and-bracketed-paste.html
