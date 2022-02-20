@@ -27,22 +27,31 @@ export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java"
 export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
 # GNU Parallel
 export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
+# .ipfs for IPFS
+export IPFS_PATH=$XDG_DATA_HOME/ipfs
 # ipython
 export IPYTHONDIR=$XDG_CONFIG_HOME/ipython
 # Jupyter
 # https://wiki.archlinux.org/index.php/Jupyter
 export JUPYTER_CONFIG_DIR=$XDG_CONFIG_HOME/jupyter
 export JUPYTERLAB_DIR=$XDG_DATA_HOME/jupyter/lab
+# .m2 for Leiningen
+export LEIN_HOME=$XDG_DATA_HOME/lein
 # python
 export PYTHONSTARTUP=$XDG_CONFIG_HOME/python/rc.py
 # Python egg
 export PYTHON_EGG_CACHE="$XDG_CACHE_HOME"/python-eggs
 # Pylint
 export PYLINTHOME="$XDG_CACHE_HOME"/pylint
+# wakatime
+export WAKATIME_HOME="$XDG_CONFIG_HOME"/wakatime
 # Wget
 export WGETRC="$XDG_CONFIG_HOME"/wget/config.ini
 # NPM
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
+# .octave_hist and .octave_packages
+export OCTAVE_HISTFILE="$XDG_CACHE_HOME"/octave-hsts
+export OCTAVE_SITE_INITFILE="$XDG_CONFIG_HOME"/octave/octaverc
 # Ripgrep
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME"/ripgreprc
 # Rustup (Rust)

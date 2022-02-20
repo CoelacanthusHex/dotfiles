@@ -47,12 +47,16 @@ XDG_DATA_HOME   DEFAULT=@{HOME}/.local/share
 # adb
 ADB_VENDOR_KEY      DEFAULT=${XDG_DATA_HOME}/adb
 ANDROID_SDK_HOME    DEFAULT=${XDG_DATA_HOME}/android-sdk
+# .ipfs for IPFS
+IPFS_PATH           DEFAULT=${XDG_DATA_HOME}/ipfs
 # ipython
 IPYTHONDIR          DEFAULT=${XDG_CONFIG_HOME}/ipython
 # Jupyter
 # https://wiki.archlinux.org/index.php/Jupyter
 JUPYTER_CONFIG_DIR  DEFAULT=${XDG_CONFIG_HOME}/jupyter
 JUPYTERLAB_DIR      DEFAULT=${XDG_DATA_HOME}/jupyter/lab
+# .m2 for Leiningen
+LEIN_HOME           DEFAULT=${XDG_DATA_HOME}/lein
 # python
 PYTHONSTARTUP       DEFAULT=${XDG_CONFIG_HOME}/python/rc.py
 # python-pylint
@@ -78,8 +82,13 @@ PARALLEL_HOME       DEFAULT=${XDG_CONFIG_HOME}/parallel
 PYTHON_EGG_CACHE    DEFAULT=${XDG_CACHE_HOME}/python-eggs
 # Pylint
 PYLINTHOME          DEFAULT=${XDG_CACHE_HOME}/pylint
+# wakatime
+WAKATIME_HOME       DEFAULT=${XDG_CONFIG_HOME}/wakatime
 # Wget
 WGETRC              DEFAULT=${XDG_CONFIG_HOME}/wget/config.ini
+# .octave_hist and .octave_packages
+OCTAVE_HISTFILE      DEFAULT=${XDG_CACHE_HOME}/octave-hsts
+OCTAVE_SITE_INITFILE DEFAULT=${XDG_CONFIG_HOME}/octave/octaverc
 # Ripgrep
 RIPGREP_CONFIG_PATH DEFAULT=${XDG_CONFIG_HOME}/ripgreprc
 # Rustup (Rust)
