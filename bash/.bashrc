@@ -101,7 +101,6 @@ PROMPT_COMMAND="_EXIT_CODE=\$?; ${PROMPT_COMMAND:-:} ; history -a"
 
 # https://wiki.archlinux.org/index.php/GnuPG#Configure_pinentry_to_use_the_correct_TTY
 export GPG_TTY=$(tty)
-gpg-connect-agent updatestartuptty /bye >/dev/null
 
 # A standard alias for which (debianutils vs GNU)
 _is_posix || which --version 2>/dev/null | grep -q GNU && alias which='(alias; declare -f) | which -i --read-functions'
