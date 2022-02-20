@@ -1,4 +1,4 @@
-# .caffrc -- vim:ft=perl:
+# .caffrc -- vim:ft=perl: kate: space-indent on; indent-width 4; syntax perl;
 # This file is in perl(1) format - see caff(1) for details.
 
 $CONFIG{'owner'} = 'Coelacanthus';
@@ -39,7 +39,7 @@ the signatures by running each through `gpg --import`.
 Note that I did not upload your key to any keyservers. If you want this
 new signature to be available to others, please upload it yourself.
 With GnuPG this can be done using
-	gpg --keyserver hkp://pool.sks-keyservers.net --send-key {$key}
+	gpg --keyserver hkps://keys.gnupg.net --send-key {$key}
 but if you use keys.openpgp.org as keyser, you should use
 	gpg --export {$key} | curl -T - https://keys.openpgp.org
 
