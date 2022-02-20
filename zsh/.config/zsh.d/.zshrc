@@ -70,7 +70,6 @@ fi
 # https://wiki.archlinux.org/index.php/GnuPG#Configure_pinentry_to_use_the_correct_TTY
 # it's much faster than the commonly used `export GPG_TTY=$(tty)`
 export GPG_TTY=$TTY
-gpg-connect-agent updatestartuptty /bye >/dev/null
 
 # vim: ft=zsh sw=4 ts=8 sts=4 et:
 # kate: space-indent on; indent-width 4;
