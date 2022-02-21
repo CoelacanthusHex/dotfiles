@@ -65,10 +65,6 @@ user_pref("widget.use-xdg-desktop-portal", "true");
 user_pref("gfx.webrender.all", true);
 /* 使用VA-API */
 user_pref("media.ffmpeg.vaapi.enabled", true);
-/* 禁用firefox内置的VP8/VP9解码 */
-user_pref("media.ffvpx.enabled", false);
-/* 显卡不支持AV1解码 */
-user_pref("media.av1.enabled", false);
 
 /*==== 连接安全 ====*/
 /* https://github.com/arkenfox/user.js/blob/master/user.js#L465 */

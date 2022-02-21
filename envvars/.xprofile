@@ -103,11 +103,15 @@ export GLFW_IM_MODULE=ibus
 ## Nvidia - vulkan is not working and can not initialize
 ## Check if you have vulkan-intel installed, it may prevent Nvidia's vulkan driver from being detected.
 #export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/nvidia_icd.json
-#export LIBVA_DRIVER_NAME=vdpau
+#export LIBVA_DRIVER_NAME=nvidia
 
-export LIBVA_DRIVER_NAME=i965
+export LIBVA_DRIVER_NAME=iHD
 export LIBVA_DRIVERS_PATH=/usr/lib/dri/
 export VDPAU_DRIVER=nvidia
+
+# Enbale for GStreamer
+# https://wiki.archlinux.org/title/GStreamer#Hardware_video_acceleration
+export GST_VAAPI_ALL_DRIVERS=1
 
 # no CSD
 #export GTK_CSD=0
