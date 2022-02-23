@@ -1,6 +1,8 @@
 
 export LANG=en_GB.UTF-8
-export LANGUAGE=en_GB
+export LANGUAGE=en_GB:en
+# https://wiki.archlinux.org/title/Locale#LC_TIME:_date_and_time_format
+export LC_TIME=en_DK.UTF-8
 
 # Define user direcotires
 export XDG_CONFIG_HOME=$HOME/.config
