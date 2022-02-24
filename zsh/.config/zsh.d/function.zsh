@@ -300,5 +300,13 @@ function weather() {
     curl -fGsS --compressed $args "https://wttr.in/${location:-Feicheng}?${(j::)WTTR_PARAMS}&lang=${lang:-${LANG%_*}}"
 }
 
+function copy-gpg-db() {
+    gpg --export-options export-local-sigs --export ${2:-15F4180E73787863} | \
+        ssh $1 gpg --import
+    gpg --export-ownertrust | \
+        ssh $1 gpg --import-ownertrust
+}
+compdef copy-gpg-db=ssh
+
 # vim: ft=zsh sw=4 ts=8 sts=4 et:
 # kate: space-indent on; indent-width 4;
