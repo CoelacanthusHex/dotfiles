@@ -32,6 +32,8 @@
     gpgSign = if-asked
 [commit]
     gpgsign = true
+[tag]
+    gpgsign = true
 
 [init]
     defaultBranch = master
