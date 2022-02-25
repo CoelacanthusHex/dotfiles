@@ -169,7 +169,8 @@ if (( $+aliases[colourify] )); then
     fi
 fi
 alias pactree="pactree -c"
-alias ssh="TERM=xterm-256color ssh"
+# not need for konsole
+#alias ssh="TERM=xterm-256color ssh"
 alias grep="${aliases[grep]:-grep} --color=auto"
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
