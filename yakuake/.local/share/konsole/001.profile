@@ -10,7 +10,7 @@ UseCustomCursorColor=true
 
 [General]
 Command=/bin/zsh
-Environment=TERM=xterm-256color,COLORTERM=truecolor,LANG=en_GB.UTF-8
+Environment=TERM=xterm-256color,COLORTERM=truecolor,LANG=en_GB.UTF-8,LC_TIME=en_DK.UTF-8
 LocalTabTitleFormat=%w
 Name=001
 Parent=FALLBACK/
