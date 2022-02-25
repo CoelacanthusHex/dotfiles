@@ -25,6 +25,7 @@
     # https://blog.github.com/2018-04-05-git-217-released/
     # https://git-scm.com/docs/git-diff#Documentation/git-diff.txt---color-movedltmodegt
     colorMoved = default
+    colorMovedWS = allow-indentation-change
 
 # https://lwn.net/Articles/835985/rss
 # https://people.kernel.org/monsieuricon/signed-git-pushes
