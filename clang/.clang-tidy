@@ -34,6 +34,9 @@ readability-*,\
 -readability-magic-numbers,\
 -readability-simplify-boolean-expr,\
 "
-HeaderFilterRegex: 'Source/cm[^/]*\.(h|hxx|cxx|c|cpp|hpp)$'
+HeaderFilterRegex: 'Source/cm[^/]*\.(h|hxx|hpp)$'
 WarningsAsErrors: ''
 ...
+
+# vim: ft=yaml
+# kate: syntax yaml;

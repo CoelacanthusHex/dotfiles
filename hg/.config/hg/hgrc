@@ -14,4 +14,7 @@ delay = 2
 # it is just an alias to `hg log -G` since Mercurial has supported it with `-G` after Mercurial 2.3
 graphlog =
 
+[diff]
+word-diff=true
+
 # kate: space-indent on; indent-width 4; syntax ini;
