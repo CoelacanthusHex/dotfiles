@@ -2,9 +2,19 @@
 set bell-style none
 
 set meta-flag on
+# Allow UTF-8 input and output, instead of showing stuff like $'\0123\0456'
 set input-meta on
-set convert-meta off
 set output-meta on
+set convert-meta off
+
+# Show extra file information when completing, like `ls -F` does
+set visible-stats on
+
+# Perform file completion in a case insensitive fashion
+set completion-ignore-case on
+
+# Treat hyphens and underscores as equivalent
+set completion-map-case on
 
 $if mode=emacs
 
