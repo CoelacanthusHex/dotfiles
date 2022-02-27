@@ -4,11 +4,8 @@ clang
 rust-analyzer
 gopls
 ccls
-rust-racer
 haskell-ide-engine
 texlab
 shellcheck
 typescript
 eslint
-hindent
-stylish-haskell

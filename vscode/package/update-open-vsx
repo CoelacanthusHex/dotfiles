@@ -1,4 +1,0 @@
-#!/usr/bin/sh
-
-sed -i 's|open-vsx\.org/vscode/gallery|marketplace.visualstudio.com/_apis/public/gallery|' /usr/lib/code/product.json
-sed -i 's|open-vsx\.org/vscode/item|marketplace.visualstudio.com/items|' /usr/lib/code/product.json

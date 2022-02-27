@@ -5,10 +5,8 @@ bat
 gdb
 xclip
 xsel
-bind-tools
+bind
 curl
-aria2-fast
-powerpill
 pkgfile
 optipng
 jpegoptim
