@@ -75,7 +75,7 @@ call plug#begin('~/.vim/plugged')
     " HELP文档中文
     "Plug 'yianwillis/vimcdoc'
     " EditorConfig
-    Plug 'editorconfig/editorconfig-vim'
+    "Plug 'editorconfig/editorconfig-vim'
     " 颜色代码转颜色
     "Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
     " Git sign column

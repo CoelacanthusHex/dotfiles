@@ -21,6 +21,8 @@ trim_trailing_whitespace = false
 
 [{*.yml,*.yaml}]
 indent_size = 2
+indent_style = space
 
 [{COMMIT_EDITMSG,*.diff,*.patch}]
 trim_trailing_whitespace = false
+insert_final_newline = false
