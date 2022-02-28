@@ -31,8 +31,6 @@ export JUPYTER_CONFIG_DIR=$XDG_CONFIG_HOME/jupyter
 # Disable kitty shell integration
 unset KITTY_SHELL_INTEGRATION
 
-export GO111MODULE=on
-export GOPROXY=https://goproxy.cn
 export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
 
 # FIXME: workaround for cargo crates
