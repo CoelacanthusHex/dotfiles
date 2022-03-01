@@ -12,36 +12,13 @@ $git_status\
 $hg_branch\
 $docker_context\
 $package\
-$cmake\
-$crystal\
-$dart\
-$deno\
 $dotnet\
-$elixir\
-$elm\
-$erlang\
-$golang\
-$helm\
-$java\
-$julia\
-$kotlin\
-$nim\
 $nodejs\
-$ocaml\
-$perl\
-$php\
-$purescript\
 $python\
 $red\
-$ruby\
 $rust\
-$scala\
-$swift\
-$lua\
 $terraform\
-$vlang\
 $vagrant\
-$zig\
 $nix_shell\
 $conda\
 $memory_usage\
@@ -79,17 +56,24 @@ symbol = "Conda "
 [conda]
 symbol = "COBOL "
 
+[container]
+disabled = true
+
 [crystal]
 symbol = "Crystal "
+disabled = true
 
 [cmake]
 symbol = "CMake "
+disabled = true
 
 [dart]
 symbol = "Dart "
+disabled = true
 
 [deno]
 symbol = "Deno "
+disabled = true
 
 [dotnet]
 symbol = ".NET "
@@ -108,12 +92,15 @@ symbol = "docker "
 
 [elixir]
 symbol = "elixir "
+disabled = true
 
 [elm]
 symbol = "elm "
+disabled = true
 
 [erlang]
 symbol = "Erlang "
+disabled = true
 
 [gcloud]
 symbol = "GoogleCloud "
@@ -150,6 +137,11 @@ deleted = "[✘${count}](red) "
 
 [golang]
 symbol = "Go "
+disabled = true
+
+[helm]
+symbol = "Helm "
+disabled = true
 
 [hg_branch]
 symbol = "hg "
@@ -160,18 +152,22 @@ format = "@ [$hostname]($style) in "
 
 [java]
 symbol = "Java "
+disabled = true
 
 [julia]
 symbol = "julia "
+disabled = true
 
 [kotlin]
 symbol = "Kotlin "
+disabled = true
 
 [kubernetes]
 symbol = "k8s "
 
 [lua]
 symbol = "Lua "
+disabled = true
 
 [nodejs]
 symbol = "NodeJS "
@@ -181,12 +177,14 @@ symbol = "Memory "
 
 [nim]
 symbol = "Nim "
+disabled = true
 
 [nix_shell]
 symbol = "Nix "
 
 [ocaml]
 symbol = "OCaml "
+disabled = true
 
 [openstack]
 symbol = "OpenStack "
@@ -196,30 +194,36 @@ symbol = "pkg "
 
 [perl]
 symbol = "Perl "
+disabled = true
 
 [php]
 symbol = "PHP "
+disabled = true
 
 [pulumi]
 symbol = "Pulumi "
 
 [purescript]
 symbol = "PureScript "
+disabled = true
 
 [python]
 symbol = "Python "
 
 [rlang]
 symbol = "R "
+disabled = true
 
 [ruby]
 symbol = "Ruby "
+disabled = true
 
 [rust]
 symbol = "Rust "
 
 [scala]
 symbol = "Scala "
+disabled = true
 
 [shell]
 disabled = false
@@ -252,6 +256,7 @@ symbol = "sudo "
 
 [swift]
 symbol = "Swift "
+disabled = true
 
 [terraform]
 symbol = "Terraform "
@@ -266,5 +271,9 @@ format = "[$user]($style) "
 [vagrant]
 symbol = "Vagrant "
 
+[vlang]
+disabled = true
+
 [zig]
 symbol = "Zig "
+disabled = true
