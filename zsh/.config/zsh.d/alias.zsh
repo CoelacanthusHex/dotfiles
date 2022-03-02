@@ -189,12 +189,12 @@ alias blog-update='cd ~/blog && git add -A && git commit -m "Update Site @$(date
 alias .="source"
 alias bc="bc -lq"
 
-if (( $+commands[xh] )); then # HTTPie written in Rust
+if (( $+commands[curl] )) && (( $+commands[jq] )); then # cURL and jq
+    alias myip-http-detail='curl -s -L -H "Accept: application/json" "https://ipinfo.io/${1:-}" | jq "del(.readme, .loc, .postal)"'
+elif (( $+commands[xh] )); then  # HTTPie written in Rust
     alias myip-http-detail="xh --body https://ipinfo.io/ Accept:application/json"
 elif (( $+commands[http] )); then # HTTPie
     alias myip-http-detail="http --body https://ipinfo.io/ Accept:application/json"
-elif (( $+commands[curl] )) && (( $+commands[jq] )); then # cURL and jq
-    alias myip-http-detail='curl -s -L -H "Accept: application/json" "https://ipinfo.io/${1:-}" | jq "del(.readme, .loc, .postal)"'
 fi
 # availible: ifconfig.co icanhazip.com ifconfig.me myip.country/ip
 alias myip-http='curl -L https://ifconfig.me'
