@@ -1,0 +1,13 @@
+name: Lint
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  lint-git-attr:
+    name: "Lint Git Attributes"
+    runs-on: ubuntu-latest
+    steps:
+     - uses: actions/checkout@v2
+     - uses: yuk7/gh-action-attr-checker@main
