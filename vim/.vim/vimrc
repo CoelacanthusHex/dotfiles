@@ -65,15 +65,12 @@ call plug#begin('~/.vim/plugged')
     " 缩进指示线
     Plug 'Yggdroot/indentLine'
     " 自动括号
-    "Plug 'jiangmiao/auto-pairs'
     Plug 'Raimondi/delimitMate'
     " Tagbar
     Plug 'majutsushi/tagbar'
     " 彩虹括号
     Plug '91khr/rainbow'
     let g:rainbow_active = 1
-    " HELP文档中文
-    "Plug 'yianwillis/vimcdoc'
     " EditorConfig
     "Plug 'editorconfig/editorconfig-vim'
     " 颜色代码转颜色
@@ -100,18 +97,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-endwise'
     Plug 'Shougo/echodoc.vim'
     Plug 'Shougo/context_filetype.vim'
-
-    " 目录树
-    Plug 'preservim/nerdtree'
-    map <C-n> :NERDTreeToggle<CR>
-    let NERDTreeShowHidden=1
-    "Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-    " enables folder icon highlighting using exact match
-    "let g:NERDTreeHighlightFolders = 1
-    " highlights the folder name
-    "let g:NERDTreeHighlightFoldersFullName = 1
-    " 图标
-    Plug 'liuchengxu/nerdtree-dash'
 
     Plug 'dense-analysis/ale', {'for': ['sh', 'c', 'cpp', 'rust', 'python', 'go', 'tex']}
 
@@ -160,7 +145,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'mattn/webapi-vim'
     " Rust 支持
     Plug 'rust-lang/rust.vim', {'for': 'rust'}
-    Plug 'racer-rust/vim-racer', {'for': 'rust'}
     " 保存时自动格式化
     "let g:autofmt_autosave = 1
     " Cargo 增强
