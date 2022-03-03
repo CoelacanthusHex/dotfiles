@@ -34,14 +34,17 @@
 #        database and should be handled.
 #        Also, the revocation is listed BEFORE the key signature being revoked!
 #
-# AUTHOR:  Jonathan Cross 0xC0C076132FFA7695 (jonathancross.com)
-# LICENSE: WTFPL - https://github.com/jonathancross/jc-docs/blob/master/LICENSE
+# ORIGINAL AUTHOR:  Jonathan Cross 0xC0C076132FFA7695 (jonathancross.com)
+# AUTHOR: Coelacanthus <coelacanthus@outlook.com> 0x15F4180E73787863
+# LICENSE: Original Part: WTFPL - https://github.com/jonathancross/jc-docs/blob/master/LICENSE
+#          Modified Part: Mozilla Public License 2.0
 ################################################################################
 
 use strict;
 use warnings;
 
 my $IS_DEBUG = 0;   # Verbose debug info flag.  TODO: Make commandline option.
+my $IS_VERBOSE = 1; # Verbose info flag.  TODO: Make commandline option.
 my $GPG_DATA_FILE = "/tmp/gpg-key-data.txt"; # Cache file of gpg keyring data.
 my @raw_data;       # Colon-delimited data from $GPG_DATA_FILE
 my $KEY_ID = '';    # Source key whose sigs we are looking for on other keys.
@@ -254,7 +257,7 @@ sub print_signed_keys {
       # signed UIDs).  Also filter out the key provided by the user.
       if ($signed_key ne $prev_signed_key && $signed_key ne $KEY_FPR) {
         print $signed_key;
-        $IS_DEBUG && print " (signed UID: $UIDS{$uid})";
+        $IS_DEBUG || $IS_VERBOSE && print " (signed UID: $UIDS{$uid})";
         print "\n";
         $prev_signed_key = $signed_key;
       }
