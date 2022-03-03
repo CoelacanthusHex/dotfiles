@@ -1,5 +1,8 @@
 #!/usr/bin/bash
 
+# SPDX-License-Identifier: MPL-2.0
+# SPDX-FileCopyrightText: Coelacanthus
+
 cp $1.dict.yaml temp.txt
 
 echo "删除 rime 词库头"

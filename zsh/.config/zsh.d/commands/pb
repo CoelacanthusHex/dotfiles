@@ -1,8 +1,11 @@
-#!/usr/bin/zsh
+#!/usr/bin/bash
+
+# SPDX-License-Identifier: MPL-2.0
+# SPDX-FileCopyrightText: Coelacanthus
 
 PB_HOST="https://fars.ee"
 
-pb() {
+function pb() {
   emulate -L zsh
   case $1 in
     --rec)
@@ -18,33 +21,33 @@ pb() {
         print "$2 doesn't exists!"
         return 1
       fi
-      local -A info=(${(@s/: /)${${(f)"$(<~/.cache/pb/$2)"}//$'\n'/: }})
+      local -A info=("${(@s/: /)${${(f)"$(<~/.cache/pb/$2)"}//$'\n'/: }}")
       local uuid=$info[uuid]
       curl -X DELETE "$PB_HOST/$uuid"
       ;;
     *)
-      pb_core ${*:1}
+      pb_core "${*:1}"
       ;;
   esac
 }
 
-pb_core() {
+function pb_core() {
   local file==(<<<'')
 
   if (( $# == 0 )); then
-    cat > $file
+    cat > "$file"
   else
     file=$1
   fi
 
   local res=${(f)"$(curl -F "c=@-" "$PB_HOST" < $file)"}
-  local -A info=(${(s/: /)${res//$'\n'/: }})
+  local -A info=("${(s/: /)${res//$'\n'/: }}")
   local url=$info[url]
 
   [[ -d ~/.cache/pb ]] || mkdir ~/.cache/pb
-  print $res > ~/.cache/pb/$info[short]
+  print "$res" > ~/.cache/pb/"$info"[short]
  
-  local mime=$(file --mime-type -b $file)
+  local mime=$(file --mime-type -b "$file")
   case $mime in
     image/*)
       local type=${${file:e}:-${mime#*/}}
@@ -57,7 +60,7 @@ pb_core() {
     *) print "$url${(M)${file:t}%.*}" ;;
   esac
 
-  (( $# == 0 )) && rm $file
+  (( $# == 0 )) && rm "$file"
 }
 
-pb $*
+pb "$@"
