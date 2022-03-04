@@ -3,23 +3,23 @@ if &cp
 endif
 
 augroup filetypedetect
-    au BufNewFile,BufRead   *.jsm                    setf javascript
-    au BufNewFile,BufRead   *.json                   setf json
-    au BufRead              */.getmail/*rc           setf getmailrc
-    au BufRead              .msmtprc                 setf msmtp
-    au BufNewFile,BufRead   .htaccess.*              setf apache
-    au BufRead              pacman.log               setf pacmanlog
-    au BufNewFile,BufRead   *.rfc                    setf rfc
-    au BufRead              grub.cfg                 setf sh
-    au BufNewFile,BufRead   fcitx_skin.conf,*/fcitx*.{conf,desc}*,*/fcitx/profile    setf dosini
-    au BufNewFile,BufRead   mimeapps.list            setf desktop
-    au BufRead              *tmux.conf               setf tmux
-    au BufNewFile,BufRead   */xorg.conf.d/*          setf xf86conf
-    au BufNewFile,BufRead   *openvpn*/*.conf,*.ovpn  setf openvpn
-    au BufRead              $HOME/.cabal/config      setf cabal
-    au BufRead              *procmaillog             setf mail
-    au BufNewFile,BufRead   wg*.conf,peers.conf      setf dosini
-    au BufRead,BufNewFile   *mutt-*                  setf mail
+    autocmd BufNewFile,BufRead   *.jsm                    setf javascript
+    autocmd BufNewFile,BufRead   *.json                   setf json
+    autocmd BufRead              */.getmail/*rc           setf getmailrc
+    autocmd BufRead              .msmtprc                 setf msmtp
+    autocmd BufNewFile,BufRead   .htaccess.*              setf apache
+    autocmd BufRead              pacman.log               setf pacmanlog
+    autocmd BufNewFile,BufRead   *.rfc                    setf rfc
+    autocmd BufRead              grub.cfg                 setf sh
+    autocmd BufNewFile,BufRead   fcitx_skin.conf,*/fcitx*.{conf,desc}*,*/fcitx/profile    setf dosini
+    autocmd BufNewFile,BufRead   mimeapps.list            setf desktop
+    autocmd BufRead              *tmux.conf               setf tmux
+    autocmd BufNewFile,BufRead   */xorg.conf.d/*          setf xf86conf
+    autocmd BufNewFile,BufRead   *openvpn*/*.conf,*.ovpn  setf openvpn
+    autocmd BufRead              $HOME/.cabal/config      setf cabal
+    autocmd BufRead              *procmaillog             setf mail
+    autocmd BufNewFile,BufRead   wg*.conf,peers.conf      setf dosini
+    autocmd BufRead,BufNewFile   *mutt-*                  setf mail
 augroup END
 
 " kate: space-indent on; indent-width 4; syntax vim;
