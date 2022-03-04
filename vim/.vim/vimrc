@@ -1,4 +1,8 @@
 " vim: set sw=4 ts=8 sts=4 et foldmethod=marker:
+" kate: space-indent on; indent-width 4; syntax vim;
+
+" SPDX-License-Identifier: MPL-2.0
+" SPDX-FileCopyrightText: Coelacanthus
 
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -14,7 +18,7 @@ if has("win32") || has("win64")
         set renderoptions=type:directx
     endif
 else
-    " Linux 路径 [[[3
+    " Linux 路径
     let g:vimfiles = split(&runtimepath, ',')[0]
     " cron 的目录不要备份
     set backupskip+=/etc/cron.*/*
@@ -391,5 +395,3 @@ if has('extra_search')
 
 endif
 " }}}
-
-" kate: space-indent on; indent-width 4; syntax vim;
