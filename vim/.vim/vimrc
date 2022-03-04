@@ -37,7 +37,7 @@ endif
 # 插件 {{{
 
 if filereadable(expand('~/.vim/plugins.vim'))
-    execute 'source' '~/.vim/plugins.vim'
+    source ~/.vim/plugins.vim
 endif
 
 # }}}
@@ -289,11 +289,8 @@ set wildmenu
 set wildmode=longest:full,full
 
 set completeopt+=longest
-try
-  set completeopt+=popup
-  set completepopup=border:off
-catch /.*/
-endtry
+set completeopt+=popup
+set completepopup=border:off
 
 # 延迟绘制（提升性能）
 set lazyredraw
