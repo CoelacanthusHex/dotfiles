@@ -240,6 +240,8 @@ set termencoding=utf-8
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,utf-16,gb18030,gbk,gb2312,cp936,big5,latin1
 set fileformats=unix,dos,mac
+" exclude CJK
+set spelllang=en,cjk
 
 set whichwrap=b,s,[,]
 
@@ -355,6 +357,10 @@ endtry
 " Maximum amount of memory (in Kbyte) to use for pattern matching.
 " The maximum value is about 2000000, default value is 1000. 
 set maxmempattern=2000000
+
+if has('unix')
+    au FileType gitcommit execute 'setlocal dictionary+=/usr/share/dict/words'
+endif
 
 " }}}
 
