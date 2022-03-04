@@ -214,7 +214,7 @@ call plug#end()
 
 
 # https://github.com/ycm-core/YouCompleteMe/issues/36#issuecomment-171966710
-def g:UltiSnips_Complete()
+def g:UltiSnips_Complete(): string
     call UltiSnips#ExpandSnippet()
     if g:ulti_expand_res == 0
         if pumvisible()
@@ -229,7 +229,7 @@ def g:UltiSnips_Complete()
     return ""
 enddef
 
-def g:UltiSnips_Reverse()
+def g:UltiSnips_Reverse(): string
     call UltiSnips#JumpBackwards()
     if g:ulti_jump_backwards_res == 0
         return "\<C-P>"
