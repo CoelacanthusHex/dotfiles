@@ -91,25 +91,25 @@ call plug#begin('~/.vim/plugged')
         Plug 'hiterm/asyncomplete-look'
         
         autocmd User asyncomplete_setup asyncomplete#register_source({
-            \ 'name': 'file',
-            \ 'allowlist': ['*'],
-            \ 'priority': 10,
-            \ 'completor': function('asyncomplete#sources#file#completor')
+            \ name: 'file',
+            \ allowlist: ['*'],
+            \ priority: 10,
+            \ completor: function('asyncomplete#sources#file#completor')
         \ })
         autocmd User asyncomplete_setup asyncomplete#register_source({
-            \ 'name': 'buffer',
-            \ 'allowlist': ['*'],
-            \ 'blocklist': ['go'],
-            \ 'priority': 10,
-            \ 'completor': function('asyncomplete#sources#buffer#completor'),
-            \ 'config': {
-            \     'max_buffer_size': 5000000,
+            \ name: 'buffer',
+            \ allowlist: ['*'],
+            \ blocklist: ['go'],
+            \ priority: 10,
+            \ completor: function('asyncomplete#sources#buffer#completor'),
+            \ config: {
+            \     max_buffer_size: 5000000,
             \ },
         \ })
         autocmd User asyncomplete_setup asyncomplete#register_source({
-            \ 'name': 'look',
-            \ 'allowlist': ['text', 'markdown', 'tex', 'gitcommit'],
-            \ 'completor': function('asyncomplete#sources#look#completor'),
+            \ name: 'look',
+            \ allowlist: ['text', 'markdown', 'tex', 'gitcommit'],
+            \ completor: function('asyncomplete#sources#look#completor'),
         \ })
         
         g:asyncomplete_auto_popup = 1

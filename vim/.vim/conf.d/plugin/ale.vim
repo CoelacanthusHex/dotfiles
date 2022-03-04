@@ -6,29 +6,29 @@ vim9script
 # Disable the completion for vim-go, we have ale
 g:go_code_completion_enabled = 0
 g:ale_linters = {
-            'asm': ['gcc'],
-            'c': ['ccls', 'clangd', 'gcc', 'clangtidy', 'cppcheck'],
-            'cpp': ['ccls', 'clangd', 'gcc', 'clangtidy', 'cppcheck'],
-            'rust': ['analyzer', 'cargo', 'rls'],
-            'go': ['gopls'],
-            'tex': ['texlab'],
-            'yaml': ['yamllint'],
-            'mail': ['languagetool'],
-            'json': ['jq'],
-            'javascript': ['eslint', 'tsserver'],
-            'haskell': ['hls', 'ghc'],
-            'sh': ['shellcheck']
-            }
+            asm: ['gcc'],
+            c: ['ccls', 'clangd', 'gcc', 'clangtidy', 'cppcheck'],
+            cpp: ['ccls', 'clangd', 'gcc', 'clangtidy', 'cppcheck'],
+            rust: ['analyzer', 'cargo', 'rls'],
+            go: ['gopls'],
+            tex: ['texlab'],
+            yaml: ['yamllint'],
+            mail: ['languagetool'],
+            json: ['jq'],
+            javascript: ['eslint', 'tsserver'],
+            haskell: ['hls', 'ghc'],
+            sh: ['shellcheck']
+        }
 g:ale_c_ccls_init_options = {
-            'cache': {
-                'directory': '/tmp/ccls/cache',
+            cache: {
+                directory: '/tmp/ccls/cache',
             },
-            }
+        }
 g:ale_cpp_ccls_init_options = {
-            'cache': {
-                'directory': '/tmp/ccls/cache',
+            cache: {
+                directory: '/tmp/ccls/cache',
             },
-            }
+        }
 
 g:ale_c_gcc_options = '-Wall -O2 -std=c11'
 g:ale_cpp_gcc_options = '-Wall -O2 -std=c++17'
