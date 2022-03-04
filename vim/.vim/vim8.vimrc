@@ -40,6 +40,31 @@ endif
 
 " }}}
 
+" Platform specific config {{{
+
+if has('win32')
+  if !executable('pwsh')
+    echoerr '[vim] PowerShell Core >= v6 is required!'
+    finish
+  endif
+
+  set shell=pwsh
+  let s:shcmd_flag = [
+    \ '-NoLogo',
+    \ '-NoProfile',
+    \ '-ExecutionPolicy',
+    \ 'RemoteSigned',
+    \ '-Command',
+    \ '[Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;',
+  \ ]
+  let &shellcmdflag = join(s:shcmd_flag, ' ')
+  let &shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+  let &shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+  set shellquote= shellxquote=
+endif
+
+" }}}
+
 " Function and map {{{
 
 let mapleader='\'
@@ -215,7 +240,7 @@ set nojoinspaces
 set cursorline
 set cursorcolumn
 " 设置宽度提示
-set colorcolumn=80,100
+set colorcolumn=80,100,120
 " 显示侧边栏（用于显示 mark/gitdiff/诊断信息）
 try
     set signcolumn=number

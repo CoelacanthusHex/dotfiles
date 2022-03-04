@@ -42,6 +42,31 @@ endif
 
 # }}}
 
+# Platform specific config {{{
+
+if has('win32')
+    if !executable('pwsh')
+        echoerr '[vim] PowerShell Core >= v6 is required!'
+        finish
+    endif
+
+    set shell=pwsh
+    var shcmd_flag = [
+        '-NoLogo',
+        '-NoProfile',
+        '-ExecutionPolicy',
+        'RemoteSigned',
+        '-Command',
+        '[Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;',
+    ]
+    &shellcmdflag = join(s:shcmd_flag, ' ')
+    &shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+    &shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+    set shellquote= shellxquote=
+endif
+
+# }}}
+
 # Function and map {{{
 
 g:mapleader = '\'
@@ -66,6 +91,8 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+
+nmap ga <Plug>(UnicodeGA)
 # }}}
 
 # 配色方案 {{{
@@ -156,8 +183,6 @@ if &term =~ '^screen\|^tmux'
 endif
 # }}}
 
-nmap ga <Plug>(UnicodeGA)
-
 # Core Configuration {{{
 
 if has('autocmd')
@@ -217,7 +242,7 @@ set nojoinspaces
 set cursorline
 set cursorcolumn
 # 设置宽度提示
-set colorcolumn=80,100
+set colorcolumn=80,100,120
 # 显示侧边栏（用于显示 mark/gitdiff/诊断信息）
 set signcolumn=number
 
