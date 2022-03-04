@@ -89,7 +89,18 @@ call plug#begin('~/.vim/plugged')
         Plug 'prabirshrestha/asyncomplete-file.vim'
         Plug 'prabirshrestha/asyncomplete-buffer.vim'
         Plug 'hiterm/asyncomplete-look'
-        
+        Plug 'Shougo/neco-vim'
+        Plug 'prabirshrestha/asyncomplete-necovim.vim'
+        if executable('ctags')
+            Plug 'prabirshrestha/asyncomplete-tags.vim'
+            Plug 'ludovicchabant/vim-gutentags'
+            autocmd User asyncomplete_setup asyncomplete#register_source({
+                \ name: 'tags',
+                \ allowlist: ['c'],
+                \ completor: function('asyncomplete#sources#tags#completor'),
+            \ })
+        endif
+
         autocmd User asyncomplete_setup asyncomplete#register_source({
             \ name: 'file',
             \ allowlist: ['*'],
@@ -111,8 +122,14 @@ call plug#begin('~/.vim/plugged')
             \ allowlist: ['text', 'markdown', 'tex', 'gitcommit'],
             \ completor: function('asyncomplete#sources#look#completor'),
         \ })
+        autocmd User asyncomplete_setup asyncomplete#register_source({
+            \ name: 'necovim',
+            \ allowlist: ['vim'],
+            \ completor: function('asyncomplete#sources#necovim#completor'),
+        \ })
         
         g:asyncomplete_auto_popup = 1
+        g:lsp_diagnostics_enabled = 0
     endif
     # TODO: using vim9lsp
     #Plug 'yegappan/lsp'
