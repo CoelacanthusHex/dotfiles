@@ -242,10 +242,7 @@ set cursorcolumn
 " 设置宽度提示
 set colorcolumn=80,100,120
 " 显示侧边栏（用于显示 mark/gitdiff/诊断信息）
-try
-    set signcolumn=number
-catch /.*/
-endtry
+set signcolumn=yes
 
 " 在状态栏显示正在输入的命令
 set showcmd
