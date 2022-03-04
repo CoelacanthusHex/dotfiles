@@ -76,11 +76,7 @@ call plug#begin('~/.vim/plugged')
     " 颜色代码转颜色
     "Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
     " Git sign column
-    if has('patch-8.0.902')
-        Plug 'mhinz/vim-signify'
-    else
-        Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
-    endif
+    Plug 'airblade/vim-gitgutter'
     " Auto detect indent size
     "Plug 'tpope/vim-sleuth'
     " Unicode
@@ -92,6 +88,8 @@ call plug#begin('~/.vim/plugged')
     let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
     Plug 'tomtom/tcomment_vim'
     Plug 'skywind3000/asyncrun.vim'
+    Plug 'andymass/vim-matchup'
+    let g:loaded_matchit = 1
 
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-endwise'
@@ -204,6 +202,11 @@ call plug#begin('~/.vim/plugged')
 
     """""""" Nftables
     Plug 'nfnty/vim-nftables'
+
+
+    """""""" Pandoc
+    Plug 'vim-pandoc/vim-pandoc'
+    Plug 'vim-pandoc/vim-pandoc-syntax'
 
 
     """""""" Kitty
