@@ -32,6 +32,8 @@ call plug#begin('~/.vim/plugged')
     # Git
     Plug 'tpope/vim-git'
     Plug 'tpope/vim-fugitive'
+    # Git sign column
+    Plug 'airblade/vim-gitgutter'
     # Fcitx
     if exists("$DISPLAY") || exists("$WAYLAND_DISPLAY")
         Plug 'lilydjwg/fcitx.vim'
@@ -49,8 +51,6 @@ call plug#begin('~/.vim/plugged')
     #Plug 'editorconfig/editorconfig-vim'
     # 颜色代码转颜色
     #Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
-    # Git sign column
-    Plug 'airblade/vim-gitgutter'
     # Auto detect indent size
     #Plug 'tpope/vim-sleuth'
     # Unicode
@@ -74,25 +74,49 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'vim-scripts/gtags.vim'
     Plug 'ludovicchabant/vim-gutentags'
+    
+    # For test
+    Plug 'dstein64/vim-startuptime'
     # }}}
 
     # 自动补全 {{{
     # 现在使用 YouCompleteMe
-    if has("win32") || has("win64")
-        function BuildYCM(info)
-            # info is a dictionary with 3 fields
-            # - name:   name of the plugin
-            # - status: 'installed', 'updated', or 'unchanged'
-            # - force:  set on PlugInstall! or PlugUpdate!
-            if a:info.status == 'installed' || a:info.force
-                !./install.py --clangd-completer --system-libclang --ninja
-            endif
-        endfunction
-
-        Plug 'ycm-core/YouCompleteMe', { 'do': function('BuildYCM') }
-        g:ycm_clangd_binary_path = "/path/to/clangd"
+    if has("win32") || has("win64") || !exists('YcmDebugInfo')
+        Plug 'prabirshrestha/vim-lsp'
+        Plug 'mattn/vim-lsp-settings'
+        Plug 'prabirshrestha/asyncomplete.vim'
+        Plug 'prabirshrestha/asyncomplete-lsp.vim'
+        Plug 'prabirshrestha/asyncomplete-file.vim'
+        Plug 'prabirshrestha/asyncomplete-buffer.vim'
+        Plug 'hiterm/asyncomplete-look'
+        
+        autocmd User asyncomplete_setup asyncomplete#register_source({
+            \ 'name': 'file',
+            \ 'allowlist': ['*'],
+            \ 'priority': 10,
+            \ 'completor': function('asyncomplete#sources#file#completor')
+        \ })
+        autocmd User asyncomplete_setup asyncomplete#register_source({
+            \ 'name': 'buffer',
+            \ 'allowlist': ['*'],
+            \ 'blocklist': ['go'],
+            \ 'priority': 10,
+            \ 'completor': function('asyncomplete#sources#buffer#completor'),
+            \ 'config': {
+            \     'max_buffer_size': 5000000,
+            \ },
+        \ })
+        autocmd User asyncomplete_setup asyncomplete#register_source({
+            \ 'name': 'look',
+            \ 'allowlist': ['text', 'markdown', 'tex', 'gitcommit'],
+            \ 'completor': function('asyncomplete#sources#look#completor'),
+        \ })
+        
+        g:asyncomplete_auto_popup = 1
     endif
-	# }}}
+    # TODO: using vim9lsp
+    #Plug 'yegappan/lsp'
+    # }}}
 
     # Language {{{
     
