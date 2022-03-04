@@ -171,11 +171,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'nfnty/vim-nftables'
 
 
-    """""""" Pandoc
-    Plug 'vim-pandoc/vim-pandoc'
-    Plug 'vim-pandoc/vim-pandoc-syntax'
-
-
     """""""" Kitty
     Plug 'fladson/vim-kitty'
 

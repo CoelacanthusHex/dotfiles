@@ -354,7 +354,7 @@ if has('langmap') && exists('+langremap')
 endif
 
 try
-  set matchpairs=(:),{:},[:],《:》,〈:〉,［:］,（:）,「:」,『:』,‘:’,“:”
+    set matchpairs=(:),{:},[:],《:》,〈:〉,［:］,（:）,「:」,『:』,‘:’,“:”
 catch /^Vim\%((\a\+)\)\=:E474/
 endtry
 
@@ -364,7 +364,9 @@ endtry
 set maxmempattern=2000000
 
 if has('unix')
-    au FileType gitcommit execute 'setlocal dictionary+=/usr/share/dict/words'
+    autocmd FileType gitcommit execute 'setlocal dictionary+=/usr/share/dict/words complete+=k'
+    autocmd FileType markdown execute 'setlocal dictionary+=/usr/share/dict/words complete+=k'
+    autocmd FileType tex,latex execute 'setlocal dictionary+=/usr/share/dict/words complete+=k'
 endif
 
 " }}}
