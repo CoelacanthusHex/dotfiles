@@ -1,18 +1,15 @@
-" vim: set sw=4 ts=8 sts=4 et foldmethod=marker:
-" Haskell-Vim Configuration
+vim9script
+# vim: set sw=4 ts=8 sts=4 et foldmethod=marker:
+# kate: space-indent on; indent-width 4;
 
-let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
-let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
-let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
-let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
-let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
-let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
-let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
+# Haskell-Vim Configuration
 
-"let g:haskell_indent_disable = 1
-"fun! HaskellFormatSettings()
-"    setlocal formatprg=stylish-haskell
-"endfun
-"autocmd FileType haskell call HaskellFormatSettings()
+g:haskell_enable_quantification = 1   # to enable highlighting of `forall`
+g:haskell_enable_recursivedo = 1      # to enable highlighting of `mdo` and `rec`
+g:haskell_enable_arrowsyntax = 1      # to enable highlighting of `proc`
+g:haskell_enable_pattern_synonyms = 1 # to enable highlighting of `pattern`
+g:haskell_enable_typeroles = 1        # to enable highlighting of type roles
+g:haskell_enable_static_pointers = 1  # to enable highlighting of `static`
+g:haskell_backpack = 1                # to enable highlighting of backpack keywords
 
-" kate: space-indent on; indent-width 4;
+

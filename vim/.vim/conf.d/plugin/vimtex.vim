@@ -1,14 +1,15 @@
-" vim: set sw=4 ts=8 sts=4 et foldmethod=marker:
+vim9script
+# vim: set sw=4 ts=8 sts=4 et foldmethod=marker:
+# kate: space-indent on; indent-width 4;
 
-let g:vimtex_enabled = 1
-let g:vimtex_fold_enabled = 1
-let g:vimtex_compiler_latexmk = {
-            \     'options' : [
-            \       '-xelatex',
-            \       '-shell-escape',
-            \     ],
-            \ }
-let g:tex_flavor = 'latex'
+g:vimtex_enabled = 1
+g:vimtex_fold_enabled = 1
+g:vimtex_compiler_latexmk = {
+                'options' : [
+                  '-xelatex',
+                  '-shell-escape',
+                ],
+            }
+g:tex_flavor = 'latex'
 
-let g:matchup_override_vimtex = 1
-" kate: space-indent on; indent-width 4;
+g:matchup_override_vimtex = 1
