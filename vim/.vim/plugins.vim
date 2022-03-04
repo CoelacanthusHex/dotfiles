@@ -81,7 +81,7 @@ call plug#begin('~/.vim/plugged')
 
     # 自动补全 {{{
     # 现在使用 YouCompleteMe
-    if has("win32") || has("win64") || !exists('YcmDebugInfo')
+    if has("win32") || has("win64") || !filereadable('/usr/share/vim/vimfiles/plugin/youcompleteme.vim')
         Plug 'prabirshrestha/vim-lsp'
         Plug 'mattn/vim-lsp-settings'
         Plug 'prabirshrestha/asyncomplete.vim'
