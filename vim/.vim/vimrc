@@ -65,9 +65,11 @@ map <C-l> <C-W>l
 " }}}
 
 " 配色方案 {{{
-set background=dark
 if filereadable(expand('~/.vim/plugins.vim'))
     colorscheme onedark
+else
+    set background=dark
+    colorscheme desert
 endif
 if &term == "linux"
     let g:airline_symbols_ascii = 1
@@ -181,7 +183,7 @@ if has('mouse')
     set mouse=a
     set mouse-=i
 endif
-set number
+set number relativenumber
 set modeline
 set display=truncate,uhex
 set nrformats=bin,hex
@@ -275,6 +277,9 @@ if has("patch-7.3.541")
     " 在合适的场合，连接行时删除注释前导符
     set formatoptions+=j
 endif
+
+" Open code folding
+set foldmethod=syntax
 
 " 启用搜索结果计数
 set shortmess-=S

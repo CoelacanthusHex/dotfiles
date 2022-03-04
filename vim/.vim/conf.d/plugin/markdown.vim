@@ -12,6 +12,7 @@ let g:indentLine_conceallevel=2
 
 let g:vim_markdown_fenced_languages = ['python', 'rust', 'cpp', 'c', 'haskell', 'scala', 'typescript', 'javascript', 'zsh', 'bash', 'go', 'toml', 'tex', 'markdown', 'vim', 'c++=cpp', 'viml=vim', 'ini=dosini', 'csharp=cs', 'java']
 
+let g:vim_markdown_math = 1
 " Highlight YAML front matter as used by Jekyll or Hugo.
 let g:vim_markdown_frontmatter = 1
 " Highlight TOML front matter as used by Hugo.

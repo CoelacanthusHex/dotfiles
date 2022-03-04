@@ -9,4 +9,6 @@ let g:vimtex_compiler_latexmk = {
             \     ],
             \ }
 let g:tex_flavor = 'latex'
+
+let g:matchup_override_vimtex = 1
 " kate: space-indent on; indent-width 4;
