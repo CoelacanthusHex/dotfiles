@@ -91,6 +91,9 @@ cscope.out
 cscope.in.out
 cscope.po.out
 
+# LSP
+.ccls-cache/
+
 # Ninja
 .ninja_deps
 .ninja_log
