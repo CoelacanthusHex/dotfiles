@@ -100,7 +100,7 @@ if filereadable(expand('~/.vim/plugins.vim'))
     colorscheme onedark
 else
     set background=dark
-    colorscheme desert
+    colorscheme industry
 endif
 if &term == "linux"
     g:airline_symbols_ascii = 1
@@ -223,6 +223,7 @@ set wildignore+=*.rdb                               # Redis database file
 set wildignore+=.nfs*                               # NFS temp file
 set wildignore+=[._]*.un~                           # Vim Persistent undo
 set wildignore+=System\ Volume\ Information         # Windiws junk files
+set wildignore+=*.zwc,*.zwc.old                     # zsh cache
 #set wildignore+=_build                              # Sphinx build dir
 #set wildignore+=*CACHE                              # django compressor cache
 

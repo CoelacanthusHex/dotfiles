@@ -73,7 +73,7 @@ nnoremap <leader>bf :buffers<CR>:buffer<Space>
 
 " https://github.com/lilydjwg/dotvim/blob/19f6f8ea67150cb5498706912b770d3c736716f2/vimrc#L36
 " 删除所有未显示且无修改的缓冲区以减少内存占用
-function Lilydjwg_cleanbufs()
+function CleanBufs()
     for bufNr in filter(range(1, bufnr('$')),
             \ 'buflisted(v:val) && !bufloaded(v:val)')
         execute bufNr . 'bdelete'
@@ -96,7 +96,7 @@ if filereadable(expand('~/.vim/plugins.vim'))
     colorscheme onedark
 else
     set background=dark
-    colorscheme desert
+    colorscheme industry
 endif
 if &term == "linux"
     let g:airline_symbols_ascii = 1
@@ -221,6 +221,7 @@ set wildignore+=*.rdb                               " Redis database file
 set wildignore+=.nfs*                               " NFS temp file
 set wildignore+=[._]*.un~                           " Vim Persistent undo
 set wildignore+=System\ Volume\ Information         " Windiws junk files
+set wildignore+=*.zwc,*.zwc.old                     " zsh cache
 "set wildignore+=_build                              " Sphinx build dir
 "set wildignore+=*CACHE                              " django compressor cache
 
