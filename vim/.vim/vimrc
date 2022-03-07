@@ -34,7 +34,7 @@ if !!exists(':packadd')
 endif
 # }}}
 
-# 插件 {{{
+# Plugins {{{
 
 if filereadable(expand('~/.vim/plugins.vim'))
     source ~/.vim/plugins.vim
@@ -95,7 +95,7 @@ map <C-l> <C-W>l
 nmap ga <Plug>(UnicodeGA)
 # }}}
 
-# 配色方案 {{{
+# Color Scheme {{{
 if filereadable(expand('~/.vim/plugins.vim'))
     colorscheme onedark
 else
@@ -378,7 +378,7 @@ endif
 
 # }}}
 
-# 搜索设置 {{{
+# Search Config {{{
 
 # 搜索时忽略大小写
 set ignorecase

@@ -34,7 +34,7 @@ if exists(':packadd')
 endif
 " }}}
 
-" 插件 {{{
+" Plugins {{{
 
 " NOTE: Remove for only support Vim9
 
@@ -91,7 +91,7 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 " }}}
 
-" 配色方案 {{{
+" Color Scheme {{{
 if filereadable(expand('~/.vim/plugins.vim'))
     colorscheme onedark
 else
@@ -388,7 +388,7 @@ endif
 
 " }}}
 
-" 搜索设置 {{{
+" Search Config {{{
 
 " 搜索时忽略大小写
 set ignorecase

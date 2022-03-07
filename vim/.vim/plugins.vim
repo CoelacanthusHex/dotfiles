@@ -5,7 +5,7 @@ vim9script
 # SPDX-License-Identifier: MPL-2.0
 # SPDX-FileCopyrightText: Coelacanthus
 
-# 自动安装 {{{
+# Auto Install {{{
 var data_dir = has('nvim') ? stdpath('data') .. '/site' : '~/.vim'
 if empty(glob(data_dir .. '/autoload/plug.vim'))
     silent execute '!curl -fLo ' .. data_dir .. '/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -17,16 +17,16 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'junegunn/vim-plug'
 
-    # 主题配色 {{{
+    # Theme {{{
     Plug 'joshdick/onedark.vim'
-    # 状态栏
+    # Statusline
     Plug 'vim-airline/vim-airline'
-    # 状态栏主题
+    # Statusline theme
     Plug 'vim-airline/vim-airline-themes'
     # }}}
     
     # Misc {{{
-    # 代码格式化
+    # Code format
     Plug 'sbdchd/neoformat'
     map <F5> :Neoformat <CR>
     # Git
@@ -38,18 +38,18 @@ call plug#begin('~/.vim/plugged')
     if exists("$DISPLAY") || exists("$WAYLAND_DISPLAY")
         Plug 'lilydjwg/fcitx.vim'
     endif
-    # 缩进指示线
+    # Indent guide
     Plug 'Yggdroot/indentLine'
-    # 自动括号
+    # Auto pairs
     Plug 'Raimondi/delimitMate'
     # Tagbar
     Plug 'majutsushi/tagbar'
-    # 彩虹括号
+    # Rainbow
     Plug '91khr/rainbow'
     g:rainbow_active = 1
     # EditorConfig
     #Plug 'editorconfig/editorconfig-vim'
-    # 颜色代码转颜色
+    # Color code
     #Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
     # Auto detect indent size
     #Plug 'tpope/vim-sleuth'
@@ -84,8 +84,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'dstein64/vim-startuptime'
     # }}}
 
-    # 自动补全 {{{
-    # 现在使用 YouCompleteMe
+    # Auto-complete {{{
+    # Using YouCompleteMe now
     if has("win32") || has("win64") || !filereadable('/usr/share/vim/vimfiles/plugin/youcompleteme.vim')
         Plug 'prabirshrestha/vim-lsp'
         Plug 'mattn/vim-lsp-settings'
@@ -161,11 +161,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'cespare/vim-toml', { 'branch': 'main' }
     # Playpen integration
     Plug 'mattn/webapi-vim'
-    # Rust 支持
     Plug 'rust-lang/rust.vim', {'for': 'rust'}
-    # 保存时自动格式化
     #g:autofmt_autosave = 1
-    # Cargo 增强
+    # Cargo
     Plug 'timonv/vim-cargo'
 
 
@@ -191,7 +189,6 @@ call plug#begin('~/.vim/plugged')
 
 
     ######## Markdown
-    # Markdown 语法支持
     Plug 'godlygeek/tabular', {'for': 'markdown'}
     Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 
@@ -212,7 +209,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'chr4/nginx.vim'
 
 
-    ######## systemd 文件的语法高亮
+    ######## systemd files
     Plug 'Matt-Deacalion/vim-systemd-syntax'
 
 
