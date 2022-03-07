@@ -75,6 +75,11 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-scripts/gtags.vim'
     Plug 'ludovicchabant/vim-gutentags'
     
+    Plug 'gelguy/wilder.nvim'
+    # Not need for we don't use fuzzy
+    #Plug 'roxma/nvim-yarp'
+    #Plug 'roxma/vim-hug-neovim-rpc'
+    
     # For test
     Plug 'dstein64/vim-startuptime'
     # }}}
@@ -229,6 +234,20 @@ call plug#begin('~/.vim/plugged')
 
 call plug#end()
 
+
+call wilder#setup({
+    'modes': [':', '/', '?'],
+    'enable_cmdline_enter': 0,
+})
+call wilder#set_option('pipeline', [
+    wilder#branch(
+        wilder#cmdline_pipeline(),
+        wilder#search_pipeline(),
+    ),
+])
+call wilder#set_option('renderer', wilder#popupmenu_renderer({
+    'highlighter': wilder#basic_highlighter(),
+}))
 
 # https://github.com/ycm-core/YouCompleteMe/issues/36#issuecomment-171966710
 def g:UltiSnips_Complete(): string
