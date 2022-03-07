@@ -127,11 +127,6 @@ if has("gui_running")
     set cursorline
 elseif has("unix")
     set ambiwidth=single
-    # 防止退出时终端乱码
-    # 这里两者都需要。只前者标题会重复，只后者会乱码
-    # 我也不知道为啥，但是这东西会给我乱输出 (B
-    #exec "set t_fs=\033(B\007"
-    #exec "set t_IE=\033(B\007"
     if $COLORTERM == 'truecolor'
         set cursorline
         set termguicolors
@@ -145,7 +140,6 @@ elseif has("unix")
             exec "set t_ve+=\033[?6c"
             autocmd InsertEnter * exec "set t_ve-=\033[?6c"
             autocmd InsertLeave * exec "set t_ve+=\033[?6c"
-            # autocmd VimLeave * exec "set t_ve-=\033[?6c"
         endif
         if &term == "fbterm"
             set cursorline
@@ -185,10 +179,8 @@ endif
 
 # Core Configuration {{{
 
-if has('autocmd')
-    filetype plugin on
-    filetype plugin indent on
-endif
+filetype plugin on
+filetype plugin indent on
 if has('syntax') && !exists('g:syntax_on')
     syntax enable
 endif
