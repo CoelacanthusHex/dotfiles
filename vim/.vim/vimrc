@@ -104,7 +104,7 @@ else
 endif
 if &term == "linux"
     g:airline_symbols_ascii = 1
-    g:airline_theme='base16_gruvbox_dark_hard'
+    g:airline_theme = 'base16_gruvbox_dark_hard'
     if !exists('g:airline_symbols')
         g:airline_symbols = {}
     endif
