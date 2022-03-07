@@ -295,8 +295,8 @@ if has("patch-7.3.541")
     set formatoptions+=j
 endif
 
-" Open code folding
-set foldmethod=syntax
+# Open code folding
+set foldmethod=marker
 
 " 启用搜索结果计数
 set shortmess-=S

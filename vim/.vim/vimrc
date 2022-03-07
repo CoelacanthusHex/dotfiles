@@ -295,7 +295,7 @@ set formatoptions+=1
 set formatoptions+=j
 
 # Open code folding
-set foldmethod=syntax
+set foldmethod=marker
 
 # 启用搜索结果计数
 set shortmess-=S
