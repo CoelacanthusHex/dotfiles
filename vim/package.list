@@ -10,3 +10,4 @@ shellcheck
 typescript
 eslint
 words
+ctags
