@@ -52,7 +52,7 @@ call plug#begin('~/.vim/plugged')
     # Color code
     #Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
     # Auto detect indent size
-    #Plug 'tpope/vim-sleuth'
+    Plug 'tpope/vim-sleuth'
     # Unicode
     Plug 'chrisbra/unicode.vim'
     # Sudo support
