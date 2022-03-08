@@ -114,6 +114,10 @@ if &term == "linux"
 else
     g:airline_symbols_ascii = 0
     g:airline_theme = 'onedark'
+    if !exists('g:airline_symbols')
+        g:airline_symbols = {}
+    endif
+    g:airline_symbols.readonly = ' RO'
 endif
 # }}}
 
