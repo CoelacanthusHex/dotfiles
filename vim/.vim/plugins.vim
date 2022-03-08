@@ -35,7 +35,7 @@ call plug#begin('~/.vim/plugged')
     # Git sign column
     Plug 'airblade/vim-gitgutter'
     # Fcitx
-    if exists("$DISPLAY") || exists("$WAYLAND_DISPLAY")
+    if !has('win32') && !has("win64") && exists("$DBUS_SESSION_BUS_ADDRESS")
         Plug 'lilydjwg/fcitx.vim'
     endif
     # Indent guide
