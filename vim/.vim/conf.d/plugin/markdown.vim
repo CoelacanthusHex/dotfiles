@@ -12,7 +12,7 @@ g:vim_markdown_conceal_code_blocks = 0
 g:indentLine_concealcursor=""
 g:indentLine_conceallevel=2
 
-g:vim_markdown_fenced_languages = ['python', 'rust', 'cpp', 'c', 'haskell', 'scala', 'typescript', 'javascript', 'zsh', 'bash', 'go', 'toml', 'tex', 'markdown', 'vim', 'c++=cpp', 'viml=vim', 'ini=dosini', 'csharp=cs', 'java']
+g:vim_markdown_fenced_languages = ['python', 'rust', 'cpp', 'c', 'haskell', 'scala', 'typescript', 'javascript', 'js=javascript', 'javascriptreact', 'zsh', 'bash', 'go', 'toml', 'tex', 'markdown', 'vim', 'c++=cpp', 'viml=vim', 'ini=dosini', 'csharp=cs', 'java']
 
 g:vim_markdown_math = 1
 # Highlight YAML front matter as used by Jekyll or Hugo.

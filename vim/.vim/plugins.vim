@@ -223,6 +223,10 @@ call plug#begin('~/.vim/plugged')
 
     ######## Kitty
     Plug 'fladson/vim-kitty'
+    
+    
+    ######## GNU
+    Plug 'mattkretz/vim-gnuindent'
 
 
     ######## Others

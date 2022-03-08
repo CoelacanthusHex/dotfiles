@@ -1,7 +1,10 @@
 Å
+ABI
 ABS
+ad-hoc
 Ajithbasha
 Alipay
+API
 ascii
 backend
 Baidu
@@ -14,10 +17,12 @@ CET
 CGI
 chatroom
 CLI
+CMake
 CN
 CNC
 Coelacanthus
 CouchDB
+COVID-19
 CPython
 CSS
 DDoS
@@ -78,8 +83,10 @@ logrotate
 LSP
 Lua
 macOS
+MathML
 Matplotlib
 MediaWiki
+Meson
 metadata
 MFC
 MIT
@@ -134,6 +141,7 @@ sshd
 StackOverflow
 statsd
 sts
+SVN
 sw
 Tcl
 TCP
@@ -149,6 +157,7 @@ UDP
 unsubscribe
 URL
 URLs
+Verilog
 VHDL
 vim
 VPS
@@ -156,5 +165,6 @@ Vulkan
 Wechat
 Wikipedia
 wxPython
+YAML
 zsh
 Zsh
