@@ -442,6 +442,11 @@ if has('unix')
     autocmd FileType tex,latex execute 'setlocal dictionary+=/usr/share/dict/words complete+=k'
 endif
 
+if executable("curl")
+    let g:netrw_http_cmd  = "curl"
+    let g:netrw_http_xcmd = "-L --compressed -o"
+endif
+
 " }}}
 
 " Search Config {{{
