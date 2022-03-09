@@ -21,9 +21,6 @@ if has("win32") || has("win64")
 else
     # Linux 路径
     g:vimfiles = split(&runtimepath, ',')[0]
-    # cron 的目录不要备份
-    set backupskip+=/etc/cron.*/*
-    set backupdir=.,/var/tmp,/tmp
 endif
 if !!exists(':packadd')
     # insert after the first one so spell changes won't go
@@ -167,8 +164,8 @@ if &term =~ '^screen\|^tmux' && exists('&t_BE')
     &t_BE = "\033[?2004h"
     &t_BD = "\033[?2004l"
     # t_PS and t_PE are key code options and they are special
-    exec "set t_PS=\033[200~"
-    exec "set t_PE=\033[201~"
+    execute "set t_PS=\033[200~"
+    execute "set t_PE=\033[201~"
 endif
 if &term =~ '^screen\|^tmux'
     # This may leave mouse in use by terminal application
@@ -176,8 +173,13 @@ if &term =~ '^screen\|^tmux'
     set ttymouse=sgr
     if &t_GP == ''
         # for getwinpos
-        exec "set t_GP=\033Ptmux;\033\033[13t\033\\"
+        execute "set t_GP=\033Ptmux;\033\033[13t\033\\"
     endif
+    # Enable modified arrow keys, see  :help arrow_modifiers
+    execute "silent! set <xUp>=\<Esc>[@;*A"
+    execute "silent! set <xDown>=\<Esc>[@;*B"
+    execute "silent! set <xRight>=\<Esc>[@;*C"
+    execute "silent! set <xLeft>=\<Esc>[@;*D"
 endif
 # }}}
 
@@ -201,6 +203,53 @@ if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
     catch /.*/
         runtime! macros/matchit.vim
     endtry
+endif
+
+set history=10000
+if has("unix")
+    if !isdirectory(expand('~/.cache'))
+        mkdir(expand('~/.cache'), 'p', 0700)
+    endif
+    set viminfo=%,<800,'10,/50,:100,h,f0,n~/.cache/viminfo
+    #           | |    |   |   |    | |  + viminfo file path
+    #           | |    |   |   |    | + file marks 0-9,A-Z 0=NOT stored
+    #           | |    |   |   |    + disable 'hlsearch' loading viminfo
+    #           | |    |   |   + command-line history saved
+    #           | |    |   + search history saved
+    #           | |    + files marks saved
+    #           | + lines saved each register (old name for <, vi6.2)
+    #           + save/restore buffer list
+
+    set backupdir=.,/var/tmp,/tmp
+    # cron 的目录不要备份
+    set backupskip+=/etc/cron.*/*
+    # Typical temporary file locations
+    ## RAM disk, default path for password-store’s temporary files
+    set backupskip+=/dev/shm/*
+    ## Hard-coded paths for sudoedit
+    set backupskip+=/usr/tmp/*,/var/tmp/*,/tmp
+
+    # Per-repository temporary files for Git
+    ## Commit and tag messages
+    set backupskip+=*/*.git/?*_EDITMSG
+    ## Edited patches
+    set backupskip+=*/*.git/ADD_EDIT.patch
+    ## Email messages
+    set backupskip+=*/*.git/.gitsendemail.msg.*
+    ## Interactive rebase manifests
+    set backupskip+=*/*.git/rebase-merge/git-rebase-todo
+endif
+
+if has("persistent_undo")
+    &undodir = $HOME .. '/.local/share/'
+    if !isdirectory(&undodir)
+        mkdir(&undodir, 'p', 0700)
+    endif
+    set undofile
+endif
+
+if exists('+spelloptions')
+    set spelloptions+=camel
 endif
 
 # Disables mouse in insert mode

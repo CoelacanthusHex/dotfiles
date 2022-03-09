@@ -170,6 +170,11 @@ if &term =~ '^screen\|^tmux'
         " for getwinpos
         exec "set t_GP=\033Ptmux;\033\033[13t\033\\"
     endif
+    " Enable modified arrow keys, see  :help arrow_modifiers
+    execute "silent! set <xUp>=\<Esc>[@;*A"
+    execute "silent! set <xDown>=\<Esc>[@;*B"
+    execute "silent! set <xRight>=\<Esc>[@;*C"
+    execute "silent! set <xLeft>=\<Esc>[@;*D"
 endif
 " }}}
 
@@ -195,6 +200,57 @@ if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
     catch /.*/
         runtime! macros/matchit.vim
     endtry
+endif
+
+set history=10000
+if has("unix")
+    if !isdirectory(expand('~/.cache'))
+        call mkdir(expand('~/.cache'), 'p', 0700)
+    endif
+    set viminfo=%,<800,'10,/50,:100,h,f0,n~/.cache/viminfo
+    "           | |    |   |   |    | |  + viminfo file path
+    "           | |    |   |   |    | + file marks 0-9,A-Z 0=NOT stored
+    "           | |    |   |   |    + disable 'hlsearch' loading viminfo
+    "           | |    |   |   + command-line history saved
+    "           | |    |   + search history saved
+    "           | |    + files marks saved
+    "           | + lines saved each register (old name for <, vi6.2)
+    "           + save/restore buffer list
+
+    set backupdir=.,/var/tmp,/tmp
+    " cron 的目录不要备份
+    set backupskip+=/etc/cron.*/*
+    " Typical temporary file locations
+    "" RAM disk, default path for password-store’s temporary files
+    set backupskip+=/dev/shm/*
+    "" Hard-coded paths for sudoedit
+    set backupskip+=/usr/tmp/*,/var/tmp/*,/tmp
+
+    " Per-repository temporary files for Git
+    "" Commit and tag messages
+    set backupskip+=*/*.git/?*_EDITMSG
+    "" Edited patches
+    set backupskip+=*/*.git/ADD_EDIT.patch
+    "" Email messages
+    set backupskip+=*/*.git/.gitsendemail.msg.*
+    "" Interactive rebase manifests
+    set backupskip+=*/*.git/rebase-merge/git-rebase-todo
+endif
+
+if has("persistent_undo")
+    let &undodir = $HOME . '/.local/share/'
+    if !isdirectory(&undodir)
+        call mkdir(&undodir, 'p', 0700)
+    endif
+    set undofile
+endif
+
+" When spell-checking snakeCased or CamelCased words, treat every upper-case
+" character in a word text object as the beginning of a new word for separate
+" spell-checking.  At the time of writing, this is still a very new option
+" (v8.2.0953, June 2020).
+if exists('+spelloptions')
+    set spelloptions+=camel
 endif
 
 " Disables mouse in insert mode
