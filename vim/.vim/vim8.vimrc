@@ -1,3 +1,4 @@
+scriptencoding utf-8
 " vim: set sw=4 ts=8 sts=4 et foldmethod=marker:
 " kate: space-indent on; indent-width 4; syntax vim;
 
@@ -67,11 +68,10 @@ endif
 
 " Function and map {{{
 
-let mapleader='\'
+let mapleader = "\\"
 
 nnoremap <leader>bf :buffers<CR>:buffer<Space>
 
-" https://github.com/lilydjwg/dotvim/blob/19f6f8ea67150cb5498706912b770d3c736716f2/vimrc#L36
 " 删除所有未显示且无修改的缓冲区以减少内存占用
 function CleanBufs()
     for bufNr in filter(range(1, bufnr('$')),
@@ -84,11 +84,6 @@ endfunction
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-" ctrl+hjkl 移动窗口
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
 " }}}
 
 " Color Scheme {{{

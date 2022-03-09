@@ -1,4 +1,5 @@
 vim9script
+scriptencoding utf-8
 # vim: set sw=4 ts=8 sts=4 et foldmethod=marker:
 # kate: space-indent on; indent-width 4; syntax vim;
 
@@ -22,13 +23,12 @@ else
     # Linux 路径
     g:vimfiles = split(&runtimepath, ',')[0]
 endif
-if !!exists(':packadd')
-    # insert after the first one so spell changes won't go
-    # into our config directory.
-    var rtp = split(&runtimepath, ',')
-    &rtp = substitute(&rtp, ',\zs', '\=g:vimfiles .. "/conf.d,"', '')
-    &runtimepath = join(rtp, ',')
-endif
+
+# insert after the first one so spell changes won't go
+# into our config directory.
+var rtp = split(&runtimepath, ',')
+&rtp = substitute(&rtp, ',\zs', '\=g:vimfiles .. "/conf.d,"', '')
+&runtimepath = join(rtp, ',')
 # }}}
 
 # Plugins {{{
@@ -66,11 +66,10 @@ endif
 
 # Function and map {{{
 
-g:mapleader = '\'
+g:mapleader = "\\"
 
 nnoremap <leader>bf :buffers<CR>:buffer<Space>
 
-# https://github.com/lilydjwg/dotvim/blob/19f6f8ea67150cb5498706912b770d3c736716f2/vimrc#L36
 # 删除所有未显示且无修改的缓冲区以减少内存占用
 def CleanBufs()
     for bufNr in filternew(range(1, bufnr('$')),
@@ -82,12 +81,6 @@ enddef
 # Use <TAB> to select the popup menu:
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-# ctrl+hjkl 移动窗口
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
 
 nmap ga <Plug>(UnicodeGA)
 # }}}
@@ -159,7 +152,7 @@ elseif has('win32') && exists('$CONEMUBUILD')
 endif
 
 # https://github.com/lilydjwg/dotvim/blob/19f6f8ea67150cb5498706912b770d3c736716f2/vimrc#L621
-# bracketed paste mode support for tmux
+# enbale bracketed paste mode support for tmux
 if &term =~ '^screen\|^tmux' && exists('&t_BE')
     &t_BE = "\033[?2004h"
     &t_BD = "\033[?2004l"
@@ -198,11 +191,7 @@ set ttimeoutlen=100
 
 # Load matchit.vim, but only if the user hasn't installed a newer version.
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
-    try
-        packadd! matchit
-    catch /.*/
-        runtime! macros/matchit.vim
-    endtry
+    packadd! matchit
 endif
 
 set history=10000
@@ -248,9 +237,7 @@ if has("persistent_undo")
     set undofile
 endif
 
-if exists('+spelloptions')
-    set spelloptions+=camel
-endif
+set spelloptions+=camel
 
 # Disables mouse in insert mode
 if has('mouse')
