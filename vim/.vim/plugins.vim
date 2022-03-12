@@ -5,100 +5,92 @@ vim9script
 # SPDX-License-Identifier: MPL-2.0
 # SPDX-FileCopyrightText: Coelacanthus
 
-# Auto Install {{{
-var data_dir = has('nvim') ? stdpath('data') .. '/site' : '~/.vim'
-if empty(glob(data_dir .. '/autoload/plug.vim'))
-    silent execute '!curl -fLo ' .. data_dir .. '/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-# }}}
+packadd jetpack
 
-call plug#begin('~/.vim/plugged')
-
-    Plug 'junegunn/vim-plug'
+jetpack#begin('~/.vim/plugged')
 
     # Theme {{{
-    Plug 'joshdick/onedark.vim'
+    jetpack#add('joshdick/onedark.vim')
     # Statusline
-    Plug 'vim-airline/vim-airline'
+    jetpack#add('vim-airline/vim-airline')
     # Statusline theme
-    Plug 'vim-airline/vim-airline-themes'
+    jetpack#add('vim-airline/vim-airline-themes')
     # }}}
     
     # Misc {{{
     # Code format
-    Plug 'sbdchd/neoformat'
+    jetpack#add('sbdchd/neoformat')
     map <F5> :Neoformat <CR>
     # Git
-    Plug 'tpope/vim-git'
-    Plug 'tpope/vim-fugitive'
+    jetpack#add('tpope/vim-git')
+    jetpack#add('tpope/vim-fugitive')
     # Git sign column
-    Plug 'airblade/vim-gitgutter'
+    jetpack#add('airblade/vim-gitgutter')
     # Fcitx
     if !has('win32') && !has("win64") && exists("$DBUS_SESSION_BUS_ADDRESS")
-        Plug 'lilydjwg/fcitx.vim'
+        jetpack#add('lilydjwg/fcitx.vim')
     endif
     # Indent guide
-    Plug 'Yggdroot/indentLine'
+    jetpack#add('Yggdroot/indentLine')
     # Auto pairs
-    Plug 'Raimondi/delimitMate'
+    jetpack#add('Raimondi/delimitMate')
     # Tagbar
-    Plug 'majutsushi/tagbar'
+    jetpack#add('majutsushi/tagbar')
     # Rainbow
-    Plug '91khr/rainbow'
+    jetpack#add('91khr/rainbow')
     g:rainbow_active = 1
     # EditorConfig
-    #Plug 'editorconfig/editorconfig-vim'
+    #jetpack#add('editorconfig/editorconfig-vim')
     # Color code
-    #Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+    #Jetpack 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
     # Auto detect indent size
-    Plug 'tpope/vim-sleuth'
+    jetpack#add('tpope/vim-sleuth')
     # Unicode
-    Plug 'chrisbra/unicode.vim'
+    jetpack#add('chrisbra/unicode.vim')
     # Sudo support
-    Plug 'lambdalisue/suda.vim'
+    jetpack#add('lambdalisue/suda.vim')
     # Snippets
-    Plug 'SirVer/ultisnips'
+    jetpack#add('SirVer/ultisnips')
     g:UltiSnipsSnippetDirectories = [$HOME .. '/.vim/UltiSnips']
-    Plug 'tomtom/tcomment_vim'
-    Plug 'skywind3000/asyncrun.vim'
-    Plug 'andymass/vim-matchup'
+    jetpack#add('tomtom/tcomment_vim')
+    jetpack#add('skywind3000/asyncrun.vim')
+    jetpack#add('andymass/vim-matchup')
     g:loaded_matchit = 1
 
-    Plug 'tpope/vim-repeat'
-    Plug 'tpope/vim-endwise'
-    Plug 'Shougo/echodoc.vim'
-    Plug 'Shougo/context_filetype.vim'
+    jetpack#add('tpope/vim-repeat')
+    jetpack#add('tpope/vim-endwise')
+    jetpack#add('Shougo/echodoc.vim')
+    jetpack#add('Shougo/context_filetype.vim')
 
-    Plug 'dense-analysis/ale', {'for': ['sh', 'c', 'cpp', 'rust', 'python', 'go', 'tex']}
+    jetpack#add('dense-analysis/ale', { 'for': ['sh', 'c', 'cpp', 'rust', 'python', 'go', 'tex'] })
 
-    Plug 'vim-scripts/gtags.vim'
-    Plug 'ludovicchabant/vim-gutentags'
+    jetpack#add('vim-scripts/gtags.vim')
+    jetpack#add('ludovicchabant/vim-gutentags')
     
-    Plug 'gelguy/wilder.nvim'
+    jetpack#add('gelguy/wilder.nvim')
     # Not need for we don't use fuzzy
-    #Plug 'roxma/nvim-yarp'
-    #Plug 'roxma/vim-hug-neovim-rpc'
+    #jetpack#add('roxma/nvim-yarp')
+    #jetpack#add('roxma/vim-hug-neovim-rpc')
     
     # For test
-    Plug 'dstein64/vim-startuptime'
+    jetpack#add('dstein64/vim-startuptime')
     # }}}
 
     # Auto-complete {{{
     # Using YouCompleteMe now
-    if has("win32") || has("win64") || !filereadable('/usr/share/vim/vimfiles/plugin/youcompleteme.vim')
-        Plug 'prabirshrestha/vim-lsp'
-        Plug 'mattn/vim-lsp-settings'
-        Plug 'prabirshrestha/asyncomplete.vim'
-        Plug 'prabirshrestha/asyncomplete-lsp.vim'
-        Plug 'prabirshrestha/asyncomplete-file.vim'
-        Plug 'prabirshrestha/asyncomplete-buffer.vim'
-        Plug 'hiterm/asyncomplete-look'
-        Plug 'Shougo/neco-vim'
-        Plug 'prabirshrestha/asyncomplete-necovim.vim'
+    if has("win32") || has("win64") || !filereadable('/usr/share/vim/vimfiles/jetpackin/youcompleteme.vim')
+        jetpack#add('prabirshrestha/vim-lsp')
+        jetpack#add('mattn/vim-lsp-settings')
+        jetpack#add('prabirshrestha/asyncomplete.vim')
+        jetpack#add('prabirshrestha/asyncomplete-lsp.vim')
+        jetpack#add('prabirshrestha/asyncomplete-file.vim')
+        jetpack#add('prabirshrestha/asyncomplete-buffer.vim')
+        jetpack#add('hiterm/asyncomplete-look')
+        jetpack#add('Shougo/neco-vim')
+        jetpack#add('prabirshrestha/asyncomplete-necovim.vim')
         if executable('ctags')
-            Plug 'prabirshrestha/asyncomplete-tags.vim'
-            Plug 'ludovicchabant/vim-gutentags'
+            jetpack#add('prabirshrestha/asyncomplete-tags.vim')
+            jetpack#add('ludovicchabant/vim-gutentags')
             autocmd User asyncomplete_setup asyncomplete#register_source({
                 \ name: 'tags',
                 \ allowlist: ['c'],
@@ -137,131 +129,135 @@ call plug#begin('~/.vim/plugged')
         g:lsp_diagnostics_enabled = 0
     endif
     # TODO: using vim9lsp
-    #Plug 'yegappan/lsp'
+    #jetpack#add('yegappan/lsp')
     # }}}
 
     # Language {{{
     
 
     ######## C++
-    Plug 'octol/vim-cpp-enhanced-highlight', {'for': ['c', 'cpp']}
+    jetpack#add('octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cpp'] })
 
 
     ######## CSV
-    Plug 'chrisbra/csv.vim', { 'for': ['csv'] }
+    jetpack#add('chrisbra/csv.vim', { 'for': 'csv' })
+
+
+    ######## CSV
+    jetpack#add('vim-crystal/vim-crystal', { 'for': 'crystal' })
 
 
     ######## CSS && HTML
-    Plug 'hail2u/vim-css3-syntax'
-    Plug 'othree/html5.vim'
+    jetpack#add('hail2u/vim-css3-syntax')
+    jetpack#add('othree/html5.vim')
     
     
     ######## Qt
-    Plug 'peterhoeg/vim-qml'
-    Plug 'pboettch/vim-cmake-syntax'
+    jetpack#add('peterhoeg/vim-qml')
+    jetpack#add('pboettch/vim-cmake-syntax')
 
 
     ######## Rust
-    Plug 'cespare/vim-toml', { 'branch': 'main' }
+    jetpack#add('cespare/vim-toml', { 'branch': 'main' })
     # Playpen integration
-    Plug 'mattn/webapi-vim'
-    Plug 'rust-lang/rust.vim', {'for': 'rust'}
+    jetpack#add('mattn/webapi-vim')
+    jetpack#add('rust-lang/rust.vim', { 'for': 'rust' })
     #g:autofmt_autosave = 1
     # Cargo
-    Plug 'timonv/vim-cargo'
+    jetpack#add('timonv/vim-cargo')
 
 
     ######## Scala
-    Plug 'derekwyatt/vim-scala', {'for': 'scala'}
-    Plug 'lfiolhais/vim-chisel'
+    jetpack#add('derekwyatt/vim-scala', { 'for': 'scala' })
+    jetpack#add('lfiolhais/vim-chisel')
 
     ######## Python
-    Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
+    jetpack#add('Vimjas/vim-python-pep8-indent', { 'for': 'python' })
 
 
     ######## Go
-    Plug 'fatih/vim-go', {'for': 'go'}
+    jetpack#add('fatih/vim-go', { 'for': 'go' })
     
     
     ######## TypeScript
-    Plug 'HerringtonDarkholme/yats.vim', {'for': ['javescript', 'typescript']}
+    jetpack#add('HerringtonDarkholme/yats.vim', { 'for': ['javescript', 'typescript'] })
     # https://thoughtbot.com/blog/modern-typescript-and-react-development-in-vim
-    Plug 'pangloss/vim-javascript', {'for': ['javescript', 'typescript']}
-    Plug 'jelera/vim-javascript-syntax', {'for': ['javescript', 'typescript']}
-    Plug 'styled-components/vim-styled-components', { 'branch': 'main', 'for': ['javescript', 'typescript'] }
-    Plug 'jparise/vim-graphql', {'for': ['javescript', 'typescript']}
+    jetpack#add('pangloss/vim-javascript', { 'for': ['javescript', 'typescript'] })
+    jetpack#add('jelera/vim-javascript-syntax', { 'for': ['javescript', 'typescript'] })
+    jetpack#add('styled-components/vim-styled-components', { 'branch': 'main', 'for': ['javescript', 'typescript'] })
+    jetpack#add('jparise/vim-graphql', { 'for': ['javescript', 'typescript'] })
 
 
     ######## Markdown
-    Plug 'godlygeek/tabular', {'for': 'markdown'}
-    Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
+    jetpack#add('godlygeek/tabular', { 'for': 'markdown' })
+    jetpack#add('plasticboy/vim-markdown', { 'for': 'markdown' })
 
 
     ######## Vim Script
-    Plug 'Shougo/neco-vim', {'for':'vim'}
+    jetpack#add('Shougo/neco-vim', { 'for': 'vim' })
 
 
     ######## Haskell
-    Plug 'neovimhaskell/haskell-vim', {'for': 'haskell'}
+    jetpack#add('neovimhaskell/haskell-vim', { 'for': 'haskell' })
 
 
     ######## LaTeX
-    Plug 'lervag/vimtex', {'for': ['tex', 'latex']}
+    jetpack#add('lervag/vimtex', { 'for': ['tex', 'latex'] })
 
 
     ######## Nginx
-    Plug 'chr4/nginx.vim'
+    jetpack#add('chr4/nginx.vim')
 
 
     ######## systemd files
-    Plug 'Matt-Deacalion/vim-systemd-syntax'
+    jetpack#add('Matt-Deacalion/vim-systemd-syntax')
 
 
     ######## Beancount
-    Plug 'nathangrigg/vim-beancount'
+    jetpack#add('nathangrigg/vim-beancount')
 
 
     ######## Nftables
-    Plug 'nfnty/vim-nftables'
+    jetpack#add('nfnty/vim-nftables')
 
 
     ######## Kitty
-    Plug 'fladson/vim-kitty'
+    jetpack#add('fladson/vim-kitty')
     
     
     ######## GNU
-    Plug 'mattkretz/vim-gnuindent'
+    jetpack#add('mattkretz/vim-gnuindent')
 
 
     ######## Others
-    Plug 'rhysd/vim-syntax-codeowners'
+    jetpack#add('rhysd/vim-syntax-codeowners')
     #}}}
 
-call plug#end()
+jetpack#end()
 
 
-call wilder#setup({
+wilder#setup({
     'modes': [':', '/', '?'],
     'enable_cmdline_enter': 0,
 })
-call wilder#set_option('pipeline', [
+wilder#set_option('pipeline', [
     wilder#branch(
         wilder#cmdline_pipeline(),
         wilder#search_pipeline(),
     ),
 ])
-call wilder#set_option('renderer', wilder#popupmenu_renderer({
+wilder#set_option('renderer', wilder#popupmenu_renderer({
     'highlighter': wilder#basic_highlighter(),
 }))
 
 # https://github.com/ycm-core/YouCompleteMe/issues/36#issuecomment-171966710
 def g:UltiSnips_Complete(): string
-    call UltiSnips#ExpandSnippet()
+    UltiSnips#ExpandSnippet()
     if g:ulti_expand_res == 0
         if pumvisible()
             return "\<C-n>"
         else
-            call UltiSnips#JumpForwards()
+            UltiSnips#JumpForwards()
             if g:ulti_jump_forwards_res == 0
                 return "\<TAB>"
             endif
@@ -271,7 +267,7 @@ def g:UltiSnips_Complete(): string
 enddef
 
 def g:UltiSnips_Reverse(): string
-    call UltiSnips#JumpBackwards()
+    UltiSnips#JumpBackwards()
     if g:ulti_jump_backwards_res == 0
         return "\<C-P>"
     endif

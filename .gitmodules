@@ -6,3 +6,6 @@
 	path = zsh/.config/zsh.d/plugins/history-search-multi-word
 	url = https://github.com/zdharma-continuum/history-search-multi-word.git
 	ignore = untracked
+[submodule "vim/.vim/pack/package-manager/opt/jetpack"]
+	path = vim/.vim/pack/package-manager/opt/jetpack
+	url = https://github.com/tani/vim-jetpack
