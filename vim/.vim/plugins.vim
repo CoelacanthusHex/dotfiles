@@ -147,6 +147,10 @@ call plug#begin('~/.vim/plugged')
     Plug 'octol/vim-cpp-enhanced-highlight', {'for': ['c', 'cpp']}
 
 
+    ######## CSV
+    Plug 'chrisbra/csv.vim', { 'for': ['csv'] }
+
+
     ######## CSS && HTML
     Plug 'hail2u/vim-css3-syntax'
     Plug 'othree/html5.vim'
