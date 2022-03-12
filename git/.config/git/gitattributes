@@ -12,14 +12,14 @@
 *.docx     diff=word
 
 # Scripts
-*.bash     text eol=lf
-*.fish     text eol=lf
-*.sh       text eol=lf
-*.zsh      text eol=lf
+#*.bash     text eol=lf
+#*.fish     text eol=lf
+#*.sh       text eol=lf
+#*.zsh      text eol=lf
 # These are explicitly windows files and should use crlf
-*.bat      text eol=crlf
-*.cmd      text eol=crlf
-*.ps1      text eol=crlf
+#*.bat      text eol=crlf
+#*.cmd      text eol=crlf
+#*.ps1      text eol=crlf
 
 # Ada
 *.ada      text diff=ada
@@ -104,37 +104,37 @@ Cargo.lock text
 *.scss     text diff=css
 
 # PowerShell
-*.ps1      text eol=crlf
-*.ps1x     text eol=crlf
-*.psm1     text eol=crlf
-*.psd1     text eol=crlf
-*.ps1xml   text eol=crlf
-*.pssc     text eol=crlf
-*.psrc     text eol=crlf
-*.cdxml    text eol=crlf
+#*.ps1      text eol=crlf
+#*.ps1x     text eol=crlf
+#*.psm1     text eol=crlf
+#*.psd1     text eol=crlf
+#*.ps1xml   text eol=crlf
+#*.pssc     text eol=crlf
+#*.psrc     text eol=crlf
+#*.cdxml    text eol=crlf
 
 # Windows
-*.sln        text eol=crlf
-*.csproj     text eol=crlf
-*.vbproj     text eol=crlf
-*.vcxproj    text eol=crlf
-*.vcproj     text eol=crlf
-*.dbproj     text eol=crlf
-*.fsproj     text eol=crlf
-*.lsproj     text eol=crlf
-*.wixproj    text eol=crlf
-*.modelproj  text eol=crlf
-*.sqlproj    text eol=crlf
-*.wwaproj    text eol=crlf
-*.vcxproj.filters text eol=crlf
+#*.sln        text eol=crlf
+#*.csproj     text eol=crlf
+#*.vbproj     text eol=crlf
+#*.vcxproj    text eol=crlf
+#*.vcproj     text eol=crlf
+#*.dbproj     text eol=crlf
+#*.fsproj     text eol=crlf
+#*.lsproj     text eol=crlf
+#*.wixproj    text eol=crlf
+#*.modelproj  text eol=crlf
+#*.sqlproj    text eol=crlf
+#*.wwaproj    text eol=crlf
+#*.vcxproj.filters text eol=crlf
 # Including templates
-*.sln.tmpl        text eol=crlf
-*.props.tmpl      text eol=crlf
-*.vcxproj.tmpl    text eol=crlf
-*.msh             text eol=crlf
-*.msh1            text eol=crlf
-*.msh2            text eol=crlf
-*.mshxml          text eol=crlf
-*.msh1xml         text eol=crlf
-*.msh2xml         text eol=crlf
-*.mcf             text eol=crlf
+#*.sln.tmpl        text eol=crlf
+#*.props.tmpl      text eol=crlf
+#*.vcxproj.tmpl    text eol=crlf
+#*.msh             text eol=crlf
+#*.msh1            text eol=crlf
+#*.msh2            text eol=crlf
+#*.mshxml          text eol=crlf
+#*.msh1xml         text eol=crlf
+#*.msh2xml         text eol=crlf
+#*.mcf             text eol=crlf
