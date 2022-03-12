@@ -35,7 +35,9 @@ jetpack#begin('~/.vim/plugged')
     # Auto pairs
     jetpack#add('Raimondi/delimitMate')
     # Tagbar
-    jetpack#add('majutsushi/tagbar')
+    if executable('ctags')
+        jetpack#add('majutsushi/tagbar')
+    endif
     # Rainbow
     jetpack#add('91khr/rainbow')
     g:rainbow_active = 1
@@ -64,8 +66,10 @@ jetpack#begin('~/.vim/plugged')
 
     jetpack#add('dense-analysis/ale', { 'for': ['sh', 'c', 'cpp', 'rust', 'python', 'go', 'tex'] })
 
-    jetpack#add('vim-scripts/gtags.vim')
-    jetpack#add('ludovicchabant/vim-gutentags')
+    if executable('gtags') || executable('ctags')
+        jetpack#add('vim-scripts/gtags.vim')
+        jetpack#add('ludovicchabant/vim-gutentags')
+    endif
     
     jetpack#add('gelguy/wilder.nvim')
     # Not need for we don't use fuzzy
@@ -133,29 +137,22 @@ jetpack#begin('~/.vim/plugged')
     # }}}
 
     # Language {{{
-    
-
     ######## C++
     jetpack#add('octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cpp'] })
-
 
     ######## CSV
     jetpack#add('chrisbra/csv.vim', { 'for': 'csv' })
 
-
     ######## CSV
     jetpack#add('vim-crystal/vim-crystal', { 'for': 'crystal' })
-
 
     ######## CSS && HTML
     jetpack#add('hail2u/vim-css3-syntax')
     jetpack#add('othree/html5.vim')
     
-    
     ######## Qt
     jetpack#add('peterhoeg/vim-qml')
     jetpack#add('pboettch/vim-cmake-syntax')
-
 
     ######## Rust
     jetpack#add('cespare/vim-toml', { 'branch': 'main' })
@@ -166,7 +163,6 @@ jetpack#begin('~/.vim/plugged')
     # Cargo
     jetpack#add('timonv/vim-cargo')
 
-
     ######## Scala
     jetpack#add('derekwyatt/vim-scala', { 'for': 'scala' })
     jetpack#add('lfiolhais/vim-chisel')
@@ -174,10 +170,8 @@ jetpack#begin('~/.vim/plugged')
     ######## Python
     jetpack#add('Vimjas/vim-python-pep8-indent', { 'for': 'python' })
 
-
     ######## Go
     jetpack#add('fatih/vim-go', { 'for': 'go' })
-    
     
     ######## TypeScript
     jetpack#add('HerringtonDarkholme/yats.vim', { 'for': ['javescript', 'typescript'] })
@@ -187,52 +181,46 @@ jetpack#begin('~/.vim/plugged')
     jetpack#add('styled-components/vim-styled-components', { 'branch': 'main', 'for': ['javescript', 'typescript'] })
     jetpack#add('jparise/vim-graphql', { 'for': ['javescript', 'typescript'] })
 
-
     ######## Markdown
     jetpack#add('godlygeek/tabular', { 'for': 'markdown' })
     jetpack#add('plasticboy/vim-markdown', { 'for': 'markdown' })
 
-
     ######## Vim Script
     jetpack#add('Shougo/neco-vim', { 'for': 'vim' })
-
 
     ######## Haskell
     jetpack#add('neovimhaskell/haskell-vim', { 'for': 'haskell' })
 
-
     ######## LaTeX
     jetpack#add('lervag/vimtex', { 'for': ['tex', 'latex'] })
-
 
     ######## Nginx
     jetpack#add('chr4/nginx.vim')
 
-
     ######## systemd files
     jetpack#add('Matt-Deacalion/vim-systemd-syntax')
-
 
     ######## Beancount
     jetpack#add('nathangrigg/vim-beancount')
 
-
     ######## Nftables
     jetpack#add('nfnty/vim-nftables')
-
 
     ######## Kitty
     jetpack#add('fladson/vim-kitty')
     
-    
     ######## GNU
     jetpack#add('mattkretz/vim-gnuindent')
-
+    
+    ######## Kotlin
+    jetpack#add('udalov/kotlin-vim', { 'for': 'kotlin' })
+    
+    ######## GLSL
+    jetpack#add('tikhomirov/vim-glsl', { 'for': 'glsl' })
 
     ######## Others
     jetpack#add('rhysd/vim-syntax-codeowners')
     #}}}
-
 jetpack#end()
 
 
@@ -249,6 +237,7 @@ wilder#set_option('pipeline', [
 wilder#set_option('renderer', wilder#popupmenu_renderer({
     'highlighter': wilder#basic_highlighter(),
 }))
+
 
 # https://github.com/ycm-core/YouCompleteMe/issues/36#issuecomment-171966710
 def g:UltiSnips_Complete(): string
