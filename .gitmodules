@@ -9,3 +9,6 @@
 [submodule "vim/.vim/pack/package-manager/opt/jetpack"]
 	path = vim/.vim/pack/package-manager/opt/jetpack
 	url = https://github.com/tani/vim-jetpack
+[submodule "vim/.vim/pack/theme/opt/solarized8"]
+	path = vim/.vim/pack/theme/opt/solarized8
+	url = https://github.com/lifepillar/vim-solarized8.git

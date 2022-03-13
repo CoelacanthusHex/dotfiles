@@ -90,11 +90,12 @@ if filereadable(expand('~/.vim/plugins.vim'))
     colorscheme onedark
 else
     set background=dark
-    colorscheme industry
+    g:solarized_extra_hi_groups = 1
+    colorscheme solarized8
 endif
 if &term == "linux"
     g:airline_symbols_ascii = 1
-    g:airline_theme = 'base16_gruvbox_dark_hard'
+    g:airline_theme = 'solarized'
     if !exists('g:airline_symbols')
         g:airline_symbols = {}
     endif
