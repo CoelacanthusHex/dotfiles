@@ -46,7 +46,7 @@ jetpack#begin('~/.vim/plugged')
     # Color code
     #Jetpack 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
     # Auto detect indent size
-    jetpack#add('tpope/vim-sleuth')
+    jetpack#add('tpope/vim-sleuth', { commit: 'e726df55a669f02699b7ac396011315370752f4e' })
     # Unicode
     jetpack#add('chrisbra/unicode.vim')
     # Sudo support
