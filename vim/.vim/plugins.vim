@@ -50,7 +50,7 @@ jetpack#begin('~/.vim/plugged')
     # Unicode
     jetpack#add('chrisbra/unicode.vim')
     # Sudo support
-    jetpack#add('lambdalisue/suda.vim')
+    jetpack#add('tpope/vim-eunuch')
     # Snippets
     jetpack#add('SirVer/ultisnips')
     g:UltiSnipsSnippetDirectories = [$HOME .. '/.vim/UltiSnips']
