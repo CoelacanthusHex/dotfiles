@@ -81,8 +81,43 @@ jetpack#begin('~/.vim/plugged')
     # }}}
 
     # Auto-complete {{{
-    # Using YouCompleteMe now
-    if has("win32") || has("win64") || !filereadable('/usr/share/vim/vimfiles/jetpackin/youcompleteme.vim')
+    if filereadable('/usr/share/vim/vimfiles/plugin/youcompleteme.vim')
+        # Using YouCompleteMe when available
+    elseif executable("deno")
+        # Using ddc {{{
+        jetpack#add('vim-denops/denops.vim')
+        jetpack#add('Shougo/ddc.vim')
+        
+        # Sources {{{
+        # Use around source.
+        # https://github.com/Shougo/ddc-around
+        jetpack#add('Shougo/ddc-around')
+        jetpack#add('Shougo/neco-vim')
+        jetpack#add('prabirshrestha/vim-lsp')
+        jetpack#add('shun/ddc-vim-lsp')
+        jetpack#add('mattn/vim-lsp-settings')
+        jetpack#add('matsui54/denops-signature_help')
+        jetpack#add('LumaKernel/ddc-file')
+        jetpack#add('matsui54/ddc-buffer')
+        jetpack#add('Shougo/ddc-zsh')
+        jetpack#add('matsui54/ddc-dictionary')
+        if executable('ctags')
+            jetpack#add('delphinus/ddc-ctags')
+        endif
+        jetpack#add('Shougo/ddc-omni')
+        jetpack#add('matsui54/ddc-ultisnips')
+
+        # }}}
+
+        # filters {{{
+        jetpack#add('Shougo/ddc-matcher_head')
+        jetpack#add('Shougo/ddc-sorter_rank')
+        jetpack#add('matsui54/ddc-filter_editdistance')
+        # }}}
+            
+        # }}}
+    else
+        # Using asyncomplete {{{
         jetpack#add('prabirshrestha/vim-lsp')
         jetpack#add('mattn/vim-lsp-settings')
         jetpack#add('prabirshrestha/asyncomplete.vim')
@@ -131,6 +166,7 @@ jetpack#begin('~/.vim/plugged')
         
         g:asyncomplete_auto_popup = 1
         g:lsp_diagnostics_enabled = 0
+        # }}}
     endif
     # TODO: using vim9lsp
     #jetpack#add('yegappan/lsp')
@@ -223,6 +259,113 @@ jetpack#begin('~/.vim/plugged')
     #}}}
 jetpack#end()
 
+if jetpack#tap('ddc.vim')
+    ddc#custom#patch_global('sources', ['around', 'neco-vim', 'vim-lsp', 'file', 'buffer', 'zsh', 'dictionary', 'ctags', 'omni', 'ultisnips'])
+    ddc#custom#patch_global('sourceParams', {
+        \ 'around': {'maxSize': 500},
+        \ 'buffer': {
+        \   'requireSameFiletype': v:false,
+        \   'limitBytes': 5000000,
+        \   'fromAltBuf': v:true,
+        \   'forceCollect': v:true,
+        \ },
+        \ 'dictionary': {
+        \   'dictPaths': [
+        \     '/usr/share/dict/usa',
+        \      '/usr/share/dict/british'
+        \   ],
+        \ 'smartCase': v:true,
+        \ }
+        \ })
+
+    ddc#custom#patch_global('sourceOptions', {
+        \ '_': {
+        \   'matchers': ['matcher_head'],
+        \   'sorters': ['sorter_rank']
+        \ },
+        \ 'dictionary': {
+        \   'mark': 'dict',
+        \   'matchers': ['matcher_editdistance'],
+        \   'sorters': [], 
+        \ },
+        \ 'vim-lsp': {
+        \   'mark': 'lsp',
+        \   'dup': v:true,
+        \   'matchers': ['matcher_head'],
+        \   'forceCompletionPattern': "\\.|:\\s*|->",
+        \   'minAutoCompleteLength': 1,
+        \ },
+        \ 'zsh': {
+        \   'mark': 'zsh'
+        \ },
+        \ 'buffer': {
+        \   'mark': 'buffer'
+        \ },
+        \ 'omni': {
+        \   'mark': 'omni'
+        \ },
+        \ 'ultisnips': {
+        \   'mark': 'snippet'
+        \ },
+        \ 'file': {
+        \   'mark': 'file',
+        \   'isVolatile': v:true,
+        \   'forceCompletionPattern': '\S/\S*',
+        \ },
+        \ 'around': {'mark': 'around'},
+        \ 'ctags': {'mark': 'ctags'},
+        \ })
+
+    # Customize settings on a filetype
+    ddc#custom#patch_filetype(['c', 'cpp', 'rust'], {
+        \ 'sources': ['vim-lsp', 'around', 'buffer'],
+        \ 'sourceParams': {
+        \   'vim-lsp': {
+        \     'ignoreCompleteProvider': v:true,
+        \   },
+        \ },
+        \ })
+    #autocmd FileType c,cpp signature_help#enable()
+    #g:lsp_signature_help_enabled = 0
+    ddc#custom#patch_filetype(['help', 'markdown', 'tex', 'gitcommit'], {
+        \ 'sources': ['around', 'dictionary'],
+        \ })
+    ddc#custom#patch_filetype(['snippets'], {
+        \ 'sources': ['ultisnips'],
+        \ })
+    ddc#custom#patch_filetype(['zsh'], {
+        \ 'sources': ['zsh', 'buffer', 'around', 'file', 'dictionary'],
+        \ })
+    ddc#custom#patch_filetype('markdown', 'sourceParams', {
+        \ 'around': {
+        \   'maxSize': 100
+        \ },
+        \ })
+    ddc#custom#patch_filetype(['ps1', 'dosbatch', 'autohotkey', 'registry'], {
+        \ 'sourceOptions': {
+        \   'file': {
+        \     'forceCompletionPattern': '\S\\\S*',
+        \   },
+        \ },
+        \ 'sourceParams': {
+        \   'file': {
+        \     'mode': 'win32',
+        \   },
+        \ }})
+    # Mappings
+
+    # <TAB>: completion.
+    inoremap <expr><TAB>
+        \ ddc#map#pum_visible() ? '<C-n>' :
+        \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+        \ '<TAB>' : ddc#map#manual_complete()
+
+    # <S-TAB>: completion back.
+    inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
+
+    # Use ddc.
+    ddc#enable()
+endif
 
 wilder#setup({
     'modes': [':', '/', '?'],
@@ -237,7 +380,6 @@ wilder#set_option('pipeline', [
 wilder#set_option('renderer', wilder#popupmenu_renderer({
     'highlighter': wilder#basic_highlighter(),
 }))
-
 
 # https://github.com/ycm-core/YouCompleteMe/issues/36#issuecomment-171966710
 def g:UltiSnips_Complete(): string

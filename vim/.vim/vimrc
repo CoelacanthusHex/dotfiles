@@ -31,14 +31,6 @@ var rtp = split(&runtimepath, ',')
 &runtimepath = join(rtp, ',')
 # }}}
 
-# Plugins {{{
-
-if filereadable(expand('~/.vim/plugins.vim'))
-    source ~/.vim/plugins.vim
-endif
-
-# }}}
-
 # Platform specific config {{{
 
 if has('win32')
@@ -83,6 +75,14 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 nmap ga <Plug>(UnicodeGA)
+# }}}
+
+# Plugins {{{
+
+if filereadable(expand('~/.vim/plugins.vim'))
+    source ~/.vim/plugins.vim
+endif
+
 # }}}
 
 # Color Scheme {{{

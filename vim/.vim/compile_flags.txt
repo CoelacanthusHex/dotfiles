@@ -1,0 +1,5 @@
+-std=c++2b
+-Wall
+-Wextra
+-Weffc++
+-pedantic
