@@ -88,13 +88,13 @@ ddc#custom#patch_filetype(['c', 'cpp', 'rust'], {
     \ }
     \ })
 ddc#custom#patch_filetype(['help', 'markdown', 'tex', 'gitcommit'], {
-    \ 'sources': ['around', 'dictionary'],
+    \ 'sources': ['around'],
     \ })
 ddc#custom#patch_filetype(['snippets'], {
     \ 'sources': ['ultisnips'],
     \ })
 ddc#custom#patch_filetype(['zsh'], {
-    \ 'sources': ['zsh', 'buffer', 'around', 'file', 'dictionary'],
+    \ 'sources': ['zsh', 'buffer', 'around', 'file'],
     \ })
 ddc#custom#patch_filetype('markdown', 'sourceParams', {
     \ 'around': {
