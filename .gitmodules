@@ -12,3 +12,6 @@
 [submodule "vim/.vim/pack/theme/opt/solarized8"]
 	path = vim/.vim/pack/theme/opt/solarized8
 	url = https://github.com/lifepillar/vim-solarized8.git
+[submodule "vim/.vim/pack/package-manager/opt/dein"]
+	path = vim/.vim/pack/package-manager/opt/dein
+	url = https://github.com/Shougo/dein.vim.git

@@ -1,0 +1,97 @@
+# SPDX-License-Identifier: MPL-2.0
+# SPDX-FileCopyrightText: Coelacanthus
+
+[[plugins]]
+repo = 'Shougo/ddc.vim'
+depends = ['context_filetype.vim', 'denops.vim', 'pum.vim']
+on_event = ['InsertEnter', 'CursorHold']
+if = '!filereadable("/usr/share/vim/vimfiles/plugin/youcompleteme.vim") && executable("deno")'
+hook_source = '''
+    source ~/.vim/dein.d/ddc.rc.vim
+'''
+
+[[plugins]]
+repo = 'Shougo/pum.vim'
+
+# Source
+[[plugins]]
+repo = 'Shougo/ddc-around'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/neco-vim'
+on_ft = ['vim', 'toml', 'markdown']
+depends = 'ddc.vim'
+hook_source = '''
+  call ddc#custom#patch_filetype(['vim'], 
+    \ 'sources', ['necovim', 'around', 'file']
+    \ )
+'''
+
+[[plugins]]
+repo = 'LumaKernel/ddc-file'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'matsui54/ddc-buffer'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-omni'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'shun/ddc-vim-lsp'
+on_source = 'ddc.vim'
+depends = ['vim-lsp', 'vim-lsp-settings']
+
+[[plugins]]
+repo = 'matsui54/denops-signature_help'
+#on_source = 'ddc-vim-lsp'
+depends = ['denops.vim', 'vim-lsp']
+hook_source = '''
+    autocmd FileType c,cpp call signature_help#enable()
+    let g:lsp_signature_help_enabled = 0
+'''
+
+[[plugins]]
+repo = 'Shougo/ddc-zsh'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'matsui54/ddc-dictionary'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'matsui54/ddc-ultisnips'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'delphinus/ddc-ctags'
+on_source = 'ddc.vim'
+if = "executable('ctags')"
+
+
+# Filter
+[[plugins]]
+repo = 'Shougo/ddc-matcher_head'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-matcher_length'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-sorter_rank'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-converter_remove_overlap'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'matsui54/ddc-filter_editdistance'
+on_source = 'ddc.vim'
+
+# vim: set sw=4 ts=8 sts=4 et foldmethod=marker:
+# kate: space-indent on; indent-width 4; syntax toml;

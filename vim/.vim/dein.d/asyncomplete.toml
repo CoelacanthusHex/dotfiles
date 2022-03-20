@@ -1,0 +1,56 @@
+# SPDX-License-Identifier: MPL-2.0
+# SPDX-FileCopyrightText: Coelacanthus
+
+        # Using asyncomplete {{{
+        jetpack#add('prabirshrestha/vim-lsp')
+        jetpack#add('mattn/vim-lsp-settings')
+        jetpack#add('prabirshrestha/asyncomplete.vim')
+        jetpack#add('prabirshrestha/asyncomplete-lsp.vim')
+        jetpack#add('prabirshrestha/asyncomplete-file.vim')
+        jetpack#add('prabirshrestha/asyncomplete-buffer.vim')
+        jetpack#add('hiterm/asyncomplete-look')
+        jetpack#add('Shougo/neco-vim')
+        jetpack#add('prabirshrestha/asyncomplete-necovim.vim')
+        if executable('ctags')
+            jetpack#add('prabirshrestha/asyncomplete-tags.vim')
+            jetpack#add('ludovicchabant/vim-gutentags')
+            autocmd User asyncomplete_setup asyncomplete#register_source({
+                \ name: 'tags',
+                \ allowlist: ['c'],
+                \ completor: function('asyncomplete#sources#tags#completor'),
+            \ })
+        endif
+
+        autocmd User asyncomplete_setup asyncomplete#register_source({
+            \ name: 'file',
+            \ allowlist: ['*'],
+            \ priority: 10,
+            \ completor: function('asyncomplete#sources#file#completor')
+        \ })
+        autocmd User asyncomplete_setup asyncomplete#register_source({
+            \ name: 'buffer',
+            \ allowlist: ['*'],
+            \ blocklist: ['go'],
+            \ priority: 10,
+            \ completor: function('asyncomplete#sources#buffer#completor'),
+            \ config: {
+            \     max_buffer_size: 5000000,
+            \ },
+        \ })
+        autocmd User asyncomplete_setup asyncomplete#register_source({
+            \ name: 'look',
+            \ allowlist: ['text', 'markdown', 'tex', 'gitcommit'],
+            \ completor: function('asyncomplete#sources#look#completor'),
+        \ })
+        autocmd User asyncomplete_setup asyncomplete#register_source({
+            \ name: 'necovim',
+            \ allowlist: ['vim'],
+            \ completor: function('asyncomplete#sources#necovim#completor'),
+        \ })
+        
+        g:asyncomplete_auto_popup = 1
+        g:lsp_diagnostics_enabled = 0
+        # }}
+
+# vim: set sw=4 ts=8 sts=4 et foldmethod=marker:
+# kate: space-indent on; indent-width 4; syntax toml;
