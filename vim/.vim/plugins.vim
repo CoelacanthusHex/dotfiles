@@ -34,3 +34,19 @@ if dein#min#load_state(path)
     dein#end()
     dein#save_state()
 endif
+
+if dein#tap('wilder.nvim')
+    wilder#setup({
+        \   'modes': [':', '/', '?'],
+        \   'enable_cmdline_enter': 0,
+        \ })
+    wilder#set_option('pipeline', [
+        \ wilder#branch(
+        \     wilder#cmdline_pipeline(),
+        \     wilder#search_pipeline(),
+        \ ),
+        \ ])
+    wilder#set_option('renderer', wilder#popupmenu_renderer({
+        \ 'highlighter': wilder#basic_highlighter(),
+        \ }))
+endif

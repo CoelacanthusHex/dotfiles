@@ -3,6 +3,7 @@
 
 [[plugins]]
 repo = 'vim-denops/denops.vim'
+if = "executable('deno')"
 
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
@@ -18,7 +19,7 @@ if = '!has("win32") && !has("win64") && exists("$DBUS_SESSION_BUS_ADDRESS")'
 [[plugins]]
 repo = 'majutsushi/tagbar'
 if = "executable('ctags')"
-depends = ['vim-scripts/gtags.vim', 'ludovicchabant/vim-gutentags']
+depends = ['gtags.vim', 'vim-gutentags']
 
 [[plugins]]
 repo = 'dense-analysis/ale'
@@ -46,6 +47,10 @@ repo = 'roxma/vim-hug-neovim-rpc'
 [[plugins]]
 repo = 'dstein64/vim-startuptime'
 on_cmd = 'StartupTime'
+
+[[plugins]]
+repo = 'rhysd/vim-healthcheck'
+on_cmd = 'CheckHealth'
 
 [[plugins]]
 repo = 'octol/vim-cpp-enhanced-highlight'
@@ -173,6 +178,9 @@ on_ft = ['glsl']
 repo = 'rhysd/vim-syntax-codeowners'
 on_ft = ['codeowners']
 
+[[plugins]]
+repo = 'rbtnn/vim-vimscript_indentexpr'
+on_ft = ['vim']
 
 # vim: set sw=4 ts=8 sts=4 et foldmethod=marker:
 # kate: space-indent on; indent-width 4; syntax toml;

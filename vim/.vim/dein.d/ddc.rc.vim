@@ -30,7 +30,8 @@ ddc#custom#patch_global('sourceParams', {
 ddc#custom#patch_global('sourceOptions', {
     \ '_': {
     \   'matchers': ['matcher_head'],
-    \   'sorters': ['sorter_rank']
+    \   'sorters': ['sorter_rank'],
+    \   'converters': ['converter_remove_overlap'],
     \ },
     \ 'dictionary': {
     \   'mark': 'dict',
@@ -45,28 +46,35 @@ ddc#custom#patch_global('sourceOptions', {
     \   'minAutoCompleteLength': 1,
     \ },
     \ 'zsh': {
-    \   'mark': 'zsh'
+    \   'mark': 'zsh',
     \ },
     \ 'buffer': {
-    \   'mark': 'buffer'
+    \   'mark': 'buffer',
     \ },
     \ 'omni': {
-    \   'mark': 'omni'
+    \   'mark': 'omni',
     \ },
     \ 'ultisnips': {
-    \   'mark': 'snippet'
+    \   'mark': 'snippet',
     \ },
     \ 'file': {
     \   'mark': 'file',
     \   'isVolatile': v:true,
     \   'forceCompletionPattern': '\S/\S*',
     \ },
-    \ 'around': {'mark': 'around'},
-    \ 'ctags': {'mark': 'ctags'},
-    \ 'necovim': {'mark': 'neco'},
+    \ 'around': {
+    \   'mark': 'around',
+    \   'matchers': ['matcher_head', 'matcher_length'],
+    \ },
+    \ 'ctags': {
+    \   'mark': 'ctags',
+    \   'forceCompletionPattern': '\.\w*|:\w*|->\w*',
+    \ },
+    \ 'necovim': {
+    \   'mark': 'neco',
+    \ },
     \ })
 
-# Customize settings on a filetype
 ddc#custom#patch_filetype(['c', 'cpp', 'rust'], {
     \ 'sources': ['vim-lsp', 'around', 'buffer'],
     \ 'sourceOptions': {
