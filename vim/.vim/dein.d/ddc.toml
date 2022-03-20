@@ -50,11 +50,19 @@ on_source = 'ddc.vim'
 depends = ['denops.vim', 'vim-lsp', 'vim-lsp-settings']
 
 [[plugins]]
+repo = 'matsui54/denops-popup-preview.vim'
+on_source = 'ddc-vim-lsp'
+depends = ['denops.vim', 'vim-lsp']
+hook_source = '''
+    call popup_preview#enable()
+'''
+
+[[plugins]]
 repo = 'matsui54/denops-signature_help'
 #on_source = 'ddc-vim-lsp'
 depends = ['denops.vim', 'vim-lsp']
 hook_source = '''
-    autocmd FileType c,cpp call signature_help#enable()
+    call signature_help#enable()
     let g:lsp_signature_help_enabled = 0
 '''
 

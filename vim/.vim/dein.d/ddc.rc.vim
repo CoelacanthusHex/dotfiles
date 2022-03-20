@@ -42,7 +42,7 @@ ddc#custom#patch_global('sourceOptions', {
     \   'mark': 'lsp',
     \   'dup': v:true,
     \   'matchers': ['matcher_head'],
-    \   'forceCompletionPattern': '\.\w*|:\w*|->\w*',
+    \   'forceCompletionPattern': '\.\w*|:\w*|::\w*|->\w*',
     \   'minAutoCompleteLength': 1,
     \ },
     \ 'zsh': {
@@ -122,6 +122,7 @@ inoremap <expr><TAB>
 
 # <S-TAB>: completion back.
 inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
+inoremap <silent><expr> <C-l>   ddc#map#extend()
 
 # Use ddc.
 ddc#enable()
