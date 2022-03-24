@@ -360,9 +360,9 @@ endif
 
 " Enable a visual menu when using TAB autocomplete in command mode
 set wildmenu
-
 " 首先尝试最长的，接着轮换补全项
 set wildmode=longest:full,full
+set wildoptions=pum,fuzzy
 
 set completeopt+=longest
 try
