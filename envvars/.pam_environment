@@ -215,3 +215,7 @@ BROWSER           DEFAULT=/usr/bin/xdg-open
 # https://wiki.archlinux.org/title/Java#Better_font_rendering
 _JAVA_OPTIONS     DEFAULT="$_JAVA_OPTIONS} -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
 JDK_JAVA_OPTIONS  DEFAULT="${_JAVA_OPTIONS}"
+
+# HiDPI
+QT_AUTO_SCREEN_SCALE_FACTOR DEFAULT=1
+#PLASMA_USE_QT_SCALING       DEFAULT=1

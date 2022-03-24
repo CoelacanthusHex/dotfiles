@@ -154,3 +154,10 @@ export BROWSER=/usr/bin/xdg-open
 # https://wiki.archlinux.org/title/Java#Better_font_rendering
 export _JAVA_OPTIONS="$_JAVA_OPTIONS -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
 export JDK_JAVA_OPTIONS="$_JAVA_OPTIONS"
+
+# HiDPI
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export PLASMA_USE_QT_SCALING=1
+
+# vim: ft=bash sw=4 ts=8 sts=4 et:
+# kate: space-indent on; indent-width 4; syntax bash;
