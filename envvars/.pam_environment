@@ -210,6 +210,7 @@ USE_SYMENGINE     DEFAULT=1
 
 # For Mutt
 BROWSER           DEFAULT=/usr/bin/xdg-open
+MAIL              DEFAULT="$HOME/Mail"
 
 # Java Font Render
 # https://wiki.archlinux.org/title/Java#Better_font_rendering

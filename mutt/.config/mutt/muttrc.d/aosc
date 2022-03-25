@@ -1,0 +1,48 @@
+set realname = "Celeste Liu"
+set from = "coelacanthus@aosc.io"
+
+unmy_hdr Bcc # since we may switch from other conf to here, we must unset it first
+# Add my header Bcc automatically
+# All outgoing mail would be in INBOX, such that the reply can follow the thread
+# Even we have one outgoing email in sent, it is not enough
+#my_hdr Bcc: "coelacanthus@aosc.io"
+# subscribed mailing lists
+unsubscribe *
+subscribe \
+  ^announcements@lists.aosc.io$ \
+  ^discussions@lists.aosc.io$ \
+  ^infra@lists.aosc.io$ \
+  ^mirrors@lists.aosc.io$ \
+  ^security-announcements@lists.aosc.io$
+
+# known mailing lists(may be unsubscribed)
+unlists *
+lists \
+  ^announcements@lists.aosc.io$ \
+  ^discussions@lists.aosc.io$ \
+  ^infra@lists.aosc.io$ \
+  ^mirrors@lists.aosc.io$ \
+  ^security-announcements@lists.aosc.io$
+
+
+set sendmail = "/usr/bin/sendmail -a aosc" # cooperate with sendmail, the name aosc is configured in sendmail
+
+# IMAP: offlineimap
+set folder = "~/Mail"
+source ~/.config/mutt/mailboxes
+set spoolfile = "+aosc/Inbox"
+set record = "+aosc/Sent"
+set postponed = "+aosc/Drafts"
+set trash = "+aosc/Junk"
+set move = no
+#set copy = no # since aosc will move it auto
+
+set signature = "~/.config/mutt/signature/aosc"
+
+# With this two keybind you can easily move **tagged**
+# emails into archive/INBOX
+# Currently disabled
+macro index A "<tag-prefix-cond><save-message>+aosc/archive<enter>" "Archive tagged mail"
+macro index I "<tag-prefix-cond><save-message>+aosc/<enter>" "Move message to INBOX"
+macro index .c "<tag-pattern>.<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>"
+

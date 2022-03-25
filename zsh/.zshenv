@@ -22,6 +22,8 @@ export SYSTEMD_EDITOR=$EDITOR
 export PAGER='less'
 export BROWSER=/usr/bin/xdg-open
 
+export MAIL="$HOME/Mail"
+
 # Ripgrep
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME"/ripgreprc
 

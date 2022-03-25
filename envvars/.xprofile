@@ -149,6 +149,7 @@ export USE_SYMENGINE=1
 
 # For Mutt
 export BROWSER=/usr/bin/xdg-open
+export MAIL="$HOME/Mail"
 
 # Java Font Render
 # https://wiki.archlinux.org/title/Java#Better_font_rendering

@@ -1,10 +1,6 @@
 set realname = "Coelacanthus"
 set from = "coelacanthus@outlook.com"
 
-set imap_user = coelacanthus@outlook.com
-set imap_pass = ********
-set folder = imaps://$imap_user@outlook.office365.com/
-
 unmy_hdr Bcc # since we may switch from other conf to here, we must unset it first
 # Add my header Bcc automatically
 # All outgoing mail would be in INBOX, such that the reply can follow the thread
@@ -12,7 +8,7 @@ unmy_hdr Bcc # since we may switch from other conf to here, we must unset it fir
 #my_hdr Bcc: "coelacanthus@outlook.com"
 # alternative addr for this account
 unalternates *
-alternates ^****@outlook.com$
+#alternates ^****@outlook.com$
 # subscribed mailing lists
 unsubscribe *
 subscribe \
@@ -25,6 +21,7 @@ subscribe \
   ^google-summer-of-code-announce@googlegroups.com$ \
   ^google-summer-of-code-discuss@googlegroups.com$ \
   ^arch-dev-public@lists.archlinux.org$ \
+  ^dn42@groups.io$ \
   ^ustc_lug@googlegroups.com$ \
   ^tuna-general@googlegroups.com$
 
@@ -51,16 +48,19 @@ lists \
   ^aur-general@lists.archlinux.org$ \
   ^aur-requests@lists.archlinux.org$ \
   ^pacman-dev@lists.archlinux.org$ \
+  ^dn42@groups.io$ \
   ^ustc_lug@googlegroups.com$ \
   ^tuna-general@googlegroups.com$
 
 set sendmail = "/usr/bin/sendmail -a outlook" # cooperate with sendmail, the name outlook is configured in sendmail
 
-set spoolfile = "+Inbox" # INBOX
-set mbox = "+outlook/archive" # Processed emails would lie here
-set record = "+Sent" # sent emails
-set postponed = "+Drafts" # composing emails
-set trash = "+Junk" # deleted emails
+# IMAP: offlineimap
+set folder = "~/Mail"
+set spoolfile = "+outlook/Inbox"
+set record = "+outlook/Sent"
+set postponed = "+outlook/Drafts"
+set trash = "+outlook/Junk"
+
 set move = no
 set copy = no # since outlook will move it auto
 
@@ -73,5 +73,3 @@ macro index A "<tag-prefix-cond><save-message>+outlook/archive<enter>" "Archive 
 macro index I "<tag-prefix-cond><save-message>+outlook/<enter>" "Move message to INBOX"
 macro index .c "<tag-pattern>.<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>"
 
-## Hook -- IMPORTANT!
-account-hook $folder "set imap_user=coelacanthus@outlook.com imap_pass=********"

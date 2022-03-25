@@ -1,0 +1,48 @@
+[general]
+accounts = outlook,aosc
+
+[Account outlook]
+localrepository = outlook-Local
+remoterepository = outlook-Remote
+utf8foldernames = yes
+# Minutes between syncs
+autorefresh = 15
+
+[Repository outlook-Local]
+type = Maildir
+localfolders = ~/Mail/outlook
+
+[Repository outlook-Remote]
+type = IMAP
+remotehost = outlook.office365.com
+remoteuser = coelacanthus@outlook.com
+remotepassfile = ~/.config/offlineimap/pass/outlook.txt
+ssl = no
+starttls = yes
+
+[Account aosc]
+localrepository = aosc-Local
+remoterepository = aosc-Remote
+utf8foldernames = yes
+# Minutes between syncs
+autorefresh = 15
+
+[Repository aosc-Local]
+type = Maildir
+localfolders = ~/Mail/aosc
+
+[Repository aosc-Remote]
+type = IMAP
+remotehost = mail20.mymailcheap.com
+remoteuser = coelacanthus@aosc.io
+remotepassfile = ~/.config/offlineimap/pass/aosc.txt
+ssl = no
+starttls = yes
+
+[mbnames]
+enabled = yes
+filename = ~/.config/mutt/mailboxes
+header = "mailboxes "
+peritem = "+%(accountname)s/%(foldername)s"
+sep = " "
+footer = "\n"
