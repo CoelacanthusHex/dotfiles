@@ -36,7 +36,6 @@ ddc#custom#patch_global('sourceOptions', {
     \ 'dictionary': {
     \   'mark': 'dict',
     \   'matchers': ['matcher_editdistance'],
-    \   'sorters': [], 
     \ },
     \ 'vim-lsp': {
     \   'mark': 'lsp',
@@ -88,7 +87,7 @@ ddc#custom#patch_filetype(['c', 'cpp', 'rust'], {
     \ }
     \ })
 ddc#custom#patch_filetype(['help', 'markdown', 'tex', 'gitcommit'], {
-    \ 'sources': ['around'],
+    \ 'sources': ['around', 'dictionary'],
     \ })
 ddc#custom#patch_filetype(['snippets'], {
     \ 'sources': ['ultisnips'],
