@@ -82,6 +82,11 @@ depends = ['denops.vim', 'ultisnips']
 on_source = 'ddc.vim'
 
 [[plugins]]
+repo = 'tani/ddc-git'
+depends = ['denops.vim']
+on_source = 'ddc.vim'
+
+[[plugins]]
 repo = 'delphinus/ddc-ctags'
 depends = ['denops.vim', 'vim-gutentags']
 on_source = 'ddc.vim'

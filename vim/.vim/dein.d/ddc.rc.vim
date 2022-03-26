@@ -14,11 +14,12 @@ ddc#custom#patch_global('sourceParams', {
     \   'limitBytes': 5000000,
     \   'fromAltBuf': v:true,
     \   'forceCollect': v:true,
+    \   'bufNameStyle': 'basename',
     \ },
     \ 'dictionary': {
     \   'dictPaths': [
     \     '/usr/share/dict/usa',
-    \      '/usr/share/dict/british'
+    \     '/usr/share/dict/british'
     \   ],
     \   'smartCase': v:true,
     \ },
@@ -33,9 +34,62 @@ ddc#custom#patch_global('sourceOptions', {
     \   'sorters': ['sorter_rank'],
     \   'converters': ['converter_remove_overlap'],
     \ },
+    \ 'around': {
+    \   'mark': 'around',
+    \   'matchers': ['matcher_head', 'matcher_length'],
+    \ },
+    \ 'buffer': {
+    \   'mark': 'buffer',
+    \ },
+    \ 'ctags': {
+    \   'mark': 'ctags',
+    \   'forceCompletionPattern': '\.\w*|:\w*|->\w*',
+    \ },
+    \ 'cmdline': {
+    \   'mark': 'cmd',
+    \   'forceCompletionPattern': "\\s|/|-", 
+    \   'minAutoCompleteLength': 1,
+    \ },
+    \ 'cmdline-history': {
+    \   'mark': 'history',
+    \   'matchers': ['matcher_head'], 
+    \   'sorters': [], 
+    \   'minAutoCompleteLength': 1,
+    \   'maxItems': 3,
+    \ },
     \ 'dictionary': {
     \   'mark': 'dict',
-    \   'matchers': ['matcher_editdistance'],
+    \   'matchers': ['matcher_editdistance', 'matcher_fuzzy'],
+    \   'sorters': [], 
+    \   'converters': ['converter_fuzzy'],
+    \   'maxItems': 10,
+    \   'minAutoCompleteLength': 3,
+    \ },
+    \ 'emoji': {
+    \   'mark': 'emoji',
+    \   'dup': v:true, 
+    \   'matcherKey': 'kind',
+    \   'minAutoCompleteLength': 1,
+    \ },
+    \ 'file': {
+    \   'mark': 'file',
+    \   'isVolatile': v:true,
+    \   'forceCompletionPattern': '\S/\S*',
+    \ },
+    \ 'necovim': {
+    \   'mark': 'neco',
+    \ },
+    \ 'omni': {
+    \   'mark': 'omni',
+    \ },
+    \ 'skkeleton': {
+    \   'mark': 'skk',
+    \   'matchers': ['skkeleton'],
+    \   'sorters': [],
+    \   'minAutoCompleteLength': 2,
+    \ },
+    \ 'ultisnips': {
+    \   'mark': 'snippet',
     \ },
     \ 'vim-lsp': {
     \   'mark': 'lsp',
@@ -47,32 +101,14 @@ ddc#custom#patch_global('sourceOptions', {
     \ 'zsh': {
     \   'mark': 'zsh',
     \ },
-    \ 'buffer': {
-    \   'mark': 'buffer',
-    \ },
-    \ 'omni': {
-    \   'mark': 'omni',
-    \ },
-    \ 'ultisnips': {
-    \   'mark': 'snippet',
-    \ },
-    \ 'file': {
-    \   'mark': 'file',
-    \   'isVolatile': v:true,
-    \   'forceCompletionPattern': '\S/\S*',
-    \ },
-    \ 'around': {
-    \   'mark': 'around',
-    \   'matchers': ['matcher_head', 'matcher_length'],
-    \ },
-    \ 'ctags': {
-    \   'mark': 'ctags',
-    \   'forceCompletionPattern': '\.\w*|:\w*|->\w*',
-    \ },
-    \ 'necovim': {
-    \   'mark': 'neco',
-    \ },
     \ })
+
+ddc#custom#patch_global('filterParams', {
+      \ 'matcher_editdistance': {
+      \   'showScore': v:true,
+      \   'limit': 10
+      \ },
+      \ })
 
 ddc#custom#patch_filetype(['c', 'cpp', 'rust'], {
     \ 'sources': ['vim-lsp', 'around', 'buffer'],
@@ -87,7 +123,10 @@ ddc#custom#patch_filetype(['c', 'cpp', 'rust'], {
     \ }
     \ })
 ddc#custom#patch_filetype(['help', 'markdown', 'tex', 'gitcommit'], {
-    \ 'sources': ['around', 'dictionary'],
+    \ 'sources': ['around', 'file', 'buffer', 'dictionary'],
+    \ })
+ddc#custom#patch_filetype(['gitcommit'], {
+    \ 'sources': ['around', 'file', 'buffer', 'dictionary', 'git-file', 'git-commit', 'git-branch'],
     \ })
 ddc#custom#patch_filetype(['snippets'], {
     \ 'sources': ['ultisnips'],
