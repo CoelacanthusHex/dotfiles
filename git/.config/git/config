@@ -71,4 +71,7 @@
 [includeIf "gitdir:~/Data/workspace/aosc/**"]
     path = ~/.config/git/aosc.config
 
+[includeIf "gitdir:~/Data/workspace/project/qt/**"]
+    path = ~/.config/git/qt.config
+
 # kate: space-indent on; indent-width 4; syntax ini;
