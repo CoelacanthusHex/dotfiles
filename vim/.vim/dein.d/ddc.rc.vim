@@ -59,7 +59,7 @@ ddc#custom#patch_global('sourceOptions', {
     \ },
     \ 'dictionary': {
     \   'mark': 'dict',
-    \   'matchers': ['matcher_editdistance', 'matcher_fuzzy'],
+    #\   'matchers': ['matcher_editdistance', 'matcher_fuzzy'],
     \   'sorters': [], 
     \   'converters': ['converter_fuzzy'],
     \   'maxItems': 10,
