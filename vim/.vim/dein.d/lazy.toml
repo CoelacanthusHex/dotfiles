@@ -5,6 +5,10 @@
 repo = 'vim-denops/denops.vim'
 if = "executable('deno')"
 
+#[[plugins]]
+#repo = 'yegappan/lsp'
+#name = 'vim9lsp'
+
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
 
