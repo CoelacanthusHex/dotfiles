@@ -17,10 +17,6 @@ repo = 'mattn/vim-lsp-settings'
 depends = ['vim-lsp']
 
 [[plugins]]
-repo = 'lilydjwg/fcitx.vim'
-if = '!has("win32") && !has("win64") && exists("$DBUS_SESSION_BUS_ADDRESS")'
-
-[[plugins]]
 repo = 'majutsushi/tagbar'
 if = "executable('ctags')"
 depends = ['gtags.vim', 'vim-gutentags']

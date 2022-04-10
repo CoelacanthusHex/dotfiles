@@ -104,6 +104,10 @@ repo = 'tpope/vim-repeat'
 repo = 'tpope/vim-endwise'
 
 [[plugins]]
+repo = 'lilydjwg/fcitx.vim'
+#if = 'exists("$DBUS_SESSION_BUS_ADDRESS")'
+
+[[plugins]]
 repo = 'Shougo/echodoc.vim'
 
 [[plugins]]

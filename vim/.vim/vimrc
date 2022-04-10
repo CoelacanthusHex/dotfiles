@@ -148,8 +148,8 @@ elseif has('win32') && exists('$CONEMUBUILD')
     # enable 256 colors in ConEmu on Win
     set term=xterm
     set t_Co=256
-    &t_AB="\e[48;5;%dm"
-    &t_AF="\e[38;5;%dm"
+    &t_AB = "\e[48;5;%dm"
+    &t_AF = "\e[38;5;%dm"
     set cursorline
 endif
 
