@@ -6,11 +6,38 @@ _enabled_plugins=(
     autopair
     fast-syntax-highlighting/fast-syntax-highlighting
     history-search-multi-word/history-search-multi-word
+    zsh-autosuggestions/zsh-autosuggestions
+    zsh-history-substring-search/zsh-history-substring-search
     tmux
 )
 for _zsh_plugin in $_enabled_plugins[@]; do
     [[ ! -r "$ZDOTDIR/plugins/$_zsh_plugin.plugin.zsh" ]] || source $ZDOTDIR/plugins/$_zsh_plugin.plugin.zsh
 done
+
+### Autosuggest Setting
+export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd history completion)
+export ZSH_AUTOSUGGEST_USE_ASYNC=true
+# This speeds up pasting w/ autosuggest
+# https://github.com/zsh-users/zsh-autosuggestions/issues/238
+pasteinit() {
+    OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
+    zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
+}
+pastefinish() {
+    zle -N self-insert $OLD_SELF_INSERT
+}
+zstyle :bracketed-paste-magic paste-init pasteinit
+zstyle :bracketed-paste-magic paste-finish pastefinish
+# https://github.com/zsh-users/zsh-autosuggestions/issues/351
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste accept-line)
+
+# https://github.com/zsh-users/zsh-history-substring-search#usage
+zmodload zsh/terminfo
+#bindkey "$terminfo[kcuu1]" history-substring-search-up
+#bindkey "$terminfo[kcud1]" history-substring-search-down
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+export HISTORY_SUBSTRING_SEARCH_PREFIXED=true
 
 # Number of entries to show (default is $LINES/3)
 zstyle ":history-search-multi-word" page-size "7"

@@ -15,3 +15,9 @@
 [submodule "vim/.vim/pack/package-manager/opt/dein"]
 	path = vim/.vim/pack/package-manager/opt/dein
 	url = https://github.com/Shougo/dein.vim.git
+[submodule "zsh/.config/zsh.d/plugins/zsh-autosuggestions"]
+	path = zsh/.config/zsh.d/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions.git
+[submodule "zsh/.config/zsh.d/plugins/zsh-history-substring-search"]
+	path = zsh/.config/zsh.d/plugins/zsh-history-substring-search
+	url = https://github.com/zsh-users/zsh-history-substring-search.git
