@@ -346,7 +346,9 @@ set shortmess-=S
 set wildmenu
 # 首先尝试最长的，接着轮换补全项
 set wildmode=longest:full,full
-set wildoptions=pum,fuzzy
+if has("patch-8.2.4325")
+    set wildoptions=pum
+endif
 
 set completeopt+=longest
 set completeopt+=popup
