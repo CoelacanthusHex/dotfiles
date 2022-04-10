@@ -61,10 +61,11 @@ set folder = "~/Mail" # a global variable, used in mailboxes below
 # a hook, when enter that folder, execute the selected conf
 folder-hook "~/Mail/outlook*" 'source ~/.config/mutt/muttrc.d/outlook'
 folder-hook "~/Mail/aosc*" 'source ~/.config/mutt/muttrc.d/aosc'
+folder-hook "~/Mail/gmail*" 'source ~/.config/mutt/muttrc.d/gmail'
 source ~/.config/mutt/muttrc.d/outlook # This is used as default behavior
 
 #source ~/.config/mutt/mailboxes
-mailboxes "+aosc" "+aosc/Archive" "+aosc/Drafts" "+aosc/INBOX" "+aosc/Junk" "+aosc/Sent" "+aosc/Trash" "+outlook" "+outlook/Deleted" "+outlook/Drafts" "+outlook/Firefox" "+outlook/GitHub" "+outlook/Inbox" "+outlook/Junk" "+outlook/Notes" "+outlook/Outbox" "+outlook/Sent" "+outlook/Zsh Mail List" "+outlook/存档"
+mailboxes "+aosc" "+aosc/Archive" "+aosc/Drafts" "+aosc/INBOX" "+aosc/Junk" "+aosc/Sent" "+aosc/Trash" "+outlook" "+outlook/Deleted" "+outlook/Drafts" "+outlook/Firefox" "+outlook/GitHub" "+outlook/Inbox" "+outlook/Junk" "+outlook/Notes" "+outlook/Outbox" "+outlook/Sent" "+outlook/Zsh Mail List" "+outlook/存档" "+gmail" "+gmail/bak.drafts" "+gmail/bak.flagged" "+gmail/bak.important" "+gmail/bak.sent" "+gmail/bak.spam" "+gmail/bak.trash" "+gmail/inbox"
 
 ## GnuPG bootstrap
 source ~/.config/mutt/gpg.rc

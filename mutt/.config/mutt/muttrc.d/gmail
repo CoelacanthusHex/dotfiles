@@ -1,30 +1,17 @@
 set realname = "Coelacanthus"
-set from = "coelacanthus@outlook.com"
+set from = "CoelacanthusHex@gmail.com"
 
 unmy_hdr Bcc # since we may switch from other conf to here, we must unset it first
 # Add my header Bcc automatically
 # All outgoing mail would be in INBOX, such that the reply can follow the thread
 # Even we have one outgoing email in sent, it is not enough
-#my_hdr Bcc: "coelacanthus@outlook.com"
+#my_hdr Bcc: "CoelacanthusHex@gmail.com"
 # alternative addr for this account
 unalternates *
 #alternates ^****@outlook.com$
 # subscribed mailing lists
 unsubscribe *
-subscribe \
-  ^users-zh@lists.opensuse.org$ \
-  ^zsh-users@zsh.org$ \
-  ^zsh-workers@zsh.org$ \
-  ^summer-ospp@googlegroups.com$ \
-  ^summer-ospp-announce@googlegroups.com$ \
-  ^summer-ospp-community@googlegroups.com$ \
-  ^google-summer-of-code-announce@googlegroups.com$ \
-  ^google-summer-of-code-discuss@googlegroups.com$ \
-  ^arch-dev-public@lists.archlinux.org$ \
-  ^dn42@groups.io$ \
-  ^limicalia@googlegroups.com$ \
-  ^ustc_lug@googlegroups.com$ \
-  ^tuna-general@googlegroups.com$
+#subscribe
 
 # known mailing lists(may be unsubscribed)
 unlists *
@@ -50,28 +37,25 @@ lists \
   ^aur-requests@lists.archlinux.org$ \
   ^pacman-dev@lists.archlinux.org$ \
   ^dn42@groups.io$ \
-  ^limicalia@googlegroups.com$ \
   ^ustc_lug@googlegroups.com$ \
   ^tuna-general@googlegroups.com$
 
-set sendmail = "/usr/bin/sendmail -a outlook" # cooperate with sendmail, the name outlook is configured in sendmail
+set sendmail = "/usr/bin/sendmail -a gmail" # cooperate with sendmail, the name outlook is configured in sendmail
 
 # IMAP: offlineimap
 set folder = "~/Mail"
-set spoolfile = "+outlook/Inbox"
-set record = "+outlook/Sent"
-set postponed = "+outlook/Drafts"
-set trash = "+outlook/Junk"
+set spoolfile = "+gmail/Inbox"
+set record = "+gmail/Sent"
+set postponed = "+gmail/Drafts"
+set trash = "+gmail/Junk"
 
-set move = no
-set copy = no # since outlook will move it auto
+#set move = no
+#set copy = no # since outlook will move it auto
 
-set signature = "~/.config/mutt/signature/outlook"
+#set signature = "~/.config/mutt/signature/gmail"
 
 # With this two keybind you can easily move **tagged**
 # emails into archive/INBOX
 # Currently disabled
-macro index A "<tag-prefix-cond><save-message>+outlook/archive<enter>" "Archive tagged mail"
-macro index I "<tag-prefix-cond><save-message>+outlook/<enter>" "Move message to INBOX"
 macro index .c "<tag-pattern>.<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>"
 

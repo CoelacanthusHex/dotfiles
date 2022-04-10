@@ -1,5 +1,5 @@
 [general]
-accounts = outlook,aosc
+accounts = outlook,aosc,gmail
 
 [Account outlook]
 localrepository = outlook-Local
@@ -11,6 +11,7 @@ autorefresh = 15
 [Repository outlook-Local]
 type = Maildir
 localfolders = ~/Mail/outlook
+#sync_deletes = no
 
 [Repository outlook-Remote]
 type = IMAP
@@ -25,11 +26,12 @@ localrepository = aosc-Local
 remoterepository = aosc-Remote
 utf8foldernames = yes
 # Minutes between syncs
-autorefresh = 15
+#autorefresh = 15
 
 [Repository aosc-Local]
 type = Maildir
 localfolders = ~/Mail/aosc
+sync_deletes = no
 
 [Repository aosc-Remote]
 type = IMAP
@@ -38,6 +40,33 @@ remoteuser = coelacanthus@aosc.io
 remotepassfile = ~/.config/offlineimap/pass/aosc.txt
 ssl = no
 starttls = yes
+
+[Account gmail]
+localrepository = gmail-Local
+remoterepository = gmail-Remote
+utf8foldernames = yes
+# Minutes between syncs
+autorefresh = 30
+
+[Repository gmail-Local]
+type = Maildir
+localfolders = ~/Mail/gmail
+
+[Repository gmail-Remote]
+type = Gmail
+remoteuser = CoelacanthusHex@gmail.com
+remotepassfile = ~/.config/offlineimap/pass/gmail.txt
+nametrans = lambda foldername: re.sub ('^\[gmail\]', 'bak',
+                               re.sub ('sent_mail', 'sent',
+                               re.sub ('starred', 'flagged',
+                               re.sub (' ', '_', foldername.lower()))))
+folderfilter = lambda foldername: foldername not in ['[Gmail]/All Mail']
+createfolders = False
+# Necessary as of OfflineIMAP 6.5.4
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+# Necessary to work around https://github.com/OfflineIMAP/offlineimap/issues/573 (versions 7.0.12, 7.2.1)
+ssl_version = tls1_2
+proxy = SOCKS5:127.0.0.1:1089
 
 [mbnames]
 enabled = yes
