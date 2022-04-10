@@ -74,4 +74,7 @@
 [includeIf "gitdir:~/Data/workspace/project/qt/**"]
     path = ~/.config/git/qt.config
 
+[includeIf "gitdir:~/Data/workspace/project/archlinuxcn/**"]
+    path = ~/.config/git/archlinuxcn.config
+
 # kate: space-indent on; indent-width 4; syntax toml;
