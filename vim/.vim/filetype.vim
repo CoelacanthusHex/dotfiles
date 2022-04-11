@@ -22,7 +22,6 @@ augroup filetypedetect
     autocmd BufRead              *procmaillog             setfiletype mail
     autocmd BufNewFile,BufRead   wg*.conf,peers.conf      setfiletype dosini
     autocmd BufRead,BufNewFile   *mutt-*                  setfiletype mail
-    autocmd BufRead,BufNewFile   /etc/bird/*.conf, /etc/bird/*/*.conf                  setfiletype bird
 augroup END
 
 # kate: space-indent on; indent-width 4; syntax vim;
