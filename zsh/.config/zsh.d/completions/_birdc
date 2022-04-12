@@ -1,0 +1,87 @@
+#compdef birdc
+
+local curcontext="$curcontext" expl ret=1
+local subcmd
+
+if (( CURRENT == 2 )); then
+  _describe 'birdc command' '(
+    help:Description\ of\ the\ help\ system
+    show:Show\ status\ information
+    dump:Dump\ debugging\ information
+    eval:Evaluate\ an\ expression
+    echo:Control\ echoing\ of\ log\ messages
+    disable:Disable\ protocol
+    enable:Enable\ protocol
+    restart:Restart\ protocol
+    reload:Reload\ protocol
+    debug:Control\ protocol\ debugging\ via\ BIRD\ logs
+    mrtdump:Control\ protocol\ debugging\ via\ MRTdump\ files
+    restrict:Restrict\ current\ CLI\ session\ to\ safe\ commands
+    configure:Reload\ configuration
+    down:Shut\ the\ daemon\ down
+    graceful\ restart:Shut\ the\ daemon\ down\ for\ graceful\ restart
+  )' && ret=0
+else
+  shift words
+  (( CURRENT-- ))
+  subcmd="$words[1]"
+#  curcontext="${curcontext%:*}-${subcmd}:"
+
+  if (( CURRENT == 2 )); then
+    case $subcmd in
+      reload)
+        _describe 'birdc command' '(
+          in
+          out
+        )' && ret=0
+      ;;
+
+      disable|enable)
+        _wanted birdc expl 'birdc command' compadd $(birdc s p | tail -n +3 | cut -d " " -f 1 | xargs)
+        ret=0
+      ;;
+
+      *)
+        _describe 'birdc command' '(
+          status:Show\ router\ status
+          memory:Show\ memory\ usage
+          protocols:Show\ routing\ protocols
+          interfaces:Show\ network\ interfaces
+          route:Show\ routing\ table
+          symbols:Show\ all\ known\ symbolic\ names
+          bfd:Show\ information\ about\ BFD\ protocol
+          babel:Show\ information\ about\ Babel\ protocol
+          ospf:Show\ information\ about\ OSPF\ protocol
+          rip:Show\ information\ about\ RIP\ protocol
+          static:Show\ details\ of\ static\ protocol
+        )' && ret=0
+    esac
+
+  elif (( CURRENT == 3 )); then
+    case $words[2] in
+      protocols|in|out)
+        _wanted birdc expl 'birdc command' compadd all $(birdc s p | tail -n +3 | cut -d " " -f 1 | xargs)
+        ret=0
+      ;;
+
+      *)
+        _describe 'birdc command' '(
+          for
+          where
+          export
+          protocol
+          all
+          filtered
+        )' && ret=0
+      ;;
+    esac
+
+  elif (( CURRENT == 4 )); then
+    _wanted birdc expl 'birdc' compadd $(birdc s p | tail -n +3 | cut -d " " -f 1 | xargs)
+  elif (( CURRENT == 5 )); then
+    _describe 'birdc command' '(
+      count:Get\ number\ of\ routes
+      filtered:Get\ filtered\ routes
+    )' && ret=0
+  fi
+fi
