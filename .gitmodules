@@ -18,6 +18,8 @@
 [submodule "zsh/.config/zsh.d/plugins/zsh-autosuggestions"]
 	path = zsh/.config/zsh.d/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions.git
+	ignore = untracked
 [submodule "zsh/.config/zsh.d/plugins/zsh-history-substring-search"]
 	path = zsh/.config/zsh.d/plugins/zsh-history-substring-search
 	url = https://github.com/zsh-users/zsh-history-substring-search.git
+	ignore = untracked
