@@ -139,5 +139,8 @@ repo = 'timonv/vim-cargo'
 [[plugins]]
 repo = 'machakann/vim-sandwich'
 
+[[plugins]]
+repo = 'egberts/vim-syntax-bind-named'
+
 # vim: set sw=4 ts=8 sts=4 et foldmethod=marker:
 # kate: space-indent on; indent-width 4; syntax toml;
