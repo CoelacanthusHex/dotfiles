@@ -139,6 +139,9 @@ ddc#custom#patch_filetype('markdown', 'sourceParams', {
     \   'maxSize': 100
     \ },
     \ })
+ddc#custom#patch_filetype(['vim'], 
+    \ 'sources', ['necovim', 'around', 'file']
+    \ )
 ddc#custom#patch_filetype(['ps1', 'dosbatch', 'autohotkey', 'registry'], {
     \ 'sourceOptions': {
     \   'file': {

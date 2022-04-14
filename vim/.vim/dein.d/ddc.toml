@@ -23,11 +23,6 @@ on_source = 'ddc.vim'
 repo = 'Shougo/neco-vim'
 on_ft = ['vim', 'toml', 'markdown']
 depends = 'ddc.vim'
-hook_source = '''
-  call ddc#custom#patch_filetype(['vim'], 
-    \ 'sources', ['necovim', 'around', 'file']
-    \ )
-'''
 
 [[plugins]]
 repo = 'LumaKernel/ddc-file'
