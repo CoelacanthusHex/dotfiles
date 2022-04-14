@@ -23,7 +23,7 @@ depends = ['gtags.vim', 'vim-gutentags']
 
 [[plugins]]
 repo = 'dense-analysis/ale'
-on_ft = ['sh', 'c', 'cpp', 'rust', 'python', 'go', 'tex']
+#on_ft = ['sh', 'c', 'cpp', 'rust', 'python', 'go', 'tex']
 
 [[plugins]]
 repo = 'vim-scripts/gtags.vim'
@@ -194,6 +194,11 @@ on_ft = ['racket', 'scribble', 'racket-info']
 [[plugins]]
 repo = 'inkarkat/vim-mark'
 on_cmd = 'Mark'
+
+[[plugins]]
+repo = 'egberts/vim-syntax-bind-named'
+on_ft = ['bind-named', 'bindzone']
+
 
 # vim: set sw=4 ts=8 sts=4 et foldmethod=marker:
 # kate: space-indent on; indent-width 4; syntax toml;

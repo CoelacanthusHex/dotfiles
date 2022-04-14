@@ -9,7 +9,7 @@ g:ale_linters = {
             asm: ['gcc'],
             c: ['ccls', 'clangd', 'gcc', 'clangtidy', 'cppcheck'],
             cpp: ['ccls', 'clangd', 'gcc', 'clangtidy', 'cppcheck'],
-            rust: ['analyzer', 'cargo', 'rls'],
+            rust: [],
             go: ['gopls'],
             tex: ['texlab'],
             yaml: ['yamllint'],
