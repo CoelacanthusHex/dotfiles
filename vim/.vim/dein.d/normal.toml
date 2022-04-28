@@ -114,26 +114,6 @@ repo = 'Shougo/echodoc.vim'
 repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
-repo = 'gelguy/wilder.nvim'
-# Not need for we don't use fuzzy
-#depends = ['nvim-yarp', 'vim-hug-neovim-rpc']
-hook_source = '''
-    call wilder#setup({
-        \   'modes': [':', '/', '?'],
-        \   'enable_cmdline_enter': 0,
-        \ })
-    call wilder#set_option('pipeline', [
-        \ wilder#branch(
-        \     wilder#cmdline_pipeline(),
-        \     wilder#search_pipeline(),
-        \ ),
-        \ ])
-    call wilder#set_option('renderer', wilder#popupmenu_renderer({
-        \ 'highlighter': wilder#basic_highlighter(),
-        \ }))
-'''
-
-[[plugins]]
 repo = 'timonv/vim-cargo'
 
 [[plugins]]
