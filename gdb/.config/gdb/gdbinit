@@ -22,6 +22,8 @@ define fetch_firefox_symbol
     source ~/.config/gdb/firefox-symbols.py
 end
 
+# For Linux kernel debug
+add-auto-load-safe-path ~/Data/workspace/project/linux
 
 define b_a
   #b __asan_report_load1

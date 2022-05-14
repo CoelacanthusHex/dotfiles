@@ -12,6 +12,7 @@ unalternates *
 # subscribed mailing lists
 unsubscribe *
 subscribe \
+  ^oss-security@lists.openwall.com$ \
   ^users-zh@lists.opensuse.org$ \
   ^zsh-users@zsh.org$ \
   ^zsh-workers@zsh.org$ \
@@ -29,6 +30,7 @@ subscribe \
 # known mailing lists(may be unsubscribed)
 unlists *
 lists \
+  ^oss-security@lists.openwall.com$ \
   ^users-zh@lists.opensuse.org$ \
   ^zsh-announce@zsh.org$ \
   ^zsh-users@zsh.org$ \
