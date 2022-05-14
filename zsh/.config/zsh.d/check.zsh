@@ -14,7 +14,7 @@ zmodload zsh/regex 2>/dev/null && _has_re=1 || _has_re=0
 [[ -z $DISPLAY ]] && _in_x11=1 || _in_x11=0
 # https://discourse.ubuntu.com/t/environment-variables-for-wayland-hackers/12750
 [[ -z $WAYLAND_DISPLAY ]] && _in_wayland=1 || _in_wayland=0
-(( $_in_x11 ==1 )) || (( $_in_wayland ==1 )) && _in_gui=1 || _in_gui=0
+(( $_in_x11 == 1 )) || (( $_in_wayland == 1 )) && _in_gui=1 || _in_gui=0
 
 if (( $+commands[tty] )); then
     case $(tty) in
