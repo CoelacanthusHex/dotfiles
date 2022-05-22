@@ -35,6 +35,9 @@ unset KITTY_SHELL_INTEGRATION
 
 export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
 
+export REPO_URL=https://mirrors.bfsu.edu.cn/git/git-repo
+export USE_CCACHE=1
+
 # FIXME: workaround for cargo crates
 # [1]: https://github.com/ustclug/discussions/issues/294
 # [2]: https://mirrors.ustc.edu.cn/help/crates.io-index.html
