@@ -2,8 +2,8 @@ vim9script
 # vim: set sw=4 ts=8 sts=4 et foldmethod=marker:
 # kate: space-indent on; indent-width 4;
 
-var $GTAGSLABEL = 'native-pygments'
-var $GTAGSCONF = '/usr/share/gtags/gtags.conf'
+$GTAGSLABEL = 'native-pygments'
+$GTAGSCONF = '/usr/share/gtags/gtags.conf'
 
 
 # gutentags 搜索工程目录的标志，当前文件路径向上递归直到碰到这些文件/目录名

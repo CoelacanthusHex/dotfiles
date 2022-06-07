@@ -26,9 +26,7 @@ endif
 
 # insert after the first one so spell changes won't go
 # into our config directory.
-var rtp = split(&runtimepath, ',')
-&rtp = substitute(&rtp, ',\zs', '\=g:vimfiles .. "/conf.d,"', '')
-&runtimepath = join(rtp, ',')
+&runtimepath = substitute(&rtp, ',\zs', '\=g:vimfiles .. "/conf.d,"', '')
 # }}}
 
 # Platform specific config {{{

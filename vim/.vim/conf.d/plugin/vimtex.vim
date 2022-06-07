@@ -5,7 +5,7 @@ vim9script
 g:vimtex_enabled = 1
 g:vimtex_fold_enabled = 1
 g:vimtex_compiler_latexmk = {
-                'options' : [
+                'options': [
                   '-xelatex',
                   '-shell-escape',
                 ],
