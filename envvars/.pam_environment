@@ -104,6 +104,8 @@ BUNDLE_USER_PLUGIN  DEFAULT=${XDG_DATA_HOME}/bundle
 # Ccache
 CCACHE_CONFIGPATH   DEFAULT=${XDG_CONFIG_HOME}/ccache.config
 CCACHE_DIR          DEFAULT=${XDG_CACHE_HOME}/ccache
+# Nali
+NALI_HOME           DEFAULT=${XDG_CONFIG_HOME}/nali
 # Xauthority
 XAUTHORITY          DEFAULT=${XDG_RUNTIME_DIR}/Xauthority
 
@@ -161,7 +163,7 @@ MOZ_USE_XINPUT2 DEFAULT=1
 # https://t.me/ArchlinuxCN_Appearance/6955
 # https://www.reddit.com/r/kde/comments/kzjo9d/add_gtk_use_portal1_to_your_firefox_shortcut_to/gjoqtvj/
 # https://wiki.archlinux.org/title/Uniform_look_for_Qt_and_GTK_applications#Consistent_file_dialog
-#GTK_USE_PORTAL DEFAULT=1
+GTK_USE_PORTAL DEFAULT=1
 
 # https://wiki.archlinux.org/index.php/LibreOffice#Theme
 # https://github.com/LibreOffice/core/blob/master/vcl/README#L35

@@ -48,6 +48,8 @@ export PYLINTHOME="$XDG_CACHE_HOME"/pylint
 export WAKATIME_HOME="$XDG_CONFIG_HOME"/wakatime
 # Wget
 export WGETRC="$XDG_CONFIG_HOME"/wget/config.ini
+# Nali
+export NALI_HOME=$XDG_CONFIG_HOME/nali
 # NPM
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 # .octave_hist and .octave_packages

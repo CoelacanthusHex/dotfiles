@@ -26,6 +26,7 @@ export MAIL="$HOME/Mail"
 
 # Ripgrep
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME"/ripgreprc
+export NALI_HOME=$XDG_CONFIG_HOME/nali
 
 export IPYTHONDIR=$XDG_CONFIG_HOME/ipython
 export JUPYTER_CONFIG_DIR=$XDG_CONFIG_HOME/jupyter
