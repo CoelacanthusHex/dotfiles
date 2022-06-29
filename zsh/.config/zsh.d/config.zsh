@@ -150,7 +150,7 @@ autoload -Uz colors && colors
 
 () {
     local white_b=$fg_bold[white] blue=$fg_bold[blue] rst=$reset_color
-    local white_b=$'\e[97m' blue=$'\e[94m' rst=$'\e[0m'
+    #local white_b=$'\e[97m' blue=$'\e[94m' rst=$'\e[0m'
     TIMEFMT=("== TIME REPORT FOR $white_b%J$rst =="$'\n'
         "  User: $blue%U$rst"$'\t'"System: $blue%S$rst  Total: $blue%*Es${rst}"$'\n'
         "  CPU:  $blue%P$rst"$'\t'"Mem:    $blue%M MiB$rst")

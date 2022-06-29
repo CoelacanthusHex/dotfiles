@@ -21,6 +21,9 @@ if (( $+commands[nali] )); then
     function nali-kdig() {
         kdig $@ | nali
     }
+    function nali-dig() {
+        dig $@ | nali
+    }
 fi
 
 # 图像压缩
@@ -60,7 +63,7 @@ alias e64=encode64
 alias d64=decode64
 
 function lib_dep() {
-    ldd $1  | awk '{print $3}' | xargs pacman -Qo
+    lddtree $1 | grep -E '^    [^ ]+' | cut -d' ' -f7 | xargs pacman -Qo
 }
 
 function clip2ydcv() {
@@ -245,6 +248,8 @@ function clip_png2bmp () { # 将剪贴板中的图片从 png 转到 bmp。QQ 会
 function check-fcitx5-dbus() {
     if (( $+commands[qdbus] )); then
         qdbus org.fcitx.Fcitx5 /controller org.fcitx.Fcitx.Controller1.DebugInfo
+    elif (( $+commands[dbus-send] )); then
+        dbus-send --print-reply --dest=org.fcitx.Fcitx5 /controller org.fcitx.Fcitx.Controller1.DebugInfo
     elif (( $+commands[busctl] )); then
         # TODO: using busctl
         # busctl --user call org.fcitx.Fcitx5 /controller org.fcitx.Fcitx.Controller1.DebugInfo

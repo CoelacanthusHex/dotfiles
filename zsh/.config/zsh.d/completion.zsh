@@ -225,6 +225,7 @@ compdef _gnu_generic mill amm
 compdef _gnu_generic updatedb plocate
 compdef _gnu_generic btrfs-list
 compdef _gnu_generic zramctl swapon swapoff
+compdef _gnu_generic file
 
 # By default only C and C++ languages are supported for compiler flag variables. To define your own list of languages:
 #cmake_langs=('C' 'C' 'CXX' 'C++')
