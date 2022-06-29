@@ -4,11 +4,17 @@ Name=IPA
 # Layout
 Default Layout=us
 # Default Input Method
-DefaultIM=ipa-x-sampa
+DefaultIM=m17n_zh_pinyin
 
 [Groups/0/Items/0]
 # Name
 Name=ipa-x-sampa
+# Layout
+Layout=
+
+[Groups/0/Items/1]
+# Name
+Name=m17n_zh_pinyin
 # Layout
 Layout=
 

@@ -104,6 +104,9 @@ repo = 'tpope/vim-repeat'
 repo = 'tpope/vim-endwise'
 
 [[plugins]]
+repo = 'markonm/traces.vim'
+
+[[plugins]]
 repo = 'lilydjwg/fcitx.vim'
 #if = 'exists("$DBUS_SESSION_BUS_ADDRESS")'
 
@@ -159,10 +162,6 @@ on_ft = ['toml']
 repo = 'rust-lang/rust.vim'
 on_ft = ['rust']
 depends = ['webapi-vim']
-
-[[plugins]]
-repo = 'derekwyatt/vim-scala'
-on_ft = ['scala']
 
 [[plugins]]
 repo = 'lfiolhais/vim-chisel'
@@ -244,11 +243,6 @@ on_ft = ['codeowners']
 [[plugins]]
 repo = 'rbtnn/vim-vimscript_indentexpr'
 on_ft = ['vim']
-
-[[plugins]]
-repo = 'vim-perl/vim-perl'
-on_ft = ['perl']
-build = 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny'
 
 [[plugins]]
 repo = 'benknoble/vim-racket'

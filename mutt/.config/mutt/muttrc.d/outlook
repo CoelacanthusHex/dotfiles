@@ -19,13 +19,20 @@ subscribe \
   ^summer-ospp@googlegroups.com$ \
   ^summer-ospp-announce@googlegroups.com$ \
   ^summer-ospp-community@googlegroups.com$ \
+  ^ospp-mentor-group@googlegroups.com$ \
   ^google-summer-of-code-announce@googlegroups.com$ \
   ^google-summer-of-code-discuss@googlegroups.com$ \
   ^arch-dev-public@lists.archlinux.org$ \
   ^dn42@groups.io$ \
+  ^mtf-maillist@no-reply.kuaer.club$ \
+  ^u-boot@lists.denx.de$ \
+  ^linux-riscv@lists.infradead.org$ \
+  ^linux-kernel@vger.kernel.org$ \
   ^limicalia@googlegroups.com$ \
   ^ustc_lug@googlegroups.com$ \
-  ^tuna-general@googlegroups.com$
+  ^tuna-general@googlegroups.com$ \
+  ^gnupg-announce@gnupg.org$ \
+  ^gnupg-users@gnupg.org$
 
 # known mailing lists(may be unsubscribed)
 unlists *
@@ -39,6 +46,7 @@ lists \
   ^summer-ospp@googlegroups.com$ \
   ^summer-ospp-announce@googlegroups.com$ \
   ^summer-ospp-community@googlegroups.com$ \
+  ^ospp-mentor-group@googlegroups.com$ \
   ^google-summer-of-code-announce@googlegroups.com$ \
   ^google-summer-of-code-discuss@googlegroups.com$ \
   ^arch-announce@lists.archlinux.org$ \
@@ -52,9 +60,15 @@ lists \
   ^aur-requests@lists.archlinux.org$ \
   ^pacman-dev@lists.archlinux.org$ \
   ^dn42@groups.io$ \
+  ^mtf-maillist@no-reply.kuaer.club$ \
+  ^u-boot@lists.denx.de$ \
+  ^linux-riscv@lists.infradead.org$ \
+  ^linux-kernel@vger.kernel.org$ \
   ^limicalia@googlegroups.com$ \
   ^ustc_lug@googlegroups.com$ \
-  ^tuna-general@googlegroups.com$
+  ^tuna-general@googlegroups.com$ \
+  ^gnupg-announce@gnupg.org$ \
+  ^gnupg-users@gnupg.org$
 
 set sendmail = "/usr/bin/sendmail -a outlook" # cooperate with sendmail, the name outlook is configured in sendmail
 
