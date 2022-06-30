@@ -89,5 +89,17 @@ manpath=(
     /usr/share/man(N-/)
 )
 
+typeset -T DEBUGINFOD_URLS debuginfod_urls ' '
+debuginfod_urls=(
+    $debuginfod_urls
+    https://debuginfod.archlinux.org
+    https://repo.archlinuxcn.org
+    https://debuginfod.debian.net
+    https://debuginfod.fedoraproject.org
+    https://debuginfod.centos.org
+    https://debuginfod.elfutils.org
+)
+export DEBUGINFOD_PROGRESS=1
+
 # vim: ft=zsh sw=4 ts=8 sts=4 et
 # kate: space-indent on; indent-width 4; syntax zsh;
