@@ -40,7 +40,7 @@ if (( $+commands[zoxide] )); then
 fi
 # if zoxide loads but the directory is readonly, remove the chpwd hook
 if [[ ${chpwd_functions[(i)__zoxide_hook]} -le ${#chpwd_functions} && \
-    -d ~/.local/share/zoxide && ! -w ~/.local/share/zoxide ]]; then
+    -d "$XDG_DATA_HOME/zoxide" && ! -w "$XDG_DATA_HOME/zoxide" ]]; then
         chpwd_functions[(i)__zoxide_hook]=()
 fi
 

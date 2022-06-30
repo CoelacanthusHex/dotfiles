@@ -1,18 +1,60 @@
+## Zsh env file and init file
 
-export LANG=en_GB.UTF-8
-export LANGUAGE=en_GB:en
-# https://wiki.archlinux.org/title/Locale#LC_TIME:_date_and_time_format
-export LC_TIME=en_DK.UTF-8
+_cfg_info() {
+    print -P "%F{green}[INFO]%f $1"
+}
 
-# Define user direcotires
-export XDG_CONFIG_HOME=$HOME/.config
-export XDG_CACHE_HOME=$HOME/.cache
-export XDG_DATA_HOME=$HOME/.local/share
+_cfg_warning() {
+    print -P "%F{yellow}[WARN]%f $1"
+}
+
+_cfg_error() {
+    print -P "%F{red}[ERROR]%f $1"
+}
+
+if locale --all-locales | grep en_DK; then
+    export LANG=en_GB.UTF-8
+else
+    for la in en_US C; do
+        if locale --all-locales | grep $la; then
+            _cfg_warning "Locale en_GB is not supported! Fallback LANG to $la."
+            export LANG=$la.UTF-8
+            break
+        fi
+    done
+fi
+export LANGUAGE=en_GB:en_US:en
+if locale --all-locales | grep en_DK; then
+    # https://wiki.archlinux.org/title/Locale#LC_TIME:_date_and_time_format
+    export LC_TIME=en_DK.UTF-8
+else
+    for la in en_GB en_US C; do
+        if locale --all-locales | grep $la; then
+            _cfg_warning "Locale en_DK is not supported! Fallback LC_TIME to $la."
+            export LC_TIME=$la.UTF-8
+            break
+        fi
+    done
+fi
+
+if (( ${OSTYPE:l}[(I)linux] )); then
+    # Define user direcotires
+    export XDG_CONFIG_HOME="$HOME/.config"
+    export XDG_CACHE_HOME="$HOME/.cache"
+    export XDG_DATA_HOME="$HOME/.local/share"
+elif (( ${OSTYPE:l}[(I)mac] )); then
+    _cfg_warning "Operating System $OSTYPE is not implemented!"
+elif (( ${OSTYPE:l}[(I)win] )); then
+    _cfg_warning "Operating System $OSTYPE is not implemented!"
+else
+    _cfg_warning "Operating System $OSTYPE is not supported!"
+fi
 
 ZDOTDIR="$XDG_CONFIG_HOME/zsh.d"
 ZSH_CACHE_HOME="$XDG_CACHE_HOME/zsh"
 ZSH_COMPDUMP="$ZSH_CACHE_HOME/zcompdump"
-HISTFILE=$ZDOTDIR/zhistory/zsh_history
+
+HISTFILE="$ZDOTDIR/zhistory/zsh_history"
 HISTSIZE=1000000
 SAVEHIST=1000000
 

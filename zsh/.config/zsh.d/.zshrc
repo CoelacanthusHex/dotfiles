@@ -1,7 +1,5 @@
 ## .zshrc
 
-#[ -f $HOME/.bashrc ] && source $HOME/.bashrc
-
 disable_starship=0
 disable_pure=1
 disable_async_prompt=0

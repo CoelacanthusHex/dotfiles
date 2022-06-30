@@ -36,14 +36,15 @@ _status_to_signal[128+31]="SYS"
 
 _set_pipe_status() {
     local _pipestatus=($pipestatus)
+    local _status=$status
     if (( $#_pipestatus == 1 )); then
-        if (( $? == 0 )); then
-            printf -v _pipe_status "$fg_bold[green]%s$reset_color -> $fg_bold[blue]0x%x$reset_color" ! $?
+        if (( $_status == 0 )); then
+            printf -v _pipe_status "$fg_bold[green]%s$reset_color -> $fg_bold[blue]0x%x$reset_color" ! $_status
         else
-            if (( $+_status_to_signal[$?] )); then
-                printf -v _pipe_status "$fg_bold[red]%s$reset_color -> $fg_bold[red]%s$reset_color $fg_bold[blue]0x%x$reset_color" X $_status_to_signal[$?] $?
+            if (( $+_status_to_signal[$_status] )); then
+                printf -v _pipe_status "$fg_bold[red]%s$reset_color -> $fg_bold[red]%s$reset_color $fg_bold[blue]0x%x$reset_color" X $_status_to_signal[$_status] $_status
             else
-                printf -v _pipe_status "$fg_bold[red]%s$reset_color -> $fg_bold[blue]0x%x$reset_color" X $?
+                printf -v _pipe_status "$fg_bold[red]%s$reset_color -> $fg_bold[blue]0x%x$reset_color" X $_status
             fi
         fi
     else
@@ -62,13 +63,13 @@ _set_pipe_status() {
             fi
             _multiple_pipe_status+=(_single_status)
         done
-        if (( $? == 0 )); then
-            printf -v _total_pipe_status "$fg_bold[green]%s$reset_color -> $fg_bold[blue]0x%x$reset_color" ! $?
+        if (( $_status == 0 )); then
+            printf -v _total_pipe_status "$fg_bold[green]%s$reset_color -> $fg_bold[blue]0x%x$reset_color" ! $_status
         else
-            if (( $+_status_to_signal[$?] )); then
-                printf -v _total_pipe_status "$fg_bold[red]%s$reset_color -> $fg_bold[red]%s$reset_color $fg_bold[blue]0x%x$reset_color" X $_status_to_signal[$?] $?
+            if (( $+_status_to_signal[$_status] )); then
+                printf -v _total_pipe_status "$fg_bold[red]%s$reset_color -> $fg_bold[red]%s$reset_color $fg_bold[blue]0x%x$reset_color" X $_status_to_signal[$_status] $_status
             else
-                printf -v _total_pipe_status "$fg_bold[red]%s$reset_color -> $fg_bold[blue]0x%x$reset_color" X $?
+                printf -v _total_pipe_status "$fg_bold[red]%s$reset_color -> $fg_bold[blue]0x%x$reset_color" X $_status
             fi
         fi
         _pipe_status="[ ${(j: | :)_multiple_pipe_status} ] => $_total_pipe_status"
@@ -117,7 +118,7 @@ elif (( ! $disable_async_prompt )) && is-at-least 5.0.6 && (( $+commands[git] ))
         setopt localoptions no_monitor
         coproc {
             _br=$(git branch --no-color 2> /dev/null)
-            if [[ $? -eq 0 ]]; then
+            if (( $status == 0 )); then
                 _current_branch=$(echo $_br | awk '$1 == "*" {print "%{\x1b[33m%} ("substr($0, 3) ")"}')
             fi
             # always gives something for reading, or _vcs_update_info won't be
