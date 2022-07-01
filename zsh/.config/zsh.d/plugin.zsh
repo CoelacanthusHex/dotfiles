@@ -9,6 +9,7 @@ _enabled_plugins=(
     zsh-autosuggestions/zsh-autosuggestions
     zsh-history-substring-search/zsh-history-substring-search
     tmux
+    hoco # https://github.com/Felixoid/zsh-hoco/blob/master/hoco.zsh
 )
 for _zsh_plugin in $_enabled_plugins[@]; do
     [[ ! -r "$ZDOTDIR/plugins/$_zsh_plugin.plugin.zsh" ]] || source $ZDOTDIR/plugins/$_zsh_plugin.plugin.zsh
