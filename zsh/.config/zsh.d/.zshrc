@@ -1,6 +1,6 @@
 ## .zshrc
 
-disable_starship=0
+disable_starship=1
 disable_pure=1
 disable_async_prompt=0
 
