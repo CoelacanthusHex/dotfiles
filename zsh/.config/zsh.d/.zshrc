@@ -1,5 +1,10 @@
 ## .zshrc
 
+autoload -Uz is-at-least
+is-at-least 5.1 || {
+    _cfg_error "This profile need Zsh 5.1 and above to work properly!"
+}
+
 disable_starship=1
 disable_pure=1
 disable_async_prompt=0

@@ -19,13 +19,10 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 # 在命令前添加空格，不将此命令添加到记录文件中
 setopt hist_ignore_space
-# zsh 4.3.6 doesn't have this option, better perf
-setopt hist_fcntl_lock 2>/dev/null
-if is-at-least 5.0.5; then
-    # This may cause the command messed up due to a memcpy bug
-else
-    setopt hist_reduce_blanks
-fi
+# better perf (zsh 4.3.6)
+setopt hist_fcntl_lock
+# 移除空白
+setopt hist_reduce_blanks
 # 为历史纪录中的命令添加时间戳
 setopt extended_history
 # 展开历史时不执行
@@ -124,24 +121,9 @@ esac
 add-zsh-hook -Uz precmd precmd-set-terminal-title
 add-zsh-hook -Uz preexec preexec-set-terminal-title
 
-if is-at-least 5.1; then
-    # https://archive.zhimingwang.org/blog/2015-09-21-zsh-51-and-bracketed-paste.html
-    autoload -Uz bracketed-paste-url-magic
-    zle -N bracketed-paste bracketed-paste-url-magic
-else
-    # zsh 5.1+ uses bracketed-paste-url-magic
-    autoload -Uz url-quote-magic
-    zle -N self-insert url-quote-magic
-    toggle-uqm () {
-        if zle -l self-insert; then
-            zle -A .self-insert self-insert && zle -M "switched to self-insert"
-        else
-            zle -N self-insert url-quote-magic && zle -M "switched to url-quote-magic"
-        fi
-    }
-    zle -N toggle-uqm
-    bindkey '^X$' toggle-uqm
-fi
+# https://archive.zhimingwang.org/blog/2015-09-21-zsh-51-and-bracketed-paste.html
+autoload -Uz bracketed-paste-url-magic
+zle -N bracketed-paste bracketed-paste-url-magic
 
 # better than copy-prev-word
 bindkey "^[^_" copy-prev-shell-word
@@ -216,7 +198,7 @@ export GREP_COLOR='37;45'           # BSD.
 export GREP_COLORS="mt=$GREP_COLOR" # GNU.
 
 export LESSOPEN="| pygmentize -f console -O bg=dark %s"
-export LESS='-FiMr --incsearch'
+export LESS='-FiMr'
 
 # vim: ft=zsh sw=4 ts=8 sts=4 et:
 # kate: space-indent on; indent-width 4;

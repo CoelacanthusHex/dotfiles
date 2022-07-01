@@ -83,7 +83,7 @@ if (( ! $disable_starship )) && [[ -x /usr/bin/starship ]] \
         && is-at-least 1.2.0 $(starship --version | head -n 1 | cut -d' ' -f2); then
     export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship.toml
     eval "$(starship init zsh)"
-elif (( ! $disable_async_prompt )) && is-at-least 5.0.6 && (( $+commands[git] )); then # zsh until 5.0.5 has a CPU 100% bug with zle -F
+elif (( ! $disable_async_prompt )) && (( $+commands[git] )); then
     ## config for async
     # Modify from https://blog.lilydjwg.me/2014/2/19/asynchronously-update-zsh-prompt.42906.html
     

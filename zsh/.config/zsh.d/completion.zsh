@@ -134,25 +134,14 @@ zstyle ':completion:incremental:*' completer _complete _correct
 # _match    - 和 _complete 类似但允许使用通配符
 # _expand_alias - 展开别名 _ignored - 被 ignored-patterns 忽略掉的
 # 由于某些 completer 调用的代价比较昂贵，第一次调用时不考虑它们
-if is-at-least 5.0.5; then
-    zstyle ':completion:*' completer _complete _extensions _match _approximate _expand_alias _ignored _files
-    #zstyle -e ':completion:*' completer '
-    #    if [[ $_last_try != "$HISTNO$BUFFER$CURSOR" ]]; then
-    #        _last_try="$HISTNO$BUFFER$CURSOR"
-    #        reply=(_expand_alias _complete _extensions _match _files)
-    #    else
-    #        reply=(_complete _ignored _correct _approximate)
-    #    fi'
-else
-    zstyle ':completion:*' completer _complete _match _approximate _expand_alias _ignored _files
-    #zstyle -e ':completion:*' completer '
-    #    if [[ $_last_try != "$HISTNO$BUFFER$CURSOR" ]]; then
-    #        _last_try="$HISTNO$BUFFER$CURSOR"
-    #        reply=(_expand_alias _complete _match _files)
-    #    else
-    #        reply=(_complete _ignored _correct _approximate)
-    #    fi'
-fi
+zstyle ':completion:*' completer _complete _extensions _match _approximate _expand_alias _ignored _files
+#zstyle -e ':completion:*' completer '
+#    if [[ $_last_try != "$HISTNO$BUFFER$CURSOR" ]]; then
+#        _last_try="$HISTNO$BUFFER$CURSOR"
+#        reply=(_expand_alias _complete _extensions _match _files)
+#    else
+#        reply=(_complete _ignored _correct _approximate)
+#    fi'
 
 # Increase the number of errors based on the length of the typed word.
 # allow one error for every three characters typed in approximate completer
