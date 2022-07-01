@@ -1,5 +1,7 @@
 # shellcheck disable=1091
 
+autoload -Uz colors && colors
+
 typeset -A _status_to_signal
 _status_to_signal[1]="ERROR"
 _status_to_signal[128+1]="HUP"
@@ -34,7 +36,7 @@ _status_to_signal[128+29]="IO"
 _status_to_signal[128+30]="PWR"
 _status_to_signal[128+31]="SYS"
 
-_set_pipe_status() {
+.prompt.set_pipe_status() {
     local _pipestatus=($pipestatus)
     local _status=$status
     if (( $#_pipestatus == 1 )); then
@@ -50,8 +52,8 @@ _set_pipe_status() {
     else
         local _multiple_pipe_status=()
         local _total_pipe_status
+        local _single_status
         for _status in $_pipestatus; do
-            local _single_status
             if (( $_status == 0 )); then
                 printf -v _single_status "$fg_bold[green]%s$reset_color -> $fg_bold[blue]0x%x$reset_color" ! $_status
             else
@@ -61,7 +63,7 @@ _set_pipe_status() {
                     printf -v _single_status "$fg_bold[red]%s$reset_color -> $fg_bold[blue]0x%x$reset_color" X $_status
                 fi
             fi
-            _multiple_pipe_status+=(_single_status)
+            _multiple_pipe_status+=($_single_status)
         done
         if (( $_status == 0 )); then
             printf -v _total_pipe_status "$fg_bold[green]%s$reset_color -> $fg_bold[blue]0x%x$reset_color" ! $_status
@@ -94,19 +96,24 @@ elif (( ! $disable_async_prompt )) && is-at-least 5.0.6 && (( $+commands[git] ))
     done
     unset p
 
-    typeset -g _current_branch= vcs_info_fd=
+    typeset -g _current_branch= _current_status= vcs_info_fd=
     zmodload zsh/zselect 2> /dev/null
 
-    _vcs_update_info () {
-        eval $(read -rE -u$1)
-        zle -F $1 && vcs_info_fd=
-        exec {1}>&-
-        # update prompt only when necessary to avoid double first line
-        [[ -n $_current_branch ]] && zle reset-prompt
+    .prompt.vcs_update_info() {
+        local fd=$1
+        {
+            zle -F "$fd" && vcs_info_fd=
+            eval $(read -rE -u$fd)
+            # update prompt only when necessary to avoid double first line
+            [[ -n $_current_branch ]] || [[ -n $_current_status ]] && zle reset-prompt
+        } always {
+            exec {fd}>&-
+        }
     }
 
-    _set_current_branch () {
+    .prompt.set_git_status() {
         _current_branch=
+        _current_status=
         [[ -n $vcs_info_fd ]] && zle -F $vcs_info_fd
         cwd=$(pwd -P)
         for p in $_nogit_dir; do
@@ -116,11 +123,35 @@ elif (( ! $disable_async_prompt )) && is-at-least 5.0.6 && (( $+commands[git] ))
         done
 
         setopt localoptions no_monitor
+        local upstream= behind= push= ahead= head=
         coproc {
-            _br=$(git branch --no-color 2> /dev/null)
+            head=$(git branch --show-current --no-color 2> /dev/null) && [[ -n $head ]] || head=$(git branch -q --no-color --points-at=@ 2> /dev/null | tr -d '()' | cut -d' ' -f5)
             if (( $status == 0 )); then
-                _current_branch=$(echo $_br | awk '$1 == "*" {print "%{\x1b[33m%} ("substr($0, 3) ")"}')
+                printf -v _current_branch "\x1b[33m (%s)" $head
             fi
+
+            if upstream=$( git rev-parse -q --abbrev-ref @{u} 2> /dev/null ) && [[ -n $upstream ]]; then
+                git config --local remote.$upstream:h.fetch '+refs/heads/*:refs/remotes/'$upstream:h'/*' 2> /dev/null
+
+                upstream=${${upstream%/$head}#upstream/}
+                behind=${$( git rev-list --count --right-only @...@{u} ):#0}
+            fi
+
+            if push=${${"$( git rev-parse -q --abbrev-ref @{push} 2> /dev/null )"%/$head}#origin/} && [[ -n $push ]]; then
+                if [[ $push != $upstream ]]; then
+                    ahead=${$( git rev-list --count --left-only @...@{push} ):#0}
+                else
+                    ahead=${$( git rev-list --count --left-only @...@{u} ):#0}
+                fi
+            fi
+
+            _current_status=""
+            if [ -n $ahead ]; then
+                _current_status=" %F{green}↑$ahead%f"
+            elif [ -n $ahead ]; then
+                _current_status="$_current_status %F{red}↓$behind%f"
+            fi
+
             # always gives something for reading, or _vcs_update_info won't be
             # called, fd not closed
             #
@@ -128,23 +159,22 @@ elif (( ! $disable_async_prompt )) && is-at-least 5.0.6 && (( $+commands[git] ))
             # of a bg job is printed) would miss it
             #
             # need to substitute single ' with double ''
-            print "typeset -g _current_branch='${_current_branch//''''/''}'"
+            print "typeset -g _current_branch='${_current_branch//''''/''}' _current_status='${_current_status//''''/''}'"
         }
-        disown %{\ _br 2> /dev/null
+        disown %{\ head 2> /dev/null
         exec {vcs_info_fd}<&p
         # wait 0.1 seconds before showing up to avoid unnecessary double update
         # precmd functions are called *after* prompt is expanded, and we can't call
         # zle reset-prompt outside zle, so turn to zselect
         zselect -r -t 10 $vcs_info_fd 2> /dev/null
-        zle -F $vcs_info_fd _vcs_update_info
+        zle -F $vcs_info_fd .prompt.vcs_update_info
     }
 
-    autoload -Uz add-zsh-hook colors
-    add-zsh-hook precmd _set_current_branch
-    add-zsh-hook precmd _set_pipe_status
-    colors
+    autoload -Uz add-zsh-hook
+    add-zsh-hook precmd .prompt.set_git_status
+    add-zsh-hook precmd .prompt.set_pipe_status
     
-    PROMPT='%F{green}%n%f @ %F{magenta}%m%f in %B%F{yellow}%~%f%b at$_current_branch%f -> $_pipe_status%f
+    PROMPT='%F{green}%n%f @ %F{magenta}%m%f in %B%F{yellow}%~%f%b at$_current_branch$_current_status%f -> $_pipe_status%f
 %F{blue}>>>%f '
     RPROMPT="%T"
     PROMPT2="%F{yellow}>>>%f "
@@ -158,10 +188,9 @@ else
     ## config for fallback
     setopt prompt_subst
 
-    autoload -Uz vcs_info add-zsh-hook colors
-    add-zsh-hook precmd _set_current_branch
-    add-zsh-hook precmd _set_pipe_status
-    colors
+    autoload -Uz vcs_info add-zsh-hook
+    add-zsh-hook precmd vcs_info
+    add-zsh-hook precmd .prompt.set_pipe_status
 
     zstyle ':vcs_info:*' formats '%F{green}(%s)%f-%F{red}[%b]%f%u%c%F{blue}%m%f'
     zstyle ':vcs_info:*' actionformats '%F{green}(%s)%f-%F{red}[%b|%a]%f%u%c%F{blue}%m%f'
