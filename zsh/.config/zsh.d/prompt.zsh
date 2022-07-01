@@ -37,8 +37,7 @@ _status_to_signal[128+30]="PWR"
 _status_to_signal[128+31]="SYS"
 
 .prompt.set_pipe_status() {
-    local _pipestatus=($pipestatus)
-    local _status=$status
+    local _pipestatus=($pipestatus) _status=$status
     if (( $#_pipestatus == 1 )); then
         if (( $_status == 0 )); then
             printf -v _pipe_status "$fg_bold[green]%s$reset_color -> $fg_bold[blue]0x%x$reset_color" ! $_status
@@ -171,8 +170,8 @@ elif (( ! $disable_async_prompt )) && is-at-least 5.0.6 && (( $+commands[git] ))
     }
 
     autoload -Uz add-zsh-hook
-    add-zsh-hook precmd .prompt.set_git_status
     add-zsh-hook precmd .prompt.set_pipe_status
+    add-zsh-hook precmd .prompt.set_git_status
     
     PROMPT='%F{green}%n%f @ %F{magenta}%m%f in %B%F{yellow}%~%f%b at$_current_branch$_current_status%f -> $_pipe_status%f
 %F{blue}>>>%f '
