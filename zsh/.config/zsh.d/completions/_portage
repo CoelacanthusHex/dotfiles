@@ -1,0 +1,469 @@
+#compdef emerge ebuild quickpkg emaint env-update etc-update portageq repoman
+
+_ebuild () {
+  local state
+  local expl=(-Vx)
+  local yesno="yes/no:compadd -o nosort y n"
+  local optional_args=(
+    '--skip-manifest[skip all manifest checks]'
+    '--debug[run bash with the -x option]'
+    '--color=[enable or disable  color  output]'":$yesno"
+    '--ignore-default-opts[ignore $EBUILD_DEFAULT_OPTS]'
+    '--force[forces regeneration all associated distfiles if used with digest or or manifest command]'
+  )
+
+  _arguments -O expl -C $optional_args "1:ebuild file:_files -g \*.ebuild" "*:ebuild command:->ebuild_cmd"
+
+  case $state in
+    (ebuild_cmd)
+
+      local ebuild_cmds=(
+        'clean[Cleans the temporary build directory]'
+        'help[Show help]'
+        'setup[Run all package specific setup actions and exotic system checks]'
+        'fetch[Fetch all necessary files]'
+        'digest[Creates a digest file for the package]'
+        'unpack[Extracts the sources to a subdirectory in the build directory]'
+        'prepare[Prepares the extracted sources by running the src_prepare()]'
+        'configure[Configures the extracted sources by running the src_configure()]'
+        'compile[Compiles the extracted sources by running the src_compile()]'
+        'test[Runs package-specific test cases to verify that everything was built properly]'
+        'preinst[Run specific actions that need to be done before installation]'
+        'install[Installs the package to the temporary install directory]'
+        'postinst[Run specific actions that need to be done after installation]'
+        'qmerge[Installs the package de the filesystem]'
+        'merge[perform the following actions: fetch, unpack, compile, install and qmerge]'
+        'unmerge[Remove the installed files of the packages]'
+        'prerm[Run specific actions that need to be executed before unmerge]'
+        'postrm[Run specific actions that need to be executed after unmerge]'
+        'config[Run specific actions needed to be executed after the emerge process has completed]'
+        'package[This command is a lot like the merge command, but create a .tbz2 package]'
+        'manifest[Updates the manifest file for the package]'
+        'rpm[Builds a RedHat RPM package]'
+      )
+
+      local curcontext="ebuild_cmd"
+      zstyle -t ":completion:${curcontext}:values:values" sort || zstyle ":completion:${curcontext}:values:values" sort false
+      _values -w "ebuild command" "$ebuild_cmds[@]"
+      ;;
+  esac
+}
+
+_quickpkg () {
+  local optional_args
+
+  optional_args=(
+    "(: -)"{-h,--help}'[show this help message and exit]'
+    "--umask[umask used during package creation (default is 0077)]:umask (octal)"
+    "--ignore-default-opts[do not use the QUICKPKG_DEFAULT_OPTS environment variable]"
+    "--include-config[include all files protected by CONFIG_PROTECT (as a security precaution, default is 'n')]:y or n:((y n))"
+    "--include-unmodified-config[include files protected by CONFIG_PROTECT that have not been modified since installation (as a security precaution, default is 'n')]:y or n:((y n))"
+  )
+
+  if compset -P '(\\|)(>=|<=|<|>|=)'; then
+    _arguments -s \
+      "$optional_args[@]" \
+      '*:installed package:_gentoo_packages installed_versions'
+  elif compset -P '(\\|)[/]'; then
+    _path_files -W / -/
+  else
+    _arguments \
+      "$optional_args[@]" \
+      '*:installed package:_gentoo_packages installed'
+  fi
+}
+
+_emerge () {
+  local noask_opts nopkg_opts bopts all common_args install_args profiles
+
+  noask_opts=(
+    -p -a --pretend --ask --regen --info --search -s --searchdesc
+    -S --version -V --help -h --metadata --check-news
+  )
+
+  nopkg_opts=(
+    --resume --skipfirst -c --clean -h --help --depclean --info
+    --metadata -P --prune --regen -s --search -S --searchdesc --sync -C
+    --unmerge -V --version -i --inject --list-sets --deselect --check-news
+  )
+
+  bopts=(
+    $nopkg_opts -b --buildpkg -B --buildpkgonly -G --getbinpkgonly -g
+    --getbinpkg -k --usepkg -K --usepkgonly --fetch-all-uri -f -F --fetchonly
+  )
+
+  all=(
+    $bopts -l --changelog --columns --deep -D --emptytree -e --newuse
+    --noconfmem --nodeps -O --noreplace -n --oneshot -1 -o --onlydeps --tree -t
+    -u --update -U --upgradeonly --config
+  )
+
+  local yesno="yes/no:compadd -o nosort y n"
+  common_args=(
+    "($noask_opts --sync)"{-p,--pretend}"[Simply display what would be done]"
+    "($noask_opts)"{-a,--ask}"[Ask what would be done]"
+    '(-d --debug --help -h --version -V)'{-d,--debug}'[Tells emerge to run the emerge command in debug mode]'
+    '(--quiet -q --verbose -v)'{-q,--quiet}'[General outcome is a reduced or condensed output]'
+    '(--verbose -v --quiet -q)'{-v,--verbose}'[Tell emerge to run in verbose mode]'
+    '--nospinner[Disables the spinner for the session]'
+    '(: -)'{-h,--help}'[Displays help]'
+    "(: -)--config[Run package specific actions needed to be executed after the emerge process has completed]:installed atom:_gentoo_packages installed"
+    "(: -)--list-sets[Displays a list of available package sets]"
+    "--color=[Color output]:$yesno"
+    "--accept-properties=[Temporarily override the ACCEPT_PROPERTIES variable]"
+    "--accept-restrict=[Temporarily override the ACCEPT_RESTRICT variable]"
+    "($noask_opts)"{-A,--alert}"[Add a terminal bell to all interactive prompts]"
+    "--ignore-default-opts[Ignore EMERGE_DEFAULT_OPTS]"
+    "--moo[Have you mooed today?]"
+    "(--jobs)--jobs[Number of packages to build simultaneously]:jobs:({1.."${#${$(</proc/cpuinfo)/^processor}}"})"
+  )
+
+  install_args=(
+    "--deselect[Remove atom from world file]"
+    "--alphabetical[Sort use/other flags output alphabetically despite of status]"
+    "--ask-enter-invalid[When with --ask, interpret a single 'Enter' key press as invalid input]"
+    "--autounmask[Automatically unmask packages and generate package.use]"
+    "--autounmask-unrestricted-atoms[Use >= for autounmask if possible]"
+    "--autounmask-keep-masks[Don't unmask hardmasks and unkeyworded (live)]"
+    "--autounmask-write[Automatically write autounmask changes (respect CONFIG_PROTECT)]"
+    "--backtrack=[Number of times to backtrack if dependency calculation fails]:number:(0 10 30)"
+    "--binpkg-changed-deps[Ignore binary packages for which the corresponding ebuild dependencies have changed since the packages were built]:$yesno"
+    "--binpkg-respect-use[Ignore binary packages if their uses don't match current config]"
+    "--changed-deps[Replace installed packages whos dependencies have changed since install]"
+    "--complete-graph[Consider the deep dependencies of all packages from the world set]:$yesno"
+    "--complete-graph-if-new-use[--complete-graph if USE or IUSE will change for an installed package]:$yesno"
+    "--complete-graph-if-new-ver[--complete-graph if an installed package version will change]:$yesno"
+    "--config-root=[Set PORTAGE_CONFIGROOT variable]:root path:_files -/"
+    "--depclean-lib-check[Check library link-level dependencies]"
+    "--digest[Prevent corruption from being noticed]"
+    "--dynamic-deps[Substitute the dependencies of installed packages with the dependencies of corresponding unbuilt ebuilds]:$yesno"
+    "--fail-clean[Clean up temporary files after a build failure]"
+    "--ignore-built-slot-operator-deps[Ignore the slot/sub-slot dependencies for built pkg]:$yesno"
+    "--ignore-soname-deps[Ignore the soname dependencies of binary and installed packages]:$yesno"
+    "--ignore-world[Ignore the @world package set and its dependencies]"
+    "--implicit-system-deps[Assume that packages may have implicit dependencies on packages which belong to the @system set]"
+    "--keep-going[Continue as much as possible after an error]"
+    "--load-average[No new builds should be started if there are other builds running and the load average is at least VALUE]"
+    "--misspell-suggestions[Enable or disable misspell suggestions]:$yesno"
+    "--newrepo[Recompile a package if it is now being pulled from a different repository]"
+    "--usepkg-exclude[Ignore matching binary packages]:installed atom:_gentoo_packages installed"
+    "--rebuild-exclude[Do not rebuild matching packages on --rebuild]:installed atom:_gentoo_packages installed"
+    "--rebuild-ignore[Do not rebuild packages that depend on matching packages on --rebuild]:installed atom:_gentoo_packages installed"
+    "--package-moves[Perform package moves when necessary]"
+    "--pkg-format[Binary package format]:archive type:(tar rpm)"
+    "--quickpkg-direct[Enable use of installed packages directly as binary packages]:$yesno"
+    "--prefix=[Set EPREFIX env variable]:prefix path:_files -/"
+    "--quiet-build[Redirect all build output to logs]"
+    "--quiet-fail[Suppresses display of the build log on stdout]"
+    "--quiet-repo-display[Suppress ::repository in output (and use numbers)]"
+    "--quiet-unmerge-warn[Disable the warning message on --unmerge and friends]"
+    "--rebuild-if-new-slot[Automatically rebuild or reinstall packages when dependencies can be satisfied by a newer slot]"
+    "--rebuild-if-new-rev[Rebuild packages when build-time dependencies are built from source, if the dependency is not already installed with the same version and revision]"
+    "--rebuild-if-new-ver[Rebuild packages when build-time dependencies are built from source, if the dependency is not already installed with the same version]"
+    "--rebuild-if-unbuilt[Rebuild packages when build-time dependencies are built from source]"
+    "--rebuilt-binaries[Replace installed packages with binary packages that have been rebuilt]"
+    "--rebuilt-binaries-timestamp[Only binaries older than TIMESTAMP will be considered by the rebuilt-binaries logic]:TIMESTAMP"
+    "--reinstall[Alias for --changed-use (currently)]:reinstall opts:(changes-use)"
+    "--reinstall-atoms[Treat matching packages as if they are not installed]:installed atoms:_gentoo_packages installed"
+    "--root=[Set ROOT env variable]:prefix path:_files -/"
+    "(: $nopkg_opts)"{-w,--select}"[Add specified packages to the world set (inverse of --oneshot)]"
+    "--selective=[Use --selective=n if you want to forcefully disable --selective, regardless of options like --changed-use, --newuse, --noreplace, or --update]:$yesno"
+    "--unordered-display[Produce more readable package tree with --tree]"
+    "--use-ebuild-visibility[Use unbuilt ebuild metadata for visibility checks on built packages]"
+    "--useoldpkg-atoms[Prefer matching binary packages over newer unbuilt packages]:available atom:_gentoo_packages available"
+    "($bopts)"{-b,--buildpkg}"[Tells emerge to build binary packages]"
+    "($bopts)--buildpkg-exclude[Space separated list of package atoms for which no binary packages should be built]"
+    "($bopts)--exclude[Space separated list of package names or slot atoms which should not be installed]"
+    "($bopts)"{-B,--buildpkgonly}"[Tells emerge to only build binary packages]"
+    "($nopkg_opts --emptytree -e -l --changelog --usepkgonly -K)"{-l,--changelog}"[This will show the ChangeLog]"
+    "($nopkg_opts -t --tree)--columns[Displays versions in aligned format]"
+    "($nopkg_opts -D --deep --newuse -N --changed-use)"{-D,--deep}"[Consider the entire dependency tree of packages]"
+    "($nopkg_opts -D --deep --newuse -N --changed-use)"{-N,--newuse}"[Include installed packages where any USE flags have changed since compilation.]"
+    "($nopkg_opts -D --deep --newuse -N --changed-use)--changed-use[Include installed packages where enabled USE flags have changed since installation]"
+    "($nopkg_opts -e -l --changelog --emptytree)"{-e,--emptytree}"[Only consider glibc as installed packages]"
+    "($all --nospinner --pretend -p)"{-i,--inject}"[Portage thinks that this package is installed]"
+    "($nopkg_opts $bopts)"{-f,--fetchonly}"[Just perform fetches for all packages]"
+    "($nopkg_opts $bopts)"{-F,--fetch-all-uri}"[Fetch all possible files for all packages]"
+    "($bopts)"{-g,--getbinpkg}"[Tells emerge to download binary package]"
+    "($bopts)"{-G,--getbinpkgonly}"[As --getbinpkg, but does not use local info]"
+    "($nopkg_opts)--noconfmem[Causes portage to disregard merge records]"
+    "($nopkg_opts -O --nodeps)"{-O,--nodeps}"[Merges specified packages without merging dependencies]"
+    "($nopkg_opts -n --noreplace)"{-n,--noreplace}"[Skip packages already installed]"
+    "($nopkg_opts)"{-1,--oneshot}"[Do not add package to the world profile]"
+    "($nopkg_opts --onlydeps -o)"{-o,--onlydeps}"[Only merge (or pretend to merge) the dependencies]"
+    "($nopkg_opts --onlydeps-with-rdeps)--onlydeps-with-rdeps[Include run time dependencies when --onlydeps is specified]:$yesno"
+    "($nopkg_opts --columns -t --tree)"{-t,--tree}"[Show dependency tree]"
+    "($nopkg_opts --update -u)"{-u,--update}"[Updates packages to the most recent version available]"
+    "($nopkg_opts --upgradeonly -U)"{-U,--upgradeonly}"[Do not update packages to a lower version]"
+    "($bopts)"{-k,--usepkg}"[Tells emerge to use binary packages if available]"
+    "($bopts --changelog -l)"{-K,--usepkgonly}"[Tells emerge to use binary packages only]"
+    "($all)--clean[Cleans the system by removing packages]"
+    "($all)"{-c,--depclean}"[Clean selected packages/all packages that have no reason for being installed (see man!!!)]"
+    "(: $all $noask_opts --nospinner --quiet -q)--info[This is a list of information to include in bug reports]"
+    "(: -)--metadata[Generate metadata]"
+    "($nopkg_opts --usepkgonly -K)--newuse[Include installed packages which have changed USE flags]"
+    "($all)"{-P,--prune}"[Removes all but the latest versions of matching packages]"
+    "(: $all $noask_opts --verbose -v)--regen[Causes portage to check and update the dependency cache]"
+    "(: $all $noask_opts --verbose -v)"{-s,--search}"[Searches for matches]"
+    "(: $all $noask_opts --verbose -v)"{-S,--searchdesc}"[Matches the seachdesc string against the description field]"
+    "(: $all $noask_opts --verbose -v)--search-index[Enable or disable indexed search for search action]:$yesno"
+    "(: $all $noask_opts --verbose -v)--search-similarity[Set the minimum similarity percentage]"
+    "(: $all $noask_opts --verbose -v)--fuzzy-search[Enable or disable fuzzy search for search actions]"
+    "(: $all --pretend -p)--sync[Initiates a portage tree update]"
+    "(: $all --pretend -p)--check-news[Scan all repositories for relevant unread GLEP 42 news items]"
+    "($all)"{-C,--unmerge}"[Removes all matching packages]"
+    "($all)--rage-clean[does --unmerge with CLEAN_DELAY=0]"
+    '(: -)'{-V,--version}'[Display version info]'
+    "(: $all[3,-1])--resume[Resumes the last merge operation]"
+    "(: $all[3,-1])--skipfirst[Removes the first package in the resume list]"
+    "($all)--keep-going[Continue merge even if a package fails to build]"
+    "--with-bdeps=[pull in build time dependencies  that  are  not  strictly  required]:$yesno"
+    "--with-test-deps=[pull in dependencies that are conditional on the \"test\" USE flag]:$yesno"
+  )
+
+  profiles=(
+    'world[All packages in the world profile]'
+    'system[All packages in the system profile]'
+  )
+
+  # Dispatch
+  if (( $words[(I)(--(unmerge|(dep|)clean|prune|deselect)|-[[:alpha:]]#(C|c|P)[[:alpha:]]#)] )); then
+    if compset -P '(\\|)(>=|<=|<|>|=)'; then
+      _arguments -s \
+        '*:installed package:_gentoo_packages installed_versions' && return 0
+    else
+      _arguments -s \
+        "$common_args[@]" "$install_args[@]" \
+        "*:installed package:_gentoo_packages installed" \
+        "::installed sets:_gentoo_packages installed_sets" \
+        && return 0
+    fi
+
+  elif (( $words[(I)(world|system)] )); then
+    _arguments -s \
+      "$common_args[@]" "$install_args[@]" \
+      "($nopkg_opts[1,-2] --inject -i --oneshot -1):" && return 0
+
+  elif (( $words[(I)(--usepkgonly|-[[:alnum:]]#K[[:alnum:]]#)] )); then
+    _arguments -s \
+      "$common_args[@]" "$install_args[@]" \
+      '*:binary package:_gentoo_packages binary' && return 0
+
+  else
+    if compset -P '(\\|)(>=|<=|<|>|=)'; then
+      _arguments "*:portage:_gentoo_packages available_versions" && return 0
+    elif (( $words[(I)(--inject|-i)] )); then
+      _arguments -s \
+        "$common_args[@]" "$install_args[@]" \
+        "*:portage:_gentoo_packages available_versions" && return 0
+    else
+      _arguments -s \
+        "$common_args[@]" "$install_args[@]" \
+        "($nopkg_opts)::portage: _values 'profile' \$profiles[@] " \
+        "($nopkg_opts)*:portage:_gentoo_packages available" \
+        "($nopkg_opts)::available sets:_gentoo_packages available_sets" \
+        && return 0
+    fi
+  fi
+}
+
+_emaint () {
+  local state
+  local chk_opt fix_opt pretend_opt clean_opt purge_opt log_extra_opt repo_opt
+  local sync_opt sync_extra_opt standalone_opt exclusive_cmd_opt repos
+  local allcmd logcmd synccmd mergecmd fixcmds
+  chk_opt=(-c --check)
+  fix_opt=(-f --fix)
+  pretend_opt=(-p --pretend)
+  clean_opt=(-C --clean)
+  purge_opt=(-P --purge)
+  log_extra_opt=(-t --time)
+  repo_opt=(-r --repo)
+  sync_opt=(-a --auto -A --allrepos)
+  sync_extra_opt=(--sync-submodule $repo_opt)
+
+  standalone_opt=(-h --help --version)
+  exclusive_cmd_opt=($chk_opt $fix_opt $sync_opt $purge_opt $pretend_opt $standalone_opt)
+  repos=$(_gentoo_repos_conf -l)
+
+  _arguments -C \
+    "(: -)"{-h,--help}'[show help message and exit]' \
+    "($sync_extra_opt $log_extra_opt $exclusive_cmd_opt $clean_opt)"{-f,--fix}"[Fix any problems that may exist]" \
+    "(: -)"--version"[show program's version number and exit]" \
+    "($sync_extra_opt $exclusive_cmd_opt)"{-c,--check}"[check for any problems that may exist]" \
+    "($fix_opt $purge_opt $sync_opt $sync_extra_opt $standalone_opt -t --time)"{-t,--time}"[(cleanlogs only)changes the minimum age NUM (in days) of the logs to be listed or deleted]" \
+    "($sync_extra_opt $exclusive_cmd_opt)"{-p,--pretend}"[output logs that would be deleted (cleanlogs only)]" \
+    "($fix_opt $sync_opt $sync_extra_opt $purge_opt)"{-C,--clean}"[cleans the logs from \$PORT_LOGDIR (cleanlogs only)]" \
+    "($log_extra_opt $sync_extra_opt $exclusive_cmd_opt $clean_opt)"{-P,--purge}"[removes the list of previously failed merges (merges only)]" \
+    "($repo_opt $log_extra_opt $exclusive_cmd_opt $clean_opt)"{-a,--auto}"[sync repositories which have their auto-sync setting set (sync module only)]" \
+    "($chk_opt $fix_opt $purge_opt $pretend_opt $log_extra_opt $clean_opt $standalone_opt)*"{-r,--repo}"=[Sync the specified repo]:gentoo repo:($repos)" \
+    "($repo_opt $log_extra_opt $exclusive_cmd_opt $clean_opt)"{-A,--allrepos}"[Sync all repos that have a sync-url defined (sync module only)]" \
+    "($chk_opt $fix_opt $purge_opt $pretend_opt $log_extra_opt $clean_opt $standalone_opt)*--sync-submodule=[restrict sync to the specified submodule (sync module only)]:portage submodule:(glsa news profiles)" \
+    "1:emaint commands:->emaint_cmd"
+
+  case $state in
+    (emaint_cmd)
+      local descr="emaint commands"
+
+      local cmd=(
+        'all:perform all supported commands that accept the specified option'
+        'logs:clean out old logs from the $PORT_LOGDIR'
+        'sync:perform sync actions on specified repositories'
+        'merges:scan for failed package merges and attempt to fix those failed packages'
+        'binhost:generate  a metadata index for binary packages located in $PKGDIR'
+        'cleanconfmem:discard no longer installed config tracker entries'
+        'cleanresume:discard merge lists saved for the emerge --resume action'
+        'movebin:perform package move updates for binary packages located in $PKGDIR'
+        'moveinst:perform package move updates for installed packages'
+        'world:fix problems in the world file'
+      )
+
+      local -a remove
+      if (( $words[(I)(-f|--fix)] )); then
+        remove=(${cmd[(r)logs:*]} ${cmd[(r)sync:*]})
+      elif (( $words[(I)(-c|--check)] )); then
+        remove=(${cmd[(r)sync:*]})
+      elif (( $words[(I)(-p|--pretend|-C|--clean|-t|--time)] )); then
+        cmd=(${cmd[(r)logs:*]})
+      elif (( $words[(I)(-a|--auto|-A|--allrepos|-r=*|--repo=*|-r|--repo|--sync-submodule|--sync-submodule=*)] )); then
+        cmd=(${cmd[(r)sync:*]})
+      elif (( $words[(I)(--purge|-P)] )); then
+        cmd=(${cmd[(r)merges:*]})
+      else
+        remove=(${cmd[(r)sync:*]})
+      fi
+
+      cmd=(${cmd:|remove})
+      _describe $descr cmd
+
+      ;;
+  esac
+}
+
+_env-update () {
+  _arguments -s '(: -)--no-ldconfig[Do not run ldconfig]'
+}
+
+_etc-update () {
+  _arguments -s \
+    {'(--debug)-d','(-d)--debug'}'[Enable shell debugging]' \
+    {'(--help)-h','(-h)--help'}'[Show help message and exit]' \
+    {'(--preen)-p','(-p)--preen'}'[Auto-merge trivial changes only and exit]' \
+    {'(--quiet)-q','(-q)--quiet'}'[Show only essential output]' \
+    {'(--verbose)-v','(-v)--verbose'}'[Show settings and such along the way]' \
+    {'(--version)-V','(-V)--version'}'[Show version and exit]' \
+    "--automode[automatically perform operation on all files]:mode:(( \
+      -3\:'auto-merge all files' \
+      -5\:'auto-merge all files without using \"mv -i\"' \
+      -7\:'discard all updates' \
+      -9\:'discard all updates without using \"rm -i\"' ))" \
+    '*:paths to scan:_files -/'
+}
+
+_portageq () {
+  local action
+
+  action="$words[2]"
+
+  if (( CURRENT == 2 )); then
+    _values 'command' \
+      '--help[Show help]' \
+      'config_protect_mask[Returns the CONFIG_PROTECT_MASK paths]' \
+      'config_protect[Returns the CONFIG_PROTECT paths]' \
+      'portdir[Returns PORTDIR paths]' \
+      'contents[List the files that are installed for a given package]' \
+      'vdb_path[Returns the path used for the var(installed) package database]' \
+      'gentoo_mirrors[Returns the mirrors set to use in the portage configuration]' \
+      'exithandler[MISSING DOCUMENTATION!]' \
+      'all_best_visible[Returns all best_visible packages (without .ebuild)]' \
+      'match[Returns a \n separated list of category/package-version]' \
+      'metadata[Returns metadata values for the specified package]' \
+      'best_visible[Returns category/package-version (without .ebuild)]' \
+      'mass_best_visible[Returns category/package-version (without .ebuild)]' \
+      "has_version[Return code 0 if it's available, 1 otherwise]" \
+      'envvar[Returns a specific environment variable as exists prior to ebuild.sh]' \
+      'pkgdir[Returns the PKGDIR path]' \
+      'best_version[Returns category/package-version (without .ebuild)]' \
+      'mass_best_version[Returns category/package-version (without .ebuild)]' \
+      'portdir_overlay[Returns the PORTDIR_OVERLAY path]' \
+      'distdir[Returns the DISTDIR path]' \
+      'owners[print the packages that own the files and which files belong to each package]'
+  elif (( CURRENT == 3 )); then
+    if [[ "$action" =~ (contents|(all_|mass_|)best_visible|match|metadata|(has|best)_version|owners|mass_best_version) ]]; then
+      _arguments -s '*:root:_files -g /'
+    fi
+  elif (( CURRENT > 3 )); then
+    if [[ "$action" =~ ((mass_|)best_(visible|version)|has_version) ]]; then
+      _arguments -s '*:package:_gentoo_packages available'
+    elif [[ "$action" == owners ]]; then
+      _arguments -s '*:root:_files'
+    fi
+  fi
+}
+
+_repoman () {
+  local previous
+
+  previous="$words[CURRENT-1]"
+
+  _arguments -s \
+    '(--force)'--force'[Force commit to proceed, regardless of QA issues]' \
+    '(-q --quiet -v --verbose)'{-q,--quiet}'[Be less verbose about extraneous info]' \
+    '(-p --pretend -m --commitmsg -M --commitmsgfile)'{-p,--pretend}'[Don’t commit or fix anything; just show what would be done]' \
+    '(-i --include-masked)'{-i,--include-masked}'[Include masked packages in scans at category or tree level]' \
+    '(-x --xmlparse)'{-x,--xmlparse}'[Forces the metadata.xml parse check to be carried out]' \
+    '(-q --quiet -v --verbose)'{-v,--verbose}'[Displays every package name while checking]' \
+    '(-I --ignore-arches)'{-I,--ignore-arches}'[Ignore arch-specific failures (where arch != host)]' \
+    '(-m --commitmsg -M --commitmsgfile)'{-m,--commitmsg}'[Adds a commit message via the command line]:message:' \
+    '(-m --commitmsg -M --commitmsgfile)'{-M,--commitmsgfile}'[Adds a commit message from the specified file]:commit_file:_files' \
+    '(: -)'{-V,--version}'[Show version info]' \
+    '(: -)'{-h,--help}'[Show this screen]'
+
+  # if we don't have an option that cancel action, or if we don't already have an action.
+  if ! [[ "$previous" =~ (-h|-V|-m|-M|--version|--help|--commitmsg|--commitmsgfile) ]] &&
+      ! (( $words[(I)(full|last|help|scan|fix|lfull|manifest|commit)] )); then
+    _values 'action' \
+      'full[Scan directory tree for QA issues (full listing)]' \
+      'last[Remember report from last run]' \
+      'help[Show this screen]' \
+      'scan[Scan directory tree for QA issues (short listing)]' \
+      'fix[Fix simple QA issues (stray digests, missing digests)]' \
+      'lfull[Remember report from last run (full listing)]' \
+      'manifest[Generate a Manifest (fetches files if necessary)]' \
+      'commit[Scan directory tree for QA issues; if OK, commit via cvs]'
+  fi
+}
+
+zparseopts -D -E -A Args -- -emerge
+if (( ${+Args[--emerge]} )); then
+  _emerge "$@" && return 0
+fi
+
+case "$service" in
+  emerge)
+    _emerge "$@" && return 0
+    ;;
+  ebuild)
+    _ebuild "$@" && return 0
+    ;;
+  quickpkg)
+    _quickpkg "$@" && return 0
+    ;;
+  emaint)
+    _emaint "$@" && return 0
+    ;;
+  env-update)
+    _env-update "$@" && return 0
+    ;;
+  etc-update)
+    _etc-update "$@" && return 0
+    ;;
+  portageq)
+    _portageq "$@" && return 0
+    ;;
+  repoman)
+    _repoman "$@" && return 0
+    ;;
+esac
+
+# vim: set et sw=2 ts=2 ft=zsh:

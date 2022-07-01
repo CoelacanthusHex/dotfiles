@@ -189,10 +189,34 @@ function sudo-command-line() {
 zle -N sudo-command-line
 bindkey "\e\e" sudo-command-line
 
+# https://github.com/momo-lab/zsh-replace-multiple-dots/blob/master/replace-multiple-dots.plugin.zsh
+function replace_multiple_dots() {
+    local dots=$LBUFFER[-3,-1]
+    if [[ $dots =~ "^[ //\"']?\.\.$" ]]; then
+        LBUFFER=$LBUFFER[1,-3]'../.'
+    fi
+    zle self-insert
+}
+zle -N replace_multiple_dots
+bindkey "." replace_multiple_dots
+
 # Enable aliases to be sudo’ed
 # http://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo
 alias sudo='sudo '
 alias cgproxy='cgproxy '
+
+# bat using noexpandtab
+(( $+commands[bat] )) && export BAT_OPTS="--tabs 0"
+
+# BSD ls colors.
+export LSCOLORS='exfxcxdxbxGxDxabagacad'
+
+# Grep colors.
+export GREP_COLOR='37;45'           # BSD.
+export GREP_COLORS="mt=$GREP_COLOR" # GNU.
+
+export LESSOPEN="| pygmentize -f console -O bg=dark %s"
+export LESS='-FiMr --incsearch'
 
 # vim: ft=zsh sw=4 ts=8 sts=4 et:
 # kate: space-indent on; indent-width 4;

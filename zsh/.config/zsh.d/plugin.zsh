@@ -10,6 +10,9 @@ _enabled_plugins=(
     zsh-history-substring-search/zsh-history-substring-search
     tmux
     hoco # https://github.com/Felixoid/zsh-hoco/blob/master/hoco.zsh
+    cpan-completion # https://github.com/MenkeTechnologies/zsh-cpan-completion
+    #zsh-async/async
+    nix-zsh-completions/nix
 )
 for _zsh_plugin in $_enabled_plugins[@]; do
     [[ ! -r "$ZDOTDIR/plugins/$_zsh_plugin.plugin.zsh" ]] || source $ZDOTDIR/plugins/$_zsh_plugin.plugin.zsh

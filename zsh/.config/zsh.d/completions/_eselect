@@ -1,0 +1,303 @@
+#compdef eselect kernel-config profile-config rc-config
+
+_eselect_parse_generic() {
+  local -a mod_std mod_extra
+  local -a eselect_args
+  local mod_cur eselect_descr
+  local mod descr etype
+
+  eselect_args=($@)
+  if [[ $1 == "modules" ]] ; then
+    eselect_args=($1 usage)
+  fi
+  mod_cur="mod_extra"
+  eselect_descr="$(LANG=C COLUMNS=100 eselect --colour=no ${eselect_args[@]} 2> /dev/null)"
+
+  while IFS="" read -r helpdesc ; do
+    case "$helpdesc" in
+      ("Built-in modules:"|"Standard actions:"))
+        mod_cur="mod_std"
+        ;;
+      ("Extra modules:"|"Extra actions:"))
+        mod_cur="mod_extra"
+        ;;
+    esac
+
+    if [[ "$helpdesc" =~ '^  [A-Za-z]' ]] ; then
+      echo "$helpdesc" | read mod descr
+      descr="$(echo "$descr" | sed -r -e 's/.*\s\s\s+//')"
+      set -A $mod_cur ${(P)mod_cur} ${mod}:${(q)descr}
+    fi
+  done <<< "$eselect_descr"
+
+  if [[ -z "${eselect_args[@]}" ]] ; then
+    etype="modules"
+  else
+    etype="actions"
+  fi
+
+  if [[ -z "${mod_extra}" && -z "${mod_std}" ]] ; then
+    _nothing
+  else
+    _describe -t eselect_extra    -V "eselect extra $etype"    mod_extra
+    _describe -t eselect_standard -V "eselect standard $etype" mod_std
+  fi
+}
+
+_eselect_parse_action_list() {
+  local idx item tag
+  local -a _sel_items
+  local -a _unsel_items
+
+  while read idx item tag descr ; do
+    if [[ "$idx" == '[' && "$item" == ']' ]] ; then
+      continue
+    fi
+    if [[ ${tag} =~ '^[*@#]$' ]] ; then
+      _sel_items+=($item)
+    else
+      _unsel_items+=($item)
+    fi
+  done <<< $(LANG=C COLUMNS=100 eselect --colour=no $1 list 2> /dev/null | tail -n +2)
+
+  set -A $2 ${_sel_items[@]}
+  set -A $3 ${_unsel_items[@]}
+
+}
+
+_eselect_module_action() {
+  if (( $+functions[_eselect_${1}_action] )) ; then
+    _eselect_${1}_action
+  else
+    _eselect_parse_generic ${1}
+  fi
+}
+
+_eselect_complete_action() {
+  local actionname=$(_eselect_get_module)
+  if (( $+functions[_eselect_complete_${actionname}_action] )) ; then
+    _eselect_complete_${actionname}_action
+    return 0
+  fi
+
+  if (( $NORMARG + $(_eselect_action_index) == $CURRENT )) ; then
+    _eselect_complete_action_generic ${actionname}
+    return 0
+  fi
+
+  _nothing
+}
+
+_eselect_get_module() {
+  if [[ $service == "eselect" ]] ; then
+    echo $line[1]
+  else
+    echo ${service%-config}
+  fi
+}
+
+_eselect_action_index() {
+  if [[ $service == "eselect" ]] ; then
+    echo 2
+  else
+    echo 1
+  fi
+}
+_eselect_get_action () {
+  echo ${line[$(_eselect_action_index)]}
+}
+
+_eselect_action() {
+  _eselect_module_action $(_eselect_get_module)
+}
+
+_eselect_module() {
+  _eselect_parse_generic
+}
+
+(( $+function[_eselect_complete_action_generic] )) || _eselect_complete_action_generic() {
+  local -a sel_items
+  local -a unsel_items
+
+  case "$(_eselect_get_action)" in
+    ("set"|"enable"))
+      _eselect_parse_action_list $1 sel_items unsel_items
+      if (( $#unsel_items + $#sel_items > 0 )) ; then
+        _describe -t eselect_sel   -V 'eselect items' unsel_items
+        if (( $#unsel_items + $#sel_items < 10 )) ; then
+          _describe -t eselect_unsel -V 'eselect already selected items' sel_items
+        fi
+        return 0
+      fi
+      ;;
+    ("remove"|"disable"))
+      _eselect_parse_action_list $1 sel_items unsel_items
+      if [[ -n "${sel_items[@]}" ]] ; then
+        _describe  -V 'eselect items' sel_items
+        return 0
+      fi
+      ;;
+  esac
+
+  _nothing
+}
+
+# custom completions:
+(( $+functions[_eselect_complete_news_action] )) || _eselect_complete_news_action() {
+  local -a items
+
+  case "$(_eselect_get_action)" in
+    ("read"|"unread"))
+      local idx descr
+      while read idx descr ; do
+        idx=${idx#'['}
+        idx=${idx%']'}
+        items=(${idx}:${(q)descr} ${items[@]})
+      done <<< $(eselect --colour=no news list 2> /dev/null | tail -n +2)
+      items+=('all:Read all news items')
+      if [[ $(_eselect_get_action) == "read" ]] ; then
+        items+=('new:Read unread news items (default)')
+      fi
+
+      if [[ -n "${items[@]}" ]] ; then
+        _describe  -V 'eselect news' items
+        return 0
+      fi
+      ;;
+  esac
+
+  _nothing
+}
+
+(( $+functions[_eselect_complete_kernel_action] )) || _eselect_complete_kernel_action() {
+  local -a items
+
+  if (( $NORMARG + $(_eselect_action_index) == $CURRENT )) ; then
+    case "$(_eselect_get_action)" in
+      "set")
+        for k in ${(@f)$(eselect --colour=no --brief kernel list)} ; do
+          items+=${k#linux-}
+        done
+        local -a expl=(-P linux-)
+        compadd -V  'eselect kernel' -P linux- ${items[@]}
+        return 0
+        ;;
+    esac
+  fi
+
+  _nothing
+}
+
+(( $+functions[_eselect_complete_profile_action] )) || _eselect_complete_profile_action() {
+  if (( $NORMARG + $(_eselect_action_index) == $CURRENT )) ; then
+    case "$(_eselect_get_action)" in
+      "set")
+        _values  'eselect profiles' $(eselect --colour=no --brief profile list)
+        return 0
+        ;;
+    esac
+  fi
+
+  _nothing
+}
+
+(( $+functions[_eselect_complete_timezone_action] )) || _eselect_complete_timezone_action() {
+  if (( $NORMARG + $(_eselect_action_index) == $CURRENT )) ; then
+    case "$(_eselect_get_action)" in
+      "set")
+        _multi_parts /  "($(eselect --colour=no --brief timezone list))"
+        return 0
+        ;;
+    esac
+  fi
+
+  _nothing
+}
+
+(( $+functions[_eselect_complete_php_action] )) || _eselect_complete_php_action() {
+  if (( $NORMARG + $(_eselect_action_index) == $CURRENT )) ; then
+    case "$(_eselect_get_action)" in
+      ("list"|"set"|"show"|"update"))
+        _values 'eselect php modules' $(eselect --colour=no --brief php list-modules)
+        return 0
+        ;;
+    esac
+  elif (( $NORMARG + $(_eselect_action_index) + 1 == $CURRENT )) ; then
+    case "$words[$CURRENT-2]" in
+      "set")
+        local targets=($(eselect --colour=no --brief php list "$words[$CURRENT-1]" 2> /dev/null))
+        if [ -n "$targets" ]; then
+          _values 'eselect php modules'  ${targets[@]}
+          return 0
+        fi
+        ;;
+    esac
+  fi
+
+  _nothing
+}
+
+(( $+functions[_eselect_complete_rc_action] )) || _eselect_complete_rc_action() {
+  if (( $NORMARG + $(_eselect_action_index) == $CURRENT )) ; then
+    case "$(_eselect_get_action)" in
+      ("list"|"show"))
+        _values 'runlevels' $(command ls --color=never ${EPREFIX}/etc/runlevels)
+        return 0
+        ;;
+      ("add"|"delete"|"pause"|"reload"|"restart"|"start"|"stop"))
+        _values 'scripts' $(rc-service -l)
+        return 0
+        ;;
+      esac
+  elif (( $NORMARG + $(_eselect_action_index) + 1 == $CURRENT )) ; then
+    case "$words[$CURRENT-2]" in
+      ("add"|"delete"))
+        _values 'runlevels' $(command ls --color=never ${EPREFIX}/etc/runlevels)
+        return 0
+        ;;
+    esac
+  fi
+
+  _nothing
+}
+
+
+(( $+functions[_eselect_complete_repository_action] )) || _eselect_complete_repository_action() {
+  local -a opts
+
+  case "$(_eselect_get_action)" in
+    ("disable"|"remove"))
+      opts=('-f:Force potentially dangerous removals')
+      ;;
+    "list")
+      opts=('-i:Only list installed')
+      ;;
+  esac
+
+  _describe -o 'options' opts
+  _eselect_complete_action_generic repository
+}
+
+eselect_comp() {
+  integer NORMARG
+
+  case "$service" in
+    eselect)
+      _arguments -A '-*' -n \
+        '--brief[Make output shorter]' \
+        '(--colour --color)'--colo{,u}r='[Enable or disable colour output]:colour:(yes no)' \
+        '1:eselect_module:_eselect_module' \
+        '2:eselect_action:_eselect_action' \
+        '*:eselect_complete_action:_eselect_complete_action'
+      ;;
+    *-config)
+      _arguments -n \
+        "1:action:_eselect_action" \
+        '*:eselect_complete_action:_eselect_complete_action'
+      ;;
+  esac
+}
+
+eselect_comp "$@"
+
+# vim: set et sw=2 ts=2 ft=zsh:

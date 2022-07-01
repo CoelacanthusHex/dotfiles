@@ -31,6 +31,9 @@ elif [ -f /etc/debian_version ]; then
     # Older Debian/Ubuntu/etc.
     OS=Debian
     VER=$(cat /etc/debian_version)
+elif (( ${(L)OSTYPE[(I)linux-android]} )); then
+    OS=Termux
+    VER=$(uname -r)
 else
     # Fall back to uname, e.g. "Linux <version>", also works for BSD, etc.
     OS=$(uname -s)
@@ -40,6 +43,9 @@ fi
 case $OS in
     Arch*)
         source $ZDOTDIR/Arch.zsh
+    ;;
+    Termux*)
+        source $ZDOTDIR/Termux.zsh
     ;;
     *)
         : # do nothing now

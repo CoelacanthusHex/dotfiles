@@ -12,11 +12,11 @@ _cfg_error() {
     print -P "%F{red}[ERROR]%f $1"
 }
 
-if locale --all-locales | grep en_DK; then
+if locale --all-locales | grep en_DK &> /dev/null; then
     export LANG=en_GB.UTF-8
 else
     for la in en_US C; do
-        if locale --all-locales | grep $la; then
+        if locale --all-locales | grep $la &> /dev/null; then
             _cfg_warning "Locale en_GB is not supported! Fallback LANG to $la."
             export LANG=$la.UTF-8
             break
@@ -24,12 +24,12 @@ else
     done
 fi
 export LANGUAGE=en_GB:en_US:en
-if locale --all-locales | grep en_DK; then
+if locale --all-locales | grep en_DK &> /dev/null; then
     # https://wiki.archlinux.org/title/Locale#LC_TIME:_date_and_time_format
     export LC_TIME=en_DK.UTF-8
 else
     for la in en_GB en_US C; do
-        if locale --all-locales | grep $la; then
+        if locale --all-locales | grep $la &> /dev/null; then
             _cfg_warning "Locale en_DK is not supported! Fallback LC_TIME to $la."
             export LC_TIME=$la.UTF-8
             break
@@ -37,17 +37,29 @@ else
     done
 fi
 
-if (( ${OSTYPE:l}[(I)linux] )); then
+if (( ${(L)OSTYPE[(I)linux]} )); then
     # Define user direcotires
     export XDG_CONFIG_HOME="$HOME/.config"
     export XDG_CACHE_HOME="$HOME/.cache"
     export XDG_DATA_HOME="$HOME/.local/share"
-elif (( ${OSTYPE:l}[(I)mac] )); then
+    
+    # Other UTF-8 locales on Linux give weird whitespace sorting.
+    export LC_COLLATE=C.UTF-8
+elif (( ${(L)OSTYPE[(I)mac]} )); then
     _cfg_warning "Operating System $OSTYPE is not implemented!"
-elif (( ${OSTYPE:l}[(I)win] )); then
+    export XDG_CONFIG_HOME="$HOME/.config"
+    export XDG_CACHE_HOME="$HOME/.cache"
+    export XDG_DATA_HOME="$HOME/.local/share"
+elif (( ${(L)OSTYPE[(I)win]} )); then
     _cfg_warning "Operating System $OSTYPE is not implemented!"
+    export XDG_CONFIG_HOME="$HOME/.config"
+    export XDG_CACHE_HOME="$HOME/.cache"
+    export XDG_DATA_HOME="$HOME/.local/share"
 else
     _cfg_warning "Operating System $OSTYPE is not supported!"
+    export XDG_CONFIG_HOME="$HOME/.config"
+    export XDG_CACHE_HOME="$HOME/.cache"
+    export XDG_DATA_HOME="$HOME/.local/share"
 fi
 
 ZDOTDIR="$XDG_CONFIG_HOME/zsh.d"
@@ -68,10 +80,10 @@ export MAIL="$HOME/Mail"
 
 # Ripgrep
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME"/ripgreprc
-export NALI_HOME=$XDG_CONFIG_HOME/nali
+export NALI_HOME="$XDG_CONFIG_HOME"/nali
 
-export IPYTHONDIR=$XDG_CONFIG_HOME/ipython
-export JUPYTER_CONFIG_DIR=$XDG_CONFIG_HOME/jupyter
+export IPYTHONDIR="$XDG_CONFIG_HOME"/ipython
+export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
 
 # Disable kitty shell integration
 unset KITTY_SHELL_INTEGRATION

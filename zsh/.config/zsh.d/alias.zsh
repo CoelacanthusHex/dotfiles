@@ -61,8 +61,6 @@ alias lt='ll -tr'        # Lists sorted by date, most recent last.
 alias lc='lt -c'         # Lists sorted by date, most recent last, shows change time.
 alias lu='lt -u'         # Lists sorted by date, most recent last, shows access time.
 
-# bat using noexpandtab
-(( $+commands[bat] )) && export BAT_OPTS="--tabs 0"
 # using fd instead of find
 if (( $+commands[fd] )); then
     alias clang-format-all='fd --type f '.*\.(c|cpp|h|hpp|hxx|cxx)' . -x clang-format -i {};'
@@ -137,13 +135,6 @@ alias gdb-peda="command gdb -q -x $XDG_CONFIG_HOME/gdb/gdbinit-peda"
 alias gdb-base="command gdb -q"
 alias gdb=gdb-base
 
-# BSD ls colors.
-export LSCOLORS='exfxcxdxbxGxDxabagacad'
-
-# Grep colors.
-export GREP_COLOR='37;45'           # BSD.
-export GREP_COLORS="mt=$GREP_COLOR" # GNU.
-
 # add color
 if (( ! $+aliases[colourify] ));then
     alias diff="diff --color=auto"
@@ -181,9 +172,6 @@ alias urldecode='python3 -c "import sys, urllib.parse as up; print(up.unquote(sy
 alias urlencode='python3 -c "import sys, urllib.parse as up; print(up.quote(sys.argv[1]))"'
 
 alias ini2json='python3 -c "import fileinput,json,configparser;c=configparser.ConfigParser(allow_no_value=True);c.read_string('"''"'.join(fileinput.input()));print(json.dumps({s: {k: c[s][k] for k in c[s]} for s in c.sections()}))"'
-
-export LESSOPEN="| pygmentize -f console -O bg=dark %s"
-export LESS='-R'
 
 alias blog-update='cd ~/blog && git add -A && git commit -m "Update Site @$(date +%Y-%m-%d-%H:%M:%S)" && git push -u origin master && cd ~'
 alias .="source"

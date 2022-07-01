@@ -1,0 +1,35 @@
+#compdef rust-analyzer
+
+# zsh completions for 'rust-analyzer'
+# automatically generated with http://github.com/RobSis/zsh-completion-generator
+local arguments
+
+arguments=(
+  {-v,--verbose}'[verbosity level, can be repeated multiple times.]'
+  {-q,--quiet}'[verbosity level.]'
+  '--log-file[log to the specified file instead of stderr.]'
+  '--no-log-buffering[flush log records to the file immediately.]'
+  '--wait-dbg[wait until a debugger is attached to (requires debug build).]'
+  '--version[print version.]'
+  {-h,--help}'[print help.]'
+  '--print-config-schema[dump a LSP config JSON schema.]'
+  '--no-dump[suppress printing.]'
+  '--rainbow[enable rainbow highlighting of identifiers.]'
+  '--output[]'
+  '--randomize[randomize order in which crates, modules, and items are processed.]'
+  '--parallel[run type inference in parallel.]'
+  '--memory-usage[collect memory usage statistics.]'
+  '--source-stats[print the total length of all source and macro files (whitespace is not counted).]'
+  {-o,--only}'[only analyze items matching this path.]'
+  '--with-deps[also analyze all dependencies.]'
+  '--no-sysroot[don\t load sysroot crates (`std`, `core` & friends).]'
+  '--disable-build-scripts[don\t run build scripts or load `OUT_DIR` values by running `cargo check` before analysis.]'
+  '--disable-proc-macros[don\t use expand proc macros.]'
+  '--skip-inference[only resolve names, don\t run type inference.]'
+  '--disable-build-scripts[don\t run build scripts or load `OUT_DIR` values by running `cargo check` before analysis.]'
+  '--disable-proc-macros[don\t use expand proc macros.]'
+  '--debug[prints debug information for any nodes with source exactly equal to snippet.]'
+  '*:filename:_files'
+)
+
+_arguments -s $arguments

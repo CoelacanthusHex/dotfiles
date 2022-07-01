@@ -1,0 +1,19 @@
+#compdef cargo-clippy
+
+# zsh completions for 'cargo-clippy'
+# automatically generated with http://github.com/RobSis/zsh-completion-generator
+local arguments
+
+arguments=(
+  '--no-deps[run Clippy only on the given crate, without linting the dependencies]'
+  '--fix[automatically apply lint suggestions. This flag implies `--no-deps`]'
+  {-h,--help}'[print this message]'
+  {-V,--version}'[print version info and exit]'
+  {-W,--warn}'[set lint warnings]'
+  {-A,--allow}'[set lint allowed]'
+  {-D,--deny}'[set lint denied]'
+  {-F,--forbid}'[set lint forbidden]'
+  '*:filename:_files'
+)
+
+_arguments -s $arguments
