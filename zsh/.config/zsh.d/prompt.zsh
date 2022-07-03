@@ -124,7 +124,7 @@ elif (( ! $disable_async_prompt )) && (( $+commands[git] )); then
         setopt localoptions no_monitor
         local upstream= behind= push= ahead= head=
         coproc {
-            head=$(git branch --show-current --no-color 2> /dev/null) && [[ -n $head ]] || head=$(git branch -q --no-color --points-at=@ 2> /dev/null | tr -d '()' | cut -d' ' -f5)
+            head=$(git branch --show-current --no-color 2> /dev/null) && [[ -n $head ]] || head=$(git branch -q --no-color --points-at=@ 2> /dev/null | tr -d '()' | cut -d' ' -f5) && [[ -n $head ]]
             if (( $status == 0 )); then
                 printf -v _current_branch "\x1b[33m (%s)" $head
             fi
@@ -145,9 +145,9 @@ elif (( ! $disable_async_prompt )) && (( $+commands[git] )); then
             fi
 
             _current_status=""
-            if [ -n $ahead ]; then
+            if [[ -n $ahead ]] && (( $ahead != 1 )); then
                 _current_status=" %F{green}↑$ahead%f"
-            elif [ -n $ahead ]; then
+            elif [[ -n $behind ]] && (( $behind != 1 )); then
                 _current_status="$_current_status %F{red}↓$behind%f"
             fi
 
@@ -158,6 +158,7 @@ elif (( ! $disable_async_prompt )) && (( $+commands[git] )); then
             # of a bg job is printed) would miss it
             #
             # need to substitute single ' with double ''
+            [[ -n $_current_branch ]] && _current_branch=" at $_current_branch"
             print "typeset -g _current_branch='${_current_branch//''''/''}' _current_status='${_current_status//''''/''}'"
         }
         disown %{\ head 2> /dev/null
@@ -173,7 +174,7 @@ elif (( ! $disable_async_prompt )) && (( $+commands[git] )); then
     add-zsh-hook precmd .prompt.set_pipe_status
     add-zsh-hook precmd .prompt.set_git_status
     
-    PROMPT='%F{green}%n%f @ %F{magenta}%m%f in %B%F{yellow}%~%f%b at$_current_branch$_current_status%f -> $_pipe_status%f
+    PROMPT='%F{green}%n%f @ %F{magenta}%m%f in %B%F{yellow}%~%f%b$_current_branch$_current_status%f -> $_pipe_status%f
 %F{blue}>>>%f '
     RPROMPT="%T"
     PROMPT2="%F{yellow}>>>%f "
