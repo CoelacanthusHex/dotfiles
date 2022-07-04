@@ -197,8 +197,22 @@ export LSCOLORS='exfxcxdxbxGxDxabagacad'
 export GREP_COLOR='37;45'           # BSD.
 export GREP_COLORS="mt=$GREP_COLOR" # GNU.
 
-export LESSOPEN="| pygmentize -f console -O bg=dark %s"
-export LESS='-FiMr'
+# Use lesspipe if available. It allows you to use less on binary files (*.tar.gz, *.jpg, etc.).
+if (( $+commands[pygmentize] )); then
+    export LESSOPEN="| pygmentize -f console -O bg=dark %s"
+elif (( $+commands[lesspipe] || $+commands[lesspipe.sh] )); then
+    export LESSOPEN="| /usr/bin/env ${(q)${commands[lesspipe]:-${commands[lesspipe.sh]}}} %s 2>/dev/null"
+fi
+
+# This affects every invocation of `less`.
+#
+#   -i   case-insensitive search unless search string contains uppercase letters
+#   -R   color
+#   -F   exit if there is less than one page of content
+#   -X   keep content on screen after exit
+#   -M   show more info at the bottom prompt line
+#   -x4  tabs are 4 instead of 8
+export LESS='-iRFXMx4'
 
 # vim: ft=zsh sw=4 ts=8 sts=4 et:
 # kate: space-indent on; indent-width 4;

@@ -10,13 +10,13 @@ disable_pure=1
 disable_async_prompt=0
 
 source $ZDOTDIR/check.zsh
+source $ZDOTDIR/keybind.zsh
 source $ZDOTDIR/config.zsh
 source $ZDOTDIR/prompt.zsh
 source $ZDOTDIR/completion.zsh
 source $ZDOTDIR/function.zsh
 source $ZDOTDIR/alias.zsh
 source $ZDOTDIR/plugin.zsh
-source $ZDOTDIR/keybind.zsh
 
 if [ -f /etc/os-release ]; then
     # freedesktop.org and systemd
