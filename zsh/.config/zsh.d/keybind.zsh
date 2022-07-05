@@ -92,7 +92,7 @@ for keymap in emacs viins vicmd; do
     # TODO: Add missing translations.
 done
 
-typeset -A key=(
+typeset -A _key=(
     Tab                         '^I'
     Space                       ' '
     Ctrl+/                      '^_'
@@ -249,7 +249,7 @@ typeset -A key=(
     Ctrl+Option+Shift+Backspace '^?'
 )
 
-typeset -grA _z4h_key
+typeset -grA _key
 
 
 # setup key accordingly
@@ -257,16 +257,16 @@ typeset -grA _z4h_key
 
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
-if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
-    function zle-line-init () {
-        printf '%s' "${terminfo[smkx]}"
-    }
-    function zle-line-finish () {
-        printf '%s' "${terminfo[rmkx]}"
-    }
-    zle -N zle-line-init
-    zle -N zle-line-finish
-fi
+#if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
+#    function zle-line-init () {
+#        printf '%s' "${terminfo[smkx]}"
+#    }
+#    function zle-line-finish () {
+#        printf '%s' "${terminfo[rmkx]}"
+#    }
+#    zle -N zle-line-init
+#    zle -N zle-line-finish
+#fi
 
 # vim: ft=zsh sw=4 ts=8 sts=4 et:
 # kate: space-indent on; indent-width 4;

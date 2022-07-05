@@ -26,6 +26,8 @@
 [submodule "zsh/.config/zsh.d/plugins/zsh-async"]
 	path = zsh/.config/zsh.d/plugins/zsh-async
 	url = https://github.com/mafredri/zsh-async.git
+	ignore = untracked
 [submodule "zsh/.config/zsh.d/plugins/nix-zsh-completions"]
 	path = zsh/.config/zsh.d/plugins/nix-zsh-completions
 	url = https://github.com/spwhitt/nix-zsh-completions.git
+	ignore = untracked
