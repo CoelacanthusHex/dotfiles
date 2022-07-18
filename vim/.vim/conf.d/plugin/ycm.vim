@@ -32,6 +32,8 @@ g:ycm_add_preview_to_completeopt = 0
 
 g:ycm_show_diagnostics_ui = 0  # 禁用YCM自带语法检查(使用ale)
 
+g:ycm_enable_semantic_highlighting = 1
+
 # avoid automatically adding header files after complete in Youcompleteme
 # I don't know why but it break completion
 #g:ycm_clangd_args=['--header-insertion=never']

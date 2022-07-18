@@ -9,6 +9,9 @@ user_pref("browser.newtabpage.enabled", false);
 /* 阻止重定向形式的跟踪(效果有限) */
 // user_pref("privacy.purge_trackers.enabled",  true);
 
+/* Don't disable our bundled extensions in the application directory. */
+pref("extensions.autoDisableScopes",		11);
+pref("extensions.shownSelectionUI",		true);
 /* 打开about:config页面不警告 */
 user_pref("browser.aboutConfig.showWarning", false);
 /* 去除about:addons页面中的推荐页 */
@@ -30,6 +33,9 @@ user_pref("gfx.font_rendering.fontconfig.max_generic_substitutions", 64);
 /* WARNING: 必须安装 xdg-desktop-portal{,-kde} */
 /* SideEffect: 火狐一直认为自己不是默认浏览器 */
 user_pref("widget.use-xdg-desktop-portal", "true");
+
+/* Always use system defined logical resolution for CSS DPI detection. */
+pref("layout.css.dpi", 0);
 
 /* 禁止投机性预连接 */
 // user_pref("network.http.speculative-parallel-limit", 0);

@@ -14,8 +14,6 @@ register_kde_printers (None)
 
 end
 
-source ~/.config/gdb/printers/llvm-prettyprinters.py
-source ~/.config/gdb/printers/mlir-prettyprinters.py
 source ~/.config/gdb/printers/libcxx-printers.py
 
 # use `register_libcxx_printers` to enable libc++ pretty printers

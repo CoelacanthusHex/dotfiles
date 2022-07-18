@@ -26,6 +26,7 @@ end
 
 # For Linux kernel debug
 add-auto-load-safe-path ~/Data/workspace/project/linux
+add-auto-load-safe-path .
 
 define b_a
   #b __asan_report_load1

@@ -212,7 +212,7 @@ fi
 #   -X   keep content on screen after exit
 #   -M   show more info at the bottom prompt line
 #   -x4  tabs are 4 instead of 8
-export LESS='-iRFXMx4'
+export LESS='-iRFXMx4 --mouse'
 
 # vim: ft=zsh sw=4 ts=8 sts=4 et:
 # kate: space-indent on; indent-width 4;

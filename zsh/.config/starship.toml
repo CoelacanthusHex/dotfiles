@@ -191,6 +191,7 @@ symbol = "OpenStack "
 
 [package]
 symbol = "pkg "
+disabled = true
 
 [perl]
 symbol = "Perl "
