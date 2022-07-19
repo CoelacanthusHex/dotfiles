@@ -28,6 +28,7 @@ subscribe \
   ^u-boot@lists.denx.de$ \
   ^linux-riscv@lists.infradead.org$ \
   ^linux-kernel@vger.kernel.org$ \
+  ^git@vger.kernel.org$ \
   ^limicalia@googlegroups.com$ \
   ^ustc_lug@googlegroups.com$ \
   ^tuna-general@googlegroups.com$ \
@@ -64,6 +65,7 @@ lists \
   ^u-boot@lists.denx.de$ \
   ^linux-riscv@lists.infradead.org$ \
   ^linux-kernel@vger.kernel.org$ \
+  ^git@vger.kernel.org$ \
   ^limicalia@googlegroups.com$ \
   ^ustc_lug@googlegroups.com$ \
   ^tuna-general@googlegroups.com$ \

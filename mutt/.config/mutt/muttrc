@@ -65,7 +65,7 @@ folder-hook "~/Mail/gmail*" 'source ~/.config/mutt/muttrc.d/gmail'
 source ~/.config/mutt/muttrc.d/outlook # This is used as default behavior
 
 #source ~/.config/mutt/mailboxes
-mailboxes "+aosc" "+aosc/Archive" "+aosc/Drafts" "+aosc/INBOX" "+aosc/Junk" "+aosc/Sent" "+aosc/Trash" "+outlook" "+outlook/Deleted" "+outlook/Drafts" "+outlook/Firefox" "+outlook/GitHub" "+outlook/Inbox" "+outlook/Junk" "+outlook/Notes" "+outlook/Outbox" "+outlook/Sent" "+outlook/Zsh Mail List" "+outlook/uboot" "+outlook/linux-riscv" "+outlook/gnupg-users" "+outlook/存档" "+gmail" "+gmail/bak.drafts" "+gmail/bak.flagged" "+gmail/bak.important" "+gmail/bak.sent" "+gmail/bak.spam" "+gmail/bak.trash" "+gmail/inbox"
+mailboxes "+aosc" "+aosc/Archive" "+aosc/Drafts" "+aosc/INBOX" "+aosc/Junk" "+aosc/Sent" "+aosc/Trash" "+outlook" "+outlook/Deleted" "+outlook/Drafts" "+outlook/Firefox" "+outlook/GitHub" "+outlook/Inbox" "+outlook/Junk" "+outlook/Notes" "+outlook/Outbox" "+outlook/Sent" "+outlook/Zsh Mail List" "+outlook/uboot" "+outlook/git-devel" "+outlook/linux-riscv" "+outlook/gnupg-users" "+outlook/存档" "+gmail" "+gmail/bak.drafts" "+gmail/bak.flagged" "+gmail/bak.important" "+gmail/bak.sent" "+gmail/bak.spam" "+gmail/bak.trash" "+gmail/inbox"
 
 ## GnuPG bootstrap
 source ~/.config/mutt/gpg.rc

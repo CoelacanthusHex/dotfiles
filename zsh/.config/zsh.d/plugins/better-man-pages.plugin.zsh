@@ -41,7 +41,7 @@ function __make_better() {
     # Prefer `less` whenever available, since we specifically configured
     # environment for it.
     (( $+commands[less] )) \
-        && environment+=( MANPAGER="less -s -M +Gg" ) \
+        && environment+=( MANPAGER="less -s -M -i -R --mouse" ) \
         || environment+=( MANPAGER="$PAGER" )
 
     # See ./nroff script.
