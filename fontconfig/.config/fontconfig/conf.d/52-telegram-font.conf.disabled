@@ -9,7 +9,7 @@
     <test qual="any" name="family">
       <string>sans-serif</string>
     </test>
-    <edit binding="same" mode="prepend" name="family">
+    <edit binding="strong" mode="prepend" name="family">
       <string>Andika</string>
       <string>Roboto</string>
       <string>Sarasa Gothic SC</string>
@@ -17,10 +17,14 @@
       <string>Sarasa Gothic J</string>
       <string>Sarasa Gothic K</string>
       <!--补全生僻字-->
+      <string>Plangothic Release</string>
+      <string>Plangothic P1</string>
+      <string>Plangothic P2</string>
       <string>HanaMinA</string>
       <string>HanaMinB</string>
       <string>Twemoji</string>
       <string>Twitter Color Emoji</string>
+      <string>Blobmoji</string>
       <string>JoyPixels</string>
       <string>Noto Color Emoji</string>
       <string>Noto Emoji</string>
