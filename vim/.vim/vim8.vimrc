@@ -105,6 +105,7 @@ if &term == "linux"
 else
     let g:airline_symbols_ascii = 0
     let g:airline_theme = 'onedark'
+    let g:onedark_terminal_italics=1
 endif
 " }}}
 
@@ -346,7 +347,7 @@ if has("patch-7.3.541")
     set formatoptions+=j
 endif
 
-# Open code folding
+" Open code folding
 set foldmethod=marker
 
 " 启用搜索结果计数

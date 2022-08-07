@@ -107,6 +107,7 @@ else
         g:airline_symbols = {}
     endif
     g:airline_symbols.readonly = ' RO'
+    g:onedark_terminal_italics = 1
 endif
 # }}}
 
