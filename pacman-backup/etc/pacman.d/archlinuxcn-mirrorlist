@@ -3,16 +3,18 @@
 ## Generated on 2019-12-03
 ##
 
-Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
+## 网易 (ipv4, http, https)
 #Server = https://mirrors.163.com/archlinux-cn/$arch
+
 Server = https://mirrors.bfsu.edu.cn/archlinuxcn/$arch
-## 中国科学技术大学 (ipv4, ipv6, http, https)
+
+## 中科院软件所
+Server = https://mirror.iscas.ac.cn/archlinuxcn/$arch
 
 ## 上海科技大学 (上海) (ipv4, http, https)
 #Server = https://mirrors-wan.geekpie.club/archlinuxcn/$arch
 
-## 网易 (ipv4, http, https)
-
+## 中国科学技术大学 (ipv4, ipv6, http, https)
 Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
 ## 腾讯云 (ipv4, https)
 Server = https://mirrors.cloud.tencent.com/archlinuxcn/$arch
@@ -26,10 +28,10 @@ Server = https://mirrors.sjtug.sjtu.edu.cn/archlinux-cn/$arch
 ## 莞工 GNU/Linux 协会 开源软件镜像站 (ipv4, http, https)
 #Server = https://mirrors.dgut.edu.cn/archlinuxcn/$arch
 
-## 清华大学 (ipv4, ipv6, http, https)
-
 ## 浙江大学 (浙江杭州) (ipv4, ipv6, http, https)
-#Server = https://mirrors.zju.edu.cn/archlinuxcn/$arch
+Server = https://mirrors.zju.edu.cn/archlinuxcn/$arch
+## 清华大学 (ipv4, ipv6, http, https)
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
 
 ## xTom (Hong Kong server) (Hong Kong) (ipv4, ipv6, http, https)
 #Server = https://mirror.xtom.com.hk/archlinuxcn/$arch

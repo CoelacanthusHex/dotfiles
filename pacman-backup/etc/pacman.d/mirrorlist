@@ -9,6 +9,7 @@
 # Last Check: 2020-07-28 18:01:11 UTC
 
 Server = https://mirrors.bfsu.edu.cn/archlinux/$repo/os/$arch
+Server = https://mirror.iscas.ac.cn/archlinux/$repo/os/$arch
 Server = https://mirrors.neusoft.edu.cn/archlinux/$repo/os/$arch
 Server = https://mirrors.sjtug.sjtu.edu.cn/archlinux/$repo/os/$arch
 Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
