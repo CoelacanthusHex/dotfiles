@@ -10,8 +10,8 @@ user_pref("browser.newtabpage.enabled", false);
 // user_pref("privacy.purge_trackers.enabled",  true);
 
 /* Don't disable our bundled extensions in the application directory. */
-pref("extensions.autoDisableScopes",		11);
-pref("extensions.shownSelectionUI",		true);
+user_pref("extensions.autoDisableScopes", 11);
+user_pref("extensions.shownSelectionUI", true);
 /* 打开about:config页面不警告 */
 user_pref("browser.aboutConfig.showWarning", false);
 /* 去除about:addons页面中的推荐页 */
@@ -23,19 +23,23 @@ user_pref("extensions.pocket.enabled", false);
 /* 使用系统 emoji */
 user_pref("font.name-list.emoji", "emoji");
 /* 显示紧凑模式 */
-user_pref("browser.compactmode.show", "true");
+user_pref("browser.compactmode.show", true);
 /* 在地址栏显示完整的 URL */
-user_pref("browser.urlbar.trimURLs", "false");
+user_pref("browser.urlbar.trimURLs", false);
 /* 从fontconfig查询字体时允许的最大字体替换次数 Default: 3 */
 // https://wiki.archlinux.org/title/Firefox#Font_troubleshooting
 user_pref("gfx.font_rendering.fontconfig.max_generic_substitutions", 64);
 /* 使用系统文件对话框 */
 /* WARNING: 必须安装 xdg-desktop-portal{,-kde} */
 /* SideEffect: 火狐一直认为自己不是默认浏览器 */
-user_pref("widget.use-xdg-desktop-portal", "true");
+user_pref("widget.use-xdg-desktop-portal", true);
 
 /* Always use system defined logical resolution for CSS DPI detection. */
-pref("layout.css.dpi", 0);
+user_pref("layout.css.dpi", 0);
+/* Use native GTK menus */
+//user_pref("widget.gtk.native-context-menus", true);
+/* Disable reader mode */
+user_pref("reader.parse-on-load.enabled", false);
 
 /* 禁止投机性预连接 */
 // user_pref("network.http.speculative-parallel-limit", 0);
