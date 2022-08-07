@@ -75,6 +75,9 @@ function regex_ipv6() {
     grep -Eo \([[:alnum:]]{2}:\){5}[[:alnum:]]{2} $@
 }
 
+function kwin-debug-console() {
+    qdbus org.kde.KWin /KWin org.kde.KWin.showDebugConsole
+}
 # https://github.com/lilydjwg/dotzsh/blob/master/zshrc#L508-520
 function rmempty () { #删除空文件 {{{2
     for i; do
