@@ -184,6 +184,10 @@ if has('syntax') && !exists('g:syntax_on')
     syntax enable
 endif
 
+" indent
+set autoindent
+set smartindent
+
 " timeout
 set ttimeout
 set timeoutlen=500
