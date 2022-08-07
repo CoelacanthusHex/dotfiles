@@ -1,40 +1,34 @@
 [Groups/0]
 # Group Name
+Name=IPA
+# Layout
+Default Layout=us
+# Default Input Method
+DefaultIM=ipa-x-sampa
+
+[Groups/0/Items/0]
+# Name
+Name=ipa-x-sampa
+# Layout
+Layout=
+
+[Groups/1]
+# Group Name
 Name=默认
 # Layout
 Default Layout=us
 # Default Input Method
 DefaultIM=pinyin
 
-[Groups/0/Items/0]
+[Groups/1/Items/0]
 # Name
 Name=keyboard-us
 # Layout
 Layout=
 
-[Groups/0/Items/1]
-# Name
-Name=pinyin
-# Layout
-Layout=
-
-[Groups/1]
-# Group Name
-Name=IPA
-# Layout
-Default Layout=us
-# Default Input Method
-DefaultIM=m17n_zh_pinyin
-
-[Groups/1/Items/0]
-# Name
-Name=ipa-x-sampa
-# Layout
-Layout=
-
 [Groups/1/Items/1]
 # Name
-Name=m17n_zh_pinyin
+Name=pinyin
 # Layout
 Layout=
 
