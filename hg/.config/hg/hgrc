@@ -1,20 +1,58 @@
 [ui]
 username = Coelacanthus <coelacanthus@outlook.com>
 editor = vim
+tweakdefaults = true
 
 [extensions]
 # enable progress
-progress =
-# set delayed time before progress display (unit: second)
-delay = 2
+progress = 
 # enable graphlog
 # `hg glog`
 # https://mercurial.aragost.com/kick-start/en/basic/#inspecting-history
 # https://www.mercurial-scm.org/wiki/GraphlogExtension
 # it is just an alias to `hg log -G` since Mercurial has supported it with `-G` after Mercurial 2.3
-graphlog =
+graphlog = 
+absorb = 
+histedit = 
+rebase = 
+evolve = ~/project/firefox/mozbuild/evolve/hgext3rd/evolve
+blackbox = 
+shelve = 
+show = 
 
 [diff]
-word-diff=true
+word-diff = true
+git = true
+showfunc = true
+
+[rebase]
+experimental.inmemory = yes
+
+[alias]
+wip = log --graph --rev=wip --template=wip
+smart-annotate = annotate -w --skip ignored_changesets
+
+[revsetalias]
+wip = (parents(not public()) or not public() or . or (head() and branch(default))) and (not obsolete() or orphan()^) and not closed()
+ignored_changesets = desc("ignore-this-changeset") or extdata(get_ignored_changesets)
+
+[templates]
+wip = '{label("wip.branch", if(branches,"{branches} "))}{label(ifeq(graphnode,"x","wip.obsolete","wip.{phase}"),"{rev}:{node|short}")}{label("wip.user", " {author|user}")}{label("wip.tags", if(tags," {tags}"))}{label("wip.tags", if(fxheads," {fxheads}"))}{if(bookmarks," ")}{label("wip.bookmarks", if(bookmarks,bookmarks))}{label(ifcontains(rev, revset("parents()"), "wip.here"), " {desc|firstline}")}'
+
+[color]
+wip.bookmarks = yellow underline
+wip.branch = yellow
+wip.draft = green
+wip.here = red
+wip.obsolete = none
+wip.public = blue
+wip.tags = yellow
+wip.user = magenta
+
+[experimental]
+graphshorten = true
+
+[extdata]
+get_ignored_changesets = shell:cat `hg root`/.hg-annotate-ignore-revs 2> /dev/null || true
 
 # kate: space-indent on; indent-width 4; syntax ini;
