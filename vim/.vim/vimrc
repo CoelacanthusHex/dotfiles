@@ -156,14 +156,14 @@ endif
 
 # https://github.com/lilydjwg/dotvim/blob/19f6f8ea67150cb5498706912b770d3c736716f2/vimrc#L621
 # enbale bracketed paste mode support for tmux
-if &term =~ '^screen\|^tmux' && exists('&t_BE')
+if !empty($TMUX) && exists('&t_BE')
     &t_BE = "\033[?2004h"
     &t_BD = "\033[?2004l"
     # t_PS and t_PE are key code options and they are special
     execute "set t_PS=\033[200~"
     execute "set t_PE=\033[201~"
 endif
-if &term =~ '^screen\|^tmux'
+if !empty($TMUX)
     # This may leave mouse in use by terminal application
     # exec "set t_RV=\033Ptmux;\033\033[>c\033\\"
     set ttymouse=sgr
