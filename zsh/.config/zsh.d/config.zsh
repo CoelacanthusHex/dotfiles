@@ -188,7 +188,7 @@ alias sudo='sudo '
 alias cgproxy='cgproxy '
 
 # bat using noexpandtab
-(( $+commands[bat] )) && export BAT_OPTS="--tabs 0"
+(( $+commands[bat] )) && { (( $_in_linux_tty == 1 )) && export BAT_OPTS="--tabs 0 --theme 'Monokai Extended'" || export BAT_OPTS="--tabs 0 --theme 'Monokai Extended' --italic-text=always" }
 
 # BSD ls colors.
 export LSCOLORS='exfxcxdxbxGxDxabagacad'
