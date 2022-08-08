@@ -3,11 +3,10 @@ vim9script
 # kate: space-indent on; indent-width 4;
 
 # Vim-go Configuration
-
 g:go_bin_path = "/usr/bin"
-autocmd FileType go nmap <Leader>gd <Plug>(go-doc)
-autocmd FileType go nmap <Leader>s <Plug>(go-implements)
-autocmd FileType go nmap <Leader>gb <Plug>(go-doc-browser)
+nmap <Leader>gd <Plug>(go-doc)
+nmap <Leader>s <Plug>(go-implements)
+nmap <Leader>gb <Plug>(go-doc-browser)
 g:go_highlight_functions = 1
 g:go_highlight_fields = 1
 g:go_highlight_methods = 1

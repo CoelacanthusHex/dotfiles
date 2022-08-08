@@ -29,10 +29,12 @@ if exists(':packadd')
     " insert after the first one so spell changes won't go
     " into our config directory.
     let rtp = split(&runtimepath, ',')
-    call insert(rtp, g:vimfiles . '/conf.d', 1)
+    call insert(rtp, g:vimfiles . '/ft.conf.d', 1)
     let &runtimepath = join(rtp, ',')
     unlet rtp
 endif
+" Just load config directly
+runtime! conf.d/*.vim
 " }}}
 
 " Plugins {{{

@@ -1,10 +1,6 @@
 vim9script
 
-def CPPFormatSettings()
-    setlocal equalprg=clang-format
-enddef
-
-autocmd FileType c,cpp CPPFormatSettings()
+setlocal equalprg=clang-format
 
 # workaround: https://github.com/vim-jp/vim-cpp/issues/16
 g:c_no_curly_error = 1

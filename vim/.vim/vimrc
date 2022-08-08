@@ -26,7 +26,9 @@ endif
 
 # insert after the first one so spell changes won't go
 # into our config directory.
-&runtimepath = substitute(&rtp, ',\zs', '\=g:vimfiles .. "/conf.d,"', '')
+&runtimepath = substitute(&runtimepath, ',\zs', '\=g:vimfiles .. "/ft.conf.d,"', '')
+# Just load config directly
+runtime! conf.d/*.vim
 # }}}
 
 # Platform specific config {{{
