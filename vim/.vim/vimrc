@@ -84,14 +84,12 @@ endif
 # }}}
 
 # Color Scheme {{{
-if filereadable(expand('~/.vim/plugins.vim'))
-    colorscheme onedark
-else
+if &term == "linux"
+    packadd solarized8
+    colorscheme solarized8
     set background=dark
     g:solarized_extra_hi_groups = 1
-    colorscheme solarized8
-endif
-if &term == "linux"
+
     g:airline_symbols_ascii = 1
     g:airline_theme = 'solarized'
     if !exists('g:airline_symbols')
@@ -101,13 +99,17 @@ if &term == "linux"
     g:airline_symbols.crypt = 'crypt'
     g:airline_symbols.dirty = 'dirty'
 else
+    packadd onedark
+    colorscheme onedark
+    set background=dark
+    g:onedark_terminal_italics = 1
+
     g:airline_symbols_ascii = 0
     g:airline_theme = 'onedark'
     if !exists('g:airline_symbols')
         g:airline_symbols = {}
     endif
     g:airline_symbols.readonly = ' RO'
-    g:onedark_terminal_italics = 1
 endif
 # }}}
 

@@ -2,9 +2,6 @@
 # SPDX-FileCopyrightText: Coelacanthus
 
 [[plugins]]
-repo = 'joshdick/onedark.vim'
-
-[[plugins]]
 repo = 'vim-airline/vim-airline'
 
 [[plugins]]

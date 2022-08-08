@@ -31,3 +31,6 @@
 	path = zsh/.config/zsh.d/plugins/nix-zsh-completions
 	url = https://github.com/spwhitt/nix-zsh-completions.git
 	ignore = untracked
+[submodule "vim/.vim/pack/theme/opt/onedark"]
+	path = vim/.vim/pack/theme/opt/onedark
+	url = https://github.com/joshdick/onedark.vim.git

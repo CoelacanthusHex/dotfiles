@@ -87,8 +87,15 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " }}}
 
 " Color Scheme {{{
-if filereadable(expand('~/.vim/plugins.vim'))
+if isdirectory(expand('~/.vim/pack/theme/opt/onedark'))
+    packadd onedark
     colorscheme onedark
+    set background=dark
+elseif isdirectory(expand('~/.vim/pack/theme/opt/solarized8'))
+    packadd solarized8
+    colorscheme solarized8
+    set background=dark
+    let g:solarized_extra_hi_groups = 1
 else
     set background=dark
     colorscheme industry
