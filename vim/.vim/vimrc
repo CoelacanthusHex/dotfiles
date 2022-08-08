@@ -250,6 +250,11 @@ if has('mouse')
     set mouse-=i
 endif
 set number relativenumber
+augroup rellinenum
+    autocmd!
+    autocmd InsertEnter * set norelativenumber
+    autocmd InsertLeave * set relativenumber
+augroup END
 set modeline
 set display=truncate,uhex
 set nrformats=bin,hex
