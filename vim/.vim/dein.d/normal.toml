@@ -123,6 +123,9 @@ repo = 'machakann/vim-sandwich'
 repo = 'egberts/vim-syntax-bind-named'
 
 [[plugins]]
+repo = 'AndrewRadev/splitjoin.vim'
+
+[[plugins]]
 repo = 'octol/vim-cpp-enhanced-highlight'
 on_ft = ['c', 'cpp']
 
