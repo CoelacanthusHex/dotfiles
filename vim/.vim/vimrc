@@ -254,8 +254,10 @@ endif
 set number relativenumber
 augroup rellinenum
     autocmd!
-    autocmd InsertEnter * set norelativenumber
-    autocmd InsertLeave * set relativenumber
+    # relnum in NORMAL mode, for multiline operator
+    # when lost focus, in show mode
+    autocmd FocusLost,InsertEnter * setlocal norelativenumber
+    autocmd FocusGained,InsertLeave * setlocal relativenumber
 augroup END
 set modeline
 set display=truncate,uhex
