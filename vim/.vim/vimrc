@@ -439,16 +439,11 @@ if executable("curl")
     g:netrw_http_xcmd = "-L --compressed -o"
 endif
 
-# }}}
-
-# Search Config {{{
-
 # 搜索时忽略大小写
 set ignorecase
 
 # 智能搜索大小写判断，默认忽略大小写，除非搜索内容包含大写字母
 set smartcase
-
 
 if has('extra_search')
     # 高亮搜索内容
@@ -458,6 +453,14 @@ if has('extra_search')
     if has('reltime')
         set incsearch
     endif
+endif
 
+# don't show q: hints and Ex mode
+nnoremap q: <nop>
+nnoremap Q <nop>
+
+# Terminal needn't line number
+if exists('##TerminalWinOpen')
+    autocmd TerminalWinOpen * setlocal nonumber
 endif
 # }}}
