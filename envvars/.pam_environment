@@ -212,11 +212,11 @@ USE_SYMENGINE     DEFAULT=1
 
 # For Mutt
 BROWSER           DEFAULT=/usr/bin/xdg-open
-MAIL              DEFAULT="$HOME/Mail"
+MAIL              DEFAULT="${HOME}/Mail"
 
 # Java Font Render
 # https://wiki.archlinux.org/title/Java#Better_font_rendering
-_JAVA_OPTIONS     DEFAULT="$_JAVA_OPTIONS} -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
+_JAVA_OPTIONS     DEFAULT="${_JAVA_OPTIONS} -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
 JDK_JAVA_OPTIONS  DEFAULT="${_JAVA_OPTIONS}"
 
 # HiDPI
@@ -224,3 +224,6 @@ QT_AUTO_SCREEN_SCALE_FACTOR DEFAULT=1
 #PLASMA_USE_QT_SCALING       DEFAULT=1
 
 TELEGRAM_DESKTOP_UI_FONT_BOLD_STYLE DEFAULT=Bold
+
+GAMEMODERUNEXEC   DEFAULT=prime-run
+DXVK_CONFIG_FILE  DEFAULT="${XDG_CONFIG_HOME}/dxvk.conf"
