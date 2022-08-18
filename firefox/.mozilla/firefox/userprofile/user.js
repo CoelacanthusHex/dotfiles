@@ -21,7 +21,8 @@ user_pref("extensions.htmlaboutaddons.recommendations.enabled", false);
 /* 去除Pocket服务 */
 user_pref("extensions.pocket.enabled", false);
 /* 使用系统 emoji */
-user_pref("font.name-list.emoji", "emoji");
+// Disable for SVG font
+//user_pref("font.name-list.emoji", "emoji");
 /* 显示紧凑模式 */
 user_pref("browser.compactmode.show", true);
 /* 在地址栏显示完整的 URL */
@@ -40,6 +41,13 @@ user_pref("layout.css.dpi", 0);
 //user_pref("widget.gtk.native-context-menus", true);
 /* Disable reader mode */
 user_pref("reader.parse-on-load.enabled", false);
+/* Disable quick action */
+user_pref("browser.urlbar.shortcuts.quickactions", false);
+user_pref("browser.urlbar.suggest.quickactions", false);
+/* Enable unified extensions toolbar button*/
+user_pref("extensions.unifiedExtensions.enabled", true);
+/* Enable COLRv1 font */
+user_pref("gfx.font_rendering.colr_v1.enabled", true);
 
 /* 禁止投机性预连接 */
 // user_pref("network.http.speculative-parallel-limit", 0);
