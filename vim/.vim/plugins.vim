@@ -7,12 +7,18 @@ vim9script
 
 packadd jetpack
 
-$CACHE = expand('~/.cache')
-if !isdirectory($CACHE)
-    mkdir($CACHE, 'p')
+var vim_cache = expand('~/.cache/vim')
+if !isdirectory(vim_cache)
+    mkdir(vim_cache, 'p')
+endif
+var vim_data = expand('~/.local/share/vim')
+if !isdirectory(vim_data)
+    mkdir(vim_data, 'p')
 endif
 
 jetpack#begin()
+
+# Tools {{{
 jetpack#add('vim-airline/vim-airline')
 jetpack#add('vim-airline/vim-airline-themes')
 jetpack#add('tpope/vim-fugitive')
@@ -22,50 +28,15 @@ jetpack#add('rhysd/git-messenger.vim', { cmd: 'GitMessenger', on_map: '<Plug>(gi
 jetpack#add('Yggdroot/indentLine')
 jetpack#add('Raimondi/delimitMate')
 jetpack#add('91khr/rainbow')
-autocmd User JetpackRainbowPost execute let g:rainbow_active = 1
+g:rainbow_active = 1
 jetpack#add('tpope/vim-sleuth')
 jetpack#add('chrisbra/unicode.vim')
+g:Unicode_data_directory = vim_data .. '/Unicode'
+g:Unicode_cache_directory = vim_cache .. '/Unicode'
 jetpack#add('tpope/vim-eunuch')
 jetpack#add('tomtom/tcomment_vim')
 jetpack#add('skywind3000/asyncrun.vim')
 jetpack#add('SirVer/ultisnips')
-g:UltiSnipsSnippetDirectories = [$HOME .. '/.vim/UltiSnips']
-def g:UltiSnips_Complete(): string
-    UltiSnips#ExpandSnippet()
-    if g:ulti_expand_res == 0
-        if pumvisible()
-            return "\<C-n>"
-        else
-            UltiSnips#JumpForwards()
-            if g:ulti_jump_forwards_res == 0
-                return "\<TAB>"
-            endif
-        endif
-    endif
-    return ""
-enddef
-
-def g:UltiSnips_Reverse(): string
-    UltiSnips#JumpBackwards()
-    if g:ulti_jump_backwards_res == 0
-        return "\<C-P>"
-    endif
-    return ""
-enddef
-
-if !exists("g:UltiSnipsJumpForwardTrigger")
-    g:UltiSnipsJumpForwardTrigger = "<tab>"
-endif
-
-if !exists("g:UltiSnipsJumpBackwardTrigger")
-    g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-endif
-
-def UltiSnipsSetMap()
-    autocmd InsertEnter * execute "inoremap <silent> " . g:UltiSnipsExpandTrigger     . " <C-R>=g:UltiSnips_Complete()<cr>"
-    autocmd InsertEnter * execute "inoremap <silent> " . g:UltiSnipsJumpBackwardTrigger . " <C-R>=g:UltiSnips_Reverse()<cr>"
-enddef
-autocmd User JetpackRainbowPost call UltiSnipsSetMap()
 jetpack#add('andymass/vim-matchup')
 autocmd User JetpackVimMatchupPost execute let g:loaded_matchit = 1
 jetpack#add('tpope/vim-repeat')
@@ -74,10 +45,33 @@ jetpack#add('markonm/traces.vim')
 jetpack#add('lilydjwg/fcitx.vim')
 jetpack#add('Shougo/echodoc.vim')
 jetpack#add('Shougo/context_filetype.vim')
-jetpack#add('timonv/vim-cargo')
 jetpack#add('machakann/vim-sandwich')
-jetpack#add('egberts/vim-syntax-bind-named')
 jetpack#add('AndrewRadev/splitjoin.vim')
+jetpack#add('yegappan/lsp', { opt: 1, as: 'vim9lsp' })
+jetpack#add('prabirshrestha/vim-lsp', { opt: 1 })
+jetpack#add('mattn/vim-lsp-settings', { event: 'User JetpackVimLspPost' })
+jetpack#add('dense-analysis/ale')
+jetpack#add('vim-scripts/gtags.vim')
+jetpack#add('ludovicchabant/vim-gutentags')
+jetpack#add('preservim/tagbar')
+jetpack#add('rrethy/vim-hexokinase', { do: 'make hexokinase', cmd: 'HexokinaseToggle' })
+jetpack#add('dstein64/vim-startuptime', { cmd: 'StartupTime' })
+jetpack#add('rhysd/vim-healthcheck', { cmd: 'CheckHealth' })
+jetpack#add('mattkretz/vim-gnuindent', { cmd: 'SetupGnuIndent' })
+jetpack#add('inkarkat/vim-mark', { cmd: 'Mark' })
+jetpack#add('samoshkin/vim-mergetool', { cmd: ['MergetoolStart', 'MergetoolToggle'] })
+g:mergetool_layout = 'MR'
+jetpack#add('ntpeters/vim-better-whitespace')
+g:better_whitespace_skip_empty_lines = 1
+augroup rellinenum
+    autocmd!
+    autocmd InsertEnter * DisableWhitespace
+    autocmd InsertLeave * EnableWhitespace
+augroup END
+# }}}
+# Language {{{
+jetpack#add('timonv/vim-cargo')
+jetpack#add('egberts/vim-syntax-bind-named')
 jetpack#add('bfrg/vim-cpp-modern', { ft: ['c', 'cpp'] })
 jetpack#add('chrisbra/csv.vim', { ft: ['csv'] })
 jetpack#add('vim-crystal/vim-crystal', { ft: ['crystal'] })
@@ -114,18 +108,6 @@ jetpack#add('rhysd/vim-syntax-codeowners', { ft: ['codeowners'] })
 jetpack#add('rbtnn/vim-vimscript_indentexpr', { ft: ['vim'] })
 jetpack#add('benknoble/vim-racket', { ft: ['racket', 'scribble', 'racket-info'] })
 jetpack#add('habamax/vim-rst', { ft: ['rst'] })
-jetpack#add('yegappan/lsp', { opt: 1, as: 'vim9lsp' })
-jetpack#add('prabirshrestha/vim-lsp', { opt: 1 })
-jetpack#add('mattn/vim-lsp-settings', { event: 'User JetpackVimLspPost' })
-jetpack#add('dense-analysis/ale')
-jetpack#add('vim-scripts/gtags.vim')
-jetpack#add('ludovicchabant/vim-gutentags')
-jetpack#add('rrethy/vim-hexokinase', { do: 'make hexokinase', cmd: 'HexokinaseToggle' })
-jetpack#add('dstein64/vim-startuptime', { cmd: 'StartupTime' })
-jetpack#add('rhysd/vim-healthcheck', { cmd: 'CheckHealth' })
-jetpack#add('mattkretz/vim-gnuindent', { cmd: 'SetupGnuIndent' })
-jetpack#add('inkarkat/vim-mark', { cmd: 'Mark' })
-jetpack#add('ntpeters/vim-better-whitespace')
 jetpack#add('habamax/vim-asciidoctor', { ft: ['asciidoctor'] })
 jetpack#add('pearofducks/ansible-vim', { ft: ['ansible', 'ansible_hosts'] })
 jetpack#add('glench/vim-jinja2-syntax', { ft: ['jinja'] })
@@ -137,6 +119,7 @@ jetpack#add('voldikss/vim-mma', { ft: ['mma'] })
 jetpack#add('mracos/mermaid.vim', { ft: ['mermaid'] })
 jetpack#add('aklt/plantuml-syntax', { ft: ['plantuml'] })
 jetpack#add('Shirk/vim-gas', { ft: ['gas'] })
+# }}}
 
 jetpack#end()
 

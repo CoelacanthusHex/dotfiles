@@ -9,6 +9,9 @@ g:committia_hooks = {}
 def Committia_hooks_edit_open(info: any)
     # Additional settings
     setlocal spell
+    
+    # set min height
+    &winheight = &lines / 2
 
     # If no commit message, start with insert mode
     if info.vcs ==# 'git' && getline(1) ==# ''

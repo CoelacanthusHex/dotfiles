@@ -35,6 +35,11 @@ g:ycm_show_diagnostics_ui = 0  # 禁用YCM自带语法检查(使用ale)
 # LSP semantic highlighting
 g:ycm_enable_semantic_highlighting = 1
 
+# enable inlay hints
+g:ycm_enable_inlay_hints = 1
+# enable virtual text for diagnostics
+#g:ycm_echo_current_diagnostic = 'virtual-text'
+
 # avoid automatically adding header files after complete in Youcompleteme
 # I don't know why but it break completion
 #g:ycm_clangd_args=['--header-insertion=never']
