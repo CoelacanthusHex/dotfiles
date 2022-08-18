@@ -166,6 +166,7 @@ export TELEGRAM_DESKTOP_UI_FONT_BOLD_STYLE=Bold
 
 export GAMEMODERUNEXEC=prime-run
 export DXVK_CONFIG_FILE="$XDG_CONFIG_HOME/dxvk.conf"
+export LUTRIS_RUNTIME=0
 
 # vim: ft=bash sw=4 ts=8 sts=4 et:
 # kate: space-indent on; indent-width 4; syntax bash;
