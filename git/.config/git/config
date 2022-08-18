@@ -57,6 +57,9 @@
 [mergetool]
     prompt = false
 
+[credential]
+    helper = /usr/lib/git-core/git-credential-libsecret
+
 [include]
     path = ~/.config/git/format.config
 [include]
