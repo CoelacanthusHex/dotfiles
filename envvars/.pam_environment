@@ -145,7 +145,6 @@ GOPROYX DEFAULT=https://goproxy.io,direct
 
 # Firefox
 # for hardware video acceleration
-MOZ_WEBRENDER   DEFAULT=1
 MOZ_X11_EGL     DEFAULT=1
 MOZ_USE_XINPUT2 DEFAULT=1
 

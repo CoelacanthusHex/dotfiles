@@ -79,8 +79,6 @@ user_pref("gfx.font_rendering.colr_v1.enabled", true);
 // user_pref("media.navigator.enabled", false);
 
 /*==== 硬件视频加速 ====*/
-/* 开启WebRender */
-user_pref("gfx.webrender.all", true);
 /* 使用VA-API */
 user_pref("media.ffmpeg.vaapi.enabled", true);
 
