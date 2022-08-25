@@ -77,14 +77,6 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 nmap ga <Plug>(UnicodeGA)
 # }}}
 
-# Plugins {{{
-
-if filereadable(expand('~/.vim/plugins.vim'))
-    source ~/.vim/plugins.vim
-endif
-
-# }}}
-
 # Color Scheme {{{
 if &term == "linux"
     packadd solarized8
@@ -181,13 +173,21 @@ if !empty($TMUX)
 endif
 # }}}
 
-# Core Configuration {{{
+# Plugins {{{
 
 filetype plugin on
 filetype plugin indent on
 if has('syntax') && !exists('g:syntax_on')
     syntax enable
 endif
+
+if filereadable(expand('~/.vim/plugins.vim'))
+    source ~/.vim/plugins.vim
+endif
+
+# }}}
+
+# Core Configuration {{{
 
 # indent
 set autoindent

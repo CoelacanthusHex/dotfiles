@@ -30,7 +30,7 @@ set completeopt+=menu
 set completeopt+=menuone
 g:ycm_add_preview_to_completeopt = 0
 
-g:ycm_show_diagnostics_ui = 0  # 禁用YCM自带语法检查(使用ale)
+g:ycm_show_diagnostics_ui = 1  # 禁用YCM自带语法检查(使用ale)
 
 # LSP semantic highlighting
 g:ycm_enable_semantic_highlighting = 1
@@ -38,11 +38,12 @@ g:ycm_enable_semantic_highlighting = 1
 # enable inlay hints
 g:ycm_enable_inlay_hints = 1
 # enable virtual text for diagnostics
-#g:ycm_echo_current_diagnostic = 'virtual-text'
+g:ycm_echo_current_diagnostic = 'virtual-text'
+g:ycm_update_diagnostics_in_insert_mode = 0
 
 # avoid automatically adding header files after complete in Youcompleteme
 # I don't know why but it break completion
-#g:ycm_clangd_args=['--header-insertion=never']
+#g:ycm_clangd_args = ['--header-insertion=never']
 
 nnoremap <leader>dc :YcmCompleter GoToDeclaration<cr>
 nnoremap <leader>df :YcmCompleter GoToDefinition<cr>

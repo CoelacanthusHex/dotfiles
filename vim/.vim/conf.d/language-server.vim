@@ -16,10 +16,10 @@ g:ycm_language_server = [
               filetypes: ['tex']
             },
             {
-             name: 'ccls',
-             cmdline: ['ccls'],
+             name: 'clangd',
+             cmdline: ['clangd'],
              filetypes: ['c', 'cpp', 'cuda', 'objc', 'objcpp'],
-             project_root_files: ['.ccls-root', 'compile_commands.json']
+             project_root_files: ['compile_commands.json']
             },
             {
               name: 'scala',
