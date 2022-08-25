@@ -1,0 +1,633 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language name="SFZ" version="2" kateversion="2.4" section="Other" extensions="*.sfz;*.SFZ">
+ <highlighting>
+  <list name="opcodes">
+    <item>*_mod</item>
+    <item>amp_keycenter</item>
+    <item>amp_keytrack</item>
+    <item>amp_random</item>
+    <item>amp_velcurve_N</item>
+    <item>amp_veltrack_random</item>
+    <item>amp_veltrack</item>
+    <item>ampeg_attack_shape</item>
+    <item>ampeg_attack</item>
+    <item>ampeg_decay_shape</item>
+    <item>ampeg_decay_zero</item>
+    <item>ampeg_decay</item>
+    <item>ampeg_decayccN</item>
+    <item>ampeg_delay_onccN</item>
+    <item>ampeg_delay</item>
+    <item>ampeg_delayccN</item>
+    <item>ampeg_dynamic</item>
+    <item>ampeg_hold_curveccN</item>
+    <item>ampeg_hold_onccN</item>
+    <item>ampeg_hold</item>
+    <item>ampeg_holdccN</item>
+    <item>ampeg_release_onccN</item>
+    <item>ampeg_release_shape</item>
+    <item>ampeg_release_zero</item>
+    <item>ampeg_release</item>
+    <item>ampeg_releaseccN</item>
+    <item>ampeg_start_onccN</item>
+    <item>ampeg_start</item>
+    <item>ampeg_startccN</item>
+    <item>ampeg_sustain_curveccN</item>
+    <item>ampeg_sustain_onccN</item>
+    <item>ampeg_sustain</item>
+    <item>ampeg_sustainccN</item>
+    <item>ampeg_vel2attack</item>
+    <item>ampeg_vel2decay</item>
+    <item>ampeg_vel2delay</item>
+    <item>ampeg_vel2hold</item>
+    <item>ampeg_vel2release</item>
+    <item>ampeg_vel2sustain</item>
+    <item>amplfo_delay</item>
+    <item>amplfo_depth_onccN</item>
+    <item>amplfo_depth</item>
+    <item>amplfo_depthccN</item>
+    <item>amplfo_depthchanaft</item>
+    <item>amplfo_depthpolyaft</item>
+    <item>amplfo_fade</item>
+    <item>amplfo_freq</item>
+    <item>amplfo_freqccN</item>
+    <item>amplfo_freqchanaft</item>
+    <item>amplfo_freqpolyaft</item>
+    <item>amplitude_ccN</item>
+    <item>amplitude_curveccN</item>
+    <item>amplitude_onccN</item>
+    <item>amplitude_smoothccN</item>
+    <item>amplitude</item>
+    <item>bend_down</item>
+    <item>bend_smooth</item>
+    <item>bend_step</item>
+    <item>bend_stepdown</item>
+    <item>bend_stepup</item>
+    <item>bend_up</item>
+    <item>benddown</item>
+    <item>bendstep</item>
+    <item>bendup</item>
+    <item>bus</item>
+    <item>count</item>
+    <item>curve_index</item>
+    <item>cutoff_ccN</item>
+    <item>cutoff_chanaft</item>
+    <item>cutoff_curveccN</item>
+    <item>cutoff_onccN</item>
+    <item>cutoff_polyaft</item>
+    <item>cutoff_random</item>
+    <item>cutoff_smoothccN</item>
+    <item>cutoff_stepccN</item>
+    <item>cutoff</item>
+    <item>cutoff2_ccN</item>
+    <item>cutoff2_chanaft</item>
+    <item>cutoff2_curveccN</item>
+    <item>cutoff2_onccN</item>
+    <item>cutoff2_polyaft</item>
+    <item>cutoff2_random</item>
+    <item>cutoff2_smoothccN</item>
+    <item>cutoff2_stepccN</item>
+    <item>cutoff2</item>
+    <item>default_path</item>
+    <item>#define</item>
+    <item>delay_beats_curveccN</item>
+    <item>delay_beats_onccN</item>
+    <item>delay_beats_random</item>
+    <item>delay_beats</item>
+    <item>delay_ccN</item>
+    <item>delay_curveccN</item>
+    <item>delay_onccN</item>
+    <item>delay_random</item>
+    <item>delay_samples_onccN</item>
+    <item>delay_samples</item>
+    <item>delay</item>
+    <item>direction</item>
+    <item>effect1</item>
+    <item>effect2</item>
+    <item>effect3</item>
+    <item>effect4</item>
+    <item>egN_ampeg</item>
+    <item>egN_amplitude_onccX</item>
+    <item>egN_amplitude</item>
+    <item>egN_curveX</item>
+    <item>egN_cutoff_onccX</item>
+    <item>egN_cutoff</item>
+    <item>egN_cutoff2_onccX</item>
+    <item>egN_cutoff2</item>
+    <item>egN_depth_lfoX</item>
+    <item>egN_depthadd_lfoX</item>
+    <item>egN_eqXbw_onccY</item>
+    <item>egN_eqXbw</item>
+    <item>egN_eqXfreq_onccY</item>
+    <item>egN_eqXfreq</item>
+    <item>egN_eqXgain_onccY</item>
+    <item>egN_eqXgain</item>
+    <item>egN_freq_lfoX</item>
+    <item>egN_levelX_onccY</item>
+    <item>egN_levelX</item>
+    <item>egN_loop_count</item>
+    <item>egN_loop</item>
+    <item>egN_pan_curve</item>
+    <item>egN_pan_curveccX</item>
+    <item>egN_pan_onccX</item>
+    <item>egN_pan</item>
+    <item>egN_pitch_onccX</item>
+    <item>egN_pitch</item>
+    <item>egN_points</item>
+    <item>egN_resonance_onccX</item>
+    <item>egN_resonance</item>
+    <item>egN_resonance2_onccX</item>
+    <item>egN_resonance2</item>
+    <item>egN_shapeX</item>
+    <item>egN_sustain</item>
+    <item>egN_timeX_onccY</item>
+    <item>egN_timeX</item>
+    <item>egN_volume_onccX</item>
+    <item>egN_volume</item>
+    <item>egN_width_onccX</item>
+    <item>egN_width</item>
+    <item>end</item>
+    <item>eqN_bw_onccX</item>
+    <item>eqN_bw</item>
+    <item>eqN_bwccX</item>
+    <item>eqN_dynamic</item>
+    <item>eqN_freq_onccX</item>
+    <item>eqN_freq</item>
+    <item>eqN_freqccX</item>
+    <item>eqN_gain_onccX</item>
+    <item>eqN_gain</item>
+    <item>eqN_gainccX</item>
+    <item>eqN_type</item>
+    <item>eqN_vel2freq</item>
+    <item>eqN_vel2gain</item>
+    <item>fil_gain_onccN</item>
+    <item>fil_gain</item>
+    <item>fil_keycenter</item>
+    <item>fil_keytrack</item>
+    <item>fil_random</item>
+    <item>fil_type</item>
+    <item>fil_veltrack</item>
+    <item>fil2_gain_onccN</item>
+    <item>fil2_gain</item>
+    <item>fil2_keycenter</item>
+    <item>fil2_keytrack</item>
+    <item>fil2_type</item>
+    <item>fil2_veltrack</item>
+    <item>fileg_attack_onccN</item>
+    <item>fileg_attack_shape</item>
+    <item>fileg_attack</item>
+    <item>fileg_attackccN</item>
+    <item>fileg_decay_onccN</item>
+    <item>fileg_decay_shape</item>
+    <item>fileg_decay_zero</item>
+    <item>fileg_decay</item>
+    <item>fileg_decayccN</item>
+    <item>fileg_delay_onccN</item>
+    <item>fileg_delay</item>
+    <item>fileg_delayccN</item>
+    <item>fileg_depth_onccN</item>
+    <item>fileg_depth</item>
+    <item>fileg_depthccN</item>
+    <item>fileg_dynamic</item>
+    <item>fileg_hold_onccN</item>
+    <item>fileg_hold</item>
+    <item>fileg_holdccN</item>
+    <item>fileg_release_onccN</item>
+    <item>fileg_release_shape</item>
+    <item>fileg_release_zero</item>
+    <item>fileg_release</item>
+    <item>fileg_releaseccN</item>
+    <item>fileg_start_onccN</item>
+    <item>fileg_start</item>
+    <item>fileg_startccN</item>
+    <item>fileg_sustain_onccN</item>
+    <item>fileg_sustain</item>
+    <item>fileg_sustainccN</item>
+    <item>fileg_vel2attack</item>
+    <item>fileg_vel2decay</item>
+    <item>fileg_vel2delay</item>
+    <item>fileg_vel2depth</item>
+    <item>fileg_vel2hold</item>
+    <item>fileg_vel2release</item>
+    <item>fileg_vel2sustain</item>
+    <item>fillfo_delay</item>
+    <item>fillfo_depth_onccN</item>
+    <item>fillfo_depth</item>
+    <item>fillfo_depthccN</item>
+    <item>fillfo_depthchanaft</item>
+    <item>fillfo_depthpolyaft</item>
+    <item>fillfo_fade</item>
+    <item>fillfo_freq</item>
+    <item>fillfo_freqccN</item>
+    <item>fillfo_freqchanaft</item>
+    <item>fillfo_freqpolyaft</item>
+    <item>filtype</item>
+    <item>gain_ccN</item>
+    <item>gain_onccN</item>
+    <item>global_amplitude</item>
+    <item>global_label</item>
+    <item>global_tune</item>
+    <item>global_volume</item>
+    <item>group_amplitude</item>
+    <item>group_label</item>
+    <item>group_tune</item>
+    <item>group_volume</item>
+    <item>group</item>
+    <item>hibend</item>
+    <item>hibpm</item>
+    <item>hiccN</item>
+    <item>hichan</item>
+    <item>hichanaft</item>
+    <item>hihdccN</item>
+    <item>hikey</item>
+    <item>hint_*</item>
+    <item>hipolyaft</item>
+    <item>hiprog</item>
+    <item>hirand</item>
+    <item>hitimer</item>
+    <item>hivel</item>
+    <item>key</item>
+    <item>label_ccN</item>
+    <item>label_keyN</item>
+    <item>lfoN_amplitude_onccX</item>
+    <item>lfoN_amplitude_smoothccX</item>
+    <item>lfoN_amplitude_stepccX</item>
+    <item>lfoN_amplitude</item>
+    <item>lfoN_count</item>
+    <item>lfoN_cutoff_onccX</item>
+    <item>lfoN_cutoff_smoothccX</item>
+    <item>lfoN_cutoff_stepccX</item>
+    <item>lfoN_cutoff</item>
+    <item>lfoN_cutoff2_onccX</item>
+    <item>lfoN_cutoff2_smoothccX</item>
+    <item>lfoN_cutoff2_stepccX</item>
+    <item>lfoN_cutoff2</item>
+    <item>lfoN_delay_onccX</item>
+    <item>lfoN_delay</item>
+    <item>lfoN_depth_lfoX</item>
+    <item>lfoN_depthadd_lfoX</item>
+    <item>lfoN_eqXbw_onccY</item>
+    <item>lfoN_eqXbw_smoothccY</item>
+    <item>lfoN_eqXbw_stepccY</item>
+    <item>lfoN_eqXbw</item>
+    <item>lfoN_eqXfreq_onccY</item>
+    <item>lfoN_eqXfreq_smoothccY</item>
+    <item>lfoN_eqXfreq_stepccY</item>
+    <item>lfoN_eqXfreq</item>
+    <item>lfoN_eqXgain_onccY</item>
+    <item>lfoN_eqXgain_smoothccY</item>
+    <item>lfoN_eqXgain_stepccY</item>
+    <item>lfoN_eqXgain</item>
+    <item>lfoN_fade_onccX</item>
+    <item>lfoN_fade</item>
+    <item>lfoN_freq_lfoX_onccY</item>
+    <item>lfoN_freq_lfoX</item>
+    <item>lfoN_freq_onccX</item>
+    <item>lfoN_freq_smoothccX</item>
+    <item>lfoN_freq_stepccX</item>
+    <item>lfoN_freq</item>
+    <item>lfoN_offset</item>
+    <item>lfoN_offsetX</item>
+    <item>lfoN_pan_onccX</item>
+    <item>lfoN_pan_smoothccX</item>
+    <item>lfoN_pan_stepccX</item>
+    <item>lfoN_pan</item>
+    <item>lfoN_phase_onccX</item>
+    <item>lfoN_phase</item>
+    <item>lfoN_pitch_curveccX</item>
+    <item>lfoN_pitch_onccX</item>
+    <item>lfoN_pitch_smoothccX</item>
+    <item>lfoN_pitch_stepccX</item>
+    <item>lfoN_pitch</item>
+    <item>lfoN_ratio</item>
+    <item>lfoN_ratioX</item>
+    <item>lfoN_resonance_onccX</item>
+    <item>lfoN_resonance_smoothccX</item>
+    <item>lfoN_resonance_stepccX</item>
+    <item>lfoN_resonance</item>
+    <item>lfoN_resonance2_onccX</item>
+    <item>lfoN_resonance2_smoothccX</item>
+    <item>lfoN_resonance2_stepccX</item>
+    <item>lfoN_resonance2</item>
+    <item>lfoN_scale</item>
+    <item>lfoN_scaleX</item>
+    <item>lfoN_smooth_onccX</item>
+    <item>lfoN_smooth</item>
+    <item>lfoN_steps</item>
+    <item>lfoN_stepX_onccY</item>
+    <item>lfoN_stepX</item>
+    <item>lfoN_volume_onccX</item>
+    <item>lfoN_volume_smoothccX</item>
+    <item>lfoN_volume_stepccX</item>
+    <item>lfoN_volume</item>
+    <item>lfoN_wave_onccX</item>
+    <item>lfoN_wave</item>
+    <item>lfoN_waveX</item>
+    <item>lfoN_width_onccX</item>
+    <item>lfoN_width_smoothccX</item>
+    <item>lfoN_width_stepccX</item>
+    <item>lfoN_width</item>
+    <item>lobend</item>
+    <item>lobpm</item>
+    <item>loccN</item>
+    <item>lochan</item>
+    <item>lochanaft</item>
+    <item>lohdccN</item>
+    <item>lokey</item>
+    <item>loop_count</item>
+    <item>loop_crossfade</item>
+    <item>loop_end</item>
+    <item>loop_mode</item>
+    <item>loop_start</item>
+    <item>loop_type</item>
+    <item>loopcount</item>
+    <item>loopend</item>
+    <item>loopmode</item>
+    <item>loopstart</item>
+    <item>looptune</item>
+    <item>looptype</item>
+    <item>lopolyaft</item>
+    <item>loprog</item>
+    <item>lorand</item>
+    <item>lotimer</item>
+    <item>lovel</item>
+    <item>master_amplitude</item>
+    <item>master_label</item>
+    <item>master_tune</item>
+    <item>master_volume</item>
+    <item>md5</item>
+    <item>note_offset</item>
+    <item>note_polyphony</item>
+    <item>note_selfmask</item>
+    <item>octave_offset</item>
+    <item>off_by</item>
+    <item>off_curve</item>
+    <item>off_mode</item>
+    <item>off_shape</item>
+    <item>off_time</item>
+    <item>offby</item>
+    <item>offset_ccN</item>
+    <item>offset_onccN</item>
+    <item>offset_random</item>
+    <item>offset</item>
+    <item>on_hiccN</item>
+    <item>on_hihdccN</item>
+    <item>on_loccN</item>
+    <item>on_lohdccN</item>
+    <item>output</item>
+    <item>pan_ccN</item>
+    <item>pan_keycenter</item>
+    <item>pan_keytrack</item>
+    <item>pan_law</item>
+    <item>pan_random</item>
+    <item>pan_veltrack</item>
+    <item>pan</item>
+    <item>param_offset</item>
+    <item>phase</item>
+    <item>pitch_curveccN</item>
+    <item>pitch_keycenter</item>
+    <item>pitch_keytrack</item>
+    <item>pitch_onccN</item>
+    <item>pitch_random</item>
+    <item>pitch_smoothccN</item>
+    <item>pitch_stepccN</item>
+    <item>pitch_veltrack</item>
+    <item>pitch</item>
+    <item>pitcheg_attack_onccN</item>
+    <item>pitcheg_attack_shape</item>
+    <item>pitcheg_attack</item>
+    <item>pitcheg_decay_onccN</item>
+    <item>pitcheg_decay_shape</item>
+    <item>pitcheg_decay_zero</item>
+    <item>pitcheg_decay</item>
+    <item>pitcheg_delay_onccN</item>
+    <item>pitcheg_delay</item>
+    <item>pitcheg_depth_onccN</item>
+    <item>pitcheg_depth</item>
+    <item>pitcheg_depthccN</item>
+    <item>pitcheg_dynamic</item>
+    <item>pitcheg_hold_onccN</item>
+    <item>pitcheg_hold</item>
+    <item>pitcheg_release_onccN</item>
+    <item>pitcheg_release_shape</item>
+    <item>pitcheg_release_zero</item>
+    <item>pitcheg_release</item>
+    <item>pitcheg_start_onccN</item>
+    <item>pitcheg_start</item>
+    <item>pitcheg_sustain_onccN</item>
+    <item>pitcheg_sustain</item>
+    <item>pitcheg_vel2attack</item>
+    <item>pitcheg_vel2decay</item>
+    <item>pitcheg_vel2delay</item>
+    <item>pitcheg_vel2depth</item>
+    <item>pitcheg_vel2hold</item>
+    <item>pitcheg_vel2release</item>
+    <item>pitcheg_vel2sustain</item>
+    <item>pitchlfo_delay</item>
+    <item>pitchlfo_depth_onccN</item>
+    <item>pitchlfo_depth</item>
+    <item>pitchlfo_depthccN</item>
+    <item>pitchlfo_depthchanaft</item>
+    <item>pitchlfo_depthpolyaft</item>
+    <item>pitchlfo_fade</item>
+    <item>pitchlfo_freq</item>
+    <item>pitchlfo_freqccN</item>
+    <item>pitchlfo_freqchanaft</item>
+    <item>pitchlfo_freqpolyaft</item>
+    <item>polyphony_group</item>
+    <item>polyphony_stealing</item>
+    <item>polyphony</item>
+    <item>position_curveccN</item>
+    <item>position_keycenter</item>
+    <item>position_keytrack</item>
+    <item>position_onccN</item>
+    <item>position_random</item>
+    <item>position_smoothccN</item>
+    <item>position_stepccN</item>
+    <item>position_veltrack</item>
+    <item>position</item>
+    <item>region_label</item>
+    <item>resonance_ccN</item>
+    <item>resonance_curveccN</item>
+    <item>resonance_onccN</item>
+    <item>resonance_random</item>
+    <item>resonance_smoothccN</item>
+    <item>resonance_stepccN</item>
+    <item>resonance</item>
+    <item>resonance2_ccN</item>
+    <item>resonance2_curveccN</item>
+    <item>resonance2_onccN</item>
+    <item>resonance2_smoothccN</item>
+    <item>resonance2_stepccN</item>
+    <item>resonance2</item>
+    <item>reverse_hiccN</item>
+    <item>reverse_loccN</item>
+    <item>rt_dead</item>
+    <item>rt_decay</item>
+    <item>script</item>
+    <item>seq_length</item>
+    <item>seq_position</item>
+    <item>set_ccN</item>
+    <item>set_hdccN</item>
+    <item>set_realccN</item>
+    <item>sostenuto_cc</item>
+    <item>sostenuto_lo</item>
+    <item>sostenuto_sw</item>
+    <item>start_hiccN</item>
+    <item>start_hihdccN</item>
+    <item>start_loccN</item>
+    <item>start_lohdccN</item>
+    <item>stop_beats</item>
+    <item>stop_hiccN</item>
+    <item>stop_hihdccN</item>
+    <item>stop_loccN</item>
+    <item>stop_lohdccN</item>
+    <item>sustain_cc</item>
+    <item>sustain_lo</item>
+    <item>sustain_sw</item>
+    <item>sw_default</item>
+    <item>sw_down</item>
+    <item>sw_hikey</item>
+    <item>sw_hilast</item>
+    <item>sw_label</item>
+    <item>sw_last</item>
+    <item>sw_lokey</item>
+    <item>sw_lolast</item>
+    <item>sw_note_offset</item>
+    <item>sw_octave_offset</item>
+    <item>sw_previous</item>
+    <item>sw_up</item>
+    <item>sw_vel</item>
+    <item>sync_beats</item>
+    <item>sync_offset</item>
+    <item>transpose</item>
+    <item>trigger</item>
+    <item>tune_ccN</item>
+    <item>tune_curveccN</item>
+    <item>tune_keytrack</item>
+    <item>tune_onccN</item>
+    <item>tune_random</item>
+    <item>tune_smoothccN</item>
+    <item>tune_stepccN</item>
+    <item>tune_veltrack</item>
+    <item>tune</item>
+    <item>type</item>
+    <item>varNN_*</item>
+    <item>varNN_curveccX</item>
+    <item>varNN_mod</item>
+    <item>varNN_onccX</item>
+    <item>vendor_specific</item>
+    <item>vN</item>
+    <item>volume_curveccN</item>
+    <item>volume_onccN</item>
+    <item>volume_smoothccN</item>
+    <item>volume_stepccN</item>
+    <item>volume</item>
+    <item>waveguide</item>
+    <item>width</item>
+    <item>xf_cccurve</item>
+    <item>xf_keycurve</item>
+    <item>xf_velcurve</item>
+    <item>xfin_hiccN</item>
+    <item>xfin_hikey</item>
+    <item>xfin_hivel</item>
+    <item>xfin_loccN</item>
+    <item>xfin_lokey</item>
+    <item>xfin_lovel</item>
+    <item>xfout_hiccN</item>
+    <item>xfout_hikey</item>
+    <item>xfout_hivel</item>
+    <item>xfout_loccN</item>
+    <item>xfout_lokey</item>
+    <item>xfout_lovel</item>
+
+  </list>
+  <list name="sample">
+    <item>sample</item>
+  </list>
+  <list name="include">
+    <item>#include</item>
+  </list>
+
+
+
+   <contexts>
+    <context attribute="Normal Text" lineEndContext="#pop" name="Normal Text" >
+<!--       <keyword attribute="Headers" context="#stay" String="headers" /> -->
+      <keyword attribute="Opcode" context="#pop!equals" String="opcodes" />
+      <DetectChar attribute="Headers" context="keyword" char="&lt;" />
+      <DetectChar attribute="Headers" context="keyword" char="&gt;" />
+      <DetectChar attribute="Equals" context="postequals" char="=" />
+      <keyword attribute="Opcode" context="#pop!sampleequals" String="sample" />
+      <keyword attribute="Opcode" context="include" String="include" />
+      <Detect2Chars attribute="Comment" context="#pop" char="/" char1="/" lookAhead="true" />
+      <StringDetect attribute="Opcode" context="#pop!equals" String="amp" />
+      <StringDetect attribute="Opcode" context="#pop!equals" String="cutoff" />
+      <StringDetect attribute="Opcode" context="#pop!equals" String="delay" />
+      <StringDetect attribute="Opcode" context="#pop!equals" String="eg" />
+      <StringDetect attribute="Opcode" context="#pop!equals" String="eq" />
+      <StringDetect attribute="Opcode" context="#pop!equals" String="fil" />
+      <StringDetect attribute="Opcode" context="#pop!equals" String="gain" />
+      <StringDetect attribute="Opcode" context="#pop!equals" String="hicc" />
+      <StringDetect attribute="Opcode" context="#pop!equals" String="hihdcc" />
+      <StringDetect attribute="Opcode" context="#pop!equals" String="label" />
+      <StringDetect attribute="Opcode" context="#pop!equals" String="lfo" />
+      <StringDetect attribute="Opcode" context="#pop!equals" String="locc" />
+      <StringDetect attribute="Opcode" context="#pop!equals" String="lohdcc" />
+      <StringDetect attribute="Opcode" context="#pop!equals" String="offset" />
+      <StringDetect attribute="Opcode" context="#pop!equals" String="on_" />
+      <StringDetect attribute="Opcode" context="#pop!equals" String="pan_cc_" />
+      <StringDetect attribute="Opcode" context="#pop!equals" String="pitch" />
+      <StringDetect attribute="Opcode" context="#pop!equals" String="position" />
+      <StringDetect attribute="Opcode" context="#pop!equals" String="resonance" />
+      <StringDetect attribute="Opcode" context="#pop!equals" String="reverse" />
+      <StringDetect attribute="Opcode" context="#pop!equals" String="set" />
+      <StringDetect attribute="Opcode" context="#pop!equals" String="start" />
+      <StringDetect attribute="Opcode" context="#pop!equals" String="stop" />
+      <StringDetect attribute="Opcode" context="#pop!equals" String="tune" />
+      <StringDetect attribute="Opcode" context="#pop!equals" String="v" />
+      <StringDetect attribute="Opcode" context="#pop!equals" String="volume" />
+      <StringDetect attribute="Opcode" context="#pop!equals" String="xfin" />
+      <StringDetect attribute="Opcode" context="#pop!equals" String="xfout" />
+    </context>
+    <context attribute="String" lineEndContext="#pop" name="include" >
+      <DetectChar attribute="String" context="string" char="&quot;" />
+    </context>
+    <context attribute="String" lineEndContext="#pop" name="string" >
+      <DetectChar attribute="String" context="#pop!Normal Text" char="&quot;" />
+    </context>
+    <context attribute="Headers" lineEndContext="#stay" name="keyword" >
+      <DetectChar attribute="Headers" context="#pop" char="&lt;" />
+      <DetectChar attribute="Headers" context="#pop" char="&gt;" />
+    </context>
+    <context attribute="Opcode" lineEndContext="#pop" name="equals" >
+      <DetectChar attribute="Equals" context="#pop!postequals" char="=" />
+    </context>
+    <context attribute="String" lineEndContext="#pop" name="postequals" >
+      <DetectChar attribute="Normal Text" context="#pop" char="&#032;" />
+    </context>
+    <context attribute="Equals" lineEndContext="#pop" name="sampleequals" >
+      <DetectChar attribute="Equals" context="#pop!postsampleequals" char="=" />
+    </context>
+    <context attribute="String" lineEndContext="#pop" name="postsampleequals" >
+      <WordDetect attribute="String" context="#pop" String="wav" />
+      <WordDetect attribute="String" context="#pop" String="flac" />
+      <WordDetect attribute="String" context="#pop" String="aiff" />
+      <WordDetect attribute="String" context="#pop" String="ogg" />
+    </context>
+   </contexts>
+   <itemDatas>
+     <itemData name="Normal Text" defStyleNum="dsNormal" />
+     <itemData name="Headers" defStyleNum="dsKeyword" />
+     <itemData name="String" defStyleNum="dsString" />
+     <itemData name="Equals" defStyleNum="dsOperator" />
+     <itemData name="Opcode" defStyleNum="dsOthers" />
+     <itemData name="Comment" defStyleNum="dsComment" />
+   </itemDatas>
+  </highlighting>
+  <general>
+  <comments>
+    <comment name="singleLine" start="//"/>
+    <comment name="multiLine" start="//" region="CommentFolding"/>
+  </comments>
+  </general>
+</language>
