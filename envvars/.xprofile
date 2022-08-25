@@ -88,7 +88,6 @@ export RUST_SRC_PATH=/usr/lib/rustlib/src/rust/src
 export GOPROYX=https://goproxy.io,direct
 
 # Firefox
-export MOZ_X11_EGL=1
 export MOZ_USE_XINPUT2=1
 
 # Environment variable for IME,
