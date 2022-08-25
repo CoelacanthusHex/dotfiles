@@ -216,6 +216,7 @@ compdef _gnu_generic btrfs-list
 compdef _gnu_generic zramctl swapon swapoff
 compdef _gnu_generic file
 compdef _gnu_generic yt-dlp
+compdef _gnu_generic ProtonDB-Tags
 
 # By default only C and C++ languages are supported for compiler flag variables. To define your own list of languages:
 #cmake_langs=('C' 'C' 'CXX' 'C++')

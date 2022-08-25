@@ -11,7 +11,7 @@ DIRSTACKSIZE=128
 setopt pushd_ignore_dups
 setopt pushd_minus
 # 不需要打 cd，直接进入目录
-setopt autocd
+setopt no_autocd
 # 以附加的方式写入历史纪录
 setopt append_history
 # 不保存重复的历史记录项
@@ -49,6 +49,8 @@ setopt transient_rprompt
 setopt prompt_subst
 # 单引号中的 '' 表示一个 ' （如同 Vimscript 中者）
 setopt rc_quotes
+# Disable history expansion
+setopt nobanghist
 
 # Disable tty flow control, allows vim to use '<Ctrl>S'
 unsetopt flow_control && stty -ixon
