@@ -9,7 +9,6 @@ _enabled_plugins=(
     zsh-autosuggestions/zsh-autosuggestions
     zsh-history-substring-search/zsh-history-substring-search
     tmux
-    hoco # https://github.com/Felixoid/zsh-hoco/blob/master/hoco.zsh
     cpan-completion # https://github.com/MenkeTechnologies/zsh-cpan-completion
     #zsh-async/async
     nix-zsh-completions/nix
