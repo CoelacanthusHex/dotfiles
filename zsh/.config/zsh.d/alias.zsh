@@ -99,10 +99,11 @@ alias rm='rm -v'
 alias cp="cp -v --reflink=auto --sparse=auto"
 
 # pastebin && clipboard
-alias pb='curl -F "c=@-" "http://fars.ee/"'
-alias clipboard="xclip -selection clipboard"
-alias Ci="clipboard -i"
-alias Co="clipboard -o"
+alias pb-fc='curl -F "c=@-" "http://fars.ee/"'
+alias pb-mgt='curl -F "c=@-" "https://pb.mgt.moe/"'
+alias pb-0x0='curl -F "file=@-" "https://0x0.st/"'
+alias pb-nickcao='curl --data-binary @- https://pb.nichi.co/'
+alias pb=pb-mgt
 
 # better format
 # direct use name for grc.zsh may create function
