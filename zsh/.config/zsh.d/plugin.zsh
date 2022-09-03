@@ -8,6 +8,7 @@ _enabled_plugins=(
     history-search-multi-word/history-search-multi-word
     zsh-autosuggestions/zsh-autosuggestions
     zsh-history-substring-search/zsh-history-substring-search
+    zsh-edit/zsh-edit
     tmux
     cpan-completion # https://github.com/MenkeTechnologies/zsh-cpan-completion
     #zsh-async/async
@@ -55,6 +56,9 @@ zstyle ":plugin:history-search-multi-word" active "underline"
 zstyle ":plugin:history-search-multi-word" check-paths "yes"
 # Whether pressing Ctrl-C or ESC should clear entered query
 zstyle ":plugin:history-search-multi-word" clear-on-cancel "no"
+
+# zsh-edit
+zstyle ':edit:*' word-chars ''
 
 # vim: ft=zsh sw=4 ts=8 sts=4 et:
 # kate: space-indent on; indent-width 4;

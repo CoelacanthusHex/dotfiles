@@ -31,3 +31,6 @@
 [submodule "vim/.vim/pack/theme/opt/onedark"]
 	path = vim/.vim/pack/theme/opt/onedark
 	url = https://github.com/joshdick/onedark.vim.git
+[submodule "zsh/.config/zsh.d/plugins/zsh-edit"]
+	path = zsh/.config/zsh.d/plugins/zsh-edit
+	url = https://github.com/marlonrichert/zsh-edit.git
