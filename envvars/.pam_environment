@@ -152,7 +152,7 @@ MOZ_USE_XINPUT2 DEFAULT=1
 #LC_CTYPE=en_GB.UTF-8
 
 # no CSD
-#GTK_CSD DEFAULT=0
+GTK_CSD DEFAULT=0
 
 # use plasma dialog as default, it need openSUSE patch in the past
 # now Firefox has native support
@@ -165,7 +165,7 @@ GTK_USE_PORTAL DEFAULT=1
 
 # https://wiki.archlinux.org/index.php/LibreOffice#Theme
 # https://github.com/LibreOffice/core/blob/master/vcl/README#L35
-#SAL_USE_VCLPLUGIN DEFAULT=kde5
+SAL_USE_VCLPLUGIN DEFAULT=kf5
 
 # Telegram Tray Icon
 TDESKTOP_DISABLE_TRAY_COUNTER DEFAULT=1

@@ -115,7 +115,7 @@ export VDPAU_DRIVER=radeonsi
 export GST_VAAPI_ALL_DRIVERS=1
 
 # no CSD
-#export GTK_CSD=0
+export GTK_CSD=0
 
 # use plasma dialog as default, it need openSUSE patch in the past
 # now Firefox has native support
@@ -128,7 +128,7 @@ export GTK_USE_PORTAL=1
 
 # https://wiki.archlinux.org/index.php/LibreOffice#Theme
 # https://github.com/LibreOffice/core/blob/master/vcl/README#L35
-#export SAL_USE_VCLPLUGIN=kde5
+export SAL_USE_VCLPLUGIN=kf5
 
 # using kioclient5 in KDE for electron
 # https://wiki.archlinux.org/index.php/Atom_(text_editor)#Unable_to_delete_files
