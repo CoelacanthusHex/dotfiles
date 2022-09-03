@@ -65,7 +65,7 @@ autoload -Uz zargs
 bindkey -e
 autoload -U edit-command-line
 zle -N edit-command-line
-bindkey '^x^e' edit-command-line
+bindkey "$_key[Ctrl+Alt+X]$_key[Ctrl+Alt+E]" edit-command-line
 
 # set end of file mark
 export PROMPT_EOL_MARK="%B%F{red}🔚"
@@ -128,7 +128,7 @@ autoload -Uz bracketed-paste-url-magic
 zle -N bracketed-paste bracketed-paste-url-magic
 
 # better than copy-prev-word
-bindkey "^[^_" copy-prev-shell-word
+bindkey "$_key[Ctrl+Alt+-]" copy-prev-shell-word
 
 autoload -Uz colors && colors
 
@@ -171,7 +171,7 @@ function sudo-command-line() {
     zle end-of-line
 }
 zle -N sudo-command-line
-bindkey "\e\e" sudo-command-line
+bindkey "$_key[Esc]$_key[Esc]" sudo-command-line
 
 # https://github.com/momo-lab/zsh-replace-multiple-dots/blob/master/replace-multiple-dots.plugin.zsh
 function replace_multiple_dots() {

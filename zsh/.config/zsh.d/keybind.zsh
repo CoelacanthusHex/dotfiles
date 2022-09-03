@@ -3,6 +3,7 @@
 autoload -Uz terminfo
 
 typeset -A _key=(
+    Esc                         '\e'
     Tab                         '^I'
     Space                       ' '
     Ctrl+/                      '^_'
@@ -94,6 +95,7 @@ typeset -A _key=(
     Ctrl+Alt+PageUp             '\e[5;7~'
     Ctrl+Alt+PageDown           '\e[6;7~'
     Ctrl+Alt+Backspace          '\e^H'
+    Ctrl+Alt+-                  '\e^_'
 
     Ctrl+Alt+Shift+Up           '\e[1;8A'
     Ctrl+Alt+Shift+Down         '\e[1;8B'
@@ -157,7 +159,16 @@ typeset -A _key=(
     Ctrl+Option+Shift+PageUp    '\e[5;8~'
     Ctrl+Option+Shift+PageDown  '\e[6;8~'
     Ctrl+Option+Shift+Backspace '^?'
+     
 )
+
+for k in {A..Z}; do
+    _key[Ctrl+${k:u}]='^'"${k:u}"
+    _key[Alt+${k:u}]='\e'"${k:l}"
+    _key[Ctrl+Alt+${k:u}]='\e'"[6${k:u}"
+    _key[Alt+Shift+${k:u}]='\e'"${k:u}"
+done
+
 typeset -grA _key
 
 # Finally, make sure the terminal is in application mode, when zle is

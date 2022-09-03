@@ -66,11 +66,6 @@ function lib_dep() {
     lddtree $1 | grep -E '^    [^ ]+' | cut -d' ' -f7 | xargs pacman -Qo
 }
 
-function clip2ydcv() {
-    data="$(xsel)"
-    ydcv "$data"
-}
-
 function regex_ipv6() {
     grep -Eo \([[:alnum:]]{2}:\){5}[[:alnum:]]{2} $@
 }
@@ -169,6 +164,7 @@ function extract() {
             (*.cba|*.ace) unace x "$file" ;;
             (*.zpaq) zpaq x "$file" ;;
             (*.arc) arc e "$file" ;;
+            (*.zlib)  zlib-flate -uncompress < "$file" > "${file%.*zlib}" ;;
             (*)
                 echo "extract: '$1' cannot be extracted" >&2
                 success=1
@@ -203,9 +199,9 @@ function foreground-last-job () {
 }
 zle -N foreground-last-job
 
-bindkey '^Z' foreground-last-job
-bindkey -M emacs '^Z' foreground-last-job
-bindkey -M viins '^Z' foreground-last-job
+bindkey "$_key[Ctrl+Z]" foreground-last-job
+bindkey -M emacs "$_key[Ctrl+Z]" foreground-last-job
+bindkey -M viins "$_key[Ctrl+Z]" foreground-last-job
 
 # add a command line to the shells history without executing it
 function commit-to-history () {
@@ -216,35 +212,23 @@ zle -N commit-to-history
 # bindkey -M viins "^x^h" commit-to-history
 # bindkey -M emacs "^x^h" commit-to-history
 
-# https://github.com/lilydjwg/dotzsh/blob/master/zshrc#L368-382
-# take screenshot to stdout (PNG)
-if (( $+commands[maim] )); then
-    _screenshot="maim -s -l -c 255,0,255,0.15 -k -n 2"
-elif (( $+commands[import] )); then
-    _screenshot="import png:-"
-fi
-if (( $+_screenshot )); then
-    function screenshot () {
-        if [[ -t 1 && $# -eq 0 ]]; then
-            echo >&2 "Refused to write image to terminal."
-            return 1
-        fi
-        ${=_screenshot} "$@"
-    }
-fi
+function clip2ydcv() {
+    if (( $+WAYLAND_DISPLAY )); then
+        data="$(wl-paste)"
+    else
+        data="$(xsel)"
+    fi
+    ydcv "$data"
+}
+
 function clip2qr() {
-    data="$(xsel)"
+    if (( $+WAYLAND_DISPLAY )); then
+        data="$(wl-paste)"
+    else
+        data="$(xsel)"
+    fi
     echo $data
     echo $data | qrencode -t UTF8
-}
-function screen2clip () { # 截图到剪贴板 {{{2
-    screenshot | xclip -i -selection clipboard -t image/png
-}
-function clip_bmp2png () { # 将剪贴板中的图片从 bmp 转到 png。QQ 会使用 bmp
-    xclip -selection clipboard -o -t image/bmp | convert - png:- | xclip -i -selection clipboard -t image/png
-}
-function clip_png2bmp () { # 将剪贴板中的图片从 png 转到 bmp。QQ 会使用 bmp
-    xclip -selection clipboard -o -t image/png | convert - bmp:- | xclip -i -selection clipboard -t image/bmp
 }
 
 # check fcitx5 dbus
