@@ -28,5 +28,6 @@ UnderlineLinksEnabled=true
 HistorySize=100000
 
 [Terminal Features]
+BellMode=0
 FlowControlEnabled=false
 ReverseUrlHints=false
