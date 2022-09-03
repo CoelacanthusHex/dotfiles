@@ -1,5 +1,7 @@
 # create a zkbd compatible hash;
 
+autoload -Uz terminfo
+
 typeset -A _key=(
     Tab                         '^I'
     Space                       ' '
