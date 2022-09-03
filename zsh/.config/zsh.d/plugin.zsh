@@ -36,12 +36,9 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 # https://github.com/zsh-users/zsh-autosuggestions/issues/351
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste accept-line)
 
-# https://github.com/zsh-users/zsh-history-substring-search#usage
-zmodload zsh/terminfo
-#bindkey "$terminfo[kcuu1]" history-substring-search-up
-#bindkey "$terminfo[kcud1]" history-substring-search-down
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+# zsh-history-substring-search
+bindkey "$_key[Up]" history-substring-search-up
+bindkey "$_key[Down]" history-substring-search-down
 export HISTORY_SUBSTRING_SEARCH_PREFIXED=true
 
 # Number of entries to show (default is $LINES/3)
