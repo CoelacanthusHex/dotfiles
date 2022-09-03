@@ -314,7 +314,11 @@ function copy-gpg-db() {
     gpg --export-ownertrust | \
         ssh $1 gpg --import-ownertrust
 }
-compdef copy-gpg-db=ssh
+function copy-all-gpg-db() {
+    gpg --export-options export-local-sigs --export | \
+        ssh $1 gpg --import
+}
+compdef  copy-gpg-db=ssh copy-all-gpg-db=ssh
 
 # vim: ft=zsh sw=4 ts=8 sts=4 et:
 # kate: space-indent on; indent-width 4;
