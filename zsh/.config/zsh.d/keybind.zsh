@@ -2,6 +2,100 @@
 
 autoload -Uz terminfo
 
+
+
+# https://github.com/romkatv/zsh4humans/blob/fd101ce997d8434668af517cc159e3ab42c0ff30/fn/-z4h-init-zle#L196
+# Delete all existing keymaps and reset to the default state.
+bindkey -d
+bindkey -e
+
+local keymap
+for keymap in emacs viins vicmd; do
+    # If NumLock is off, translate keys to make them appear the same as with NumLock on.
+    bindkey -M $keymap -s '^[OM'     '^M'      # enter
+    bindkey -M $keymap -s '^[OX'     '='
+    bindkey -M $keymap -s '^[Oj'     '*'
+    bindkey -M $keymap -s '^[Ok'     '+'
+    bindkey -M $keymap -s '^[Ol'     '+'
+    bindkey -M $keymap -s '^[Om'     '-'
+    bindkey -M $keymap -s '^[On'     '.'
+    bindkey -M $keymap -s '^[Oo'     '/'
+    bindkey -M $keymap -s '^[Op'     '0'
+    bindkey -M $keymap -s '^[Oq'     '1'
+    bindkey -M $keymap -s '^[Or'     '2'
+    bindkey -M $keymap -s '^[Os'     '3'
+    bindkey -M $keymap -s '^[Ot'     '4'
+    bindkey -M $keymap -s '^[Ou'     '5'
+    bindkey -M $keymap -s '^[Ov'     '6'
+    bindkey -M $keymap -s '^[Ow'     '7'
+    bindkey -M $keymap -s '^[Ox'     '8'
+    bindkey -M $keymap -s '^[Oy'     '9'
+
+    # If someone switches our terminal to application mode (smkx), translate keys to make
+    # them appear the same as in raw mode (rmkx).
+    bindkey -M $keymap -s '^[OA'     '^[[A'    # up
+    bindkey -M $keymap -s '^[OB'     '^[[B'    # down
+    bindkey -M $keymap -s '^[OD'     '^[[D'    # left
+    bindkey -M $keymap -s '^[OC'     '^[[C'    # right
+    bindkey -M $keymap -s '^[OH'     '^[[H'    # home
+    bindkey -M $keymap -s '^[OF'     '^[[F'    # end
+
+    # TTY sends different key codes. Translate them to xterm equivalents.
+    # Missing: {ctrl,alt,shift}+{up,down,left,right,home,end}, {ctrl,alt}+delete.
+    bindkey -M $keymap -s '^[[1~'    '^[[H'    # home
+    bindkey -M $keymap -s '^[[4~'    '^[[F'    # end
+
+    # Urxvt sends different key codes. Translate them to xterm equivalents.
+    bindkey -M $keymap -s '^[[7~'    '^[[H'    # home
+    bindkey -M $keymap -s '^[[8~'    '^[[F'    # end
+    bindkey -M $keymap -s '^[Oa'     '^[[1;5A' # ctrl+up
+    bindkey -M $keymap -s '^[Ob'     '^[[1;5B' # ctrl+down
+    bindkey -M $keymap -s '^[Od'     '^[[1;5D' # ctrl+left
+    bindkey -M $keymap -s '^[Oc'     '^[[1;5C' # ctrl+right
+    bindkey -M $keymap -s '^[[7\^'   '^[[1;5H' # ctrl+home
+    bindkey -M $keymap -s '^[[8\^'   '^[[1;5F' # ctrl+end
+    bindkey -M $keymap -s '^[[3\^'   '^[[3;5~' # ctrl+delete
+    bindkey -M $keymap -s '^[^[[A'   '^[[1;3A' # alt+up
+    bindkey -M $keymap -s '^[^[[B'   '^[[1;3B' # alt+down
+    bindkey -M $keymap -s '^[^[[D'   '^[[1;3D' # alt+left
+    bindkey -M $keymap -s '^[^[[C'   '^[[1;3C' # alt+right
+    bindkey -M $keymap -s '^[^[[7~'  '^[[1;3H' # alt+home
+    bindkey -M $keymap -s '^[^[[8~'  '^[[1;3F' # alt+end
+    bindkey -M $keymap -s '^[^[[3~'  '^[[3;3~' # alt+delete
+    bindkey -M $keymap -s '^[[a'     '^[[1;2A' # shift+up
+    bindkey -M $keymap -s '^[[b'     '^[[1;2B' # shift+down
+    bindkey -M $keymap -s '^[[d'     '^[[1;2D' # shift+left
+    bindkey -M $keymap -s '^[[c'     '^[[1;2C' # shift+right
+    bindkey -M $keymap -s '^[[7$'    '^[[1;2H' # shift+home
+    bindkey -M $keymap -s '^[[8$'    '^[[1;2F' # shift+end
+
+    # Tmux sends different key codes. Translate them to xterm equivalents.
+    bindkey -M $keymap -s '^[[1~'    '^[[H'    # home
+    bindkey -M $keymap -s '^[[4~'    '^[[F'    # end
+    bindkey -M $keymap -s '^[^[[A'   '^[[1;3A' # alt+up
+    bindkey -M $keymap -s '^[^[[B'   '^[[1;3B' # alt+down
+    bindkey -M $keymap -s '^[^[[D'   '^[[1;3D' # alt+left
+    bindkey -M $keymap -s '^[^[[C'   '^[[1;3C' # alt+right
+    bindkey -M $keymap -s '^[^[[1~'  '^[[1;3H' # alt+home
+    bindkey -M $keymap -s '^[^[[4~'  '^[[1;3F' # alt+end
+    bindkey -M $keymap -s '^[^[[3~'  '^[[3;3~' # alt+delete
+
+    # iTerm2 sends different key codes. Translate them to xterm equivalents.
+    # Missing (depending on settings): ctrl+{up,down,left,right}, {ctrl,alt}+{delete,backspace}.
+    bindkey -M $keymap -s '^[^[[A'   '^[[1;3A' # alt+up
+    bindkey -M $keymap -s '^[^[[B'   '^[[1;3B' # alt+down
+    bindkey -M $keymap -s '^[^[[D'   '^[[1;3D' # alt+left
+    bindkey -M $keymap -s '^[^[[C'   '^[[1;3C' # alt+right
+    bindkey -M $keymap -s '^[[1;9A'  '^[[1;3A' # alt+up
+    bindkey -M $keymap -s '^[[1;9B'  '^[[1;3B' # alt+down
+    bindkey -M $keymap -s '^[[1;9D'  '^[[1;3D' # alt+left
+    bindkey -M $keymap -s '^[[1;9C'  '^[[1;3C' # alt+right
+    bindkey -M $keymap -s '^[[1;9H'  '^[[1;3H' # alt+home
+    bindkey -M $keymap -s '^[[1;9F'  '^[[1;3F' # alt+end
+
+    # TODO: Add missing translations.
+done
+
 typeset -A _key=(
     Esc                         '\e'
     Tab                         '^I'
