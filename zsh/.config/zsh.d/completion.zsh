@@ -217,6 +217,8 @@ compdef _gnu_generic zramctl swapon swapoff
 compdef _gnu_generic file
 compdef _gnu_generic yt-dlp
 compdef _gnu_generic ProtonDB-Tags
+# v4l2
+compdef _gnu_generic cec-compliance cec-ctl cec-follower cx18-ctl decode_tm6000 dvb-fe-tool dvb-format-convert dvbv5-daemon dvbv5-scan dvbv5-zap ir-ctl ir-keytable media-ctl qv4l2 qvidcap rds-ctl v4l2-compliance v4l2-ctl v4l2-dbg v4l2-sysfs-path
 
 # By default only C and C++ languages are supported for compiler flag variables. To define your own list of languages:
 #cmake_langs=('C' 'C' 'CXX' 'C++')

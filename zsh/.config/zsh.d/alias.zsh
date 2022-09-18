@@ -20,6 +20,7 @@ alias vi="vim"
 
 # https://github.com/lilydjwg/dotzsh/blob/e1a678cf4743e53813a457cb33f6f1e82e5bfa39/zshrc#L875
 if (( $+commands[zoxide] )); then
+    export _ZO_FZF_OPTS="--border=sharp"
     eval "$(zoxide init zsh)"
     function z () {
         if [[ "$#" -eq 0 ]]; then

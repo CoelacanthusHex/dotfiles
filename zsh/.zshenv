@@ -125,7 +125,7 @@ path=(
     /usr/local/sbin(N-/)
     /usr/sbin(N-/)
     /sbin(N-/)
-    $HOME/Data/workspace/project/qt/qt5/qtrepotools/bin(N-/)
+    $HOME/project/qt/qt5/qtrepotools/bin(N-/)
     $path
 )
 
