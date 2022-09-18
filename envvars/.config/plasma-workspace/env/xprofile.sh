@@ -1,0 +1,1 @@
+/home/coelacanthus/.xprofile
