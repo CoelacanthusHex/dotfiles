@@ -382,8 +382,18 @@ endif
 " Enable a visual menu when using TAB autocomplete in command mode
 set wildmenu
 " 首先尝试最长的，接着轮换补全项
-set wildmode=longest:full,full
-set wildoptions=pum,fuzzy
+if has("patch-8.2.2733")
+    set wildmode=lastused:longest:full,lastused:full
+else
+    set wildmode=longest:full,full
+endif
+if has("patch-8.2.4325") && has("patch-8.2.4463")
+    set wildoptions=pum,fuzzy
+elseif has("patch-8.2.4325")
+    set wildoptions=pum
+elseif has("patch-8.2.4463")
+    set wildoptions=fuzzy
+endif
 
 set completeopt+=longest
 try

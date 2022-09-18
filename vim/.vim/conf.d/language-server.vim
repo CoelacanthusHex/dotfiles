@@ -16,12 +16,6 @@ g:ycm_language_server = [
               filetypes: ['tex']
             },
             {
-             name: 'clangd',
-             cmdline: ['clangd'],
-             filetypes: ['c', 'cpp', 'cuda', 'objc', 'objcpp'],
-             project_root_files: ['compile_commands.json']
-            },
-            {
               name: 'scala',
               filetypes: ['scala'],
               cmdline: ['metals-vim'],
@@ -52,6 +46,11 @@ g:ycm_language_server = [
               name: 'vim script',
               cmdline: ['vim-language-server', '--stdio'],
               filetypes: ['vim'],
+            },
+            {
+              name: 'QML',
+              cmdline: ['qmlls6'],
+              filetypes: ['qml'],
             },
             ]
 # https://github.com/bash-lsp/bash-language-server/issues/252

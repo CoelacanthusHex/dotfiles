@@ -13,6 +13,8 @@ flags = [
     '-Wall',
     '-Wextra',
     '-Werror',
+    '-Weffc++',
+    '-pedantic',
 ]
 
 # Set this to the absolute path to the folder (NOT the file!) containing the

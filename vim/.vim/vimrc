@@ -1,5 +1,7 @@
 vim9script
 scriptencoding utf-8
+if !has("patch-9.0.0000") | echoerr "This vimrc is only support vim9!" | endif
+
 # vim: set sw=4 ts=8 sts=4 et foldmethod=marker:
 # kate: space-indent on; indent-width 4; syntax vim;
 
@@ -359,10 +361,8 @@ set shortmess-=S
 # Enable a visual menu when using TAB autocomplete in command mode
 set wildmenu
 # 首先尝试最长的，接着轮换补全项
-set wildmode=longest:full,full
-if has("patch-8.2.4325")
-    set wildoptions=pum
-endif
+set wildmode=lastused:longest:full,lastused:full
+set wildoptions=fuzzy,pum
 
 set completeopt+=longest
 set completeopt+=popup
