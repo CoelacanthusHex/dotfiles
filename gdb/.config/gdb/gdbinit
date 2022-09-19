@@ -25,7 +25,6 @@ define fetch_firefox_symbol
 end
 
 # For Linux kernel debug
-add-auto-load-safe-path ~/Data/workspace/project/linux
 add-auto-load-safe-path .
 
 define b_a

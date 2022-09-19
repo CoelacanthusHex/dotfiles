@@ -71,13 +71,13 @@
 [include]
     path = ~/.config/git/aliases.config
 
-[includeIf "gitdir:~/Data/workspace/aosc/**"]
+[includeIf "gitdir:~/project/aosc/**"]
     path = ~/.config/git/aosc.config
 
-[includeIf "gitdir:~/Data/workspace/project/qt/**"]
+[includeIf "gitdir:~/project/qt/**"]
     path = ~/.config/git/qt.config
 
-[includeIf "gitdir:~/Data/workspace/project/archlinuxcn/**"]
+[includeIf "gitdir:~/project/archlinuxcn/**"]
     path = ~/.config/git/archlinuxcn.config
 
 # kate: space-indent on; indent-width 4; syntax toml;
