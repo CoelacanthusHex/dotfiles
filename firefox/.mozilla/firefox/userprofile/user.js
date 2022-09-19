@@ -48,6 +48,8 @@ user_pref("browser.urlbar.suggest.quickactions", false);
 user_pref("extensions.unifiedExtensions.enabled", true);
 /* Enable COLRv1 font */
 user_pref("gfx.font_rendering.colr_v1.enabled", true);
+/* Disable unload page on low memory */
+user_pref("browser.tabs.unloadOnLowMemory", false);
 
 /* 禁止投机性预连接 */
 // user_pref("network.http.speculative-parallel-limit", 0);
