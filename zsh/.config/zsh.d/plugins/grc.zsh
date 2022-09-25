@@ -28,12 +28,9 @@ cmds=(
     fdisk
     findmnt
     free
-    g++
     gas
-    gcc
     getfacl
     getsebool
-    gmake
     gpg
     id
     ifconfig
@@ -47,22 +44,16 @@ cmds=(
     ldap
     lolcat
     ld
-    ls
-    lsattr
     lsblk
     lsmod
     lsof
     lspci
-    make
     mount
-    mtr
     mvn
     netstat
     nmap
     ntpdate
     php
-    ping
-    ping6
     proftpd
     ps
     sar
@@ -73,7 +64,6 @@ cmds=(
     ss
     stat
     sysctl
-    systemctl
     tcpdump
     traceroute
     traceroute6

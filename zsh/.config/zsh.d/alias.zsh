@@ -142,25 +142,6 @@ if (( ! $+aliases[colourify] ));then
     alias diff="diff --color=auto"
     alias ip="ip -c=auto "
 fi
-# https://github.com/lilydjwg/dotzsh/blob/313050449529c84914293283691da1e824d779f5/zshrc#L375
-# grc aliases
-if (( $+aliases[colourify] )); then
-    if (( $+functions[gcc] )); then
-        # default is better
-        unfunction gcc g++ 2>/dev/null || true
-        # bug: https://github.com/garabik/grc/issues/72
-        unfunction mtr     2>/dev/null || true
-        # buffering issues: https://github.com/garabik/grc/issues/25
-        unfunction ping    2>/dev/null || true
-    else if (( $+aliases[gcc] ))
-        # default is better
-        unalias gcc g++ 2>/dev/null || true
-        # bug: https://github.com/garabik/grc/issues/72
-        unalias mtr     2>/dev/null || true
-        # buffering issues: https://github.com/garabik/grc/issues/25
-        unalias ping    2>/dev/null || true
-    fi
-fi
 alias pactree="pactree -c"
 # not need for konsole
 #alias ssh="TERM=xterm-256color ssh"
