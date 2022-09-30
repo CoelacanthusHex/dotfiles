@@ -52,11 +52,30 @@ function __make_better() {
     command env $environment "$@"
 }
 
+function __make_code_better() {
+    local -a environment
+
+    environment+=( MANPAGER='sh -c "col -bx | bat -pl man --theme=Monokai\ Extended"' )
+    environment+=( MANROFFOPT='-c' )
+
+    # See ./nroff script.
+    if [[ "$OSTYPE" = solaris* ]]; then
+        environment+=( PATH="${__colored_man_pages_dir}:$PATH" )
+    fi
+
+    command env $environment "$@"
+}
+
 # Colorize man and dman/debman (from debian-goodies)
 function man \
     dman \
     debman {
     __make_better $0 "$@"
+}
+function man-code \
+    dman-code \
+    debman-code {
+    __make_code_better ${0//-code/} "$@"
 }
 
 # vim: ft=zsh sw=4 ts=8 sts=4 et:

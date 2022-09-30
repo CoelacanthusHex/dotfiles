@@ -162,8 +162,9 @@ SPROMPT="%B%F{yellow}zsh: correct '%R' be '%r' [nyae]?%f%b "
 # Extended LS_COLORS
 eval "$(dircolors -b $ZDOTDIR/plugins/LS_COLORS)"
 
+
+# [Esc Esc] double click Esc to insert sudo before current/previous command
 # https://github.com/lilydjwg/dotzsh/blob/313050449529c84914293283691da1e824d779f5/zshrc#L292
-# double click Esc to insert sudo before current/previous command
 function sudo-command-line() {
     [[ -z $BUFFER ]] && zle up-history
     [[ $BUFFER != sudo\ * && $UID -ne 0 ]] && {
@@ -195,6 +196,54 @@ function replace_multiple_dots() {
 }
 zle -N replace_multiple_dots
 bindkey "." replace_multiple_dots
+
+# [Ctrl+L] clear screen while maintaining scrollback
+# https://blog.quarticcat.com/posts/how-do-i-make-my-zsh-smooth-as-fuck/
+# https://superuser.com/questions/1389834
+fixed-clear-screen() {
+    # FIXME: works incorrectly in tmux
+    local prompt_height=$(echo -n ${(%%)PS1} | wc -l)
+    local lines=$((LINES - prompt_height))
+    printf "$terminfo[cud1]%.0s" {1..$lines}  # cursor down
+    printf "$terminfo[cuu1]%.0s" {1..$lines}  # cursor up
+    zle reset-prompt
+}
+zle -N fixed-clear-screen
+bindkey "$_key[Ctrl+L]" fixed-clear-screen
+
+function foreground-last-job () {
+    if (( ${#jobstates} )); then
+        zle .push-input
+        [[ -o hist_ignore_space ]] && BUFFER=' ' || BUFFER=''
+        BUFFER="${BUFFER}fg"
+        zle .accept-line
+    else
+        zle -M 'No background jobs. Doing nothing.'
+    fi
+}
+zle -N foreground-last-job
+
+bindkey "$_key[Ctrl+Z]" foreground-last-job
+bindkey -M emacs "$_key[Ctrl+Z]" foreground-last-job
+bindkey -M viins "$_key[Ctrl+Z]" foreground-last-job
+
+# add a command line to the shells history without executing it
+function commit-to-history () {
+    print -s ${(z)BUFFER}
+    zle send-break
+}
+zle -N commit-to-history
+# bindkey -M viins "^x^h" commit-to-history
+# bindkey -M emacs "^x^h" commit-to-history
+
+# [Space] Do history expansion
+bindkey "$_key[Space]"  magic-space
+# [Ctrl-Z] Undo
+bindkey "$_key[Ctrl+Z]" undo
+# [Ctrl-Y] Redo
+bindkey "$_key[Ctrl+Y]" redo
+# [Ctrl-N] Navigate by xplr
+bindkey -s "$_key[Ctrl+N]" '^Q cd -- ${$(xplr):-.} \n'
 
 # Enable aliases to be sudo’ed
 # http://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo

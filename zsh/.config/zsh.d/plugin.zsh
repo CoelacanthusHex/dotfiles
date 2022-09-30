@@ -9,6 +9,8 @@ _enabled_plugins=(
     zsh-autosuggestions/zsh-autosuggestions
     zsh-history-substring-search/zsh-history-substring-search
     zsh-edit/zsh-edit
+    zsh-smartcache/zsh-smartcache
+    #fzf-tab/fzf-tab
     tmux
     cpan-completion # https://github.com/MenkeTechnologies/zsh-cpan-completion
     #zsh-async/async
@@ -20,6 +22,8 @@ for _zsh_plugin in $_enabled_plugins[@]; do
 done
 
 ### Autosuggest Setting
+# Disable auto set keybind when precmd
+export ZSH_AUTOSUGGEST_MANUAL_REBIND=true
 export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd history completion)
 export ZSH_AUTOSUGGEST_USE_ASYNC=true
 # This speeds up pasting w/ autosuggest
@@ -40,6 +44,8 @@ ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste accept-line)
 bindkey "$_key[Up]" history-substring-search-up
 bindkey "$_key[Down]" history-substring-search-down
 export HISTORY_SUBSTRING_SEARCH_PREFIXED=true
+# Treat 'ab c' as '*ab*c*'
+export HISTORY_SUBSTRING_SEARCH_FUZZY=true
 
 # Number of entries to show (default is $LINES/3)
 zstyle ":history-search-multi-word" page-size "7"

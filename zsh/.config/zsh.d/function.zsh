@@ -146,31 +146,6 @@ function get-someone-commit-time() {
     git log --author="$1" --date=iso | perl -nalE 'if (/^Date:\s+[\d-]{10}\s(\d{2})/) { say $1+0 }' | sort | uniq -c|perl -MList::Util=max -nalE '$h{$F[1]} = $F[0]; }{ $m = max values %h; foreach (0..23) { $h{$_} = 0 if not exists $h{$_} } foreach (sort {$a <=> $b } keys %h) { say sprintf "%02d - %4d %s", $_, $h{$_}, "*"x ($h{$_} / $m * 50); }'
 }
 
-function foreground-last-job () {
-    if (( ${#jobstates} )); then
-        zle .push-input
-        [[ -o hist_ignore_space ]] && BUFFER=' ' || BUFFER=''
-        BUFFER="${BUFFER}fg"
-        zle .accept-line
-    else
-        zle -M 'No background jobs. Doing nothing.'
-    fi
-}
-zle -N foreground-last-job
-
-bindkey "$_key[Ctrl+Z]" foreground-last-job
-bindkey -M emacs "$_key[Ctrl+Z]" foreground-last-job
-bindkey -M viins "$_key[Ctrl+Z]" foreground-last-job
-
-# add a command line to the shells history without executing it
-function commit-to-history () {
-    print -s ${(z)BUFFER}
-    zle send-break
-}
-zle -N commit-to-history
-# bindkey -M viins "^x^h" commit-to-history
-# bindkey -M emacs "^x^h" commit-to-history
-
 function clip2ydcv() {
     if (( $+WAYLAND_DISPLAY )); then
         data="$(wl-paste)"
