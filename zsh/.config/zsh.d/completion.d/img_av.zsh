@@ -11,7 +11,7 @@ zstyle ':completion:*:*:feh:*' file-patterns '*.{png,gif,jpg,svg}:images:images 
 zstyle ':completion:*:*:imv:*' file-patterns '*.{png,gif,jpg,svg,tiff,psd}:images:images *(-/):directories:directories'
 zstyle ':completion:*:*:timidity:*' file-patterns '*.mid'
 zstyle ':completion:*:*:pdf2ps:*' file-patterns \
-  '*.pdf:pdf-files:pdf\ files *(-/):directories:directories'
+  '*.pdf:pdf-files:pdf\ files *(#q-/):directories:directories'
 
 # vim: ft=zsh sw=4 ts=8 sts=4 et:
 # kate: space-indent on; indent-width 4; 

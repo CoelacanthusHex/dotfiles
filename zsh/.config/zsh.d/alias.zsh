@@ -1,22 +1,12 @@
 [[ -s "$ZDOTDIR/plugins/grc.zsh" ]] && source "$ZDOTDIR/plugins/grc.zsh"
 
 # for systemd
-alias start="sudo systemctl start"
-alias stop="sudo systemctl stop"
-alias status="systemctl status"
-alias restart="sudo systemctl restart"
 alias limit-run='systemd-run --user --pty --same-dir --wait --collect --slice=limit-run.slice '
 alias limit-cpu='systemd-run --user --pty --same-dir --wait --collect --slice=limit-cpu.slice '
 alias limit-mem='systemd-run --user --pty --same-dir --wait --collect --slice=limit-mem.slice '
 
-(( $_in_kitty == 1 )) && alias ssh="kitty +kitten ssh"
-(( $+commands[kitty] )) && (( $+commands[weechat] )) && alias kitty-weechat="kitty -o 'map kitty_mod+e kitten hints --customize-processing weechat_hints.py' -o term=xterm-256color weechat"
-
 # reload zsh
 alias reload="sync && exec zsh"
-
-# No real vi
-alias vi="vim"
 
 # https://github.com/lilydjwg/dotzsh/blob/e1a678cf4743e53813a457cb33f6f1e82e5bfa39/zshrc#L875
 if (( $+commands[zoxide] )); then
@@ -77,20 +67,6 @@ fi
 
 # cargo install swapview
 (( $+commands[swapview] )) && alias swapview-continuous='watch -n 1 "swapview | tail -\$((\$LINES - 2)) | cut -b -\$COLUMNS"'
-
-# some cd
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias ......="cd ../../../../.."
-alias .......="cd ../../../../../.."
-alias ........="cd ../../../../../../.."
-
-# some proxy
-alias setproxy="export ALL_PROXY=socks5://127.0.0.1:1089"
-alias unsetproxy="unset ALL_PROXY"
-alias pparu='cgproxy paru'
 
 # add progress
 alias dd='dd status=progress'
@@ -192,7 +168,7 @@ alias xcp="rsync -aviHAXKhS --one-file-system --partial --info=progress2 --atime
 
 alias nicest="chrt -i 0 ionice -c3 "
 
-# 后缀别名
+# suffix alias
 if (( $+commands[okular] )) && (( $_in_gui == 1 )); then
     alias -s {pdf,ps,djvu}="okular"
 fi
@@ -231,21 +207,23 @@ elif (( $+commands[flashplayer] )); then
     alias -s swf="flashplayer"
 fi
 
-# 全局别名
+# global alias
 alias -g NULL="/dev/null"
-# 当前目录下最后修改的文件
-# 来自 https://roylez.info/2010-03-06-zsh-recent-file-alias/
-alias -g NN="*(oc[1])"
-alias -g NNF="*(oc[1].)"
-alias -g NND="*(oc[1]/)"
+# https://roylez.info/2010-03-06-zsh-recent-file-alias/
+# The last modified file in the current directory
+alias -g NN="*(#qoc[1])"
+# The last modified regular file in the current directory
+alias -g NNF="*(#qoc[1].)"
+# The last modified directory in the current directory
+alias -g NND="*(#qoc[1]/)"
 alias -g NUL="/dev/null"
 alias -g XS='"$(xsel)"'
-alias -g ANYF='**/*[^~](.)'
+alias -g ANYF='**/*[^~](#q.)'
 
 alias -g L='| less'
 
 
-# 路径别名
+# path alias
 #hash -d tmp="/tmp"
 
 # vim: ft=zsh sw=4 ts=8 sts=4 et:

@@ -133,7 +133,7 @@ typeset -U fpath
 fpath=(
     $ZDOTDIR/completions(N-/)
     $ZDOTDIR/functions(N-/)
-    /usr{/local,}/share/zsh/{site-functions,vendor-completions}(-/N)
+    /usr{/local,}/share/zsh/{site-functions,vendor-completions}(/-N)
     $fpath
 )
 

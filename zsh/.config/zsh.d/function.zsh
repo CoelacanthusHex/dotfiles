@@ -1,17 +1,10 @@
 # zsh_stats from oh-my-zsh https://github.com/robbyrussell/oh-my-zsh/blob/master/lib/functions.zsh
-function zsh_stats() {
+function command_freq_stats() {
     fc -l 1 | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n20
 }
 
 function compresspdf(){
     gs -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -sOutputFile=$2 $1
-}
-
-function wifi(){
-    [ -z "$1" -o -z "$2" -o -z "$3" ] && echo -e "usage: wifi <interface> <ssid> <password>: connect to <ssid> at <interface> using <password>" && return 1
-    sudo bash -c "wpa_passphrase $2 $3 | wpa_supplicant -Dwext -i$1 -c/dev/stdin &"
-    sleep 5
-    sudo dhcpcd $1
 }
 
 if (( $+commands[nali] )); then
@@ -26,42 +19,6 @@ if (( $+commands[nali] )); then
     }
 fi
 
-# 图像压缩
-function opt_png(){
-    fd '.*\.png' $2 | parallel --bar optipng $1 {}
-}
-
-function opt_jpg(){
-    fd '.*\.jpg' $1 | parallel --bar jpegoptim {}
-}
-
-function png2webp() {
-    fd '.*\.png' $1 --exec cwebp -lossless {} -o {.}.webp ;
-}
-
-function jpg2webp() {
-    fd '.*\.jpg' $1 --exec cwebp {} -o {.}.webp ;
-}
-
-function encode64() {
-    if [[ $# -eq 0 ]]; then
-        cat | base64
-    else
-        printf '%s' $1 | base64
-    fi
-}
-
-function decode64() {
-    if [[ $# -eq 0 ]]; then
-        cat | base64 --decode
-    else
-        printf '%s' $1 | base64 --decode
-    fi
-}
-
-alias e64=encode64
-alias d64=decode64
-
 function lib_dep() {
     lddtree $1 | grep -E '^    [^ ]+' | cut -d' ' -f7 | xargs pacman -Qo
 }
@@ -73,15 +30,17 @@ function regex_ipv6() {
 function kwin-debug-console() {
     qdbus org.kde.KWin /KWin org.kde.KWin.showDebugConsole
 }
+
 # https://github.com/lilydjwg/dotzsh/blob/master/zshrc#L508-520
-function rmempty () { #删除空文件 {{{2
+# delete empty files
+function rmempty () {
     for i; do
         [[ -f $i && ! -s $i ]] && rm $i
     done
     return 0
 }
-
-function breakln () { #断掉软链接 {{{2
+# break symbol link
+function breakln () {
     for f in $*; do
         tgt=$(readlink "$f")
         unlink "$f"
@@ -256,7 +215,7 @@ function mpv() {
 }
 
 # https://github.com/lilydjwg/dotzsh/blob/313050449529c84914293283691da1e824d779f5/zshrc#L519
-# 将以 %HH 表示的文件名改正常
+# Change the filename represented by %HH to normal
 function mvpc() {
     mv -- $1 "$(echo $1 | ascii2uni -a J | tr '/' '-')"
 }
@@ -302,7 +261,7 @@ function copy-all-gpg-db() {
     gpg --export-options export-local-sigs --export | \
         ssh $1 gpg --import
 }
-compdef  copy-gpg-db=ssh copy-all-gpg-db=ssh
+compdef copy-gpg-db=ssh copy-all-gpg-db=ssh
 
 # vim: ft=zsh sw=4 ts=8 sts=4 et:
 # kate: space-indent on; indent-width 4;

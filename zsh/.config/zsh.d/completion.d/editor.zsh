@@ -7,7 +7,7 @@ local -aU editors=(
   bat cat less more $PAGER)
 _ignore_video_files=(avi mkv rmvb wmv mp4 flv webm mov)
 _ignore_audio_files=(mp3 flac ogg wav)
-_ignore_compiled_files=(a dylib so rlib lib dll o pyc zwc zwc.old)
+_ignore_compiled_files=(exe a dylib so rlib lib dll o pyc zwc zwc.old img apk)
 _ignore_files=()
 _ignore_files+=($_ignore_video_files) && _ignore_files+=($_ignore_audio_files) && _ignore_files+=($_ignore_compiled_files) && \
 zstyle ':completion:*:*:('${(j:|:)editors}'):*:*' ignored-patterns \

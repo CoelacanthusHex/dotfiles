@@ -1,56 +1,68 @@
+## Glob
+# Enable extended glob
+setopt extended_glob
+# Disable `PATTERN(QUALIFIERS)`, extended_glob has `PATTERN(#qQUALIFIERS)`
+unsetopt bare_glob_qual
+
+## Prompt
+# Remove RPROMPT after execute command
+setopt transient_rprompt
+# Allow function in prompt
+setopt prompt_subst
+
+## History
+# Do not save duplicate history items
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+# If you add a space before a command, do not add this command to the log file
+setopt hist_ignore_space
+# better perf (since 4.3.6)
+setopt hist_fcntl_lock
+# Remove extra whitespace
+setopt hist_reduce_blanks
+# Add timestamp to commands in history
+setopt extended_history
+# Do not execute when expanding history
+setopt hist_verify
+# Do not share history instantly between instances
+# Use `fc -IR` to read history `fc -IA` to save history
+unsetopt share_history
+# Write history in append mode
+setopt append_history
+
+## Directory
+setopt auto_pushd
+DIRSTACKSIZE=128
+# Don't pushd duplicates
+setopt pushd_ignore_dups
+# Exchange the meanings of `+` and `-` in pushd
+setopt pushd_minus
+unsetopt autocd
+
+## Interactive
+# '' in single quotes means a ' (as in Vimscript)
+setopt rc_quotes
+# Disable history expansion
+setopt nobanghist
+# Enable multiple redirections
+setopt multios
+# Allows the use of comments in interactive mode. For example:
+#cmd #commnet
+setopt interactive_comments
+# Make setopt output all options
+setopt ksh_option_print
+# Automatically continue the process after disown
+setopt auto_continue
+# Using c format hexadecimal number
+setopt c_bases
+# Disable for problems with parsing of, for example, date and time strings with leading zeroes
+unsetopt octal_zeroes
+# Leaving it unchanged in the argument list when no match
 unsetopt nomatch
 # https://blog.lilydjwg.me/2015/7/26/a-simple-zsh-module.116403.html
 # https://gist.github.com/lilydjwg/0bfa6807b88e6d39a995
 zmodload zsh/subreap 2>/dev/null && subreap
-autoload -Uz is-at-least
-# 选项设置
 unsetopt beep
-# 自动记住已访问目录栈
-setopt auto_pushd
-DIRSTACKSIZE=128
-setopt pushd_ignore_dups
-setopt pushd_minus
-# 不需要打 cd，直接进入目录
-setopt no_autocd
-# 以附加的方式写入历史纪录
-setopt append_history
-# 不保存重复的历史记录项
-setopt hist_save_no_dups
-setopt hist_ignore_dups
-# 在命令前添加空格，不将此命令添加到记录文件中
-setopt hist_ignore_space
-# better perf (zsh 4.3.6)
-setopt hist_fcntl_lock
-# 移除空白
-setopt hist_reduce_blanks
-# 为历史纪录中的命令添加时间戳
-setopt extended_history
-# 展开历史时不执行
-setopt hist_verify
-# 实例之间即时共享历史
-# setopt share_history
-# 使用 fc -IR 读取历史  fc -IA 保存历史
-# 允许在交互模式中使用注释  例如：
-#cmd #这是注释
-setopt interactive_comments
-# setopt 的输出显示选项的开关状态
-setopt ksh_option_print
-# disown 后自动继续进程
-setopt auto_continue
-# 启用增强 glob
-setopt extended_glob
-# using c format hexadecimal number
-setopt c_bases
-# disable for problems with parsing of, for example, date and time strings with leading zeroes
-unsetopt octal_zeroes
-# RPROMPT 执行完命令后就消除, 便于复制
-setopt transient_rprompt
-# prompt more dynamic, allow function in prompt
-setopt prompt_subst
-# 单引号中的 '' 表示一个 ' （如同 Vimscript 中者）
-setopt rc_quotes
-# Disable history expansion
-setopt nobanghist
 
 # Disable tty flow control, allows vim to use '<Ctrl>S'
 unsetopt flow_control && stty -ixon
@@ -151,7 +163,7 @@ SPROMPT="%B%F{yellow}zsh: correct '%R' be '%r' [nyae]?%f%b "
 eval "$(dircolors -b $ZDOTDIR/plugins/LS_COLORS)"
 
 # https://github.com/lilydjwg/dotzsh/blob/313050449529c84914293283691da1e824d779f5/zshrc#L292
-# Esc-Esc 在当前/上一条命令前插入 sudo
+# double click Esc to insert sudo before current/previous command
 function sudo-command-line() {
     [[ -z $BUFFER ]] && zle up-history
     [[ $BUFFER != sudo\ * && $UID -ne 0 ]] && {
