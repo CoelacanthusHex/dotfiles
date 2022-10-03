@@ -174,8 +174,8 @@ elif (( ! $disable_async_prompt )) && (( $+commands[git] )); then
     add-zsh-hook precmd .prompt.set_pipe_status
     add-zsh-hook precmd .prompt.set_git_status
     
-    PROMPT='%F{green}%n%f @ %F{magenta}%m%f in %B%F{yellow}%~%f%b$_current_branch$_current_status%f -> $_pipe_status%f
-%F{blue}>>>%f '
+    PROMPT='%F{cyan}%n%f @ %F{magenta}%m%f in %B%F{yellow}%~%f%b$_current_branch$_current_status%f -> $_pipe_status%f
+%(?.%F{green}.%F{red})>>>%f '
     RPROMPT="%T"
     PROMPT2="%F{yellow}>>>%f "
 elif (( ! $disable_pure )) \
@@ -197,8 +197,8 @@ else
     zstyle ':vcs_info:git*+set-message:*' hooks git-st
     zstyle ':vcs_info:*' enable git hg svn
 
-    PROMPT='%F{green}%n%f @ %F{magenta}%m%f in %B%F{yellow}%~%f%b at $vcs_info_msg_0_ -> $_pipe_status%f
-%F{blue}>>>%f '
+    PROMPT='%F{cyan}%n%f @ %F{magenta}%m%f in %B%F{yellow}%~%f%b at $vcs_info_msg_0_ -> $_pipe_status%f
+%(?.%F{green}.%F{red})>>>%f '
     RPROMPT="%T"
     PROMPT2="%F{yellow}>>>%f "
 fi
