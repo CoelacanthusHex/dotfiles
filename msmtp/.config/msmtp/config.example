@@ -1,0 +1,32 @@
+account outlook
+host    smtp.office365.com
+port    587
+from    coelacanthus@outlook.com
+user    coelacanthus@outlook.com
+tls_starttls on
+password xxxxxxxx
+
+account aosc
+host    mail20.mymailcheap.com
+port    587
+from    coelacanthus@aosc.io
+user    coelacanthus@aosc.io
+tls_starttls on
+password xxxxxxxx
+
+account gmail
+from    CoelacanthusHex@gmail.com
+user    CoelacanthusHex@gmail.com
+auth    oauthbearer
+passwordeval cgproxy getmail-gmail-xoauth-tokens ~/.config/msmtp/gmail.json
+host    smtp.gmail.com
+port    465
+#tls_starttls on
+tls     on
+tls_starttls off
+proxy_host 127.0.0.1
+proxy_port 1089
+
+account default : gmail
+
+# vim:filetype=msmtp
