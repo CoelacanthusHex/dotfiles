@@ -46,10 +46,11 @@ user_pref("browser.urlbar.shortcuts.quickactions", false);
 user_pref("browser.urlbar.suggest.quickactions", false);
 /* Enable unified extensions toolbar button*/
 user_pref("extensions.unifiedExtensions.enabled", true);
-/* Enable COLRv1 font */
-user_pref("gfx.font_rendering.colr_v1.enabled", true);
 /* Disable unload page on low memory */
 user_pref("browser.tabs.unloadOnLowMemory", false);
+/* Allow max 16 connections per server */
+user_pref("network.http.max-persistent-connections-per-server", 16);
+
 
 /* 禁止投机性预连接 */
 // user_pref("network.http.speculative-parallel-limit", 0);

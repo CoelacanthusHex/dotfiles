@@ -16,6 +16,19 @@ set completion-ignore-case on
 # Treat hyphens and underscores as equivalent
 set completion-map-case on
 
+# Color files by types
+# Note that this may cause completion text blink in some terminals (e.g. xterm).
+set colored-stats On
+
+# Mark symlinked directories
+set mark-symlinked-directories On
+
+# Color the common prefix
+set colored-completion-prefix On
+
+# Color the common prefix in menu-complete
+set menu-complete-display-prefix On
+
 $if mode=emacs
 
 # for linux console and RH/Debian xterm
