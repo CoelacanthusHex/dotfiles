@@ -34,9 +34,12 @@
 [submodule "zsh/.config/zsh.d/plugins/zsh-edit"]
 	path = zsh/.config/zsh.d/plugins/zsh-edit
 	url = https://github.com/marlonrichert/zsh-edit.git
+	ignore = untracked
 [submodule "zsh/.config/zsh.d/plugins/zsh-smartcache"]
 	path = zsh/.config/zsh.d/plugins/zsh-smartcache
 	url = https://github.com/QuarticCat/zsh-smartcache.git
+	ignore = untracked
 [submodule "zsh/.config/zsh.d/plugins/fzf-tab"]
 	path = zsh/.config/zsh.d/plugins/fzf-tab
 	url = https://github.com/Aloxaf/fzf-tab.git
+	ignore = untracked
