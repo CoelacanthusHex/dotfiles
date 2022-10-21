@@ -88,6 +88,11 @@ export NALI_HOME="$XDG_CONFIG_HOME"/nali
 export IPYTHONDIR="$XDG_CONFIG_HOME"/ipython
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
 
+# replacing ssh-agent with gpg-agent
+# https://wiki.archlinux.org/index.php/GnuPG#SSH_agent
+#unset SSH_AGENT_PID=""
+#export SSH_AUTH_SOCCK=${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh
+
 # Disable kitty shell integration
 unset KITTY_SHELL_INTEGRATION
 

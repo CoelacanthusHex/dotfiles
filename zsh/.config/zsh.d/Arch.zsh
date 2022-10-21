@@ -6,7 +6,7 @@ if (( $+commands[powerpill] )); then
         sudo pacman-syncdb  pacman -Sy && sudo pacman -Su $@ && sync
         #sudo pacman -Sy && sudo powerpill -Suw $@ && sudo pacman -Su $@ && sync
         pacman -Qtdq | ifne sudo pacman -Rcs - && sync
-        sudo pacman-syncdb  pacman -Fy && sync
+        sudo pacman-syncdb  pacman -Fy && sync && rehash
     }
 fi
 
