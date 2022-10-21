@@ -1,0 +1,19 @@
+# no welcome message
+startup_message off
+
+# huge scrollback buffer
+defscrollback 5000
+
+# mouse tracking allows to switch region focus by clicking
+mousetrack on
+
+# Fix for residual editor text
+altscreen on
+
+# Fix for Name column in windowlist only show "bash"
+windowlist string "%4n %h%=%f"
+
+hardstatus off
+hardstatus alwayslastline
+hardstatus string '%{= kG}[%{C} GNU Screen %{g}][%= %{= kw}%-w%{ck}< %n - %t - %f >%?(%u)%?%{-}%+w %=%{g}][ %{w}%H%{g} ][ %{K}%Y-%m-%d %{m}%c%{g} ]'
+
