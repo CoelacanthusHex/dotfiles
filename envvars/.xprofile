@@ -110,6 +110,11 @@ export LIBVA_DRIVER_NAME=radeonsi
 export LIBVA_DRIVERS_PATH=/usr/lib/dri/
 export VDPAU_DRIVER=radeonsi
 
+# replacing ssh-agent with gpg-agent
+# https://wiki.archlinux.org/index.php/GnuPG#SSH_agent
+export SSH_AGENT_PID=""
+export SSH_AUTH_SOCK=${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh
+
 # Enbale for GStreamer
 # https://wiki.archlinux.org/title/GStreamer#Hardware_video_acceleration
 export GST_VAAPI_ALL_DRIVERS=1
