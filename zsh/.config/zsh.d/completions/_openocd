@@ -1,0 +1,33 @@
+#compdef openocd
+
+setopt localoptions extended_glob
+
+local arguments
+local -a openocd_search_paths openocd_config_paths
+
+openocd_config_paths=(.)
+openocd_search_paths=("$words[@]")
+until (( ${openocd_search_paths[(I)*-s*]} == 0 )) ; do
+    local index=$(( ${openocd_search_paths[(I)*-s*]} + 1 ))
+    openocd_config_paths+=(${~${openocd_search_paths[index]}})
+    index=$(( index - 2 ))
+    openocd_search_paths=("$openocd_search_paths[1,index]")
+done
+[[ -d "$HOME/.openocd" ]] && openocd_config_paths+=("$HOME/.openocd")
+[[ -n "$OPENOCD_SCRIPTS" ]] && openocd_config_paths+=("$OPENOCD_SCRIPTS")
+openocd_config_paths+=("/usr/share/openocd/site" "/usr/share/openocd/scripts")
+
+arguments=(
+    '(--help -h)'{--help,-h}'[display this help]'
+    '(--version -v)'{--version,-v}'[display OpenOCD version]'
+    '(--file <name> -f <name>)'{--file,-f}'[use configuration file <name>]:config files:_path_files -W openocd_config_paths'
+    '(--search <dir> -s <dir>)'{--search,-s}'[dir to search for config files and scripts]:search path:_files -/'
+    '(--debug -d [level])'{--debug,-d+}'[set debug level to <level> (omited is 3)]:level:_numbers -l -3 -m 4 -d 3'
+    '(--log_output -l)'{--log_output,-l}'[redirect log output to file <name>]'
+    '(--command <command> -c <command>)'{--command+,-c+}'[run <command>]:commands:()'
+)
+
+_arguments -s $arguments
+
+# vim: ft=zsh sw=4 ts=8 sts=4 et:
+# kate: space-indent on; indent-width 4; syntax: zsh;
