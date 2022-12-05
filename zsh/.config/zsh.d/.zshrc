@@ -44,22 +44,6 @@ if (( $+commands[locale] )); then
     fi
 fi
 
-if (( ${(L)OSTYPE[(I)linux]} )); then
-    # Define user direcotires
-    export XDG_CONFIG_HOME="$HOME/.config"
-    export XDG_CACHE_HOME="$HOME/.cache"
-    export XDG_DATA_HOME="$HOME/.local/share"
-    
-    # Other UTF-8 locales on Linux give weird whitespace sorting.
-    export LC_COLLATE=C.UTF-8
-else
-    _cfg_warning "Operating System $OSTYPE is not supported!"
-    export XDG_CONFIG_HOME="$HOME/.config"
-    export XDG_CACHE_HOME="$HOME/.cache"
-    export XDG_DATA_HOME="$HOME/.local/share"
-fi
-
-ZDOTDIR="$XDG_CONFIG_HOME/zsh.d"
 ZSH_CACHE_HOME="$XDG_CACHE_HOME/zsh"
 ZSH_COMPDUMP="$ZSH_CACHE_HOME/zcompdump"
 

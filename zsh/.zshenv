@@ -1,5 +1,15 @@
 ## Zsh env file
 
+# Define user direcotires
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+    
+# Other UTF-8 locales on Linux give weird whitespace sorting.
+export LC_COLLATE=C.UTF-8
+
+ZDOTDIR="$XDG_CONFIG_HOME/zsh.d"
+
 # ignore duplicated path
 typeset -U path
 
