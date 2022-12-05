@@ -208,7 +208,7 @@ endif
 set history=10000
 if has("unix")
     if !isdirectory(expand('~/.cache'))
-        mkdir(expand('~/.cache'), 'p', 0700)
+        mkdir(expand('~/.cache'), 'p', 0o700)
     endif
     set viminfo=%,<800,'10,/50,:100,h,f0,n~/.cache/viminfo
     #           | |    |   |   |    | |  + viminfo file path
@@ -241,9 +241,9 @@ if has("unix")
 endif
 
 if has("persistent_undo")
-    &undodir = $HOME .. '/.local/share/'
+    &undodir = $HOME .. '/.local/share/vim/undo'
     if !isdirectory(&undodir)
-        mkdir(&undodir, 'p', 0700)
+        mkdir(&undodir, 'p', 0o755)
     endif
     set undofile
 endif
