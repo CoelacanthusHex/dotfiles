@@ -177,18 +177,6 @@ function check-fcitx5-dbus() {
     fi
 }
 
-# https://github.com/lilydjwg/dotzsh/blob/313050449529c84914293283691da1e824d779f5/zshrc#L445
-(( $+commands[mpv] )) && compdef mpv=mpv
-function mpv() {
-    if [[ -z $WAYLAND_DISPLAY && -n $DISPLAY ]]; then
-        # or too big
-        command mpv --no-hidpi-window-scale "$@"
-    else
-        # or blurry
-        command mpv "$@"
-    fi
-}
-
 # https://github.com/lilydjwg/dotzsh/blob/313050449529c84914293283691da1e824d779f5/zshrc#L519
 # Change the filename represented by %HH to normal
 function mvpc() {
