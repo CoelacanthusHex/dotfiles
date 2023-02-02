@@ -27,7 +27,7 @@ function split_input(input)
     if tmp == 46 or (tmp >= 48 and tmp <= 57) then
       item = item .. string.char(tmp)
       flag = true
-      if i == #input_byte then 
+      if i == #input_byte then
         table.insert(input_splited, item)
       end
     elseif flag then
@@ -138,8 +138,9 @@ function calculator(input)
   result = stack[1]
   -- 结果为整数时去掉小数部分(6.0 -> 6)
   local inte, frac = math.modf(result)
-  if frac == 0.0 then result = inte end
-  
+  if frac == 0.0 then
+    result = inte
+  end
   return result
 end
 

@@ -28,6 +28,12 @@ DefaultIM=ipa-x-sampa
 
 [Groups/1/Items/0]
 # Name
+Name=keyboard-us
+# Layout
+Layout=
+
+[Groups/1/Items/1]
+# Name
 Name=ipa-x-sampa
 # Layout
 Layout=

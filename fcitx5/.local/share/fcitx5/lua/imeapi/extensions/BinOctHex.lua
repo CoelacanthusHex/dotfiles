@@ -5,11 +5,11 @@ function convert(num, target)
 
   local tmp = num // target
   while  tmp ~= 0 do
-    result = symbols[num % target + 1] .. result  
+    result = symbols[num % target + 1] .. result
     num = tmp
     tmp = num // target
   end
-  result = symbols[num+1] .. result  
+  result = symbols[num+1] .. result
 
   return result
 end
