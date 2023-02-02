@@ -69,6 +69,7 @@ augroup rellinenum
     autocmd InsertEnter * DisableWhitespace
     autocmd InsertLeave * EnableWhitespace
 augroup END
+jetpack#add('bootleq/vim-cycle')
 # }}}
 # Language {{{
 jetpack#add('timonv/vim-cargo')
