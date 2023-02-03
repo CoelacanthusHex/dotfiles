@@ -94,7 +94,32 @@ g:cycle_default_groups_for_meson = [
     [['yes', 'no']],
     [['and', 'or']],
     [['on', 'off']],
-    [["enabled", "disabled", "auto"]],
+    [["enabled", "disabled", "auto"]], # meson_options.txt
+    [["plain", "debug", "debugoptimized", "release", "minsize", "custom"]], # buildtype
+    [["shared", "static", "both"]], # default_library
+    [["default", "nofallback", "nodownload", "forcefallback", "nopromote"]], # wrap_mode
+    [["c89", "c99", "c11", "c17", "c18", "c2x", "gnu89", "gnu99", "gnu11", "gnu17", "gnu18", "gnu2x"]], # c_std
+    [["c++98", "c++03", "c++11", "c++14", "c++17", "c++20", "c++2a", "c++1z", "gnu++03", "gnu++11", "gnu++14", "gnu++17", "gnu++1z", "gnu++2a", "gnu++20", "vc++14", "vc++17", "vc++latest"]], # cpp_std
+    [["f95", "f2003", "f2008", "f2018"]], # fortran_std
+    [['>', '<']],
+    [['==', '!=']],
+    [['是', '否']],
+    [['有', '无']],
+]
+g:cycle_default_groups_for_PKGBUILD = [
+    [['true', 'false']],
+    [['yes', 'no']],
+    [['and', 'or']],
+    [['on', 'off']],
+    # Meson
+    [["enabled", "disabled", "auto"]], # meson_options.txt
+    [["plain", "debug", "debugoptimized", "release", "minsize", "custom"]], # buildtype
+    [["shared", "static", "both"]], # default_library
+    [["default", "nofallback", "nodownload", "forcefallback", "nopromote"]], # wrap_mode
+    [["c89", "c99", "c11", "c17", "c18", "c2x", "gnu89", "gnu99", "gnu11", "gnu17", "gnu18", "gnu2x"]], # c_std
+    [["c++98", "c++03", "c++11", "c++14", "c++17", "c++20", "c++2a", "c++1z", "gnu++03", "gnu++11", "gnu++14", "gnu++17", "gnu++1z", "gnu++2a", "gnu++20", "vc++14", "vc++17", "vc++latest"]], # cpp_std
+    [["f95", "f2003", "f2008", "f2018"]], # fortran_std
+    # others
     [['>', '<']],
     [['==', '!=']],
     [['是', '否']],
