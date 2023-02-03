@@ -29,6 +29,9 @@ set colored-completion-prefix On
 # Color the common prefix in menu-complete
 set menu-complete-display-prefix On
 
+# Bracketed Paste
+set enable-bracketed-paste on
+
 $if mode=emacs
 
 # for linux console and RH/Debian xterm
