@@ -37,7 +37,9 @@ fi
 
 # using exa instead of ls, and ls' alias
 if (( $+commands[exa] )); then
-    alias ls='exa --time-style=long-iso --group --group-directories-first --header  --git'
+    # Workaround for https://github.com/ogham/exa/issues/856
+    # Waiting for https://github.com/ogham/exa/pull/867
+    alias ls='unset TZ && exa --time-style=long-iso --group --group-directories-first --header --git'
 else
     alias ls='ls --color=auto --human-readable --time-style=long-iso --hyperlink=auto'
 fi
