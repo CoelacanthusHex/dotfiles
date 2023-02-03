@@ -60,11 +60,6 @@
 [credential]
     helper = /usr/lib/git-core/git-credential-libsecret
 
-[sendmail]
-    smtpserver = /usr/bin/msmtp
-    smtpserveroption = -a
-    smtpserveroption = gmail
-
 [include]
     path = ~/.config/git/format.config
 [include]

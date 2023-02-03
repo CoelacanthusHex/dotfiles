@@ -83,7 +83,7 @@ user_pref("network.http.max-persistent-connections-per-server", 16);
 
 /*==== 硬件视频加速 ====*/
 /* 使用VA-API */
-user_pref("media.ffmpeg.vaapi.enabled", true);
+//user_pref("media.ffmpeg.vaapi.enabled", true);
 
 /*==== 连接安全 ====*/
 /* https://github.com/arkenfox/user.js/blob/master/user.js#L465 */
