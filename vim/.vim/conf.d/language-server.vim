@@ -4,53 +4,26 @@ vim9script
 
 # Language Server Configuration
 
-g:ycm_language_server = [
-            {
-              name: 'latex',
-              cmdline: ['texlab'],
-              filetypes: ['latex']
-            },
-            {
-              name: 'tex',
-              cmdline: ['texlab'],
-              filetypes: ['tex']
-            },
-            {
-              name: 'scala',
-              filetypes: ['scala'],
-              cmdline: ['metals-vim'],
-              project_root_files: ['build.sbt', 'build.sc', 'build.gradle', 'pom.xml']
-            },
-            {
-              name: 'haskell-language-server',
-              cmdline: ['haskell-language-server-wrapper', '--lsp'],
-              filetypes: ['haskell', 'lhaskell'],
-              project_root_files: ['stack.yaml', 'cabal.project', 'package.yaml', 'hie.yaml'],
-            },
-            {
-              name: 'bash',
-              cmdline: ['bash-language-server', 'start'],
-              filetypes: ['sh', 'bash'],
-            },
-            {
-              name: 'xml',
-              cmdline: ['lemminx'],
-              filetypes: ['xml', 'xsd', 'svg'],
-            },
-            {
-              name: 'systemverilog',
-              cmdline: ['svls'],
-              filetypes: ['verilog', 'systemverilog'],
-            },
-            {
-              name: 'vim script',
-              cmdline: ['vim-language-server', '--stdio'],
-              filetypes: ['vim'],
-            },
-            {
-              name: 'QML',
-              cmdline: ['qmlls6'],
-              filetypes: ['qml'],
-            },
-            ]
-# https://github.com/bash-lsp/bash-language-server/issues/252
+# use VIM native client (need 8.2.4780+)
+g:lsp_use_native_client = 1
+
+g:lsp_diagnostics_enabled = 0
+
+if has("patch-9.0.0167")
+    g:lsp_diagnostics_virtual_text_enabled = 1
+    g:lsp_inlay_hints_enabled = 1
+    hi def link lspInlayHintsType Comment
+    hi def link lspInlayHintsParameter Comment
+endif
+
+g:lsp_semantic_enabled = 1
+
+g:lsp_fold_enabled = 0
+
+if executable('qmlls6')
+    au User lsp_setup lsp#register_server({
+      \  'name': 'qmlls',
+      \  'cmd': ['qmlls6'],
+      \  'allowlist': ['qml']
+      \  })
+endif

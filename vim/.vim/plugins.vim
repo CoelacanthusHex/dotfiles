@@ -48,9 +48,6 @@ jetpack#add('Shougo/context_filetype.vim')
 #jetpack#add('machakann/vim-sandwich')
 jetpack#add('monkoose/vim9-stargate')
 jetpack#add('AndrewRadev/splitjoin.vim')
-jetpack#add('yegappan/lsp', { opt: 1, as: 'vim9lsp' })
-jetpack#add('prabirshrestha/vim-lsp', { opt: 1 })
-jetpack#add('mattn/vim-lsp-settings', { event: 'User JetpackVimLspPost' })
 #jetpack#add('dense-analysis/ale')
 jetpack#add('vim-scripts/gtags.vim')
 #jetpack#add('ludovicchabant/vim-gutentags')
@@ -71,6 +68,23 @@ augroup rellinenum
 augroup END
 jetpack#add('bootleq/vim-cycle')
 # }}}
+
+# Complete {{{
+jetpack#add('yegappan/lsp', { opt: 1, as: 'vim9lsp' })
+jetpack#add('prabirshrestha/vim-lsp')
+jetpack#add('mattn/vim-lsp-settings')
+jetpack#add('prabirshrestha/asyncomplete-lsp.vim')
+jetpack#add('thomasfaingnaert/vim-lsp-snippets')
+jetpack#add('thomasfaingnaert/vim-lsp-ultisnips')
+jetpack#add('prabirshrestha/asyncomplete.vim')
+jetpack#add('Shougo/neco-vim')
+jetpack#add('prabirshrestha/asyncomplete-necovim.vim')
+jetpack#add('laixintao/asyncomplete-gitcommit')
+jetpack#add('prabirshrestha/asyncomplete-file.vim')
+jetpack#add('hiterm/asyncomplete-look')
+jetpack#add('prabirshrestha/asyncomplete-buffer.vim')
+# }}}
+
 # Language {{{
 jetpack#add('timonv/vim-cargo')
 jetpack#add('egberts/vim-syntax-bind-named')
