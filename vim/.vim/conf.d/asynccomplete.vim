@@ -5,6 +5,13 @@ vim9script
 # SPDX-License-Identifier: MPL-2.0
 # SPDX-FileCopyrightText: Coelacanthus
 
+inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+# To auto close preview window when completion is done.
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
+g:asyncomplete_auto_completeopt = 0
+set completeopt=menuone,noinsert,noselect,popup
+
 g:UltiSnipsExpandTrigger       = "<NUL>"
 g:UltiSnipsListSnippets        = "<NUL>"
 g:UltiSnipsJumpForwardTrigger  = "<NUL>"

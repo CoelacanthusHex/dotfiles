@@ -12,8 +12,8 @@ g:lsp_diagnostics_enabled = 0
 if has("patch-9.0.0167")
     g:lsp_diagnostics_virtual_text_enabled = 1
     g:lsp_inlay_hints_enabled = 1
-    hi def link lspInlayHintsType Comment
-    hi def link lspInlayHintsParameter Comment
+    hi link lspInlayHintsType Comment
+    hi link lspInlayHintsParameter Comment
 endif
 
 g:lsp_semantic_enabled = 1
@@ -26,4 +26,11 @@ if executable('qmlls6')
       \  'cmd': ['qmlls6'],
       \  'allowlist': ['qml']
       \  })
+endif
+if executable('awk-language-server')
+    au User lsp_setup lsp#register_server({
+        \ 'name': 'awk-language-server',
+        \ 'cmd': ['awk-language-server'],
+        \ 'allowlist': ['awk'],
+        \ })
 endif

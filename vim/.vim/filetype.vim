@@ -23,6 +23,9 @@ augroup filetypedetect
     autocmd BufNewFile,BufRead   wg*.conf,peers.conf      setfiletype dosini
     autocmd BufRead,BufNewFile   *mutt-*                  setfiletype mail
     autocmd BufRead,BufNewFile   bird.conf,*/bird/*.conf,*/bird/*/*.conf            setfiletype bird
+    autocmd BufNewFile,BufRead   *.qrc                    setfiletype xml
+    autocmd BufNewFile,BufRead   *.ui                     setfiletype xml
+    autocmd BufNewFile,BufRead   *.ts                     setfiletype xml
 augroup END
 
 # kate: space-indent on; indent-width 4; syntax vim;

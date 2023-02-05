@@ -25,12 +25,6 @@ else
     # Linux 路径
     g:vimfiles = split(&runtimepath, ',')[0]
 endif
-
-# insert after the first one so spell changes won't go
-# into our config directory.
-&runtimepath = substitute(&runtimepath, ',\zs', '\=g:vimfiles .. "/ft.conf.d,"', '')
-# Just load config directly
-runtime! conf.d/*.vim
 # }}}
 
 # Platform specific config {{{
@@ -75,7 +69,6 @@ enddef
 # Use <TAB> to select the popup menu:
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 
 nmap ga <Plug>(UnicodeGA)
 # }}}
@@ -365,7 +358,6 @@ set wildmenu
 set wildmode=lastused:longest:full,lastused:full
 set wildoptions=fuzzy,pum
 
-set completeopt+=longest
 set completeopt+=popup
 set completepopup=border:off
 
@@ -464,4 +456,12 @@ nnoremap Q <nop>
 if exists('##TerminalWinOpen')
     autocmd TerminalWinOpen * setlocal nonumber
 endif
+# }}}
+
+# Load Config {{{
+# insert after the first one so spell changes won't go
+# into our config directory.
+&runtimepath = substitute(&runtimepath, ',\zs', '\=g:vimfiles .. "/ft.conf.d,"', '')
+# Just load config directly
+runtime! conf.d/*.vim
 # }}}
