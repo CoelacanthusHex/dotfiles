@@ -67,6 +67,8 @@ augroup rellinenum
     autocmd InsertLeave * EnableWhitespace
 augroup END
 jetpack#add('bootleq/vim-cycle')
+jetpack#add('machakann/vim-highlightedyank')
+g:highlightedyank_highlight_in_visual = 0
 # }}}
 
 # Complete {{{
@@ -82,6 +84,8 @@ jetpack#add('laixintao/asyncomplete-gitcommit')
 jetpack#add('prabirshrestha/asyncomplete-file.vim')
 jetpack#add('hiterm/asyncomplete-look')
 jetpack#add('prabirshrestha/asyncomplete-buffer.vim')
+#jetpack#add('machakann/asyncomplete-ezfilter.vim')
+#jetpack#add('machakann/asyncomplete-unicodesymbol.vim')
 # }}}
 
 # Language {{{

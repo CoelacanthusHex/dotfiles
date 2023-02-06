@@ -21,16 +21,51 @@ g:lsp_semantic_enabled = 1
 g:lsp_fold_enabled = 0
 
 if executable('qmlls6')
-    au User lsp_setup lsp#register_server({
+    autocmd User lsp_setup lsp#register_server({
       \  'name': 'qmlls',
       \  'cmd': ['qmlls6'],
       \  'allowlist': ['qml']
       \  })
 endif
 if executable('awk-language-server')
-    au User lsp_setup lsp#register_server({
+    autocmd User lsp_setup lsp#register_server({
         \ 'name': 'awk-language-server',
         \ 'cmd': ['awk-language-server'],
         \ 'allowlist': ['awk'],
+        \ })
+endif
+if executable('crystalline')
+    autocmd User lsp_setup lsp#register_server({
+        \ 'name': 'crystalline',
+        \ 'cmd': ['crystalline', '--stdio'],
+        \ 'allowlist': ['crystal'],
+        \ })
+endif
+if executable('beancount-language-server')
+    autocmd User lsp_setup lsp#register_server({
+        \ 'name': 'beancount-language-server',
+        \ 'cmd': ['beancount-language-server', '--stdio'],
+        \ 'allowlist': ['beancount'],
+        \ })
+endif
+if executable('glslls')
+    autocmd User lsp_setup lsp#register_server({
+        \ 'name': 'glslls',
+        \ 'cmd': ['glslls', '--stdin'],
+        \ 'allowlist': ['glsl'],
+        \ })
+endif
+if executable('marksman')
+    autocmd User lsp_setup lsp#register_server({
+        \ 'name': 'marksman',
+        \ 'cmd': ['marksman'],
+        \ 'allowlist': ['markdown'],
+        \ })
+endif
+if executable('millet')
+    autocmd User lsp_setup lsp#register_server({
+        \ 'name': 'millet',
+        \ 'cmd': ['millet'],
+        \ 'allowlist': ['sml'],
         \ })
 endif

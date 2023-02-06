@@ -18,29 +18,29 @@ g:UltiSnipsJumpForwardTrigger  = "<NUL>"
 g:UltiSnipsJumpBackwardTrigger = "<NUL>"
 g:UltiSnipsSnippetDirectories  = [$HOME .. '/.vim/UltiSnips']
 
-au User asyncomplete_setup asyncomplete#register_source(asyncomplete#sources#necovim#get_source_options({
+autocmd User asyncomplete_setup asyncomplete#register_source(asyncomplete#sources#necovim#get_source_options({
     \ 'name': 'necovim',
     \ 'allowlist': ['vim'],
     \ 'completor': function('asyncomplete#sources#necovim#completor'),
     \ }))
-au User asyncomplete_setup asyncomplete#register_source({
+autocmd User asyncomplete_setup asyncomplete#register_source({
     \ 'name': 'gitcommit',
     \ 'whitelist': ['gitcommit'],
     \ 'priority': 10,
     \ 'completor': function('asyncomplete#sources#gitcommit#completor')
     \ })
-au User asyncomplete_setup asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+autocmd User asyncomplete_setup asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
     \ 'name': 'file',
     \ 'allowlist': ['*'],
     \ 'priority': 10,
     \ 'completor': function('asyncomplete#sources#file#completor')
     \ }))
-au User asyncomplete_setup asyncomplete#register_source({
+autocmd User asyncomplete_setup asyncomplete#register_source({
     \ 'name': 'look',
     \ 'allowlist': ['text', 'markdown', 'gitcommit'],
     \ 'completor': function('asyncomplete#sources#look#completor'),
     \ })
-au User asyncomplete_setup asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+autocmd User asyncomplete_setup asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
     \ 'name': 'buffer',
     \ 'allowlist': ['*'],
     \ 'blocklist': ['go'],
@@ -49,3 +49,14 @@ au User asyncomplete_setup asyncomplete#register_source(asyncomplete#sources#buf
     \    'max_buffer_size': 5000000,
     \  },
     \ }))
+
+#g:asyncomplete_preprocessor = [function('asyncomplete#preprocessor#ezfilter#filter')]
+#autocmd User asyncomplete_setup call asyncomplete#register_source(
+#    \ asyncomplete#sources#unicodesymbol#get_source_options({
+#    \   'name': 'unicodesymbol',
+#    \   'whitelist': ['julia'],
+#    \   'completor': function('asyncomplete#sources#unicodesymbol#completor'),
+#    \ }))
+#g:asyncomplete#preprocessor#ezfilter#config = {}
+#g:asyncomplete#preprocessor#ezfilter#config.unicodesymbol =
+#    \ {ctx, items -> filter(items, 'ctx.match(v:val.menu)')}
