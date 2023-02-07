@@ -145,11 +145,19 @@ bindkey "$_key[Ctrl+Alt+-]" copy-prev-shell-word
 autoload -Uz colors && colors
 
 () {
-    local white_b=$fg_bold[white] blue=$fg_bold[blue] rst=$reset_color
+    local cyan=$fg_bold[cyan] blue=$fg_bold[blue] rst=$reset_color
     #local white_b=$'\e[97m' blue=$'\e[94m' rst=$'\e[0m'
-    TIMEFMT=("== TIME REPORT FOR $white_b%J$rst =="$'\n'
-        "  User: $blue%U$rst"$'\t'"System: $blue%S$rst  Total: $blue%*Es${rst}"$'\n'
-        "  CPU:  $blue%P$rst"$'\t'"Mem:    $blue%M MiB$rst")
+    TIMEFMT="
+== TIME REPORT FOR $cyan%J$rst ==
+  User Time:            $blue%U$rst
+  System Time:          $blue%S$rst
+  Total Time:           $blue%*Es${rst}
+  CPU:                  $blue%P$rst
+  Mem:                  $blue%M KiB$rst
+  Shared Mem:           $blue%X KiB$rst
+  Unshared Mem:         $blue%D KiB$rst
+  Page Fault From Disk: $blue%F$rst
+  Other Page Fault:     $blue%R$rst"
 }
 
 SPROMPT="%B%F{yellow}zsh: correct '%R' be '%r' [nyae]?%f%b "
