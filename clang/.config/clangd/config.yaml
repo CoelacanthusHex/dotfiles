@@ -1,0 +1,16 @@
+CompileFlags:
+  Compiler: clang++
+  Add: [-Wall, -Wextra, -Weffc++, -pedantic]
+
+
+Hover:
+  # print desugared types
+  ShowAKA: Yes
+---
+
+If:
+  PathMatch: [.*\.c]
+
+CompileFlags:
+  Compiler: clang
+  Remove: [-Weffc++]
