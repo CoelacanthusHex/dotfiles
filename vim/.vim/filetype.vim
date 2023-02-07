@@ -26,6 +26,7 @@ augroup filetypedetect
     autocmd BufNewFile,BufRead   *.qrc                    setfiletype xml
     autocmd BufNewFile,BufRead   *.ui                     setfiletype xml
     autocmd BufNewFile,BufRead   *.ts                     setfiletype xml
+    autocmd BufRead,BufNewFile   *.qml                    setfiletype qml
 augroup END
 
 # kate: space-indent on; indent-width 4; syntax vim;

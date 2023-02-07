@@ -69,3 +69,10 @@ if executable('millet')
         \ 'allowlist': ['sml'],
         \ })
 endif
+if executable('nil')
+    autocmd User lsp_setup lsp#register_server({
+        \ 'name': 'nil',
+        \ 'cmd': {server_info->['nil']},
+        \ 'whitelist': ['nix'],
+        \ })
+endif

@@ -69,6 +69,7 @@ augroup END
 jetpack#add('bootleq/vim-cycle')
 jetpack#add('machakann/vim-highlightedyank')
 g:highlightedyank_highlight_in_visual = 0
+jetpack#add('thinca/vim-prettyprint')
 # }}}
 
 # Complete {{{
@@ -94,10 +95,9 @@ jetpack#add('egberts/vim-syntax-bind-named')
 jetpack#add('bfrg/vim-cpp-modern', { ft: ['c', 'cpp'] })
 jetpack#add('vim-crystal/vim-crystal')
 jetpack#add('chrisbra/csv.vim', { ft: ['csv'] })
-jetpack#add('vim-crystal/vim-crystal', { ft: ['crystal'] })
 jetpack#add('hail2u/vim-css3-syntax', { ft: ['css'] })
 jetpack#add('othree/html5.vim', { ft: ['html'] })
-jetpack#add('peterhoeg/vim-qml', { ft: ['qml'] })
+jetpack#add('peterhoeg/vim-qml')
 jetpack#add('pboettch/vim-cmake-syntax', { ft: ['cmake'] })
 jetpack#add('bfrg/vim-cmake-help', { ft: ['cmake'] })
 jetpack#add('bfrg/vim-cmakecache-syntax', { ft: ['cmakecache'] })
@@ -139,6 +139,8 @@ jetpack#add('voldikss/vim-mma', { ft: ['mma'] })
 jetpack#add('mracos/mermaid.vim', { ft: ['mermaid'] })
 jetpack#add('aklt/plantuml-syntax', { ft: ['plantuml'] })
 jetpack#add('Shirk/vim-gas', { ft: ['gas'] })
+jetpack#add('AndrewRadev/id3.vim')
+jetpack#add('vim-ruby/vim-ruby', { ft: ['ruby', 'eruby', 'rbs'] })
 # }}}
 
 jetpack#end()
