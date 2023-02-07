@@ -10,10 +10,19 @@
 
 zmodload zsh/regex 2>/dev/null && _has_re=1 || _has_re=0
 
-# https://askubuntu.com/questions/432255/what-is-the-display-environment-variable
-[[ -z $DISPLAY ]] && _in_x11=1 || _in_x11=0
 # https://discourse.ubuntu.com/t/environment-variables-for-wayland-hackers/12750
-[[ -z $WAYLAND_DISPLAY ]] && _in_wayland=1 || _in_wayland=0
+# https://askubuntu.com/questions/432255/what-is-the-display-environment-variable
+if [[ -z $WAYLAND_DISPLAY ]]; then
+    _in_wayland=0
+    if [[ -z $DISPLAY ]]; then
+        _in_x11=0
+    else
+        _in_x11=1
+    fi
+else
+    _in_wayland=1
+    _in_x11=0
+fi
 (( $_in_x11 == 1 )) || (( $_in_wayland == 1 )) && _in_gui=1 || _in_gui=0
 
 if (( $+commands[tty] )); then
