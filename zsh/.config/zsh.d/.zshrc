@@ -84,6 +84,8 @@ export USE_CCACHE=1
 # [2]: https://mirrors.ustc.edu.cn/help/crates.io-index.html
 export CARGO_HTTP_MULTIPLEXING=false
 
+export CARGO_UNSTABLE_SPARSE_REGISTRY=true
+
 #export WINEARCH=win32
 
 #export SCCACHE_DIR="/var/cache/sccache"

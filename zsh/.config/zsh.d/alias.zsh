@@ -96,7 +96,7 @@ alias now="date --rfc-3339=seconds"
 alias list-mount="mount -l | column -t"
 alias lsmount=list-mount
 if (( $(tput cols) >= 80 )); then
-    alias vmtat="vmstat -w"
+    alias vmstat="vmstat -w"
 fi
 
 # Vim style alias
