@@ -146,20 +146,32 @@ endif
 
 # https://github.com/lilydjwg/dotvim/blob/19f6f8ea67150cb5498706912b770d3c736716f2/vimrc#L621
 # enbale bracketed paste mode support for tmux
-if !empty($TMUX) && exists('&t_BE')
-    &t_BE = "\033[?2004h"
-    &t_BD = "\033[?2004l"
-    # t_PS and t_PE are key code options and they are special
-    execute "set t_PS=\033[200~"
-    execute "set t_PE=\033[201~"
+# TODO: terminfo of screen doesn't have t_BE/BD/PS/PE
+#       And screen seems no support to bracketed paste mode in any released version.
+#       It only has a commit[1] on master branch.
+#       But it wasn't contained in any tags and screen-v4 branch.
+#       RHEL backport it to RHEL7 and above.[2] Debian backport it to 4.9.0-4 and above.[3]
+#       Upstream plan to add it to 4.9.1.[4]
+#       [1]: https://git.savannah.gnu.org/cgit/screen.git/commit/?id=c389013e89e7b04ce43872f2e72d43f77461a3c0
+#       [2]: https://bugzilla.redhat.com/show_bug.cgi?id=1791793
+#       [3]: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1019576
+#       [4]: https://savannah.gnu.org/bugs/?62102
+if !has("patch-9.0.1117") # Since 9.0.1117, Vim can read t_PS and t_PE from terminfo properly.
+    if !empty($TMUX) && exists('&t_BE')
+        &t_BE = "\033[?2004h"
+        &t_BD = "\033[?2004l"
+        # t_PS and t_PE are key code options and they are special
+        &t_PS="\033[200~"
+        &t_PE="\033[201~"
+    endif
 endif
 if !empty($TMUX)
     # This may leave mouse in use by terminal application
-    # exec "set t_RV=\033Ptmux;\033\033[>c\033\\"
+    # &t_RV="\033Ptmux;\033\033[>c\033\\"
     set ttymouse=sgr
     if &t_GP == ''
         # for getwinpos
-        execute "set t_GP=\033Ptmux;\033\033[13t\033\\"
+        &t_GP="\033Ptmux;\033\033[13t\033\\"
     endif
     # Enable modified arrow keys, see  :help arrow_modifiers
     execute "silent! set <xUp>=\<Esc>[@;*A"

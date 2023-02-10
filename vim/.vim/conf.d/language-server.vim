@@ -7,7 +7,9 @@ vim9script
 # use VIM native client (need 8.2.4780+)
 g:lsp_use_native_client = 1
 
+# A bit annoying
 g:lsp_diagnostics_enabled = 0
+g:lsp_document_code_action_signs_enabled = 0
 
 if has("patch-9.0.0167")
     g:lsp_diagnostics_virtual_text_enabled = 1
