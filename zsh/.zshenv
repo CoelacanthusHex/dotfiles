@@ -19,6 +19,7 @@ typeset -U path
 #  /: ignore files
 path=(
     $HOME/.go/bin(N-/)
+    $XDG_DATA_HOME/go/bin(N-/)
     $HOME/.cargo/bin(N-/)
     $XDG_DATA_HOME/cargo/bin(N-/)
     $ZDOTDIR/commands(N-/)
