@@ -1,10 +1,10 @@
 [Groups/0]
 # Group Name
-Name=默认
+Name=IPA
 # Layout
 Default Layout=us
 # Default Input Method
-DefaultIM=pinyin
+DefaultIM=ipa-x-sampa
 
 [Groups/0/Items/0]
 # Name
@@ -14,17 +14,17 @@ Layout=
 
 [Groups/0/Items/1]
 # Name
-Name=pinyin
+Name=ipa-x-sampa
 # Layout
 Layout=
 
 [Groups/1]
 # Group Name
-Name=IPA
+Name=默认
 # Layout
 Default Layout=us
 # Default Input Method
-DefaultIM=ipa-x-sampa
+DefaultIM=pinyin
 
 [Groups/1/Items/0]
 # Name
@@ -34,7 +34,7 @@ Layout=
 
 [Groups/1/Items/1]
 # Name
-Name=ipa-x-sampa
+Name=pinyin
 # Layout
 Layout=
 
