@@ -78,9 +78,7 @@ cmds=(
 # Set alias for available commands.
 for cmd in $cmds ; do
     if (( $+commands[$cmd] )) ; then
-        $cmd() {
-            grc -es --colour=auto ${commands[$0]} "$@"
-        }
+        alias $cmd="grc -es --colour=auto $cmd"
     fi
 done
 

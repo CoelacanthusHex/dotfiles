@@ -85,18 +85,14 @@ alias pb-nickcao='curl --data-binary @- https://pb.nichi.co/'
 alias pb=pb-mgt
 
 # better format
-# direct use name for grc.zsh may create function
-alias uptime="uptime -p"
-alias tree="tree -F"
-alias df="df -h"
-alias du="du -h"
-alias free="free -h"
+# use $aliases[command] to set nested alias
+# grc.zsh will set alias before
 alias today="date '+%Y-%m-%d'"
 alias now="date --rfc-3339=seconds"
 alias list-mount="mount -l | column -t"
 alias lsmount=list-mount
 if (( $(tput cols) >= 80 )); then
-    alias vmstat="vmstat -w"
+    alias vmstat="$aliases[vmstat] -w"
 fi
 
 # Vim style alias
