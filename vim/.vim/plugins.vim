@@ -18,6 +18,8 @@ endif
 
 jetpack#begin()
 
+jetpack#add('tani/vim-jetpack', {'opt': 1})
+
 # Tools {{{
 jetpack#add('vim-airline/vim-airline')
 jetpack#add('vim-airline/vim-airline-themes', { depends: ['vim-airline/vim-airline'] })
