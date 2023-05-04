@@ -172,5 +172,10 @@ export GAMEMODERUNEXEC=prime-run
 export DXVK_CONFIG_FILE="$XDG_CONFIG_HOME/dxvk.conf"
 export LUTRIS_RUNTIME=0
 
+# Chromium OAuth
+# https://gist.github.com/foutrelis/14e339596b89813aa9c37fd1b4e5d9d5
+export GOOGLE_DEFAULT_CLIENT_ID="77185425430.apps.googleusercontent.com"
+export GOOGLE_DEFAULT_CLIENT_SECRET="OTJgUOQcT7lO7GsGZq2G4IlT"
+
 # vim: ft=bash sw=4 ts=8 sts=4 et:
 # kate: space-indent on; indent-width 4; syntax bash;
