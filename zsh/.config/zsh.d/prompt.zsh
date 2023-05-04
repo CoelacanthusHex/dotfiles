@@ -2,91 +2,103 @@
 
 autoload -Uz colors && colors
 
-typeset -A _status_to_signal
-_status_to_signal[1]="ERROR"
-_status_to_signal[128+1]="HUP"
-_status_to_signal[128+2]="INT"
-_status_to_signal[128+3]="QUIT"
-_status_to_signal[128+4]="ILL"
-_status_to_signal[128+5]="TRAP"
-_status_to_signal[128+6]="IOT"
-_status_to_signal[128+7]="BUS"
-_status_to_signal[128+8]="FPE"
-_status_to_signal[128+9]="KILL"
-_status_to_signal[128+10]="USR1"
-_status_to_signal[128+11]="SEGV"
-_status_to_signal[128+12]="USR2"
-_status_to_signal[128+13]="PIPE"
-_status_to_signal[128+14]="ALRM"
-_status_to_signal[128+15]="TERM"
-_status_to_signal[128+16]="STKFLT"
-_status_to_signal[128+17]="CHLD"
-_status_to_signal[128+18]="CONT"
-_status_to_signal[128+19]="STOP"
-_status_to_signal[128+20]="TSTP"
-_status_to_signal[128+21]="TTIN"
-_status_to_signal[128+22]="TTOU"
-_status_to_signal[128+23]="URG"
-_status_to_signal[128+24]="XCPU"
-_status_to_signal[128+25]="XFSZ"
-_status_to_signal[128+26]="VTALRM"
-_status_to_signal[128+27]="PROF"
-_status_to_signal[128+28]="WINCH"
-_status_to_signal[128+29]="IO"
-_status_to_signal[128+30]="PWR"
-_status_to_signal[128+31]="SYS"
+function .prompt.init() {
+    typeset -A _status_to_signal
+    _status_to_signal[1]="ERROR"
+    _status_to_signal[128+1]="HUP"
+    _status_to_signal[128+2]="INT"
+    _status_to_signal[128+3]="QUIT"
+    _status_to_signal[128+4]="ILL"
+    _status_to_signal[128+5]="TRAP"
+    _status_to_signal[128+6]="IOT"
+    _status_to_signal[128+7]="BUS"
+    _status_to_signal[128+8]="FPE"
+    _status_to_signal[128+9]="KILL"
+    _status_to_signal[128+10]="USR1"
+    _status_to_signal[128+11]="SEGV"
+    _status_to_signal[128+12]="USR2"
+    _status_to_signal[128+13]="PIPE"
+    _status_to_signal[128+14]="ALRM"
+    _status_to_signal[128+15]="TERM"
+    _status_to_signal[128+16]="STKFLT"
+    _status_to_signal[128+17]="CHLD"
+    _status_to_signal[128+18]="CONT"
+    _status_to_signal[128+19]="STOP"
+    _status_to_signal[128+20]="TSTP"
+    _status_to_signal[128+21]="TTIN"
+    _status_to_signal[128+22]="TTOU"
+    _status_to_signal[128+23]="URG"
+    _status_to_signal[128+24]="XCPU"
+    _status_to_signal[128+25]="XFSZ"
+    _status_to_signal[128+26]="VTALRM"
+    _status_to_signal[128+27]="PROF"
+    _status_to_signal[128+28]="WINCH"
+    _status_to_signal[128+29]="IO"
+    _status_to_signal[128+30]="PWR"
+    _status_to_signal[128+31]="SYS"
 
-.prompt.set_pipe_status() {
-    local _pipestatus=($pipestatus) _status=$status
-    if (( $#_pipestatus == 1 )); then
-        if (( $_status == 0 )); then
-            printf -v _pipe_status "$fg_bold[green]%s$reset_color -> $fg_bold[blue]0x%x$reset_color" ! $_status
-        else
-            if (( $+_status_to_signal[$_status] )); then
-                printf -v _pipe_status "$fg_bold[red]%s$reset_color -> $fg_bold[red]%s$reset_color $fg_bold[blue]0x%x$reset_color" X $_status_to_signal[$_status] $_status
-            else
-                printf -v _pipe_status "$fg_bold[red]%s$reset_color -> $fg_bold[blue]0x%x$reset_color" X $_status
-            fi
-        fi
-    else
-        local _multiple_pipe_status=()
-        local _total_pipe_status
-        local _single_status
-        for _status in $_pipestatus; do
+    .prompt.set_pipe_status() {
+        local _pipestatus=($pipestatus) _status=$status
+        if (( $#_pipestatus == 1 )); then
             if (( $_status == 0 )); then
-                printf -v _single_status "$fg_bold[green]%s$reset_color -> $fg_bold[blue]0x%x$reset_color" ! $_status
+                printf -v _pipe_status "$fg_bold[green]%s$reset_color -> $fg_bold[blue]0x%x$reset_color" ! $_status
             else
                 if (( $+_status_to_signal[$_status] )); then
-                    printf -v _single_status "$fg_bold[red]%s$reset_color -> $fg_bold[red]%s$reset_color $fg_bold[blue]0x%x$reset_color" X $_status_to_signal[$_status] $_status
+                    printf -v _pipe_status "$fg_bold[red]%s$reset_color -> $fg_bold[red]%s$reset_color $fg_bold[blue]0x%x$reset_color" X $_status_to_signal[$_status] $_status
                 else
-                    printf -v _single_status "$fg_bold[red]%s$reset_color -> $fg_bold[blue]0x%x$reset_color" X $_status
+                    printf -v _pipe_status "$fg_bold[red]%s$reset_color -> $fg_bold[blue]0x%x$reset_color" X $_status
                 fi
             fi
-            _multiple_pipe_status+=($_single_status)
-        done
-        if (( $_status == 0 )); then
-            printf -v _total_pipe_status "$fg_bold[green]%s$reset_color -> $fg_bold[blue]0x%x$reset_color" ! $_status
         else
-            if (( $+_status_to_signal[$_status] )); then
-                printf -v _total_pipe_status "$fg_bold[red]%s$reset_color -> $fg_bold[red]%s$reset_color $fg_bold[blue]0x%x$reset_color" X $_status_to_signal[$_status] $_status
+            local _multiple_pipe_status=()
+            local _total_pipe_status
+            local _single_status
+            for _status in $_pipestatus; do
+                if (( $_status == 0 )); then
+                    printf -v _single_status "$fg_bold[green]%s$reset_color -> $fg_bold[blue]0x%x$reset_color" ! $_status
+                else
+                    if (( $+_status_to_signal[$_status] )); then
+                        printf -v _single_status "$fg_bold[red]%s$reset_color -> $fg_bold[red]%s$reset_color $fg_bold[blue]0x%x$reset_color" X $_status_to_signal[$_status] $_status
+                    else
+                        printf -v _single_status "$fg_bold[red]%s$reset_color -> $fg_bold[blue]0x%x$reset_color" X $_status
+                    fi
+                fi
+                _multiple_pipe_status+=($_single_status)
+            done
+            if (( $_status == 0 )); then
+                printf -v _total_pipe_status "$fg_bold[green]%s$reset_color -> $fg_bold[blue]0x%x$reset_color" ! $_status
             else
-                printf -v _total_pipe_status "$fg_bold[red]%s$reset_color -> $fg_bold[blue]0x%x$reset_color" X $_status
+                if (( $+_status_to_signal[$_status] )); then
+                    printf -v _total_pipe_status "$fg_bold[red]%s$reset_color -> $fg_bold[red]%s$reset_color $fg_bold[blue]0x%x$reset_color" X $_status_to_signal[$_status] $_status
+                else
+                    printf -v _total_pipe_status "$fg_bold[red]%s$reset_color -> $fg_bold[blue]0x%x$reset_color" X $_status
+                fi
             fi
+            _pipe_status="[ ${(j: | :)_multiple_pipe_status} ] => $_total_pipe_status"
         fi
-        _pipe_status="[ ${(j: | :)_multiple_pipe_status} ] => $_total_pipe_status"
-    fi
+    }
 }
 
 
 autoload -Uz is-at-least
-if (( ! $disable_starship )) && [[ -x /usr/bin/starship ]] \
+if  (( ! $disable_p10k )) && is-at-least 5.1.0 \
+        && [[ -r "$ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme" ]]; then
+    # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh.d/.zshrc.
+    # Initialization code that may require console input (password prompts, [y/n]
+    # confirmations, etc.) must go above this block; everything else may go below.
+    if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+        source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+    fi
+    source "$ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme"
+    [[ ! -f ~/.config/zsh.d/p10k.zsh ]] || source ~/.config/zsh.d/p10k.zsh
+elif (( ! $disable_starship )) && (( $+commands[starship] )) \
         && is-at-least 1.2.0 $(starship --version | head -n 1 | cut -d' ' -f2); then
-    export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship.toml
+    export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship.toml"
     eval "$(starship init zsh)"
 elif (( ! $disable_async_prompt )) && (( $+commands[git] )); then
     ## config for async
     # Modify from https://blog.lilydjwg.me/2014/2/19/asynchronously-update-zsh-prompt.42906.html
-    
+    .prompt.init
     setopt prompt_subst
 
     _nogit_dir=()
@@ -186,6 +198,7 @@ elif (( ! $disable_pure )) \
     prompt pure
 else
     ## config for fallback
+    .prompt.init
     setopt prompt_subst
 
     autoload -Uz vcs_info add-zsh-hook

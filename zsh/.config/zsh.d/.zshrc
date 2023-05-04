@@ -17,7 +17,7 @@ _cfg_error() {
     print -P "%F{red}[ERROR]%f $1"
 }
 if (( $+commands[locale] )); then
-    local loc=(${(@M)$(locale -a):#*.(utf|UTF)(-|)8}) 
+    local loc=(${(@M)$(locale -a):#*.(utf|UTF)(-|)8})
     if (( $loc[(I)en_DK*] )); then
         export LANG=en_GB.UTF-8
     else
@@ -91,6 +91,7 @@ export CARGO_UNSTABLE_SPARSE_REGISTRY=true
 #export SCCACHE_DIR="/var/cache/sccache"
 [[ -x /usr/bin/sccache ]] && export RUSTC_WRAPPER="/usr/bin/sccache"
 
+disable_p10k=0
 disable_starship=0
 disable_pure=1
 disable_async_prompt=0

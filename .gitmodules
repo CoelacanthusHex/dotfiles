@@ -43,3 +43,6 @@
 	path = zsh/.config/zsh.d/plugins/fzf-tab
 	url = https://github.com/Aloxaf/fzf-tab.git
 	ignore = untracked
+[submodule "zsh/.config/zsh.d/plugins/powerlevel10k"]
+	path = zsh/.config/zsh.d/plugins/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k.git
