@@ -10,3 +10,6 @@
 *.zwc
 *.zwc.old
 \.zcompdump
+
+# Local config
+.zshrc.local
