@@ -80,4 +80,8 @@
 [includeIf "gitdir:~/project/archlinuxcn/**"]
     path = ~/.config/git/archlinuxcn.config
 
+# Platform specific configs
+[includeIf "gitdir:/data/data/com.termux/files/home/**"]
+    path = ~/.config/git/platform/termux.config
+
 # kate: space-indent on; indent-width 4; syntax toml;
