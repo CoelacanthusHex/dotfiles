@@ -1,1 +1,2 @@
 .local/share/fcitx5/pinyin/dictionaries/
+.local/share/fcitx5/pinyin/*.txt
