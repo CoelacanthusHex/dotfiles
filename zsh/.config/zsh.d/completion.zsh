@@ -53,11 +53,6 @@ function compctl() {
     done
 ) &!
 
-autoload -U +X bashcompinit && bashcompinit
-#[[ -f /usr/share/bash-completion/bash_completion ]] && source /usr/share/bash-completion/bash_completion
-#[[ -f /usr/share/php/arcanist/support/shell/rules/bash-rules.sh ]] && source /usr/share/php/arcanist/support/shell/rules/bash-rules.sh
-#(( $+commands[stack] )) && eval "$(stack --bash-completion-script stack)"
-
 # enable hidden files completion
 _comp_options+=(globdots)
 
@@ -163,6 +158,8 @@ zle -C all-matches complete-word _generic
 bindkey "$_key[Ctrl+X]$_key[I]" all-matches
 
 ####### Command Specified Configuration #######
+
+autoload -Uz compdef
 
 # kill 命令补全
 compdef pkill=kill

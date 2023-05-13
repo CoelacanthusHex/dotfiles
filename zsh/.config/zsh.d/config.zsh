@@ -4,12 +4,6 @@ setopt extended_glob
 # Disable `PATTERN(QUALIFIERS)`, extended_glob has `PATTERN(#qQUALIFIERS)`
 unsetopt bare_glob_qual
 
-## Prompt
-# Remove RPROMPT after execute command
-setopt transient_rprompt
-# Allow function in prompt
-setopt prompt_subst
-
 ## History
 # Do not save duplicate history items
 setopt hist_save_no_dups
@@ -165,10 +159,10 @@ SPROMPT="%B%F{yellow}zsh: correct '%R' be '%r' [nyae]?%f%b "
 [[ "$COLORTERM" == (24bit|truecolor) || (( ${terminfo[colors]} == 16777216 )) ]] || zmodload zsh/nearcolor
 
 # Basic LS_COLORS
-(( $_in_gui == 1 )) || [[ -n $ANDROID_ROOT ]] || eval "$(dircolors -b)"
+(( $_in_gui == 1 )) || [[ -n "$ANDROID_ROOT" ]] || smartcache eval dircolors -b
 
 # Extended LS_COLORS
-eval "$(dircolors -b $ZDOTDIR/plugins/LS_COLORS)"
+smartcache eval dircolors -b "$ZDOTDIR/plugins/LS_COLORS"
 
 
 # [Esc Esc] double click Esc to insert sudo before current/previous command
@@ -208,16 +202,16 @@ bindkey "." replace_multiple_dots
 # [Ctrl+L] clear screen while maintaining scrollback
 # https://blog.quarticcat.com/posts/how-do-i-make-my-zsh-smooth-as-fuck/
 # https://superuser.com/questions/1389834
-fixed-clear-screen() {
+function _clear-screen() {
     # FIXME: works incorrectly in tmux
     local prompt_height=$(echo -n ${(%%)PS1} | wc -l)
     local lines=$((LINES - prompt_height))
     printf "$terminfo[cud1]%.0s" {1..$lines}  # cursor down
     printf "$terminfo[cuu1]%.0s" {1..$lines}  # cursor up
-    zle reset-prompt
+    zle .reset-prompt
 }
-zle -N fixed-clear-screen
-bindkey "$_key[Ctrl+L]" fixed-clear-screen
+zle -N _clear-screen
+bindkey "$_key[Ctrl+L]" _clear-screen
 
 function foreground-last-job () {
     if (( ${#jobstates} )); then

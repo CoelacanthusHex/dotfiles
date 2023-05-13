@@ -1,14 +1,11 @@
 
 
 # pacman aliases and functions
-if (( $+commands[powerpill] )); then
-    function Syu(){
-        sudo pacman-syncdb  pacman -Sy && sudo pacman -Su $@ && sync
-        #sudo pacman -Sy && sudo powerpill -Suw $@ && sudo pacman -Su $@ && sync
-        pacman -Qtdq | ifne sudo pacman -Rcs - && sync
-        sudo pacman-syncdb  pacman -Fy && sync && rehash
-    }
-fi
+function Syu() {
+    sudo pacman-syncdb  pacman -Sy && sudo pacman -Su $@ && sync
+    pacman -Qtdq | ifne sudo pacman -Rcs - && sync
+    sudo pacman-syncdb  pacman -Fy && sync && rehash
+}
 
 # https://github.com/farseerfc/dotfiles/blob/master/zsh/.bashrc#L100-L123
 

@@ -194,7 +194,7 @@ function weather() {
     # F : do not show the "Follow" line
     # T : disable color
     local WTTR_PARAMS=('m' 'M' '2' 'F')
-    if (( $(tput cols) < 125 )); then
+    if (( $COLUMNS < 125 )); then
         WTTR_PARAMS+='n'
     fi
     if (( $# > 1 )); then

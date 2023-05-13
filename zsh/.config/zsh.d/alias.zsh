@@ -11,6 +11,7 @@ alias reload="sync && exec zsh"
 # https://github.com/lilydjwg/dotzsh/blob/e1a678cf4743e53813a457cb33f6f1e82e5bfa39/zshrc#L875
 if (( $+commands[zoxide] )); then
     export _ZO_FZF_OPTS="--border=sharp"
+    # FIXME: Don't use smartcache for unexcepted update every startup
     eval "$(zoxide init zsh)"
     function z () {
         if [[ "$#" -eq 0 ]]; then
@@ -91,7 +92,7 @@ alias today="date '+%Y-%m-%d'"
 alias now="date --rfc-3339=seconds"
 alias list-mount="mount -l | column -t"
 alias lsmount=list-mount
-if (( $(tput cols) >= 80 )); then
+if (( $COLUMNS >= 80 )); then
     alias vmstat="$aliases[vmstat] -w"
 fi
 

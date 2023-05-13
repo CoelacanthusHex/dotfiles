@@ -1,7 +1,7 @@
 
 autoload -Uz colors && colors
 
-function .prompt.pipestatus.init() {
+function _prompt.pipestatus.init() {
     typeset -A _status_to_signal
     _status_to_signal[1]="ERROR"
     _status_to_signal[128+1]="HUP"
@@ -36,7 +36,7 @@ function .prompt.pipestatus.init() {
     _status_to_signal[128+30]="PWR"
     _status_to_signal[128+31]="SYS"
 
-    .prompt.set_pipe_status() {
+    _prompt.set_pipe_status() {
         local _pipestatus=($pipestatus) _status=$status
         if (( $#_pipestatus == 1 )); then
             if (( $_status == 0 )); then
@@ -78,7 +78,7 @@ function .prompt.pipestatus.init() {
     }
 }
 
-function .prompt.vcs_status.init() {
+function _prompt.vcs_status.init() {
     _nogit_dir=()
     for p in $nogit_dir; do
         [[ -d $p ]] && _nogit_dir+=$(realpath $p)
@@ -88,7 +88,7 @@ function .prompt.vcs_status.init() {
     typeset -g _current_branch= _current_status= vcs_info_fd=
     zmodload zsh/zselect 2> /dev/null
 
-    .prompt.vcs_update_info() {
+    _prompt.vcs_update_info() {
         local fd=$1
         {
             zle -F "$fd" && vcs_info_fd=
@@ -100,7 +100,7 @@ function .prompt.vcs_status.init() {
         }
     }
 
-    .prompt.set_git_status() {
+    _prompt.set_git_status() {
         _current_branch=
         _current_status=
         [[ -n $vcs_info_fd ]] && zle -F $vcs_info_fd
@@ -157,6 +157,6 @@ function .prompt.vcs_status.init() {
         # precmd functions are called *after* prompt is expanded, and we can't call
         # zle reset-prompt outside zle, so turn to zselect
         zselect -r -t 10 $vcs_info_fd 2> /dev/null
-        zle -F $vcs_info_fd .prompt.vcs_update_info
+        zle -F $vcs_info_fd _prompt.vcs_update_info
     }
 }

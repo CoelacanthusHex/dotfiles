@@ -96,6 +96,7 @@ disable_starship=0
 disable_pure=1
 disable_async_prompt=0
 
+source $ZDOTDIR/plugins/zsh-smartcache/zsh-smartcache.plugin.zsh
 source $ZDOTDIR/check.zsh
 source $ZDOTDIR/keybind.zsh
 source $ZDOTDIR/config.zsh
@@ -156,6 +157,8 @@ fi
 # https://wiki.archlinux.org/index.php/GnuPG#Configure_pinentry_to_use_the_correct_TTY
 # it's much faster than the commonly used `export GPG_TTY=$(tty)`
 export GPG_TTY=$TTY
+
+_prompt.p10k.post_hook
 
 # vim: ft=zsh sw=4 ts=8 sts=4 et:
 # kate: space-indent on; indent-width 4; syntax zsh;

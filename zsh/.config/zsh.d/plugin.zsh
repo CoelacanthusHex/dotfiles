@@ -3,13 +3,12 @@ _enabled_plugins=(
     command-not-found
     git
     better-man-pages
-    autopair
+    zsh-autopair/zsh-autopair
     fast-syntax-highlighting/fast-syntax-highlighting
     history-search-multi-word/history-search-multi-word
     zsh-autosuggestions/zsh-autosuggestions
     zsh-history-substring-search/zsh-history-substring-search
     zsh-edit/zsh-edit
-    zsh-smartcache/zsh-smartcache
     #fzf-tab/fzf-tab
     tmux
     cpan-completion # https://github.com/MenkeTechnologies/zsh-cpan-completion

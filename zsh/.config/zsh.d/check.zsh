@@ -25,14 +25,13 @@ else
 fi
 (( $_in_x11 == 1 )) || (( $_in_wayland == 1 )) && _in_gui=1 || _in_gui=0
 
-if (( $+commands[tty] )); then
-    case $(tty) in
-        (/dev/tty*) _in_linux_tty=1 ;;
-        (*) _in_linux_tty=0 ;;
-    esac
-elif (( $+TERM == 1 )); then
-    [[ x$TERM == xlinux ]] && _in_linux_tty=1 || _in_linux_tty=0
-fi
+case $TTY in
+    (/dev/tty*) _in_linux_tty=1 ;;
+    (*) if (( $+TERM == 1 )); then
+            [[ x$TERM == xlinux ]] && _in_linux_tty=1 || _in_linux_tty=0
+        fi
+    ;;
+esac
 
 # vim: ft=zsh sw=4 ts=8 sts=4 et:
 # kate: space-indent on; indent-width 4;
