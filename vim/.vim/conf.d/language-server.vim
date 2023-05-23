@@ -74,7 +74,7 @@ endif
 if executable('nil')
     autocmd User lsp_setup lsp#register_server({
         \ 'name': 'nil',
-        \ 'cmd': {server_info->['nil']},
+        \ 'cmd': ['nil'],
         \ 'whitelist': ['nix'],
         \ })
 endif
