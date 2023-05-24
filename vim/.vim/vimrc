@@ -161,17 +161,17 @@ if !has("patch-9.0.1117") # Since 9.0.1117, Vim can read t_PS and t_PE from term
         &t_BE = "\033[?2004h"
         &t_BD = "\033[?2004l"
         # t_PS and t_PE are key code options and they are special
-        &t_PS="\033[200~"
-        &t_PE="\033[201~"
+        &t_PS = "\033[200~"
+        &t_PE = "\033[201~"
     endif
 endif
 if !empty($TMUX)
     # This may leave mouse in use by terminal application
-    # &t_RV="\033Ptmux;\033\033[>c\033\\"
+    # &t_RV = "\033Ptmux;\033\033[>c\033\\"
     set ttymouse=sgr
     if &t_GP == ''
         # for getwinpos
-        &t_GP="\033Ptmux;\033\033[13t\033\\"
+        &t_GP = "\033Ptmux;\033\033[13t\033\\"
     endif
     # Enable modified arrow keys, see  :help arrow_modifiers
     execute "silent! set <xUp>=\<Esc>[@;*A"
