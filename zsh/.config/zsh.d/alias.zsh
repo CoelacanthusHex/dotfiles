@@ -57,8 +57,8 @@ alias lu='lt -u'         # Lists sorted by date, most recent last, shows access 
 
 # using fd instead of find
 if (( $+commands[fd] )); then
-    alias clang-format-all='fd --type f '.*\.(c|cpp|h|hpp|hxx|cxx)' . -x clang-format -i {};'
-    alias clang-tidy-all='fd --type f '.*\.(c|cpp|h|hpp|hxx|cxx)' . -x clang-tidy {};'
+    alias clang-format-all="fd --type f '.*\.(c|cpp|h|hpp|hxx|cxx)' . -x clang-format -i {};"
+    alias clang-tidy-all="fd --type f '.*\.(c|cpp|h|hpp|hxx|cxx)' . -x clang-tidy {};"
 else
     alias clang-format-all="find . -type f -regex '.*\.(c|cpp|h|hpp)' | xargs clang-format -i"
 fi
