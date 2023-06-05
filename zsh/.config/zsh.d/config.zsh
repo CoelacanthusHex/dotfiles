@@ -51,8 +51,8 @@ setopt auto_continue
 setopt c_bases
 # Disable for problems with parsing of, for example, date and time strings with leading zeroes
 unsetopt octal_zeroes
-# Leaving it unchanged in the argument list when no match
-unsetopt nomatch
+# Error when no matched
+setopt nomatch
 # https://blog.lilydjwg.me/2015/7/26/a-simple-zsh-module.116403.html
 # https://gist.github.com/lilydjwg/0bfa6807b88e6d39a995
 zmodload zsh/subreap 2>/dev/null && subreap
