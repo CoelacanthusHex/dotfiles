@@ -71,6 +71,13 @@ if executable('millet')
         \ 'allowlist': ['sml'],
         \ })
 endif
+if executable('svls')
+    autocmd User lsp_setup lsp#register_server({
+        \ 'name': 'svls',
+        \ 'cmd': ['svls'],
+        \ 'allowlist': ['verilog'],
+        \ })
+endif
 if executable('nixd')
     autocmd User lsp_setup lsp#register_server({
         \ 'name': 'nixd',

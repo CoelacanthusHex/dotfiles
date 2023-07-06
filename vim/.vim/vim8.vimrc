@@ -194,6 +194,7 @@ if has('syntax') && !exists('g:syntax_on')
 endif
 
 " indent
+set tabstop=8 shiftwidth=4 softtabstop=-1 expandtab
 set autoindent
 set smartindent
 
@@ -315,10 +316,6 @@ set showcmd
 " 显示行号和列号
 set ruler
 
-set tabstop=8
-set softtabstop=4
-set shiftwidth=4
-set expandtab
 set shiftround
 set complete-=i
 set smarttab
