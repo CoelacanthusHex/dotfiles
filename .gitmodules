@@ -46,6 +46,7 @@
 [submodule "zsh/.config/zsh.d/plugins/powerlevel10k"]
 	path = zsh/.config/zsh.d/plugins/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
+	ignore = untracked
 [submodule "zsh/.config/zsh.d/plugins/zsh-autopair"]
 	path = zsh/.config/zsh.d/plugins/zsh-autopair
 	url = https://github.com/hlissner/zsh-autopair.git
