@@ -10,7 +10,6 @@ _enabled_plugins=(
     zsh-history-substring-search/zsh-history-substring-search
     zsh-edit/zsh-edit
     #fzf-tab/fzf-tab
-    tmux
     cpan-completion # https://github.com/MenkeTechnologies/zsh-cpan-completion
     #zsh-async/async
     nix-zsh-completions/nix
