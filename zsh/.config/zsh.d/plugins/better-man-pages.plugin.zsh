@@ -49,6 +49,9 @@ function __make_better() {
         environment+=( PATH="${__colored_man_pages_dir}:$PATH" )
     fi
 
+    # https://bugs.archlinux.org/task/79053
+    environment+=(GROFF_NO_SGR=1)
+
     command env $environment "$@"
 }
 
