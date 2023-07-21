@@ -104,7 +104,8 @@ function _prompt.vcs_status.init() {
         _current_branch=
         _current_status=
         [[ -n $vcs_info_fd ]] && zle -F $vcs_info_fd
-        cwd=$(pwd -P)
+        # on NFS this will print an error: "Failed to get current directory: path invalid"
+        cwd=$(pwd -P 2>/dev/null)
         for p in $_nogit_dir; do
             if [[ $cwd == $p* ]]; then
                 return
