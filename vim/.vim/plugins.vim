@@ -51,8 +51,11 @@ jetpack#add('Shougo/context_filetype.vim')
 jetpack#add('monkoose/vim9-stargate')
 jetpack#add('AndrewRadev/splitjoin.vim')
 #jetpack#add('dense-analysis/ale')
-jetpack#add('vim-scripts/gtags.vim')
-#jetpack#add('ludovicchabant/vim-gutentags')
+jetpack#add('ludovicchabant/vim-gutentags')
+jetpack#add('skywind3000/gutentags_plus')
+jetpack#add('skywind3000/vim-preview')
+autocmd FileType qf nnoremap <silent><buffer> p :PreviewQuickfix<cr>
+autocmd FileType qf nnoremap <silent><buffer> P :PreviewClose<cr>
 jetpack#add('preservim/tagbar')
 jetpack#add('rrethy/vim-hexokinase', { build: 'make hexokinase', on_cmd: 'HexokinaseToggle' })
 jetpack#add('dstein64/vim-startuptime', { on_cmd: 'StartupTime' })
