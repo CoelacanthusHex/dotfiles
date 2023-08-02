@@ -16,33 +16,16 @@ _cfg_warning() {
 _cfg_error() {
     print -P "%F{red}[ERROR]%f $1"
 }
-if (( $+commands[locale] )); then
-    local loc=(${(@M)$(locale -a):#*.(utf|UTF)(-|)8})
-    if (( $loc[(I)en_DK*] )); then
-        export LANG=en_GB.UTF-8
-    else
-        for la in en_US C; do
-            if (( $loc[(I)$la*] )); then
-                _cfg_warning "Locale en_GB is not supported! Fallback LANG to $la."
-                export LANG=$la.UTF-8
-                break
-            fi
-        done
+
+() {
+    if (( $+commands[locale] )); then
+        local loc=(${(@M)$(locale -a):#*.(utf|UTF)(-|)8})
+        (( $#loc )) || return
+        export LANG=${loc[(r)(#i)en_GB.UTF(-|)8]:-${loc[(r)(#i)en_US.UTF(-|)8]:-${loc[(r)(#i)C.UTF(-|)8]:-$loc[1]}}}
+        export LC_TIME=${loc[(r)(#i)en_DK.UTF(-|)8]:-${loc[(r)(#i)en_GB.UTF(-|)8]:-${loc[(r)(#i)en_US.UTF(-|)8]:-${loc[(r)(#i)C.UTF(-|)8]:-$loc[1]}}}}
+        export LANGUAGE=en_GB:en_US:en
     fi
-    export LANGUAGE=en_GB:en_US:en
-    if (( $loc[(I)en_DK*] )); then
-        # https://wiki.archlinux.org/title/Locale#LC_TIME:_date_and_time_format
-        export LC_TIME=en_DK.UTF-8
-    else
-        for la in en_GB en_US C; do
-            if (( $loc[(I)$la*] )); then
-                _cfg_warning "Locale en_DK is not supported! Fallback LC_TIME to $la."
-                export LC_TIME=$la.UTF-8
-                break
-            fi
-        done
-    fi
-fi
+}
 
 ZSH_CACHE_HOME="$XDG_CACHE_HOME/zsh"
 ZSH_COMPDUMP="$ZSH_CACHE_HOME/zcompdump"
