@@ -63,7 +63,6 @@ jetpack#add('rhysd/vim-healthcheck', { on_cmd: 'CheckHealth' })
 jetpack#add('mattkretz/vim-gnuindent', { on_cmd: 'SetupGnuIndent' })
 jetpack#add('inkarkat/vim-mark', { on_cmd: 'Mark' })
 jetpack#add('samoshkin/vim-mergetool', { on_cmd: ['MergetoolStart', 'MergetoolToggle'] })
-g:mergetool_layout = 'MR'
 jetpack#add('ntpeters/vim-better-whitespace')
 g:better_whitespace_skip_empty_lines = 1
 augroup rellinenum
