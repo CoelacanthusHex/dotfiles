@@ -1,4 +1,4 @@
-#!/usr/bin/env lua
+#!/usr/bin/lua
 
 local strsub = string.gsub
 local _strupper = string.upper

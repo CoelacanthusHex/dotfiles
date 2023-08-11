@@ -1,4 +1,4 @@
-#!/usr/bin/env luajit
+#!/usr/bin/luajit
 
 function password_gen(pw_len)
   pw_len = tonumber(pw_len) or 16

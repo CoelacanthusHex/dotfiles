@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 tmux set-option -g status-interval 1
 tmux set-option -g status on

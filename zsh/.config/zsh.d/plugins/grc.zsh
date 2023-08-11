@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/zsh
 
 if [[ -o no_interactive ]] || [ ! -n "$TERM" ] || [ "$TERM" = dumb ] || (( ! $+commands[grc] )); then
     return

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 #Tokyo Night Pallet
 declare -A PALLETE=(

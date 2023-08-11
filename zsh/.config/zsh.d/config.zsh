@@ -266,7 +266,7 @@ export GREP_COLORS="mt=$GREP_COLOR" # GNU.
 if (( $+commands[pygmentize] )); then
     export LESSOPEN="| pygmentize -f console -O bg=dark %s"
 elif (( $+commands[lesspipe] || $+commands[lesspipe.sh] )); then
-    export LESSOPEN="| /usr/bin/env ${(q)${commands[lesspipe]:-${commands[lesspipe.sh]}}} %s 2>/dev/null"
+    export LESSOPEN="| ${(q)${commands[lesspipe]:-${commands[lesspipe.sh]}}} %s 2>/dev/null"
 fi
 
 # This affects every invocation of `less`.

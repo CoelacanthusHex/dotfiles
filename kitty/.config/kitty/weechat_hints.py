@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 # vim:fileencoding=utf-8
 # License: GPL v3 Copyright: 2021, Germain Z. <germanosz at gmail.com>
 #                            2018, Kovid Goyal <kovid at kovidgoyal.net>
