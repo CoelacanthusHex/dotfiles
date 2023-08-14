@@ -50,12 +50,6 @@
 ;; quick start cache.
 (package-activate-all)
 
-;; Load `use-package`.
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-(require 'use-package)
-
 ;; My favorite theme.
 ;; Don't defer this, I need it all time.
 (use-package atom-one-dark-theme
