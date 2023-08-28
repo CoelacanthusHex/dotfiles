@@ -94,10 +94,10 @@ export MOZ_USE_XINPUT2=1
 # Environment variable for IME,
 # use fcitx instead of fcitx5 for compatibility
 # https://wiki.archlinux.org/index.php/Fcitx5#Set_environment_variables_for_IM_modules
-export QT_IM_MODULE=fcitx
+[[ -z $WAYLAND_DISPLAY ]] && export QT_IM_MODULE=fcitx
 export SDL_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
-[[ -z $WAYLAND_DISPLAY ]] && export GTK_IM_MODULE=fcitx
+export GTK_IM_MODULE=fcitx
 # hack for kitty
 # https://github.com/kovidgoyal/kitty/issues/469#issuecomment-778814173
 export GLFW_IM_MODULE=ibus
