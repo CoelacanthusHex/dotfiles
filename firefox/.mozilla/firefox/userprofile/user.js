@@ -35,6 +35,14 @@ user_pref("gfx.font_rendering.fontconfig.max_generic_substitutions", 64);
 /* SideEffect: 火狐一直认为自己不是默认浏览器 */
 user_pref("widget.use-xdg-desktop-portal", true);
 
+/* Enable Wayland fractional scale */
+//user_perf("widget.wayland.fractional-scale.enabled", true);
+
+/* Enable userChrome.css */
+user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+/* Enable DNS ECS for DoH */
+user_pref("network.trr.disable-ECS", false);
+
 /* Always use system defined logical resolution for CSS DPI detection. */
 user_pref("layout.css.dpi", 0);
 /* Use native GTK menus */
@@ -84,6 +92,7 @@ user_pref("network.http.max-persistent-connections-per-server", 16);
 /*==== 硬件视频加速 ====*/
 /* 使用VA-API */
 //user_pref("media.ffmpeg.vaapi.enabled", true);
+//user_pref("widget.dmabuf.force-enabled", true);
 
 /*==== 连接安全 ====*/
 /* https://github.com/arkenfox/user.js/blob/master/user.js#L465 */
