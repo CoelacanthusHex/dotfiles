@@ -44,6 +44,7 @@ autocmd User JetpackPost:VimMatchup execute let g:loaded_matchit = 1
 jetpack#add('tpope/vim-repeat')
 jetpack#add('tpope/vim-endwise')
 jetpack#add('markonm/traces.vim')
+if !exists('$DBUS_SESSION_BUS_ADDRESS') | g:loaded_fcitx = 1 | endif
 jetpack#add('lilydjwg/fcitx.vim')
 jetpack#add('Shougo/echodoc.vim')
 jetpack#add('Shougo/context_filetype.vim')
