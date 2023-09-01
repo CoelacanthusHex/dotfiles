@@ -1,48 +1,46 @@
-/* 启动后恢复上次会话 */
-// user_pref("browser.startup.page", 3);
-/* 主页使用空白页 */
+/* Use LANG environment variable to choose locale */
+user_pref("intl.locale.requested", "");
+/* Use a blank page for the home page */
 user_pref("browser.startup.homepage", "about:blank");
-/* 新标签页使用空白页 */
+/* Use a blank page for the new tab page */
 user_pref("browser.newtabpage.enabled", false);
-/* 所有情况下都启用跟踪保护 */
-// user_pref("privacy.trackingprotection.enabled", true);
-/* 阻止重定向形式的跟踪(效果有限) */
-// user_pref("privacy.purge_trackers.enabled",  true);
+/* Disable default browser checking */
+user_pref("browser.shell.checkDefaultBrowser", false);
 
 /* Don't disable our bundled extensions in the application directory. */
 user_pref("extensions.autoDisableScopes", 11);
 user_pref("extensions.shownSelectionUI", true);
-/* 打开about:config页面不警告 */
+/* Open the about:config page without warning */
 user_pref("browser.aboutConfig.showWarning", false);
-/* 去除about:addons页面中的推荐页 */
+/* Remove the recommended page from the about:addons page */
 user_pref("extensions.getAddons.showPane", false);
-/* 去除about:addons页面中底部的推荐列表 */
+/* Remove the recommendation list at the bottom of the about:addons page */
 user_pref("extensions.htmlaboutaddons.recommendations.enabled", false);
-/* 去除Pocket服务 */
+/* Remove Pocket */
+user_pref("browser.pocket.enabled", false);
 user_pref("extensions.pocket.enabled", false);
-/* 使用系统 emoji */
-// Disable for SVG font
+user_pref("browser.newtabpage.activity-stream.section.highlights.includePocket", false);
+/* Remove Firefox Relay */
+user_pref("signon.firefoxRelay.feature", "disabled");
+/* Use system emoji */
+/* Disable for COLR font */
 //user_pref("font.name-list.emoji", "emoji");
-/* 显示紧凑模式 */
+/* Enable Compact mode support */
 user_pref("browser.compactmode.show", true);
-/* 在地址栏显示完整的 URL */
+/* Show full URL in address bar */
 user_pref("browser.urlbar.trimURLs", false);
-/* 从fontconfig查询字体时允许的最大字体替换次数 Default: 3 */
-// https://wiki.archlinux.org/title/Firefox#Font_troubleshooting
+/* Maximum number of font substitutions allowed when querying fonts from fontconfig Default: 3 Max: 127 */
 user_pref("gfx.font_rendering.fontconfig.max_generic_substitutions", 64);
-/* 使用系统文件对话框 */
-/* WARNING: 必须安装 xdg-desktop-portal{,-kde} */
-/* SideEffect: 火狐一直认为自己不是默认浏览器 */
-user_pref("widget.use-xdg-desktop-portal", true);
-
+/* Use XDG Desktop Portal handle file picker */
+/* WARNING: Need xdg-desktop-portal{,-kde} */
+user_pref("widget.use-xdg-desktop-portal.file-picker", 1);
+user_pref("widget.use-xdg-desktop-portal.mime-handler", 1);
 /* Enable Wayland fractional scale */
 //user_perf("widget.wayland.fractional-scale.enabled", true);
-
-/* Enable userChrome.css */
+/* Enable userChrome.css support */
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 /* Enable DNS ECS for DoH */
 user_pref("network.trr.disable-ECS", false);
-
 /* Always use system defined logical resolution for CSS DPI detection. */
 user_pref("layout.css.dpi", 0);
 /* Use native GTK menus */
@@ -59,42 +57,30 @@ user_pref("browser.tabs.unloadOnLowMemory", false);
 /* Allow max 16 connections per server */
 user_pref("network.http.max-persistent-connections-per-server", 16);
 
+/* Disable Password Manager */
+user_pref("signon.autofillForms", false);
+user_pref("signon.generation.enabled", false);
+user_pref("signon.rememberSignons", false);
+user_pref("signon.showAutoCompleteFooter", false);
+user_pref("signon.management.page.breach-alerts.enabled", false);
 
-/* 禁止投机性预连接 */
-// user_pref("network.http.speculative-parallel-limit", 0);
-/* 禁止链接预读取 */
-// user_pref("network.prefetch-next", false);
-/* 禁止DNS预读取 */
-// user_pref("network.dns.disablePrefetch", true);
-/* 禁止超链接审计
- * 无需设置: 默认设置已禁止, 而且uBlock Origin也提供禁止选项 */
-// user_pref("browser.send_pings", false);
-/* 禁止sendBeacon API
- * 无需设置: 使用uBlock Origin过滤
- * https://bugzilla.mozilla.org/show_bug.cgi?id=1454252#c6
- * https://github.com/gorhill/uBlock/issues/1884#issuecomment-253813062 */
-// user_pref("beacon.enabled", false);
+/* Disable (targeted) sponsored contents */
+user_pref("browser.newtabpage.activity-stream.showSponsored", false);
+user_pref("browser.newtabpage.activity-stream.disableSnippets", true);
+user_pref("browser.newtabpage.activity-stream.feeds.snippets", false);
+user_pref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons", false);
+user_pref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features", false);
+user_pref("browser.newtabpage.activity-stream.showSponsoredTopSites", false);
+user_pref("services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsored", false);
+user_pref("services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsoredTopSites", false);
+user_pref("browser.newtabpage.activity-stream.discoverystream.spocs.personalized", false);
 
-/*==== 可能破坏网页 ====*/
-/* RFP: 阻止多种收集浏览器指纹的行为 */
-// user_pref("privacy.resistFingerprinting", true);
-/* 禁止WebGL
- * 开启RFP即可减少WebGL信息熵 */
-// user_pref("webgl.disabled", true);
-/* 禁止Web Audio API */
-// user_pref("dom.webaudio.enabled", false);
-/* 禁止WebRTC */
-// user_pref("media.peerconnection.enabled", false);
-/* 禁止获取媒体设备列表API
- * 注意: 需要同时禁止WebRTC */
-// user_pref("media.navigator.enabled", false);
-
-/*==== 硬件视频加速 ====*/
-/* 使用VA-API */
+/*==== Hardware acceleration ====*/
+/* Use VA-API */
 //user_pref("media.ffmpeg.vaapi.enabled", true);
 //user_pref("widget.dmabuf.force-enabled", true);
 
-/*==== 连接安全 ====*/
+/*==== Security ====*/
 /* https://github.com/arkenfox/user.js/blob/master/user.js#L465 */
 
 /*** [SECTION 1200]: HTTPS (SSL/TLS / OCSP / CERTS / HPKP)
