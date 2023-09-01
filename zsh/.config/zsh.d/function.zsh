@@ -31,6 +31,10 @@ function kwin-debug-console() {
     qdbus org.kde.KWin /KWin org.kde.KWin.showDebugConsole
 }
 
+function knot-resolver-console() {
+    sudo kresc /run/knot-resolver/control/$1
+}
+
 # https://github.com/lilydjwg/dotzsh/blob/master/zshrc#L508-520
 # delete empty files
 function rmempty () {

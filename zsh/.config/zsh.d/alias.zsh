@@ -146,10 +146,10 @@ fi
 alias myip-http='curl -L https://ifconfig.me'
 alias myip-http-ipv4='curl -L https://ipv4.icanhazip.com'
 alias myip-http-ipv6='curl -L https://ipv6.icanhazip.com'
-if (( $+commands[dig] )); then
-    alias myip-dns="dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | sed 's/\"//g'"
-elif (( $+commands[kdig] )); then
+if (( $+commands[kdig] )); then
     alias myip-dns="kdig TXT +short o-o.myaddr.l.google.com @ns1.google.com | sed 's/\"//g'"
+elif (( $+commands[dig] )); then
+    alias myip-dns="dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | sed 's/\"//g'"
 fi
 alias myipv4=myip-http-ipv4
 alias myipv6=myip-http-ipv6
