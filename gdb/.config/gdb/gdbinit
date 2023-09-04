@@ -19,10 +19,7 @@ set print union on
 #set print vtbl on
 
 source ~/.config/gdb/printers/pretty-printers.gdbinit
-
-define fetch_firefox_symbol
-    source ~/.config/gdb/firefox-symbols.py
-end
+source ~/.config/gdb/firefox-symbols.py
 
 # For Linux kernel debug
 add-auto-load-safe-path .
