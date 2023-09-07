@@ -1,5 +1,3 @@
-/* Use LANG environment variable to choose locale */
-user_pref("intl.locale.requested", "");
 /* Use a blank page for the home page */
 user_pref("browser.startup.homepage", "about:blank");
 /* Use a blank page for the new tab page */
