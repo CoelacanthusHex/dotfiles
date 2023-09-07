@@ -36,11 +36,14 @@ if [[ ${chpwd_functions[(i)__zoxide_hook]} -le ${#chpwd_functions} && \
         chpwd_functions[(i)__zoxide_hook]=()
 fi
 
-# using exa instead of ls, and ls' alias
-if (( $+commands[exa] )); then
+# using eza instead of ls, and ls' alias
+if (( $+commands[eza] )); then
+    # Waiting for https://github.com/eza-community/eza/pull/58
+    alias ls='eza --color=auto --no-icons --time-style=long-iso --group --group-directories-first --header --git -@'
+elif (( $+commands[exa] )); then
     # Workaround for https://github.com/ogham/exa/issues/856
     # Waiting for https://github.com/ogham/exa/pull/867
-    alias ls='unset TZ && exa --time-style=long-iso --group --group-directories-first --header --git'
+    alias ls='env -u TZ exa --time-style=long-iso --group --group-directories-first --header --git'
 else
     alias ls='ls --color=auto --human-readable --time-style=long-iso --hyperlink=auto'
 fi
