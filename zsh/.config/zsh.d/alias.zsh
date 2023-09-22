@@ -85,6 +85,7 @@ alias cp="cp -v --reflink=auto --sparse=auto"
 alias pb-fc='curl -F "c=@-" "http://fars.ee/"'
 alias pb-mgt='curl -F "c=@-" "https://pb.mgt.moe/"'
 alias pb-0x0='curl -F "file=@-" "https://0x0.st/"'
+alias pb-envs='curl -F "file=@-" "https://envs.sh/"'
 alias pb-nickcao='curl --data-binary @- https://pb.nichi.co/'
 alias pb=pb-mgt
 
@@ -145,7 +146,7 @@ elif (( $+commands[xh] )); then  # HTTPie written in Rust
 elif (( $+commands[http] )); then # HTTPie
     alias myip-http-detail="http --body https://ipinfo.io/ Accept:application/json"
 fi
-# availible: ifconfig.co icanhazip.com ifconfig.me myip.country/ip
+# availible: ifconfig.co icanhazip.com ifconfig.me myip.country/ip ip.envs.net
 alias myip-http='curl -L https://ifconfig.me'
 alias myip-http-ipv4='curl -L https://ipv4.icanhazip.com'
 alias myip-http-ipv6='curl -L https://ipv6.icanhazip.com'
