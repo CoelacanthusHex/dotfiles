@@ -48,12 +48,24 @@ user_pref("reader.parse-on-load.enabled", false);
 /* Disable quick action */
 user_pref("browser.urlbar.shortcuts.quickactions", false);
 user_pref("browser.urlbar.suggest.quickactions", false);
+/* Enable calcalutor and unit convert in urlbar */
+user_pref("browser.urlbar.suggest.calculator", true);
+user_pref("browser.urlbar.unitConversion.enabled", true);
 /* Enable unified extensions toolbar button*/
 user_pref("extensions.unifiedExtensions.enabled", true);
 /* Disable unload page on low memory */
 user_pref("browser.tabs.unloadOnLowMemory", false);
 /* Allow max 16 connections per server */
 user_pref("network.http.max-persistent-connections-per-server", 16);
+/*
+ * preferred color scheme for websites
+ * By default, color scheme matches the theme of your browser toolbar (3).
+ * Set this pref to choose Dark on sites that support it (0) or Light (1).
+ * Before FF95, the pref was System (2), which determined site color based on OS theme.
+ * Dark (0), Light (1), System (2), Browser (3) (default [FF95+])
+ * https://www.reddit.com/r/firefox/comments/rfj6yc/how_to_stop_firefoxs_dark_theme_from_overriding/hoe82i5/?context=3
+ */
+user_pref("layout.css.prefers-color-scheme.content-override", 2);
 
 /* Disable Password Manager */
 user_pref("signon.autofillForms", false);
