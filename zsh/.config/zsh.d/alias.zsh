@@ -39,7 +39,7 @@ fi
 # using eza instead of ls, and ls' alias
 if (( $+commands[eza] )); then
     # Waiting for https://github.com/eza-community/eza/pull/58
-    alias ls='eza --color=auto --no-icons --time-style=long-iso --group --group-directories-first --header --git -@'
+    alias ls='eza --color=auto --no-icons --time-style=long-iso --group --group-directories-first --header --git'
 elif (( $+commands[exa] )); then
     # Workaround for https://github.com/ogham/exa/issues/856
     # Waiting for https://github.com/ogham/exa/pull/867
