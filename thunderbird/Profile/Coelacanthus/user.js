@@ -31,6 +31,8 @@ user_perf("view_source.syntax_highlight", true);
 user_pref("geo.provider.network.url", "https://location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%");
 /* DNS via proxy */
 user_pref("network.proxy.socks_remote_dns", true);
+/* Use Maildir */
+user_pref("mail.serverDefaultStoreContractID", "@mozilla.org/msgstore/maildirstore;1");
 
 /* Prepare for plaintext mail to mail list */
 user_perf("mailnews.send_plaintext_flowed", false);
