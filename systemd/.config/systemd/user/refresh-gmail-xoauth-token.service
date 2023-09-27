@@ -1,0 +1,12 @@
+[Unit]
+Description=Refresh GMail XOAuth Token
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/cgproxy /usr/bin/getmail-gmail-xoauth-tokens ~/.config/msmtp/gmail.json
+Restart=on-failure
+RestartSec=10min
+
+[Install]
+WantedBy=default.target

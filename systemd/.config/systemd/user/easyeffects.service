@@ -1,0 +1,10 @@
+[Unit]
+Description="EasyEffects Service"
+After=pipewire.service
+
+[Service]
+#Environment="G_MESSAGES_DEBUG=easyeffects"
+ExecStart=/usr/bin/easyeffects --gapplication-service
+
+[Install]
+WantedBy=graphical-session.target
