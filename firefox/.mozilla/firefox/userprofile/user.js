@@ -37,8 +37,6 @@ user_pref("widget.use-xdg-desktop-portal.mime-handler", 1);
 //user_perf("widget.wayland.fractional-scale.enabled", true);
 /* Enable userChrome.css support */
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
-/* Enable DNS ECS for DoH */
-user_pref("network.trr.disable-ECS", false);
 /* Always use system defined logical resolution for CSS DPI detection. */
 user_pref("layout.css.dpi", 0);
 /* Use native GTK menus */
@@ -66,6 +64,22 @@ user_pref("network.http.max-persistent-connections-per-server", 16);
  * https://www.reddit.com/r/firefox/comments/rfj6yc/how_to_stop_firefoxs_dark_theme_from_overriding/hoe82i5/?context=3
  */
 user_pref("layout.css.prefers-color-scheme.content-override", 2);
+
+/* Enable DoH */
+user_perf("network.trr.mode", 3);
+user_perf("network.trr.uri", "https://doh.service.coelacanthus.moe/dns-query");
+user_perf("network.trr.custom_uri", "https://doh.service.coelacanthus.moe/dns-query");
+/* Enable DNS ECS for DoH */
+user_pref("network.trr.disable-ECS", false);
+
+/*
+ * Enable -moz-context-properties for TST because of [1] & [2]
+ * Should be removed after [3] fixed
+ * [1]: https://bugzilla.mozilla.org/show_bug.cgi?id=1421329
+ * [2]: https://bugzilla.mozilla.org/show_bug.cgi?id=1388193
+ * [3]: https://bugzilla.mozilla.org/show_bug.cgi?id=1812163
+ */
+user_pref("svg.context-properties.content.enabled", true);
 
 /* Disable Password Manager */
 user_pref("signon.autofillForms", false);
