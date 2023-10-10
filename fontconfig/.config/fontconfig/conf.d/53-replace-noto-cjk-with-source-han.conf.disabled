@@ -1,0 +1,96 @@
+<?xml version='1.0'?>
+<!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">
+<fontconfig>
+  <description>使用思源字体取代 Noto CJK 以在不同语言下自动采用不同的汉字变体。</description>
+
+  <match target="pattern">
+    <test qual="any" name="family">
+      <string>Noto Sans CJK SC</string>
+    </test>
+    <edit name="family" mode="assign" binding="same">
+      <string>Source Han Sans</string>
+    </edit>
+  </match>
+
+  <match target="pattern">
+    <test qual="any" name="family">
+      <string>Noto Sans CJK TC</string>
+    </test>
+    <edit name="family" mode="assign" binding="same">
+      <string>Source Han Sans</string>
+    </edit>
+  </match>
+
+  <match target="pattern">
+    <test qual="any" name="family">
+      <string>Noto Sans CJK HK</string>
+    </test>
+    <edit name="family" mode="assign" binding="same">
+      <string>Source Han Sans</string>
+    </edit>
+  </match>
+
+  <match target="pattern">
+    <test qual="any" name="family">
+      <string>Noto Sans CJK JP</string>
+    </test>
+    <edit name="family" mode="assign" binding="same">
+      <string>Source Han Sans</string>
+    </edit>
+  </match>
+
+  <match target="pattern">
+    <test qual="any" name="family">
+      <string>Noto Sans CJK KR</string>
+    </test>
+    <edit name="family" mode="assign" binding="same">
+      <string>Source Han Sans</string>
+    </edit>
+  </match>
+
+  <match target="pattern">
+    <test qual="any" name="family">
+      <string>Noto Serif CJK SC</string>
+    </test>
+    <edit name="family" mode="assign" binding="same">
+      <string>Source Han Serif</string>
+    </edit>
+  </match>
+
+  <match target="pattern">
+    <test qual="any" name="family">
+      <string>Noto Serif CJK TC</string>
+    </test>
+    <edit name="family" mode="assign" binding="same">
+      <string>Source Han Serif</string>
+    </edit>
+  </match>
+
+  <match target="pattern">
+    <test qual="any" name="family">
+      <string>Noto Serif CJK HK</string>
+    </test>
+    <edit name="family" mode="assign" binding="same">
+      <string>Source Han Serif</string>
+    </edit>
+  </match>
+
+  <match target="pattern">
+    <test qual="any" name="family">
+      <string>Noto Serif CJK JP</string>
+    </test>
+    <edit name="family" mode="assign" binding="same">
+      <string>Source Han Serif</string>
+    </edit>
+  </match>
+
+  <match target="pattern">
+    <test qual="any" name="family">
+      <string>Noto Serif CJK KR</string>
+    </test>
+    <edit name="family" mode="assign" binding="same">
+      <string>Source Han Serif</string>
+    </edit>
+  </match>
+
+</fontconfig>
