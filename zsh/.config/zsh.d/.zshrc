@@ -65,7 +65,8 @@ export USE_CCACHE=1
 # FIXME: workaround for cargo crates
 # [1]: https://github.com/ustclug/discussions/issues/294
 # [2]: https://mirrors.ustc.edu.cn/help/crates.io-index.html
-export CARGO_HTTP_MULTIPLEXING=false
+# We use BFSU now
+#export CARGO_HTTP_MULTIPLEXING=false
 
 export CARGO_UNSTABLE_SPARSE_REGISTRY=true
 
