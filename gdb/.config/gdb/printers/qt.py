@@ -18,15 +18,21 @@ class QStringPrinter:
         self.val = val
 
     def to_string(self):
-        size = self.val['d']['size']
         ret = ""
 
-        # The QString object might be not yet initialized. In this case size is a bogus value
-        # and the following 2 lines might throw memory access error. Hence the try/catch.
+        # The QString object may not be initialized yet. In this case 'size' is a bogus value
+        # or in case of Qt5, 'd' is an invalid pointer and the following lines might throw memory
+        # access error. Hence the try/catch.
         try:
+            size = self.val['d']['size']
+            if size == 0:
+                return ret
             isQt4 = has_field(self.val['d'], 'data') # Qt4 has d->data, Qt5 doesn't.
+            isQt6 = has_field(self.val['d'], 'ptr') # Qt6 has d->ptr, Qt5 doesn't.
             if isQt4:
                 dataAsCharPointer = self.val['d']['data'].cast(gdb.lookup_type("char").pointer())
+            elif isQt6:
+                dataAsCharPointer = self.val['d']['ptr'].cast(gdb.lookup_type("char").pointer())
             else:
                 dataAsCharPointer = (self.val['d'] + 1).cast(gdb.lookup_type("char").pointer())
             ret = dataAsCharPointer.string(encoding = 'UTF-16', length = size * 2)
@@ -44,6 +50,8 @@ class QByteArrayPrinter:
         self.val = val
         # Qt4 has 'data', Qt5 doesn't
         self.isQt4 = has_field(self.val['d'], 'data')
+        # Qt6 has d.ptr, Qt5 doesn't
+        self.isQt6 = has_field(self.val['d'], 'ptr')
 
     class _iterator(Iterator):
         def __init__(self, data, size):
@@ -64,6 +72,8 @@ class QByteArrayPrinter:
     def stringData(self):
         if self.isQt4:
             return self.val['d']['data']
+        elif self.isQt6:
+            return self.val['d']['ptr'].cast(gdb.lookup_type("char").pointer())
         else:
             return self.val['d'].cast(gdb.lookup_type("char").const().pointer()) + self.val['d']['offset']
 
@@ -113,21 +123,37 @@ class QListPrinter:
             return self
 
         def __next__(self):
-            if self.count >= self.d['end'] - self.d['begin']:
+            isQt6 = has_field(self.d, 'size')
+            if isQt6:
+                size = self.d['size']
+            else:
+                size = self.d['end'] - self.d['begin']
+
+            if self.count >= size:
                 raise StopIteration
             count = self.count
-            array = self.d['array'].address + self.d['begin'] + count
-            if self.externalStorage:
-                value = array.cast(gdb.lookup_type('QList<%s>::Node' % self.nodetype).pointer())['v']
+
+            if isQt6:
+                value = self.d['ptr'] + count
             else:
-                value = array
+                array = self.d['array'].address + self.d['begin'] + count
+                if self.externalStorage:
+                    value = array.cast(gdb.lookup_type('QList<%s>::Node' % self.nodetype).pointer())['v']
+                else:
+                    value = array
             self.count = self.count + 1
             return ('[%d]' % count, value.cast(self.nodetype.pointer()).dereference())
 
     def __init__(self, val, container, itype):
         self.d = val['d']
         self.container = container
-        self.size = self.d['end'] - self.d['begin']
+        self.isQt6 = has_field(self.d, 'size')
+
+        if self.isQt6:
+            self.size = self.d['size']
+        else:
+            self.size = self.d['end'] - self.d['begin']
+
         if itype == None:
             self.itype = val.type.template_argument(0)
         else:
