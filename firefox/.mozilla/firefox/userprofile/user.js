@@ -29,6 +29,8 @@ user_pref("browser.compactmode.show", true);
 user_pref("browser.urlbar.trimURLs", false);
 /* Maximum number of font substitutions allowed when querying fonts from fontconfig Default: 3 Max: 127 */
 user_pref("gfx.font_rendering.fontconfig.max_generic_substitutions", 64);
+/* Use sans serif fonts as default of lang=x-western */
+user_pref("font.default.x-western", "sans-serif");
 /* Use XDG Desktop Portal handle file picker */
 /* WARNING: Need xdg-desktop-portal{,-kde} */
 user_pref("widget.use-xdg-desktop-portal.file-picker", 1);
