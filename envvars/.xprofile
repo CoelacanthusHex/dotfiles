@@ -178,5 +178,8 @@ export LUTRIS_RUNTIME=0
 export GOOGLE_DEFAULT_CLIENT_ID="77185425430.apps.googleusercontent.com"
 export GOOGLE_DEFAULT_CLIENT_SECRET="OTJgUOQcT7lO7GsGZq2G4IlT"
 
+# https://github.com/vim/vim/pull/9639
+[[ $XDG_SESSION_TYPE != wayland ]] && export GVIM_ENABLE_WAYLAND=1
+
 # vim: ft=bash sw=4 ts=8 sts=4 et:
 # kate: space-indent on; indent-width 4; syntax bash;
