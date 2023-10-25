@@ -68,9 +68,9 @@ user_pref("network.http.max-persistent-connections-per-server", 16);
 user_pref("layout.css.prefers-color-scheme.content-override", 2);
 
 /* Enable DoH */
-user_perf("network.trr.mode", 3);
-user_perf("network.trr.uri", "https://doh.service.coelacanthus.moe/dns-query");
-user_perf("network.trr.custom_uri", "https://doh.service.coelacanthus.moe/dns-query");
+user_pref("network.trr.mode", 3);
+user_pref("network.trr.uri", "https://doh.service.coelacanthus.moe/dns-query");
+user_pref("network.trr.custom_uri", "https://doh.service.coelacanthus.moe/dns-query");
 /* Enable DNS ECS for DoH */
 user_pref("network.trr.disable-ECS", false);
 
