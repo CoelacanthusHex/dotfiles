@@ -66,6 +66,8 @@ user_pref("network.http.max-persistent-connections-per-server", 16);
  * https://www.reddit.com/r/firefox/comments/rfj6yc/how_to_stop_firefoxs_dark_theme_from_overriding/hoe82i5/?context=3
  */
 user_pref("layout.css.prefers-color-scheme.content-override", 2);
+/* Enable full mode color management */
+user_pref("gfx.color_management.mode", 1);
 
 /* Enable DoH */
 user_pref("network.trr.mode", 3);
