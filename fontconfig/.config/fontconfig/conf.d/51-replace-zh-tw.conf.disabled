@@ -13,7 +13,7 @@
       <string>微软正黑体</string>
     </test>
     <edit name="family" mode="assign" binding="same">
-      <string>Source Han Sans</string>
+      <string>Source Han Sans TC</string>
     </edit>
   </match>
   <match target="pattern">
@@ -21,7 +21,7 @@
       <string>Microsoft JhengHei</string>
     </test>
     <edit name="family" mode="assign" binding="same">
-      <string>Source Han Sans</string>
+      <string>Source Han Sans TC</string>
     </edit>
   </match>
   <match target="pattern">
@@ -29,7 +29,7 @@
       <string>Microsoft JhengHei UI</string>
     </test>
     <edit name="family" mode="assign" binding="same">
-      <string>Source Han Sans</string>
+      <string>Source Han Sans TC</string>
     </edit>
   </match>
   <!-- }}} -->
@@ -40,7 +40,7 @@
       <string>新細明體</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Serif</string>
+      <string>Source Han Serif TC</string>
     </edit>
   </match>
   <match target="pattern">
@@ -48,7 +48,7 @@
       <string>細明體</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Serif</string>
+      <string>Source Han Serif TC</string>
     </edit>
   </match>
   <match target="pattern">
@@ -56,7 +56,7 @@
       <string>PMingLiU</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Serif</string>
+      <string>Source Han Serif TC</string>
     </edit>
   </match>
   <match target="pattern">
@@ -64,7 +64,7 @@
       <string>MingLiU</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Serif</string>
+      <string>Source Han Serif TC</string>
     </edit>
   </match>
   <match target="pattern">
@@ -72,7 +72,7 @@
       <string>PMingLiU-ExtB</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Serif</string>
+      <string>Source Han Serif TC</string>
     </edit>
   </match>
   <match target="pattern">
@@ -80,7 +80,7 @@
       <string>MingLiU-ExtB</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Serif</string>
+      <string>Source Han Serif TC</string>
     </edit>
   </match>
   <match target="pattern">
@@ -88,7 +88,7 @@
       <string>细明体-ExtB</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Serif</string>
+      <string>Source Han Serif TC</string>
     </edit>
   </match>
   <!-- }}} -->
