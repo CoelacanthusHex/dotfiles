@@ -19,6 +19,7 @@ _cfg_error() {
 
 () {
     if (( $+commands[locale] )); then
+        setopt localoptions extended_glob
         local loc=(${(@M)$(locale -a):#*.(utf|UTF)(-|)8})
         (( $#loc )) || return
         export LANG=${loc[(r)(#i)en_GB.UTF(-|)8]:-${loc[(r)(#i)en_US.UTF(-|)8]:-${loc[(r)(#i)C.UTF(-|)8]:-$loc[1]}}}
