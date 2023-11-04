@@ -2,7 +2,7 @@
 Description=Refresh GMail XOAuth token daily
 
 [Timer]
-OnCalendar=daily
+OnCalendar=*:0/15
 Persistent=true
 
 [Install]
