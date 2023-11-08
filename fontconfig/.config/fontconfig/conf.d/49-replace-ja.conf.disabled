@@ -10,7 +10,7 @@
       <string>Meiryo</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Sans J</string>
+      <string>sans-serif</string>
     </edit>
   </match>
   <match target="pattern">
@@ -18,7 +18,7 @@
       <string>Meiryo UI</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Sans J</string>
+      <string>sans-serif</string>
     </edit>
   </match>
   <match target="pattern">
@@ -26,7 +26,7 @@
       <string>MS Gothic</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Sans J</string>
+      <string>sans-serif</string>
     </edit>
   </match>
   <match target="pattern">
@@ -34,7 +34,7 @@
       <string>MS PGothic</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Sans J</string>
+      <string>sans-serif</string>
     </edit>
   </match>
   <match target="pattern">
@@ -42,7 +42,7 @@
       <string>MS UI Gothic</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Sans J</string>
+      <string>sans-serif</string>
     </edit>
   </match>
   <match target="pattern">
@@ -50,7 +50,7 @@
       <string>Yu Gothic</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Sans J</string>
+      <string>sans-serif</string>
     </edit>
   </match>
   <match target="pattern">
@@ -58,7 +58,7 @@
       <string>Yu Gothic UI</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Sans J</string>
+      <string>sans-serif</string>
     </edit>
   </match>
   <!-- 衬线字体 -->
@@ -67,7 +67,7 @@
       <string>MS Mincho</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Serif J</string>
+      <string>serif</string>
     </edit>
   </match>
   <match target="pattern">
@@ -75,7 +75,7 @@
       <string>MS PMincho</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Serif J</string>
+      <string>serif</string>
     </edit>
   </match>
   <match target="pattern">
@@ -83,7 +83,7 @@
       <string>Yu Mincho</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Serif J</string>
+      <string>serif</string>
     </edit>
   </match>
   <match target="pattern">
@@ -91,7 +91,7 @@
       <string>メイリオ</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Serif J</string>
+      <string>serif</string>
     </edit>
   </match>
   <match target="pattern">
@@ -99,7 +99,7 @@
       <string>ＭＳ ゴシック</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Serif J</string>
+      <string>serif</string>
     </edit>
   </match>
   <match target="pattern">
@@ -107,7 +107,7 @@
       <string>ＭＳ Ｐゴシック</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Serif J</string>
+      <string>serif</string>
     </edit>
   </match>
   <match target="pattern">
@@ -115,7 +115,7 @@
       <string>ＭＳ 明朝</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Serif J</string>
+      <string>serif</string>
     </edit>
   </match>
   <match target="pattern">
@@ -123,7 +123,7 @@
       <string>ＭＳ Ｐ明朝</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Serif J</string>
+      <string>serif</string>
     </edit>
   </match>
   <!-- }}} -->

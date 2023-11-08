@@ -10,7 +10,7 @@
       <string>Batang</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Sans K</string>
+      <string>sans-serif</string>
     </edit>
   </match>
   <match target="pattern">
@@ -18,7 +18,7 @@
       <string>BatangChe</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Sans K</string>
+      <string>sans-serif</string>
     </edit>
   </match>
   <match target="pattern">
@@ -26,7 +26,7 @@
       <string>Dotum</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Sans K</string>
+      <string>sans-serif</string>
     </edit>
   </match>
   <match target="pattern">
@@ -34,7 +34,7 @@
       <string>DotumChe</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Sans K</string>
+      <string>sans-serif</string>
     </edit>
   </match>
   <match target="pattern">
@@ -42,7 +42,7 @@
       <string>Gulim</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Sans K</string>
+      <string>sans-serif</string>
     </edit>
   </match>
   <match target="pattern">
@@ -50,7 +50,7 @@
       <string>GulimChe</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Sans K</string>
+      <string>sans-serif</string>
     </edit>
   </match>
   <match target="pattern">
@@ -58,7 +58,7 @@
       <string>Malgun Gothic</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Sans K</string>
+      <string>sans-serif</string>
     </edit>
   </match>
   <match target="pattern">
@@ -66,7 +66,7 @@
       <string>바탕</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Sans K</string>
+      <string>sans-serif</string>
     </edit>
   </match>
   <match target="pattern">
@@ -74,7 +74,7 @@
       <string>바탕체</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Sans K</string>
+      <string>sans-serif</string>
     </edit>
   </match>
   <match target="pattern">
@@ -82,7 +82,7 @@
       <string>돋움</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Sans K</string>
+      <string>sans-serif</string>
     </edit>
   </match>
   <match target="pattern">
@@ -90,7 +90,7 @@
       <string>돋움체</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Sans K</string>
+      <string>sans-serif</string>
     </edit>
   </match>
   <match target="pattern">
@@ -98,7 +98,7 @@
       <string>맑은 고딕</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Sans K</string>
+      <string>sans-serif</string>
     </edit>
   </match>
   <!-- 衬线字体 -->
@@ -107,7 +107,7 @@
       <string>Gungsuh</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Serif K</string>
+      <string>serif</string>
     </edit>
   </match>
   <match target="pattern">
@@ -115,7 +115,7 @@
       <string>GungsuhChe</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Serif K</string>
+      <string>serif</string>
     </edit>
   </match>
   <match target="pattern">
@@ -123,7 +123,7 @@
       <string>굴림</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Serif K</string>
+      <string>serif</string>
     </edit>
   </match>
   <match target="pattern">
@@ -131,7 +131,7 @@
       <string>굴림체</string>
     </test>
     <edit binding="strong" mode="prepend" name="family">
-      <string>Source Han Serif K</string>
+      <string>serif</string>
     </edit>
   </match>
   <!-- }}} -->
