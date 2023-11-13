@@ -1,0 +1,10 @@
+[Unit]
+Description=GnuPG key store
+
+[Service]
+Type=forking
+ExecStart=/usr/lib/gnupg/keyboxd --daemon
+ExecReload=/usr/bin/gpgconf --reload keyboxd
+
+[Install]
+WantedBy=default.target
