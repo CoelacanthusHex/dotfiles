@@ -399,4 +399,22 @@ if executable('typst-lsp')
     }]
 endif
 
+if executable('glslls')
+    lspServers += [{
+        name: 'glsl-language-server',
+        path: 'glslls',
+        args: ['--stdio'],
+        filetype: ['glsl'],
+    }]
+endif
+
+if filereadable('/usr/lib/lua-emmy-language-server/EmmyLua-LS-all.jar')
+    lspServers += [{
+        name: 'EmmyLua',
+        path: 'java',
+        args: ['-cp', '/usr/lib/lua-emmy-language-server/EmmyLua-LS-all.jar', 'com.tang.vscode.MainKt'],
+        filetype: ['glsl'],
+    }]
+endif
+
 call LspAddServer(lspServers)
