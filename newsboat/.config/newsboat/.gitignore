@@ -1,6 +1,0 @@
-# Move to `$XDG_DATA_HOME/newsboat/`
-# https://newsboat.org/releases/2.22.1/docs/newsboat.html#_files
-#cache.db
-#history.search
-#history.cmdline
-#queue

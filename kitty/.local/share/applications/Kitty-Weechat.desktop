@@ -1,6 +1,0 @@
-[Desktop Entry]
-Categories=Chat;Network;InstantMessaging;
-Name=Kitty Weechat
-Icon=weechat
-Exec=kitty -o 'map kitty_mod+e kitten hints --customize-processing weechat_hints.py' -o term=xterm-256color weechat
-Type=Application
