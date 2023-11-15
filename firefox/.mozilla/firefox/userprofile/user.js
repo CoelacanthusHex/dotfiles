@@ -68,6 +68,8 @@ user_pref("network.http.max-persistent-connections-per-server", 16);
 user_pref("layout.css.prefers-color-scheme.content-override", 2);
 /* Enable full mode color management */
 user_pref("gfx.color_management.mode", 1);
+/*  */
+//user_pref("gfx.webrender.compositor.force-enabled", true);
 
 /* Enable DoH */
 user_pref("network.trr.mode", 3);
