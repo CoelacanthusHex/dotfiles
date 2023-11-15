@@ -77,23 +77,6 @@ g:highlightedyank_highlight_in_visual = 0
 jetpack#add('thinca/vim-prettyprint')
 # }}}
 
-# Complete {{{
-#jetpack#add('yegappan/lsp', { name: 'vim9lsp' })
-jetpack#add('prabirshrestha/vim-lsp')
-jetpack#add('mattn/vim-lsp-settings', { depends: ['prabirshrestha/vim-lsp'] })
-jetpack#add('prabirshrestha/asyncomplete-lsp.vim', { depends: ['prabirshrestha/vim-lsp', 'prabirshrestha/asyncomplete.vim'] })
-jetpack#add('thomasfaingnaert/vim-lsp-ultisnips', { depends: ['prabirshrestha/vim-lsp', 'SirVer/ultisnips'] })
-jetpack#add('prabirshrestha/asyncomplete.vim')
-jetpack#add('Shougo/neco-vim')
-jetpack#add('prabirshrestha/asyncomplete-necovim.vim', { depends: ['prabirshrestha/asyncomplete.vim', 'Shougo/neco-vim'] })
-jetpack#add('laixintao/asyncomplete-gitcommit')
-jetpack#add('prabirshrestha/asyncomplete-file.vim')
-jetpack#add('hiterm/asyncomplete-look')
-jetpack#add('prabirshrestha/asyncomplete-buffer.vim')
-#jetpack#add('machakann/asyncomplete-ezfilter.vim')
-#jetpack#add('machakann/asyncomplete-unicodesymbol.vim')
-# }}}
-
 # Language {{{
 jetpack#add('timonv/vim-cargo', { depends: ['cespare/vim-toml'] })
 jetpack#add('egberts/vim-syntax-bind-named')
@@ -124,7 +107,7 @@ jetpack#add('plasticboy/vim-markdown', { on_ft: ['markdown'] })
 jetpack#add('neovimhaskell/haskell-vim', { on_ft: ['haskell'] })
 jetpack#add('lervag/vimtex', { on_ft: ['tex', 'latex'] })
 jetpack#add('chr4/nginx.vim', { on_ft: ['nginx'] })
-jetpack#add('Matt-Deacalion/vim-systemd-syntax', { on_ft: ['systemd', 'networkd'] })
+#jetpack#add('Matt-Deacalion/vim-systemd-syntax', { on_ft: ['systemd', 'networkd'] })
 jetpack#add('nathangrigg/vim-beancount', { on_ft: ['beancount'] })
 jetpack#add('nfnty/vim-nftables', { on_ft: ['nftables'] })
 jetpack#add('udalov/kotlin-vim', { on_ft: ['kotlin'] })

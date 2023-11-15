@@ -51,3 +51,6 @@
 	path = zsh/.config/zsh.d/plugins/zsh-autopair
 	url = https://github.com/hlissner/zsh-autopair.git
 	ignore = untracked
+[submodule "vim/.vim/pack/lsp/opt/vim9lsp"]
+	path = vim/.vim/pack/lsp/opt/vim9lsp
+	url = https://github.com/yegappan/lsp
