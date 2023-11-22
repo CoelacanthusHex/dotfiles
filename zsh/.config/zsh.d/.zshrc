@@ -47,8 +47,8 @@ export MAIL="$HOME/Mail"
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME"/ripgreprc
 export NALI_HOME="$XDG_CONFIG_HOME"/nali
 
-export IPYTHONDIR="$XDG_CONFIG_HOME"/ipython
-export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
+# https://docs.python.org/3/using/cmdline.html#envvar-PYTHONSAFEPATH
+export PYTHONSAFEPATH=1
 
 # replacing ssh-agent with gpg-agent
 # https://wiki.archlinux.org/index.php/GnuPG#SSH_agent
