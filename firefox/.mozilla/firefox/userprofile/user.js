@@ -35,6 +35,9 @@ user_pref("font.default.x-western", "sans-serif");
 /* WARNING: Need xdg-desktop-portal{,-kde} */
 user_pref("widget.use-xdg-desktop-portal.file-picker", 1);
 user_pref("widget.use-xdg-desktop-portal.mime-handler", 1);
+user_pref("widget.use-xdg-desktop-portal.settings", 1);
+user_pref("widget.use-xdg-desktop-portal.location", 1);
+user_pref("widget.use-xdg-desktop-portal.open-uri", 1);
 /* Enable Wayland fractional scale */
 //user_perf("widget.wayland.fractional-scale.enabled", true);
 /* Enable userChrome.css support */
