@@ -20,11 +20,13 @@ _cfg_error() {
 () {
     if (( $+commands[locale] )); then
         setopt localoptions extended_glob
-        local loc=(${(@M)$(locale -a):#*.(utf|UTF)(-|)8})
+        local loc=(${(M)$(locale -a):#*.(utf|UTF)(-|)8})
+        # https://blog.xen0n.name/posts/tinkering/glibc-utf-8-locale-misery/
+        loc=(${(@)loc//utf8/UTF-8})
         (( $#loc )) || return
         export LANG=${loc[(r)(#i)en_GB.UTF(-|)8]:-${loc[(r)(#i)en_US.UTF(-|)8]:-${loc[(r)(#i)C.UTF(-|)8]:-$loc[1]}}}
         export LC_TIME=${loc[(r)(#i)en_DK.UTF(-|)8]:-${loc[(r)(#i)en_GB.UTF(-|)8]:-${loc[(r)(#i)en_US.UTF(-|)8]:-${loc[(r)(#i)C.UTF(-|)8]:-$loc[1]}}}}
-        export LANGUAGE=en_GB:en_US:en
+        export LANGUAGE=en_US:en
     fi
 }
 
