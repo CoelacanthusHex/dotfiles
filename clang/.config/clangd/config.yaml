@@ -1,16 +1,6 @@
-CompileFlags:
-  Compiler: clang++
-  Add: [-Wall, -Wextra, -Weffc++, -pedantic]
-
+InlayHints:
+  Enabled: Yes
 
 Hover:
   # print desugared types
   ShowAKA: Yes
----
-
-If:
-  PathMatch: [.*\.c]
-
-CompileFlags:
-  Compiler: clang
-  Remove: [-Weffc++]
