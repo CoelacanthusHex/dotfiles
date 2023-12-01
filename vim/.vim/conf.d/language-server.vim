@@ -6,12 +6,14 @@ vim9script
 
 packadd vim9lsp
 
+highlight link LspInlayHintsParam Conceal
+highlight link LspInlayHintsType Conceal
+
 var lspOpts = {
     aleSupport: false,
     autoComplete: true,
     autoHighlight: false,
     autoHighlightDiags: false,
-    autoPopulateDiags: false,
     showDiagInBalloon: false,
     showDiagInPopup: false,
     showDiagOnStatusLine: false,
