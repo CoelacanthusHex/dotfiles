@@ -46,7 +46,7 @@ function generate_active_window_string() {
 }
 
 function generate_right_side_string() {
-  echo "#[fg=${PALLETE['white']},bg=${PALLETE['terminal_black']}] %Y-%m-%d #[fg=${PALLETE['white']},bg=${PALLETE['terminal_black']}]|#[fg=${PALLETE['white']},bg=${PALLETE['terminal_black']}] %H:%M #[fg=${PALLETE['cyan']},bg=${PALLETE['terminal_black']}] #[fg=${PALLETE['fg_gutter']},bg=${PALLETE['cyan']}] #H "
+  echo "#[fg=${PALLETE['white']},bg=${PALLETE['terminal_black']}] %F %T %z (%Z)#[fg=${PALLETE['cyan']},bg=${PALLETE['terminal_black']}] #[fg=${PALLETE['fg_gutter']},bg=${PALLETE['cyan']}] #H "
 }
 
 # Left Side
@@ -61,7 +61,7 @@ tmux set-option -g status-right "#{sysstat_cpu} | #{sysstat_mem} | #{sysstat_swa
 
 tmux set-option -g window-status-separator " "
 tmux set-option -g status-left-length 100
-tmux set-option -g status-right-length 130
+tmux set-option -g status-right-length 150
 
 # Prefix Highlight
 tmux set-option -g @prefix_highlight_fg "${PALLETE['white']}"
