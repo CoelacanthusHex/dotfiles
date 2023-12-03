@@ -57,6 +57,10 @@
 [mergetool]
     prompt = false
 
+[pretty]
+    log = %C(bold yellow)%h%Creset - %C(bold brightwhite)%s%Creset %C(red)%d%Creset%n%C(yellow)authoed by%Creset %C(cyan)%aN%Creset %C(white)<%C(italic)%aE%C(no-italic)>%Creset %C(yellow)at%Creset %C(white)%ai%Creset %C(green)(%C(italic)%ar%C(no-italic))%Creset%n%C(yellow)committed by%Creset %C(cyan)%cN%Creset %C(white)<%C(italic)%cE%C(no-italic)>%Creset %C(yellow)at%Creset %C(white)%ci%Creset %C(green)(%C(italic)%cr%C(no-italic))%Creset
+    log-signature = %C(bold yellow)%h%Creset - %C(bold brightwhite)%s%Creset %C(red)%d%Creset%n%C(yellow)authoed by%Creset %C(cyan)%aN%Creset %C(white)<%C(italic)%aE%C(no-italic)>%Creset %C(yellow)at%Creset %C(white)%ai%Creset %C(green)(%C(italic)%ar%C(no-italic))%Creset%n%C(yellow)committed by%Creset %C(cyan)%cN%Creset %C(white)<%C(italic)%cE%C(no-italic)>%Creset %C(yellow)at%Creset %C(white)%ci%Creset %C(green)(%C(italic)%cr%C(no-italic))%Creset%n%GG
+
 [credential]
     helper = /usr/lib/git-core/git-credential-libsecret
 
