@@ -8,17 +8,25 @@ packadd vim9lsp
 
 highlight link LspInlayHintsParam Conceal
 highlight link LspInlayHintsType Conceal
+highlight link LspDiagVirtualTextError LspErrorText
+highlight link LspDiagVirtualTextWarning LspWarningText
+highlight link LspDiagVirtualTextInfo LspInformationText
+highlight link LspDiagVirtualTextHint LspHintText
+highlight link LspDiagInlineError LspErrorHighlight
+highlight link LspDiagInlineWarning LspWarningHighlight
+highlight link LspDiagInlineInfo LspInformationHighlight
+highlight link LspDiagInlineHint LspHintHighlight
 
 var lspOpts = {
     aleSupport: false,
     autoComplete: true,
-    autoHighlight: false,
-    autoHighlightDiags: false,
-    showDiagInBalloon: false,
+    showDiagInBalloon: true,
     showDiagInPopup: false,
     showDiagOnStatusLine: false,
     showDiagWithSign: false,
-    showDiagWithVirtualText: false,
+    showDiagWithVirtualText: true,
+    highlightDiagInline: true,
+    diagVirtualTextAlign: 'after',
     showInlayHints: true,
     showSignature: true,
     snippetSupport: false,
