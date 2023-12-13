@@ -81,6 +81,10 @@ user_pref("network.trr.custom_uri", "https://doh.service.coelacanthus.moe/dns-qu
 /* Enable DNS ECS for DoH */
 user_pref("network.trr.disable-ECS", false);
 
+/* Enable HTTPS-Only mode */
+user_pref("dom.security.https_only_mode", true);
+user_pref("dom.security.https_only_mode_ever_enabled", true);
+
 /*
  * Enable -moz-context-properties for TST because of [1] & [2]
  * Should be removed after [3] fixed
