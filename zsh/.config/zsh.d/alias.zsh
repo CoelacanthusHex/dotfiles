@@ -172,20 +172,20 @@ alias xcp="rsync -aviHAXKhS --one-file-system --partial --info=progress2 --atime
 alias nicest="chrt -i 0 ionice -c3 "
 
 # suffix alias
-if (( $+commands[okular] )) && (( $_in_gui == 1 )); then
+if (( $+commands[okular] )) && [[ ! "$XDG_SESSION_TYPE" =~ "tty|unspecified" ]]; then
     alias -s {pdf,ps,djvu}="okular"
 fi
 # https://askubuntu.com/questions/97542/how-do-i-make-my-terminal-display-graphical-pictures
-if (( $+commands[gwenview] )) && (( $_in_gui == 1 )); then
+if (( $+commands[gwenview] )) && [[ ! "$XDG_SESSION_TYPE" =~ "tty|unspecified" ]]; then
     alias -s {png,jpg,jpeg,gif}="gwenview"
-elif (( $+commands[feh] )) && (( $_in_gui == 1 )); then
+elif (( $+commands[feh] )) && [[ ! "$XDG_SESSION_TYPE" =~ "tty|unspecified" ]]; then
     alias -s {png,jpg,jpeg,gif}="feh"
-elif (( $+commands[display] )) && (( $_in_gui == 1 )); then
+elif (( $+commands[display] )) && [[ ! "$XDG_SESSION_TYPE" =~ "tty|unspecified" ]]; then
     alias -s {png,jpg,jpeg,gif}="display"
 elif (( $+commands[viu] )); then
     # https://github.com/atanunq/viu
     alias -s {png,jpg,jpeg,gif}="viu"
-elif (( $+commands[kitty] )) && (( $_in_kitty == 1 )); then
+elif (( $+commands[kitty] )) && [[ "$TERM" == xterm-kitty ]]; then
     # https://sw.kovidgoyal.net/kitty/kittens/icat/
     alias -s {png,jpg,jpeg,gif}="kitty +kitten icat"
 elif (( $+commands[catimg] )); then
@@ -193,13 +193,13 @@ elif (( $+commands[catimg] )); then
     alias -s {png,jpg,jpeg,gif}="catimg"
 fi
 # https://superuser.com/questions/174522/command-line-svg-and-image-file-viewer-in-linux
-if (( $+commands[gwenview] )) && (( $_in_gui == 1 )); then
+if (( $+commands[gwenview] )) && [[ ! "$XDG_SESSION_TYPE" =~ "tty|unspecified" ]]; then
     alias -s svg="gwenview"
-elif (( $+commands[inkview] )) && (( $_in_gui == 1 )); then
+elif (( $+commands[inkview] )) && [[ ! "$XDG_SESSION_TYPE" =~ "tty|unspecified" ]]; then
     alias -s svg="inkview"
-elif (( $+commands[feh] )) && (( $_in_gui == 1 )); then
+elif (( $+commands[feh] )) && [[ ! "$XDG_SESSION_TYPE" =~ "tty|unspecified" ]]; then
     alias -s svg="feh --conversion-timeout 1"
-elif (( $+commands[display] )) && (( $_in_gui == 1 )); then
+elif (( $+commands[display] )) && [[ ! "$XDG_SESSION_TYPE" =~ "tty|unspecified" ]]; then
     alias -s svg="display"
 fi
 

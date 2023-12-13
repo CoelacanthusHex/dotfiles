@@ -158,9 +158,6 @@ SPROMPT="%B%F{yellow}zsh: correct '%R' be '%r' [nyae]?%f%b "
 
 [[ "$COLORTERM" == (24bit|truecolor) || (( ${terminfo[colors]} == 16777216 )) ]] || zmodload zsh/nearcolor
 
-# Basic LS_COLORS
-(( $_in_gui == 1 )) || [[ -n "$ANDROID_ROOT" ]] || smartcache eval dircolors -b
-
 # Extended LS_COLORS
 smartcache eval dircolors -b "$ZDOTDIR/plugins/LS_COLORS"
 
@@ -253,7 +250,13 @@ alias sudo='sudo '
 alias cgproxy='cgproxy '
 
 # bat using noexpandtab
-(( $+commands[bat] )) && { (( $_in_linux_tty == 1 )) && export BAT_OPTS="--tabs 0 --theme 'Monokai Extended'" || export BAT_OPTS="--tabs 0 --theme 'Monokai Extended' --italic-text=always" }
+if (( $+commands[bat] )); then
+    if [[ "$TERM" == linux ]]; then
+        export BAT_OPTS="--tabs 0 --theme 'Monokai Extended'"
+    else
+        export BAT_OPTS="--tabs 0 --theme 'Monokai Extended' --italic-text=always"
+    fi
+fi
 
 # BSD ls colors.
 export LSCOLORS='exfxcxdxbxGxDxabagacad'

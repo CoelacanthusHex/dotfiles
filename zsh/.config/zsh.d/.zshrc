@@ -84,7 +84,6 @@ disable_pure=1
 disable_async_prompt=0
 
 source $ZDOTDIR/plugins/zsh-smartcache/zsh-smartcache.plugin.zsh
-source $ZDOTDIR/check.zsh
 source $ZDOTDIR/keybind.zsh
 source $ZDOTDIR/config.zsh
 source $ZDOTDIR/prompt.zsh

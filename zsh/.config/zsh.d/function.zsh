@@ -206,7 +206,7 @@ function weather() {
     else
         lang=zh
     fi
-    if (( $_in_linux_tty == 1 )); then
+    if [[ "$TERM" == linux ]]; then
         lang=en
         WTTR_PARAMS+='A'
         WTTR_PARAMS+='T'
