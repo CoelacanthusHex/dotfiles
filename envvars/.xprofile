@@ -131,14 +131,6 @@ elif [[ ! $GDK_DEBUG =~ "portals" ]]; then
     export GDK_DEBUG=portals:$GDK_DEBUG
 fi
 
-# https://wiki.archlinux.org/index.php/LibreOffice#Theme
-# https://github.com/LibreOffice/core/blob/master/vcl/README#L35
-export SAL_USE_VCLPLUGIN=kf5
-
-# using kioclient5 in KDE for electron
-# https://wiki.archlinux.org/index.php/Atom_(text_editor)#Unable_to_delete_files
-export ELECTRON_TRASH=kioclient5
-
 # prevent Wine from changing the filetype associations on my system or adding unwanted menu entries/desktop links
 # https://wiki.winehq.org/FAQ#How_can_I_prevent_Wine_from_changing_the_filetype_associations_on_my_system_or_adding_unwanted_menu_entries.2Fdesktop_links.3F
 # https://t.me/archlinuxcn_group/1914093
