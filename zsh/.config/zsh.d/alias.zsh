@@ -139,7 +139,9 @@ alias blog-update='cd ~/blog && git add -A && git commit -m "Update Site @$(date
 alias .="source"
 alias bc="bc -lq"
 
-if (( $+commands[curl] )) && (( $+commands[jq] )); then # cURL and jq
+if (( $+commands[curl] )) && (( $+commands[jaq] )); then # cURL and jaq
+    alias myip-http-detail='curl -s -L -H "Accept: application/json" "https://ipinfo.io/${1:-}" | jq "del(.readme, .loc, .postal)"'
+elif (( $+commands[curl] )) && (( $+commands[jq] )); then # cURL and jq
     alias myip-http-detail='curl -s -L -H "Accept: application/json" "https://ipinfo.io/${1:-}" | jq "del(.readme, .loc, .postal)"'
 elif (( $+commands[xh] )); then  # HTTPie written in Rust
     alias myip-http-detail="xh --body https://ipinfo.io/ Accept:application/json"
