@@ -80,28 +80,51 @@ function extract() {
         fi
 
         success=0
-        extract_dir="${1:t:r}"
+        if (( $+2 )); then
+            extract_dir="$2"
+        else
+            extract_dir="${1:t:r}"
+        fi
         file="$1"
         full_path="${1:A}"
         case "${file:l}" in
-            (*.tar.gz|*.tgz) (( $+commands[pigz] )) && { pigz -dc "$file" | tar xv } || tar zxvf "$file" ;;
-            (*.tar.bz2|*.tbz|*.tbz2) tar xvjf "$file" ;;
-            (*.tar.xz|*.txz)
-                tar --xz --help &> /dev/null \
-                && tar --xz -xvf "$file" \
-                || xzcat "$file" | tar xvf - ;;
-            (*.tar.zma|*.tlz)
-                tar --lzma --help &> /dev/null \
-                && tar --lzma -xvf "$file" \
-                || lzcat "$file" | tar xvf - ;;
-            (*.tar.zst|*.tzst)
-                tar --zstd --help &> /dev/null \
-                && tar --zstd -xvf "$file" \
-                || zstdcat "$file" | tar xvf - ;;
-            (*.tar.lz) (( $+commands[lzip] )) && tar xvf "$file" ;;
-            (*.tar.lz4) lz4 -c -d "$file" | tar xvf - ;;
-            (*.tar.lrz) (( $+commands[lrzuntar] )) && lrzuntar "$file" ;;
-            (*.tar|*.cbt) tar xvf "$file" ;;
+            (*.tar.gz|*.tgz) (( $+commands[pigz] )) && { pigz -dc "$file" | tar -xv - -C "$extract_dir" } || tar -axvf "$file" -C "$extract_dir" ;;
+            (*.tar.bz2|*.tbz|*.tbz2) ;&
+            (*.tar.xz|*.txz) ;&
+            (*.tar.zma|*.tlz) ;&
+            (*.tar.zst|*.tzst) tar -axvf "$file" -C "$extract_dir" ;;
+            (*.tar.lz) (( $+commands[lzip] )) && tar -xvf "$file" -C "$extract_dir" ;;
+            (*.tar.lz4) lz4 -c -d "$file" | tar -xvf - -C "$extract_dir" ;;
+            (*.tar.lrz) (( $+commands[lrzuntar] )) && lrzuntar "$file" -O "$extract_dir" ;;
+            (*.tar|*.cbt) tar -xvf "$file" -C "$extract_dir" ;;
+
+            (*.zip|*.war|*.jar|*.ear|*.sublime-package|*.ipa|*.ipsw|*.xpi|*.apk|*.aar|*.whl|*.cbz|*.epub|*.maff) unzip "$file" -d "$extract_dir" ;;
+            (*.rar|*.cbr) unrar x "$file" "$extract_dir" ;;
+            (*.rpm)
+                command mkdir "$extract_dir"
+                builtin pushd -q "$extract_dir"
+                    command rpm2cpio "$full_path" | cpio --quiet -id
+                popd
+            ;;
+            (*.7z|*.chm|*cb7) 7za x "$file" ;;
+            (*.deb)
+                command mkdir -p "$extract_dir/control" "$extract_dir/data"
+                builtin pushd -q "$extract_dir"
+                    command ar vx "$full_path" > /dev/null
+                    builtin pushd -q control
+                        tar xzvf ../control.tar.gz
+                    builtin popd
+                    builtin pushd -q data
+                        extract ../data.tar.*
+                    builtin popd
+                    command rm *.tar.* debian-binary
+                builtin popd
+            ;;
+            (*.cab|*.exe) cabextract -d "$extract_dir" "$file" ;;
+            (*.cpio) cpio -idMvF "$file" ;;
+            (*.cba|*.ace) unace x "$file" ;;
+            (*.arc) arc e "$file" ;;
+
             (*.gz) (( $+commands[pigz] )) && pigz -dk "$file" || gunzip -k "$file" ;;
             (*.bz2) bunzip2 "$file" ;;
             (*.xz) unxz "$file" ;;
@@ -109,25 +132,10 @@ function extract() {
             (*.lz4) lz4 -d "$file" ;;
             (*.lzma) unlzma "$file" ;;
             (*.z|*.Z) uncompress "$file" ;;
-            (*.zip|*.war|*.jar|*.ear|*.sublime-package|*.ipa|*.ipsw|*.xpi|*.apk|*.aar|*.whl|*.cbz|*.epub|*.maff) unzip "$file" -d $extract_dir ;;
-            (*.rar|*.cbr) unrar x -ad "$file" ;;
-            (*.rpm) command mkdir "$extract_dir" && builtin cd -q "$extract_dir" \
-                && rpm2cpio "$full_path" | cpio --quiet -id ;;
-            (*.7z|*.chm|*cb7) 7za x "$file" ;;
-            (*.deb)
-                command mkdir -p "$extract_dir/control" "$extract_dir/data"
-                builtin cd -q "$extract_dir"; ar vx "$full_path" > /dev/null
-                builtin cd -q control; tar xzvf ../control.tar.gz
-                builtin cd -q ../data; extract ../data.tar.*
-                builtin cd -q ..; command rm *.tar.* debian-binary
-            ;;
-            (*.zst) unzstd "$file" ;;
-            (*.cab|*.exe) cabextract -d "$extract_dir" "$file" ;;
-            (*.cpio) cpio -idMvF "$file" ;;
-            (*.cba|*.ace) unace x "$file" ;;
+            (*.zst|*.zstd) unzstd "$file" ;;
             (*.zpaq) zpaq x "$file" ;;
-            (*.arc) arc e "$file" ;;
             (*.zlib)  zlib-flate -uncompress < "$file" > "${file%.*zlib}" ;;
+
             (*)
                 echo "extract: '$1' cannot be extracted" >&2
                 success=1
