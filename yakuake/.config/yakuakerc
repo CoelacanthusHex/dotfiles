@@ -1,25 +1,16 @@
 [Appearance]
 BackgroundColorOpacity=20
 Blur=true
-Skin=materia-dark
-SkinInstalledWithKns=true
 Translucency=true
 
 [Desktop Entry]
-DefaultProfile=001.profile
+DefaultProfile=Coelacanthus.profile
 
 [Dialogs]
 FirstRun=false
 
-[DownloadDialog Settings]
-Height 1080=494
-Width 1920=700
-
 [Favorite Profiles]
-Favorites=001.profile
-
-[KFileDialog Settings]
-detailViewIconSize=16
+Favorites=Coelacanthus.profile
 
 [Window]
 DynamicTabTitles=true

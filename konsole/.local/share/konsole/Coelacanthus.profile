@@ -2,6 +2,7 @@
 ColorScheme=Coelacanthus
 Font=Monospace,11,-1,5,50,0,0,0,0,0
 UseFontLineChararacters=false
+WordModeBrahmic=true
 
 [Cursor Options]
 CursorShape=1
@@ -9,9 +10,9 @@ CustomCursorColor=255,255,255
 UseCustomCursorColor=true
 
 [General]
-Command=/bin/zsh
+Command=/usr/bin/zsh
 LocalTabTitleFormat=%w
-Name=001
+Name=Coelacanthus
 Parent=FALLBACK/
 RemoteTabTitleFormat=%w
 
@@ -19,7 +20,7 @@ RemoteTabTitleFormat=%w
 AllowEscapedLinks=true
 AutoCopySelectedText=false
 EscapedLinksSchema=http://;https://;file://;fugitive://
-OpenLinksByDirectClickEnabled=true
+OpenLinksByDirectClickEnabled=false
 UnderlineFilesEnabled=false
 UnderlineLinksEnabled=true
 
@@ -28,5 +29,7 @@ HistorySize=100000
 
 [Terminal Features]
 BellMode=0
+BidiLineLTR=false
+BlinkingCursorEnabled=false
 FlowControlEnabled=false
 ReverseUrlHints=false
