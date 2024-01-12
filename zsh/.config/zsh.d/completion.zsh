@@ -155,7 +155,7 @@ zstyle ':completion:all-matches:*' old-matches true
 zstyle ':completion:all-matches:*' insert true
 zstyle ':completion:all-matches:*' file-patterns '%p:globbed-files' '*(#q-/):directories' '*:all-files'
 zle -C all-matches complete-word _generic
-bindkey "$_key[Ctrl+X]$_key[I]" all-matches
+bindkey "$key[Ctrl+X]$key[I]" all-matches
 
 ####### Command Specified Configuration #######
 

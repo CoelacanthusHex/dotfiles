@@ -71,7 +71,7 @@ autoload -Uz zargs
 bindkey -e
 autoload -U edit-command-line
 zle -N edit-command-line
-bindkey "$_key[Ctrl+Alt+X]$_key[Ctrl+Alt+E]" edit-command-line
+bindkey "$key[Ctrl-Alt-X]$key[Ctrl-Alt-E]" edit-command-line
 
 # set end of file mark
 export PROMPT_EOL_MARK="%B%F{red}🔚"
@@ -132,7 +132,7 @@ autoload -Uz bracketed-paste-url-magic
 zle -N bracketed-paste bracketed-paste-url-magic
 
 # better than copy-prev-word
-bindkey "$_key[Ctrl+Alt+-]" copy-prev-shell-word
+bindkey "$key[Ctrl-Alt--]" copy-prev-shell-word
 
 autoload -Uz colors && colors
 
@@ -154,7 +154,8 @@ autoload -Uz colors && colors
 
 SPROMPT="%B%F{yellow}zsh: correct '%R' be '%r' [nyae]?%f%b "
 
-[[ "$COLORTERM" == (24bit|truecolor) || (( ${terminfo[colors]} == 16777216 )) ]] || zmodload zsh/nearcolor
+# FIXME: $COLORTERM=kmscon is hack for KMSCON
+[[ "$COLORTERM" == (24bit|truecolor|kmscon) || (( ${terminfo[colors]} == 16777216 )) ]] || zmodload zsh/nearcolor
 
 # Extended LS_COLORS
 smartcache eval dircolors -b "$ZDOTDIR/plugins/LS_COLORS"
@@ -181,7 +182,7 @@ function sudo-command-line() {
     zle end-of-line
 }
 zle -N sudo-command-line
-bindkey "$_key[Esc]$_key[Esc]" sudo-command-line
+bindkey "$key[Esc]$key[Esc]" sudo-command-line
 
 # https://github.com/momo-lab/zsh-replace-multiple-dots/blob/master/replace-multiple-dots.plugin.zsh
 function replace_multiple_dots() {
@@ -206,7 +207,7 @@ function _clear-screen() {
     zle .reset-prompt
 }
 zle -N _clear-screen
-bindkey "$_key[Ctrl+L]" _clear-screen
+bindkey "$key[Ctrl-L]" _clear-screen
 
 function foreground-last-job () {
     if (( ${#jobstates} )); then
@@ -220,9 +221,9 @@ function foreground-last-job () {
 }
 zle -N foreground-last-job
 
-bindkey "$_key[Ctrl+Z]" foreground-last-job
-bindkey -M emacs "$_key[Ctrl+Z]" foreground-last-job
-bindkey -M viins "$_key[Ctrl+Z]" foreground-last-job
+bindkey "$key[Ctrl-Z]" foreground-last-job
+bindkey -M emacs "$key[Ctrl-Z]" foreground-last-job
+bindkey -M viins "$key[Ctrl-Z]" foreground-last-job
 
 # add a command line to the shells history without executing it
 function commit-to-history () {
@@ -234,13 +235,11 @@ zle -N commit-to-history
 # bindkey -M emacs "^x^h" commit-to-history
 
 # [Space] Do history expansion
-bindkey "$_key[Space]"  magic-space
+bindkey "$key[Space]"  magic-space
 # [Ctrl-Z] Undo
-bindkey "$_key[Ctrl+Z]" undo
+bindkey "$key[Ctrl-Z]" undo
 # [Ctrl-Y] Redo
-bindkey "$_key[Ctrl+Y]" redo
-# [Ctrl-N] Navigate by xplr
-bindkey -s "$_key[Ctrl+N]" '^Q cd -- ${$(xplr):-.} \n'
+bindkey "$key[Ctrl-Y]" redo
 
 # Enable aliases to be sudo’ed
 # http://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo
