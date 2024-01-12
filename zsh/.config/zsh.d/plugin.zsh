@@ -19,6 +19,11 @@ for _zsh_plugin in $_enabled_plugins[@]; do
     [[ ! -r "$ZDOTDIR/plugins/$_zsh_plugin.plugin.zsh" ]] || source $ZDOTDIR/plugins/$_zsh_plugin.plugin.zsh
 done
 
+# Fast syntax highlighting
+export FAST_HIGHLIGHT[use_async]=1
+# I want to disable HEX color string highlight, but it seems no way...
+# https://github.com/zdharma-continuum/fast-syntax-highlighting/blob/cf318e06a9b7c9f2219d78f41b46fa6e06011fd9/fast-highlight#L1152
+
 ### Autosuggest Setting
 # Disable auto set keybind when precmd
 export ZSH_AUTOSUGGEST_MANUAL_REBIND=true
