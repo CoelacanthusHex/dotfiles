@@ -27,6 +27,7 @@ var lspOpts = {
     showDiagWithVirtualText: false,
     highlightDiagInline: false,
     diagVirtualTextAlign: 'after',
+    semanticHighlight: true,
     showInlayHints: true,
     showSignature: true,
     snippetSupport: false,
@@ -163,6 +164,11 @@ if executable('rust-analyzer')
                 },
                 parameterHints: {
                     enable: true
+                },
+                chainingHints: {
+                    # Disable because vim9lsp doesn't support yet
+                    # https://github.com/yegappan/lsp/issues/417
+                    enable: false
                 }
             },
         }
