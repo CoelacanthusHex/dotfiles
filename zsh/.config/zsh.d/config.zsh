@@ -77,17 +77,15 @@ bindkey "$_key[Ctrl+Alt+X]$_key[Ctrl+Alt+E]" edit-command-line
 export PROMPT_EOL_MARK="%B%F{red}🔚"
 
 # Help
-unalias run-help 2> /dev/null
-autoload -Uz run-help
-alias help=run-help
-
-autoload -Uz run-help-git
-autoload -Uz run-help-ip
-autoload -Uz run-help-openssl
-autoload -Uz run-help-p4
-autoload -Uz run-help-sudo
-autoload -Uz run-help-svk
-autoload -Uz run-help-svn
+() {
+  setopt localoptions nullglob
+  local p name
+  for p in $fpath; do
+    for name in $p/run-help-*; do
+      autoload -Uz $name:t
+    done
+  done
+}
 
 # Terminal Title
 autoload -Uz add-zsh-hook
