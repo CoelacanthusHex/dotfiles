@@ -154,8 +154,8 @@ autoload -Uz colors && colors
 
 SPROMPT="%B%F{yellow}zsh: correct '%R' be '%r' [nyae]?%f%b "
 
-# FIXME: $COLORTERM=kmscon is hack for KMSCON
-[[ "$COLORTERM" == (24bit|truecolor|kmscon) || (( ${terminfo[colors]} == 16777216 )) ]] || zmodload zsh/nearcolor
+# NOTE: $COLORTERM=kmscon in KMSCON, so maybe $+COLORTERM is enough
+[[ (( $+COLORTERM )) || (( ${terminfo[colors]} == 16777216 )) ]] || zmodload zsh/nearcolor
 
 # Extended LS_COLORS
 smartcache eval dircolors -b "$ZDOTDIR/plugins/LS_COLORS"
