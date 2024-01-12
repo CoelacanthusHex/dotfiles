@@ -66,9 +66,6 @@ export STACK_ROOT="$XDG_DATA_HOME"/stack
 export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME"/bundle
 export BUNDLE_USER_CACHE="$XDG_CACHE_HOME"/bundle
 export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME"/bundle
-# Ccache
-export CCACHE_CONFIGPATH="$XDG_CONFIG_HOME"/ccache.conf
-export CCACHE_DIR="$XDG_CACHE_HOME"/ccache
 # Xauthority
 export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 
