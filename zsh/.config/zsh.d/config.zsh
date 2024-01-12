@@ -247,14 +247,15 @@ bindkey -s "$_key[Ctrl+N]" '^Q cd -- ${$(xplr):-.} \n'
 # Enable aliases to be sudo’ed
 # http://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo
 alias sudo='sudo '
+alias sudo='doas '
 alias cgproxy='cgproxy '
 
 # bat using noexpandtab
 if (( $+commands[bat] )); then
-    if [[ "$TERM" == linux ]]; then
-        export BAT_OPTS="--tabs 0 --theme 'Monokai Extended'"
-    else
+    if (( $+terminfo[sitm] )); then
         export BAT_OPTS="--tabs 0 --theme 'Monokai Extended' --italic-text=always"
+    else
+        export BAT_OPTS="--tabs 0 --theme 'Monokai Extended'"
     fi
 fi
 

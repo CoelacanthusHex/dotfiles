@@ -1,5 +1,7 @@
 # create a zkbd compatible hash;
 
+# https://github.com/romkatv/zsh4humans/issues/7
+
 autoload -Uz terminfo
 
 # https://github.com/romkatv/zsh4humans/blob/fd101ce997d8434668af517cc159e3ab42c0ff30/fn/-z4h-init-zle#L196
