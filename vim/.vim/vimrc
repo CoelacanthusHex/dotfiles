@@ -92,7 +92,9 @@ else
     packadd onedark
     colorscheme onedark
     set background=dark
-    g:onedark_terminal_italics = 1
+    if !empty(&t_ZH)
+        g:onedark_terminal_italics = 1
+    endif
 
     g:airline_symbols_ascii = 0
     g:airline_theme = 'onedark'
