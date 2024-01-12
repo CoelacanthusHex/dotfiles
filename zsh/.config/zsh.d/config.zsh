@@ -247,7 +247,6 @@ bindkey -s "$_key[Ctrl+N]" '^Q cd -- ${$(xplr):-.} \n'
 # Enable aliases to be sudo’ed
 # http://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo
 alias sudo='sudo '
-alias sudo='doas '
 alias cgproxy='cgproxy '
 
 # bat using noexpandtab
