@@ -128,6 +128,14 @@ elif [[ ! $GDK_DEBUG =~ "portals" ]]; then
     export GDK_DEBUG=portals:$GDK_DEBUG
 fi
 
+# Enable fractional scale for GTK4
+# FIXME: remove after official support
+if [[ -z $GDK_DEBUG ]]; then
+    export GDK_DEBUG=gl-fractional
+elif [[ ! $GDK_DEBUG =~ "gl-fractional" ]]; then
+    export GDK_DEBUG=gl-fractional:$GDK_DEBUG
+fi
+
 # prevent Wine from changing the filetype associations on my system or adding unwanted menu entries/desktop links
 # https://wiki.winehq.org/FAQ#How_can_I_prevent_Wine_from_changing_the_filetype_associations_on_my_system_or_adding_unwanted_menu_entries.2Fdesktop_links.3F
 # https://t.me/archlinuxcn_group/1914093
