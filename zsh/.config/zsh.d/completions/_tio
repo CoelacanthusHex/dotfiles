@@ -1,0 +1,103 @@
+#compdef tio
+
+local arguments
+
+function _tio_databits() {
+    local expl
+    local -a widths
+    widths=( 5 6 7 8 )
+    _wanted data-bits expl 'data bits' compadd -a $expl -- waidths
+}
+
+function _tio_stopbits() {
+    local expl
+    local -a widths
+    widths=( 1 2 )
+    _wanted data-bits expl 'stop bits' compadd -a $expl -- waidths
+}
+
+function _tio_flowcontrol() {
+    local expl
+    local -a modes
+    modes=( hard soft none )
+    _wanted flow-ctrl-mode expl 'flow control mode' compadd -a $expl -- modes
+}
+
+function _tio_paritymode() {
+    local expl
+    local -a modes
+    modes=( odd even mark space none )
+    _wanted parity-mode expl 'parity mode' compadd -a $expl -- modes
+}
+
+function _tio_textcolor() {
+    local expl
+    local -a modes
+    modes=( none bold list {0..255} )
+    _wanted text-color-mode expl 'text color' compadd -a $expl -- modes
+}
+
+function _tio_devices() {
+    local expl
+    local -a devices
+    devices=(/dev/tty(S|ACM|USB)[0-9]*(#q-%c) /dev/serial/by-id/*(#q-%c))
+    _wanted serial-device expl 'serial device' compadd -a $expl -- devices
+}
+
+function _tio_map() {
+    local expl
+    local -a maps
+    maps=(ICRNL IGNCR INLCR INLCRNL OCRNL ODELBS ONLCRNL OLTU MSB2LSB)
+    _sequence -s ',' _wanted character-map expl 'character map' compadd -a $expl -- maps
+}
+
+function _tio_socket() {
+    if compset -P unix:; then
+        _files -g '*(=)'
+    elif compset -P inet:; then
+        _numbers -u ms -m 65535 -l 0
+    elif compset -P inet6:; then
+        _numbers -u ms -m 65535 -l 0
+    fi
+}
+
+function _tio() {
+
+  local -a args
+  args=(
+    {-b,--baudrate}'[baud rate (default: 115200)]:baud rate:_baudrates'
+    {-d,--databits}'[Data bits (default: 8)]:data bits:_tio_databits'
+    {-f,--flow}'[flow control (default: none)]:flow control mode:_tio_flowcontrol'
+    {-s,--stopbits}'[Stop bits (default: 1)]:stop bits:_tio_stopbits'
+    {-p,--parity}'[parity (default: none)]:parity mode:_tio_paritymode'
+    {-o,--output-delay}'[output character delay (default: 0)]:output charcater delay:_numbers -u ms'
+    {-O,--output-line-delay}'[output line delay (default: 0)]:output line delay:_numbers -u ms'
+    '--line-pulse-duration[set line pulse duration]:line pulse duration:_numbers -u ms'
+    {-n,--no-autoconnect}'[disable automatic connect]'
+    {-e,--local-echo}'[enable local echo]'
+    {-t,--timestamp}'[enable line timestamp]'
+    '--timestamp-format[set timestamp format (default: 24hour)]:timestamp format:(24hour 24hour-start 24hour-delta iso8601)'
+    {-L,--list-devices}'[list available serial devices by ID]'
+    {-l,--log}'[enable log to file]'
+    '--log-file[set log filename]:log file name:_files'
+    '--log-append[append to log file]'
+    '--log-strip[strip control characters and escape sequences]'
+    {-m,--map}'[map characters]:character map:_tio_map'
+    {-c,--color}'[Colorize tio text (default: bold)]:text color:_tio_textcolor'
+    {-S,--socket}'[redirect I/O to socket]:socket:_tio_socket'
+    {-x,--hexadecimal}'[enable hexadecimal mode]'
+    {-r,--response-wait}'[wait for line response then quit]'
+    '--response-timeout[response timeout (default: 100)]'
+    '--rs-485[enable RS-485 mode]'
+    '--rs-485-config[set RS-485 configuration]'
+    '--alert[alert on connect/disconnect (default: none)]:(none bell blink)'
+    '--mute[mute tio]'
+    {-v,--version}'[display version]'
+    {-h,--help}'[display help]'
+    '*:serial device:_tio_devices'
+  )
+
+  _arguments -C : "${args[@]}"
+}
+
+_tio "$@"

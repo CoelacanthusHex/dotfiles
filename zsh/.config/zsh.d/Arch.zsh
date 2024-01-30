@@ -57,8 +57,5 @@ function get-felix-yan-rate() {
     echo "$(echo "scale=1; 100 * $(pacman -Qi $(pacman -Qq) | grep 'Felix Yan' | wc -l) / $(pacman -Qq | wc -l)" | bc) %"
 }
 
-# Arch Linux rename sz(1) and rz(1) to avoid name conflict with lrzip
-alias picocom='picocom --send-cmd="lrzsz-sz -vv" --receive-cmd="lrzsz-rz -vv"'
-
 # vim: ft=zsh sw=4 ts=8 sts=4 et:
 # kate: space-indent on; indent-width 4;
