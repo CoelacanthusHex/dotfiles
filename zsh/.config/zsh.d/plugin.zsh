@@ -1,6 +1,5 @@
 
 _enabled_plugins=(
-    command-not-found
     git
     better-man-pages
     zsh-autopair/zsh-autopair
