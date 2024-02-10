@@ -241,6 +241,11 @@ bindkey "$key[Ctrl-Z]" undo
 # [Ctrl-Y] Redo
 bindkey "$key[Ctrl-Y]" redo
 
+# [Ctrl-X Ctrl-E] edit command line
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "$key[Ctrl-X]$key[Ctrl-E]" edit-command-line
+
 # Enable aliases to be sudo’ed
 # http://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo
 alias sudo='sudo '
