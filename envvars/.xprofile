@@ -146,8 +146,13 @@ export BROWSER=/usr/bin/xdg-open
 export MAIL="$HOME/Mail"
 
 # HiDPI
+# since 5.6
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
-export PLASMA_USE_QT_SCALING=1
+# since 5.14
+export QT_ENABLE_HIGHDPI_SCALING=1
+
+# Qt's text-input-v3 support is broken
+export QT_WAYLAND_TEXT_INPUT_PROTOCOL=zwp_text_input_v2
 
 export TELEGRAM_DESKTOP_UI_FONT_BOLD_STYLE=Bold
 
