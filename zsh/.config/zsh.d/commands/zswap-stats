@@ -1,0 +1,89 @@
+#!/bin/bash
+
+# System page size
+page_size=$(getconf PAGESIZE)
+
+# Location of zswap settings
+settings_dir="/sys/module/zswap/parameters"
+
+# Location of zswap statistics
+statistics_dir="/sys/kernel/debug/zswap"
+
+# Array of zswap settings
+settings=("accept_threshold_percent" "compressor" "enabled" "exclusive_loads" "max_pool_percent" "non_same_filled_pages_enabled" "same_filled_pages_enabled" "zpool")
+
+# Array of zswap statistics
+statistics=("duplicate_entry" "pool_limit_hit" "pool_total_size" "reject_alloc_fail" "reject_compress_fail" "reject_compress_poor" "reject_kmemcache_fail" "reject_reclaim_fail" "same_filled_pages" "stored_pages" "written_back_pages")
+
+if [[ ! -r "$statistics_dir" ]]; then
+	echo "Read $statistics_dir error: Operation not permitted!"
+	exit 1
+fi
+
+# Declare an associative array to store zswap data
+declare -A zswap_data
+
+# Read zswap settings
+for setting in "${settings[@]}"; do
+	read -r value < "$settings_dir/$setting"
+	zswap_data["$setting"]=$value
+done
+
+# Read zswap statistics
+for stat in "${statistics[@]}"; do
+	read -r value < "$statistics_dir/$stat"
+	zswap_data["$stat"]=$value
+done
+
+# Calculate the total size and compressed size in MiB
+total_size=$((zswap_data["stored_pages"] * page_size / (1024 * 1024) ))
+compressed_size=$((zswap_data["pool_total_size"] / (1024 * 1024) ))
+
+# Calculate the compression ratio
+if [ "${zswap_data["stored_pages"]}" -ne 0 ]; then
+	compression_ratio=$(bc <<< "scale=2; (${zswap_data["stored_pages"]} * $page_size / ${zswap_data["pool_total_size"]})")
+else
+	compression_ratio=0
+fi
+
+
+while true; do
+	# Output the zswap settings
+	echo "=========="
+	echo " SETTINGS"
+	echo "=========="
+	for key in "${settings[@]}"; do
+		# Get the value from the associative array
+		value=${zswap_data["$key"]}
+
+		# Output the key (name) and value in columns
+		printf "%s: %s\n" "$key" "$value"
+	done
+	
+	echo ':'
+
+	# Output the zswap data
+	echo "=========="
+	echo "  VALUES"
+	echo "=========="
+	for key in "${statistics[@]}"; do
+		# Get the value from the associative array
+		value=${zswap_data["$key"]}
+
+		# Output the key (name) and value in columns
+		printf "%s: %s\n" "$key" "$value"
+	done
+
+	echo ':'
+
+	# Output the total size, compressed size, and compression ratio
+	echo "=========="
+	echo " SUMMARY"
+	echo "=========="
+	printf "%s: %s: %s\n"   "Total Size"        "$total_size"	"MiB"
+	printf "%s: %s: %s\n"	"Compressed Size"   "$compressed_size"	"MiB"
+	printf "%s: %s\n"	"Compression Ratio" "$compression_ratio"
+
+	break
+done | column -t -s':'
+
