@@ -26,7 +26,8 @@ _cfg_error() {
         (( $#loc )) || return
         export LANG=${loc[(r)(#i)en_GB.UTF(-|)8]:-${loc[(r)(#i)en_US.UTF(-|)8]:-${loc[(r)(#i)C.UTF(-|)8]:-$loc[1]}}}
         export LC_TIME=${loc[(r)(#i)en_DK.UTF(-|)8]:-${loc[(r)(#i)en_GB.UTF(-|)8]:-${loc[(r)(#i)en_US.UTF(-|)8]:-${loc[(r)(#i)C.UTF(-|)8]:-$loc[1]}}}}
-        export LANGUAGE=en_US:en
+        # https://wiki.archlinux.org/title/Locale#LANGUAGE:_fallback_locales
+        export LANGUAGE=en_US:en:C
     fi
 }
 
