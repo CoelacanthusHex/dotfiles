@@ -76,13 +76,6 @@ user_pref("gfx.color_management.mode", 1);
 /*  */
 //user_pref("gfx.webrender.compositor.force-enabled", true);
 
-/* Enable DoH */
-user_pref("network.trr.mode", 3);
-user_pref("network.trr.uri", "https://doh.service.coelacanthus.moe/dns-query");
-user_pref("network.trr.custom_uri", "https://doh.service.coelacanthus.moe/dns-query");
-/* Enable DNS ECS for DoH */
-user_pref("network.trr.disable-ECS", false);
-
 /* Enable HTTPS-Only mode */
 user_pref("dom.security.https_only_mode", true);
 user_pref("dom.security.https_only_mode_ever_enabled", true);
