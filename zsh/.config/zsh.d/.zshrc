@@ -51,7 +51,8 @@ export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME"/ripgreprc
 export NALI_HOME="$XDG_CONFIG_HOME"/nali
 
 # https://docs.python.org/3/using/cmdline.html#envvar-PYTHONSAFEPATH
-export PYTHONSAFEPATH=1
+# FIXME: disable for too many things broken
+#export PYTHONSAFEPATH=1
 
 # replacing ssh-agent with gpg-agent
 # https://wiki.archlinux.org/index.php/GnuPG#SSH_agent
