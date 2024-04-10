@@ -2,9 +2,9 @@
 
 # pacman aliases and functions
 function Syu() {
-    sudo pacman-syncdb  pacman -Sy && sudo pacman -Su $@ && sync
+    sudo pacman -Syu $@ && sync
     pacman -Qtdq | ifne sudo pacman -Rcs - && sync
-    sudo pacman-syncdb  pacman -Fy && sync && rehash
+    sudo pacman -Fy && sync && rehash
 }
 
 # https://github.com/farseerfc/dotfiles/blob/master/zsh/.bashrc#L100-L123
