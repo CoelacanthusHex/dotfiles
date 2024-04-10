@@ -168,5 +168,8 @@ export GOOGLE_DEFAULT_CLIENT_SECRET="OTJgUOQcT7lO7GsGZq2G4IlT"
 # https://github.com/vim/vim/pull/9639
 [[ $XDG_SESSION_TYPE != wayland ]] && export GVIM_ENABLE_WAYLAND=1
 
+export NOUVEAU_USE_ZINK=1
+export NVK_I_WANT_A_BROKEN_VULKAN_DRIVER=1
+
 # vim: ft=bash sw=4 ts=8 sts=4 et:
 # kate: space-indent on; indent-width 4; syntax bash;
