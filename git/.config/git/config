@@ -75,7 +75,7 @@
 [include]
     path = ~/.config/git/aliases.config
 
-[includeIf "gitdir:~/project/aosc/**"]
+[includeIf "gitdir:~/project/AOSC/**"]
     path = ~/.config/git/aosc.config
 
 [includeIf "gitdir:~/project/qt/**"]
