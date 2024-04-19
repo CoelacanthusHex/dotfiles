@@ -54,3 +54,6 @@
 [submodule "vim/.vim/pack/lsp/opt/vim9lsp"]
 	path = vim/.vim/pack/lsp/opt/vim9lsp
 	url = https://github.com/yegappan/lsp
+[submodule "kate/.local/share/org.kde.syntax-highlighting/themes/catppuccin"]
+	path = kate/.local/share/org.kde.syntax-highlighting/themes/catppuccin
+	url = https://github.com/catppuccin/ksyntaxhighlighting.git
