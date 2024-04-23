@@ -1,0 +1,6 @@
+Zsh:
+* Use atuin
+    * https://blog.lilydjwg.me/2024/1/13/atuin.216770.html
+    * https://github.com/lilydjwg/dotzsh/blob/master/plugins/atuin.zsh
+    * https://www.aloxaf.com/2024/02/manage_zsh_shell_with_atuin
+    * https://github.com/Aloxaf/dotfiles/blob/master/zsh/.config/zsh/plugins/atuin/atuin.plugin.zsh
