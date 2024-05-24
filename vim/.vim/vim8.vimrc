@@ -127,7 +127,6 @@ if has("gui_running")
     set lines=38
     set cursorline
 elseif has("unix")
-    set ambiwidth=single
     if $COLORTERM == 'truecolor'
         set cursorline
         set termguicolors
@@ -401,8 +400,6 @@ endtry
 
 " 延迟绘制（提升性能）
 set lazyredraw
-
-set ambiwidth=double
 
 " 支持显示的最大组合字符数目（不影响编辑），仅用于 encoding 为 utf-8
 " 缺省值为2，对大多数语言足矣，希伯来语需要4，最大值为6
