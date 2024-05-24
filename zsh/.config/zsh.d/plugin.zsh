@@ -8,9 +8,7 @@ _enabled_plugins=(
     zsh-autosuggestions/zsh-autosuggestions
     zsh-history-substring-search/zsh-history-substring-search
     zsh-edit/zsh-edit
-    #fzf-tab/fzf-tab
     cpan-completion # https://github.com/MenkeTechnologies/zsh-cpan-completion
-    #zsh-async/async
     nix-zsh-completions/nix
     dotenv
 )

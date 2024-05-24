@@ -4,8 +4,6 @@ vim9script
 
 # Language Server Configuration
 
-packadd vim9lsp
-
 highlight link LspInlayHintsParam Conceal
 highlight link LspInlayHintsType Conceal
 highlight link LspDiagVirtualTextError LspErrorText
@@ -24,9 +22,9 @@ var lspOpts = {
     showDiagInPopup: false,
     showDiagOnStatusLine: false,
     showDiagWithSign: false,
-    showDiagWithVirtualText: false,
-    highlightDiagInline: false,
-    diagVirtualTextAlign: 'after',
+    showDiagWithVirtualText: true,
+    highlightDiagInline: true,
+    diagVirtualTextAlign: 'above',
     semanticHighlight: true,
     showInlayHints: true,
     showSignature: true,
@@ -36,7 +34,7 @@ var lspOpts = {
     useQuickfixForLocations: true,
     useBufferCompletion: true,
 }
-call LspOptionsSet(lspOpts)
+autocmd User LspSetup call LspOptionsSet(lspOpts)
 
 var lspServers: list<dict<any>> = []
 
@@ -54,16 +52,19 @@ if executable('clangd')
         name: 'clangd',
         filetype: ['c', 'cpp'],
         path: 'clangd',
-        args: ['--background-index', '--clang-tidy']
-    }]
+        args: ['--background-index', '--clang-tidy'],
+        features: {
+            diagnostics: false
+        }
+}]
 endif
 
 if executable('vscode-css-languageserver')
-    lspServers += [{
-        name: 'cssls',
-        filetype: 'css',
-        path: 'vscode-css-languageserver',
-        args: ['--stdio'],
+lspServers += [{
+    name: 'cssls',
+    filetype: 'css',
+    path: 'vscode-css-languageserver',
+    args: ['--stdio'],
     }]
 endif
 
@@ -171,6 +172,9 @@ if executable('rust-analyzer')
                     enable: false
                 }
             },
+            check: {
+                command: "clippy"
+            },
         }
     }]
 endif
@@ -198,7 +202,10 @@ if executable('vim-language-server')
         name: 'vimls',
         filetype: ['vim'],
         path: 'vim-language-server',
-        args: ['--stdio']
+        args: ['--stdio'],
+        features: {
+            diagnostics: false
+        }
     }]
 endif
 
@@ -319,6 +326,7 @@ if executable('lemminx')
         path: 'lemminx',
         filetype: ['xml'],
     }]
+    autocmd FileType xml setlocal formatexpr=lsp#lsp#FormatExpr()
 endif
 
 if executable('metals')
@@ -433,4 +441,4 @@ if filereadable('/usr/lib/lua-emmy-language-server/EmmyLua-LS-all.jar')
     }]
 endif
 
-call LspAddServer(lspServers)
+autocmd User LspSetup call LspAddServer(lspServers)

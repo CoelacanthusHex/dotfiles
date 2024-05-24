@@ -76,6 +76,7 @@ jetpack#add('bootleq/vim-cycle')
 jetpack#add('machakann/vim-highlightedyank')
 g:highlightedyank_highlight_in_visual = 0
 jetpack#add('thinca/vim-prettyprint')
+jetpack#add('yegappan/lsp')
 # }}}
 
 # Language {{{
