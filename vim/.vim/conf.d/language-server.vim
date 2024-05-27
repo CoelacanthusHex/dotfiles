@@ -43,7 +43,10 @@ if executable('bash-language-server')
         name: 'bashls',
         filetype: 'sh',
         path: 'bash-language-server',
-        args: ['start']
+        args: ['start'],
+        features: {
+            diagnostics: false
+        },
     }]
 endif
 
@@ -55,16 +58,19 @@ if executable('clangd')
         args: ['--background-index', '--clang-tidy'],
         features: {
             diagnostics: false
-        }
-}]
+        },
+    }]
 endif
 
 if executable('vscode-css-languageserver')
-lspServers += [{
-    name: 'cssls',
-    filetype: 'css',
-    path: 'vscode-css-languageserver',
-    args: ['--stdio'],
+    lspServers += [{
+        name: 'cssls',
+        filetype: 'css',
+        path: 'vscode-css-languageserver',
+        args: ['--stdio'],
+        features: {
+            diagnostics: false
+        },
     }]
 endif
 
@@ -83,6 +89,9 @@ if executable('jdtls')
                 },
             },
         },
+        features: {
+            diagnostics: false
+        },
     }]
 endif
 
@@ -91,7 +100,10 @@ if executable('fortls')
         name: 'fortls',
         filetype: 'fortran',
         path: 'fortls',
-        args: ['--use_signature_help', '--hover_signature']
+        args: ['--use_signature_help', '--hover_signature'],
+        features: {
+            diagnostics: false
+        },
     }]
 endif
 
@@ -113,7 +125,10 @@ if executable('gopls')
                     rangeVariableTypes: true
                 }
             }
-        }
+        },
+        features: {
+            diagnostics: false
+        },
     }]
 endif
 
@@ -123,6 +138,9 @@ if executable('vscode-html-languageserver')
         filetype: ['html'],
         path: 'vscode-html-languageserver',
         args: ['--stdio'],
+        features: {
+            diagnostics: false
+        },
     }]
 endif
 
@@ -138,7 +156,10 @@ if executable('lua-language-server')
                     enable: true,
                 }
             }
-        }
+        },
+        features: {
+            diagnostics: false
+        },
     }]
 endif
 
@@ -148,6 +169,9 @@ if executable('omnisharp')
         filetype: ['cs'],
         path: 'omnisharp',
         args: ['--z', '--languageserver', '--encoding', 'utf-8'],
+        features: {
+            diagnostics: false
+        },
     }]
 endif
 
@@ -184,7 +208,10 @@ if executable('solargraph')
         name: 'solargraph',
         filetype: ['ruby'],
         path: 'solargraph',
-        args: ['stdio']
+        args: ['stdio'],
+        features: {
+            diagnostics: false
+        },
     }]
 endif
 
@@ -193,7 +220,10 @@ if executable('typescript-language-server')
         name: 'tsserver',
         filetype: ['javascript', 'typescript'],
         path: 'typescript-language-server',
-        args: ['stdio']
+        args: ['stdio'],
+        features: {
+            diagnostics: false
+        },
     }]
 endif
 
@@ -211,9 +241,12 @@ endif
 
 if executable('qmlls6')
     lspServers += [{
-       name: 'qmlls',
-       path: 'qmlls6',
-       filetype: ['qml']
+        name: 'qmlls',
+        path: 'qmlls6',
+        filetype: ['qml'],
+        features: {
+            diagnostics: false
+        },
     }]
 endif
 
@@ -222,6 +255,9 @@ if executable('awk-language-server')
         name: 'awk-language-server',
         path: 'awk-language-server',
         filetype: ['awk'],
+        features: {
+            diagnostics: false
+        },
     }]
 endif
 
@@ -231,6 +267,9 @@ if executable('crystalline')
         path: 'crystalline',
         args: ['--stdio'],
         filetype: ['crystal'],
+        features: {
+            diagnostics: false
+        },
     }]
 endif
 
@@ -240,6 +279,9 @@ if executable('beancount-language-server')
         path: 'beancount-language-server',
         args: ['--stdio'],
         filetype: ['beancount'],
+        features: {
+            diagnostics: false
+        },
     }]
 endif
 
@@ -249,6 +291,9 @@ if executable('glslls')
         path: 'glslls',
         args: ['--stdin'],
         filetype: ['glsl'],
+        features: {
+            diagnostics: false
+        },
     }]
 endif
 
@@ -258,6 +303,9 @@ if executable('marksman')
         path: 'marksman',
         args: ['server'],
         filetype: ['markdown'],
+        features: {
+            diagnostics: false
+        },
     }]
 endif
 
@@ -266,6 +314,9 @@ if executable('millet')
         name: 'millet',
         path: 'millet',
         filetype: ['sml'],
+        features: {
+            diagnostics: false
+        },
     }]
 endif
 
@@ -274,6 +325,9 @@ if executable('svls')
         name: 'svls',
         path: 'svls',
         filetype: ['verilog'],
+        features: {
+            diagnostics: false
+        },
     }]
 endif
 
@@ -282,12 +336,18 @@ if executable('nixd')
         name: 'nixd',
         path: 'nixd',
         filetype: ['nix'],
+        features: {
+            diagnostics: false
+        },
     }]
 elseif executable('nil')
     lspServers += [{
         name: 'nil',
         path: 'nil',
         filetype: ['nix'],
+        features: {
+            diagnostics: false
+        },
     }]
 endif
 
@@ -298,7 +358,10 @@ if executable('cmake-language-server')
         filetype: ['cmake'],
         initializationOptions: {
             buildDirectory: 'build'
-        }
+        },
+        features: {
+            diagnostics: false
+        },
     }]
 endif
 
@@ -308,6 +371,9 @@ if executable('dot-language-server')
         path: 'dot-language-server',
         args: ['--stdio'],
         filetype: ['dot'],
+        features: {
+            diagnostics: false
+        },
     }]
 endif
 
@@ -317,6 +383,9 @@ if executable('haskell-language-server-wrapper')
         path: 'haskell-language-server-wrapper',
         args: ['lsp'],
         filetype: ['haskell'],
+        features: {
+            diagnostics: false
+        },
     }]
 endif
 
@@ -325,6 +394,9 @@ if executable('lemminx')
         name: 'lemminx',
         path: 'lemminx',
         filetype: ['xml'],
+        features: {
+            diagnostics: false
+        },
     }]
     autocmd FileType xml setlocal formatexpr=lsp#lsp#FormatExpr()
 endif
@@ -336,7 +408,10 @@ if executable('metals')
         filetype: ['scala', 'sbt'],
         initializationOptions: {
             isHttpEnabled: true
-        }
+        },
+        features: {
+            diagnostics: false
+        },
     }]
 endif
 
@@ -345,6 +420,9 @@ if executable('ocaml-lsp')
         name: 'ocaml-lsp',
         path: 'ocaml-lsp',
         filetype: ['ocaml'],
+        features: {
+            diagnostics: false
+        },
     }]
 endif
 
@@ -353,6 +431,9 @@ if executable('pylsp')
         name: 'pylsp',
         path: 'pylsp',
         filetype: ['python'],
+        features: {
+            diagnostics: false
+        },
     }]
 endif
 
@@ -362,6 +443,9 @@ if executable('pyright-langserver')
         path: 'pyright-langserver',
         args: ['--stdio'],
         filetype: ['python'],
+        features: {
+            diagnostics: false
+        },
     }]
 endif
 
@@ -371,6 +455,9 @@ if executable('R')
         path: 'R',
         args: ['--slave', '-e', 'languageserver::run()'],
         filetype: ['r'],
+        features: {
+            diagnostics: false
+        },
     }]
 endif
 
@@ -379,6 +466,9 @@ if executable('racket-lsp')
         name: 'racket-lsp',
         path: 'racket-lsp',
         filetype: ['racket'],
+        features: {
+            diagnostics: false
+        },
     }]
 endif
 
@@ -388,6 +478,9 @@ if executable('terraform-ls')
         path: 'terraform-ls',
         args: ['serve'],
         filetype: ['terraform'],
+        features: {
+            diagnostics: false
+        },
     }]
 endif
 
@@ -403,7 +496,10 @@ if executable('texlab')
                     args: []
                 }
             }
-        }
+        },
+        features: {
+            diagnostics: false
+        },
     }]
 endif
 
@@ -412,6 +508,9 @@ if executable('zls')
         name: 'zls',
         path: 'zls',
         filetype: ['zig'],
+        features: {
+            diagnostics: false
+        },
     }]
 endif
 
@@ -420,6 +519,9 @@ if executable('typst-lsp')
         name: 'typst-lsp',
         path: 'typst-lsp',
         filetype: ['typst'],
+        features: {
+            diagnostics: false
+        },
     }]
 endif
 
@@ -429,6 +531,9 @@ if executable('glslls')
         path: 'glslls',
         args: ['--stdio'],
         filetype: ['glsl'],
+        features: {
+            diagnostics: false
+        },
     }]
 endif
 
@@ -438,6 +543,9 @@ if filereadable('/usr/lib/lua-emmy-language-server/EmmyLua-LS-all.jar')
         path: 'java',
         args: ['-cp', '/usr/lib/lua-emmy-language-server/EmmyLua-LS-all.jar', 'com.tang.vscode.MainKt'],
         filetype: ['glsl'],
+        features: {
+            diagnostics: false
+        },
     }]
 endif
 
