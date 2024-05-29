@@ -1,7 +1,5 @@
 <?xml version="1.0"?>
 <!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">
-<!-- Configs based on https://github.com/rocka/dotFiles/blob/master/.config/fontconfig/conf.d/10-replace.conf -->
-<!-- Configs based on https://github.com/rydesun/dotfiles/blob/master/.config/fontconfig/conf.d/52-replace.conf -->
 <fontconfig>
   <description>使用思源字体取代一些我不想使用的字体。</description>
 
