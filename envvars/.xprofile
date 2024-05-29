@@ -151,11 +151,6 @@ export QT_AUTO_SCREEN_SCALE_FACTOR=1
 # since 5.14
 export QT_ENABLE_HIGHDPI_SCALING=1
 
-# Qt's text-input-v3 support is broken
-export QT_WAYLAND_TEXT_INPUT_PROTOCOL=zwp_text_input_v2
-
-export TELEGRAM_DESKTOP_UI_FONT_BOLD_STYLE=Bold
-
 export GAMEMODERUNEXEC=prime-run
 export DXVK_CONFIG_FILE="$XDG_CONFIG_HOME/dxvk.conf"
 export LUTRIS_RUNTIME=0
