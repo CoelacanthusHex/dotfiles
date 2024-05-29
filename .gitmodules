@@ -20,10 +20,6 @@
 	path = zsh/.config/zsh.d/plugins/zsh-history-substring-search
 	url = https://github.com/zsh-users/zsh-history-substring-search.git
 	ignore = untracked
-[submodule "zsh/.config/zsh.d/plugins/zsh-async"]
-	path = zsh/.config/zsh.d/plugins/zsh-async
-	url = https://github.com/mafredri/zsh-async.git
-	ignore = untracked
 [submodule "zsh/.config/zsh.d/plugins/nix-zsh-completions"]
 	path = zsh/.config/zsh.d/plugins/nix-zsh-completions
 	url = https://github.com/spwhitt/nix-zsh-completions.git
@@ -39,10 +35,6 @@
 	path = zsh/.config/zsh.d/plugins/zsh-smartcache
 	url = https://github.com/QuarticCat/zsh-smartcache.git
 	ignore = untracked
-[submodule "zsh/.config/zsh.d/plugins/fzf-tab"]
-	path = zsh/.config/zsh.d/plugins/fzf-tab
-	url = https://github.com/Aloxaf/fzf-tab.git
-	ignore = untracked
 [submodule "zsh/.config/zsh.d/plugins/powerlevel10k"]
 	path = zsh/.config/zsh.d/plugins/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
@@ -51,9 +43,6 @@
 	path = zsh/.config/zsh.d/plugins/zsh-autopair
 	url = https://github.com/hlissner/zsh-autopair.git
 	ignore = untracked
-[submodule "vim/.vim/pack/lsp/opt/vim9lsp"]
-	path = vim/.vim/pack/lsp/opt/vim9lsp
-	url = https://github.com/yegappan/lsp
 [submodule "kate/.local/share/org.kde.syntax-highlighting/themes/catppuccin"]
 	path = kate/.local/share/org.kde.syntax-highlighting/themes/catppuccin
 	url = https://github.com/catppuccin/ksyntaxhighlighting.git

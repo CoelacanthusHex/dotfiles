@@ -10,10 +10,10 @@ settings_dir="/sys/module/zswap/parameters"
 statistics_dir="/sys/kernel/debug/zswap"
 
 # Array of zswap settings
-settings=("accept_threshold_percent" "compressor" "enabled" "exclusive_loads" "max_pool_percent" "non_same_filled_pages_enabled" "same_filled_pages_enabled" "zpool")
+settings=("accept_threshold_percent" "compressor" "enabled" "max_pool_percent" "non_same_filled_pages_enabled" "same_filled_pages_enabled" "shrinker_enabled" "zpool")
 
 # Array of zswap statistics
-statistics=("duplicate_entry" "pool_limit_hit" "pool_total_size" "reject_alloc_fail" "reject_compress_fail" "reject_compress_poor" "reject_kmemcache_fail" "reject_reclaim_fail" "same_filled_pages" "stored_pages" "written_back_pages")
+statistics=("pool_limit_hit" "pool_total_size" "reject_alloc_fail" "reject_compress_fail" "reject_compress_poor" "reject_kmemcache_fail" "reject_reclaim_fail" "same_filled_pages" "stored_pages" "written_back_pages")
 
 if [[ ! -r "$statistics_dir" ]]; then
 	echo "Read $statistics_dir error: Operation not permitted!"
