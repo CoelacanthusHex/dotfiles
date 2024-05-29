@@ -80,6 +80,7 @@ alias mv='mv -v'
 alias rm='rm -v'
 # reflink in btrfs/xfs
 alias cp="cp -v --reflink=auto --sparse=auto"
+alias rsync="rsync --sparse -v -h --itemize-changes --info=progress1,stats2"
 
 # pastebin && clipboard
 alias pb-fc='curl -F "c=@-" "http://fars.ee/"'
