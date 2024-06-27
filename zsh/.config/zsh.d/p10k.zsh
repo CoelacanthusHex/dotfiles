@@ -499,6 +499,7 @@
   typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE="%F{green}%n%f%F{white}@%F{cyan}%m%f"
 
   ###[ virtualenv: python virtual environment (https://docs.python.org/3/library/venv.html) ]###
+  typeset -g POWERLEVEL9K_VIRTUALENV_FOREGROUND=242
   # Show Python version next to the virtual environment name.
   typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_PYTHON_VERSION=true
   # If set to "false", won't show virtualenv if pyenv is already shown.
