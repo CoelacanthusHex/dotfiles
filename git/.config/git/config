@@ -81,6 +81,12 @@
 [includeIf "gitdir:~/project/qt/**"]
     path = ~/.config/git/qt.config
 
+[includeIf "gitdir:~/project/archlinux/**"]
+    path = ~/.config/git/archlinux.config
+
+[includeIf "gitdir:~/project/archriscv/**"]
+    path = ~/.config/git/archlinux.config
+
 [includeIf "gitdir:~/project/archlinuxcn/**"]
     path = ~/.config/git/archlinuxcn.config
 
