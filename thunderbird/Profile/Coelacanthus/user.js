@@ -26,7 +26,7 @@ user_pref("layout.css.dpi", 0);
 /* Allow max 16 connections per server */
 user_pref("network.http.max-persistent-connections-per-server", 16);
 /* Enable syntax highlight for viewsource */
-user_perf("view_source.syntax_highlight", true);
+user_pref("view_source.syntax_highlight", true);
 /* use Mozilla geolocation service instead of Google if permission is granted */
 user_pref("geo.provider.network.url", "https://location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%");
 /* DNS via proxy */
@@ -35,10 +35,10 @@ user_pref("network.proxy.socks_remote_dns", true);
 user_pref("mail.serverDefaultStoreContractID", "@mozilla.org/msgstore/maildirstore;1");
 
 /* Prepare for plaintext mail to mail list */
-user_perf("mailnews.send_plaintext_flowed", false);
-user_perf("mailnews.wraplength", 0);
+user_pref("mailnews.send_plaintext_flowed", false);
+user_pref("mailnews.wraplength", 0);
 /*
  * Don't wrap long line when reading plaintext mail
  * https://superuser.com/a/1742126/1377216
  */
-user_perf("plain_text.wrap_long_lines", false);
+user_pref("plain_text.wrap_long_lines", false);
