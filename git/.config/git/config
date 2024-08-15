@@ -74,6 +74,8 @@
     path = ~/.config/git/instead.config
 [include]
     path = ~/.config/git/aliases.config
+[include]
+    path = ~/.config/git/local.config
 
 [includeIf "gitdir:~/project/AOSC/**"]
     path = ~/.config/git/aosc.config
@@ -92,6 +94,9 @@
 
 [includeIf "gitdir:~/project/kde/**"]
     path = ~/.config/git/kde.config
+
+[includeIf "gitdir:~/project/linux/**"]
+    path = ~/.config/git/linux.config
 
 # Platform specific configs
 [includeIf "gitdir:/data/data/com.termux/files/home/**"]
