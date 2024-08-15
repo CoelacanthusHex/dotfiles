@@ -107,6 +107,9 @@ user_pref("services.sync.prefs.sync.browser.newtabpage.activity-stream.showSpons
 user_pref("services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsoredTopSites", false);
 user_pref("browser.newtabpage.activity-stream.discoverystream.spocs.personalized", false);
 
+/* Disable Firefox buitlin ads tracking */
+user_pref("dom.private-attribution.submission.enabled", false);
+
 /*==== Hardware acceleration ====*/
 /* Use VA-API */
 //user_pref("media.ffmpeg.vaapi.enabled", true);
