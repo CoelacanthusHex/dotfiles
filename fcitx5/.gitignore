@@ -1,2 +1,3 @@
 .local/share/fcitx5/pinyin/dictionaries/
+.local/share/fcitx5/pinyin/fcitx5-pinyin-mapull-dict/
 .local/share/fcitx5/pinyin/*.txt
