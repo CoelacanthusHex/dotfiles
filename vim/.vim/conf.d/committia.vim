@@ -2,6 +2,12 @@ vim9script
 # vim: set sw=4 ts=8 sts=4 et foldmethod=marker:
 # kate: space-indent on; indent-width 4;
 
+# b4 use a COMMIT_EDITMSG file in tmp dir,
+# committia will try to find $GIT_DIR and raise a error.
+if expand('%:p') =~ '.*/b4-editor.*/COMMIT_EDITMSG'
+    g:loaded_committia = 1
+endif
+
 # always attach to COMMIT_EDITMSG
 g:committia_open_only_vim_starting = 1
 
