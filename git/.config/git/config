@@ -65,6 +65,8 @@
     helper = /usr/lib/git-core/git-credential-libsecret
 
 [include]
+    path = ~/.config/git/sendmail.config
+[include]
     path = ~/.config/git/format.config
 [include]
     path = ~/.config/git/diff-specified.config
