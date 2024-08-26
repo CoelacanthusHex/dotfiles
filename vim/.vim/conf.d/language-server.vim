@@ -220,7 +220,7 @@ if executable('typescript-language-server')
         name: 'tsserver',
         filetype: ['javascript', 'typescript'],
         path: 'typescript-language-server',
-        args: ['stdio'],
+        args: ['--stdio'],
         features: {
             diagnostics: false
         },
