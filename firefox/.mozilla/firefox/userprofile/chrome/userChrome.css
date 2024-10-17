@@ -1,4 +1,4 @@
-/* 隐藏所有无用右键菜单 */
+/* Remove useless context menus */
 #context-bookmarkpage,
 #context-bookmarklink,
 #context-savelinktopocket,
@@ -8,22 +8,28 @@
     display: none !important;
 }
 
-/* 去除 新版变化 */
+/* Remove What's New */
 #appMenu-whatsnew-button {
     display: none !important;
 }
 
-/* 地址栏去除圆角 */
+/* Remove round corner of urlbar */
 #urlbar {
     border-radius: 0 !important;
 }
 
-/* remove TST/Sidebery headers */
+/* Remove round corner of sidebar */
+#sidebar {
+    border-radius: 0 !important;
+}
+
+/* Remove TST/Sidebery headers */
 #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header,
 #sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"] > #sidebar-header {
     display: none;
 }
 
+/* Remove Flagfox menu entry */
 menu[label="Flagfox"] {
     display: none !important;
 }
