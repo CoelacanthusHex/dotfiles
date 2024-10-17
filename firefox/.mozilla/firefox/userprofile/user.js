@@ -76,6 +76,17 @@ user_pref("gfx.color_management.mode", 1);
 /*  */
 //user_pref("gfx.webrender.compositor.force-enabled", true);
 
+/*
+ * Disable DoH completely.
+ * It was implemented in local dns resolver.
+ */
+user_pref("network.trr.mode", 5);
+/*
+ * Stop excluding suffix domains of hostname from TRR.
+ * error massage: xxx Is Excluded From TRR via DNSSuffix domains
+ */
+user_pref("network.trr.split_horizon_mitigations", false);
+
 /* Enable HTTPS-Only mode */
 user_pref("dom.security.https_only_mode", true);
 user_pref("dom.security.https_only_mode_ever_enabled", true);
