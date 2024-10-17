@@ -1,27 +1,10 @@
+/*==== UI Tweak ====*/
+
 /* Use a blank page for the home page */
 user_pref("browser.startup.homepage", "about:blank");
 /* Use a blank page for the new tab page */
 user_pref("browser.newtabpage.enabled", false);
-/* Disable default browser checking */
-user_pref("browser.shell.checkDefaultBrowser", false);
-
-/* Don't disable our bundled extensions in the application directory. */
-user_pref("extensions.autoDisableScopes", 11);
-user_pref("extensions.shownSelectionUI", true);
-/* Open the about:config page without warning */
-user_pref("browser.aboutConfig.showWarning", false);
-/* Remove the recommended page from the about:addons page */
-user_pref("extensions.getAddons.showPane", false);
-/* Remove the recommendation list at the bottom of the about:addons page */
-user_pref("extensions.htmlaboutaddons.recommendations.enabled", false);
-/* Remove Pocket */
-user_pref("browser.pocket.enabled", false);
-user_pref("extensions.pocket.enabled", false);
-user_pref("browser.newtabpage.activity-stream.section.highlights.includePocket", false);
-/* Remove Firefox Relay */
-user_pref("signon.firefoxRelay.feature", "disabled");
 /* Use system emoji */
-/* Disable for COLR font */
 //user_pref("font.name-list.emoji", "emoji");
 /* Enable Compact mode support */
 user_pref("browser.compactmode.show", true);
@@ -42,24 +25,13 @@ user_pref("widget.use-xdg-desktop-portal.location", 1);
 user_pref("widget.use-xdg-desktop-portal.open-uri", 1);
 /* Enable Wayland fractional scale */
 //user_perf("widget.wayland.fractional-scale.enabled", true);
-/* Enable userChrome.css support */
-user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 /* Always use system defined logical resolution for CSS DPI detection. */
 user_pref("layout.css.dpi", 0);
-/* Use native GTK menus */
-//user_pref("widget.gtk.native-context-menus", true);
-/* Disable reader mode */
-user_pref("reader.parse-on-load.enabled", false);
-/* Disable quick action */
-user_pref("browser.urlbar.shortcuts.quickactions", false);
-user_pref("browser.urlbar.suggest.quickactions", false);
 /* Enable calcalutor and unit convert in urlbar */
 user_pref("browser.urlbar.suggest.calculator", true);
 user_pref("browser.urlbar.unitConversion.enabled", true);
 /* Enable unified extensions toolbar button*/
 user_pref("extensions.unifiedExtensions.enabled", true);
-/* Disable unload page on low memory */
-user_pref("browser.tabs.unloadOnLowMemory", false);
 /* Allow max 16 connections per server */
 user_pref("network.http.max-persistent-connections-per-server", 16);
 /*
@@ -73,8 +45,8 @@ user_pref("network.http.max-persistent-connections-per-server", 16);
 user_pref("layout.css.prefers-color-scheme.content-override", 2);
 /* Enable full mode color management */
 user_pref("gfx.color_management.mode", 1);
-/*  */
-//user_pref("gfx.webrender.compositor.force-enabled", true);
+
+/*==== Network ====*/
 
 /*
  * Disable DoH completely.
@@ -86,16 +58,21 @@ user_pref("network.trr.mode", 5);
  * error massage: xxx Is Excluded From TRR via DNSSuffix domains
  */
 user_pref("network.trr.split_horizon_mitigations", false);
-
 /* Enable HTTPS-Only mode */
 user_pref("dom.security.https_only_mode", true);
 user_pref("dom.security.https_only_mode_ever_enabled", true);
-
 /* Enable sideber */
 user_pref("sidebar.revamp", true);
 /* But disable vertical tabbar, because TST is better */
 user_pref("sidebar.verticalTabs", false);
 
+/*==== Extensions ====*/
+
+/* Enable userChrome.css support */
+user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+/* Don't disable our bundled extensions in the application directory. */
+user_pref("extensions.autoDisableScopes", 11);
+user_pref("extensions.shownSelectionUI", true);
 /*
  * Enable -moz-context-properties for TST because of [1] & [2]
  * Should be removed after [3] fixed
@@ -104,14 +81,36 @@ user_pref("sidebar.verticalTabs", false);
  * [3]: https://bugzilla.mozilla.org/show_bug.cgi?id=1812163
  */
 user_pref("svg.context-properties.content.enabled", true);
+/* Disable unload page on low memory */
+user_pref("browser.tabs.unloadOnLowMemory", false);
 
+/*==== Annoying Things ====*/
+
+/* Disable default browser checking */
+user_pref("browser.shell.checkDefaultBrowser", false);
+/* Open the about:config page without warning */
+user_pref("browser.aboutConfig.showWarning", false);
+/* Remove the recommended page from the about:addons page */
+user_pref("extensions.getAddons.showPane", false);
+/* Remove the recommendation list at the bottom of the about:addons page */
+user_pref("extensions.htmlaboutaddons.recommendations.enabled", false);
+/* Remove Pocket */
+user_pref("browser.pocket.enabled", false);
+user_pref("extensions.pocket.enabled", false);
+user_pref("browser.newtabpage.activity-stream.section.highlights.includePocket", false);
+/* Remove Firefox Relay */
+user_pref("signon.firefoxRelay.feature", "disabled");
+/* Disable reader mode */
+user_pref("reader.parse-on-load.enabled", false);
+/* Disable quick action */
+user_pref("browser.urlbar.shortcuts.quickactions", false);
+user_pref("browser.urlbar.suggest.quickactions", false);
 /* Disable Password Manager */
 user_pref("signon.autofillForms", false);
 user_pref("signon.generation.enabled", false);
 user_pref("signon.rememberSignons", false);
 user_pref("signon.showAutoCompleteFooter", false);
 user_pref("signon.management.page.breach-alerts.enabled", false);
-
 /* Disable (targeted) sponsored contents */
 user_pref("browser.newtabpage.activity-stream.showSponsored", false);
 user_pref("browser.newtabpage.activity-stream.disableSnippets", true);
@@ -122,25 +121,11 @@ user_pref("browser.newtabpage.activity-stream.showSponsoredTopSites", false);
 user_pref("services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsored", false);
 user_pref("services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsoredTopSites", false);
 user_pref("browser.newtabpage.activity-stream.discoverystream.spocs.personalized", false);
-
 /* Disable Firefox buitlin ads tracking */
 user_pref("dom.private-attribution.submission.enabled", false);
 
-/*==== Hardware acceleration ====*/
-/* Use VA-API */
-//user_pref("media.ffmpeg.vaapi.enabled", true);
-//user_pref("widget.dmabuf.force-enabled", true);
-
 /*==== Security ====*/
 /* https://github.com/arkenfox/user.js/blob/master/user.js#L465 */
-
-/*** [SECTION 1200]: HTTPS (SSL/TLS / OCSP / CERTS / HPKP)
-   Your cipher and other settings can be used in server side fingerprinting
-   [TEST] https://www.ssllabs.com/ssltest/viewMyClient.html
-   [TEST] https://browserleaks.com/ssl
-   [TEST] https://ja3er.com/
-   [1] https://www.securityartwork.es/2017/02/02/tls-client-fingerprinting-with-bro/
-***/
 
 /** SSL (Secure Sockets Layer) / TLS (Transport Layer Security) ***/
 /* 1201: require safe negotiation
@@ -190,7 +175,3 @@ user_pref("security.ssl3.rsa_aes_128_gcm_sha256", false); // no PFS
 user_pref("security.ssl3.rsa_aes_256_gcm_sha384", false); // no PFS
 user_pref("security.ssl3.rsa_aes_128_sha", false); // no PFS and AEAD
 user_pref("security.ssl3.rsa_aes_256_sha", false); // no PFS and AEAD
-/* 7004: control TLS versions
- * [WHY] Passive fingerprinting. Downgrades are still possible: behind user interaction ***/
-   // user_pref("security.tls.version.min", 3); // [DEFAULT: 3] 3 is TLS1.2
-   // user_pref("security.tls.version.max", 4)
