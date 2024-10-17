@@ -91,6 +91,11 @@ user_pref("network.trr.split_horizon_mitigations", false);
 user_pref("dom.security.https_only_mode", true);
 user_pref("dom.security.https_only_mode_ever_enabled", true);
 
+/* Enable sideber */
+user_pref("sidebar.revamp", true);
+/* But disable vertical tabbar, because TST is better */
+user_pref("sidebar.verticalTabs", false);
+
 /*
  * Enable -moz-context-properties for TST because of [1] & [2]
  * Should be removed after [3] fixed
