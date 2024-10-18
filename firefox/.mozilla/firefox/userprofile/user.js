@@ -1,40 +1,40 @@
 /*==== UI Tweak ====*/
 
-/* Use a blank page for the home page */
+// Use a blank page for the home page
 user_pref("browser.startup.homepage", "about:blank");
-/* Use a blank page for the new tab page */
+// Use a blank page for the new tab page
 user_pref("browser.newtabpage.enabled", false);
-/* Use system emoji */
+// Use system emoji
 //user_pref("font.name-list.emoji", "emoji");
-/* Enable Compact mode support */
+// Enable Compact mode support
 user_pref("browser.compactmode.show", true);
-/* Show full URL in address bar */
+// Show full URL in address bar
 user_pref("browser.urlbar.trimURLs", false);
-/* Maximum number of font substitutions allowed when querying fonts from fontconfig Default: 3 Max: 127 */
+// Maximum number of font substitutions allowed when querying fonts from fontconfig Default: 3 Max: 127
 user_pref("gfx.font_rendering.fontconfig.max_generic_substitutions", 64);
-/* Allow fallback unassigned chars */
+// Allow fallback unassigned chars
 user_pref("gfx.font_rendering.fallback.unassigned_chars", true);
-/* Use sans serif fonts as default of lang=x-western */
+// Use sans serif fonts as default of lang=x-western
 user_pref("font.default.x-western", "sans-serif");
-/* Use XDG Desktop Portal handle file picker */
-/* WARNING: Need xdg-desktop-portal{,-kde} */
+// Use XDG Desktop Portal handle file picker
+// WARNING: Need xdg-desktop-portal{,-kde}
 user_pref("widget.use-xdg-desktop-portal.file-picker", 1);
 user_pref("widget.use-xdg-desktop-portal.mime-handler", 1);
 user_pref("widget.use-xdg-desktop-portal.settings", 1);
 user_pref("widget.use-xdg-desktop-portal.location", 1);
 user_pref("widget.use-xdg-desktop-portal.open-uri", 1);
-/* Enable Wayland fractional scale */
+// Enable Wayland fractional scale
 //user_perf("widget.wayland.fractional-scale.enabled", true);
-/* Always use system defined logical resolution for CSS DPI detection. */
+// Always use system defined logical resolution for CSS DPI detection.
 user_pref("layout.css.dpi", 0);
-/* Enable calcalutor and unit convert in urlbar */
+// Enable calcalutor and unit convert in urlbar
 user_pref("browser.urlbar.suggest.calculator", true);
 user_pref("browser.urlbar.unitConversion.enabled", true);
-/* Enable unified extensions toolbar button*/
+// Enable unified extensions toolbar button
 user_pref("extensions.unifiedExtensions.enabled", true);
-/* Allow total 1800 connections */
+// Allow total 1800 connections
 user_pref("network.http.max-connections", 1800); // default=900
-/* Allow max 16 connections per server */
+// Allow max 16 connections per server
 user_pref("network.http.max-persistent-connections-per-server", 16); // default = 6
 /*
  * preferred color scheme for websites
@@ -45,7 +45,7 @@ user_pref("network.http.max-persistent-connections-per-server", 16); // default 
  * https://www.reddit.com/r/firefox/comments/rfj6yc/how_to_stop_firefoxs_dark_theme_from_overriding/hoe82i5/?context=3
  */
 user_pref("layout.css.prefers-color-scheme.content-override", 2);
-/* Enable full mode color management */
+// Enable full mode color management
 user_pref("gfx.color_management.mode", 1);
 
 /*==== Network ====*/
@@ -60,19 +60,19 @@ user_pref("network.trr.mode", 5);
  * error massage: xxx Is Excluded From TRR via DNSSuffix domains
  */
 user_pref("network.trr.split_horizon_mitigations", false);
-/* Enable HTTPS-Only mode */
+// Enable HTTPS-Only mode
 user_pref("dom.security.https_only_mode", true);
 user_pref("dom.security.https_only_mode_ever_enabled", true);
-/* Enable sideber */
+// Enable sideber
 user_pref("sidebar.revamp", true);
-/* But disable vertical tabbar, because TST is better */
+// But disable vertical tabbar, because TST is better
 user_pref("sidebar.verticalTabs", false);
 
 /*==== Extensions ====*/
 
-/* Enable userChrome.css support */
+// Enable userChrome.css support
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
-/* Don't disable our bundled extensions in the application directory. */
+// Don't disable our bundled extensions in the application directory.
 user_pref("extensions.autoDisableScopes", 11);
 user_pref("extensions.shownSelectionUI", true);
 /*
@@ -83,37 +83,37 @@ user_pref("extensions.shownSelectionUI", true);
  * [3]: https://bugzilla.mozilla.org/show_bug.cgi?id=1812163
  */
 user_pref("svg.context-properties.content.enabled", true);
-/* Disable unload page on low memory */
+// Disable unload page on low memory
 user_pref("browser.tabs.unloadOnLowMemory", false);
 
 /*==== Annoying Things ====*/
 
-/* Disable default browser checking */
+// Disable default browser checking
 user_pref("browser.shell.checkDefaultBrowser", false);
-/* Open the about:config page without warning */
+// Open the about:config page without warning
 user_pref("browser.aboutConfig.showWarning", false);
-/* Remove the recommended page from the about:addons page */
+// Remove the recommended page from the about:addons page
 user_pref("extensions.getAddons.showPane", false);
-/* Remove the recommendation list at the bottom of the about:addons page */
+// Remove the recommendation list at the bottom of the about:addons page
 user_pref("extensions.htmlaboutaddons.recommendations.enabled", false);
-/* Remove Pocket */
+// Remove Pocket
 user_pref("browser.pocket.enabled", false);
 user_pref("extensions.pocket.enabled", false);
 user_pref("browser.newtabpage.activity-stream.section.highlights.includePocket", false);
-/* Remove Firefox Relay */
+// Remove Firefox Relay
 user_pref("signon.firefoxRelay.feature", "disabled");
-/* Disable reader mode */
+// Disable reader mode
 user_pref("reader.parse-on-load.enabled", false);
-/* Disable quick action */
+// Disable quick action
 user_pref("browser.urlbar.shortcuts.quickactions", false);
 user_pref("browser.urlbar.suggest.quickactions", false);
-/* Disable Password Manager */
+// Disable Password Manager
 user_pref("signon.autofillForms", false);
 user_pref("signon.generation.enabled", false);
 user_pref("signon.rememberSignons", false);
 user_pref("signon.showAutoCompleteFooter", false);
 user_pref("signon.management.page.breach-alerts.enabled", false);
-/* Disable (targeted) sponsored contents */
+// Disable (targeted) sponsored contents
 user_pref("browser.newtabpage.activity-stream.showSponsored", false);
 user_pref("browser.newtabpage.activity-stream.disableSnippets", true);
 user_pref("browser.newtabpage.activity-stream.feeds.snippets", false);
@@ -123,11 +123,11 @@ user_pref("browser.newtabpage.activity-stream.showSponsoredTopSites", false);
 user_pref("services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsored", false);
 user_pref("services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsoredTopSites", false);
 user_pref("browser.newtabpage.activity-stream.discoverystream.spocs.personalized", false);
-/* Disable Firefox buitlin ads tracking */
+// Disable Firefox buitlin ads tracking
 user_pref("dom.private-attribution.submission.enabled", false);
 
 /*==== Security ====*/
-/* https://github.com/arkenfox/user.js/blob/master/user.js#L465 */
+// https://github.com/arkenfox/user.js/blob/master/user.js#L465
 
 /** SSL (Secure Sockets Layer) / TLS (Transport Layer Security) ***/
 /* 1201: require safe negotiation
