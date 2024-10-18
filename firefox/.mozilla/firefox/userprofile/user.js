@@ -32,8 +32,10 @@ user_pref("browser.urlbar.suggest.calculator", true);
 user_pref("browser.urlbar.unitConversion.enabled", true);
 /* Enable unified extensions toolbar button*/
 user_pref("extensions.unifiedExtensions.enabled", true);
+/* Allow total 1800 connections */
+user_pref("network.http.max-connections", 1800); // default=900
 /* Allow max 16 connections per server */
-user_pref("network.http.max-persistent-connections-per-server", 16);
+user_pref("network.http.max-persistent-connections-per-server", 16); // default = 6
 /*
  * preferred color scheme for websites
  * By default, color scheme matches the theme of your browser toolbar (3).
