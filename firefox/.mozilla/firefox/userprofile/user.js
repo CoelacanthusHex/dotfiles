@@ -36,6 +36,8 @@ user_pref("extensions.unifiedExtensions.enabled", true);
 user_pref("network.http.max-connections", 1800); // default=900
 // Allow max 16 connections per server
 user_pref("network.http.max-persistent-connections-per-server", 16); // default = 6
+// Allow max 48 connections per proxy
+user_pref("network.http.max-persistent-connections-per-proxy", 48); // default=32
 /*
  * preferred color scheme for websites
  * By default, color scheme matches the theme of your browser toolbar (3).
