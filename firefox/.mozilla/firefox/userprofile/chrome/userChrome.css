@@ -33,3 +33,22 @@
 menu[label="Flagfox"] {
     display: none !important;
 }
+
+/* UWP style item selector */
+:root {
+    --uwp-nav-item-selector-height: 16px;
+    --uwp-nav-item-selector-width: 3px;
+    --uwp-nav-item-selector-radius: 2px;
+    --uwp-nav-item-margin: 2px 4px;
+}
+.urlbarView-row[selected] .urlbarView-row-inner::before {
+    content: "";
+    width: 0 !important;
+    height: 0.5em !important;
+    display: block !important;
+    position: absolute !important;
+    background-color: AccentColor !important;
+    padding: 8px 1.5px !important;
+    border-radius: var(--uwp-nav-item-selector-radius) !important;
+    margin-right: 7px !important;
+}
