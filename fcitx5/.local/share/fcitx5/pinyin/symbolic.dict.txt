@@ -125,7 +125,6 @@
 ⁹	jiu'ci'fang	0
 °C	she'shi'du	0
 °F	hua'shi'du	0
-％	bai'fen'hao	0
 ‰	qian'fen'hao	0
 ‱	wan'fen'hao	0
 °	du	0
