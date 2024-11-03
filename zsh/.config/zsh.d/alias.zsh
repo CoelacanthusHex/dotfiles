@@ -111,10 +111,10 @@ alias :help="man"
 alias :h=:help
 
 # GDB
-alias gdb-gef="command gdb -q -x $XDG_CONFIG_HOME/gdb/gdbinit-gef"
-alias gdb-pwndbg="command gdb -q -x $XDG_CONFIG_HOME/gdb/gdbinit-pwndbg"
-alias gdb-peda="command gdb -q -x $XDG_CONFIG_HOME/gdb/gdbinit-peda"
-alias gdb-base="command gdb -q"
+alias gdb-gef="gdb -q -x $XDG_CONFIG_HOME/gdb/gdbinit-gef"
+alias gdb-pwndbg="gdb -q -x $XDG_CONFIG_HOME/gdb/gdbinit-pwndbg"
+alias gdb-peda="gdb -q -x $XDG_CONFIG_HOME/gdb/gdbinit-peda"
+alias gdb-base="gdb -q"
 alias gdb=gdb-base
 
 # add color
