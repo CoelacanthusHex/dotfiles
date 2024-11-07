@@ -45,6 +45,9 @@
 [checkout]
     workers = 0
 
+[fetch]
+    writeCommitGraph = true
+
 [grep]
     lineNumber = true
     patternType = perl
@@ -78,6 +81,8 @@
     path = ~/.config/git/aliases.config
 [include]
     path = ~/.config/git/local.config
+[include]
+    path = ~/.config/git/maintenance.config
 
 [includeIf "gitdir:~/project/AOSC/**"]
     path = ~/.config/git/aosc.config
