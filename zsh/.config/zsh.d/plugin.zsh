@@ -11,6 +11,7 @@ _enabled_plugins=(
     cpan-completion # https://github.com/MenkeTechnologies/zsh-cpan-completion
     nix-zsh-completions/nix
     dotenv
+    ssh
 )
 for _zsh_plugin in $_enabled_plugins[@]; do
     [[ ! -r "$ZDOTDIR/plugins/$_zsh_plugin.plugin.zsh" ]] || source $ZDOTDIR/plugins/$_zsh_plugin.plugin.zsh
