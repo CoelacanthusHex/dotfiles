@@ -74,10 +74,10 @@ export NALI_HOME="$XDG_CONFIG_HOME"/nali
 # FIXME: disable for too many things broken
 #export PYTHONSAFEPATH=1
 
-# replacing ssh-agent with gpg-agent
-# https://wiki.archlinux.org/index.php/GnuPG#SSH_agent
-#unset SSH_AGENT_PID=""
-#export SSH_AUTH_SOCCK=${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh
+# use ssh-agent
+if [[ -z "${SSH_CONNECTION}" ]]; then
+    export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR"/ssh-agent.socket
+fi
 
 # Disable kitty shell integration
 unset KITTY_SHELL_INTEGRATION
