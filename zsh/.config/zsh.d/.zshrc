@@ -20,12 +20,29 @@ _cfg_error() {
 () {
     if (( $+commands[locale] )); then
         setopt localoptions extended_glob
-        local loc=(${(M)$(locale -a):#*.(utf|UTF)(-|)8})
+        local -a available
+        local -A locales
+        local locale l
+        locales=(
+            "LANG" "en_GB en_US C"
+            "LC_MESSAGES" "en_GB en_US C"
+            "LC_TIME" "en_DK C"
+            "LC_NUMERIC" "en_GB en_US C"
+        )
+        available=("${(f)$(locale -a)}")
         # https://blog.xen0n.name/posts/tinkering/glibc-utf-8-locale-misery/
-        loc=(${(@)loc//utf8/UTF-8})
-        (( $#loc )) || return
-        export LANG=${loc[(r)(#i)en_GB.UTF(-|)8]:-${loc[(r)(#i)en_US.UTF(-|)8]:-${loc[(r)(#i)C.UTF(-|)8]:-$loc[1]}}}
-        export LC_TIME=${loc[(r)(#i)en_DK.UTF(-|)8]:-${loc[(r)(#i)en_GB.UTF(-|)8]:-${loc[(r)(#i)en_US.UTF(-|)8]:-${loc[(r)(#i)C.UTF(-|)8]:-$loc[1]}}}}
+        available=(${(@)available//utf8/UTF-8})
+        for locale in ${(k)locales}; do
+            export $locale=C        # default value
+            for l in $=locales[$locale]; do
+                for charset in UTF-8; do
+                    if (( ${available[(i)$l.$charset]} <= ${#available} )); then
+                        export $locale=$l.$charset
+                        break 2
+                    fi
+                done
+            done
+        done
         # https://wiki.archlinux.org/title/Locale#LANGUAGE:_fallback_locales
         export LANGUAGE=en_US:en:C
     fi
