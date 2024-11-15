@@ -24,10 +24,13 @@ _cfg_error() {
         local -A locales
         local locale l
         locales=(
-            "LANG" "en_GB en_US C"
-            "LC_MESSAGES" "en_GB en_US C"
-            "LC_TIME" "en_DK C"
-            "LC_NUMERIC" "en_GB en_US C"
+            "LANG" "en_US C"
+            "LC_MESSAGES" "en_US C" # Just in english
+            "LC_TIME" "en_DK C" # ISO 8601
+            "LC_NUMERIC" "en_US C" # Split by 3, use . as separator
+            "LC_PAPER" "en_GB C" # A4
+            "LC_MEASUREMENT" "en_GB C" # SI
+            "LC_COLLATE" "C" # Consistent with programming
         )
         available=("${(f)$(locale -a)}")
         # https://blog.xen0n.name/posts/tinkering/glibc-utf-8-locale-misery/
