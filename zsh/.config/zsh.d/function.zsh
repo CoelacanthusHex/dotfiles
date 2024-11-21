@@ -137,5 +137,9 @@ function copy-all-gpg-db() {
 }
 compdef copy-gpg-db=ssh copy-all-gpg-db=ssh
 
+function usbhid-report-descriptor() {
+    usbhid-dump "$@" | grep -v : | xxd -r -p | hidrd-convert -o spec
+}
+
 # vim: ft=zsh sw=4 ts=8 sts=4 et:
 # kate: space-indent on; indent-width 4;
