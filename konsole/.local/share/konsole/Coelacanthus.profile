@@ -19,6 +19,7 @@ RemoteTabTitleFormat=%w
 [Interaction Options]
 AllowEscapedLinks=true
 AutoCopySelectedText=false
+ColorFilterEnabled=false
 EscapedLinksSchema=http://;https://;file://;fugitive://
 OpenLinksByDirectClickEnabled=false
 UnderlineFilesEnabled=false
