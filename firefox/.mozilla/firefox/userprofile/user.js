@@ -24,7 +24,7 @@ user_pref("widget.use-xdg-desktop-portal.settings", 1);
 user_pref("widget.use-xdg-desktop-portal.location", 1);
 user_pref("widget.use-xdg-desktop-portal.open-uri", 1);
 // Enable Wayland fractional scale
-//user_perf("widget.wayland.fractional-scale.enabled", true);
+user_perf("widget.wayland.fractional-scale.enabled", true);
 // Always use system defined logical resolution for CSS DPI detection.
 user_pref("layout.css.dpi", 0);
 // Enable calcalutor and unit convert in urlbar
