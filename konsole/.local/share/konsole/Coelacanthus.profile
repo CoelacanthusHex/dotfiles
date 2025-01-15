@@ -1,6 +1,6 @@
 [Appearance]
 ColorScheme=Coelacanthus
-Font=Monospace,11,-1,5,50,0,0,0,0,0
+Font=Iosevka Coelacanthus Term,11,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
 UseFontLineChararacters=false
 WordModeBrahmic=true
 
