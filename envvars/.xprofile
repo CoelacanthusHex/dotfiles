@@ -165,6 +165,8 @@ export GOOGLE_DEFAULT_CLIENT_SECRET="OTJgUOQcT7lO7GsGZq2G4IlT"
 export NOUVEAU_USE_ZINK=1
 export NVK_I_WANT_A_BROKEN_VULKAN_DRIVER=1
 
+export UHD_IMAGES_DIR="$XDG_DATA_HOME/uhd/images"
+
 # Enable MPTCP for all Golang applications.
 # 0: disable MPTCP on dialers and listeners by default
 # 1: enable MPTCP on dialers and listeners by default
