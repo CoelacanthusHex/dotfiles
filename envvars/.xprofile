@@ -170,6 +170,18 @@ export GOOGLE_DEFAULT_CLIENT_SECRET="OTJgUOQcT7lO7GsGZq2G4IlT"
 export NOUVEAU_USE_ZINK=1
 export NVK_I_WANT_A_BROKEN_VULKAN_DRIVER=1
 
+# Enable MPTCP for all Golang applications.
+# 0: disable MPTCP on dialers and listeners by default
+# 1: enable MPTCP on dialers and listeners by default
+# 2: enable MPTCP on listeners only by default
+# 3: enable MPTCP on dialers only by default
+# Default: 2 since v1.24
+if [[ -z $GODEBUG ]]; then
+    export GODEBUG=multipathtcp=1
+elif [[ ! $GODEBUG =~ "multipathtcp" ]]; then
+    export GODEBUG=multipathtcp=1,$GODEBUG
+fi
+
 # https://github.com/HansKristian-Work/vkd3d-proton#behavior-of-id3d12pipelinelibrary
 if [[ -z $VKD3D_CONFIG ]]; then
     export VKD3D_CONFIG=pipeline_library_app_cache
