@@ -18,7 +18,11 @@ for _zsh_plugin in $_enabled_plugins[@]; do
 done
 
 # Fast syntax highlighting
-export FAST_HIGHLIGHT[use_async]=1
+FAST_HIGHLIGHT[use_async]=1
+# FIXME: it's too slow.
+# https://github.com/zdharma-continuum/fast-syntax-highlighting/commit/3d574ccf48804b10dca52625df13da5edae7f553
+# https://github.com/zdharma-continuum/fast-syntax-highlighting/pull/82
+#FAST_HIGHLIGHT[chroma-make-cache-global]=1
 # I want to disable HEX color string highlight, but it seems no way...
 # https://github.com/zdharma-continuum/fast-syntax-highlighting/blob/cf318e06a9b7c9f2219d78f41b46fa6e06011fd9/fast-highlight#L1152
 
