@@ -49,6 +49,16 @@ user_pref("network.http.max-persistent-connections-per-proxy", 48); // default=3
 user_pref("layout.css.prefers-color-scheme.content-override", 2);
 // Enable full mode color management
 user_pref("gfx.color_management.mode", 1);
+// Enable HDR
+// https://bugzilla.mozilla.org/show_bug.cgi?id=1642854
+//user_pref("gfx.wayland.hdr", true);
+// Prefer Concrete Math, New Computer Modern Math and STIX Two Math as math fonts.
+// Remove normal serif from fallback list to use default serif fonts as fallback.
+// Remove STIXGeneral since it's obsolete and doesn't use MATH table, see https://bugzilla.mozilla.org/show_bug.cgi?id=1336058
+// see https://bugzilla.mozilla.org/show_bug.cgi?id=1788937
+// FIXME: Remove font.name.serif.x-math = "math" in user.js and about:config
+// when Firefox set font.name-list.serif.x-math to "math, ..." or remove it.
+user_pref("font.name.serif.x-math", "math");
 
 /*==== Network ====*/
 
