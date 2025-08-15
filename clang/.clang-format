@@ -3,13 +3,9 @@ BasedOnStyle: LLVM
 IndentWidth: 4
 TabWidth: 4
 ColumnLimit: 100
-UseTab: Never
 AlignEscapedNewlines: Left
 BreakBeforeBinaryOperators: NonAssignment
-AllowShortBlocksOnASingleLine: Empty
-AlwaysBreakTemplateDeclarations: Yes
-IncludeIsMainRegex: '([-_](test|unittest)|Test)?$'
-IndentPPDirectives: BeforeHash
+IndentPPDirectives: AfterHash
 
 # vim: ft=yaml
 # kate: syntax yaml;
