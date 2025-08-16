@@ -30,8 +30,15 @@
 # https://people.kernel.org/monsieuricon/signed-git-pushes
 [push]
     gpgSign = if-asked
+
 [commit]
     gpgsign = true
+    # Otherwise git will remove trailing whitespace and break soft line break.
+    # Git doesn't provide an option to keep trailing whitespace but remove commnets.
+    # So it SHALL be used with commit.status=false to avoid remove commit status manually.
+    cleanup = verbatim
+    status = false
+
 [tag]
     gpgsign = true
 
