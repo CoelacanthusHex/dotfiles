@@ -52,6 +52,9 @@
 [init]
     defaultBranch = master
 
+[blame]
+    ignoreRevsFile = .git-blame-ignore-revs
+
 # Parallel Checkout
 # The default is one.
 # If set to a value less than one, Git will use as many workers as the number of logical cores available.
