@@ -25,6 +25,9 @@
     # https://git-scm.com/docs/git-diff#Documentation/git-diff.txt---color-movedltmodegt
     colorMoved = default
     colorMovedWS = allow-indentation-change
+    # Use i/ (index), w/ (working directory) or c/ commit instead of a/ b/.
+    # https://blog.gitbutler.com/how-git-core-devs-configure-git/
+    mnemonicPrefix = true
 
 # https://lwn.net/Articles/835985/rss
 # https://people.kernel.org/monsieuricon/signed-git-pushes
