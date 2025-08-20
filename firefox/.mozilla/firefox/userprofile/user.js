@@ -59,6 +59,18 @@ user_pref("gfx.color_management.mode", 1);
 // FIXME: Remove font.name.serif.x-math = "math" in user.js and about:config
 // when Firefox set font.name-list.serif.x-math to "math, ..." or remove it.
 user_pref("font.name.serif.x-math", "math");
+/*
+ * Enable WebRender Compositor 
+ * In class FeatureState implementation, runtime failure > user force-enabled > environment > user > default.
+ * Since there is no runtime failure (only caused by no zwp_linux_dmabuf_v1 or wp_viewporter), but environment test will
+ * failed on all Linux, we need to force enable.
+ * https://bugzilla.mozilla.org/show_bug.cgi?id=1978540
+ * https://github.com/mozilla-firefox/firefox/commit/e21260214b32
+ * gfx/config/gfxFeature.cpp
+ * widget/gtk/GfxInfo.cpp#L1008
+ */ 
+user_pref("gfx.webrender.compositor", true);
+user_pref("gfx.webrender.compositor.force-enabled", true);
 
 /*==== Network ====*/
 
