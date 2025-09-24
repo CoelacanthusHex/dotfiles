@@ -149,6 +149,8 @@ user_pref("services.sync.prefs.sync.browser.newtabpage.activity-stream.showSpons
 user_pref("browser.newtabpage.activity-stream.discoverystream.spocs.personalized", false);
 // Disable Firefox buitlin ads tracking
 user_pref("dom.private-attribution.submission.enabled", false);
+// Disable useless AI
+user_pref("browser.ml.chat.enabled", false);
 
 /*==== Security ====*/
 // https://github.com/arkenfox/user.js/blob/master/user.js#L465
