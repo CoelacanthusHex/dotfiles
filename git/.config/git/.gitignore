@@ -1,3 +1,4 @@
 gitk
 local.config
 maintaince.config
+.repo_config.json
