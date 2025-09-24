@@ -1,265 +1,282 @@
-⓪	ling	0
-①	yi	0
-②	er	0
-③	san	0
-④	si	0
-⑤	wu	0
-⑥	liu	0
-⑦	qi	0
-⑧	ba	0
-⑨	jiu	0
-⑩	shi	0
-⑪	shi'yi	0
-⑫	shi'er	0
-⑬	shi'san	0
-⑭	shi'si	0
-⑮	shi'wu	0
-⑯	shi'liu	0
-⑰	shi'qi	0
-⑱	shi'ba	0
-⑲	shi'jiu	0
-⑳	er'shi	0
-㉑	er'shi'yi	0
-㉒	er'shi'er	0
-㉓	er'shi'san	0
-㉔	er'shi'si	0
-㉕	er'shi'wu	0
-㉖	er'shi'liu	0
-㉗	er'shi'qi	0
-㉘	er'shi'ba	0
-㉙	er'shi'jiu	0
-㉚	san'shi	0
-㉛	san'shi'yi	0
-㉜	san'shi'er	0
-㉝	san'shi'san	0
-㉞	san'shi'si	0
-㉟	san'shi'wu	0
-㊱	san'shi'liu	0
-㊲	san'shi'qi	0
-㊳	san'shi'ba	0
-㊴	san'shi'jiu	0
-㊵	si'shi	0
-㊶	si'shi'yi	0
-㊷	si'shi'er	0
-㊸	si'shi'san	0
-㊹	si'shi'si	0
-㊺	si'shi'wu	0
-㊻	si'shi'liu	0
-㊼	si'shi'qi	0
-㊽	si'shi'ba	0
-㊾	si'shi'jiu	0
-㊿	wu'shi	0
-㍻	ping'cheng	0
-㍼	zhao'he	0
-㍽	da'zheng	0
-㍾	ming'zhi	0
-㋿	ling'he	0
-←	zuo	0
-↑	shang	0
-→	you	0
-↓	xia	0
-↔	zuo'you	0
-↕	shang'xia	0
-↖	zuo'shang	0
-↗	you'shang	0
-↘	you'xia	0
-↙	zuo'xia	0
-𝅝	quan'yin'fu	0
-𝅗𝅥	er'fen'yin'fu	0
-𝅘𝅥	si'fen'yin'fu	0
-𝅘𝅥𝅮	ba'fen'yin'fu	0
-𝅘𝅥𝅯	shi'liu'fen'yin'fu	0
-𝅘𝅥𝅰	san'shi'er'fen'yin'fu	0
-𝅘𝅥𝅱	liu'shi'si'fen'yin'fu	0
-𝅘𝅥𝅲	yi'bai'er'shi'ba'fen'yin'fu	0
-𝄻	quan'xiu'zhi'fu	0
-𝄼	er'fen'xiu'zhi'fu	0
-𝄽	si'fen'xiu'zhi'fu	0
-𝄾	ba'fen'xiu'zhi'fu	0
-𝄿	shi'liu'fen'xiu'zhi'fu	0
-𝅀	san'shi'er'fen'xiu'zhi'fu	0
-𝅁	liu'shi'si'fen'xiu'zhi'fu	0
-𝅂	yi'bai'er'shi'ba'fen'xiu'zhi'fu	0
-♯	sheng'ji'hao	0
-♭	jiang'ji'hao	0
-♮	huan'yuan'ji'hao	0
-𝄪	zhong'sheng'ji'hao	0
-𝄫	zhong'jiang'ji'hao	0
-𝄞	gao'yin'pu'hao	0
-𝄢	di'yin'pu'hao	0
-√	gen'hao	0
-∛	san'ci'gen'hao	0
-∜	si'ci'gen'hao	0
-∝	zheng'bi'yu	0
-∞	wu'qiong'da	0
-∠	jiao	0
-∥	ping'xing'yu	0
-∩	jiao'ji	0
-∪	bing'ji	0
-∫	ji'fen	0
-∬	shuang'chong'ji'fen	0
-∬	er'chong'ji'fen	0
-∭	san'chong'ji'fen	0
-∴	suo'yi	0
-∵	yin'wei	0
-∽	xiang'si'yu	0
-≌	quan'deng'yu	0
-⊥	chui'zhi'yu	0
-≈	yue'deng'yu	0
-≠	bu'deng'yu	0
-⊂	bao'han'yu	0
-≤	xiao'yu'deng'yu	0
-≥	da'yu'deng'yu	0
-⊕	yi'huo	0
-⁰	ling'ci'fang	0
-¹	yi'ci'fang	0
-²	er'ci'fang	0
-²	ping'fang	0
-³	san'ci'fang	0
-³	li'fang	0
-⁴	si'ci'fang	0
-⁵	wu'ci'fang	0
-⁶	liu'ci'fang	0
-⁷	qi'ci'fang	0
-⁸	ba'ci'fang	0
-⁹	jiu'ci'fang	0
-°C	she'shi'du	0
-°F	hua'shi'du	0
-‰	qian'fen'hao	0
-‱	wan'fen'hao	0
-°	du	0
-f	fei		0
-p	pi	0
-n	na	0
-µ	wei	0
-m	hao	0
-k	qian	0
-G	ji	0
-T	tai	0
-pA	pi'an	0
-nA	na'an	0
-µA	wei'an	0
-mA	hao'an	0
-kA	qian'an'pei	0
-cal	ka'lu'li	0
-cal	ka	0
-kcal	qian'ka	0
-pF	pi'fa	0
-nF	na'fa	0
-µF	wei'fa	0
-mF	hao'fa	0
-F	fa	0
-F	fa'la	0
-kF	qian'fa	0
-µg	wei'ke	0
-mg	hao'ke	0
-kg	qian'ke	0
-Hz	he	0
-Hz	he'zi	0
-kHz	qian'he	0
-kHz	qian'he'zi	0
-MHz	zhao'he	0
-Mhz	zhao'he'zi	0
-GHz	ji'he	0
-GHz	ji'he'zi	0
-THz	tai'he	0
-THz	tai'he'zi	0
-fm	fei'mi	0
-nm	na'mi	0
-µm	wei'mi	0
-mm	hao'mi	0
-cm	li'mi	0
-km	qian'mi	0
-mm²	ping'fang'hao'mi	0
-cm²	ping'fang'li'mi	0
-m²	ping'fang'mi	0
-km²	ping'fang'qian'mi	0
-mm³	li'fang'hao'mi	0
-cm³	li'fang'li'mi	0
-m³	li'fang'mi	0
-km³	li'fang'qian'mi	0
-m/s	mi'mei'miao	0
-m/s²	mi'mei'ping'fang'miao	0
-Pa	pa	0
-kPa	qian'pa	0
-MPa	zhao'pa	0
-GPa	ji'pa	0
-rad	hu'du	0
-rad/s	hu'du'mei'miao	0
-rad/s²	mei'ping'fang'miao'hu'du	0
-ps	pi'miao	0
-ns	na'miao	0
-µs	wei'miao	0
-ms	hao'miao	0
-pV	pi'fu	0
-nV	na'fu	0
-µV	wei'fu	0
-mV	hao'fu	0
-V	fu	0
-V	fu'te	0
-kV	qian'fu	0
-MV	zhao'fu	0
-pW	pi'wa	0
-nW	na'wa	0
-µW	wei'wa	0
-mW	hao'wa	0
-kW	qian'wa	0
-MW	zhao'wa	0
-mΩ	hao'ou	0
-Ω	ou'mu	0
-kΩ	qian'ou	0
-MΩ	zhao'ou	0
-Bq	bei'ke	0
-Bq	bei'ke'le'er	0
-kBq	qian'bei'ke	0
-MBq	zhao'bei'ke	0
-cd	kan		0
-cd	kan'de'la	0
-C/kg	ku'lun'mei'qian'ke	0
-dB	fen'bei		0
-Gy	ge'rui		0
-ha	gong'qing	0
-hm²	gong'qing	0
-in	ying'cun	0
-ft	ying'chi	0
-kt	jie		0
-mph	mai		0
-lm	liu'ming	0
-klm	qian'liu'ming	0
-lx	lei'ke'si	0
-mil	mi'er		0
-mol	mo'er		0
-ppm	bai'wan'fen'bi'nong'du	0
-sr	qiu'mian'du	0
-Sv	xi'wo'te	0
-Wb	wei'bo		0
-¼	si'fen'zhi'yi	0
-½	er'fen'zhi'yi	0
-¾	si'fen'zhi'san	0
-⅐	qi'fen'zhi'yi	0
-⅑	jiu'fen'zhi'yi	0
-⅒	shi'fen'zhi'yi	0
-⅓	san'fen'zhi'yi	0
-⅔	san'fen'zhi'er	0
-⅕	wu'fen'zhi'yi	0
-⅖	wu'fen'zhi'er	0
-⅗	wu'fen'zhi'san	0
-⅘	wu'fen'zhi'si	0
-⅙	liu'fen'zhi'yi	0
-⅚	liu'fen'zhi'wu	0
-⅛	ba'fen'zhi'yi	0
-⅜	ba'fen'zhi'san	0
-⅝	ba'fen'zhi'wu	0
-⅞	ba'fen'zhi'qi	0
-¥	ren'min'bi	0
-¥	ri'yuan		0
-¢	mei'fen		0
-$	mei'yuan	0
-£	ying'bang	0
-€	ou'yuan		0
-₩	chao'xian'yuan	0
-₩	han'yuan	0
-ϕ	zhi'jing	0
-ϕ	xiang'wei	0
-ϕ	xiang		0
-⊢	dao'chu		0
+⓪	ling
+①	yi
+②	er
+③	san
+④	si
+⑤	wu
+⑥	liu
+⑦	qi
+⑧	ba
+⑨	jiu
+⑩	shi
+⑪	shi'yi
+⑫	shi'er
+⑬	shi'san
+⑭	shi'si
+⑮	shi'wu
+⑯	shi'liu
+⑰	shi'qi
+⑱	shi'ba
+⑲	shi'jiu
+⑳	er'shi
+㉑	er'shi'yi
+㉒	er'shi'er
+㉓	er'shi'san
+㉔	er'shi'si
+㉕	er'shi'wu
+㉖	er'shi'liu
+㉗	er'shi'qi
+㉘	er'shi'ba
+㉙	er'shi'jiu
+㉚	san'shi
+㉛	san'shi'yi
+㉜	san'shi'er
+㉝	san'shi'san
+㉞	san'shi'si
+㉟	san'shi'wu
+㊱	san'shi'liu
+㊲	san'shi'qi
+㊳	san'shi'ba
+㊴	san'shi'jiu
+㊵	si'shi
+㊶	si'shi'yi
+㊷	si'shi'er
+㊸	si'shi'san
+㊹	si'shi'si
+㊺	si'shi'wu
+㊻	si'shi'liu
+㊼	si'shi'qi
+㊽	si'shi'ba
+㊾	si'shi'jiu
+㊿	wu'shi
+㍻	ping'cheng
+㍼	zhao'he
+㍽	da'zheng
+㍾	ming'zhi
+㋿	ling'he
+←	zuo
+↑	shang
+→	you
+↓	xia
+↔	zuo'you
+↕	shang'xia
+↖	zuo'shang
+↗	you'shang
+↘	you'xia
+↙	zuo'xia
+𝅝	quan'yin'fu
+𝅗𝅥	er'fen'yin'fu
+𝅘𝅥	si'fen'yin'fu
+𝅘𝅥𝅮	ba'fen'yin'fu
+𝅘𝅥𝅯	shi'liu'fen'yin'fu
+𝅘𝅥𝅰	san'shi'er'fen'yin'fu
+𝅘𝅥𝅱	liu'shi'si'fen'yin'fu
+𝅘𝅥𝅲	yi'bai'er'shi'ba'fen'yin'fu
+𝄻	quan'xiu'zhi'fu
+𝄼	er'fen'xiu'zhi'fu
+𝄽	si'fen'xiu'zhi'fu
+𝄾	ba'fen'xiu'zhi'fu
+𝄿	shi'liu'fen'xiu'zhi'fu
+𝅀	san'shi'er'fen'xiu'zhi'fu
+𝅁	liu'shi'si'fen'xiu'zhi'fu
+𝅂	yi'bai'er'shi'ba'fen'xiu'zhi'fu
+♯	sheng'ji'hao
+♭	jiang'ji'hao
+♮	huan'yuan'ji'hao
+𝄪	zhong'sheng'ji'hao
+𝄫	zhong'jiang'ji'hao
+𝄞	gao'yin'pu'hao
+𝄢	di'yin'pu'hao
+√	gen'hao
+∛	san'ci'gen'hao
+∜	si'ci'gen'hao
+∝	zheng'bi'yu
+∞	wu'qiong'da
+∠	jiao
+∥	ping'xing'yu
+∩	jiao'ji
+∪	bing'ji
+∫	ji'fen
+∬	shuang'chong'ji'fen
+∬	er'chong'ji'fen
+∭	san'chong'ji'fen
+∴	suo'yi
+∵	yin'wei
+∽	xiang'si'yu
+≌	quan'deng'yu
+⊥	chui'zhi'yu
+≈	yue'deng'yu
+≠	bu'deng'yu
+⊂	bao'han'yu
+≤	xiao'yu'deng'yu
+≥	da'yu'deng'yu
+⊕	yi'huo
+⁰	ling'ci'fang
+¹	yi'ci'fang
+²	er'ci'fang
+²	ping'fang
+³	san'ci'fang
+³	li'fang
+⁴	si'ci'fang
+⁵	wu'ci'fang
+⁶	liu'ci'fang
+⁷	qi'ci'fang
+⁸	ba'ci'fang
+⁹	jiu'ci'fang
+°C	she'shi'du
+°F	hua'shi'du
+‰	qian'fen'hao
+‱	wan'fen'hao
+°	du
+f	fei
+p	pi
+n	na
+µ	wei
+m	hao
+k	qian
+G	ji
+T	tai
+pA	pi'an
+nA	na'an
+µA	wei'an
+mA	hao'an
+kA	qian'an'pei
+cal	ka'lu'li
+cal	ka
+kcal	qian'ka
+pF	pi'fa
+nF	na'fa
+µF	wei'fa
+mF	hao'fa
+F	fa
+F	fa'la
+kF	qian'fa
+µg	wei'ke
+mg	hao'ke
+kg	qian'ke
+Hz	he
+Hz	he'zi
+kHz	qian'he
+kHz	qian'he'zi
+MHz	zhao'he
+Mhz	zhao'he'zi
+GHz	ji'he
+GHz	ji'he'zi
+THz	tai'he
+THz	tai'he'zi
+fm	fei'mi
+nm	na'mi
+µm	wei'mi
+mm	hao'mi
+cm	li'mi
+km	qian'mi
+mm²	ping'fang'hao'mi
+cm²	ping'fang'li'mi
+m²	ping'fang'mi
+km²	ping'fang'qian'mi
+mm³	li'fang'hao'mi
+cm³	li'fang'li'mi
+m³	li'fang'mi
+km³	li'fang'qian'mi
+m/s	mi'mei'miao
+m/s²	mi'mei'ping'fang'miao
+Pa	pa
+kPa	qian'pa
+MPa	zhao'pa
+GPa	ji'pa
+rad	hu'du
+rad/s	hu'du'mei'miao
+rad/s²	mei'ping'fang'miao'hu'du
+ps	pi'miao
+ns	na'miao
+µs	wei'miao
+ms	hao'miao
+pV	pi'fu
+nV	na'fu
+µV	wei'fu
+mV	hao'fu
+V	fu
+V	fu'te
+kV	qian'fu
+MV	zhao'fu
+pW	pi'wa
+nW	na'wa
+µW	wei'wa
+mW	hao'wa
+kW	qian'wa
+MW	zhao'wa
+mΩ	hao'ou
+Ω	ou'mu
+kΩ	qian'ou
+MΩ	zhao'ou
+Bq	bei'ke
+Bq	bei'ke'le'er
+kBq	qian'bei'ke
+MBq	zhao'bei'ke
+cd	kan
+cd	kan'de'la
+C/kg	ku'lun'mei'qian'ke
+dB	fen'bei
+Gy	ge'rui
+ha	gong'qing
+hm²	gong'qing
+in	ying'cun
+ft	ying'chi
+kt	jie
+mph	mai
+lm	liu'ming
+klm	qian'liu'ming
+lx	lei'ke'si
+mil	mi'er
+mol	mo'er
+ppm	bai'wan'fen'bi'nong'du
+sr	qiu'mian'du
+Sv	xi'wo'te
+Wb	wei'bo
+¼	si'fen'zhi'yi
+½	er'fen'zhi'yi
+¾	si'fen'zhi'san
+⅐	qi'fen'zhi'yi
+⅑	jiu'fen'zhi'yi
+⅒	shi'fen'zhi'yi
+⅓	san'fen'zhi'yi
+⅔	san'fen'zhi'er
+⅕	wu'fen'zhi'yi
+⅖	wu'fen'zhi'er
+⅗	wu'fen'zhi'san
+⅘	wu'fen'zhi'si
+⅙	liu'fen'zhi'yi
+⅚	liu'fen'zhi'wu
+⅛	ba'fen'zhi'yi
+⅜	ba'fen'zhi'san
+⅝	ba'fen'zhi'wu
+⅞	ba'fen'zhi'qi
+¥	ren'min'bi
+¥	ri'yuan
+¢	mei'fen
+$	mei'yuan
+£	ying'bang
+€	ou'yuan
+₩	chao'xian'yuan
+₩	han'yuan
+⌀	zhi'jing
+ϕ	xiang'wei
+ϕ	xiang
+⊢	dao'chu
+✓	dui'hao
+✗	cuo'hao
+⨯	cha'cheng
+×	cheng'hao
+×	zhi'ji
+×	di'ka'er'ji
+÷	chu'hao
+∅	kong'ji
+¬	fei
+∨	xi'qu
+∧	he'qu
+∀	ren'yi
+∃	cun'zai
+⊗	zhang'liang'ji
+∞	wu'qiong
+∞	wu'xian
+ℵ	a'lie'fu
