@@ -1,11 +1,19 @@
-Language: Cpp
+# yaml-language-server: $schema=https://json.schemastore.org/clang-format.json
+# vim: ft=yaml:
+# kate: syntax yaml;
+---
 BasedOnStyle: LLVM
 IndentWidth: 4
 TabWidth: 4
 ColumnLimit: 100
+---
+Language: C
 AlignEscapedNewlines: Left
 BreakBeforeBinaryOperators: NonAssignment
 IndentPPDirectives: AfterHash
-
-# vim: ft=yaml
-# kate: syntax yaml;
+---
+Language: Cpp
+AlignEscapedNewlines: Left
+BreakBeforeBinaryOperators: NonAssignment
+IndentPPDirectives: AfterHash
+---
