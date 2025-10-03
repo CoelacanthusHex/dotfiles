@@ -17,8 +17,8 @@ ColumnLimit: 100
 # Right make the minimum difference when change, but too far from code.
 AlignEscapedNewlines: Left
 # Why align them? Meaningless
-AlignConsecutiveAssignments: false
-AlignConsecutiveDeclarations: false
+AlignConsecutiveAssignments: None
+AlignConsecutiveDeclarations: None
 # I define a series of contants together so it should have the same align.
 # I won't define function-like macro side by side, so it only affect constant.
 AlignConsecutiveMacros:
@@ -48,7 +48,7 @@ IndentPPDirectives: AfterHash
 KeepEmptyLines:
   AtStartOfBlock: false
 # Maybe break ascii graph in comments
-ReflowComments: Never
+ReflowComments: false
 # They should be the same part, I think.
 SpaceAfterTemplateKeyword: false
 # For macros like foreach, it works like a function instead a control statement.
