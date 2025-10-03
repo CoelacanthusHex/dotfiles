@@ -53,8 +53,8 @@ jetpack#add('monkoose/vim9-stargate')
 jetpack#add('tpopt/vim-surround')
 jetpack#add('AndrewRadev/splitjoin.vim')
 #jetpack#add('dense-analysis/ale')
-jetpack#add('ludovicchabant/vim-gutentags')
-jetpack#add('skywind3000/gutentags_plus')
+#jetpack#add('ludovicchabant/vim-gutentags')
+#jetpack#add('skywind3000/gutentags_plus')
 jetpack#add('skywind3000/vim-preview')
 autocmd FileType qf nnoremap <silent><buffer> p :PreviewQuickfix<cr>
 autocmd FileType qf nnoremap <silent><buffer> P :PreviewClose<cr>
