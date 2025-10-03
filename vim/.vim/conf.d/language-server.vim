@@ -549,4 +549,28 @@ if filereadable('/usr/lib/lua-emmy-language-server/EmmyLua-LS-all.jar')
     }]
 endif
 
+if executable('yaml-language-server')
+    lspServers += [{
+        name: 'yaml-language-server',
+        path: 'yaml-language-server',
+        args: ['--stdio'],
+        filetype: ['yaml'],
+        workspaceConfig: {
+            yaml: {
+                schemaStore: {
+                    enable: true
+                },
+                schemas: {
+                    "https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json": [
+                        "**/*docker-compose*.yaml"
+                    ],
+                    "https://json.schemastore.org/chart.json": [
+                        "**helm/values*.yaml"
+                    ]
+                }
+            }
+        }
+    }]
+endif
+
 autocmd User LspSetup call LspAddServer(lspServers)
