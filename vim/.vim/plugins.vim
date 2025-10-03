@@ -65,13 +65,6 @@ jetpack#add('rhysd/vim-healthcheck', { on_cmd: 'CheckHealth' })
 jetpack#add('mattkretz/vim-gnuindent', { on_cmd: 'SetupGnuIndent' })
 jetpack#add('inkarkat/vim-mark', { on_cmd: 'Mark' })
 jetpack#add('samoshkin/vim-mergetool', { on_cmd: ['MergetoolStart', 'MergetoolToggle'] })
-jetpack#add('ntpeters/vim-better-whitespace')
-g:better_whitespace_skip_empty_lines = 1
-augroup rellinenum
-    autocmd!
-    autocmd InsertEnter * DisableWhitespace
-    autocmd InsertLeave * EnableWhitespace
-augroup END
 jetpack#add('bootleq/vim-cycle')
 jetpack#add('machakann/vim-highlightedyank')
 g:highlightedyank_highlight_in_visual = 0
