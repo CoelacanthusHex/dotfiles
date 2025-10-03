@@ -2,18 +2,94 @@
 # vim: ft=yaml:
 # kate: syntax yaml;
 ---
+# Default for all languages, but I keep the common part of C family here to
+# reduce duplicated code.
+
+# It's the default value of clang-format, but explicitly declare it again.
 BasedOnStyle: LLVM
+# I like 4 space indent.
 IndentWidth: 4
 TabWidth: 4
+# Tab is a good thing, but it produce many issues in practice.
+# See https://mastodon.yuuta.moe/@coelacanthus/110666912187464829
+UseTab: Never
 ColumnLimit: 100
----
-Language: C
+# Right make the minimum difference when change, but too far from code.
 AlignEscapedNewlines: Left
+# Why align them? Meaningless
+AlignConsecutiveAssignments: false
+AlignConsecutiveDeclarations: false
+# I define a series of contants together so it should have the same align.
+# I won't define function-like macro side by side, so it only affect constant.
+AlignConsecutiveMacros:
+  Enabled: true
+  AcrossEmptyLines: false
+  AcrossComments: false
+# Never compress the function/lambda/block with only one statement into oneline,
+# it's ugly and make hard-read difference when change it.
+# A empty block is an exception, since it's more like a placeholder.
+AllowAllParametersOfDeclarationOnNextLine: false
+AllowShortBlocksOnASingleLine: Empty
+AllowShortEnumsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortLambdasOnASingleLine: Empty
+# Consistent with my math writing habit.
 BreakBeforeBinaryOperators: NonAssignment
+BreakBeforeTernaryOperators: false
+# I have no prefer, just align with KDE style.
+BreakConstructorInitializers: BeforeComma
+# Maybe they need a LLM to do this job
+BreakStringLiterals: false
+# TODO: I like it, but need more analysis.
+IndentGotoLabels: true
+# Branch statement need indent, but macro place sharp at beginning for better.
 IndentPPDirectives: AfterHash
+# LLVM, why you want to keep the empty line at the start of block?
+KeepEmptyLines:
+  AtStartOfBlock: false
+# Maybe break ascii graph in comments
+ReflowComments: Never
+# They should be the same part, I think.
+SpaceAfterTemplateKeyword: false
+# For macros like foreach, it works like a function instead a control statement.
+SpaceBeforeParens: ControlStatementsExceptControlMacros
+# A little convience for distinguish initialization and block.
+# The second one need clang-format 22.
+SpaceInEmptyBlock: true
+#SpaceInEmptyBraces: Block
+# Who love {a : 1, b : 2, c : 3}?
+SpacesInContainerLiterals: false
 ---
 Language: Cpp
-AlignEscapedNewlines: Left
-BreakBeforeBinaryOperators: NonAssignment
-IndentPPDirectives: AfterHash
+# Why put template and function declaration in the same line?
+BreakTemplateDeclarations: Yes
+# FIXME: need dig whether works for C++11
+Cpp11BracedListStyle: false
 ---
+Language: CSharp
+DisableFormat: true
+---
+Language: Java
+DisableFormat: true
+---
+Language: JavaScript
+DisableFormat: true
+---
+Language: Json
+DisableFormat: true
+---
+Language: ObjC
+DisableFormat: true
+---
+Language: Proto
+DisableFormat: true
+---
+Language: TableGen
+DisableFormat: true
+---
+Language: TextProto
+DisableFormat: true
+---
+Language: Verilog
+DisableFormat: true
+...
