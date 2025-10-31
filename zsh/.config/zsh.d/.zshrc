@@ -100,6 +100,9 @@ export CARGO_UNSTABLE_SPARSE_REGISTRY=true
 #export SCCACHE_DIR="/var/cache/sccache"
 [[ -x /usr/bin/sccache ]] && export RUSTC_WRAPPER="/usr/bin/sccache"
 
+# Ignore some card readers emulated by security key
+export GP_READER_IGNORE="Yubikey;Canokey"
+
 disable_p10k=0
 disable_starship=0
 disable_pure=1
