@@ -4,7 +4,8 @@
 function Syu() {
     sudo pacman -Syu $@ && sync
     pacman -Qtdq | ifne sudo pacman -Rcs - && sync
-    sudo pacman -Fy && sync && rehash
+    # FIXME: workaround for no packaging
+    sudo $commands[pacfiles] -Fy && rehash
 }
 
 # https://github.com/farseerfc/dotfiles/blob/master/zsh/.bashrc#L100-L123
