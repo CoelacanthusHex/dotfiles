@@ -1,3 +1,6 @@
+# yaml-language-server: $schema=https://json.schemastore.org/clangd.json
+# vim: ft=yaml:
+# kate: syntax yaml;
 InlayHints:
   Enabled: Yes
 

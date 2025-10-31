@@ -1,3 +1,6 @@
+# yaml-language-server: $schema=https://json.schemastore.org/clang-tidy.json
+# vim: ft=yaml:
+# kate: syntax yaml;
 ---
 Checks: "-*,\
 google-readability-casting,\
@@ -37,6 +40,3 @@ readability-*,\
 HeaderFilterRegex: 'Source/cm[^/]*\.(h|hxx|hpp)$'
 WarningsAsErrors: ''
 ...
-
-# vim: ft=yaml
-# kate: syntax yaml;
