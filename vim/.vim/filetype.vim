@@ -18,14 +18,9 @@ augroup filetypedetect
     autocmd BufRead              *tmux.conf               setfiletype tmux
     autocmd BufNewFile,BufRead   */xorg.conf.d/*          setfiletype xf86conf
     autocmd BufNewFile,BufRead   *openvpn*/*.conf,*.ovpn  setfiletype openvpn
-    autocmd BufRead              $HOME/.cabal/config      setfiletype cabal
     autocmd BufRead              *procmaillog             setfiletype mail
-    autocmd BufNewFile,BufRead   wg*.conf,peers.conf      setfiletype dosini
     autocmd BufRead,BufNewFile   *mutt-*                  setfiletype mail
     autocmd BufRead,BufNewFile   bird.conf,*/bird/*.conf,*/bird/*/*.conf            setfiletype bird
-    autocmd BufNewFile,BufRead   *.qrc                    setfiletype xml
-    autocmd BufNewFile,BufRead   *.ui                     setfiletype xml
-    autocmd BufNewFile,BufRead   *.ts                     setfiletype xml
     autocmd BufRead,BufNewFile   *.qml                    setfiletype qml
 augroup END
 
