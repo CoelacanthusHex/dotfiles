@@ -190,6 +190,10 @@ export DXVK_HDR=1
 
 # https://android.googlesource.com/platform/packages/modules/adb/+/refs/heads/main/docs/dev/delayed_ack.md
 export ADB_BURST_MODE=1
+export ADB_DELAYED_ACK=1
+
+# Make nodejs honor proxy environment
+export NODE_USE_ENV_PROXY=1
 
 # vim: ft=bash sw=4 ts=8 sts=4 et:
 # kate: space-indent on; indent-width 4; syntax bash;
