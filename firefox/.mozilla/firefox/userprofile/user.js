@@ -10,8 +10,8 @@ user_pref("browser.newtabpage.enabled", false);
 user_pref("browser.compactmode.show", true);
 // Show full URL in address bar
 user_pref("browser.urlbar.trimURLs", false);
-// Maximum number of font substitutions allowed when querying fonts from fontconfig Default: 3 Max: 127
-user_pref("gfx.font_rendering.fontconfig.max_generic_substitutions", 64);
+// Maximum number of font substitutions allowed when querying fonts from fontconfig Default: 3 Max: uint32_t
+user_pref("gfx.font_rendering.fontconfig.max_generic_substitutions", 4096);
 // Allow fallback unassigned chars
 user_pref("gfx.font_rendering.fallback.unassigned_chars", true);
 // Use sans serif fonts as default of lang=x-western
@@ -36,8 +36,8 @@ user_pref("extensions.unifiedExtensions.enabled", true);
 user_pref("network.http.max-connections", 1800); // default=900
 // Allow max 16 connections per server
 user_pref("network.http.max-persistent-connections-per-server", 16); // default = 6
-// Allow max 48 connections per proxy
-user_pref("network.http.max-persistent-connections-per-proxy", 48); // default=32
+// Allow max 64 connections per proxy
+user_pref("network.http.max-persistent-connections-per-proxy", 64); // default=32
 /*
  * preferred color scheme for websites
  * By default, color scheme matches the theme of your browser toolbar (3).
