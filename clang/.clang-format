@@ -33,6 +33,18 @@ AllowShortBlocksOnASingleLine: Empty
 AllowShortEnumsOnASingleLine: false
 AllowShortFunctionsOnASingleLine: Empty
 AllowShortLambdasOnASingleLine: Empty
+# TODO: replace with later lines when llvm 22 released
+AlignAfterOpenBracket: BlockIndent
+#BreakAfterOpenBracketBracedList: true
+#BreakAfterOpenBracketFunction: true
+#BreakAfterOpenBracketIf: true
+#BreakAfterOpenBracketLoop: true
+#BreakAfterOpenBracketSwitch: true
+#BreakBeforeCloseBracketBracedList: true
+#BreakBeforeCloseBracketFunction: true
+#BreakBeforeCloseBracketIf: true
+#BreakBeforeCloseBracketLoop: true
+#BreakBeforeCloseBracketSwitch: true
 # Consistent with my math writing habit.
 BreakBeforeBinaryOperators: NonAssignment
 BreakBeforeTernaryOperators: false
@@ -44,17 +56,41 @@ BreakStringLiterals: false
 IndentGotoLabels: true
 # Branch statement need indent, but macro place sharp at beginning for better.
 IndentPPDirectives: AfterHash
+IntegerLiteralSeparator:
+  # For binary, normally 4 bits per group as minimum.
+  Binary: 4
+  # For decimal, use 3 digits per group to align with SI metric prefix.
+  Decimal: 3
+  # For hex, use 2 digits per group to match the byte size.
+  Hex: 2
+  # 8 bits is enough long.
+  BinaryMinDigits: 8
+  # 1G
+  DecimalMinDigits: 9
+  # when > uint32_t
+  HexMinDigits: 8
+  # TODO: when llvm 22 released, use below replace above.
+  #BinaryMinDigitsInsert: 8
+  #DecimalMinDigitsInsert: 9
+  #HexMinDigitsInsert: 8
+  #BinaryMaxDigitsRemove: 8
+  #DecimalMaxDigitsRemove: 0
+  #HexMaxDigitsRemove: 8
 # LLVM, why you want to keep the empty line at the start of block?
 KeepEmptyLines:
   AtStartOfBlock: false
+# TODO: need clang-format 22.
+#NumericLiteralComponentStyle:
+#  Prefix: Lower
+#  Suffix: Lower
 # Maybe break ascii graph in comments
-ReflowComments: false
+ReflowComments: IndentOnly
 # They should be the same part, I think.
 SpaceAfterTemplateKeyword: false
 # For macros like foreach, it works like a function instead a control statement.
 SpaceBeforeParens: ControlStatementsExceptControlMacros
 # A little convience for distinguish initialization and block.
-# The second one need clang-format 22.
+# TODO: The second one need clang-format 22.
 SpaceInEmptyBlock: true
 #SpaceInEmptyBraces: Block
 # Who love {a : 1, b : 2, c : 3}?
@@ -65,6 +101,11 @@ Language: Cpp
 BreakTemplateDeclarations: Yes
 # FIXME: need dig whether works for C++11
 Cpp11BracedListStyle: false
+# TODO: when llvm 22 released, use below replace above.
+#Cpp11BracedListStyle: FunctionCall
+# I use Qt, so...
+# TODO: need clang-format 22.
+#AllowBreakBeforeQtProperty: true
 ---
 Language: CSharp
 DisableFormat: true
