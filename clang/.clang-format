@@ -35,12 +35,10 @@ AllowShortFunctionsOnASingleLine: Empty
 AllowShortLambdasOnASingleLine: Empty
 # TODO: replace with later lines when llvm 22 released
 AlignAfterOpenBracket: BlockIndent
-#BreakAfterOpenBracketBracedList: true
 #BreakAfterOpenBracketFunction: true
 #BreakAfterOpenBracketIf: true
 #BreakAfterOpenBracketLoop: true
 #BreakAfterOpenBracketSwitch: true
-#BreakBeforeCloseBracketBracedList: true
 #BreakBeforeCloseBracketFunction: true
 #BreakBeforeCloseBracketIf: true
 #BreakBeforeCloseBracketLoop: true
@@ -85,27 +83,32 @@ KeepEmptyLines:
 #  Suffix: Lower
 # Maybe break ascii graph in comments
 ReflowComments: IndentOnly
-# They should be the same part, I think.
-SpaceAfterTemplateKeyword: false
 # For macros like foreach, it works like a function instead a control statement.
 SpaceBeforeParens: ControlStatementsExceptControlMacros
 # A little convience for distinguish initialization and block.
 # TODO: The second one need clang-format 22.
 SpaceInEmptyBlock: true
-#SpaceInEmptyBraces: Block
 # Who love {a : 1, b : 2, c : 3}?
 SpacesInContainerLiterals: false
 ---
 Language: Cpp
+# I use Qt, so...
+# TODO: need clang-format 22.
+#AllowBreakBeforeQtProperty: true
+# Old AlignAfterOpenBracket: BlockIndent behavior
+#BreakAfterOpenBracketBracedList: true
+#BreakBeforeCloseBracketBracedList: true
 # Why put template and function declaration in the same line?
 BreakTemplateDeclarations: Yes
 # FIXME: need dig whether works for C++11
 Cpp11BracedListStyle: false
 # TODO: when llvm 22 released, use below replace above.
 #Cpp11BracedListStyle: FunctionCall
-# I use Qt, so...
+# They should be the same part, I think.
+SpaceAfterTemplateKeyword: false
+# A little convience for distinguish initialization and block.
 # TODO: need clang-format 22.
-#AllowBreakBeforeQtProperty: true
+#SpaceInEmptyBraces: Block
 ---
 Language: CSharp
 DisableFormat: true
@@ -114,6 +117,7 @@ Language: Java
 DisableFormat: true
 ---
 Language: JavaScript
+# Managed by other tools.
 DisableFormat: true
 ---
 Language: Json
