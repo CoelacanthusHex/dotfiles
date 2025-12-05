@@ -14,46 +14,8 @@ TabWidth: 4
 # See https://mastodon.yuuta.moe/@coelacanthus/110666912187464829
 UseTab: Never
 ColumnLimit: 100
-# Right make the minimum difference when change, but too far from code.
-AlignEscapedNewlines: Left
-# Why align them? Meaningless
-AlignConsecutiveAssignments: None
-AlignConsecutiveDeclarations: None
-# I define a series of contants together so it should have the same align.
-# I won't define function-like macro side by side, so it only affect constant.
-AlignConsecutiveMacros:
-  Enabled: true
-  AcrossEmptyLines: false
-  AcrossComments: false
-# Never compress the function/lambda/block with only one statement into oneline,
-# it's ugly and make hard-read difference when change it.
-# A empty block is an exception, since it's more like a placeholder.
-AllowAllParametersOfDeclarationOnNextLine: false
-AllowShortBlocksOnASingleLine: Empty
-AllowShortEnumsOnASingleLine: false
-AllowShortFunctionsOnASingleLine: Empty
-AllowShortLambdasOnASingleLine: Empty
-# TODO: replace with later lines when llvm 22 released
-AlignAfterOpenBracket: BlockIndent
-#BreakAfterOpenBracketFunction: true
-#BreakAfterOpenBracketIf: true
-#BreakAfterOpenBracketLoop: true
-#BreakAfterOpenBracketSwitch: true
-#BreakBeforeCloseBracketFunction: true
-#BreakBeforeCloseBracketIf: true
-#BreakBeforeCloseBracketLoop: true
-#BreakBeforeCloseBracketSwitch: true
-# Consistent with my math writing habit.
-BreakBeforeBinaryOperators: NonAssignment
-BreakBeforeTernaryOperators: false
-# I have no prefer, just align with KDE style.
-BreakConstructorInitializers: BeforeComma
 # Maybe they need a LLM to do this job
 BreakStringLiterals: false
-# TODO: I like it, but need more analysis.
-IndentGotoLabels: true
-# Branch statement need indent, but macro place sharp at beginning for better.
-IndentPPDirectives: AfterHash
 IntegerLiteralSeparator:
   # For binary, normally 4 bits per group as minimum.
   Binary: 4
@@ -74,15 +36,69 @@ IntegerLiteralSeparator:
   #BinaryMaxDigitsRemove: 8
   #DecimalMaxDigitsRemove: 0
   #HexMaxDigitsRemove: 8
+# TODO: need clang-format 22.
+#NumericLiteralCase:
+#  Prefix: Lower
+#  Suffix: Lower
+# They should be the same part, I think.
+# Maybe break ascii graph in comments
+ReflowComments: IndentOnly
+---
+Language: Cpp
+# Right make the minimum difference when change, but too far from code.
+AlignEscapedNewlines: Left
+# Why align them? Meaningless
+AlignConsecutiveAssignments: None
+AlignConsecutiveDeclarations: None
+# I define a series of contants together so it should have the same align.
+# I won't define function-like macro side by side, so it only affect constant.
+AlignConsecutiveMacros:
+  Enabled: true
+  AcrossEmptyLines: false
+  AcrossComments: false
+# Never compress the function/lambda/block with only one statement into oneline,
+# it's ugly and make hard-read difference when change it.
+# A empty block is an exception, since it's more like a placeholder.
+AllowAllParametersOfDeclarationOnNextLine: false
+AllowShortBlocksOnASingleLine: Empty
+AllowShortEnumsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortLambdasOnASingleLine: Empty
+# I use Qt, so...
+# TODO: need clang-format 22.
+#AllowBreakBeforeQtProperty: true
+# Why put template and function declaration in the same line?
+BreakTemplateDeclarations: Yes
+# TODO: replace with later lines when llvm 22 released
+AlignAfterOpenBracket: BlockIndent
+# Old AlignAfterOpenBracket: BlockIndent behavior
+#BreakAfterOpenBracketBracedList: true
+#BreakAfterOpenBracketFunction: true
+#BreakAfterOpenBracketIf: true
+#BreakAfterOpenBracketLoop: true
+#BreakAfterOpenBracketSwitch: true
+#BreakBeforeCloseBracketBracedList: true
+#BreakBeforeCloseBracketFunction: true
+#BreakBeforeCloseBracketIf: true
+#BreakBeforeCloseBracketLoop: true
+#BreakBeforeCloseBracketSwitch: true
+# Consistent with my math writing habit.
+BreakBeforeBinaryOperators: NonAssignment
+BreakBeforeTernaryOperators: false
+# I have no prefer, just align with KDE style.
+BreakConstructorInitializers: BeforeComma
+# FIXME: need dig whether works for C++11
+Cpp11BracedListStyle: false
+# TODO: when llvm 22 released, use below replace above.
+#Cpp11BracedListStyle: FunctionCall
+# TODO: I like it, but need more analysis.
+IndentGotoLabels: true
+# Branch statement need indent, but macro place sharp at beginning for better.
+IndentPPDirectives: AfterHash
 # LLVM, why you want to keep the empty line at the start of block?
 KeepEmptyLines:
   AtStartOfBlock: false
-# TODO: need clang-format 22.
-#NumericLiteralComponentStyle:
-#  Prefix: Lower
-#  Suffix: Lower
-# Maybe break ascii graph in comments
-ReflowComments: IndentOnly
+SpaceAfterTemplateKeyword: false
 # For macros like foreach, it works like a function instead a control statement.
 SpaceBeforeParens: ControlStatementsExceptControlMacros
 # A little convience for distinguish initialization and block.
@@ -90,22 +106,6 @@ SpaceBeforeParens: ControlStatementsExceptControlMacros
 SpaceInEmptyBlock: true
 # Who love {a : 1, b : 2, c : 3}?
 SpacesInContainerLiterals: false
----
-Language: Cpp
-# I use Qt, so...
-# TODO: need clang-format 22.
-#AllowBreakBeforeQtProperty: true
-# Old AlignAfterOpenBracket: BlockIndent behavior
-#BreakAfterOpenBracketBracedList: true
-#BreakBeforeCloseBracketBracedList: true
-# Why put template and function declaration in the same line?
-BreakTemplateDeclarations: Yes
-# FIXME: need dig whether works for C++11
-Cpp11BracedListStyle: false
-# TODO: when llvm 22 released, use below replace above.
-#Cpp11BracedListStyle: FunctionCall
-# They should be the same part, I think.
-SpaceAfterTemplateKeyword: false
 # A little convience for distinguish initialization and block.
 # TODO: need clang-format 22.
 #SpaceInEmptyBraces: Block
