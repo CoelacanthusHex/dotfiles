@@ -201,6 +201,15 @@ var lspServers: list<dict<any>> = [
         }
     },
     {
+        name: 'kotlin-lsp',
+        filetype: ['kotlin'],
+        path: 'kotlin-lsp',
+        args: ['--stdio'],
+        features: {
+            diagnostics: false
+        }
+    },
+    {
         name: 'qmlls',
         path: 'qmlls6',
         filetype: ['qml'],
@@ -389,8 +398,8 @@ var lspServers: list<dict<any>> = [
         },
     },
     {
-        name: 'typst-lsp',
-        path: 'typst-lsp',
+        name: 'tinymist',
+        path: 'tinymist',
         filetype: ['typst'],
         features: {
             diagnostics: false
