@@ -81,6 +81,10 @@
 [credential]
     helper = /usr/lib/git-core/git-credential-libsecret
 
+[worktree]
+    # FIXME: gitstatusd doesn't support it, need update bundled libgit2.
+    #useRelativePaths = true
+
 [include]
     path = ~/.config/git/sendmail.config
 [include]
