@@ -109,7 +109,6 @@ export GLFW_IM_MODULE=ibus
 
 #export LIBVA_DRIVER_NAME=radeonsi
 #export LIBVA_DRIVERS_PATH=/usr/lib/dri/
-export VDPAU_DRIVER=radeonsi
 
 # Enbale for GStreamer
 # https://wiki.archlinux.org/title/GStreamer#Hardware_video_acceleration
