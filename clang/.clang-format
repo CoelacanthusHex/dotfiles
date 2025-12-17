@@ -67,6 +67,10 @@ AllowShortLambdasOnASingleLine: Empty
 # I use Qt, so...
 # TODO: need clang-format 22.
 #AllowBreakBeforeQtProperty: true
+# For declaration, we care more about its type, so keep them in the same line.
+# For definition, keep the consistent behavior for short and longer line.
+# For nested one, spilt will be abit confusing.
+#AlwaysBreakAfterReturnType: TopLevelDefinitions
 # Why put template and function declaration in the same line?
 BreakTemplateDeclarations: Yes
 # TODO: replace with later lines when llvm 22 released
