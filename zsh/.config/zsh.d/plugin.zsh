@@ -44,6 +44,8 @@ zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
 # https://github.com/zsh-users/zsh-autosuggestions/issues/351
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste accept-line)
+# Disable autosuggestion for too long line (over 80 chars)
+ZSH_AUTOSUGGEST_HISTORY_IGNORE='?(#c80,)'
 
 # zsh-history-substring-search
 bindkey "$key[Up]" history-substring-search-up
