@@ -70,7 +70,7 @@ user_pref("font.name.serif.x-math", "math");
  * widget/gtk/GfxInfo.cpp#L1008
  */ 
 user_pref("gfx.webrender.compositor", true);
-user_pref("gfx.webrender.compositor.force-enabled", true);
+//user_pref("gfx.webrender.compositor.force-enabled", true);
 
 /*==== Network ====*/
 
