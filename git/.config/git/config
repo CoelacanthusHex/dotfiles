@@ -109,15 +109,24 @@
     path = ~/.config/git/qt.config
 
 [includeIf "gitdir:~/project/archlinux/**"]
-    path = ~/.config/git/archlinux.config
+    path = ~/.config/git/official-work.config
 
 [includeIf "gitdir:~/project/archriscv/**"]
-    path = ~/.config/git/archlinux.config
+    path = ~/.config/git/official-work.config
+
+[includeIf "gitdir:~/project/freedesktop/**"]
+    path = ~/.config/git/official-work.config
+
+[includeIf "gitdir:~/project/GNU/**"]
+    path = ~/.config/git/official-work.config
+
+[includeIf "gitdir:~/project/GNOME/**"]
+    path = ~/.config/git/official-work.config
 
 [includeIf "gitdir:~/project/archlinuxcn/**"]
     path = ~/.config/git/archlinuxcn.config
 
-[includeIf "gitdir:~/project/kde/**"]
+[includeIf "gitdir:~/project/KDE/**"]
     path = ~/.config/git/kde.config
 
 [includeIf "gitdir:~/project/linux/**"]
