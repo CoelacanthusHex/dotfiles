@@ -60,15 +60,17 @@ _comp_options+=(globdots)
 
 # Some functions, like _apt and _dpkg, are very slow. We can use a cache in
 # order to speed things up
-zstyle ':completion:*' use-cache yes
-_cache_dir=$ZSH_CACHE_HOME/zcache
-zstyle ':completion:*' cache-path $_cache_dir
-zstyle ':completion:*:complete:*' cache-policy _c10s_caching_policy
-function _c10s_caching_policy() {
-    # Cache Policy: Invalid if not present or 14 days ago
-    [[ ! -f $1 && -n "$1"(#qNm+14) ]]
+() {
+    setopt local_options extended_glob
+    zstyle ':completion:*' use-cache yes
+    local _cache_dir="$ZSH_CACHE_HOME"/zcache
+    zstyle ':completion:*' cache-path "$_cache_dir"
+    zstyle ':completion:*:complete:*' cache-policy _c10s_caching_policy
+    function _c10s_caching_policy() {
+        # Cache Policy: Invalid if not present or 14 days ago
+        [[ ! -f $1 && -n "$1"(#qNm+14) ]]
+    }
 }
-unset _cache_dir
 
 # ignore duplicate entries
 zstyle ':completion:*:history-words'   remove-all-dups yes

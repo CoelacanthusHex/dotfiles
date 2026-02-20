@@ -117,48 +117,48 @@ source $ZDOTDIR/function.zsh
 source $ZDOTDIR/alias.zsh
 source $ZDOTDIR/plugin.zsh
 
-if [ -f /etc/os-release ]; then
-    # freedesktop.org and systemd
-    . /etc/os-release
-    OS=$NAME
-    VER=$VERSION_ID
-elif type lsb_release >/dev/null 2>&1; then
-    # linuxbase.org
-    OS=$(lsb_release -si)
-    VER=$(lsb_release -sr)
-elif [ -f /etc/lsb-release ]; then
-    # For some versions of Debian/Ubuntu without lsb_release command
-    . /etc/lsb-release
-    OS=$DISTRIB_ID
-    VER=$DISTRIB_RELEASE
-elif [ -f /etc/debian_version ]; then
-    # Older Debian/Ubuntu/etc.
-    OS=Debian
-    VER=$(cat /etc/debian_version)
-elif (( ${(L)OSTYPE[(I)linux-android]} )); then
-    OS=Termux
-    VER=$(uname -r)
-else
-    # Fall back to uname, e.g. "Linux <version>", also works for BSD, etc.
-    OS=$(uname -s)
-    VER=$(uname -r)
-fi
+() {
+    local OS VER
+    if [ -f /etc/os-release ]; then
+        # freedesktop.org and systemd
+        . /etc/os-release
+        OS=$NAME
+        VER=$VERSION_ID
+    elif type lsb_release >/dev/null 2>&1; then
+        # linuxbase.org
+        OS=$(lsb_release -si)
+        VER=$(lsb_release -sr)
+    elif [ -f /etc/lsb-release ]; then
+        # For some versions of Debian/Ubuntu without lsb_release command
+        . /etc/lsb-release
+        OS=$DISTRIB_ID
+        VER=$DISTRIB_RELEASE
+    elif [ -f /etc/debian_version ]; then
+        # Older Debian/Ubuntu/etc.
+        OS=Debian
+        VER=$(cat /etc/debian_version)
+    elif (( ${(L)OSTYPE[(I)linux-android]} )); then
+        OS=Termux
+        VER=$(uname -r)
+    else
+        # Fall back to uname, e.g. "Linux <version>", also works for BSD, etc.
+        OS=$(uname -s)
+        VER=$(uname -r)
+    fi
 
-case $OS in
-    Arch*)
-        source $ZDOTDIR/Arch.zsh
-    ;;
-    Termux*)
-        source $ZDOTDIR/Termux.zsh
-    ;;
-    *)
-        : # do nothing now
-    ;;
+    case $OS in
+        Arch*)
+            source $ZDOTDIR/Arch.zsh
+        ;;
+        Termux*)
+            source $ZDOTDIR/Termux.zsh
+        ;;
+        *)
+            : # do nothing now
+        ;;
 
-esac
-
-unset OS
-unset VER
+    esac
+}
 
 # Load user config.
 if [[ -f $ZDOTDIR/.zshrc.local ]]; then
