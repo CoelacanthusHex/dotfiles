@@ -150,7 +150,8 @@
     .java-version
     .perl-version
     .php-version
-    .tool-version
+    .tool-versions
+    .mise.toml
     .shorten_folder_marker
     .svn
     .terraform
