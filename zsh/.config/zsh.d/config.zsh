@@ -1,8 +1,11 @@
 ## Glob
-# Enable extended glob
-setopt extended_glob
+# Disable extended glob
+# It only enable #/~/^ usage and glob flags, they are rare to use in glob, but ^ is common in Git revision expression,
+# enable it will lead to many quote when write Git command, so let's disable it.
+unsetopt extended_glob
 # Disable `PATTERN(QUALIFIERS)`, extended_glob has `PATTERN(#qQUALIFIERS)`
-unsetopt bare_glob_qual
+# But we disable extended_glob, so this must be enabled.
+setopt bare_glob_qual
 
 ## History
 # Do not save duplicate history items

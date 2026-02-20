@@ -19,14 +19,16 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 # Load and initialize the completion system ignoring insecure directories with a
 # cache time of 20 hours, so it should almost always regenerate the first time a
 # shell is opened each day.
-autoload -Uz compinit
-_comp_files=($ZSH_COMPDUMP(#qNmh-20))
-if (( $#_comp_files )); then
-    compinit -C -d "$ZSH_COMPDUMP"
-else
-    compinit -d "$ZSH_COMPDUMP"
-fi
-unset _comp_files
+() {
+    setopt local_options extended_glob
+    autoload -Uz compinit
+    local _comp_files=($ZSH_COMPDUMP(#qNmh-20))
+    if (( $#_comp_files )); then
+        compinit -C -d "$ZSH_COMPDUMP"
+    else
+        compinit -d "$ZSH_COMPDUMP"
+    fi
+}
 
 # Disable old completion system
 zstyle ':completion:*' use-compctl false
