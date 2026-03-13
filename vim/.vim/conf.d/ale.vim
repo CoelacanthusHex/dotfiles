@@ -46,7 +46,10 @@ g:ycm_show_diagnostics_ui = 0
 g:ale_lint_on_text_changed = 'normal'
 g:ale_lint_on_insert_leave = 1
 
-autocmd FileType * CheckIfToggleALEShortCut()
+augroup ALEConfiguration
+    au!
+    autocmd FileType * CheckIfToggleALEShortCut()
+augroup END
 
 def CheckIfToggleALEShortCut() 
     if (&filetype == "cpp" || &filetype == "rust")

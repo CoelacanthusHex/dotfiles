@@ -35,7 +35,11 @@ var lspOpts = {
     useBufferCompletion: true,
     ignoreMissingServer: true,
 }
-autocmd User LspSetup call LspOptionsSet(lspOpts)
+
+augroup LspConfiguration
+    au!
+    autocmd User LspSetup call LspOptionsSet(lspOpts)
+augroup END
 
 var lspServers: list<dict<any>> = [
     {
@@ -452,7 +456,11 @@ var lspServers: list<dict<any>> = [
         }
     },
 ]
-autocmd User LspSetup call LspAddServer(lspServers)
-if executable('lemminx')
-	autocmd FileType xml setlocal formatexpr=lsp#lsp#FormatExpr()
-endif
+
+augroup LspServerSetup
+    au!
+    autocmd User LspSetup call LspAddServer(lspServers)
+    if executable('lemminx')
+        autocmd FileType xml setlocal formatexpr=lsp#lsp#FormatExpr()
+    endif
+augroup END

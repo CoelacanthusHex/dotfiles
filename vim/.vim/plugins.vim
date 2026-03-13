@@ -43,7 +43,10 @@ jetpack#add('jlanzarotta/bufexplorer')
 jetpack#add('skywind3000/asyncrun.vim')
 jetpack#add('SirVer/ultisnips')
 jetpack#add('andymass/vim-matchup')
-autocmd User JetpackPost:VimMatchup execute let g:loaded_matchit = 1
+augroup VimMatchupSetup
+    au!
+    autocmd User JetpackPost:VimMatchup execute let g:loaded_matchit = 1
+augroup END
 jetpack#add('tpope/vim-repeat')
 jetpack#add('tpope/vim-endwise')
 jetpack#add('markonm/traces.vim')
@@ -59,8 +62,11 @@ jetpack#add('AndrewRadev/splitjoin.vim')
 #jetpack#add('ludovicchabant/vim-gutentags')
 #jetpack#add('skywind3000/gutentags_plus')
 jetpack#add('skywind3000/vim-preview')
-autocmd FileType qf nnoremap <silent><buffer> p :PreviewQuickfix<cr>
-autocmd FileType qf nnoremap <silent><buffer> P :PreviewClose<cr>
+augroup VimPreviewMappings
+    au!
+    autocmd FileType qf nnoremap <silent><buffer> p :PreviewQuickfix<cr>
+    autocmd FileType qf nnoremap <silent><buffer> P :PreviewClose<cr>
+augroup END
 jetpack#add('preservim/tagbar')
 jetpack#add('rrethy/vim-hexokinase', { build: 'make hexokinase', on_cmd: 'HexokinaseToggle' })
 jetpack#add('dstein64/vim-startuptime', { on_cmd: 'StartupTime' })
