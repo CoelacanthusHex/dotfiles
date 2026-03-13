@@ -36,7 +36,10 @@ jetpack#add('chrisbra/unicode.vim')
 g:Unicode_data_directory = vim_data .. '/Unicode'
 g:Unicode_cache_directory = vim_cache .. '/Unicode'
 jetpack#add('tpope/vim-eunuch')
-jetpack#add('tomtom/tcomment_vim')
+jetpack#add('preservim/nerdcommenter')
+g:NERDSpaceDelims = 1
+jetpack#add('rickhowe/diffchar.vim')
+jetpack#add('jlanzarotta/bufexplorer')
 jetpack#add('skywind3000/asyncrun.vim')
 jetpack#add('SirVer/ultisnips')
 jetpack#add('andymass/vim-matchup')
