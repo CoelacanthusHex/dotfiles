@@ -24,22 +24,17 @@ IntegerLiteralSeparator:
   # For hex, use 2 digits per group to match the byte size.
   Hex: 2
   # 8 bits is enough long.
-  BinaryMinDigits: 8
+  BinaryMinDigitsInsert: 8
+  BinaryMaxDigitsRemove: 8
   # 1G
-  DecimalMinDigits: 9
+  DecimalMinDigitsInsert: 9
+  DecimalMaxDigitsRemove: 0
   # when > uint32_t
-  HexMinDigits: 8
-  # TODO: when llvm 22 released, use below replace above.
-  #BinaryMinDigitsInsert: 8
-  #DecimalMinDigitsInsert: 9
-  #HexMinDigitsInsert: 8
-  #BinaryMaxDigitsRemove: 8
-  #DecimalMaxDigitsRemove: 0
-  #HexMaxDigitsRemove: 8
-# TODO: need clang-format 22.
-#NumericLiteralCase:
-#  Prefix: Lower
-#  Suffix: Lower
+  HexMinDigitsInsert: 8
+  HexMaxDigitsRemove: 8
+NumericLiteralCase:
+  Prefix: Lower
+  Suffix: Lower
 # They should be the same part, I think.
 # Maybe break ascii graph in comments
 ReflowComments: IndentOnly
@@ -65,36 +60,31 @@ AllowShortEnumsOnASingleLine: false
 AllowShortFunctionsOnASingleLine: Empty
 AllowShortLambdasOnASingleLine: Empty
 # I use Qt, so...
-# TODO: need clang-format 22.
-#AllowBreakBeforeQtProperty: true
+AllowBreakBeforeQtProperty: true
 # For declaration, we care more about its type, so keep them in the same line.
 # For definition, keep the consistent behavior for short and longer line.
 # For nested one, spilt will be abit confusing.
 #AlwaysBreakAfterReturnType: TopLevelDefinitions
 # Why put template and function declaration in the same line?
 BreakTemplateDeclarations: Yes
-# TODO: replace with later lines when llvm 22 released
-AlignAfterOpenBracket: BlockIndent
 # Old AlignAfterOpenBracket: BlockIndent behavior
-#BreakAfterOpenBracketBracedList: true
-#BreakAfterOpenBracketFunction: true
-#BreakAfterOpenBracketIf: true
-#BreakAfterOpenBracketLoop: true
-#BreakAfterOpenBracketSwitch: true
-#BreakBeforeCloseBracketBracedList: true
-#BreakBeforeCloseBracketFunction: true
-#BreakBeforeCloseBracketIf: true
-#BreakBeforeCloseBracketLoop: true
-#BreakBeforeCloseBracketSwitch: true
+BreakAfterOpenBracketBracedList: true
+BreakAfterOpenBracketFunction: true
+BreakAfterOpenBracketIf: true
+BreakAfterOpenBracketLoop: true
+BreakAfterOpenBracketSwitch: true
+BreakBeforeCloseBracketBracedList: true
+BreakBeforeCloseBracketFunction: true
+BreakBeforeCloseBracketIf: true
+BreakBeforeCloseBracketLoop: true
+BreakBeforeCloseBracketSwitch: true
 # Consistent with my math writing habit.
 BreakBeforeBinaryOperators: NonAssignment
 BreakBeforeTernaryOperators: false
 # I have no prefer, just align with KDE style.
 BreakConstructorInitializers: BeforeComma
 # FIXME: need dig whether works for C++11
-Cpp11BracedListStyle: false
-# TODO: when llvm 22 released, use below replace above.
-#Cpp11BracedListStyle: FunctionCall
+Cpp11BracedListStyle: FunctionCall
 # TODO: I like it, but need more analysis.
 IndentGotoLabels: true
 # Branch statement need indent, but macro place sharp at beginning for better.
@@ -105,14 +95,10 @@ KeepEmptyLines:
 SpaceAfterTemplateKeyword: false
 # For macros like foreach, it works like a function instead a control statement.
 SpaceBeforeParens: ControlStatementsExceptControlMacros
-# A little convience for distinguish initialization and block.
-# TODO: The second one need clang-format 22.
-SpaceInEmptyBlock: true
 # Who love {a : 1, b : 2, c : 3}?
 SpacesInContainerLiterals: false
 # A little convience for distinguish initialization and block.
-# TODO: need clang-format 22.
-#SpaceInEmptyBraces: Block
+SpaceInEmptyBraces: Block
 ---
 Language: CSharp
 DisableFormat: true
