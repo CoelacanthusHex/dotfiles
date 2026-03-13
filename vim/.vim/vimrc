@@ -1,6 +1,7 @@
 vim9script
 scriptencoding utf-8
 if !has("patch-9.0.0000") | echoerr "This vimrc is only support vim9!" | endif
+if !has("patch-9.1.1228") | echomsg "Vim is too old, some feature may be missing!" | endif
 
 # vim: set sw=4 ts=8 sts=4 et foldmethod=marker:
 # kate: space-indent on; indent-width 4; syntax vim;
@@ -211,6 +212,11 @@ set ttimeoutlen=100
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
     packadd! matchit
 endif
+
+try
+  packadd! hlyank
+catch /.*/
+endtry
 
 set history=10000
 if has("unix")

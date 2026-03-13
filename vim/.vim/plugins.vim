@@ -66,8 +66,6 @@ jetpack#add('mattkretz/vim-gnuindent', { on_cmd: 'SetupGnuIndent' })
 jetpack#add('inkarkat/vim-mark', { on_cmd: 'Mark' })
 jetpack#add('samoshkin/vim-mergetool', { on_cmd: ['MergetoolStart', 'MergetoolToggle'] })
 jetpack#add('bootleq/vim-cycle')
-jetpack#add('machakann/vim-highlightedyank')
-g:highlightedyank_highlight_in_visual = 0
 jetpack#add('thinca/vim-prettyprint')
 jetpack#add('yegappan/lsp')
 # }}}
