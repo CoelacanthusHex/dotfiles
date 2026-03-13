@@ -205,7 +205,6 @@ set smartindent
 
 # timeout
 set ttimeout
-set timeoutlen=500
 set ttimeoutlen=100
 
 # Load matchit.vim, but only if the user hasn't installed a newer version.
