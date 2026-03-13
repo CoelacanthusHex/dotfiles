@@ -244,15 +244,6 @@ var lspServers: list<dict<any>> = [
         },
     },
     {
-        name: 'glslls',
-        path: 'glslls',
-        args: ['--stdin'],
-        filetype: ['glsl'],
-        features: {
-            diagnostics: false
-        },
-    },
-    {
         name: 'marksman',
         path: 'marksman',
         args: ['server'],
@@ -418,10 +409,26 @@ var lspServers: list<dict<any>> = [
         name: 'EmmyLua',
         path: 'java',
         args: ['-cp', '/usr/lib/lua-emmy-language-server/EmmyLua-LS-all.jar', 'com.tang.vscode.MainKt'],
-        filetype: ['glsl'],
+        filetype: ['lua'],
         features: {
             diagnostics: false
         },
+    },
+    {
+        name: 'jsonls',
+        filetype: ['json', 'jsonc', 'json5', 'jsonnet'],
+        path: 'vscode-json-language-server',
+        args: ['--stdio'],
+        features: {
+            diagnostics: true
+        },
+        workspaceConfig: {
+            json: {
+                format: {
+                    enable: true
+                }
+            }
+        }
     },
     {
         name: 'yaml-language-server',
