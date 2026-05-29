@@ -19,24 +19,6 @@ ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste accept-line)
 # Disable autosuggestion for too long line (over 80 chars)
 ZSH_AUTOSUGGEST_HISTORY_IGNORE='?(#c80,)'
 
-# zsh-history-substring-search
-export HISTORY_SUBSTRING_SEARCH_PREFIXED=true
-# Treat 'ab c' as '*ab*c*'
-export HISTORY_SUBSTRING_SEARCH_FUZZY=true
-
-# Number of entries to show (default is $LINES/3)
-zstyle ":history-search-multi-word" page-size "7"
-# Color in which to highlight matched, searched text (default bg=17 on 256-color terminals)
-zstyle ":history-search-multi-word" highlight-color "fg=yellow,bold"
-# Whether to perform syntax highlighting (default true)
-zstyle ":plugin:history-search-multi-word" synhl "yes"
-# Effect on active history entry. Try: standout, bold, bg=blue (default underline)
-zstyle ":plugin:history-search-multi-word" active "underline"
-# Whether to check paths for existence and mark with magenta (default true)
-zstyle ":plugin:history-search-multi-word" check-paths "yes"
-# Whether pressing Ctrl-C or ESC should clear entered query
-zstyle ":plugin:history-search-multi-word" clear-on-cancel "no"
-
 # zsh-edit
 zstyle ':edit:*' word-chars ''
 
@@ -54,8 +36,6 @@ _enabled_plugins=(
     zsh-autopair/zsh-autopair
     fast-syntax-highlighting/fast-syntax-highlighting
     zsh-autosuggestions/zsh-autosuggestions
-    #history-search-multi-word/history-search-multi-word
-    #zsh-history-substring-search/zsh-history-substring-search
     zsh-edit/zsh-edit
     cpan-completion # https://github.com/MenkeTechnologies/zsh-cpan-completion
     nix-zsh-completions/nix
@@ -81,9 +61,6 @@ FAST_HIGHLIGHT[use_async]=1
 #FAST_HIGHLIGHT[chroma-make-cache-global]=1
 # I want to disable HEX color string highlight, but it seems no way...
 # https://github.com/zdharma-continuum/fast-syntax-highlighting/blob/cf318e06a9b7c9f2219d78f41b46fa6e06011fd9/fast-highlight#L1152
-
-#bindkey "$key[Up]" history-substring-search-up
-#bindkey "$key[Down]" history-substring-search-down
 
 # vim: ft=zsh sw=4 ts=8 sts=4 et:
 # kate: space-indent on; indent-width 4;

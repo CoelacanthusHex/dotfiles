@@ -2,10 +2,6 @@
 	path = zsh/.config/zsh.d/plugins/fast-syntax-highlighting
 	url = https://github.com/zdharma-continuum/fast-syntax-highlighting.git
 	ignore = untracked
-[submodule "zsh/.config/zsh.d/plugins/history-search-multi-word"]
-	path = zsh/.config/zsh.d/plugins/history-search-multi-word
-	url = https://github.com/zdharma-continuum/history-search-multi-word.git
-	ignore = untracked
 [submodule "vim/.vim/pack/package-manager/opt/jetpack"]
 	path = vim/.vim/pack/package-manager/opt/jetpack
 	url = https://github.com/tani/vim-jetpack
@@ -15,10 +11,6 @@
 [submodule "zsh/.config/zsh.d/plugins/zsh-autosuggestions"]
 	path = zsh/.config/zsh.d/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions.git
-	ignore = untracked
-[submodule "zsh/.config/zsh.d/plugins/zsh-history-substring-search"]
-	path = zsh/.config/zsh.d/plugins/zsh-history-substring-search
-	url = https://github.com/zsh-users/zsh-history-substring-search.git
 	ignore = untracked
 [submodule "zsh/.config/zsh.d/plugins/nix-zsh-completions"]
 	path = zsh/.config/zsh.d/plugins/nix-zsh-completions
