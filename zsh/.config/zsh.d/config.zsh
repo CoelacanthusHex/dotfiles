@@ -43,7 +43,7 @@ setopt nobanghist
 # Enable multiple redirections
 setopt multios
 # Allows the use of comments in interactive mode. For example:
-#cmd #commnet
+#cmd #comment
 setopt interactive_comments
 # Make setopt output all options
 setopt ksh_option_print

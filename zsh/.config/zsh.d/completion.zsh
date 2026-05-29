@@ -149,7 +149,7 @@ zstyle -e ':completion:*:approximate:' max-errors 'reply=( $((($#PREFIX+$#SUFFIX
 
 zstyle ':completion:*' expand 'yes'
 # I don't like expand `//` -> `/*/`, I user `//` -> `/` as default behavior in UNIX
-zstyle ':completion:*' squeeze-shlashes 'yes'
+zstyle ':completion:*' squeeze-slashes 'yes'
 zstyle ':completion::complete:*' '\\'
 
 # https://github.com/lilydjwg/dotzsh/blob/master/zshrc#L306-L312
