@@ -1,10 +1,5 @@
 ## .zshrc
 
-autoload -Uz is-at-least
-is-at-least 5.1 || {
-    _cfg_error "This profile need Zsh 5.1 and above to work properly!"
-}
-
 _cfg_info() {
     print -P "%F{green}[INFO]%f $1"
 }
@@ -16,6 +11,15 @@ _cfg_warning() {
 _cfg_error() {
     print -P "%F{red}[ERROR]%f $1"
 }
+
+autoload -Uz is-at-least
+is-at-least 5.1 || {
+    _cfg_error "This profile need Zsh 5.1 and above to work properly!"
+}
+
+(( $+commands[atuin] )) || {
+    _cfg_error "This profile requires Atuin to work properly!"
+} 
 
 () {
     if (( $+commands[locale] )); then
