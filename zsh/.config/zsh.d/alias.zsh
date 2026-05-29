@@ -151,15 +151,17 @@ elif (( $+commands[http] )); then # HTTPie
 fi
 # availible: ifconfig.co icanhazip.com ifconfig.me myip.country/ip ip.envs.net
 alias myip-http='curl -L https://ifconfig.me'
-alias myip-http-ipv4='curl -L https://ipv4.icanhazip.com'
-alias myip-http-ipv6='curl -L https://ipv6.icanhazip.com'
+alias myip-http-ipv4-icanhazip='curl -L https://ipv4.icanhazip.com'
+alias myip-http-ipv6-icanhazip='curl -L https://ipv6.icanhazip.com'
+alias myip-http-ipv4-zx2c4='curl -L -4 zx2c4.com/ip'
+alias myip-http-ipv6-zx2c4='curl -L -6 zx2c4.com/ip'
 if (( $+commands[kdig] )); then
     alias myip-dns="kdig TXT +short o-o.myaddr.l.google.com @ns1.google.com | sed 's/\"//g'"
 elif (( $+commands[dig] )); then
     alias myip-dns="dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | sed 's/\"//g'"
 fi
-alias myipv4=myip-http-ipv4
-alias myipv6=myip-http-ipv6
+alias myipv4=myip-http-ipv4-zx2c4
+alias myipv6=myip-http-ipv6-zx2c4
 if (( $+aliases[myip-http-detail] )); then
     alias myip=myip-http-detail
 else
