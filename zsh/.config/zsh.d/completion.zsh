@@ -107,18 +107,29 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*:matches' group yes
 zstyle ':completion:*:options' description yes
-# https://thevaluable.dev/zsh-completion-guide-examples/
-# Descriptions are shown in tint
-# it only supported by gnome-terminal
-# https://gist.github.com/inexorabletash/9122583
-#zstyle ':completion:*:descriptions' format $'\e[2m -- %d --\e[0m'
-zstyle ':completion:*:descriptions' format '%F{blue} -- %d -- %f'
-zstyle ':completion:*:messages' format '%F{purple} -- %d -- %f'
-# Warnings are displayed in red
-zstyle ':completion:*:warnings' format '%F{red}%B -- No Matches Found --%b%f'
-zstyle ':completion:*:corrections' format '%F{yellow}%B -- %d (errors: %e) --%b%f'
-# Description for options that are not described by the completion functions, but that have exactly one argument
-zstyle ':completion:*' auto-description 'Specify: %d'
+if (( $+commands[fzf] )); then
+    #zstyle ':completion:*:descriptions' format ' -- %d --'
+    zstyle ':completion:*:descriptions' format ' -- %d -- '
+    zstyle ':completion:*:messages' format ' -- %d -- '
+    # Warnings are displayed in red
+    zstyle ':completion:*:warnings' format ' -- No Matches Found -- '
+    zstyle ':completion:*:corrections' format ' -- %d (errors: %e) -- '
+    # Description for options that are not described by the completion functions, but that have exactly one argument
+    zstyle ':completion:*' auto-description 'Specify: %d'
+else
+    # https://thevaluable.dev/zsh-completion-guide-examples/
+    # Descriptions are shown in tint
+    # it only supported by gnome-terminal
+    # https://gist.github.com/inexorabletash/9122583
+    #zstyle ':completion:*:descriptions' format $'\e[2m -- %d --\e[0m'
+    zstyle ':completion:*:descriptions' format '%F{blue} -- %d -- %f'
+    zstyle ':completion:*:messages' format '%F{purple} -- %d -- %f'
+    # Warnings are displayed in red
+    zstyle ':completion:*:warnings' format '%F{red}%B -- No Matches Found --%b%f'
+    zstyle ':completion:*:corrections' format '%F{yellow}%B -- %d (errors: %e) --%b%f'
+    # Description for options that are not described by the completion functions, but that have exactly one argument
+    zstyle ':completion:*' auto-description 'Specify: %d'
+fi
 
 ## Color setting
 # I use http://jafrog.com/2013/11/23/colors-in-terminal.html to get color code

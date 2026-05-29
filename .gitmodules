@@ -46,6 +46,16 @@
 [submodule "kate/.local/share/org.kde.syntax-highlighting/themes/catppuccin"]
 	path = kate/.local/share/org.kde.syntax-highlighting/themes/catppuccin
 	url = https://github.com/catppuccin/ksyntaxhighlighting.git
+	ignore = untracked
 [submodule "zsh/.config/zsh.d/plugins/zsh-ssh"]
 	path = zsh/.config/zsh.d/plugins/zsh-ssh
 	url = https://github.com/sunlei/zsh-ssh
+	ignore = untracked
+[submodule "zsh/.config/zsh.d/plugins/zsh-sqlite"]
+	path = zsh/.config/zsh.d/plugins/zsh-sqlite
+	url = https://github.com/Aloxaf/zsh-sqlite
+	ignore = untracked
+[submodule "zsh/.config/zsh.d/plugins/fzf-tab"]
+	path = zsh/.config/zsh.d/plugins/fzf-tab
+	url = https://github.com/Aloxaf/fzf-tab.git
+	ignore = untracked
