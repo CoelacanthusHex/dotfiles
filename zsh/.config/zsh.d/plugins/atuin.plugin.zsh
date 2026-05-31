@@ -160,18 +160,7 @@ add-zsh-hook precmd _atuin_precmd
 zle -N atuin-search _atuin_search
 zle -N atuin-search-vicmd _atuin_search_vicmd
 zle -N atuin-search-viins _atuin_search_viins
-zle -N atuin-up-search _atuin_up_search
-zle -N atuin-up-search-vicmd _atuin_up_search_vicmd
-zle -N atuin-up-search-viins _atuin_up_search_viins
-
-# These are compatibility widget names for "atuin <= 17.2.1" users.
-zle -N _atuin_search_widget _atuin_search
-zle -N _atuin_up_search_widget _atuin_up_search
 
 bindkey -M emacs "$key[Ctrl-R]" atuin-search
 bindkey -M viins "$key[Ctrl-R]" atuin-search-viins
 bindkey -M vicmd '/' atuin-search
-bindkey -M emacs "$key[Up]" atuin-up-search
-bindkey -M vicmd "$key[Up]" atuin-up-search-vicmd
-bindkey -M viins "$key[Up]" atuin-up-search-viins
-bindkey -M vicmd 'k' atuin-up-search-vicmd

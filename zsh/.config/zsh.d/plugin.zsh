@@ -22,6 +22,9 @@ ZSH_AUTOSUGGEST_HISTORY_IGNORE='?(#c80,)'
 # zsh-edit
 zstyle ':edit:*' word-chars ''
 
+# atuin
+export ATUIN_HISTORY_SEARCH_FILTER_MODE=session-preload
+
 # fzf-tab
 zstyle ':fzf-tab:complete:kill:argument-rest' fzf-preview 'ps --pid=$word -o cmd --no-headers -w -w'
 zstyle ':fzf-tab:complete:kill:argument-rest' fzf-flags '--preview-window=down:3:wrap'
@@ -32,7 +35,7 @@ zstyle ':fzf-tab:*' switch-group '<' '>'
 _enabled_plugins=(
     git
     better-man-pages
-    #zsh-sqlite/zsh-sqlite
+    zsh-sqlite/zsh-sqlite
     zsh-autopair/zsh-autopair
     fast-syntax-highlighting/fast-syntax-highlighting
     zsh-autosuggestions/zsh-autosuggestions
@@ -42,6 +45,7 @@ _enabled_plugins=(
     dotenv
     zsh-ssh/zsh-ssh
     atuin
+    atuin-history-search
 )
 
 if (( $+commands[fzf] )); then
