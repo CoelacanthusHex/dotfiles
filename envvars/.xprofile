@@ -203,5 +203,21 @@ export ADB_DELAYED_ACK=1
 # Make nodejs honor proxy environment
 export NODE_USE_ENV_PROXY=1
 
+# Let Qt (QRhi, Qt3D) use Vulkan backend
+# FIXME: Disable this in ~/.config/systemd/user/plasma-plasmashell.service.d/disable-rhi-vulkan-backend.conf
+#        to workaround popup will not pop when click twice.
+export QSG_RHI_BACKEND=vulkan
+export QT3D_RENDERER=rhi
+# https://github.com/qt/qtbase/blob/6457719e69172302e81fd89be31963fc74452987/src/gui/painting/qbackingstorerhisupport.cpp
+# FIXME: will break Gwenview
+#export QT_WIDGETS_RHI=1
+export QT_WIDGETS_RHI_BACKEND="$QSG_RHI_BACKEND"
+#export QSG_RHI_DEBUG_LAYER=1
+#export QT_WIDGETS_RHI_DEBUG_LAYER=1
+
+# Enable new wayland protocols support in Qt
+export QT_WAYLAND_USE_DATA_CONTROL=1
+export QT_WAYLAND_ENABLE_XX_SESSION_MANAGER=1
+
 # vim: ft=bash sw=4 ts=8 sts=4 et:
 # kate: space-indent on; indent-width 4; syntax bash;
