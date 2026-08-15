@@ -1,10 +1,9 @@
 [Unit]
 Description="EasyEffects Service"
-After=pipewire.service
+After=pipewire.service wireplubmer.service
 
 [Service]
-#Environment="G_MESSAGES_DEBUG=easyeffects"
-ExecStart=/usr/bin/easyeffects --gapplication-service
+ExecStart=/usr/bin/easyeffects --hide-window --service-mode
 
 [Install]
 WantedBy=graphical-session.target
