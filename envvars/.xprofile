@@ -219,5 +219,16 @@ export QT_WIDGETS_RHI_BACKEND="$QSG_RHI_BACKEND"
 export QT_WAYLAND_USE_DATA_CONTROL=1
 export QT_WAYLAND_ENABLE_XX_SESSION_MANAGER=1
 
+# Disable Opencode LSP server download, we install them via package manager.
+export OPENCODE_DISABLE_LSP_DOWNLOAD=1
+# Enable some Opencode experimental options.
+export OPENCODE_EXPERIMENTAL_ICON_DISCOVERY=1
+export OPENCODE_EXPERIMENTAL_DISABLE_COPY_ON_SELECT=1
+export OPENCODE_EXPERIMENTAL_LSP_TOOL=1
+export OPENCODE_EXPERIMENTAL_LSP_TY=1
+export OPENCODE_EXPERIMENTAL_EXA=1
+export OPENCODE_EXPERIMENTAL_MARKDOWN=1
+export OPENCODE_EXPERIMENTAL_PLAN_MODE=1
+
 # vim: ft=bash sw=4 ts=8 sts=4 et:
 # kate: space-indent on; indent-width 4; syntax bash;
