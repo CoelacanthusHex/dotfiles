@@ -23,6 +23,7 @@ source ~/.config/gdb/firefox-symbols.py
 
 # For Linux kernel debug
 add-auto-load-safe-path .
+add-auto-load-safe-path /usr/lib/rustlib/etc/
 
 define b_a
   #b __asan_report_load1
