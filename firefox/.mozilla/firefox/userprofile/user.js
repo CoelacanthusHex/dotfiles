@@ -49,9 +49,7 @@ user_pref("network.http.max-persistent-connections-per-proxy", 64); // default=3
 user_pref("layout.css.prefers-color-scheme.content-override", 2);
 // Enable full mode color management
 user_pref("gfx.color_management.mode", 1);
-// Enable HDR
-// https://bugzilla.mozilla.org/show_bug.cgi?id=1642854
-//user_pref("gfx.wayland.hdr", true);
+user_pref("gfx.color_management.hdr", true);
 // Prefer Concrete Math, New Computer Modern Math and STIX Two Math as math fonts.
 // Remove normal serif from fallback list to use default serif fonts as fallback.
 // Remove STIXGeneral since it's obsolete and doesn't use MATH table, see https://bugzilla.mozilla.org/show_bug.cgi?id=1336058
@@ -64,13 +62,23 @@ user_pref("font.name.serif.x-math", "math");
  * In class FeatureState implementation, runtime failure > user force-enabled > environment > user > default.
  * Since there is no runtime failure (only caused by no zwp_linux_dmabuf_v1 or wp_viewporter), but environment test will
  * failed on all Linux, we need to force enable.
+ * Now no longer requires force-enable.
+ * https://github.com/mozilla-firefox/firefox/commit/0f3afe733e4b
  * https://bugzilla.mozilla.org/show_bug.cgi?id=1978540
  * https://github.com/mozilla-firefox/firefox/commit/e21260214b32
  * gfx/config/gfxFeature.cpp
  * widget/gtk/GfxInfo.cpp#L1008
+ * https://bugzilla.mozilla.org/show_bug.cgi?id=2014660
+ * https://github.com/mozilla-firefox/firefox/commit/be962e7e3d02eebc712927d86a491e55426d495f
  */ 
 user_pref("gfx.webrender.compositor", true);
 //user_pref("gfx.webrender.compositor.force-enabled", true);
+user_pref("gfx.webrender.layer-compositor", true);
+/*
+ * Enable Vulkan Decode
+ * https://bugzilla.mozilla.org/show_bug.cgi?id=2021722
+ */ 
+user_pref("media.hardware-video-decoding-vulkan.enabled", true);
 
 /*==== Network ====*/
 
