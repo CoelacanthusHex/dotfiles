@@ -1,7 +1,8 @@
 [user]
     email = uwu@coelacanthus.name
-    name = Coelacanthus
+    name = Celeste \"Coelacanthus\" Liu
     signingkey = E35C89E45867AE35
+    useConfigOnly = true
 
 [core]
     # Use custom `.gitignore` and `.gitattributes`
