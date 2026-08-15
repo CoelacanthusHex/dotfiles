@@ -186,6 +186,16 @@ fi
 
 export DXVK_HDR=1
 
+export PROTON_ENABLE_HDR=1
+export PROTON_ENABLE_NVAPI=1
+# Required for some DRM protections to work. 
+export PROTON_USE_SECCOMP=1
+export WINE_FULLSCREEN_FSR=1
+export PROTON_USE_WAYLAND=1
+export PROTON_ENABLE_WAYLAND=1
+export PROTON_USE_WOW64=1
+export PROTON_USE_OPTISCALER=1
+
 # https://android.googlesource.com/platform/packages/modules/adb/+/refs/heads/main/docs/dev/delayed_ack.md
 export ADB_BURST_MODE=1
 export ADB_DELAYED_ACK=1
