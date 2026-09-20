@@ -10,6 +10,8 @@ user_pref("browser.newtabpage.enabled", false);
 user_pref("browser.compactmode.show", true);
 // Show full URL in address bar
 user_pref("browser.urlbar.trimURLs", false);
+// Stop form fill
+user_pref("browser.formfill.enable", false);
 // Maximum number of font substitutions allowed when querying fonts from fontconfig Default: 3 Max: uint32_t
 user_pref("gfx.font_rendering.fontconfig.max_generic_substitutions", 4096);
 // Allow fallback unassigned chars
