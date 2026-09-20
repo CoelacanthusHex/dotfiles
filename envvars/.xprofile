@@ -12,6 +12,10 @@ export XDG_DATA_HOME=$HOME/.local/share
 # (https://wiki.archlinux.org/index.php/XDG_Base_Directory#Support)
 # adb
 export ADB_VENDOR_KEY=$XDG_DATA_HOME/adb
+export ANDROID_HOME=/opt/android-sdk
+export ANDROID_SDK_ROOT=/opt/android-sdk
+export ANDROID_USER_HOME=$XDG_DATA_HOME/android
+export ANDROID_AVD_HOME=$ANDROID_USER_HOME/avd
 # CUDA cache
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
 # Bash Completion
