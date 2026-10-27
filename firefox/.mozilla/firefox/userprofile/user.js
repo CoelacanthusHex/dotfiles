@@ -73,9 +73,9 @@ user_pref("font.name.serif.x-math", "math");
  * https://bugzilla.mozilla.org/show_bug.cgi?id=2014660
  * https://github.com/mozilla-firefox/firefox/commit/be962e7e3d02eebc712927d86a491e55426d495f
  */ 
-user_pref("gfx.webrender.compositor", true);
+//user_pref("gfx.webrender.compositor", true);
 //user_pref("gfx.webrender.compositor.force-enabled", true);
-user_pref("gfx.webrender.layer-compositor", true);
+//user_pref("gfx.webrender.layer-compositor", true);
 /*
  * Enable Vulkan Decode
  * https://bugzilla.mozilla.org/show_bug.cgi?id=2021722
