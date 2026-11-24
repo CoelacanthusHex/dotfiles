@@ -51,7 +51,7 @@ user_pref("network.http.max-persistent-connections-per-proxy", 64); // default=3
 user_pref("layout.css.prefers-color-scheme.content-override", 2);
 // Enable full mode color management
 user_pref("gfx.color_management.mode", 1);
-user_pref("gfx.color_management.hdr", true);
+//user_pref("gfx.color_management.hdr", true);
 // Prefer Concrete Math, New Computer Modern Math and STIX Two Math as math fonts.
 // Remove normal serif from fallback list to use default serif fonts as fallback.
 // Remove STIXGeneral since it's obsolete and doesn't use MATH table, see https://bugzilla.mozilla.org/show_bug.cgi?id=1336058
