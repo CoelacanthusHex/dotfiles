@@ -40,9 +40,11 @@ function __make_better() {
 
     # Prefer `less` whenever available, since we specifically configured
     # environment for it.
-    (( $+commands[less] )) \
-        && environment+=( MANPAGER="less -s -M -i -R --mouse" ) \
-        || environment+=( MANPAGER="$PAGER" )
+    if (( $+commands[less] )); then
+        environment+=( MANPAGER=less LESS="-s -R${LESS:+ $LESS}" )
+    else
+        environment+=( MANPAGER="$PAGER" )
+    fi
 
     # See ./nroff script.
     if [[ "$OSTYPE" = solaris* ]]; then
